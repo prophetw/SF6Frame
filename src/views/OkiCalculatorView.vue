@@ -7,18 +7,31 @@ const selectedKnockdownMove = ref<Move | null>(null);
 const frameData = ref<FrameData | null>(null);
 const loading = ref(false);
 
-// Custom knockdown advantage (for unlisted moves)
+// Custom knockdown advantage
 const customKnockdownAdv = ref<number>(38);
 const useCustomKnockdown = ref(false);
 
-// Manual move selection
-const manualMoveSearch = ref('');
-const selectedManualMove = ref<Move | null>(null);
-const includeDash = ref(true);
+// Combo chain - list of actions
+interface ComboAction {
+  type: 'dash' | 'move';
+  name: string;
+  frames: number;
+  active?: number;  // Only for moves
+  move?: Move;
+}
+
+const comboChain = ref<ComboAction[]>([]);
+const moveSearchQuery = ref('');
 
 // Opponent's fastest reversal settings
 const opponentReversalStartup = ref<number>(4);
 const opponentReversalActive = ref<number>(3);
+
+// Use combo chain as prefix for auto calculation
+const useChainAsPrefix = ref(false);
+
+// Selected result for detail view
+const selectedResultKey = ref<string | null>(null);
 
 // Effective knockdown advantage
 const effectiveKnockdownAdv = computed(() => {
@@ -31,40 +44,96 @@ const effectiveKnockdownAdv = computed(() => {
 // Character stats
 const stats = computed<CharacterStats | undefined>(() => frameData.value?.stats);
 
-// Opponent's reversal active frame range
-const opponentActiveRange = computed(() => {
-  const start = effectiveKnockdownAdv.value + opponentReversalStartup.value;
-  const end = start + opponentReversalActive.value - 1;
-  return { start, end };
+// Opponent's reversal first frame
+const opponentFirstFrame = computed(() => {
+  return effectiveKnockdownAdv.value + opponentReversalStartup.value;
 });
 
-// Knockdown moves with their frame advantages
+// Knockdown moves
 const knockdownMoves = computed<Move[]>(() => {
   if (!frameData.value) return [];
   return frameData.value.moves.filter((m: Move) => m.knockdown && m.knockdown.type !== 'none');
 });
 
-// ALL moves for oki (include all categories)
+// ALL moves for selection
 const allMoves = computed<Move[]>(() => {
   if (!frameData.value) return [];
   return frameData.value.moves.filter((m: Move) => {
     const startup = parseInt(m.startup) || 0;
-    return startup > 0 && startup <= 30;  // Only moves with reasonable startup
+    return startup > 0 && startup <= 50;
   });
 });
 
-// Filtered moves for manual search
-const filteredMovesForSearch = computed<Move[]>(() => {
+// Filtered moves for search
+const filteredMoves = computed<Move[]>(() => {
   if (!frameData.value) return [];
-  const query = manualMoveSearch.value.toLowerCase();
-  if (!query) return allMoves.value.slice(0, 20);
+  const query = moveSearchQuery.value.toLowerCase();
+  if (!query) return allMoves.value.slice(0, 15);
   return allMoves.value.filter((m: Move) => 
     m.name.toLowerCase().includes(query) ||
     m.input.toLowerCase().includes(query)
-  ).slice(0, 20);
+  ).slice(0, 15);
 });
 
-// Extended Oki Result
+// Parse total active frames
+function parseTotalActiveFrames(active: string): number {
+  if (!active || active === '-') return 1;
+  const matches = String(active).match(/\d+/g);
+  if (!matches) return 1;
+  return matches.reduce((sum, n) => sum + parseInt(n), 0);
+}
+
+// Calculate combo result
+const comboResult = computed(() => {
+  if (comboChain.value.length === 0 || effectiveKnockdownAdv.value <= 0) return null;
+  
+  // Calculate total startup frames (all actions except last one's active)
+  let totalStartup = 0;
+  let lastActiveFrames = 1;
+  
+  for (let i = 0; i < comboChain.value.length; i++) {
+    const action = comboChain.value[i];
+    if (i === comboChain.value.length - 1 && action.type === 'move') {
+      // Last action: add startup, track active separately
+      totalStartup += action.frames;
+      lastActiveFrames = action.active || 1;
+    } else {
+      // Not last action: add full frames
+      totalStartup += action.frames;
+    }
+  }
+  
+  const ourStart = totalStartup;
+  const ourEnd = ourStart + lastActiveFrames - 1;
+  
+  const oppFirst = opponentFirstFrame.value;
+  // Success: our first active is BEFORE opponent's first active
+  // Trade: our first active equals opponent's first active
+  const isSuccess = ourStart < oppFirst && oppFirst <= ourEnd;
+  const isTrade = ourStart === oppFirst && oppFirst <= ourEnd;
+  const coversOpponent = isSuccess; // For backward compatibility
+  
+  let status = '';
+  if (isSuccess) {
+    status = '压制成功 ✓';
+  } else if (isTrade) {
+    status = '相杀';
+  } else if (ourEnd < oppFirst) {
+    status = '打击太早';
+  } else {
+    status = '打击太晚';
+  }
+  
+  return {
+    totalStartup,
+    ourStart,
+    ourEnd,
+    coversOpponent,
+    status,
+  };
+});
+
+// Extended Oki Result for auto list
 interface ExtendedOkiResult {
   move: Move;
   prefix: string;
@@ -72,118 +141,98 @@ interface ExtendedOkiResult {
   ourActiveStart: number;
   ourActiveEnd: number;
   coversOpponent: boolean;
-  overlaps: boolean;
-  coverageInfo: string;
+  isTrade: boolean;
 }
 
-// Parse total active frames from string like "3", "2(5)3", "2*3" etc.
-function parseTotalActiveFrames(active: string): number {
-  if (!active || active === '-') return 1;
-  // Sum all numbers in the string
-  const matches = String(active).match(/\d+/g);
-  if (!matches) return 1;
-  return matches.reduce((sum, n) => sum + parseInt(n), 0);
-}
-
-// Calculate result for a specific move
-function calculateMoveResult(move: Move, useDash: boolean): ExtendedOkiResult | null {
-  if (!stats.value) return null;
-  
-  const prefixFrames = useDash ? stats.value.forwardDash : 0;
-  const prefix = useDash ? '前冲' : '';
-  const startup = parseInt(move.startup) || 0;
-  const totalActive = parseTotalActiveFrames(move.active);
-  
-  if (startup <= 0) return null;
-  
-  const ourStart = prefixFrames + startup;
-  const ourEnd = ourStart + totalActive - 1;
-  
-  // Opponent's first reversal active frame
-  const opponentFirstFrame = opponentActiveRange.value.start;
-  
-  // Success = our active range contains opponent's first frame
-  // ourStart <= opponentFirstFrame <= ourEnd
-  const coversOpponent = ourStart <= opponentFirstFrame && opponentFirstFrame <= ourEnd;
-  
-  // Also check if we have any overlap at all
-  const opponentEnd = opponentActiveRange.value.end;
-  const overlaps = ourStart <= opponentEnd && ourEnd >= opponentFirstFrame;
-  
-  let coverageInfo = '';
-  if (coversOpponent) {
-    coverageInfo = '压制成功 ✓';
-  } else if (ourEnd < opponentFirstFrame) {
-    coverageInfo = '打击太早';
-  } else if (ourStart > opponentFirstFrame) {
-    coverageInfo = '打击太晚';
-  } else {
-    coverageInfo = '未覆盖';
+// Calculate prefix frames from combo chain (excluding last move if it has active)
+const comboChainPrefixFrames = computed(() => {
+  let total = 0;
+  for (const action of comboChain.value) {
+    total += action.frames;
   }
-  
-  return {
-    move,
-    prefix,
-    prefixFrames,
-    ourActiveStart: ourStart,
-    ourActiveEnd: ourEnd,
-    coversOpponent,
-    overlaps,
-    coverageInfo,
-  };
-}
-
-// Manual move result
-const manualMoveResult = computed<ExtendedOkiResult | null>(() => {
-  if (!selectedManualMove.value || effectiveKnockdownAdv.value <= 0) return null;
-  return calculateMoveResult(selectedManualMove.value, includeDash.value);
+  return total;
 });
 
-// Calculate all oki combinations
+// Build prefix name from combo chain
+const comboChainPrefixName = computed(() => {
+  if (comboChain.value.length === 0) return '';
+  return comboChain.value.map((a: ComboAction) => a.name).join(' + ');
+});
+
+// Toggle result detail
+function toggleResultDetail(key: string) {
+  if (selectedResultKey.value === key) {
+    selectedResultKey.value = null;
+  } else {
+    selectedResultKey.value = key;
+  }
+}
+
+// Auto results
 const okiResults = computed<ExtendedOkiResult[]>(() => {
-  if (effectiveKnockdownAdv.value <= 0) return [];
-  if (!stats.value) return [];
+  if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
   
   const results: ExtendedOkiResult[] = [];
+  const oppFirst = opponentFirstFrame.value;
   
-  const prefixes = [
-    { useDash: false },
-    { useDash: true },
-  ];
+  let prefixes: { name: string; frames: number }[];
   
-  for (const prefixConfig of prefixes) {
+  if (useChainAsPrefix.value && comboChain.value.length > 0) {
+    // Use combo chain as the only prefix
+    prefixes = [
+      { name: comboChainPrefixName.value, frames: comboChainPrefixFrames.value },
+    ];
+  } else {
+    // Default prefixes
+    prefixes = [
+      { name: '', frames: 0 },
+      { name: '前冲', frames: stats.value.forwardDash },
+      { name: '前冲x2', frames: stats.value.forwardDash * 2 },
+    ];
+  }
+  
+  for (const prefix of prefixes) {
     for (const move of allMoves.value) {
-      const result = calculateMoveResult(move, prefixConfig.useDash);
-      if (result && (result.overlaps || result.coversOpponent)) {
-        results.push(result);
+      const startup = parseInt(move.startup) || 0;
+      const totalActive = parseTotalActiveFrames(move.active);
+      if (startup <= 0) continue;
+      
+      const ourStart = prefix.frames + startup;
+      const ourEnd = ourStart + totalActive - 1;
+      // Success: ourStart < oppFirst (strict less than, not equal = trade)
+      const isSuccess = ourStart < oppFirst && oppFirst <= ourEnd;
+      const isTrade = ourStart === oppFirst && oppFirst <= ourEnd;
+      
+      if (isSuccess || isTrade) {
+        results.push({
+          move,
+          prefix: prefix.name,
+          prefixFrames: prefix.frames,
+          ourActiveStart: ourStart,
+          ourActiveEnd: ourEnd,
+          coversOpponent: isSuccess,
+          isTrade: isTrade,
+        });
       }
     }
   }
   
-  // Sort: fully covers first, then by start time
-  return results
-    .sort((a, b) => {
-      if (a.coversOpponent !== b.coversOpponent) {
-        return a.coversOpponent ? -1 : 1;
-      }
-      return a.ourActiveStart - b.ourActiveStart;
-    })
-    .slice(0, 50);
+  return results.sort((a, b) => a.ourActiveStart - b.ourActiveStart).slice(0, 50);
 });
 
+// Actions
 async function loadCharacterData() {
   if (!selectedCharacterId.value) {
     frameData.value = null;
     return;
   }
-  
   loading.value = true;
   try {
     const module = await import(`../data/characters/${selectedCharacterId.value}.json`);
     frameData.value = module.default as FrameData;
     selectedKnockdownMove.value = null;
-    selectedManualMove.value = null;
     useCustomKnockdown.value = false;
+    comboChain.value = [];
   } catch {
     frameData.value = null;
   } finally {
@@ -191,7 +240,7 @@ async function loadCharacterData() {
   }
 }
 
-function selectMove(move: Move) {
+function selectKnockdownMove(move: Move) {
   selectedKnockdownMove.value = move;
   useCustomKnockdown.value = false;
 }
@@ -201,22 +250,41 @@ function enableCustomKnockdown() {
   selectedKnockdownMove.value = null;
 }
 
-function selectManualMove(move: Move) {
-  selectedManualMove.value = move;
-  manualMoveSearch.value = '';
+function addDash() {
+  if (!stats.value) return;
+  comboChain.value.push({
+    type: 'dash',
+    name: '前冲',
+    frames: stats.value.forwardDash,
+  });
 }
 
-function clearManualMove() {
-  selectedManualMove.value = null;
+function addMove(move: Move) {
+  const startup = parseInt(move.startup) || 0;
+  const active = parseTotalActiveFrames(move.active);
+  comboChain.value.push({
+    type: 'move',
+    name: move.name,
+    frames: startup,
+    active: active,
+    move: move,
+  });
+  moveSearchQuery.value = '';
+}
+
+function removeAction(index: number) {
+  comboChain.value.splice(index, 1);
+}
+
+function clearCombo() {
+  comboChain.value = [];
 }
 </script>
 
 <template>
   <div class="oki-view container">
     <h1 class="page-title">压起身计算器</h1>
-    <p class="page-desc">
-      计算我方打击帧范围是否覆盖对手反击帧范围
-    </p>
+    <p class="page-desc">组合链计算: 前冲 + 前冲 + 招式A + ...</p>
     
     <!-- Character Stats -->
     <div v-if="stats" class="stats-bar">
@@ -228,64 +296,38 @@ function clearManualMove() {
         <span class="stat-label">后冲</span>
         <span class="stat-value">{{ stats.backDash }}F</span>
       </span>
-      <span class="stat-item">
-        <span class="stat-label">体力</span>
-        <span class="stat-value">{{ stats.health }}</span>
-      </span>
     </div>
     
-    <!-- Step 1: Character Selection -->
+    <!-- Step 1: Character -->
     <section class="oki-section">
       <h2 class="section-title">
         <span class="step-number">1</span>
         选择角色
       </h2>
-      
-      <select 
-        v-model="selectedCharacterId" 
-        @change="loadCharacterData"
-        class="character-select"
-      >
+      <select v-model="selectedCharacterId" @change="loadCharacterData" class="character-select">
         <option value="">-- 选择角色 --</option>
-        <option 
-          v-for="char in SF6_CHARACTERS" 
-          :key="char.id" 
-          :value="char.id"
-        >
+        <option v-for="char in SF6_CHARACTERS" :key="char.id" :value="char.id">
           {{ char.name }} {{ char.nameJp ? `(${char.nameJp})` : '' }}
         </option>
       </select>
     </section>
     
-    <!-- Loading -->
-    <div v-if="loading" class="loading-state">
-      <p>加载中...</p>
-    </div>
+    <div v-if="loading" class="loading-state"><p>加载中...</p></div>
     
-    <!-- Step 2: Knockdown Move -->
+    <!-- Step 2: Knockdown -->
     <section v-else-if="frameData" class="oki-section">
       <h2 class="section-title">
         <span class="step-number">2</span>
         击倒数据
       </h2>
       
-      <!-- Custom Knockdown Input -->
       <div class="custom-knockdown-row">
-        <button 
-          :class="['custom-kd-btn', { active: useCustomKnockdown }]"
-          @click="enableCustomKnockdown"
-        >
+        <button :class="['custom-kd-btn', { active: useCustomKnockdown }]" @click="enableCustomKnockdown">
           自定义
         </button>
         <div v-if="useCustomKnockdown" class="custom-kd-input">
-          <span>击倒后起身帧:</span>
-          <input 
-            type="number" 
-            v-model.number="customKnockdownAdv" 
-            min="1" 
-            max="100"
-            placeholder="38"
-          />
+          <span>击倒帧:</span>
+          <input type="number" v-model.number="customKnockdownAdv" min="1" max="100" />
           <span>F</span>
         </div>
       </div>
@@ -295,172 +337,170 @@ function clearManualMove() {
           v-for="move in knockdownMoves"
           :key="move.name"
           :class="['knockdown-card', { active: selectedKnockdownMove?.name === move.name }]"
-          @click="selectMove(move)"
+          @click="selectKnockdownMove(move)"
         >
           <span class="move-name">{{ move.name }}</span>
           <span class="move-input">{{ move.input }}</span>
-          <span class="move-advantage" v-if="move.knockdown">
-            +{{ move.knockdown.advantage }}F
-          </span>
+          <span class="move-advantage" v-if="move.knockdown">+{{ move.knockdown.advantage }}F</span>
         </button>
       </div>
     </section>
     
-    <!-- Step 3: Settings & Results -->
+    <!-- Step 3: Combo Builder -->
     <section v-if="effectiveKnockdownAdv > 0 && frameData" class="oki-section results-section">
       <h2 class="section-title">
         <span class="step-number">3</span>
-        计算设置 & 结果
+        组合链计算
       </h2>
       
-      <div class="oki-settings">
-        <!-- Frame Calculation Display -->
-        <div class="frame-calc-box">
-          <div class="calc-row opponent-row">
-            <span class="calc-label">对手反击:</span>
-            <div class="calc-formula">
-              <span class="calc-value kd-value">{{ effectiveKnockdownAdv }}</span>
-              <span class="calc-op">+</span>
-              <input 
-                type="number" 
-                v-model.number="opponentReversalStartup" 
-                min="1" 
-                max="30"
-                class="calc-input"
-                title="发生帧"
-              />
-              <span class="calc-label-small">发生</span>
-              <span class="calc-op">=</span>
-              <span class="calc-result">{{ opponentActiveRange.start }}~{{ opponentActiveRange.end }}F</span>
-              <span class="calc-label-small">(持续</span>
-              <input 
-                type="number" 
-                v-model.number="opponentReversalActive" 
-                min="1" 
-                max="10"
-                class="calc-input small"
-                title="持续帧"
-              />
-              <span class="calc-label-small">F)</span>
-            </div>
+      <!-- Opponent Info -->
+      <div class="opponent-info">
+        <span>对手第一帧: {{ effectiveKnockdownAdv }} + </span>
+        <input type="number" v-model.number="opponentReversalStartup" min="1" max="30" class="small-input" />
+        <span> = <strong class="frame-negative">{{ opponentFirstFrame }}F</strong></span>
+      </div>
+      
+      <!-- Combo Chain Builder -->
+      <div class="combo-builder">
+        <div class="combo-chain">
+          <div v-for="(action, idx) in comboChain" :key="idx" class="chain-item">
+            <span class="chain-name">{{ action.name }}</span>
+            <span class="chain-frames">{{ action.frames }}F</span>
+            <button class="chain-remove" @click="removeAction(idx)">×</button>
+            <span v-if="idx < comboChain.length - 1" class="chain-plus">+</span>
           </div>
+          <span v-if="comboChain.length === 0" class="chain-empty">点击下方添加动作</span>
         </div>
         
-        <!-- Manual Move Selector -->
-        <div class="manual-move-section">
-          <div class="manual-header">
-            <span class="manual-title">手动测试招式:</span>
-            <label class="dash-toggle">
-              <input type="checkbox" v-model="includeDash" />
-              使用前冲 ({{ stats?.forwardDash }}F)
-            </label>
-          </div>
-          
-          <div class="manual-search">
+        <div class="combo-actions">
+          <button class="action-btn dash-btn" @click="addDash">
+            + 前冲 ({{ stats?.forwardDash }}F)
+          </button>
+          <div class="move-search">
             <input 
-              type="text"
-              v-model="manualMoveSearch"
-              placeholder="搜索招式名或指令 (如 6HP, 波动拳)"
-              class="search-input"
+              type="text" 
+              v-model="moveSearchQuery" 
+              placeholder="搜索招式..."
+              class="move-search-input"
             />
-            <button v-if="selectedManualMove" @click="clearManualMove" class="clear-btn">
-              清除
-            </button>
-          </div>
-          
-          <!-- Move Selection Dropdown -->
-          <div v-if="manualMoveSearch && !selectedManualMove" class="move-dropdown">
-            <button
-              v-for="move in filteredMovesForSearch"
-              :key="move.name"
-              class="move-option"
-              @click="selectManualMove(move)"
-            >
-              <span class="move-name">{{ move.name }}</span>
-              <span class="move-input">{{ move.input }}</span>
-              <span class="move-startup">{{ move.startup }}F</span>
-            </button>
-          </div>
-          
-          <!-- Manual Result -->
-          <div v-if="selectedManualMove && manualMoveResult" class="manual-result">
-            <div class="manual-result-header">
-              <span v-if="includeDash" class="combo-prefix">前冲 ({{ stats?.forwardDash }}F)</span>
-              <span v-if="includeDash" class="combo-arrow">+</span>
-              <span class="move-name">{{ selectedManualMove.name }}</span>
-              <span class="move-input">{{ selectedManualMove.input }}</span>
-            </div>
-            <div class="manual-result-calc">
-              <span class="calc-item">
-                <span class="calc-label-small">发生:</span>
-                <span>{{ selectedManualMove.startup }}F</span>
-              </span>
-              <span class="calc-item">
-                <span class="calc-label-small">持续:</span>
-                <span>{{ selectedManualMove.active }}</span>
-              </span>
-              <span class="calc-item">
-                <span class="calc-label-small">打击帧:</span>
-                <span class="frame-range-big">{{ manualMoveResult.ourActiveStart }}~{{ manualMoveResult.ourActiveEnd }}F</span>
-              </span>
-              <span class="calc-item">
-                <span class="calc-label-small">对手:</span>
-                <span class="frame-range-enemy">{{ opponentActiveRange.start }}~{{ opponentActiveRange.end }}F</span>
-              </span>
-              <span :class="['coverage-result', { success: manualMoveResult.coversOpponent, overlap: manualMoveResult.overlaps && !manualMoveResult.coversOpponent }]">
-                {{ manualMoveResult.coverageInfo }}
-              </span>
+            <div v-if="moveSearchQuery" class="move-dropdown">
+              <button
+                v-for="move in filteredMoves"
+                :key="move.name"
+                class="move-option"
+                @click="addMove(move)"
+              >
+                <span>{{ move.name }}</span>
+                <span class="move-input">{{ move.input }}</span>
+                <span>{{ move.startup }}F</span>
+              </button>
             </div>
           </div>
+          <button v-if="comboChain.length > 0" class="action-btn clear-btn" @click="clearCombo">
+            清空
+          </button>
         </div>
       </div>
       
-      <!-- Auto Results Table -->
-      <h3 class="results-title">自动匹配结果 ({{ okiResults.length }})</h3>
+      <!-- Combo Result -->
+      <div v-if="comboResult" class="combo-result" :class="{ success: comboResult.coversOpponent }">
+        <div class="result-row">
+          <span class="result-label">打击帧范围:</span>
+          <span class="result-value">{{ comboResult.ourStart }}~{{ comboResult.ourEnd }}F</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">对手第一帧:</span>
+          <span class="result-value enemy">{{ opponentFirstFrame }}F</span>
+        </div>
+        <div class="result-row">
+          <span class="result-status" :class="{ success: comboResult.coversOpponent }">
+            {{ comboResult.status }}
+          </span>
+        </div>
+      </div>
+      
+      <!-- Auto Results -->
+      <div class="results-header-row">
+        <h3 class="results-title">自动匹配 ({{ okiResults.length }}个成功)</h3>
+        <button 
+          v-if="comboChain.length > 0"
+          :class="['prefix-btn', { active: useChainAsPrefix }]"
+          @click="useChainAsPrefix = !useChainAsPrefix"
+        >
+          {{ useChainAsPrefix ? '✓ 使用组合前置' : '以当前组合为前置' }}
+        </button>
+      </div>
+      <p v-if="useChainAsPrefix" class="prefix-info">
+        前置: <strong>{{ comboChainPrefixName }} ({{ comboChainPrefixFrames }}F)</strong> + 招式
+      </p>
       
       <div v-if="okiResults.length > 0" class="results-table">
         <div class="result-header">
           <span>组合</span>
           <span>发生</span>
-          <span>持续</span>
           <span>打击帧</span>
-          <span>判定</span>
         </div>
-        
         <div 
           v-for="result in okiResults" 
           :key="`${result.prefix}${result.move.name}`"
-          :class="['result-row', { 'covers': result.coversOpponent, 'has-prefix': result.prefix }]"
+          :class="['result-row-auto', { 
+            expanded: selectedResultKey === `${result.prefix}${result.move.name}`,
+            success: result.coversOpponent,
+            trade: result.isTrade
+          }]"
+          @click="toggleResultDetail(`${result.prefix}${result.move.name}`)"
         >
           <div class="result-combo">
-            <span v-if="result.prefix" class="combo-prefix">
-              {{ result.prefix }} ({{ result.prefixFrames }}F)
-            </span>
-            <span v-if="result.prefix" class="combo-arrow">+</span>
-            <span class="move-name">{{ result.move.name }}</span>
+            <span v-if="result.coversOpponent" class="success-badge">压制</span>
+            <span v-if="result.isTrade" class="trade-badge">相杀</span>
+            <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
+            <span v-if="result.prefix">+</span>
+            <span>{{ result.move.name }}</span>
             <span class="move-input">{{ result.move.input }}</span>
           </div>
-          <span>{{ result.move.startup }}F</span>
-          <span>{{ result.move.active }}</span>
-          <span class="frame-range">
-            {{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F
-          </span>
-          <span :class="['coverage-badge', { success: result.coversOpponent }]">
-            {{ result.coverageInfo }}
-          </span>
+          <span>{{ result.prefixFrames + parseInt(result.move.startup) }}F</span>
+          <span>{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+          
+          <!-- Expandable Detail -->
+          <div v-if="selectedResultKey === `${result.prefix}${result.move.name}`" class="result-detail" @click.stop>
+            <div class="detail-title">帧数详情</div>
+            <div class="detail-row">
+              <span class="detail-label">前置动作:</span>
+              <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">招式发生:</span>
+              <span>{{ result.move.name }} = {{ result.move.startup }}F</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">招式持续:</span>
+              <span>{{ result.move.active }} (共{{ result.ourActiveEnd - result.ourActiveStart + 1 }}帧)</span>
+            </div>
+            <div class="detail-row calc">
+              <span class="detail-label">计算:</span>
+              <span>{{ result.prefixFrames }} + {{ result.move.startup }} = {{ result.ourActiveStart }}F 第一次打击</span>
+            </div>
+            <div class="detail-row calc">
+              <span class="detail-label">打击范围:</span>
+              <span class="frame-positive">{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">对手第一帧:</span>
+              <span class="frame-negative">{{ opponentFirstFrame }}F</span>
+            </div>
+            <div class="detail-row result">
+              <span class="detail-label">判定:</span>
+              <span v-if="result.coversOpponent" class="success">✓ 压制成功: {{ result.ourActiveStart }} < {{ opponentFirstFrame }} ≤ {{ result.ourActiveEnd }}</span>
+              <span v-else-if="result.isTrade" class="trade">⚠ 相杀: {{ result.ourActiveStart }} = {{ opponentFirstFrame }}</span>
+            </div>
+          </div>
         </div>
       </div>
       
       <div v-else class="empty-state">
-        <p>没有符合条件的压制组合</p>
+        <p>没有自动匹配的压制组合</p>
       </div>
     </section>
-    
-    <!-- No Data State -->
-    <div v-else-if="selectedCharacterId && !loading && !frameData" class="error-state">
-      <p>暂无该角色的帧数据</p>
-      <code>pnpm exec tsx scripts/download-fat-data.ts</code>
-    </div>
   </div>
 </template>
 
@@ -475,14 +515,11 @@ function clearManualMove() {
 
 .page-desc {
   color: var(--color-text-muted);
-  margin-top: var(--space-sm);
   margin-bottom: var(--space-lg);
 }
 
-/* Stats Bar */
 .stats-bar {
   display: flex;
-  flex-wrap: wrap;
   gap: var(--space-lg);
   padding: var(--space-md) var(--space-lg);
   background: var(--color-bg-card);
@@ -543,7 +580,7 @@ function clearManualMove() {
   padding: var(--space-sm) var(--space-md);
 }
 
-/* Custom Knockdown */
+/* Knockdown */
 .custom-knockdown-row {
   display: flex;
   align-items: center;
@@ -558,17 +595,13 @@ function clearManualMove() {
   background: var(--color-bg-tertiary);
   border: 2px dashed var(--color-border);
   border-radius: var(--radius-md);
-  color: var(--color-text-secondary);
   cursor: pointer;
   font-weight: 600;
-  transition: all var(--transition-fast);
 }
 
-.custom-kd-btn:hover,
-.custom-kd-btn.active {
+.custom-kd-btn:hover, .custom-kd-btn.active {
   border-color: var(--color-accent);
   color: var(--color-accent);
-  background: var(--color-accent-light);
 }
 
 .custom-kd-input {
@@ -577,19 +610,18 @@ function clearManualMove() {
   gap: var(--space-sm);
 }
 
-.custom-kd-input input {
-  width: 80px;
-  padding: var(--space-xs) var(--space-sm);
+.custom-kd-input input, .small-input {
+  width: 60px;
+  padding: var(--space-xs);
   text-align: center;
   font-family: var(--font-mono);
-  font-weight: 600;
 }
 
 .knockdown-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: var(--space-sm);
-  max-height: 180px;
+  max-height: 160px;
   overflow-y: auto;
 }
 
@@ -601,173 +633,124 @@ function clearManualMove() {
   background: var(--color-bg-tertiary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  text-align: left;
   cursor: pointer;
-  transition: all var(--transition-fast);
 }
 
-.knockdown-card:hover {
-  border-color: var(--color-accent);
-}
-
+.knockdown-card:hover { border-color: var(--color-accent); }
 .knockdown-card.active {
   border-color: var(--color-accent);
   background: var(--color-accent-light);
 }
 
-.knockdown-card .move-name {
-  font-weight: 600;
-  font-size: var(--font-size-sm);
-}
+.knockdown-card .move-name { font-weight: 600; font-size: var(--font-size-sm); }
+.knockdown-card .move-input { font-family: var(--font-mono); font-size: var(--font-size-xs); color: var(--color-text-muted); }
+.knockdown-card .move-advantage { color: var(--color-positive); font-weight: 600; }
 
-.knockdown-card .move-input {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-}
-
-.knockdown-card .move-advantage {
-  font-size: var(--font-size-sm);
-  color: var(--color-positive);
-  font-weight: 600;
-}
-
-/* Frame Calculation Box */
-.frame-calc-box {
+/* Opponent Info */
+.opponent-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm);
   background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+}
+
+/* Combo Builder */
+.combo-builder {
+  background: var(--color-bg-secondary);
   border-radius: var(--radius-md);
   padding: var(--space-md);
   margin-bottom: var(--space-md);
 }
 
-.calc-row {
+.combo-chain {
   display: flex;
-  align-items: center;
-  gap: var(--space-sm);
   flex-wrap: wrap;
-}
-
-.calc-label {
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  min-width: 80px;
-}
-
-.calc-formula {
-  display: flex;
   align-items: center;
   gap: var(--space-xs);
-  flex-wrap: wrap;
-}
-
-.calc-value {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  padding: 2px 8px;
-  background: var(--color-bg-secondary);
-  border-radius: var(--radius-sm);
-}
-
-.kd-value {
-  color: var(--color-accent);
-}
-
-.calc-op {
-  color: var(--color-text-muted);
-}
-
-.calc-input {
-  width: 50px;
-  padding: 4px 8px;
-  text-align: center;
-  font-family: var(--font-mono);
-  font-weight: 600;
-  border-radius: var(--radius-sm);
-}
-
-.calc-input.small {
-  width: 40px;
-}
-
-.calc-label-small {
-  color: var(--color-text-muted);
-  font-size: var(--font-size-sm);
-}
-
-.calc-result {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  color: var(--color-negative);
-  padding: 2px 8px;
-  background: rgba(248, 81, 73, 0.15);
-  border-radius: var(--radius-sm);
-}
-
-/* Manual Move Section */
-.manual-move-section {
-  background: var(--color-bg-secondary);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-  margin-bottom: var(--space-lg);
-}
-
-.manual-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--space-sm);
-}
-
-.manual-title {
-  font-weight: 600;
-  color: var(--color-text-primary);
-}
-
-.dash-toggle {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  cursor: pointer;
-}
-
-.dash-toggle input {
-  width: 16px;
-  height: 16px;
-}
-
-.manual-search {
-  display: flex;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-sm);
-}
-
-.search-input {
-  flex: 1;
+  min-height: 40px;
   padding: var(--space-sm);
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+}
+
+.chain-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: rgba(0, 212, 255, 0.15);
+  border-radius: var(--radius-sm);
+}
+
+.chain-name { font-weight: 600; }
+.chain-frames { font-family: var(--font-mono); font-size: var(--font-size-xs); color: var(--color-text-muted); }
+.chain-remove {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 0 4px;
+}
+.chain-remove:hover { color: var(--color-negative); }
+.chain-plus { color: var(--color-text-muted); font-weight: 600; margin: 0 var(--space-xs); }
+.chain-empty { color: var(--color-text-muted); }
+
+.combo-actions {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dash-btn {
+  background: rgba(0, 212, 255, 0.2);
+  border: 1px solid #00d4ff;
+  color: #00d4ff;
 }
 
 .clear-btn {
-  padding: var(--space-xs) var(--space-md);
   background: var(--color-bg-tertiary);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  cursor: pointer;
+}
+
+.move-search {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.move-search-input {
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm);
 }
 
 .move-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   max-height: 200px;
   overflow-y: auto;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  z-index: 10;
 }
 
 .move-option {
   display: flex;
   width: 100%;
-  gap: var(--space-md);
+  justify-content: space-between;
   padding: var(--space-sm);
   background: none;
   border: none;
@@ -776,109 +759,81 @@ function clearManualMove() {
   text-align: left;
 }
 
-.move-option:hover {
+.move-option:hover { background: var(--color-bg-tertiary); }
+.move-option:last-child { border-bottom: none; }
+
+/* Combo Result */
+.combo-result {
+  padding: var(--space-md);
   background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-border);
 }
 
-.move-option:last-child {
-  border-bottom: none;
+.combo-result.success {
+  border-color: var(--color-positive);
+  background: rgba(63, 185, 80, 0.1);
 }
 
-.move-option .move-name {
-  flex: 1;
-  font-weight: 500;
+.combo-result .result-row {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xs);
 }
 
-.move-option .move-input {
-  font-family: var(--font-mono);
+.result-label { color: var(--color-text-muted); }
+.result-value { font-family: var(--font-mono); font-weight: 600; }
+.result-value.enemy { color: var(--color-negative); }
+.result-status { font-weight: 700; padding: var(--space-xs) var(--space-md); border-radius: var(--radius-md); }
+.result-status.success { background: var(--color-positive); color: white; }
+
+/* Auto Results */
+.results-section { border-color: var(--color-accent); }
+
+.results-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: var(--space-lg) 0 var(--space-md);
+}
+
+.results-title { font-size: var(--font-size-md); color: var(--color-text-secondary); margin: 0; }
+
+.prefix-btn {
+  padding: var(--space-xs) var(--space-md);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
 }
 
-.move-option .move-startup {
-  font-family: var(--font-mono);
+.prefix-btn:hover {
+  border-color: var(--color-accent);
   color: var(--color-accent);
 }
 
-/* Manual Result */
-.manual-result {
-  background: var(--color-bg-card);
-  border: 2px solid var(--color-accent);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
+.prefix-btn.active {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: #00d4ff;
+  color: #00d4ff;
 }
 
-.manual-result-header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-sm);
-  font-size: var(--font-size-lg);
-}
-
-.manual-result-calc {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  align-items: center;
-}
-
-.calc-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-}
-
-.frame-range-big {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: var(--font-size-lg);
-  color: var(--color-positive);
-}
-
-.frame-range-enemy {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  color: var(--color-negative);
-}
-
-.coverage-result {
-  padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius-md);
-  font-weight: 700;
-  background: var(--color-bg-tertiary);
+.prefix-info {
+  font-size: var(--font-size-sm);
   color: var(--color-text-muted);
+  margin: 0 0 var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: var(--radius-sm);
 }
 
-.coverage-result.success {
-  background: var(--color-positive);
-  color: white;
-}
+.results-table { overflow-x: auto; }
 
-.coverage-result.overlap {
-  background: rgba(210, 153, 34, 0.2);
-  color: var(--color-warning);
-}
-
-/* Results */
-.results-section {
-  border-color: var(--color-accent);
-}
-
-.results-title {
-  font-size: var(--font-size-md);
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-md);
-}
-
-.results-table {
-  overflow-x: auto;
-}
-
-.result-header,
-.result-row {
+.result-header, .result-row-auto {
   display: grid;
-  grid-template-columns: 2.5fr 1fr 1fr 1.5fr 1.5fr;
+  grid-template-columns: 2fr 1fr 1.5fr;
   gap: var(--space-sm);
   padding: var(--space-xs) var(--space-md);
   align-items: center;
@@ -886,137 +841,128 @@ function clearManualMove() {
 }
 
 .result-header {
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-tertiary);
   border-radius: var(--radius-md);
   font-weight: 600;
   color: var(--color-text-secondary);
 }
 
-.result-row {
+.result-row-auto {
   border-bottom: 1px solid var(--color-border-light);
+  cursor: pointer;
+  transition: background var(--transition-fast);
 }
 
-.result-row:last-child {
-  border-bottom: none;
-}
-
-.result-row.covers {
+.result-row-auto:hover {
   background: rgba(63, 185, 80, 0.1);
 }
 
-.result-row.has-prefix {
-  background: rgba(0, 212, 255, 0.05);
+.result-row-auto.success {
+  background: rgba(63, 185, 80, 0.08);
 }
 
-.result-row.has-prefix.covers {
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.08), rgba(63, 185, 80, 0.1));
+.result-row-auto.trade {
+  background: rgba(210, 153, 34, 0.1);
 }
 
-.result-combo {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-xs);
+.result-row-auto.expanded {
+  background: rgba(63, 185, 80, 0.15);
+  grid-template-columns: 1fr;
 }
 
-.combo-prefix {
-  background: rgba(0, 212, 255, 0.2);
-  color: #00d4ff;
+.result-row-auto.trade.expanded {
+  background: rgba(210, 153, 34, 0.2);
+}
+
+.trade-badge {
+  background: rgba(210, 153, 34, 0.3);
+  color: #d29922;
   padding: 2px 6px;
   border-radius: var(--radius-sm);
   font-size: var(--font-size-xs);
   font-weight: 600;
 }
 
-.combo-arrow {
-  color: var(--color-text-muted);
+.success-badge {
+  background: rgba(63, 185, 80, 0.3);
+  color: var(--color-positive);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
   font-weight: 600;
 }
 
-.result-combo .move-name,
-.manual-result-header .move-name {
-  font-weight: 500;
-}
-
-.result-combo .move-input,
-.manual-result-header .move-input {
-  font-family: var(--font-mono);
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-}
-
-.frame-range {
-  font-family: var(--font-mono);
-}
-
-.coverage-badge {
-  font-size: var(--font-size-xs);
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-  background: var(--color-bg-tertiary);
-  color: var(--color-text-muted);
-}
-
-.coverage-badge.success {
-  background: var(--color-positive);
-  color: white;
-  font-weight: 700;
-}
-
-/* States */
-.loading-state,
-.error-state,
-.empty-state {
-  text-align: center;
-  padding: var(--space-xl);
-  color: var(--color-text-muted);
-}
-
-.error-state code {
-  display: block;
-  margin-top: var(--space-md);
-  background: var(--color-bg-tertiary);
-  padding: var(--space-sm) var(--space-md);
+/* Result Detail Panel */
+.result-detail {
+  grid-column: 1 / -1;
+  margin-top: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  font-family: var(--font-mono);
+}
+
+.detail-title {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.detail-row {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-xs) 0;
   font-size: var(--font-size-sm);
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .stats-bar {
-    gap: var(--space-md);
-    padding: var(--space-sm) var(--space-md);
-  }
-  
-  .knockdown-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  .calc-label {
-    min-width: auto;
-    width: 100%;
-  }
-  
-  .manual-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-sm);
-  }
-  
-  .manual-result-calc {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .result-header,
-  .result-row {
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  }
-  
-  .result-header > :nth-child(5),
-  .result-row > :nth-child(5) {
-    display: none;
-  }
+.detail-row.calc {
+  background: var(--color-bg-tertiary);
+  padding: var(--space-xs) var(--space-sm);
+  margin: var(--space-xs) 0;
+  border-radius: var(--radius-sm);
+}
+
+.detail-row.result {
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border-light);
+}
+
+.detail-label {
+  color: var(--color-text-muted);
+  min-width: 80px;
+}
+
+.detail-row .success {
+  color: var(--color-positive);
+  font-weight: 600;
+}
+
+.detail-row .trade {
+  color: #d29922;
+  font-weight: 600;
+}
+
+.detail-row .frame-positive {
+  color: var(--color-positive);
+  font-weight: 600;
+}
+
+.detail-row .frame-negative {
+  color: var(--color-negative);
+  font-weight: 600;
+}
+
+.result-combo { display: flex; gap: var(--space-xs); align-items: center; flex-wrap: wrap; }
+.combo-prefix { background: rgba(0, 212, 255, 0.2); color: #00d4ff; padding: 2px 6px; border-radius: var(--radius-sm); font-size: var(--font-size-xs); }
+.move-input { font-family: var(--font-mono); font-size: var(--font-size-xs); color: var(--color-text-muted); }
+
+.loading-state, .empty-state { text-align: center; padding: var(--space-xl); color: var(--color-text-muted); }
+
+@media (max-width: 640px) {
+  .combo-actions { flex-direction: column; }
+  .move-search { min-width: 100%; }
 }
 </style>
