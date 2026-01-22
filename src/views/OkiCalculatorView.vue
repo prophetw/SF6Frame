@@ -25,7 +25,7 @@ const moveSearchQuery = ref('');
 
 // Opponent's fastest reversal settings
 const opponentReversalStartup = ref<number>(4);
-const opponentReversalActive = ref<number>(3);
+// const opponentReversalActive = ref<number>(3); // Unused
 
 // Use combo chain as prefix for auto calculation
 const useChainAsPrefix = ref(false);
@@ -93,6 +93,7 @@ const comboResult = computed(() => {
   
   for (let i = 0; i < comboChain.value.length; i++) {
     const action = comboChain.value[i];
+    if (!action) continue;
     if (i === comboChain.value.length - 1 && action.type === 'move') {
       // Last action: add startup, track active separately
       totalStartup += action.frames;
@@ -221,6 +222,9 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
 });
 
 // Actions
+// Character data modules
+const characterModules = import.meta.glob('../data/characters/*.json');
+
 async function loadCharacterData() {
   if (!selectedCharacterId.value) {
     frameData.value = null;
@@ -228,12 +232,23 @@ async function loadCharacterData() {
   }
   loading.value = true;
   try {
-    const module = await import(`../data/characters/${selectedCharacterId.value}.json`);
-    frameData.value = module.default as FrameData;
+    const path = `../data/characters/${selectedCharacterId.value}.json`;
+    const loader = characterModules[path];
+    
+    if (!loader) {
+      console.error(`Character data not found for: ${selectedCharacterId.value}`);
+      frameData.value = null;
+      return;
+    }
+
+    const module = await loader() as { default: FrameData };
+    frameData.value = module.default;
+    
     selectedKnockdownMove.value = null;
     useCustomKnockdown.value = false;
     comboChain.value = [];
-  } catch {
+  } catch (e) {
+    console.error('Failed to load character data:', e);
     frameData.value = null;
   } finally {
     loading.value = false;

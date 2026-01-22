@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { SF6_CHARACTERS, type Move, type FrameData, type MoveCategory } from '../types';
+import { SF6_CHARACTERS, type FrameData, type MoveCategory } from '../types';
 import MoveTable from '../components/MoveTable.vue';
 
 const route = useRoute();

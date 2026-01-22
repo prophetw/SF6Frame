@@ -31,10 +31,7 @@ function getCategoryLabel(cat: string): string {
   return labels[cat] || cat;
 }
 
-function formatCancels(cancels?: string[]): string {
-  if (!cancels || cancels.length === 0) return '-';
-  return cancels.join(', ');
-}
+
 </script>
 
 <template>
