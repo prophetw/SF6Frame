@@ -30,8 +30,14 @@ const opponentReversalStartup = ref<number>(4);
 // Use combo chain as prefix for auto calculation
 const useChainAsPrefix = ref(false);
 
+// Loop throw calculator inputs
+const throwStartup = ref<number>(5);
+const throwActive = ref<number>(3);
+const wakeupThrowInvul = ref<number>(1);
+
 // Selected result for detail view
 const selectedResultKey = ref<string | null>(null);
+const selectedThrowResultKey = ref<string | null>(null);
 
 // Effective knockdown advantage
 const effectiveKnockdownAdv = computed(() => {
@@ -47,6 +53,35 @@ const stats = computed<CharacterStats | undefined>(() => frameData.value?.stats)
 // Opponent's reversal first frame
 const opponentFirstFrame = computed(() => {
   return effectiveKnockdownAdv.value + opponentReversalStartup.value;
+});
+
+// Loop throw calculator
+const normalizedThrowStartup = computed(() => Math.max(1, throwStartup.value || 1));
+const normalizedThrowActive = computed(() => Math.max(1, throwActive.value || 1));
+const normalizedThrowInvul = computed(() => Math.max(0, wakeupThrowInvul.value || 0));
+
+const earliestThrowableFrame = computed(() => {
+  return effectiveKnockdownAdv.value + normalizedThrowInvul.value;
+});
+
+const throwDelayMax = computed(() => {
+  return earliestThrowableFrame.value - normalizedThrowStartup.value;
+});
+
+const throwDelayMin = computed(() => {
+  return throwDelayMax.value - (normalizedThrowActive.value - 1);
+});
+
+const throwDelayMinClamped = computed(() => {
+  return Math.max(0, throwDelayMin.value);
+});
+
+const throwFirstActiveMin = computed(() => {
+  return earliestThrowableFrame.value - (normalizedThrowActive.value - 1);
+});
+
+const throwFirstActiveMax = computed(() => {
+  return earliestThrowableFrame.value;
 });
 
 // Knockdown moves
@@ -81,6 +116,20 @@ function parseTotalActiveFrames(active: string): number {
   const matches = String(active).match(/\d+/g);
   if (!matches) return 1;
   return matches.reduce((sum, n) => sum + parseInt(n), 0);
+}
+
+function parseTotalRecoveryFrames(recovery: string): number {
+  if (!recovery || recovery === '-') return 0;
+  const matches = String(recovery).match(/\d+/g);
+  if (!matches) return 0;
+  return matches.reduce((sum, n) => sum + parseInt(n), 0);
+}
+
+function getMoveTotalFrames(move: Move): number {
+  const startup = parseInt(move.startup) || 0;
+  const active = parseTotalActiveFrames(move.active);
+  const recovery = parseTotalRecoveryFrames(move.recovery);
+  return startup + active + recovery;
 }
 
 // Calculate combo result
@@ -160,12 +209,33 @@ const comboChainPrefixName = computed(() => {
   return comboChain.value.map((a: ComboAction) => a.name).join(' + ');
 });
 
+// Prefix frames for throw (includes move recovery)
+const comboChainThrowPrefixFrames = computed(() => {
+  let total = 0;
+  for (const action of comboChain.value) {
+    if (action.type === 'move' && action.move) {
+      total += getMoveTotalFrames(action.move);
+    } else {
+      total += action.frames;
+    }
+  }
+  return total;
+});
+
 // Toggle result detail
 function toggleResultDetail(key: string) {
   if (selectedResultKey.value === key) {
     selectedResultKey.value = null;
   } else {
     selectedResultKey.value = key;
+  }
+}
+
+function toggleThrowResultDetail(key: string) {
+  if (selectedThrowResultKey.value === key) {
+    selectedThrowResultKey.value = null;
+  } else {
+    selectedThrowResultKey.value = key;
   }
 }
 
@@ -219,6 +289,100 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
   }
   
   return results.sort((a, b) => a.ourActiveStart - b.ourActiveStart).slice(0, 50);
+});
+
+// Throw filler moves (exclude throws, keep reasonable total frames)
+const throwFillerMoves = computed<Move[]>(() => {
+  if (!frameData.value) return [];
+  return frameData.value.moves.filter((m: Move) => {
+    if (m.category === 'throw') return false;
+    const startup = parseInt(m.startup) || 0;
+    if (startup <= 0) return false;
+    const totalFrames = getMoveTotalFrames(m);
+    return totalFrames > 0 && totalFrames <= 90;
+  });
+});
+
+interface ThrowComboResult {
+  key: string;
+  prefix: string;
+  prefixFrames: number;
+  filler?: Move;
+  fillerName: string;
+  fillerFrames: number;
+  fillerStartup?: number;
+  fillerActive?: number;
+  fillerRecovery?: number;
+  delay: number;
+  firstActive: number;
+}
+
+const throwResults = computed<ThrowComboResult[]>(() => {
+  if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
+  if (throwDelayMax.value < 0) return [];
+
+  let prefixes: { name: string; frames: number }[];
+  if (useChainAsPrefix.value && comboChain.value.length > 0) {
+    prefixes = [
+      { name: comboChainPrefixName.value, frames: comboChainThrowPrefixFrames.value },
+    ];
+  } else {
+    prefixes = [
+      { name: '', frames: 0 },
+      { name: '前冲', frames: stats.value.forwardDash },
+      { name: '前冲x2', frames: stats.value.forwardDash * 2 },
+    ];
+  }
+
+  const results: ThrowComboResult[] = [];
+  const minDelay = throwDelayMinClamped.value;
+  const maxDelay = throwDelayMax.value;
+  const throwStart = normalizedThrowStartup.value;
+
+  for (const prefix of prefixes) {
+    const baseDelay = prefix.frames;
+    if (baseDelay >= minDelay && baseDelay <= maxDelay) {
+      const key = `${prefix.name}|direct|${prefix.frames}`;
+      results.push({
+        key,
+        prefix: prefix.name,
+        prefixFrames: prefix.frames,
+        fillerName: '直接投',
+        fillerFrames: 0,
+        delay: baseDelay,
+        firstActive: baseDelay + throwStart,
+      });
+    }
+
+    for (const move of throwFillerMoves.value) {
+      const fillerStartup = parseInt(move.startup) || 0;
+      const fillerActive = parseTotalActiveFrames(move.active);
+      const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
+      const fillerFrames = fillerStartup + fillerActive + fillerRecovery;
+      const delay = prefix.frames + fillerFrames;
+
+      if (delay < minDelay || delay > maxDelay) continue;
+
+      const key = `${prefix.name}|${move.name}|${prefix.frames}|${fillerFrames}`;
+      results.push({
+        key,
+        prefix: prefix.name,
+        prefixFrames: prefix.frames,
+        filler: move,
+        fillerName: move.name,
+        fillerFrames,
+        fillerStartup,
+        fillerActive,
+        fillerRecovery,
+        delay,
+        firstActive: delay + throwStart,
+      });
+    }
+  }
+
+  return results
+    .sort((a, b) => a.delay - b.delay)
+    .slice(0, 50);
 });
 
 // Actions
@@ -516,6 +680,125 @@ function clearCombo() {
         <p>没有自动匹配的压制组合</p>
       </div>
     </section>
+
+    <!-- Step 4: Loop Throw Calculator -->
+    <section v-if="effectiveKnockdownAdv > 0" class="oki-section throw-section">
+      <h2 class="section-title">
+        <span class="step-number">4</span>
+        循环投计算器
+      </h2>
+      <p class="section-desc">
+        目标：让投的<strong>第一帧判定</strong>压在对手起身后、刚能被投的那一帧。
+      </p>
+
+      <div class="throw-summary">
+        <div class="summary-item">
+          <span class="summary-label">击倒优势 N</span>
+          <span class="summary-value">{{ effectiveKnockdownAdv }}F</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">起身投无敌 I</span>
+          <input type="number" v-model.number="wakeupThrowInvul" min="0" max="10" class="small-input" />
+          <span class="summary-unit">F</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">投起手 T</span>
+          <input type="number" v-model.number="throwStartup" min="1" max="20" class="small-input" />
+          <span class="summary-unit">F</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">投判定 A</span>
+          <input type="number" v-model.number="throwActive" min="1" max="6" class="small-input" />
+          <span class="summary-unit">F</span>
+        </div>
+      </div>
+
+      <div class="throw-math">
+        <div class="math-row">
+          <span class="math-label">最早可被投帧:</span>
+          <span class="math-value">{{ effectiveKnockdownAdv }} + {{ normalizedThrowInvul }} = {{ earliestThrowableFrame }}F</span>
+        </div>
+        <div class="math-row">
+          <span class="math-label">理想按投延迟:</span>
+          <span class="math-value">S = N + I − T = {{ effectiveKnockdownAdv }} + {{ normalizedThrowInvul }} − {{ normalizedThrowStartup }} = {{ throwDelayMax }}F</span>
+        </div>
+        <div class="math-row">
+          <span class="math-label">允许的按投窗口:</span>
+          <span class="math-value">{{ throwDelayMin }}F ~ {{ throwDelayMax }}F</span>
+        </div>
+        <div class="math-row">
+          <span class="math-label">第一帧判定允许范围:</span>
+          <span class="math-value">{{ throwFirstActiveMin }}F ~ {{ throwFirstActiveMax }}F</span>
+        </div>
+      </div>
+
+      <div v-if="throwDelayMax < 0" class="throw-warning">
+        当前击倒优势不足，无法在起身可投前完成投起手（需要负延迟）。
+      </div>
+
+      <div class="results-header-row throw-results-header">
+        <h3 class="results-title">循环投组合 ({{ throwResults.length }}个)</h3>
+      </div>
+      <p v-if="useChainAsPrefix && comboChain.length > 0" class="prefix-info">
+        前置: <strong>{{ comboChainPrefixName }} ({{ comboChainThrowPrefixFrames }}F)</strong> + 空挥 + 投
+      </p>
+
+      <div v-if="throwResults.length > 0" class="results-table">
+        <div class="result-header throw-header">
+          <span>组合</span>
+          <span>延迟S</span>
+          <span>第一帧判定</span>
+        </div>
+        <div
+          v-for="result in throwResults"
+          :key="result.key"
+          :class="['result-row-auto', 'throw-row', { expanded: selectedThrowResultKey === result.key }]"
+          @click="toggleThrowResultDetail(result.key)"
+        >
+          <div class="result-combo">
+            <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
+            <span v-if="result.prefix">+</span>
+            <span v-if="result.fillerName !== '直接投'">{{ result.fillerName }}</span>
+            <span v-if="result.fillerName !== '直接投'">+</span>
+            <span>投</span>
+            <span v-if="result.filler" class="move-input">{{ result.filler.input }}</span>
+          </div>
+          <span>{{ result.delay }}F</span>
+          <span>{{ result.firstActive }}F</span>
+
+          <div v-if="selectedThrowResultKey === result.key" class="result-detail" @click.stop>
+            <div class="detail-title">帧数详情</div>
+            <div class="detail-row">
+              <span class="detail-label">前置动作:</span>
+              <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">空挥招式:</span>
+              <span v-if="result.filler">
+                {{ result.fillerName }} = {{ result.fillerStartup }} + {{ result.fillerActive }} + {{ result.fillerRecovery }} = {{ result.fillerFrames }}F
+              </span>
+              <span v-else>无 = 0F</span>
+            </div>
+            <div class="detail-row calc">
+              <span class="detail-label">延迟 S:</span>
+              <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} = {{ result.delay }}F</span>
+            </div>
+            <div class="detail-row calc">
+              <span class="detail-label">第一帧:</span>
+              <span>{{ result.delay }} + {{ normalizedThrowStartup }} = {{ result.firstActive }}F</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">允许窗口:</span>
+              <span>{{ throwDelayMin }}F ~ {{ throwDelayMax }}F</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div v-else-if="throwDelayMax >= 0" class="empty-state">
+        <p>没有自动匹配的循环投组合</p>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -804,6 +1087,10 @@ function clearCombo() {
 
 /* Auto Results */
 .results-section { border-color: var(--color-accent); }
+.section-desc {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
 
 .results-header-row {
   display: flex;
@@ -887,6 +1174,18 @@ function clearCombo() {
 
 .result-row-auto.trade.expanded {
   background: rgba(210, 153, 34, 0.2);
+}
+
+.throw-results-header {
+  margin-top: var(--space-lg);
+}
+
+.throw-row:hover {
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.throw-row.expanded {
+  background: rgba(0, 212, 255, 0.12);
 }
 
 .trade-badge {
@@ -975,6 +1274,75 @@ function clearCombo() {
 .move-input { font-family: var(--font-mono); font-size: var(--font-size-xs); color: var(--color-text-muted); }
 
 .loading-state, .empty-state { text-align: center; padding: var(--space-xl); color: var(--color-text-muted); }
+
+/* Loop Throw */
+.throw-section {
+  border-color: var(--color-border);
+}
+
+.throw-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.summary-label {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.summary-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.summary-unit {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.throw-math {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.math-row {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-xs) 0;
+  font-size: var(--font-size-sm);
+}
+
+.math-label {
+  min-width: 140px;
+  color: var(--color-text-muted);
+}
+
+.math-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.throw-warning {
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background: rgba(214, 51, 132, 0.1);
+  color: var(--color-negative);
+  font-weight: 600;
+}
 
 @media (max-width: 640px) {
   .combo-actions { flex-direction: column; }
