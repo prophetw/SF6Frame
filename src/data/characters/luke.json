@@ -1,0 +1,1028 @@
+{
+  "character": {
+    "id": "luke",
+    "name": "Luke",
+    "nameJp": "ルーク"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 19,
+    "backDash": 23,
+    "forwardWalk": 0.047,
+    "backWalk": 0.032
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "7",
+      "active": "2",
+      "recovery": "11(14)",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Really far range for a light button that's also fully cancelable and has a Target Combo follow-up that's also fully cancelable"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "600",
+      "startup": "9",
+      "active": "4",
+      "recovery": "16",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Strong and easy whiff punish tool"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "800",
+      "startup": "10",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-6",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Strong and easy whiff punish tool"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "2",
+      "recovery": "12",
+      "onBlock": "-2",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Incurs 20% damage scaling penalty if used as the first hit of a combo"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "700",
+      "startup": "8",
+      "active": "3",
+      "recovery": "16(19)",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Solid poke tool"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "900",
+      "startup": "10",
+      "active": "7",
+      "recovery": "16",
+      "onBlock": "-5(1)",
+      "onHit": "2(8)",
+      "category": "normal",
+      "notes": "Crushes lows on frames 8-15"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "2",
+      "recovery": "10",
+      "onBlock": "-2",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "600",
+      "startup": "6",
+      "active": "2",
+      "recovery": "14(17)",
+      "onBlock": "1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Great combo / frametrap / buffer tool"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "800",
+      "startup": "7",
+      "active": "5",
+      "recovery": "24",
+      "onBlock": "-13",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Forces stand on hit"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "3",
+      "recovery": "11",
+      "onBlock": "-3",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "500",
+      "startup": "8",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "-6",
+      "onHit": "-2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Has a d+MK > d+HP Target Combo follow-up that's relatively hit confirmable (17F hit confirm window)"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900",
+      "startup": "10",
+      "active": "3",
+      "recovery": "24(26)",
+      "onBlock": "-9",
+      "onHit": "KD +40",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Has some Juggle potential naturally without Drive Rush"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "9",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "700",
+      "startup": "9",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "cancels": [
+        "Special"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Spikes down airborne opponents on Counter-Hit or Punish Counter"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "6",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "500",
+      "startup": "7",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800",
+      "startup": "10",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Good horizontal hitbox priority makes this Luke's main jump-in option"
+    },
+    {
+      "name": "Rawhide",
+      "input": "6MP",
+      "damage": "600",
+      "startup": "21",
+      "active": "2",
+      "recovery": "21",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "unique",
+      "notes": "Overhead"
+    },
+    {
+      "name": "Suppressor",
+      "input": "4HP",
+      "damage": "800",
+      "startup": "16",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Luke pulls back his hurtboxes on frames 5-12 during start-up (great shimmy tool)"
+    },
+    {
+      "name": "Outlaw Kick",
+      "input": "4HK",
+      "damage": "1000",
+      "startup": "12",
+      "active": "4",
+      "recovery": "24",
+      "onBlock": "-3",
+      "onHit": "4",
+      "category": "unique",
+      "notes": "Puts grounded opponents into a stagger state on Punish Counter (+17)"
+    },
+    {
+      "name": "Brutal Spike",
+      "input": "6HP",
+      "damage": "800",
+      "startup": "16",
+      "active": "3",
+      "recovery": "15(19)",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "unique",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Forward moving strike that's safe on block and easily hit confirmed into the f+HP Target Combo follow-up"
+    },
+    {
+      "name": "Double Impact",
+      "input": "6HP > 6HP",
+      "damage": "1400 (800*600)",
+      "startup": "11",
+      "active": "2",
+      "recovery": "34",
+      "onBlock": "-19",
+      "onHit": "KD +20",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Fully cancelable on hit or block"
+    },
+    {
+      "name": "Nose Breaker",
+      "input": "2MK > 2HP",
+      "damage": "980 (500*480)",
+      "startup": "9",
+      "active": "3",
+      "recovery": "25",
+      "onBlock": "-8",
+      "onHit": "2",
+      "category": "unique",
+      "notes": "Hit confirmable from crouch MK and leaves Luke close on hit for some Strike / Throw Gaming™"
+    },
+    {
+      "name": "Triple Impact",
+      "input": "5LP > 5MP",
+      "damage": "400",
+      "startup": "8",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-9",
+      "onHit": "-2",
+      "category": "unique"
+    },
+    {
+      "name": "Triple Impact 2",
+      "input": "5LP > 5MP > 5HP",
+      "damage": "800",
+      "startup": "10",
+      "active": "3",
+      "recovery": "27",
+      "onBlock": "-14",
+      "onHit": "KD +27",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Fully cancelable"
+    },
+    {
+      "name": "Snapback Combo",
+      "input": "5MP > 5MP",
+      "damage": "300",
+      "startup": "12",
+      "active": "2",
+      "recovery": "23",
+      "onBlock": "-8",
+      "onHit": "0",
+      "category": "unique",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Cancelable into all Super Arts"
+    },
+    {
+      "name": "Snapback Combo 2",
+      "input": "5MP > 5MP > 5MP",
+      "damage": "300",
+      "startup": "11",
+      "active": "2",
+      "recovery": "29",
+      "onBlock": "-14",
+      "onHit": "-6",
+      "category": "unique"
+    },
+    {
+      "name": "Snapback Combo 3",
+      "input": "5MP > 5MP > 5MP > MP",
+      "damage": "500",
+      "startup": "11",
+      "active": "2",
+      "recovery": "27",
+      "onBlock": "-12",
+      "onHit": "KD +34",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Knockdown grants a perfect meaty dash into stand HK (+1 on Block even against midscreen Back Rise)"
+    },
+    {
+      "name": "Sweeper",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +19",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 19
+      },
+      "notes": "Throw Loop: Walk forward throw (not possible on mid-screen back-roll)"
+    },
+    {
+      "name": "Scrapper",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +14",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 14
+      },
+      "notes": "Back Throw oki: Only on Punish Counter or in the corner"
+    },
+    {
+      "name": "Drive Impact: Muzzle Flash",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Battering Ram",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "LP Sand Blast",
+      "input": "236LP",
+      "damage": "600",
+      "startup": "14",
+      "active": "5",
+      "recovery": "33",
+      "onBlock": "-8",
+      "onHit": "-3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "MP Sand Blast",
+      "input": "236MP",
+      "damage": "600",
+      "startup": "17",
+      "active": "7",
+      "recovery": "30",
+      "onBlock": "-5",
+      "onHit": "0",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "HP Sand Blast",
+      "input": "236HP",
+      "damage": "600",
+      "startup": "20",
+      "active": "10",
+      "recovery": "27",
+      "onBlock": "-2",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "OD Sand Blast",
+      "input": "236PP",
+      "damage": "800 (400*400)",
+      "startup": "16",
+      "active": "-",
+      "recovery": "24",
+      "onBlock": "-2",
+      "onHit": "KD +41",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 41
+      },
+      "notes": "2-hit OD projectile"
+    },
+    {
+      "name": "Fatal Shot",
+      "input": "236PP > PP",
+      "damage": "1000(800)",
+      "startup": "8",
+      "active": "-",
+      "recovery": "42",
+      "onBlock": "-21",
+      "onHit": "KD +46(58)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 46
+      },
+      "notes": "1-hit OD projectile"
+    },
+    {
+      "name": "LP Rising Uppercut",
+      "input": "623LP",
+      "damage": "900 (800)",
+      "startup": "5",
+      "active": "10",
+      "recovery": "22+12",
+      "onBlock": "-27",
+      "onHit": "KD +28",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 28
+      },
+      "notes": "Invincible against airborne strikes on frames 1-14"
+    },
+    {
+      "name": "MP Rising Uppercut",
+      "input": "623MP",
+      "damage": "1000 (800)",
+      "startup": "6",
+      "active": "10",
+      "recovery": "24+12",
+      "onBlock": "-29",
+      "onHit": "KD +28",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 28
+      },
+      "notes": "Invincible against airborne strikes on frames 1-8"
+    },
+    {
+      "name": "HP Rising Uppercut",
+      "input": "623HP",
+      "damage": "1200 (800)",
+      "startup": "9",
+      "active": "10",
+      "recovery": "25+15",
+      "onBlock": "-33",
+      "onHit": "KD +29",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Invincible against airborne strikes on frames 1-9"
+    },
+    {
+      "name": "OD Rising Uppercut",
+      "input": "623PP",
+      "damage": "1400 (800*600)",
+      "startup": "6",
+      "active": "3*7",
+      "recovery": "35+15",
+      "onBlock": "-40(-43)",
+      "onHit": "KD +25",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 25
+      },
+      "notes": "Fully invincible on frames 1-10"
+    },
+    {
+      "name": "Slam Dunk",
+      "input": "623PP > PP",
+      "damage": "2000 (800*600x2)",
+      "startup": "16",
+      "active": "3",
+      "recovery": "14+16",
+      "onBlock": "-",
+      "onHit": "KD +14",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 14
+      },
+      "notes": "Follow-up to OD Rising Uppercut at the cost of 1 extra bar of Drive Gauge"
+    },
+    {
+      "name": "LP Flash Knuckle",
+      "input": "214LP",
+      "damage": "700",
+      "startup": "13",
+      "active": "3",
+      "recovery": "31",
+      "onBlock": "-18",
+      "onHit": "KD +32",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Luke ducks down (no head hurtbox) on frames 6-17 (good anti-air hitboxes but a bit slow for anti-airing)"
+    },
+    {
+      "name": "LP Flash Knuckle (hold)",
+      "input": "214LP (hold)",
+      "damage": "800(900)",
+      "startup": "26",
+      "active": "2*2",
+      "recovery": "25(22)",
+      "onBlock": "-8",
+      "onHit": "KD +54(56)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 54
+      },
+      "notes": "Luke ducks down (no head hurtbox) on frames 6-29"
+    },
+    {
+      "name": "MP Flash Knuckle",
+      "input": "214MP",
+      "damage": "900",
+      "startup": "19",
+      "active": "3",
+      "recovery": "27",
+      "onBlock": "-8",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Knocks airborne opponents far away into a limited juggle state"
+    },
+    {
+      "name": "MP Flash Knuckle (hold)",
+      "input": "214MP (hold)",
+      "damage": "1000(1100)",
+      "startup": "29",
+      "active": "2*2",
+      "recovery": "26",
+      "onBlock": "-3",
+      "onHit": "KD +54(67)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 54
+      },
+      "notes": "Launches the opponent into a wall bounce"
+    },
+    {
+      "name": "HP Flash Knuckle",
+      "input": "214HP",
+      "damage": "1000",
+      "startup": "22",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-4",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Luke pulls back his hurtboxes on frames 5-15 during start-up (can avoid attacks with this)"
+    },
+    {
+      "name": "HP Flash Knuckle (hold)",
+      "input": "214HP (hold)",
+      "damage": "1300(1600)",
+      "startup": "33",
+      "active": "2*2",
+      "recovery": "24",
+      "onBlock": "4",
+      "onHit": "KD +64",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 64
+      },
+      "notes": "Has a normal 1-hit projectile nullifying hitbox (does not nullify OD or Super projectiles) on active frames 3-4"
+    },
+    {
+      "name": "OD Flash Knuckle",
+      "input": "214PP",
+      "damage": "800 (400*400)",
+      "startup": "15",
+      "active": "3",
+      "recovery": "39",
+      "onBlock": "-22",
+      "onHit": "KD +62",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 62
+      },
+      "notes": "Launches the opponent high into a limited juggle state on hit"
+    },
+    {
+      "name": "DDT",
+      "input": "214PP > PP",
+      "damage": "2900 (400*500*2000)",
+      "startup": "1",
+      "active": "-",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "HKD +12",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 12
+      },
+      "notes": "Hard Knockdown follow-up to OD Flash Knuckle at the cost of 1 extra bar of Drive Gauge"
+    },
+    {
+      "name": "Aerial Flash Knuckle",
+      "input": "214P (air)",
+      "damage": "700",
+      "startup": "14",
+      "active": "5",
+      "recovery": "13(20)",
+      "onBlock": "-12(3)",
+      "onHit": "KD ~",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Can only be performed during a neutral or forward jump (can also be performed on a back jump if canceling into this from a jump MP)"
+    },
+    {
+      "name": "Aerial Flash Knuckle (hold)",
+      "input": "214P (air) (hold)",
+      "damage": "1000",
+      "startup": "23",
+      "active": "6",
+      "recovery": "15",
+      "onBlock": "-30(-21)",
+      "onHit": "KD ~",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Can only be performed during a neutral or forward jump (can also be performed on a back jump if canceling into this from a jump MP)"
+    },
+    {
+      "name": "OD Aerial Flash Knuckle",
+      "input": "214PP (air)",
+      "damage": "1300",
+      "startup": "14",
+      "active": "6",
+      "recovery": "15",
+      "onBlock": "-33(-21)",
+      "onHit": "KD ~",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Can only be performed during a neutral or forward jump (can also be performed on a back jump if canceling into this from a jump MP)"
+    },
+    {
+      "name": "Avenger > No Chaser",
+      "input": "236K > P",
+      "damage": "900",
+      "startup": "12+12",
+      "active": "10",
+      "recovery": "16",
+      "onBlock": "-6(3)",
+      "onHit": "KD +32(41)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Tons of active frames makes this a strong tool for oki to set up + frames on block"
+    },
+    {
+      "name": "Avenger > Impaler",
+      "input": "236K > K",
+      "damage": "1200",
+      "startup": "12+13",
+      "active": "8",
+      "recovery": "22(27)",
+      "onBlock": "-8(-3)",
+      "onHit": "KD +30(35)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 30
+      },
+      "notes": "Overhead"
+    },
+    {
+      "name": "OD Avenger > No Chaser",
+      "input": "236KK > P",
+      "damage": "1300",
+      "startup": "11+12",
+      "active": "10",
+      "recovery": "16",
+      "onBlock": "-6(3)",
+      "onHit": "KD +32(41)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Tons of active frames makes this a strong tool for oki to set up + frames on block"
+    },
+    {
+      "name": "OD Avenger > Impaler",
+      "input": "236KK > K",
+      "damage": "1200",
+      "startup": "11+13",
+      "active": "8",
+      "recovery": "19",
+      "onBlock": "-3(2)",
+      "onHit": "KD +38(43)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Overhead"
+    },
+    {
+      "name": "Vulcan Blast",
+      "input": "236236P",
+      "damage": "2000",
+      "startup": "6",
+      "active": "13(1)7(2)7(23)5",
+      "recovery": "45",
+      "onBlock": "-29",
+      "onHit": "KD +17(30)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 17
+      },
+      "notes": "Strike and Throw invincible on frames 1-6"
+    },
+    {
+      "name": "Eraser",
+      "input": "214214P",
+      "damage": "2800",
+      "startup": "5",
+      "active": "3",
+      "recovery": "51",
+      "onBlock": "-29",
+      "onHit": "KD +2",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 2
+      },
+      "notes": "Fully invincible on frames 1-7 (loses invincibility after the initial hit before the cinematic punch at the end)"
+    },
+    {
+      "name": "Pale Rider",
+      "input": "236236K",
+      "damage": "4000",
+      "startup": "10(27)",
+      "active": "4",
+      "recovery": "92(62)",
+      "onBlock": "-42",
+      "onHit": "HKD +18",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 18
+      },
+      "notes": "Fully invincible on frames 1-13"
+    },
+    {
+      "name": "Pale Rider (Critical Art)",
+      "input": "236236K (CA)",
+      "damage": "4500",
+      "startup": "10(27)",
+      "active": "4",
+      "recovery": "92(62)",
+      "onBlock": "-42",
+      "onHit": "HKD +18",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 18
+      },
+      "notes": "Fully invincible on frames 1-13"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

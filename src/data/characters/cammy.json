@@ -1,0 +1,1049 @@
+{
+  "character": {
+    "id": "cammy",
+    "name": "Cammy",
+    "nameJp": "キャミィ"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 18,
+    "backDash": 23,
+    "forwardWalk": 0.0505,
+    "backWalk": 0.033
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "7",
+      "onBlock": "-2",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "600",
+      "startup": "6",
+      "active": "4",
+      "recovery": "13",
+      "onBlock": "-1",
+      "onHit": "6",
+      "category": "normal",
+      "notes": "Combo starter that can naturally link into light normals"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "800",
+      "startup": "8",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Great whiff punish and combo tool with strong hitbox priority"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "3",
+      "recovery": "10",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Good buffer tool in the midrange"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "700",
+      "startup": "8",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-4",
+      "onHit": "3",
+      "category": "normal",
+      "notes": "Mostly a poke tool"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "900",
+      "startup": "11",
+      "active": "3",
+      "recovery": "19(21)",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "notes": "Good range poke tool as well as horizontal anti-air"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "2",
+      "recovery": "8",
+      "onBlock": "-2",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "600",
+      "startup": "7",
+      "active": "3",
+      "recovery": "14(17)",
+      "onBlock": "-2",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Good counter-poke and combo tool"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "700",
+      "startup": "10",
+      "active": "4",
+      "recovery": "15",
+      "onBlock": "1",
+      "onHit": "7",
+      "category": "normal",
+      "notes": "Forces stand"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "3",
+      "recovery": "7",
+      "onBlock": "-2",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "500",
+      "startup": "8",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-5",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Solid range crouch MK but has full hurtbox extension 1F before active"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900",
+      "startup": "9",
+      "active": "3",
+      "recovery": "24",
+      "onBlock": "-10",
+      "onHit": "KD +38",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Has very strong hitbox priority"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "10",
+      "recovery": "-",
+      "onBlock": "2~5",
+      "onHit": "6~9",
+      "category": "normal"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "600",
+      "startup": "6",
+      "active": "8",
+      "recovery": "-",
+      "onBlock": "6~9",
+      "onHit": "10~13 (KD)",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "8",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "4~11",
+      "onHit": "8~15 (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "4",
+      "active": "10",
+      "recovery": "-",
+      "onBlock": "2~6",
+      "onHit": "6~10",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "600",
+      "startup": "7",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "8~9",
+      "onHit": "12~13",
+      "category": "normal",
+      "notes": "Good air-to-air"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800",
+      "startup": "10",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "7~11",
+      "onHit": "11~15",
+      "category": "normal",
+      "notes": "Decent air-to-air and good hitbox priority for a horizontal approach"
+    },
+    {
+      "name": "Lift Uppercut",
+      "input": "4MP",
+      "damage": "500",
+      "startup": "5",
+      "active": "5",
+      "recovery": "12",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Forces stand"
+    },
+    {
+      "name": "Assault Blade",
+      "input": "4HK",
+      "damage": "800",
+      "startup": "9",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-7",
+      "onHit": "KD +54",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 54
+      },
+      "notes": "Jump cancelable on HIT only"
+    },
+    {
+      "name": "Delayed Ripper",
+      "input": "6HK",
+      "damage": "800",
+      "startup": "18",
+      "active": "3",
+      "recovery": "25",
+      "onBlock": "-12",
+      "onHit": "KD +26",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "Cammy pulls back her hurtboxes far back on frames 5-14 as she leans back before the kick"
+    },
+    {
+      "name": "Lift Combination",
+      "input": "4MP > 5HK",
+      "damage": "600",
+      "startup": "9",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-12(-19)",
+      "onHit": "KD +49",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 49
+      },
+      "notes": "Jump cancelable on HIT only"
+    },
+    {
+      "name": "Swing Combination",
+      "input": "5HP > 5HK",
+      "damage": "1600 (800*400*400) {400*400}",
+      "startup": "13",
+      "active": "4(12)3",
+      "recovery": "29",
+      "onBlock": "-12",
+      "onHit": "KD +26",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "First hit of the HK follow-up is cancelable into Cannon Strike (Divekick) and Level 2 Super"
+    },
+    {
+      "name": "Rough Landing",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +17",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 17
+      },
+      "notes": "Throw Loop (Corner only): Walk forward into manually timed strike/throw mixup"
+    },
+    {
+      "name": "Delta Throw",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +14",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 14
+      },
+      "notes": "Throw Oki (Corner only): Drive Rush into meaty strikes but no real throw oki"
+    },
+    {
+      "name": "Leg Scissors Choke",
+      "input": "LPLK (air)",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD +22",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Throw Oki (Corner only): Manually timed strike / throw mix"
+    },
+    {
+      "name": "Drive Impact: Spin Raider",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Countersnipe",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "LK Spiral Arrow",
+      "input": "236LK",
+      "damage": "800",
+      "startup": "9",
+      "active": "13",
+      "recovery": "21",
+      "onBlock": "-12(0)",
+      "onHit": "KD +26(48)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "Throw invincible and airborne on frames 9-24 (Forced Knockdown state)"
+    },
+    {
+      "name": "MK Spiral Arrow",
+      "input": "236MK",
+      "damage": "900",
+      "startup": "9",
+      "active": "15",
+      "recovery": "21",
+      "onBlock": "-14(0)",
+      "onHit": "KD +26(48)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "Throw invincible and airborne on frames 9-26 (Forced Knockdown state)"
+    },
+    {
+      "name": "HK Spiral Arrow",
+      "input": "236HK",
+      "damage": "1000 (300*700)",
+      "startup": "15",
+      "active": "3(1)12",
+      "recovery": "21",
+      "onBlock": "-12(-1)",
+      "onHit": "KD +29(48)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Throw invincible and airborne on frames 18-33 (Forced Knockdown state)"
+    },
+    {
+      "name": "HK Spiral Arrow (hold)",
+      "input": "236HK (hold)",
+      "damage": "800 (150x4*200)",
+      "startup": "25(27)",
+      "active": "3(1)12",
+      "recovery": "20",
+      "onBlock": "-14",
+      "onHit": "KD +47",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 47
+      },
+      "notes": "Start-up can be up to 2F faster (25F) than the fully held version (27F) if the HK button is released on frames 16-17 of start-up"
+    },
+    {
+      "name": "OD Spiral Arrow",
+      "input": "236KK",
+      "damage": "800 (150x4*200)",
+      "startup": "13",
+      "active": "3(1)12",
+      "recovery": "20",
+      "onBlock": "-14",
+      "onHit": "KD +47",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 47
+      },
+      "notes": "Throw invincible on frames 15-31"
+    },
+    {
+      "name": "LK Cannon Spike",
+      "input": "623LK",
+      "damage": "900",
+      "startup": "5",
+      "active": "12",
+      "recovery": "24+16",
+      "onBlock": "-36",
+      "onHit": "KD +20",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Invincible to airborne attacks on frames 1-14"
+    },
+    {
+      "name": "MK Cannon Spike",
+      "input": "623MK",
+      "damage": "1000",
+      "startup": "6",
+      "active": "12",
+      "recovery": "25+16",
+      "onBlock": "-36",
+      "onHit": "KD +21",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 21
+      },
+      "notes": "Invincible to airborne attacks on frames 1-9"
+    },
+    {
+      "name": "HK Cannon Spike",
+      "input": "623HK",
+      "damage": "1200",
+      "startup": "7",
+      "active": "12",
+      "recovery": "28+16",
+      "onBlock": "-36",
+      "onHit": "KD +22",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Invincible to airborne attacks on frames 1-8"
+    },
+    {
+      "name": "HK Cannon Spike (hold)",
+      "input": "623HK (hold)",
+      "damage": "1500 (1100*100x4)",
+      "startup": "22(24)",
+      "active": "12",
+      "recovery": "29+16",
+      "onBlock": "-40",
+      "onHit": "KD +16",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 16
+      },
+      "notes": "Invincible to airborne attacks on frames 1-7"
+    },
+    {
+      "name": "OD Cannon Spike",
+      "input": "623KK",
+      "damage": "1500 (600*100x3*600)",
+      "startup": "6",
+      "active": "12",
+      "recovery": "30+16",
+      "onBlock": "-40",
+      "onHit": "KD +19",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 19
+      },
+      "notes": "Fully invincible on frames 1-7"
+    },
+    {
+      "name": "LP Quick Spin Knuckle",
+      "input": "214LP",
+      "damage": "800",
+      "startup": "21",
+      "active": "4",
+      "recovery": "16",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Not projectile invincible at all"
+    },
+    {
+      "name": "MP Quick Spin Knuckle",
+      "input": "214MP",
+      "damage": "800",
+      "startup": "24",
+      "active": "4",
+      "recovery": "16",
+      "onBlock": "-2",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Projectile invincible on frames 9-23"
+    },
+    {
+      "name": "HP Quick Spin Knuckle",
+      "input": "214HP",
+      "damage": "800",
+      "startup": "28",
+      "active": "4",
+      "recovery": "17",
+      "onBlock": "3",
+      "onHit": "5",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Projectile invincible on frames 9-27"
+    },
+    {
+      "name": "OD Quick Spin Knuckle",
+      "input": "214PP",
+      "damage": "800",
+      "startup": "25(28)",
+      "active": "4",
+      "recovery": "17",
+      "onBlock": "-2",
+      "onHit": "7",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Projectile invincible on frames 9-24 (frames 9-20 on the cross-up version)"
+    },
+    {
+      "name": "Cannon Strike",
+      "input": "214K (air)",
+      "damage": "600",
+      "startup": "13",
+      "active": "until land",
+      "recovery": "12",
+      "onBlock": "-8(3)",
+      "onHit": "-2(9)",
+      "category": "special",
+      "notes": "Can only be performed during a forward jump"
+    },
+    {
+      "name": "OD Cannon Strike",
+      "input": "214KK (air)",
+      "damage": "800",
+      "startup": "13",
+      "active": "until land",
+      "recovery": "12",
+      "onBlock": "-4(5)",
+      "onHit": "0(9)",
+      "category": "special",
+      "cancels": [
+        "SA2"
+      ],
+      "notes": "Can only be performed during a forward jump"
+    },
+    {
+      "name": "Hooligan Combination",
+      "input": "236P",
+      "damage": "-",
+      "startup": "20~40",
+      "active": "-",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Airborne on frames 7-40 (Forced Knockdown state)"
+    },
+    {
+      "name": "HP Hooligan Combination (hold)",
+      "input": "236HP (hold)",
+      "damage": "-",
+      "startup": "38(40~60)",
+      "active": "-",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Airborne on frames 27-60 (Forced Knockdown state)"
+    },
+    {
+      "name": "OD Hooligan Combination",
+      "input": "236PP",
+      "damage": "-",
+      "startup": "20~40",
+      "active": "-",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Airborne on frames 7-40 (Forced Knockdown state)"
+    },
+    {
+      "name": "Hooligan Combination > Razor Edge Slicer",
+      "input": "236P > 5",
+      "damage": "1000",
+      "startup": "50",
+      "active": "9",
+      "recovery": "13",
+      "onBlock": "2",
+      "onHit": "KD +48",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 48
+      },
+      "notes": "Low hitting +2 on block slide that only comes out if no follow-up is input from Hooligan Combination"
+    },
+    {
+      "name": "HP Hooligan Combination (hold) > Razor Edge Slicer",
+      "input": "236HP (hold) > 5",
+      "damage": "1200 (800*400)",
+      "startup": "68(70)",
+      "active": "9(10)5",
+      "recovery": "17",
+      "onBlock": "2",
+      "onHit": "KD +48",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 48
+      },
+      "notes": "Low hitting +2 on block slide that only comes out if no follow-up is input from Hooligan Combination"
+    },
+    {
+      "name": "OD Hooligan Combination > Razor Edge Slicer",
+      "input": "236PP > 5",
+      "damage": "1200 (800*400)",
+      "startup": "50",
+      "active": "9(10)5",
+      "recovery": "17",
+      "onBlock": "2",
+      "onHit": "KD +48",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 48
+      },
+      "notes": "Low hitting +2 on block slide that only comes out if no follow-up is input from Hooligan Combination"
+    },
+    {
+      "name": "Hooligan Combination > Cannon Strike",
+      "input": "236P > K",
+      "damage": "600",
+      "startup": "20+13",
+      "active": "until land",
+      "recovery": "12",
+      "onBlock": "-7(3)",
+      "onHit": "-1(9)",
+      "category": "special",
+      "notes": "Forced Knockdown state while airborne"
+    },
+    {
+      "name": "HP Hooligan Combination (hold) > Cannon Strike",
+      "input": "236HP (hold) > K",
+      "damage": "800",
+      "startup": "38(40)+13",
+      "active": "until land",
+      "recovery": "12",
+      "onBlock": "0(5)",
+      "onHit": "-1(9)",
+      "category": "special",
+      "notes": "Forced Knockdown state while airborne"
+    },
+    {
+      "name": "OD Hooligan Combination > Cannon Strike",
+      "input": "236PP > K",
+      "damage": "800",
+      "startup": "20+13",
+      "active": "until land",
+      "recovery": "12",
+      "onBlock": "0(5)",
+      "onHit": "-1(9)",
+      "category": "special",
+      "cancels": [
+        "SA2"
+      ],
+      "notes": "Forced Knockdown state while airborne"
+    },
+    {
+      "name": "Hooligan Combination > Reverse Edge",
+      "input": "236P > 2K",
+      "damage": "800",
+      "startup": "20+18",
+      "active": "4",
+      "recovery": "13",
+      "onBlock": "-5(1)",
+      "onHit": "5(11)",
+      "category": "special",
+      "notes": "Overhead"
+    },
+    {
+      "name": "HP Hooligan Combination (hold) > Reverse Edge",
+      "input": "236HP (hold) > 2K",
+      "damage": "1200 (600*600)",
+      "startup": "38(40)+18",
+      "active": "4(14)4",
+      "recovery": "13",
+      "onBlock": "-2",
+      "onHit": "8",
+      "category": "special",
+      "notes": "2-hit Overhead"
+    },
+    {
+      "name": "OD Hooligan Combination > Reverse Edge",
+      "input": "236PP > 2K",
+      "damage": "1200 (600*600)",
+      "startup": "20+18",
+      "active": "4(14)4",
+      "recovery": "13",
+      "onBlock": "-2",
+      "onHit": "8",
+      "category": "special",
+      "cancels": [
+        "SA2"
+      ],
+      "notes": "2-hit Overhead"
+    },
+    {
+      "name": "Hooligan Combination > Fatal Leg Twister",
+      "input": "236P > LPLK",
+      "damage": "1800(2070)",
+      "startup": "20+10",
+      "active": "3",
+      "recovery": "30(38)",
+      "onBlock": "-",
+      "onHit": "HKD +18",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 18
+      },
+      "notes": "Can only throw standing opponents"
+    },
+    {
+      "name": "HP Hooligan Combination (hold) > Fatal Leg Twister",
+      "input": "236HP (hold) > LPLK",
+      "damage": "1000(1150)",
+      "startup": "38(40)+10",
+      "active": "3",
+      "recovery": "30(32)",
+      "onBlock": "-",
+      "onHit": "HKD +60",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 60
+      },
+      "notes": "Can only throw standing opponents"
+    },
+    {
+      "name": "OD Hooligan Combination > Fatal Leg Twister",
+      "input": "236PP > LPLK",
+      "damage": "1000(1150)",
+      "startup": "20+10",
+      "active": "3",
+      "recovery": "30(38)",
+      "onBlock": "-",
+      "onHit": "HKD +60",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 60
+      },
+      "notes": "Can only throw standing opponents"
+    },
+    {
+      "name": "Spin Drive Smasher",
+      "input": "236236K",
+      "damage": "2000",
+      "startup": "9",
+      "active": "3(1)12",
+      "recovery": "38",
+      "onBlock": "-24(-22)",
+      "onHit": "KD +10",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 10
+      },
+      "notes": "Strike and Throw invincible on frames 1-11"
+    },
+    {
+      "name": "Killer Bee Spin",
+      "input": "214214P",
+      "damage": "3000",
+      "startup": "13",
+      "active": "9",
+      "recovery": "37",
+      "onBlock": "-24(-18)",
+      "onHit": "HKD +12",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 12
+      },
+      "notes": "Armor Break"
+    },
+    {
+      "name": "Aerial Killer Bee Spin",
+      "input": "214214P (air)",
+      "damage": "3000",
+      "startup": "13",
+      "active": "until land",
+      "recovery": "37",
+      "onBlock": "-23(-18)",
+      "onHit": "HKD +12",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 12
+      },
+      "notes": "Armor Break"
+    },
+    {
+      "name": "Delta Red Assault",
+      "input": "236236P",
+      "damage": "4000",
+      "startup": "9",
+      "active": "15",
+      "recovery": "38",
+      "onBlock": "-33(-23)",
+      "onHit": "HKD +17",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 17
+      },
+      "notes": "Fully invincible on frames 1-13"
+    },
+    {
+      "name": "Delta Red Assault (Critical Art)",
+      "input": "236236P (CA)",
+      "damage": "4500",
+      "startup": "9",
+      "active": "15",
+      "recovery": "38",
+      "onBlock": "-33(-23)",
+      "onHit": "HKD +22",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 22
+      },
+      "notes": "Fully invincible on frames 1-13"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

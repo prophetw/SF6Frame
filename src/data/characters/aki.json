@@ -1,0 +1,836 @@
+{
+  "character": {
+    "id": "aki",
+    "name": "A.K.I.",
+    "nameJp": "アキ"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 19,
+    "backDash": 23,
+    "forwardWalk": 0.0452,
+    "backWalk": 0.032
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "2",
+      "recovery": "7",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Mostly used for the LP Target Combo follow-up"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "600",
+      "startup": "6",
+      "active": "5",
+      "recovery": "14(16)",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Combo / oki / buffer tool that shifts A.K.I. forward"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "800",
+      "startup": "12",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-4",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Very good poke tool (can poke over low attacks) that is hit confirmable into a HP Target Combo follow-up (20F hit confirm window)"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "12",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "A.K.I.'s only light normal that combos naturally into MP Serpent Lash which is important for a lot of combo routes"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "700",
+      "startup": "8",
+      "active": "3",
+      "recovery": "15(17)",
+      "onBlock": "-2",
+      "onHit": "6",
+      "category": "normal",
+      "notes": "Great poke tool as well as a combo starter"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "800",
+      "startup": "9",
+      "active": "4",
+      "recovery": "19",
+      "onBlock": "-3",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Forces stand on hit"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "2",
+      "recovery": "9",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "600",
+      "startup": "7",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Good range for a crouch MP"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "900",
+      "startup": "10",
+      "active": "3",
+      "recovery": "28",
+      "onBlock": "-8",
+      "onHit": "KD +27",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "A.K.I.'s sssweep button (crouch HK is an anti-air tool)"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "3",
+      "recovery": "8",
+      "onBlock": "-2",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "600",
+      "startup": "7",
+      "active": "3",
+      "recovery": "16",
+      "onBlock": "1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Solid low poke tool that gives good frame advantage on hit or block for combos and pressure"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900",
+      "startup": "10",
+      "active": "6",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Upper body and kicking leg are invincible to airborne strikes on frames 10-15"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "9",
+      "recovery": "-",
+      "onBlock": "-2~7",
+      "onHit": "2~9",
+      "category": "normal",
+      "notes": "Can be used as a fuzzy instant Overhead after opponent blocks a deep jump-in heavy (or deep jump-in medium while in Burnout)"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "700",
+      "startup": "7",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "5~7",
+      "onHit": "9~11 (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Strong air-to-air (although aims very high)"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "11",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "1~11",
+      "onHit": "5~15",
+      "category": "normal",
+      "notes": "Spikes down airborne opponents on Counter-Hit / Punish Counter"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "0~6",
+      "onHit": "4~10",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "600",
+      "startup": "7",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "0~9",
+      "onHit": "4~13",
+      "category": "normal",
+      "notes": "Solid jump-in"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800",
+      "startup": "8",
+      "active": "8",
+      "recovery": "-",
+      "onBlock": "4~11",
+      "onHit": "8~15",
+      "category": "normal",
+      "notes": "Solid jump-in (faster start-up and doesn't extend hurtboxes as much as jump HP)"
+    },
+    {
+      "name": "Gong Fu",
+      "input": "9 > 2HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "1~11",
+      "onHit": "5~15 (KD)",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Can only hit cross-up"
+    },
+    {
+      "name": "Pu Lao",
+      "input": "3MP",
+      "damage": "600",
+      "startup": "24",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-2",
+      "onHit": "3",
+      "category": "unique",
+      "notes": "Overhead"
+    },
+    {
+      "name": "Chi Wen",
+      "input": "6HP",
+      "damage": "900",
+      "startup": "16",
+      "active": "3",
+      "recovery": "20(21)",
+      "onBlock": "-4",
+      "onHit": "3",
+      "category": "unique",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Excccellent poke tool with good damage and completely safe on block"
+    },
+    {
+      "name": "Qiu Niu",
+      "input": "6HK",
+      "damage": "400x2",
+      "startup": "14",
+      "active": "3(5)3",
+      "recovery": "16(24)",
+      "onBlock": "2",
+      "onHit": "4",
+      "category": "unique",
+      "notes": "Forces stand on hit"
+    },
+    {
+      "name": "Hun Dun",
+      "input": "5LP > 5LP",
+      "damage": "300",
+      "startup": "8",
+      "active": "2",
+      "recovery": "14(16)",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Frametraps (2F gap) on block"
+    },
+    {
+      "name": "Qiong Qi",
+      "input": "5HP > 5HP",
+      "damage": "400",
+      "startup": "14",
+      "active": "3",
+      "recovery": "24(29)",
+      "onBlock": "-15",
+      "onHit": "KD +34",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Inflicts poison state upon hit (420 damage over 7 seconds aka 1 damage per frame) which dissipates if A.K.I. gets hit"
+    },
+    {
+      "name": "Whisper",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +19",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 19
+      },
+      "notes": "Throw Loop: Walk forward throw (only possible in the corner)"
+    },
+    {
+      "name": "Gluttony",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +20",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Back Throw oki when cornered: Can Drive Rush in for a real strike/throw mix (including a perfect meaty stand MP that leaves A.K.I. +11 on Hit / +5 on Block)"
+    },
+    {
+      "name": "Drive Impact: Zao Chi",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Feng Shi",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "Sinister Slide > Heel Strike",
+      "input": "2PP > 5K",
+      "damage": "600 (300x2)",
+      "startup": "11+11",
+      "active": "3(9)3",
+      "recovery": "17(20)",
+      "onBlock": "-3",
+      "onHit": "4",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Very low profile on frames 1-15 followed by slight low profile on frames 16-27 (not including the initial 11F of the Snake Stance)"
+    },
+    {
+      "name": "Sinister Slide > Venomous Fang",
+      "input": "2PP > 5P",
+      "damage": "1100",
+      "startup": "11+19",
+      "active": "15",
+      "recovery": "30",
+      "onBlock": "-25(-11)",
+      "onHit": "KD +20(34)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Inflicts poison state upon hit (420 damage over 7 seconds aka 1 damage per frame) which dissipates if A.K.I. gets hit"
+    },
+    {
+      "name": "Sinister Slide > Entrapment",
+      "input": "2PP > LPLK",
+      "damage": "1852(2222)",
+      "startup": "11+23",
+      "active": "3",
+      "recovery": "55",
+      "onBlock": "-",
+      "onHit": "HKD +16",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 16
+      },
+      "notes": "Command Grab follow-up with decent range (but slow start-up)"
+    },
+    {
+      "name": "Nightshade Pulse",
+      "input": "214LP",
+      "damage": "500",
+      "startup": "17",
+      "active": "-",
+      "recovery": "35",
+      "onBlock": "-10",
+      "onHit": "-5",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "Nightshade Chaser",
+      "input": "214LP > 6P",
+      "damage": "500~800 \n(1300 total)",
+      "startup": "13",
+      "active": "2",
+      "recovery": "34",
+      "onBlock": "-16(-11)",
+      "onHit": "-4",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "This follow-up whip attack is also a 1-hit projectile"
+    },
+    {
+      "name": "Nightshade Chase (Bubble Burst)",
+      "input": "214LP > 6P (burst)",
+      "damage": "800",
+      "startup": "14",
+      "active": "6",
+      "recovery": "29",
+      "onBlock": "-4",
+      "onHit": "KD +42",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "The bubble burst is a 6F active 1-hit projectile hitbox"
+    },
+    {
+      "name": "OD Nightshade Pulse",
+      "input": "214PP",
+      "damage": "700 (300*400)",
+      "startup": "16",
+      "active": "-",
+      "recovery": "28",
+      "onBlock": "1",
+      "onHit": "KD +45",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 45
+      },
+      "notes": "2-hit OD projectile"
+    },
+    {
+      "name": "OD Nightshade Chaser",
+      "input": "214PP > 6P",
+      "damage": "600~800\n(~1500 total)",
+      "startup": "13",
+      "active": "5",
+      "recovery": "28",
+      "onBlock": "-13(-10)",
+      "onHit": "KD +25",
+      "category": "normal",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 25
+      },
+      "notes": "This follow-up whip attack is also a 1-hit OD projectile"
+    },
+    {
+      "name": "OD Nightshade Chaser (Bubble Burst)",
+      "input": "214PP > 6P (burst)",
+      "damage": "800\n(1525~1995)",
+      "startup": "14",
+      "active": "12",
+      "recovery": "20",
+      "onBlock": "-2(4)",
+      "onHit": "KD +43(52~57)",
+      "category": "normal",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 43
+      },
+      "notes": "The bubble burst is a 12F active 2-hit projectile hitbox"
+    },
+    {
+      "name": "Orchid Spring",
+      "input": "214MP",
+      "damage": "420(580)",
+      "startup": "26",
+      "active": "160",
+      "recovery": "20",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Places a pool of poison on the ground that inflicts poison state (420 damage over 7 seconds aka 1 damage per frame) which dissipates if A.K.I. gets hit"
+    },
+    {
+      "name": "Toxic Wreath",
+      "input": "214HP",
+      "damage": "800 (200*600)",
+      "startup": "13",
+      "active": "3(14)9",
+      "recovery": "13",
+      "onBlock": "-4(4)",
+      "onHit": "KD +40",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Inflicts poison state upon hit (420 damage over 7 seconds aka 1 damage per frame) which dissipates if A.K.I. gets hit"
+    },
+    {
+      "name": "LP Serpent Lash",
+      "input": "236LP",
+      "damage": "500(800)",
+      "startup": "14",
+      "active": "3",
+      "recovery": "20(26)",
+      "onBlock": "-8(-6)",
+      "onHit": "1(3)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Strike hitbox with 1-hit projectile durability (clashes with other projectiles but still counts as a strike attack)"
+    },
+    {
+      "name": "MP Serpent Lash",
+      "input": "236MP",
+      "damage": "600(700)",
+      "startup": "14",
+      "active": "9",
+      "recovery": "21",
+      "onBlock": "-12",
+      "onHit": "KD +44",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 44
+      },
+      "notes": "Strike hitbox with 1-hit projectile durability (clashes with other projectiles but still counts as a strike attack)"
+    },
+    {
+      "name": "HP Serpent Lash",
+      "input": "236HP",
+      "damage": "700(800)",
+      "startup": "11",
+      "active": "6",
+      "recovery": "32",
+      "onBlock": "-20",
+      "onHit": "KD +44",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 44
+      },
+      "notes": "Invincible to airborne strikes on frames 6-16"
+    },
+    {
+      "name": "OD Serpent Lash",
+      "input": "236PP",
+      "damage": "600(800)",
+      "startup": "21",
+      "active": "5",
+      "recovery": "25",
+      "onBlock": "-14(-11)",
+      "onHit": "4",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Strike hitbox with 1-hit OD projectile durability (clashes with other OD projectiles but still counts as a strike attack)"
+    },
+    {
+      "name": "LK Cruel Fate",
+      "input": "214LK",
+      "damage": "800(400)",
+      "startup": "24",
+      "active": "2(5)2(4)2(5)2",
+      "recovery": "18",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Not an Overhead"
+    },
+    {
+      "name": "MK Cruel Fate",
+      "input": "214MK",
+      "damage": "900(500)",
+      "startup": "28",
+      "active": "2(5)2(4)2(5)2",
+      "recovery": "18",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Not an Overhead"
+    },
+    {
+      "name": "HK Cruel Fate",
+      "input": "214HK",
+      "damage": "1000(600)",
+      "startup": "33",
+      "active": "2(5)2(4)2(5)2",
+      "recovery": "18",
+      "onBlock": "-3",
+      "onHit": "4",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Not an Overhead"
+    },
+    {
+      "name": "OD Cruel Fate",
+      "input": "214KK",
+      "damage": "1600(400~640)",
+      "startup": "28",
+      "active": "3(4)2(4)2(5)2",
+      "recovery": "18",
+      "onBlock": "2",
+      "onHit": "HKD +42 (2~3)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "hard",
+        "advantage": 42
+      },
+      "notes": "Not an Overhead"
+    },
+    {
+      "name": "Deadly Implication",
+      "input": "236236K",
+      "damage": "1800",
+      "startup": "10",
+      "active": "3",
+      "recovery": "68",
+      "onBlock": "-46",
+      "onHit": "KD +30",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 30
+      },
+      "notes": "Strike and Throw invincible on frames 1-12"
+    },
+    {
+      "name": "Tainted Talons",
+      "input": "214214P",
+      "damage": "2500\n(300*200x6*1000)",
+      "startup": "7(88)",
+      "active": "50(31)12",
+      "recovery": "65",
+      "onBlock": "-19(~)",
+      "onHit": "KD +30",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 30
+      },
+      "notes": "No form of invincibility whatsoever"
+    },
+    {
+      "name": "Claws of Ya Zi",
+      "input": "236236P",
+      "damage": "4000",
+      "startup": "10",
+      "active": "3",
+      "recovery": "58",
+      "onBlock": "-36",
+      "onHit": "HKD +30",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 30
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Claws of Ya Zi (Critical Art)",
+      "input": "236236P (CA)",
+      "damage": "4500",
+      "startup": "10",
+      "active": "3",
+      "recovery": "58",
+      "onBlock": "-36",
+      "onHit": "HKD +21",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 21
+      },
+      "notes": "Fully invincible on frames 1-12"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

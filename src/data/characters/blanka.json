@@ -1,0 +1,1265 @@
+{
+  "character": {
+    "id": "blanka",
+    "name": "Blanka",
+    "nameJp": "ブランカ"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 19,
+    "backDash": 23,
+    "forwardWalk": 0.047,
+    "backWalk": 0.032
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "3",
+      "recovery": "10",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Cannot link or chain into any other move (mostly used to cancel into specials)"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "700",
+      "startup": "10",
+      "active": "3",
+      "recovery": "15",
+      "onBlock": "-4",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Good poke tool with strong hitbox priority"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "800",
+      "startup": "10",
+      "active": "7",
+      "recovery": "17(22)",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Mostly a combo tool (hitboxes not ideal for poking or anti-airing)"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "4",
+      "active": "4",
+      "recovery": "7",
+      "onBlock": "-2",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Blanka's fastest normal at 4F"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "600",
+      "startup": "8",
+      "active": "3",
+      "recovery": "17(20)",
+      "onBlock": "-2",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "+3F more recovery (20F) on whiff"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "800",
+      "startup": "7",
+      "active": "9",
+      "recovery": "18(15)",
+      "onBlock": "-4",
+      "onHit": "6",
+      "category": "normal",
+      "notes": "Forces stand"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "6",
+      "active": "3",
+      "recovery": "8",
+      "onBlock": "-2",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Far range cancelable jab (furthest range of Blanka's light buttons)"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "600",
+      "startup": "9",
+      "active": "5",
+      "recovery": "16",
+      "onBlock": "-5",
+      "onHit": "-1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Very far range cancelable medium that's also a situational anti-air (but cannot hit cross-up)"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "900",
+      "startup": "15",
+      "active": "5",
+      "recovery": "20(21)",
+      "onBlock": "-5",
+      "onHit": "0",
+      "category": "normal",
+      "notes": "Forces stand"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "2",
+      "recovery": "10",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into stand LK / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "500",
+      "startup": "8",
+      "active": "3",
+      "recovery": "16(18)",
+      "onBlock": "-5",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Good frame advantage on hit for a cancelable crouch MK (can be used as a combo tool)"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900",
+      "startup": "11",
+      "active": "4",
+      "recovery": "23",
+      "onBlock": "-12",
+      "onHit": "KD +25",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 25
+      },
+      "notes": "Has some Juggle potential naturally without Drive Rush"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "-1~5",
+      "onHit": "3~9",
+      "category": "normal",
+      "notes": "Decent air-to-air"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "700",
+      "startup": "7",
+      "active": "7",
+      "recovery": "-",
+      "onBlock": "1~7",
+      "onHit": "5~11 (KD)",
+      "category": "normal",
+      "cancels": [
+        "Special"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "7 or 9HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "1~11",
+      "onHit": "5~15 (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents on hit"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "1~5",
+      "onHit": "5~9",
+      "category": "normal",
+      "notes": "Decent air-to-air"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "500",
+      "startup": "7",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "3~9",
+      "onHit": "7~13",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800",
+      "startup": "11",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "4~11",
+      "onHit": "8~15",
+      "category": "normal",
+      "notes": "Blanka's main horizontal jump-in tool"
+    },
+    {
+      "name": "Neutral Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "7",
+      "active": "3",
+      "recovery": "-",
+      "onBlock": "6~11",
+      "onHit": "10~15 (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Rock Crusher",
+      "input": "6MP",
+      "damage": "600 (300*300)",
+      "startup": "20",
+      "active": "2*1",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "unique",
+      "notes": "2-hit Overhead"
+    },
+    {
+      "name": "Double Knee Bombs",
+      "input": "6MK",
+      "damage": "600 (300*300)",
+      "startup": "9",
+      "active": "3(7)2",
+      "recovery": "18",
+      "onBlock": "-2",
+      "onHit": "6",
+      "category": "unique",
+      "notes": "Forward moving 2-hit normal that low crushes on frames 9-23"
+    },
+    {
+      "name": "Wild Edge",
+      "input": "4MK",
+      "damage": "600",
+      "startup": "9",
+      "active": "6",
+      "recovery": "12",
+      "onBlock": "2",
+      "onHit": "8",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "No head hurtbox on frames 1-3"
+    },
+    {
+      "name": "Wild Nail",
+      "input": "6HP",
+      "damage": "1100",
+      "startup": "18",
+      "active": "4",
+      "recovery": "28(31)",
+      "onBlock": "-15(-12)",
+      "onHit": "KD +20(23)",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "+3F more recovery (31F) on whiff or block"
+    },
+    {
+      "name": "Amazon River Run",
+      "input": "3HP",
+      "damage": "1000",
+      "startup": "14",
+      "active": "10",
+      "recovery": "22",
+      "onBlock": "-18(-9)",
+      "onHit": "KD +29(38)",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Far range slide that's Projectile invincible on the upper body and low profiles on frames 10-29 (does not evade projectiles low to the ground)"
+    },
+    {
+      "name": "Coward Crouch",
+      "input": "2PP",
+      "damage": "-",
+      "startup": "18",
+      "active": "1~102",
+      "recovery": "28",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Low profiles (and Upper Body Projectile invincible) starts on frame 9 and lasts until the final 18F of recovery (ranges from 9-29F or 9-130F depending on your actions)"
+    },
+    {
+      "name": "Wild Lift",
+      "input": "2PP > P",
+      "damage": "600",
+      "startup": "8",
+      "active": "7",
+      "recovery": "31",
+      "onBlock": "-21",
+      "onHit": "KD +55",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 55
+      },
+      "notes": "Still retains the low profile hurtboxes and crouching status from Coward Crouch on first 3 start-up frames"
+    },
+    {
+      "name": "Raid Jump",
+      "input": "2PP > K",
+      "damage": "-",
+      "startup": "18",
+      "active": "-",
+      "recovery": "12",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Upper body projectile invincible on frames 1-9 (frames 19-27 overall)"
+    },
+    {
+      "name": "Wild Fang",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +30",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 30
+      },
+      "notes": "Throw Loop (corner only): Walk forward (manually timed) / Dash up for +11 mixup / Surprise Hop forward for +3 mixup between throw/strike"
+    },
+    {
+      "name": "Jungle Flip",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +27",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Back Throw oki when cornered: Can dash up for a pseudo strike/throw loop or just Drive Rush in for a real strike/throw mix"
+    },
+    {
+      "name": "Wild Bites",
+      "input": "LPLK (air)",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD +22",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Can Drive Rush for a meaty normal into tick throw against a cornered opponent"
+    },
+    {
+      "name": "Drive Impact: Wild Scratch",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Quick Rolling Attack",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "Electric Thunder",
+      "input": "214P",
+      "damage": "800",
+      "startup": "10",
+      "active": "2(3)2(3)2~",
+      "recovery": "15(17)",
+      "onBlock": "-3",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Strike hitbox"
+    },
+    {
+      "name": "OD Electric Thunder",
+      "input": "214PP",
+      "damage": "1000 (400*600)",
+      "startup": "10",
+      "active": "2(3)2(3)2~",
+      "recovery": "15(17)",
+      "onBlock": "4",
+      "onHit": "KD +40",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Strike hitbox"
+    },
+    {
+      "name": "LP Rolling Attack",
+      "input": "46LP",
+      "damage": "1000",
+      "startup": "10",
+      "active": "11",
+      "recovery": "3+8",
+      "onBlock": "-23",
+      "onHit": "KD +13",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 13
+      },
+      "notes": "Airborne on frames 10-23 (Forced Knockdown state)"
+    },
+    {
+      "name": "MP Rolling Attack",
+      "input": "46MP",
+      "damage": "1200",
+      "startup": "12",
+      "active": "19",
+      "recovery": "3+8",
+      "onBlock": "-23",
+      "onHit": "KD +14",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 14
+      },
+      "notes": "Airborne on frames 12-33 (Forced Knockdown state)"
+    },
+    {
+      "name": "HP Rolling Attack",
+      "input": "46HP",
+      "damage": "1300",
+      "startup": "22",
+      "active": "20",
+      "recovery": "2+23",
+      "onBlock": "-15",
+      "onHit": "KD +30",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 30
+      },
+      "notes": "Airborne on frames 20-43 (Forced Knockdown state)"
+    },
+    {
+      "name": "OD Rolling Attack",
+      "input": "46PP",
+      "damage": "800",
+      "startup": "18",
+      "active": "22",
+      "recovery": "2+15",
+      "onBlock": "-7",
+      "onHit": "KD +57",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 57
+      },
+      "notes": "Airborne on frames 18-41 (Forced Knockdown state)"
+    },
+    {
+      "name": "LK Vertical Rolling Attack",
+      "input": "28LK",
+      "damage": "1200",
+      "startup": "8",
+      "active": "19",
+      "recovery": "31+17",
+      "onBlock": "-27",
+      "onHit": "KD +35",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Trajectory: 45° degree up-forward"
+    },
+    {
+      "name": "MK Vertical Rolling Attack",
+      "input": "28MK",
+      "damage": "1300",
+      "startup": "8",
+      "active": "19",
+      "recovery": "31+17",
+      "onBlock": "-27",
+      "onHit": "KD +42",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Trajectory: 65° degree up-forward"
+    },
+    {
+      "name": "HK Vertical Rolling Attack",
+      "input": "28HK",
+      "damage": "1400",
+      "startup": "8",
+      "active": "19",
+      "recovery": "31+17",
+      "onBlock": "-27",
+      "onHit": "KD +42",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Trajectory: 90° degree straight up"
+    },
+    {
+      "name": "OD Vertical Rolling Attack",
+      "input": "28KK",
+      "damage": "1600 (800*800)",
+      "startup": "7",
+      "active": "8(2)6",
+      "recovery": "31+17",
+      "onBlock": "-40",
+      "onHit": "KD + 28",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Trajectory: 75° degree up-forward"
+    },
+    {
+      "name": "LK Backstep Rolling Attack",
+      "input": "624LK",
+      "damage": "1000",
+      "startup": "41",
+      "active": "24",
+      "recovery": "5",
+      "onBlock": "2(8)",
+      "onHit": "8(14)",
+      "category": "special",
+      "notes": "Can hit cross-up"
+    },
+    {
+      "name": "MK Backstep Rolling Attack",
+      "input": "624MK",
+      "damage": "1000",
+      "startup": "41",
+      "active": "27",
+      "recovery": "5",
+      "onBlock": "1(8)",
+      "onHit": "7(14)",
+      "category": "special",
+      "notes": "Can hit cross-up"
+    },
+    {
+      "name": "HK Backstep Rolling Attack",
+      "input": "624HK",
+      "damage": "1000",
+      "startup": "41",
+      "active": "29",
+      "recovery": "5",
+      "onBlock": "3(9)",
+      "onHit": "7(13)",
+      "category": "special",
+      "notes": "Can hit cross-up"
+    },
+    {
+      "name": "OD Backstep Rolling Attack",
+      "input": "624KK",
+      "damage": "1000 (300*350x2)",
+      "startup": "8",
+      "active": "5(28)21(1)4",
+      "recovery": "4",
+      "onBlock": "6(9)",
+      "onHit": "10(13) or KD +55",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 55
+      },
+      "notes": "Cancelable into Level 2 and 3 Super on first hit"
+    },
+    {
+      "name": "Aerial Rolling Attack (air)",
+      "input": "46P (air)",
+      "damage": "1000",
+      "startup": "13",
+      "active": "until land",
+      "recovery": "17",
+      "onBlock": "-9(-2)",
+      "onHit": "KD +38(45)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Takes 40 frames to charge"
+    },
+    {
+      "name": "OD Aerial Rolling Attack (air)",
+      "input": "46PP (air)",
+      "damage": "1200 (600*600)",
+      "startup": "13",
+      "active": "until land",
+      "recovery": "15",
+      "onBlock": "-3(3)",
+      "onHit": "KD +29(30)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Takes 40 frames to charge"
+    },
+    {
+      "name": "LK Wild Hunt",
+      "input": "236LK",
+      "damage": "1600",
+      "startup": "34",
+      "active": "3",
+      "recovery": "57",
+      "onBlock": "-",
+      "onHit": "HKD +35",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 35
+      },
+      "notes": "Slow start-up command grab; Range: 2.50 (shortest)"
+    },
+    {
+      "name": "MK Wild Hunt",
+      "input": "236MK",
+      "damage": "1700",
+      "startup": "39",
+      "active": "3",
+      "recovery": "57",
+      "onBlock": "-",
+      "onHit": "HKD +35",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 35
+      },
+      "notes": "Slow start-up command grab; Range: 3.41 (mid-range)"
+    },
+    {
+      "name": "HK Wild Hunt",
+      "input": "236HK",
+      "damage": "1800",
+      "startup": "43",
+      "active": "3",
+      "recovery": "57",
+      "onBlock": "-",
+      "onHit": "HKD +35",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 35
+      },
+      "notes": "Slow start-up command grab; Range: 4.25 (furthest)"
+    },
+    {
+      "name": "OD Wild Hunt",
+      "input": "236KK",
+      "damage": "2000",
+      "startup": "32",
+      "active": "3",
+      "recovery": "57",
+      "onBlock": "-",
+      "onHit": "HKD +64",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 64
+      },
+      "notes": "Slow start-up command grab; Range: 2.70~3.59"
+    },
+    {
+      "name": "Blanka-chan Bomb",
+      "input": "22P",
+      "damage": "-",
+      "startup": "39+35",
+      "active": "1000",
+      "recovery": "11",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Only one Blanka-chan doll can be on screen at a time"
+    },
+    {
+      "name": "Blanka-chan Bomb (Charge)",
+      "input": "22P (Charge)",
+      "damage": "800",
+      "startup": "36",
+      "active": "-",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD ~",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "1-hit Projectile hitbox"
+    },
+    {
+      "name": "Blanka-chan Bomb (OD Charge)",
+      "input": "22P (OD Charge)",
+      "damage": "1200 (400x3)",
+      "startup": "36",
+      "active": "-",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD ~",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "3-hit OD Projectile hitbox"
+    },
+    {
+      "name": "Blanka-chan Bomb (SA1 Charge)",
+      "input": "22P > 236236P",
+      "damage": "1000 (200x5)",
+      "startup": "26",
+      "active": "-",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD ~",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "5-hit Super Projectile hitbox"
+    },
+    {
+      "name": "Shout of Earth",
+      "input": "236236P",
+      "damage": "2000",
+      "startup": "8",
+      "active": "9",
+      "recovery": "62",
+      "onBlock": "-29",
+      "onHit": "KD +15",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 15
+      },
+      "notes": "Strike and Throw invincible on frames 1-9"
+    },
+    {
+      "name": "Lightning Beast",
+      "input": "214214P",
+      "damage": "-",
+      "startup": "1",
+      "active": "-",
+      "recovery": "9",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "super",
+      "notes": "No form of invincibility whatsoever"
+    },
+    {
+      "name": "Ground Shave Cannonball",
+      "input": "236236K",
+      "damage": "4000",
+      "startup": "10",
+      "active": "3",
+      "recovery": "61",
+      "onBlock": "-46",
+      "onHit": "HKD +50",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 50
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Ground Shave Cannonball (Critical Art)",
+      "input": "236236K (CA)",
+      "damage": "4500",
+      "startup": "10",
+      "active": "3",
+      "recovery": "61",
+      "onBlock": "-46",
+      "onHit": "HKD +14",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 14
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Rolling Cannon",
+      "input": "5P",
+      "damage": "400",
+      "startup": "3",
+      "active": "25",
+      "recovery": "7(9) land",
+      "onBlock": "-",
+      "onHit": "KD",
+      "category": "special",
+      "cancels": [
+        "Special"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "8-way directional airborne rolling attack"
+    },
+    {
+      "name": "Electric Thunder",
+      "input": "214P",
+      "damage": "900",
+      "startup": "10",
+      "active": "2(3)2(3)2~",
+      "recovery": "15(17)",
+      "onBlock": "-3",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Strike hitbox"
+    },
+    {
+      "name": "OD Electric Thunder",
+      "input": "214PP",
+      "damage": "(1100) 500*600",
+      "startup": "10",
+      "active": "2(3)2(3)2~",
+      "recovery": "15(17)",
+      "onBlock": "4",
+      "onHit": "KD +40",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Strike hitbox"
+    },
+    {
+      "name": "LP Rolling Attack",
+      "input": "46LP",
+      "damage": "1100",
+      "startup": "10",
+      "active": "12",
+      "recovery": "2+8",
+      "onBlock": "-21",
+      "onHit": "KD +13",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 13
+      },
+      "notes": "Airborne on frames 10-23 (Forced Knockdown state)"
+    },
+    {
+      "name": "MP Rolling Attack",
+      "input": "46MP",
+      "damage": "1300",
+      "startup": "12",
+      "active": "19",
+      "recovery": "3+8",
+      "onBlock": "-21",
+      "onHit": "KD +14",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 14
+      },
+      "notes": "Airborne on frames 12-33 (Forced Knockdown state)"
+    },
+    {
+      "name": "HP Rolling Attack",
+      "input": "46HP",
+      "damage": "1400",
+      "startup": "20",
+      "active": "22",
+      "recovery": "2+23",
+      "onBlock": "-21",
+      "onHit": "KD +19",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 19
+      },
+      "notes": "Airborne on frames 18-43 (Forced Knockdown state)"
+    },
+    {
+      "name": "OD Rolling Attack",
+      "input": "46PP",
+      "damage": "900",
+      "startup": "18",
+      "active": "22",
+      "recovery": "2+15",
+      "onBlock": "-7",
+      "onHit": "KD +57",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 57
+      },
+      "notes": "Airborne on frames 18-46 (Forced Knockdown state)"
+    },
+    {
+      "name": "LK Vertical Rolling Attack",
+      "input": "28LK",
+      "damage": "1300",
+      "startup": "8",
+      "active": "19",
+      "recovery": "31+17",
+      "onBlock": "-18",
+      "onHit": "KD +35",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Trajectory: 45° degree up-forward"
+    },
+    {
+      "name": "MK Vertical Rolling Attack",
+      "input": "28MK",
+      "damage": "1400",
+      "startup": "8",
+      "active": "19",
+      "recovery": "31+17",
+      "onBlock": "-19",
+      "onHit": "KD +37",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 37
+      },
+      "notes": "Trajectory: 65° degree up-forward"
+    },
+    {
+      "name": "HK Vertical Rolling Attack",
+      "input": "28HK",
+      "damage": "1500",
+      "startup": "8",
+      "active": "19",
+      "recovery": "31+17",
+      "onBlock": "-19",
+      "onHit": "KD +42",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Trajectory: 90° degree straight up"
+    },
+    {
+      "name": "OD Vertical Rolling Attack",
+      "input": "28KK",
+      "damage": "(1750) 900*850",
+      "startup": "7",
+      "active": "8(2)6",
+      "recovery": "31+17",
+      "onBlock": "-40",
+      "onHit": "KD + 27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Trajectory: 75° degree up-forward"
+    },
+    {
+      "name": "LK Backstep Rolling Attack",
+      "input": "624LK",
+      "damage": "1100",
+      "startup": "41",
+      "active": "24",
+      "recovery": "5",
+      "onBlock": "2(8)",
+      "onHit": "8(14)",
+      "category": "special",
+      "notes": "Can hit cross-up"
+    },
+    {
+      "name": "MK Backstep Rolling Attack",
+      "input": "624MK",
+      "damage": "1100",
+      "startup": "41",
+      "active": "27",
+      "recovery": "5",
+      "onBlock": "1(8)",
+      "onHit": "7(14)",
+      "category": "special",
+      "notes": "Can hit cross-up"
+    },
+    {
+      "name": "HK Backstep Rolling Attack",
+      "input": "624HK",
+      "damage": "1100",
+      "startup": "41",
+      "active": "29",
+      "recovery": "5",
+      "onBlock": "3(9)",
+      "onHit": "7(13)",
+      "category": "special",
+      "notes": "Can hit cross-up"
+    },
+    {
+      "name": "OD Backstep Rolling Attack",
+      "input": "624KK",
+      "damage": "1200 (300*450x2)",
+      "startup": "8",
+      "active": "5(28)21(1)4",
+      "recovery": "4",
+      "onBlock": "6(9)",
+      "onHit": "10(13) or KD +55",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 55
+      },
+      "notes": "Can hit cross-up"
+    },
+    {
+      "name": "Aerial Rolling Attack (air)",
+      "input": "46LP (air)",
+      "damage": "1100",
+      "startup": "13",
+      "active": "until land",
+      "recovery": "17",
+      "onBlock": "-9(-2)",
+      "onHit": "KD +38(45)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Takes 40 frames to charge (no charge required if canceled into)"
+    },
+    {
+      "name": "OD Aerial Rolling Attack (air)",
+      "input": "46PP (air)",
+      "damage": "1400 (700*700)",
+      "startup": "13",
+      "active": "until land",
+      "recovery": "15",
+      "onBlock": "-3(3)",
+      "onHit": "KD +29(30)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Takes 40 frames to charge (no charge required if canceled into)"
+    },
+    {
+      "name": "Shout of Earth",
+      "input": "236236P",
+      "damage": "2200",
+      "startup": "8",
+      "active": "9",
+      "recovery": "62",
+      "onBlock": "-29",
+      "onHit": "KD +15",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 15
+      },
+      "notes": "Strike and Throw invincible on frames 1-9"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

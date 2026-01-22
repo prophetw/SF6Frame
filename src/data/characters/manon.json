@@ -1,0 +1,841 @@
+{
+  "character": {
+    "id": "manon",
+    "name": "Manon",
+    "nameJp": "マノン"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 21,
+    "backDash": 25,
+    "forwardWalk": 0.0452,
+    "backWalk": 0.031
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "10",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "600",
+      "startup": "7",
+      "active": "4",
+      "recovery": "15",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Forward moving fully cancelable medium that also goes into Manon's MP>MK target combo to get her main mixup game going"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "800",
+      "startup": "10",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Basically just a slower but better version of her stand MP with better damage, range, hitboxes, and target combo follow-up"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "2",
+      "recovery": "12",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Pretty decent range light button"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "600",
+      "startup": "10",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-5",
+      "onHit": "-2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Not a low attack but is fully cancelable"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "900",
+      "startup": "15",
+      "active": "3",
+      "recovery": "26(23)",
+      "onBlock": "-6",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Very far range poke and punish tool (about 40% screen range) that combos into her LK/MK Dégagé (qcb+LK/MK) on Punish Counter even from max range"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "2",
+      "recovery": "11",
+      "onBlock": "-2",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "600",
+      "startup": "7",
+      "active": "3",
+      "recovery": "11(15)",
+      "onBlock": "-1",
+      "onHit": "6",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "+4F extra recovery frames (15F) on whiff only"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "600",
+      "startup": "10",
+      "active": "5",
+      "recovery": "21",
+      "onBlock": "-8",
+      "onHit": "-2",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Manon's extended arm and head hurtbox are invincible to airborne strikes on frames 7-34"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "2",
+      "recovery": "13",
+      "onBlock": "-3",
+      "onHit": "-1",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "600",
+      "startup": "8",
+      "active": "4",
+      "recovery": "16",
+      "onBlock": "-2",
+      "onHit": "3",
+      "category": "normal",
+      "notes": "A good range low poke with a ton of pushback on hit and block"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900",
+      "startup": "11",
+      "active": "2",
+      "recovery": "27",
+      "onBlock": "-12",
+      "onHit": "KD +29",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Standard sweep with huge range and good hitbox priority"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "10",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "700",
+      "startup": "8",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Fantastic air-to-air hitboxes"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents on hit"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "6",
+      "active": "9",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "500",
+      "startup": "7",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800",
+      "startup": "11",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Very strong jump-in hitboxes (Manon's best jump-in button)"
+    },
+    {
+      "name": "Révérence",
+      "input": "4HP",
+      "damage": "800",
+      "startup": "8",
+      "active": "6",
+      "recovery": "17",
+      "onBlock": "1",
+      "onHit": "3",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Manon's main combo tool"
+    },
+    {
+      "name": "Tomoe Derrière",
+      "input": "3HK",
+      "damage": "1000",
+      "startup": "11",
+      "active": "9",
+      "recovery": "32",
+      "onBlock": "-23",
+      "onHit": "KD +26",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "Not a low attack (despite looking like a slide)"
+    },
+    {
+      "name": "Back MK",
+      "input": "4MK",
+      "damage": "600",
+      "startup": "10",
+      "active": "4",
+      "recovery": "19",
+      "onBlock": "-3",
+      "onHit": "-1",
+      "category": "unique",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Fantastic anti-air tool against horizontal and vertical approaches (but cannot hit cross-up behind Manon)"
+    },
+    {
+      "name": "En Haut",
+      "input": "4MK > 5MK",
+      "damage": "500",
+      "startup": "14",
+      "active": "5",
+      "recovery": "21",
+      "onBlock": "-11",
+      "onHit": "-3",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Overhead string that's also fully cancelable (very rare in Street Fighter)"
+    },
+    {
+      "name": "À Terre",
+      "input": "5MP > 5MK",
+      "damage": "500",
+      "startup": "10",
+      "active": "2",
+      "recovery": "17",
+      "onBlock": "-5",
+      "onHit": "2",
+      "category": "unique",
+      "notes": "Pulls the opponent up close to Manon for a +2 mixup situation on hit"
+    },
+    {
+      "name": "Temps Lié",
+      "input": "5HP > 5HP",
+      "damage": "600",
+      "startup": "5",
+      "active": "2",
+      "recovery": "20(22)",
+      "onBlock": "-8",
+      "onHit": "3",
+      "category": "unique",
+      "notes": "+2F extra recovery frames (22F) on block only"
+    },
+    {
+      "name": "Allongé",
+      "input": "2HP > 5HP",
+      "damage": "500",
+      "startup": "4",
+      "active": "4",
+      "recovery": "26",
+      "onBlock": "-10",
+      "onHit": "5 (KD ~)",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents into a +17~19 Knockdown state (higher KDA the higher in the air the opponent is when pulled down)"
+    },
+    {
+      "name": "Ouchi Gari",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +16",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 16
+      },
+      "notes": "Throw Loop: Manually time throw on their wake-up (not possible on mid-screen back-roll)"
+    },
+    {
+      "name": "Uchi Mata",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +18",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 18
+      },
+      "notes": "Basic meaties but no meaty throw (unless this connects when Manon is cornered)"
+    },
+    {
+      "name": "Drive Impact: Glissade",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Écarté",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "LP Manège Doré",
+      "input": "624LP",
+      "damage": "2000-3700",
+      "startup": "10",
+      "active": "2",
+      "recovery": "49",
+      "onBlock": "-",
+      "onHit": "HKD +19",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 19
+      },
+      "notes": "Range: 1.53"
+    },
+    {
+      "name": "MP Manège Doré",
+      "input": "624MP",
+      "damage": "2000-3700",
+      "startup": "8",
+      "active": "2",
+      "recovery": "51",
+      "onBlock": "-",
+      "onHit": "HKD +19",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 19
+      },
+      "notes": "Range: 1.37"
+    },
+    {
+      "name": "HP Manège Doré",
+      "input": "624HP",
+      "damage": "2000-3700",
+      "startup": "5",
+      "active": "2",
+      "recovery": "54",
+      "onBlock": "-",
+      "onHit": "HKD +19",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 19
+      },
+      "notes": "Range: 1.14"
+    },
+    {
+      "name": "OD Manège Doré",
+      "input": "624PP",
+      "damage": "2000-3700",
+      "startup": "8",
+      "active": "2",
+      "recovery": "51",
+      "onBlock": "-",
+      "onHit": "HKD +19",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 19
+      },
+      "notes": "Range: 1.52"
+    },
+    {
+      "name": "LK Rond-point",
+      "input": "236LK",
+      "damage": "900 (400*500)",
+      "startup": "9",
+      "active": "3(2)2",
+      "recovery": "29",
+      "onBlock": "-15",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Invincible to airborne strikes on upper body and extended leg on frames 5-15"
+    },
+    {
+      "name": "MK Rond-point",
+      "input": "236MK",
+      "damage": "1000 (400*600)",
+      "startup": "11",
+      "active": "3(3)3",
+      "recovery": "27",
+      "onBlock": "-14",
+      "onHit": "KD +34",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Invincible to airborne strikes on upper body and extended leg on frames 7-19"
+    },
+    {
+      "name": "HK Rond-point",
+      "input": "236HK",
+      "damage": "800 (400*400)",
+      "startup": "14",
+      "active": "3(3)3",
+      "recovery": "22(24)",
+      "onBlock": "-11",
+      "onHit": "KD +37",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 37
+      },
+      "notes": "Invincible to airborne strikes on upper body and extended leg on frames 9-22"
+    },
+    {
+      "name": "OD Rond-point",
+      "input": "236KK",
+      "damage": "800 (500*300)",
+      "startup": "8",
+      "active": "4(2)3",
+      "recovery": "25(30)",
+      "onBlock": "-19",
+      "onHit": "KD +45",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 45
+      },
+      "notes": "Invincible to airborne strikes on frames 4-16"
+    },
+    {
+      "name": "LK Dégagé",
+      "input": "214LK",
+      "damage": "1000 (300*700)",
+      "startup": "16",
+      "active": "2(10)4",
+      "recovery": "36",
+      "onBlock": "-24",
+      "onHit": "KD +21",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 21
+      },
+      "notes": "Very far range and fast low hitting sweep (jump scare Low)"
+    },
+    {
+      "name": "MK Dégagé",
+      "input": "214MK",
+      "damage": "1200 (400*800)",
+      "startup": "16",
+      "active": "4(14)6",
+      "recovery": "22",
+      "onBlock": "-13",
+      "onHit": "KD +33",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Airborne on frames 15-39 (Forced Knockdown state)"
+    },
+    {
+      "name": "HK Dégagé",
+      "input": "214HK",
+      "damage": "1000",
+      "startup": "20(21)",
+      "active": "3(2)",
+      "recovery": "24",
+      "onBlock": "-9",
+      "onHit": "3",
+      "category": "special",
+      "notes": "Overhead"
+    },
+    {
+      "name": "OD Dégagé",
+      "input": "214KK",
+      "damage": "800",
+      "startup": "22(23)",
+      "active": "3",
+      "recovery": "22",
+      "onBlock": "-3",
+      "onHit": "6(7)",
+      "category": "special",
+      "notes": "Overhead"
+    },
+    {
+      "name": "LP Renversé",
+      "input": "236LP",
+      "damage": "1350-1950",
+      "startup": "22",
+      "active": "2",
+      "recovery": "37",
+      "onBlock": "-23",
+      "onHit": "HKD +15",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "hard",
+        "advantage": 15
+      },
+      "notes": "Projectile invincible on frames 3-21"
+    },
+    {
+      "name": "MP Renversé",
+      "input": "236MP",
+      "damage": "1400-2000",
+      "startup": "25",
+      "active": "2",
+      "recovery": "34",
+      "onBlock": "-20",
+      "onHit": "HKD +15",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "hard",
+        "advantage": 15
+      },
+      "notes": "Projectile invincible on frames 3-24"
+    },
+    {
+      "name": "HP Renversé",
+      "input": "236HP",
+      "damage": "1500-2100",
+      "startup": "29",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-16",
+      "onHit": "HKD +15",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "hard",
+        "advantage": 15
+      },
+      "notes": "Projectile invincible on frames 3-28"
+    },
+    {
+      "name": "OD Renversé",
+      "input": "236PP",
+      "damage": "1500-2100",
+      "startup": "25",
+      "active": "2",
+      "recovery": "34",
+      "onBlock": "-20",
+      "onHit": "HKD +15",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 15
+      },
+      "notes": "Fully projectile invincible as well as Strike invincible on all body except her feet (susceptible to low attacks) on frames 3-26"
+    },
+    {
+      "name": "Grand Fouetté",
+      "input": "236P > K",
+      "damage": "800",
+      "startup": "16(18)+10",
+      "active": "6",
+      "recovery": "22",
+      "onBlock": "-5",
+      "onHit": "KD +51",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 51
+      },
+      "notes": "The start-up frames the spin is cancelable into the kick follow-up from depends on the spin version (LP: frames 16-20 | MP: frames 17-21 | HP: frames 18-22)"
+    },
+    {
+      "name": "OD Grand Fouetté",
+      "input": "236PP > K",
+      "damage": "800",
+      "startup": "15+10",
+      "active": "6",
+      "recovery": "22",
+      "onBlock": "-12",
+      "onHit": "KD +58",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 58
+      },
+      "notes": "The OD spin is cancelable into the follow-up kick on frames 15-19"
+    },
+    {
+      "name": "Arabesque",
+      "input": "236236K",
+      "damage": "2000",
+      "startup": "10",
+      "active": "4",
+      "recovery": "65",
+      "onBlock": "-49",
+      "onHit": "KD +7",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 7
+      },
+      "notes": "Strike and Throw invincible on frames 1-13"
+    },
+    {
+      "name": "Étoile",
+      "input": "214214K",
+      "damage": "2800",
+      "startup": "7",
+      "active": "3(11)6(45)9",
+      "recovery": "38+34",
+      "onBlock": "-61(-118)",
+      "onHit": "KD +32",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Fully invincible on frames 1-9"
+    },
+    {
+      "name": "Pas de Deux",
+      "input": "236236P",
+      "damage": "4000(4600)",
+      "startup": "6+1",
+      "active": "2",
+      "recovery": "72",
+      "onBlock": "-",
+      "onHit": "HKD +16",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 16
+      },
+      "notes": "Fully invincible on frames 1-8"
+    },
+    {
+      "name": "Pas de Deux (Critical Art)",
+      "input": "236236P (CA)",
+      "damage": "4500(5100)",
+      "startup": "6+1",
+      "active": "2",
+      "recovery": "72",
+      "onBlock": "-",
+      "onHit": "HKD +16",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 16
+      },
+      "notes": "Fully invincible on frames 1-8"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

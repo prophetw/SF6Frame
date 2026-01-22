@@ -1,0 +1,1313 @@
+{
+  "character": {
+    "id": "mai",
+    "name": "Mai",
+    "nameJp": "不知火舞"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 18,
+    "backDash": 23,
+    "forwardWalk": 0.05,
+    "backWalk": 0.035
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "7",
+      "onBlock": "-2",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "600",
+      "startup": "8",
+      "active": "4",
+      "recovery": "15",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Decent range with strong hitbox priority and fully cancelable makes this a solid neutral tool"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Core combo and whiff punish tool that leads into Mai's highest damage routes"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "8",
+      "onBlock": "-1",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Very short range but goes into the LK Target Combo follow-ups"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "700",
+      "startup": "9",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-4",
+      "onHit": "5",
+      "category": "normal",
+      "notes": "Good combo / poke / whiff punish tool"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "900",
+      "startup": "14",
+      "active": "3",
+      "recovery": "19(22)",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "notes": "Good whiff punish tool"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "7",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "600",
+      "startup": "6",
+      "active": "4",
+      "recovery": "15(17)",
+      "onBlock": "-3",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Decent combo / buffer tool"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "800 (400*400)",
+      "startup": "10",
+      "active": "2(8)3",
+      "recovery": "19",
+      "onBlock": "-3",
+      "onHit": "4",
+      "category": "normal",
+      "notes": "Mostly a combo tool (like from Drive Rush) but the first hit does have very strong hitbox priority for counter-poking"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "3",
+      "recovery": "8",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "500",
+      "startup": "7",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "-6",
+      "onHit": "-2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Your average SF6 crouch MK"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900",
+      "startup": "9",
+      "active": "3",
+      "recovery": "22(23)(25)",
+      "onBlock": "-11",
+      "onHit": "KD +38",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Has good hitbox priority against low attacks (the extended kick hurtbox can effectively low crush some low attacks)"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "9",
+      "recovery": "-",
+      "onBlock": "3~6",
+      "onHit": "6~9",
+      "category": "normal",
+      "notes": "Fast air-to-air option"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "600",
+      "startup": "7",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "3~7",
+      "onHit": "7~11 (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "3~11",
+      "onHit": "7~15",
+      "category": "normal",
+      "notes": "Good hitbox for vertical air approaches"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "7",
+      "recovery": "-",
+      "onBlock": "1~6",
+      "onHit": "5~10",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "500",
+      "startup": "7",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "4~9",
+      "onHit": "8~13",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800",
+      "startup": "10",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "7~11",
+      "onHit": "11~15",
+      "category": "normal",
+      "notes": "Furthest horizontal range of Mai's jump-in attacks"
+    },
+    {
+      "name": "Senkotsu Uchi",
+      "input": "6MP",
+      "damage": "600",
+      "startup": "20",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "unique",
+      "notes": "Fast Overhead with decent frame advantage (can meaty on last active frame to get jab combo follow-ups)"
+    },
+    {
+      "name": "Handstand Kick",
+      "input": "4HK",
+      "damage": "800",
+      "startup": "8",
+      "active": "5",
+      "recovery": "20",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "unique",
+      "notes": "Legs and lower body (keep in mind Mai is upside down) are invincible to airborne strikes on frames 8-12 making this a fantastic anti-air"
+    },
+    {
+      "name": "Hien Ren Kyaku 1",
+      "input": "5LK > 5LK",
+      "damage": "400",
+      "startup": "7",
+      "active": "2",
+      "recovery": "20",
+      "onBlock": "-10",
+      "onHit": "-2",
+      "category": "unique",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Forces stand on hit"
+    },
+    {
+      "name": "Hien Ren Kyaku 2",
+      "input": "5LK > 5LK > 5LK",
+      "damage": "500",
+      "startup": "10",
+      "active": "2",
+      "recovery": "24+4",
+      "onBlock": "-10",
+      "onHit": "3",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "SA2"
+      ],
+      "notes": "Mai leaps off the opponent and can be followed up with a Musasabi no Mai (Divekick) or SA2 before landing (Divekick can be delayed quite a bit for potentially better angle and + frames on Flame Stock version)"
+    },
+    {
+      "name": "Hoshi Kujaku",
+      "input": "4HK > 5HK",
+      "damage": "2000 (800*600*600) {1200 (600x2)}",
+      "startup": "9",
+      "active": "3",
+      "recovery": "30(38)",
+      "onBlock": "-11",
+      "onHit": "KD +48",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 48
+      },
+      "notes": "Extremely easy to hit confirm (28F window)"
+    },
+    {
+      "name": "Shiranui Gourin",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +21",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 21
+      },
+      "notes": "Throw Loop: Dash up for +3 mixup between strike / throw (corner only)"
+    },
+    {
+      "name": "Fuusha Kuzushi",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +17",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 17
+      },
+      "notes": "Back Throw oki: Can do meaty attacks or Drive Rush into strike / throw (corner only)"
+    },
+    {
+      "name": "Yume Zakura",
+      "input": "LPLK (air)",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD +20",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Corner Air Throw: Dash up for +2 mixup between strike / throw (corner only)"
+    },
+    {
+      "name": "Drive Impact: Botan Ichige",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Yusura Ume",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "Taunt",
+      "input": "5PPPKKK",
+      "damage": "800 (1500)",
+      "startup": "430",
+      "active": "121",
+      "recovery": "213",
+      "onBlock": "-234",
+      "onHit": "KD -171",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Back Taunt is 430F start-up that spawns 8-hit Super projectile hitboxes on both sides of Mai"
+    },
+    {
+      "name": "LP Kachousen",
+      "input": "236LP",
+      "damage": "500",
+      "startup": "16",
+      "active": "-",
+      "recovery": "32",
+      "onBlock": "-7",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "LP Kachousen (stock)",
+      "input": "236LP (stock)",
+      "damage": "600 (300*300)",
+      "startup": "16",
+      "active": "-",
+      "recovery": "29",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Enhanced: 1 extra hit, +100 damage (600 damage total) and cannot be swatted away by the opponents attacks (functions like a regular projectile)"
+    },
+    {
+      "name": "MP Kachousen",
+      "input": "236MP",
+      "damage": "500",
+      "startup": "14",
+      "active": "-",
+      "recovery": "34",
+      "onBlock": "-9",
+      "onHit": "-3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "MP Kachousen (stock)",
+      "input": "236MP (stock)",
+      "damage": "600 (300*300)",
+      "startup": "14",
+      "active": "-",
+      "recovery": "31",
+      "onBlock": "-5",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Enhanced: 1 extra hit, +100 damage (600 damage total) and cannot be swatted away by the opponents attacks (functions like a regular projectile)"
+    },
+    {
+      "name": "HP Kachousen",
+      "input": "236HP",
+      "damage": "500",
+      "startup": "12",
+      "active": "-",
+      "recovery": "36",
+      "onBlock": "-11",
+      "onHit": "-5",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "HP Kachousen (stock)",
+      "input": "236HP (stock)",
+      "damage": "600 (300*300)",
+      "startup": "12",
+      "active": "-",
+      "recovery": "33",
+      "onBlock": "-7",
+      "onHit": "-3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Enhanced: 1 extra hit, +100 damage (600 damage total) and cannot be swatted away by the opponents attacks (functions like a regular projectile)"
+    },
+    {
+      "name": "Kachousen (hold)",
+      "input": "236P (hold)",
+      "damage": "500*200",
+      "startup": "32",
+      "active": "-",
+      "recovery": "30",
+      "onBlock": "-1",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "Kachousen (stock + hold)",
+      "input": "236P (stock + hold)",
+      "damage": "800 (300x2*200)",
+      "startup": "32",
+      "active": "-",
+      "recovery": "30",
+      "onBlock": "-1",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Enhanced: 1 extra hit and +100 damage (600 damage) before the bounce"
+    },
+    {
+      "name": "OD Kachousen",
+      "input": "236PP",
+      "damage": "500*200",
+      "startup": "12",
+      "active": "-",
+      "recovery": "30",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "1-hit OD projectile"
+    },
+    {
+      "name": "OD Kachousen (stock)",
+      "input": "236PP (stock)",
+      "damage": "800 (300x2*200)",
+      "startup": "12",
+      "active": "-",
+      "recovery": "30",
+      "onBlock": "1",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Enhanced: 1 extra hit, +100 damage (600 damage) before the bounce, and grants +1 frame advantage on block (regular OD version is -3 on block)"
+    },
+    {
+      "name": "OD Kachousen (hold)",
+      "input": "236PP (hold)",
+      "damage": "600 (300*300)",
+      "startup": "28,48",
+      "active": "-",
+      "recovery": "10",
+      "onBlock": "12",
+      "onHit": "14",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Two separate 1-hit OD projectiles"
+    },
+    {
+      "name": "OD Kachousen (stock + hold)",
+      "input": "236PP (stock + hold)",
+      "damage": "700 (200x2*150x2)",
+      "startup": "28,48",
+      "active": "-",
+      "recovery": "10",
+      "onBlock": "46(53)",
+      "onHit": "45(52)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Enhanced: Both fans bounce upwards after connecting on hit / block and they all naturally combo for +100 extra damage (700 damage total)"
+    },
+    {
+      "name": "Midare Kachousen",
+      "input": "236PP (hold) > 6P",
+      "damage": "1200 (300x2*150x2*300)",
+      "startup": "28,48,72",
+      "active": "-",
+      "recovery": "24",
+      "onBlock": "0",
+      "onHit": "KD +61(KD ~)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 61
+      },
+      "notes": "Two separate 1-hit OD projectiles (Four separate OD projectiles in total if you factor in the prior OD Kachousen)"
+    },
+    {
+      "name": "Midare Kachousen (stock)",
+      "input": "236PP (stock + hold) > 6P",
+      "damage": "1400 (200x4*150*300*150)",
+      "startup": "28,48,72",
+      "active": "-",
+      "recovery": "24",
+      "onBlock": "33~40(15~39)",
+      "onHit": "KD +60(KD ~)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 60
+      },
+      "notes": "Enhanced: Deals +200 extra damage on a regular hit (1400 damage total) with both the initial OD fans as well as the follow-up fans all bounce, resulting in 8 projectiles total (4 hitting directly, and 4 bouncing) which gives Mai huge frame advantage on block"
+    },
+    {
+      "name": "LK Hishou Ryuuenjin",
+      "input": "623LK",
+      "damage": "900 (400*500)",
+      "startup": "5",
+      "active": "5*13",
+      "recovery": "15+15",
+      "onBlock": "-29(-32)",
+      "onHit": "KD +29",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Invincible to airborne strikes on frames 1-14"
+    },
+    {
+      "name": "LK Hishou Ryuuenjin (stock)",
+      "input": "623LK (stock)",
+      "damage": "1000 (400*300x2)",
+      "startup": "5",
+      "active": "5*2*11",
+      "recovery": "15+15",
+      "onBlock": "-29(-32)",
+      "onHit": "KD +31",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 31
+      },
+      "notes": "Enhanced: 1 extra hit and 100 extra damage (1000 damage total) as well as slightly higher KDA (KD +31 instead of +29)"
+    },
+    {
+      "name": "MK Hishou Ryuuenjin",
+      "input": "623MK",
+      "damage": "1100 (500*600)",
+      "startup": "6",
+      "active": "5*13",
+      "recovery": "14+15",
+      "onBlock": "-28(-31)",
+      "onHit": "KD +31",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 31
+      },
+      "notes": "Invincible to airborne strikes on frames 1-10"
+    },
+    {
+      "name": "MK Hishou Ryuuenjin (stock)",
+      "input": "623MK (stock)",
+      "damage": "1200 (500*350x2)",
+      "startup": "6",
+      "active": "5*2*12",
+      "recovery": "13+15",
+      "onBlock": "-28(-31)",
+      "onHit": "KD +32",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Enhanced: 1 extra hit and 100 extra damage (1200 damage total) as well as slightly higher KDA (KD +32 instead of +31)"
+    },
+    {
+      "name": "HK Hishou Ryuuenjin",
+      "input": "623HK",
+      "damage": "1200 (600*600)",
+      "startup": "7",
+      "active": "5*13",
+      "recovery": "14+15",
+      "onBlock": "-28(-31)",
+      "onHit": "KD +31",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 31
+      },
+      "notes": "Invincible to airborne strikes on frames 1-11"
+    },
+    {
+      "name": "HK Hishou Ryuuenjin (stock)",
+      "input": "623HK (stock)",
+      "damage": "1300 (500*400x2)",
+      "startup": "7",
+      "active": "5*2*11",
+      "recovery": "14+15",
+      "onBlock": "-28(-31)",
+      "onHit": "KD +32",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Enhanced: 1 extra hit and 100 extra damage (1300 damage total) as well as slightly higher KDA (KD +32 instead of +31)"
+    },
+    {
+      "name": "OD Hishou Ryuuenjin",
+      "input": "623KK",
+      "damage": "1600 (800*800)",
+      "startup": "6",
+      "active": "5*12",
+      "recovery": "19+16(23)",
+      "onBlock": "-40(-47)",
+      "onHit": "KD +20",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Fully invincible on frames 1-8 and further invincible to airborne strikes on frames 9-10"
+    },
+    {
+      "name": "OD Hishou Ryuuenjin (stock)",
+      "input": "623KK (stock)",
+      "damage": "1700 (800*500*400)",
+      "startup": "6",
+      "active": "5*2*11",
+      "recovery": "18+16(23)",
+      "onBlock": "-40(-47)",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Enhanced: 1 extra hit and 100 extra damage (1700 damage total) as well as better oki (KD +27 instead of +20)"
+    },
+    {
+      "name": "LP Ryuuenbu",
+      "input": "214LP",
+      "damage": "800",
+      "startup": "14",
+      "active": "7",
+      "recovery": "15",
+      "onBlock": "-4",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Strike hitbox that also can also nullify 1 hit of a non-OD projectile"
+    },
+    {
+      "name": "LP Ryuuenbu (stock)",
+      "input": "214LP (stock)",
+      "damage": "900",
+      "startup": "14",
+      "active": "7",
+      "recovery": "15",
+      "onBlock": "-2",
+      "onHit": "KD +35",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Enhanced: +100 damage (900 damage total), safe on block (-2 instead of -4), and knocks down on normal hit (Knockdown doesn't require Counter-Hit or Punish Counter)"
+    },
+    {
+      "name": "MP Ryuuenbu",
+      "input": "214MP",
+      "damage": "1000 (200*800)",
+      "startup": "14",
+      "active": "2(9)7",
+      "recovery": "16",
+      "onBlock": "-6",
+      "onHit": "KD +35",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Strike hitbox that also can also nullify 1 hit of a non-OD projectile on the second hit"
+    },
+    {
+      "name": "MP Ryuuenbu (stock)",
+      "input": "214MP (stock)",
+      "damage": "1100 (200*900)",
+      "startup": "14",
+      "active": "2(9)7",
+      "recovery": "16",
+      "onBlock": "-6",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Enhanced: +100 damage (1100 damage total) and better oki (KD +42 instead of KD +35)"
+    },
+    {
+      "name": "HP Ryuuenbu",
+      "input": "214HP",
+      "damage": "800 (200*600)",
+      "startup": "15",
+      "active": "3(9)10",
+      "recovery": "12",
+      "onBlock": "-6",
+      "onHit": "KD +43",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 43
+      },
+      "notes": "Head hurtbox is invincible to airborne strikes on frames 6-17 (situational but slow anti-air option)"
+    },
+    {
+      "name": "HP Ryuuenbu (stock)",
+      "input": "214HP (stock)",
+      "damage": "900 (200*700)",
+      "startup": "15",
+      "active": "3(9)10",
+      "recovery": "12",
+      "onBlock": "-6",
+      "onHit": "KD +47",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 47
+      },
+      "notes": "Enhanced: +100 damage (900 damage total), no additional damage scaling, and better juggles / oki (KD +47 instead of KD +43)"
+    },
+    {
+      "name": "OD Ryuuenbu",
+      "input": "214PP",
+      "damage": "1000 (200*400x2)",
+      "startup": "16",
+      "active": "2(12)5(7)5",
+      "recovery": "16(24)",
+      "onBlock": "-12",
+      "onHit": "KD +48",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 48
+      },
+      "notes": "Strike hitbox that can also nullify 1 hit of OD projectile on the second and third hit"
+    },
+    {
+      "name": "OD Ryuuenbu (stock)",
+      "input": "214PP (stock)",
+      "damage": "1100 (200*450x2)",
+      "startup": "16",
+      "active": "2(12)5(7)5",
+      "recovery": "16(24)",
+      "onBlock": "-12",
+      "onHit": "KD +48",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 48
+      },
+      "notes": "Enhanced: +100 damage (1100 damage total) and better juggle routes (Juggle Increase +1 instead of +2)"
+    },
+    {
+      "name": "LK Hissatsu Shinobi Bachi",
+      "input": "236LK",
+      "damage": "800 (400*400)",
+      "startup": "10",
+      "active": "2(11)17",
+      "recovery": "16",
+      "onBlock": "-10(6)",
+      "onHit": "KD +27(43)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Core combo tool with fantastic corner carry"
+    },
+    {
+      "name": "LK Hissatsu Shinobi Bachi (stock)",
+      "input": "236LK (stock)",
+      "damage": "900 (400*500)",
+      "startup": "10",
+      "active": "2(11)17",
+      "recovery": "16",
+      "onBlock": "-10(6)",
+      "onHit": "KD +27(43)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Enhanced: +100 extra damage on the second hit (900 damage total)"
+    },
+    {
+      "name": "MK Hissatsu Shinobi Bachi",
+      "input": "236MK",
+      "damage": "900 (450*450)",
+      "startup": "15",
+      "active": "2(11)17",
+      "recovery": "20",
+      "onBlock": "-12(4)",
+      "onHit": "KD +23(39)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Core combo tool with fantastic corner carry"
+    },
+    {
+      "name": "MK Hissatsu Shinobi Bachi (stock)",
+      "input": "236MK (stock)",
+      "damage": "1000 (450*550)",
+      "startup": "15",
+      "active": "2(11)17",
+      "recovery": "20",
+      "onBlock": "-12(4)",
+      "onHit": "KD +23(39)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Enhanced: +100 extra damage on second hit (1000 damage total)"
+    },
+    {
+      "name": "HK Hissatsu Shinobi Bachi",
+      "input": "236HK",
+      "damage": "1000 (500*500)",
+      "startup": "18",
+      "active": "2(11)17",
+      "recovery": "21",
+      "onBlock": "-13(3)",
+      "onHit": "KD +22(38)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Core combo tool with fantastic corner carry"
+    },
+    {
+      "name": "HK Hissatsu Shinobi Bachi (stock)",
+      "input": "236HK (stock)",
+      "damage": "1100 (500*600)",
+      "startup": "18",
+      "active": "2(11)17",
+      "recovery": "21",
+      "onBlock": "-13(3)",
+      "onHit": "KD +22(38)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Enhanced: +100 extra damage on second hit (1100 damage total)"
+    },
+    {
+      "name": "OD Hissatsu Shinobi Bachi",
+      "input": "236KK",
+      "damage": "800 (400*400)",
+      "startup": "14",
+      "active": "2(13)17",
+      "recovery": "29+3",
+      "onBlock": "-12",
+      "onHit": "KD +27",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be followed-up with airborne normals / specials on frames 54-74 (air follow-ups are not possible on block)"
+    },
+    {
+      "name": "OD Hissatsu Shinobi Bachi (stock)",
+      "input": "236KK (stock)",
+      "damage": "900 (400*500)",
+      "startup": "14",
+      "active": "2(13)17",
+      "recovery": "29+3",
+      "onBlock": "-12",
+      "onHit": "KD +27",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Enhanced: +100 extra damage on second hit (900 damage total)"
+    },
+    {
+      "name": "Musasabi no Mai",
+      "input": "214P (air)",
+      "damage": "1000",
+      "startup": "21",
+      "active": "until land",
+      "recovery": "18(28)",
+      "onBlock": "-8(-1)",
+      "onHit": "KD +38(45)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Can only be performed during a forward jump"
+    },
+    {
+      "name": "Musasabi no Mai (stock)",
+      "input": "214P (stock + air)",
+      "damage": "1100",
+      "startup": "21",
+      "active": "until land",
+      "recovery": "18(28)",
+      "onBlock": "-5(2)",
+      "onHit": "KD +39(46)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Enhanced: +100 damage (1100 damage total) and slightly better frame advantage on hit / block"
+    },
+    {
+      "name": "OD Musasabi no Mai",
+      "input": "214PP (air)",
+      "damage": "1200",
+      "startup": "21",
+      "active": "until land",
+      "recovery": "18(28)",
+      "onBlock": "-8(-1)",
+      "onHit": "KD +44(51)",
+      "category": "special",
+      "cancels": [
+        "SA2"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 44
+      },
+      "notes": "Can only be performed during a forward jump"
+    },
+    {
+      "name": "OD Musasabi no Mai (stock)",
+      "input": "214PP (stock + air)",
+      "damage": "1300",
+      "startup": "21",
+      "active": "until land",
+      "recovery": "18(28)",
+      "onBlock": "-5(2)",
+      "onHit": "KD +51(60)",
+      "category": "special",
+      "cancels": [
+        "SA2"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 51
+      },
+      "notes": "Enhanced: +100 damage (1300 damage total), better frame advantage on hit / block, and better juggle potential (even causes OTG ground bounce on airborne hits)"
+    },
+    {
+      "name": "Kagerou no Mai",
+      "input": "236236P",
+      "damage": "2000 (250x8)",
+      "startup": "6",
+      "active": "4x6*1*1",
+      "recovery": "59",
+      "onBlock": "-31",
+      "onHit": "KD +26",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "Strike and Throw invincible on frames 1-8"
+    },
+    {
+      "name": "Kagerou no Mai (stock)",
+      "input": "236236P (stock)",
+      "damage": "2300 (150x10*300*500)",
+      "startup": "6",
+      "active": "7x9*4*20*3",
+      "recovery": "46",
+      "onBlock": "-26",
+      "onHit": "KD +40",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Enhanced: +300 damage (2300 total), better oki (KD +40 instead of +28) and increased horizontal range"
+    },
+    {
+      "name": "Chou Hissatsu Shinobi Bachi",
+      "input": "236236K",
+      "damage": "2800 (500x4*800)",
+      "startup": "7",
+      "active": "2(3)2(12)2(4)2(6)3",
+      "recovery": "26(37)",
+      "onBlock": "-24",
+      "onHit": "KD +33",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Fully invincible on frames 1-8"
+    },
+    {
+      "name": "Chou Hissatsu Shinobi Bachi (stock)",
+      "input": "236236K (stock)",
+      "damage": "3000 (200x11*800)",
+      "startup": "7",
+      "active": "3x12",
+      "recovery": "31(37)",
+      "onBlock": "-24",
+      "onHit": "KD +38",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Enhanced: Gains Projectile invincibility extension and +200 damage (3000 total), making this a very strong tool against other projectile users"
+    },
+    {
+      "name": "Air Chou Hissatsu Shinobi Bachi",
+      "input": "236236K (air)",
+      "damage": "2800 (500x4*800)",
+      "startup": "3",
+      "active": "2(2)2(2)2(3)2(2)3",
+      "recovery": "24 landing",
+      "onBlock": "-50+",
+      "onHit": "KD +6(11)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 6
+      },
+      "notes": "No form of invincibility whatsoever"
+    },
+    {
+      "name": "Air Chou Hissatsu Shinobi Bachi (stock)",
+      "input": "236236K (stock + air)",
+      "damage": "3000 (200x11*800)",
+      "startup": "3",
+      "active": "2x12",
+      "recovery": "24 landing",
+      "onBlock": "-50+",
+      "onHit": "KD +7(17)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 7
+      },
+      "notes": "Enhanced: +200 damage (3000 total)"
+    },
+    {
+      "name": "Shiranui Ryuu: Enbu Ada Zakura",
+      "input": "214214P",
+      "damage": "4000 (2300~3000)",
+      "startup": "10(3)",
+      "active": "2(4)2(15)4(8)4",
+      "recovery": "46",
+      "onBlock": "-33",
+      "onHit": "HKD +19",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 19
+      },
+      "notes": "Fully invincible on frames 1-11"
+    },
+    {
+      "name": "Shiranui Ryuu: Enbu Ada Zakura (Critical Art)",
+      "input": "214214P (CA)",
+      "damage": "4500 (2300~3000)",
+      "startup": "10(3)",
+      "active": "2(4)2(15)4(8)4",
+      "recovery": "46",
+      "onBlock": "-33",
+      "onHit": "HKD +20",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 20
+      },
+      "notes": "Fully invincible on frames 1-11"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

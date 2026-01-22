@@ -1,0 +1,5509 @@
+{
+  "character": {
+    "id": "jamie",
+    "name": "Jamie",
+    "nameJp": "ジェイミー"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 19,
+    "backDash": 23,
+    "forwardWalk": 0.048,
+    "backWalk": 0.035
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "270",
+      "startup": "5",
+      "active": "2",
+      "recovery": "7",
+      "onBlock": "0",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Different stand LP from the level 1 Drink Level version"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "540",
+      "startup": "8",
+      "active": "4",
+      "recovery": "14",
+      "onBlock": "2",
+      "onHit": "6",
+      "category": "normal",
+      "notes": "Jamie's main frametrap / combo tool"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "810 (90x2*630)",
+      "startup": "5",
+      "active": "1(1)1(4)3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Very fast start-up and fast 3-hit string makes this a super strong tool against Drive Impacts and other armor moves"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "270",
+      "startup": "5",
+      "active": "2",
+      "recovery": "11",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "540",
+      "startup": "9",
+      "active": "3",
+      "recovery": "17(18)",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Great poke and buffer tool at close / mid-range"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "720",
+      "startup": "15",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-5",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Causes a crumple-like free juggle state on a grounded Punish Counter (opponent is in a grounded state for +9 frames before going airborne)"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "225",
+      "startup": "4",
+      "active": "2",
+      "recovery": "9",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "540",
+      "startup": "6",
+      "active": "3",
+      "recovery": "13(15)",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Good combo / buffer / frametrap tool with strong hitbox priority"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "810",
+      "startup": "8",
+      "active": "5",
+      "recovery": "23",
+      "onBlock": "-8",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Forces stand"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "180",
+      "startup": "5",
+      "active": "2",
+      "recovery": "11",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "450",
+      "startup": "7",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Incurs 20% hit damage scaling penalty if used as the first hit of a combo"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "720 (360*360)",
+      "startup": "9",
+      "active": "2(3)2",
+      "recovery": "28(29)",
+      "onBlock": "-11",
+      "onHit": "KD +33",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Second hit has quite bit a further range than the first hit"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "270",
+      "startup": "5",
+      "active": "9",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "630",
+      "startup": "7",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "cancels": [
+        "Special"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "720",
+      "startup": "10",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "270",
+      "startup": "6",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Has the furthest horizontal range of all of Jamie's jump-ins"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "450",
+      "startup": "7",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "810 (405*405)",
+      "startup": "8",
+      "active": "3(5)4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Amazing air-to-air / anti-air tool due to the rewards it leads to on airborne hit"
+    },
+    {
+      "name": "Indian Step",
+      "input": "5LK (mash)",
+      "damage": "270 ∞",
+      "startup": "5",
+      "active": "2(11)2 ∞",
+      "recovery": "11",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Tensei Kick",
+      "input": "2KK",
+      "damage": "540",
+      "startup": "9",
+      "active": "3",
+      "recovery": "22",
+      "onBlock": "-8",
+      "onHit": "KD +53",
+      "category": "unique",
+      "cancels": [
+        "j"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 53
+      },
+      "notes": "Jamie's head and kicking leg hurtboxes are invincible to airborne strikes on frames 9-11 (during the 3 active frames)"
+    },
+    {
+      "name": "Falling Star Kick",
+      "input": "6MK",
+      "damage": "540",
+      "startup": "22",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "unique",
+      "notes": "Overhead"
+    },
+    {
+      "name": "Hermit's Elbow",
+      "input": "4HP",
+      "damage": "720",
+      "startup": "18",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "unique",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Jamie pulls back his hurtboxes on frames 5-12 before striking back with his elbow (can be used to avoid throws and attacks, and then Punish Countering them)"
+    },
+    {
+      "name": "Senei Kick",
+      "input": "6HK",
+      "damage": "810",
+      "startup": "16",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "unique",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Not a low attack (despite what it looks like)"
+    },
+    {
+      "name": "Phantom Sway",
+      "input": "2HK > HK",
+      "damage": "450",
+      "startup": "12",
+      "active": "3",
+      "recovery": "43",
+      "onBlock": "-28",
+      "onHit": "KD +22",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Jamie's optimal juggle ender to raising his drink levels"
+    },
+    {
+      "name": "Phantom Sway + Drink",
+      "input": "2HK > HK > P",
+      "damage": "450",
+      "startup": "9+12+Drink",
+      "active": "2(3)2(17)3 {~}",
+      "recovery": "61",
+      "onBlock": "-46",
+      "onHit": "KD +4",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 4
+      },
+      "notes": "Grants +1 Drink Level to Jamie"
+    },
+    {
+      "name": "Back Shaver",
+      "input": "LPLK",
+      "damage": "1080(1836)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +23(+7)",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Throw Loop: Dash up for +4 mixup between throw/strike (not possible on mid-screen back-roll)"
+    },
+    {
+      "name": "Wheel Punch",
+      "input": "4LPLK",
+      "damage": "1080(1836)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +26",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "Back Throw Loop: Can Drive Rush into meaty strike / throw mix when performed while cornered"
+    },
+    {
+      "name": "Drive Impact: Vainglory Strike",
+      "input": "HPHK",
+      "damage": "720",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Leg Sweep",
+      "input": "6HPHK",
+      "damage": "450",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "LP Freeflow Strikes",
+      "input": "236LP",
+      "damage": "315",
+      "startup": "13",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "LP Freeflow Strikes 2",
+      "input": "236LP > 6P",
+      "damage": "315",
+      "startup": "13",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-13",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "LP Freeflow Strikes 3",
+      "input": "236LP > 6P > 6P",
+      "damage": "495",
+      "startup": "13",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-17",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "LP Freeflow Kicks 2",
+      "input": "236LP > 6K",
+      "damage": "225",
+      "startup": "14",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "LP Freeflow Kicks 3",
+      "input": "236LP > 6K > 6K",
+      "damage": "405",
+      "startup": "18",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD -1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "MP Freeflow Strikes",
+      "input": "236MP",
+      "damage": "360",
+      "startup": "16",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "MP Freeflow Strikes 2",
+      "input": "236MP > 6P",
+      "damage": "360",
+      "startup": "16",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-11",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "MP Freeflow Strikes 3",
+      "input": "236MP > 6P > 6P",
+      "damage": "540",
+      "startup": "16",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-15",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "MP Freeflow Kicks 2",
+      "input": "236MP > 6K",
+      "damage": "270",
+      "startup": "17",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "MP Freeflow Kicks 3",
+      "input": "236MP > 6K > 6K",
+      "damage": "450",
+      "startup": "21",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD -1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "HP Freeflow Strikes",
+      "input": "236HP",
+      "damage": "405",
+      "startup": "19",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "HP Freeflow Strikes 2",
+      "input": "236HP > 6P",
+      "damage": "405",
+      "startup": "19",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-9",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "HP Freeflow Strikes 3",
+      "input": "236HP > 6P > 6P",
+      "damage": "585",
+      "startup": "19",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-13",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "HP Freeflow Kicks 2",
+      "input": "236HP > 6K",
+      "damage": "270",
+      "startup": "20",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "HP Freeflow Kicks 3",
+      "input": "236HP > 6K > 6K",
+      "damage": "495",
+      "startup": "24",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD -1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "OD Freeflow Strikes",
+      "input": "236PP",
+      "damage": "405",
+      "startup": "13",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "OD Freeflow Strikes 2",
+      "input": "236PP > 6P",
+      "damage": "405",
+      "startup": "13",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-9",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "OD Freeflow Strikes 3",
+      "input": "236PP > 6P > 6P",
+      "damage": "675",
+      "startup": "13",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-13",
+      "onHit": "KD +28",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 28
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "OD Freeflow Kicks 2",
+      "input": "236PP > 6K",
+      "damage": "315",
+      "startup": "16",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "OD Freeflow Kicks 3",
+      "input": "236PP > 6K > 6K",
+      "damage": "540",
+      "startup": "19",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD +1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 1
+      },
+      "notes": "Only Drink Rekka ender that's + on knockdown, granting Jamie an oki situation when used on a cornered opponent"
+    },
+    {
+      "name": "LP Swagger Step",
+      "input": "214LP",
+      "damage": "810",
+      "startup": "17",
+      "active": "9",
+      "recovery": "17",
+      "onBlock": "-6",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "A lot of active frames can be made + on block via spacing or oki"
+    },
+    {
+      "name": "MP Swagger Step",
+      "input": "214MP",
+      "damage": "900",
+      "startup": "20",
+      "active": "9",
+      "recovery": "17",
+      "onBlock": "-6",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "A lot of active frames can be made + on block via spacing or oki"
+    },
+    {
+      "name": "HP Swagger Step",
+      "input": "214HP",
+      "damage": "1080",
+      "startup": "25",
+      "active": "9",
+      "recovery": "16",
+      "onBlock": "-3",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Safe on block unlike LP/MP Palm and also +42 KD which sets Jamie up for a safe jump (same as his LK Breakdance at Drink Levels 2+)"
+    },
+    {
+      "name": "OD Swagger Step",
+      "input": "214PP",
+      "damage": "990",
+      "startup": "20",
+      "active": "9",
+      "recovery": "15",
+      "onBlock": "-1",
+      "onHit": "KD +73 (Tumble)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 73
+      },
+      "notes": "Sends opponents tumbling backwards (can hit them OTG in this tumbling state)"
+    },
+    {
+      "name": "LK Arrow Kick",
+      "input": "623LK",
+      "damage": "900 (450*450)",
+      "startup": "5",
+      "active": "10",
+      "recovery": "52",
+      "onBlock": "-44",
+      "onHit": "KD +42",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Invincible to airborne strikes on frames 1-11"
+    },
+    {
+      "name": "MK Arrow Kick",
+      "input": "623MK",
+      "damage": "1080 (450*630)",
+      "startup": "8",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +34",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Invincible to airborne strikes on frames 1-14"
+    },
+    {
+      "name": "HK Arrow Kick",
+      "input": "623HK",
+      "damage": "1260 (450*360*450)",
+      "startup": "10",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +39",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Invincible to airborne strikes on frames 1-16"
+    },
+    {
+      "name": "OD Arrow Kick",
+      "input": "623KK",
+      "damage": "1350 (450*405*495)",
+      "startup": "6",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +40",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Fully invincible on frames 1-9"
+    },
+    {
+      "name": "Breakin'",
+      "input": "236236K",
+      "damage": "1980(1665)",
+      "startup": "8",
+      "active": "2*7(6)5(6)2(7)2(7)2(6)2(6)2(6)2(29)2(9)2(6)2(5)2",
+      "recovery": "74(107)",
+      "onBlock": "-60(-93)",
+      "onHit": "KD +12(4)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 12
+      },
+      "notes": "Strike and Throw invincible on frames 1-12"
+    },
+    {
+      "name": "Getsuga Saiho",
+      "input": "236236P",
+      "damage": "2340",
+      "startup": "10",
+      "active": "3(13)3",
+      "recovery": "42",
+      "onBlock": "-27",
+      "onHit": "HKD +71",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 71
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Getsuga Saiho (Critical Art)",
+      "input": "236236P (CA)",
+      "damage": "4050",
+      "startup": "10",
+      "active": "3(13)3",
+      "recovery": "42",
+      "onBlock": "-27",
+      "onHit": "HKD +18",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 18
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "285",
+      "startup": "5",
+      "active": "3",
+      "recovery": "9",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Very good range for a light normal (slightly shorter range hitbox for crouching opponents)"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "570",
+      "startup": "8",
+      "active": "4",
+      "recovery": "14",
+      "onBlock": "2",
+      "onHit": "6",
+      "category": "normal",
+      "notes": "Jamie's main frametrap / combo tool"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "855 (95x2*665)",
+      "startup": "5",
+      "active": "1(1)1(4)3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Very fast start-up and fast 3-hit string makes this a super strong tool against Drive Impacts"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "285",
+      "startup": "5",
+      "active": "2",
+      "recovery": "11",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "570",
+      "startup": "9",
+      "active": "3",
+      "recovery": "17(18)",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Great poke and buffer tool at close / mid-range"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "760",
+      "startup": "15",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-5",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Causes a crumple-like free juggle state on a grounded Punish Counter (opponent is in a grounded state for +9 frames before going airborne)"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "237",
+      "startup": "4",
+      "active": "2",
+      "recovery": "9",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "570",
+      "startup": "6",
+      "active": "3",
+      "recovery": "13(15)",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Good combo / buffer / frametrap tool with strong hitbox priority"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "855",
+      "startup": "8",
+      "active": "5",
+      "recovery": "23",
+      "onBlock": "-8",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Forces stand"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "190",
+      "startup": "5",
+      "active": "2",
+      "recovery": "11",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "475",
+      "startup": "7",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Incurs 20% hit damage scaling penalty if used as the first hit of a combo"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "720 (360*360)",
+      "startup": "9",
+      "active": "2(3)2",
+      "recovery": "28(29)",
+      "onBlock": "-11",
+      "onHit": "KD +33",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Second hit has quite bit a further range than the first hit"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "285",
+      "startup": "5",
+      "active": "9",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "665",
+      "startup": "7",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "cancels": [
+        "Special"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "760",
+      "startup": "10",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "285",
+      "startup": "6",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Has the furthest horizontal range of all of Jamie's jump-ins"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "475",
+      "startup": "7",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "810 (405*405)",
+      "startup": "8",
+      "active": "3(5)4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Amazing air-to-air / anti-air tool due to the rewards it leads to on airborne hit"
+    },
+    {
+      "name": "Indian Step",
+      "input": "5LK (mash)",
+      "damage": "285 ∞",
+      "startup": "5",
+      "active": "2(11)2 ∞",
+      "recovery": "11",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Tensei Kick",
+      "input": "2KK",
+      "damage": "570",
+      "startup": "9",
+      "active": "3",
+      "recovery": "22",
+      "onBlock": "-8",
+      "onHit": "KD +53",
+      "category": "normal",
+      "cancels": [
+        "j"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 53
+      },
+      "notes": "Jamie's head and kicking leg hurtboxes are invincible to airborne strikes on frames 9-11 (during the 3 active frames)"
+    },
+    {
+      "name": "Falling Star Kick",
+      "input": "6MK",
+      "damage": "570",
+      "startup": "22",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Overhead"
+    },
+    {
+      "name": "Hermit's Elbow",
+      "input": "4HP",
+      "damage": "760",
+      "startup": "18",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Jamie pulls back his hurtboxes on frames 5-12 before striking back with his elbow (can be used to avoid throws and attacks, and then Punish Countering them)"
+    },
+    {
+      "name": "Senei Kick",
+      "input": "6HK",
+      "damage": "855",
+      "startup": "16",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Not a low attack (despite what it looks like)"
+    },
+    {
+      "name": "Phantom Sway",
+      "input": "2HK > HK",
+      "damage": "475",
+      "startup": "12",
+      "active": "3",
+      "recovery": "43",
+      "onBlock": "-28",
+      "onHit": "KD +22",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Jamie's optimal juggle ender to raising his drink levels"
+    },
+    {
+      "name": "Phantom Sway + Drink",
+      "input": "2HK > HK > P",
+      "damage": "475",
+      "startup": "9+12+Drink",
+      "active": "2(3)2(17)3 {~}",
+      "recovery": "61",
+      "onBlock": "-46",
+      "onHit": "KD +4",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 4
+      },
+      "notes": "Grants +1 Drink Level to Jamie"
+    },
+    {
+      "name": "Bitter Strikes 1 (Drink 1)",
+      "input": "5LP > 5LK",
+      "damage": "190",
+      "startup": "6",
+      "active": "2",
+      "recovery": "16",
+      "onBlock": "-8",
+      "onHit": "-3",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Good checking tool in neutral against incoming moves like Drive Rush"
+    },
+    {
+      "name": "Bitter Strikes 2 (Drink 1)",
+      "input": "5LP > 5LK > 5MP",
+      "damage": "475",
+      "startup": "8",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-10",
+      "onHit": "-1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Primary combo tool"
+    },
+    {
+      "name": "Back Shaver",
+      "input": "LPLK",
+      "damage": "1139(1937)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +23(+7)",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Throw Loop: Dash up for +4 mixup between throw/strike (not possible on mid-screen back-roll)"
+    },
+    {
+      "name": "Wheel Punch",
+      "input": "4LPLK",
+      "damage": "1139(1937)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +26",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "Back Throw Loop: Can Drive Rush into meaty strike / throw mix when performed while cornered"
+    },
+    {
+      "name": "Drive Impact: Vainglory Strike",
+      "input": "HPHK",
+      "damage": "760",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Leg Sweep",
+      "input": "6HPHK",
+      "damage": "475",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "LP Freeflow Strikes",
+      "input": "236LP",
+      "damage": "332",
+      "startup": "13",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "LP Freeflow Strikes 2",
+      "input": "236LP > 6P",
+      "damage": "332",
+      "startup": "13",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-13",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "LP Freeflow Strikes 3",
+      "input": "236LP > 6P > 6P",
+      "damage": "522",
+      "startup": "13",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-17",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "LP Freeflow Kicks 2",
+      "input": "236LP > 6K",
+      "damage": "237",
+      "startup": "14",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "LP Freeflow Kicks 3",
+      "input": "236LP > 6K > 6K",
+      "damage": "427",
+      "startup": "18",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD -1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "MP Freeflow Strikes",
+      "input": "236MP",
+      "damage": "380",
+      "startup": "16",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "MP Freeflow Strikes 2",
+      "input": "236MP > 6P",
+      "damage": "380",
+      "startup": "16",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-11",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "MP Freeflow Strikes 3",
+      "input": "236MP > 6P > 6P",
+      "damage": "570",
+      "startup": "16",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-15",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "MP Freeflow Kicks 2",
+      "input": "236MP > 6K",
+      "damage": "285",
+      "startup": "17",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "MP Freeflow Kicks 3",
+      "input": "236MP > 6K > 6K",
+      "damage": "475",
+      "startup": "21",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD -1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "HP Freeflow Strikes",
+      "input": "236HP",
+      "damage": "427",
+      "startup": "19",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "HP Freeflow Strikes 2",
+      "input": "236HP > 6P",
+      "damage": "427",
+      "startup": "19",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-9",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "HP Freeflow Strikes 3",
+      "input": "236HP > 6P > 6P",
+      "damage": "617",
+      "startup": "19",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-13",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "HP Freeflow Kicks 2",
+      "input": "236HP > 6K",
+      "damage": "285",
+      "startup": "20",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "HP Freeflow Kicks 3",
+      "input": "236HP > 6K > 6K",
+      "damage": "522",
+      "startup": "24",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD -1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "OD Freeflow Strikes",
+      "input": "236PP",
+      "damage": "427",
+      "startup": "13",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "OD Freeflow Strikes 2",
+      "input": "236PP > 6P",
+      "damage": "427",
+      "startup": "13",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-9",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "OD Freeflow Strikes 3",
+      "input": "236PP > 6P > 6P",
+      "damage": "712",
+      "startup": "13",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-13",
+      "onHit": "KD +28",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 28
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "OD Freeflow Kicks 2",
+      "input": "236PP > 6K",
+      "damage": "332",
+      "startup": "16",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "OD Freeflow Kicks 3",
+      "input": "236PP > 6K > 6K",
+      "damage": "570",
+      "startup": "19",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD +1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 1
+      },
+      "notes": "Only Drink Rekka ender that's + on knockdown, granting Jamie an oki situation when used on a cornered opponent"
+    },
+    {
+      "name": "LP Swagger Step",
+      "input": "214LP",
+      "damage": "855",
+      "startup": "17",
+      "active": "9",
+      "recovery": "17",
+      "onBlock": "-6",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "A lot of active frames can be made + on block via spacing or oki"
+    },
+    {
+      "name": "MP Swagger Step",
+      "input": "214MP",
+      "damage": "950",
+      "startup": "20",
+      "active": "9",
+      "recovery": "17",
+      "onBlock": "-6",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "A lot of active frames can be made + on block via spacing or oki"
+    },
+    {
+      "name": "HP Swagger Step",
+      "input": "214HP",
+      "damage": "1140",
+      "startup": "25",
+      "active": "9",
+      "recovery": "16",
+      "onBlock": "-3",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Safe on block unlike LP/MP Palm and also +42 KD which sets Jamie up for a safe jump (same as his LK Breakdance at Drink Levels 2+)"
+    },
+    {
+      "name": "OD Swagger Step",
+      "input": "214PP",
+      "damage": "1045",
+      "startup": "20",
+      "active": "9",
+      "recovery": "15",
+      "onBlock": "-1",
+      "onHit": "KD +73 (Tumble)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 73
+      },
+      "notes": "Sends opponents tumbling backwards (can hit them OTG in this tumbling state)"
+    },
+    {
+      "name": "LK Arrow Kick",
+      "input": "623LK",
+      "damage": "950 (475*475)",
+      "startup": "5",
+      "active": "10",
+      "recovery": "52",
+      "onBlock": "-44",
+      "onHit": "KD +42",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Invincible to airborne strikes on frames 1-11"
+    },
+    {
+      "name": "MK Arrow Kick",
+      "input": "623MK",
+      "damage": "1140 (475*665)",
+      "startup": "8",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +34",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Invincible to airborne strikes on frames 1-14"
+    },
+    {
+      "name": "HK Arrow Kick",
+      "input": "623HK",
+      "damage": "1330 (475*380*475)",
+      "startup": "10",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +39",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Invincible to airborne strikes on frames 1-16"
+    },
+    {
+      "name": "OD Arrow Kick",
+      "input": "623KK",
+      "damage": "1424 (475*427*522)",
+      "startup": "6",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +40",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Fully invincible on frames 1-9"
+    },
+    {
+      "name": "Luminous Dive Kick (Drink 1)",
+      "input": "214K (air)",
+      "damage": "950",
+      "startup": "11",
+      "active": "1(2)until land",
+      "recovery": "13",
+      "onBlock": "-8(2)",
+      "onHit": "KD +42(52)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Not an Overhead"
+    },
+    {
+      "name": "OD Luminous Dive Kick (Drink 1)",
+      "input": "214KK (air)",
+      "damage": "760",
+      "startup": "11",
+      "active": "1(2)until land",
+      "recovery": "13",
+      "onBlock": "-4(5)",
+      "onHit": "KD +58(65)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 58
+      },
+      "notes": "Puts opponent into a limited OTG juggle state"
+    },
+    {
+      "name": "Breakin'",
+      "input": "236236K",
+      "damage": "2084(1753)",
+      "startup": "8",
+      "active": "2*7(6)5(6)2(7)2(7)2(6)2(6)2(6)2(29)2(9)2(6)2(5)2",
+      "recovery": "74",
+      "onBlock": "-60(-93)",
+      "onHit": "KD +12(4)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 12
+      },
+      "notes": "Strike and Throw invincible on frames 1-12"
+    },
+    {
+      "name": "Getsuga Saiho",
+      "input": "236236P",
+      "damage": "2469",
+      "startup": "10",
+      "active": "3(13)3",
+      "recovery": "42",
+      "onBlock": "-27",
+      "onHit": "HKD +71",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 71
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Getsuga Saiho (Critical Art)",
+      "input": "236236P",
+      "damage": "4274",
+      "startup": "10",
+      "active": "3(13)3",
+      "recovery": "42",
+      "onBlock": "-27",
+      "onHit": "HKD +18",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 18
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "3",
+      "recovery": "9",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Very good range for a light normal (slightly shorter range hitbox for crouching opponents)"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "600",
+      "startup": "8",
+      "active": "4",
+      "recovery": "14",
+      "onBlock": "2",
+      "onHit": "6",
+      "category": "normal",
+      "notes": "Jamie's main frametrap / combo tool"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "900 (100x2*700)",
+      "startup": "5",
+      "active": "1(1)1(4)3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Great combo / juggle / punish / Drive Rush tool"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "2",
+      "recovery": "11",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "600",
+      "startup": "9",
+      "active": "3",
+      "recovery": "17(18)",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Great poke and buffer tool at close / mid-range"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "800",
+      "startup": "15",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-5",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Causes a crumple-like free juggle state on a grounded Punish Counter (opponent is in a grounded state for +9 frames before going airborne)"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "250",
+      "startup": "4",
+      "active": "2",
+      "recovery": "9",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "600",
+      "startup": "6",
+      "active": "3",
+      "recovery": "13(15)",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Good combo / buffer / frametrap tool with strong hitbox priority"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "900",
+      "startup": "8",
+      "active": "5",
+      "recovery": "23",
+      "onBlock": "-8",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Forces stand"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "2",
+      "recovery": "11",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "500",
+      "startup": "7",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Incurs 20% hit damage scaling penalty if used as the first hit of a combo"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "800 (400*400)",
+      "startup": "9",
+      "active": "2(3)2",
+      "recovery": "28(29)",
+      "onBlock": "-11",
+      "onHit": "KD +33",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Second hit has quite bit a further range than the first hit"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "9",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "700",
+      "startup": "7",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "cancels": [
+        "Special"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "10",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "6",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Has the furthest horizontal range of all of Jamie's jump-ins"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "500",
+      "startup": "7",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "900 (450*450)",
+      "startup": "8",
+      "active": "3(5)4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Amazing air-to-air / anti-air tool due to the rewards it leads to on airborne hit"
+    },
+    {
+      "name": "Indian Step",
+      "input": "5LK (mash)",
+      "damage": "300 ∞",
+      "startup": "5",
+      "active": "2(11)2 ∞",
+      "recovery": "11",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Tensei Kick",
+      "input": "2KK",
+      "damage": "600",
+      "startup": "9",
+      "active": "3",
+      "recovery": "22",
+      "onBlock": "-8",
+      "onHit": "KD +53",
+      "category": "normal",
+      "cancels": [
+        "j"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 53
+      },
+      "notes": "Jamie's head and kicking leg hurtboxes are invincible to airborne strikes on frames 9-11 (during the 3 active frames)"
+    },
+    {
+      "name": "Falling Star Kick",
+      "input": "6MK",
+      "damage": "600",
+      "startup": "22",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Overhead"
+    },
+    {
+      "name": "Hermit's Elbow",
+      "input": "4HP",
+      "damage": "800",
+      "startup": "18",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Jamie pulls back his hurtboxes on frames 5-12 before striking back with his elbow (can be used to avoid throws and attacks, and then Punish Countering them)"
+    },
+    {
+      "name": "Senei Kick",
+      "input": "6HK",
+      "damage": "900",
+      "startup": "16",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Not a low attack (despite what it looks like)"
+    },
+    {
+      "name": "Phantom Sway",
+      "input": "2HK > HK",
+      "damage": "500",
+      "startup": "12",
+      "active": "3",
+      "recovery": "43",
+      "onBlock": "-28",
+      "onHit": "KD +22",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Jamie's optimal juggle ender to raising his drink levels"
+    },
+    {
+      "name": "Phantom Sway + Drink",
+      "input": "2HK > HK > P",
+      "damage": "500",
+      "startup": "9+12+Drink",
+      "active": "2(3)2(17)3 {~}",
+      "recovery": "61",
+      "onBlock": "-46",
+      "onHit": "KD +4",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 4
+      },
+      "notes": "Grants +1 Drink Level to Jamie"
+    },
+    {
+      "name": "Bitter Strikes 1 (Drink 1)",
+      "input": "5LP > 5LK",
+      "damage": "200",
+      "startup": "6",
+      "active": "2",
+      "recovery": "16",
+      "onBlock": "-8",
+      "onHit": "-3",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Good checking tool in neutral against incoming moves like Drive Rush"
+    },
+    {
+      "name": "Bitter Strikes 2 (Drink 1)",
+      "input": "5LP > 5LK > 5MP",
+      "damage": "400",
+      "startup": "8",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-10",
+      "onHit": "-1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Primary combo tool"
+    },
+    {
+      "name": "Full Moon Kick (Drink 2)",
+      "input": "6MK > 5MK",
+      "damage": "1000 (600*200x2) {200x2}",
+      "startup": "15",
+      "active": "3(5)2",
+      "recovery": "28",
+      "onBlock": "-14",
+      "onHit": "KD +31",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 31
+      },
+      "notes": "17F Target Combo hit confirm window makes this a hit confirmable low crushing Overhead that leads to a drink (nice!)"
+    },
+    {
+      "name": "Full Moon Kick + Drink (Drink 2)",
+      "input": "6MK > 5MK > P",
+      "damage": "1000 (600*200x2) {200x2}",
+      "startup": "22+15+Drink",
+      "active": "3*3(5)2 {~}",
+      "recovery": "61",
+      "onBlock": "-43",
+      "onHit": "KD -1",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "Back Shaver",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +23(+7)",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Throw Loop: Dash up for +4 mixup between throw/strike (not possible on mid-screen back-roll)"
+    },
+    {
+      "name": "Wheel Punch",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +26",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "Back Throw Loop: Can Drive Rush into meaty strike / throw mix when performed while cornered"
+    },
+    {
+      "name": "Drive Impact: Vainglory Strike",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Leg Sweep",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "LP Freeflow Strikes",
+      "input": "236LP",
+      "damage": "350",
+      "startup": "13",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "LP Freeflow Strikes 2",
+      "input": "236LP > 6P",
+      "damage": "350",
+      "startup": "13",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-13",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "LP Freeflow Strikes 3",
+      "input": "236LP > 6P > 6P",
+      "damage": "550",
+      "startup": "13",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-17",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "LP Freeflow Kicks 2",
+      "input": "236LP > 6K",
+      "damage": "250",
+      "startup": "14",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "LP Freeflow Kicks 3",
+      "input": "236LP > 6K > 6K",
+      "damage": "450",
+      "startup": "18",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD -1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "MP Freeflow Strikes",
+      "input": "236MP",
+      "damage": "400",
+      "startup": "16",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "MP Freeflow Strikes 2",
+      "input": "236MP > 6P",
+      "damage": "400",
+      "startup": "16",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-11",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "MP Freeflow Strikes 3",
+      "input": "236MP > 6P > 6P",
+      "damage": "600",
+      "startup": "16",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-15",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "MP Freeflow Kicks 2",
+      "input": "236MP > 6K",
+      "damage": "300",
+      "startup": "17",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "MP Freeflow Kicks 3",
+      "input": "236MP > 6K > 6K",
+      "damage": "500",
+      "startup": "21",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD -1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "HP Freeflow Strikes",
+      "input": "236HP",
+      "damage": "450",
+      "startup": "19",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "HP Freeflow Strikes 2",
+      "input": "236HP > 6P",
+      "damage": "450",
+      "startup": "19",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-9",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "HP Freeflow Strikes 3",
+      "input": "236HP > 6P > 6P",
+      "damage": "650",
+      "startup": "19",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-13",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "HP Freeflow Kicks 2",
+      "input": "236HP > 6K",
+      "damage": "300",
+      "startup": "20",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "HP Freeflow Kicks 3",
+      "input": "236HP > 6K > 6K",
+      "damage": "550",
+      "startup": "24",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD -1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "OD Freeflow Strikes",
+      "input": "236PP",
+      "damage": "450",
+      "startup": "13",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "OD Freeflow Strikes 2",
+      "input": "236PP > 6P",
+      "damage": "450",
+      "startup": "13",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-9",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "OD Freeflow Strikes 3",
+      "input": "236PP > 6P > 6P",
+      "damage": "750",
+      "startup": "13",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-13",
+      "onHit": "KD +28",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 28
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "OD Freeflow Kicks 2",
+      "input": "236PP > 6K",
+      "damage": "300",
+      "startup": "16",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "OD Freeflow Kicks 3",
+      "input": "236PP > 6K > 6K",
+      "damage": "600",
+      "startup": "19",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD +1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 1
+      },
+      "notes": "Only Drink Rekka ender that's + on knockdown, granting Jamie an oki situation when used on a cornered opponent"
+    },
+    {
+      "name": "LP Swagger Step",
+      "input": "214LP",
+      "damage": "900",
+      "startup": "17",
+      "active": "9",
+      "recovery": "17",
+      "onBlock": "-6",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "A lot of active frames can be made + on block via spacing or oki"
+    },
+    {
+      "name": "MP Swagger Step",
+      "input": "214MP",
+      "damage": "1000",
+      "startup": "20",
+      "active": "9",
+      "recovery": "17",
+      "onBlock": "-6",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "A lot of active frames can be made + on block via spacing or oki"
+    },
+    {
+      "name": "HP Swagger Step",
+      "input": "214HP",
+      "damage": "1200",
+      "startup": "25",
+      "active": "9",
+      "recovery": "16",
+      "onBlock": "-3",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Safe on block unlike LP/MP Palm and also +42 KD which sets Jamie up for a safe jump (same as his LK Breakdance at Drink Levels 2+)"
+    },
+    {
+      "name": "OD Swagger Step",
+      "input": "214PP",
+      "damage": "1100",
+      "startup": "20",
+      "active": "9",
+      "recovery": "15",
+      "onBlock": "-1",
+      "onHit": "KD +73 (Tumble)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 73
+      },
+      "notes": "Sends opponents tumbling backwards (can hit them OTG in this tumbling state)"
+    },
+    {
+      "name": "LK Arrow Kick",
+      "input": "623LK",
+      "damage": "1000 (500*500)",
+      "startup": "5",
+      "active": "10",
+      "recovery": "52",
+      "onBlock": "-44",
+      "onHit": "KD +42",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Invincible to airborne strikes on frames 1-11"
+    },
+    {
+      "name": "MK Arrow Kick",
+      "input": "623MK",
+      "damage": "1200 (500*700)",
+      "startup": "8",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +34",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Invincible to airborne strikes on frames 1-14"
+    },
+    {
+      "name": "HK Arrow Kick",
+      "input": "623HK",
+      "damage": "1400 (500*400*500)",
+      "startup": "10",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +39",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Invincible to airborne strikes on frames 1-16"
+    },
+    {
+      "name": "OD Arrow Kick",
+      "input": "623KK",
+      "damage": "1500 (500*450*550)",
+      "startup": "6",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +40",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Fully invincible on frames 1-9"
+    },
+    {
+      "name": "Luminous Dive Kick (Drink 1)",
+      "input": "214K (air)",
+      "damage": "1000",
+      "startup": "11",
+      "active": "1(2)until land",
+      "recovery": "13",
+      "onBlock": "-8(2)",
+      "onHit": "KD +42(52)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Not an Overhead"
+    },
+    {
+      "name": "OD Luminous Dive Kick (Drink 1)",
+      "input": "214KK (air)",
+      "damage": "800",
+      "startup": "11",
+      "active": "1(2)until land",
+      "recovery": "13",
+      "onBlock": "-4(5)",
+      "onHit": "KD +58(65)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 58
+      },
+      "notes": "Puts opponent into a limited OTG juggle state"
+    },
+    {
+      "name": "LK Bakkai (Drink 2)",
+      "input": "236LK",
+      "damage": "1400 (250x3*650)",
+      "startup": "18",
+      "active": "2(2)3(4)2(11)2",
+      "recovery": "24",
+      "onBlock": "-12",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Projectle invincible on frames 3-43 (until end of active frames)"
+    },
+    {
+      "name": "MK Bakkai (Drink 2)",
+      "input": "236MK",
+      "damage": "1600 (250x5*350)",
+      "startup": "22",
+      "active": "2(1)2(3)2(5)2(12)2(5)2",
+      "recovery": "31",
+      "onBlock": "-16",
+      "onHit": "KD +35",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Projectle invincible on frames 4-59 (until end of active frames)"
+    },
+    {
+      "name": "HK Bakkai (Drink 2)",
+      "input": "236HK",
+      "damage": "1800 (250x6*300)",
+      "startup": "25",
+      "active": "3(6)2(6)2(6)2(13)2(7)2(15)2",
+      "recovery": "32",
+      "onBlock": "-17",
+      "onHit": "KD +34",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Projectle invincible on frames 5-92 (until end of active frames)"
+    },
+    {
+      "name": "OD Bakkai (Drink 2)",
+      "input": "236KK",
+      "damage": "2000 (180x9*380)",
+      "startup": "21",
+      "active": "3(3)2(8)2(3)2(7)2(7)2(12)2(11)2(4)2(4)2",
+      "recovery": "62",
+      "onBlock": "-46(-58)",
+      "onHit": "KD +12",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 12
+      },
+      "notes": "Projectle invincible on frames 3-100 (until end of active frames)"
+    },
+    {
+      "name": "Breakin'",
+      "input": "236236K",
+      "damage": "2200(1850)",
+      "startup": "8",
+      "active": "2*7(6)5(6)2(7)2(7)2(6)2(6)2(6)2(29)2(9)2(6)2(5)2",
+      "recovery": "74",
+      "onBlock": "-60(-93)",
+      "onHit": "KD +12(4)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 12
+      },
+      "notes": "Strike and Throw invincible on frames 1-12"
+    },
+    {
+      "name": "Getsuga Saiho",
+      "input": "236236P",
+      "damage": "2600",
+      "startup": "10",
+      "active": "3(13)3",
+      "recovery": "42",
+      "onBlock": "-27",
+      "onHit": "HKD +71",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 71
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Getsuga Saiho (Critical Art)",
+      "input": "236236P",
+      "damage": "4500",
+      "startup": "10",
+      "active": "3(13)3",
+      "recovery": "42",
+      "onBlock": "-27",
+      "onHit": "HKD +18",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 18
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "315",
+      "startup": "5",
+      "active": "3",
+      "recovery": "9",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Very good range for a light normal (slightly shorter range hitbox for crouching opponents)"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "630",
+      "startup": "8",
+      "active": "4",
+      "recovery": "14",
+      "onBlock": "2",
+      "onHit": "6",
+      "category": "normal",
+      "notes": "Jamie's main frametrap / combo tool"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "945 (105x2*735)",
+      "startup": "5",
+      "active": "1(1)1(4)3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Very fast start-up and fast 3-hit string makes this a super strong tool against Drive Impacts"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "315",
+      "startup": "5",
+      "active": "2",
+      "recovery": "11",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "630",
+      "startup": "9",
+      "active": "3",
+      "recovery": "17(18)",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Great poke and buffer tool at close / mid-range"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "840",
+      "startup": "15",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-5",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Causes a crumple-like free juggle state on a grounded Punish Counter (opponent is in a grounded state for +9 frames before going airborne)"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "262",
+      "startup": "4",
+      "active": "2",
+      "recovery": "9",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "630",
+      "startup": "6",
+      "active": "3",
+      "recovery": "13(15)",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Good combo / buffer / frametrap tool with strong hitbox priority"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "945",
+      "startup": "8",
+      "active": "5",
+      "recovery": "23",
+      "onBlock": "-8",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Forces stand"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "210",
+      "startup": "5",
+      "active": "2",
+      "recovery": "11",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "525",
+      "startup": "7",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Incurs 20% hit damage scaling penalty if used as the first hit of a combo"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "840 (420*420)",
+      "startup": "9",
+      "active": "2(3)2",
+      "recovery": "28(29)",
+      "onBlock": "-11",
+      "onHit": "KD +33",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Second hit has quite bit a further range than the first hit"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "315",
+      "startup": "5",
+      "active": "9",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "735",
+      "startup": "7",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "cancels": [
+        "Special"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "840",
+      "startup": "10",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "315",
+      "startup": "6",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Has the furthest horizontal range of all of Jamie's jump-ins"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "525",
+      "startup": "7",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "944 (472*472)",
+      "startup": "8",
+      "active": "3(5)4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Amazing air-to-air / anti-air tool due to the rewards it leads to on airborne hit"
+    },
+    {
+      "name": "Indian Step",
+      "input": "5LK (mash)",
+      "damage": "315 ∞",
+      "startup": "5",
+      "active": "2(11)2 ∞",
+      "recovery": "11",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Tensei Kick",
+      "input": "2KK",
+      "damage": "630",
+      "startup": "9",
+      "active": "3",
+      "recovery": "22",
+      "onBlock": "-8",
+      "onHit": "KD +53",
+      "category": "normal",
+      "cancels": [
+        "j"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 53
+      },
+      "notes": "Jamie's head and kicking leg hurtboxes are invincible to airborne strikes on frames 9-11 (during the 3 active frames)"
+    },
+    {
+      "name": "Falling Star Kick",
+      "input": "6MK",
+      "damage": "630",
+      "startup": "22",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Overhead"
+    },
+    {
+      "name": "Hermit's Elbow",
+      "input": "4HP",
+      "damage": "840",
+      "startup": "18",
+      "active": "4",
+      "recovery": "21(19)",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Jamie pulls back his hurtboxes on frames 5-12 before striking back with his elbow (can be used to avoid throws and attacks, and then Punish Countering them)"
+    },
+    {
+      "name": "Senei Kick",
+      "input": "6HK",
+      "damage": "945",
+      "startup": "16",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Not a low attack (despite what it looks like)"
+    },
+    {
+      "name": "Phantom Sway",
+      "input": "2HK > HK",
+      "damage": "525",
+      "startup": "12",
+      "active": "3",
+      "recovery": "43",
+      "onBlock": "-28",
+      "onHit": "KD +22",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Jamie's optimal juggle ender to raising his drink levels"
+    },
+    {
+      "name": "Phantom Sway + Drink",
+      "input": "2HK > HK > P",
+      "damage": "525",
+      "startup": "9+12+Drink",
+      "active": "2(3)2(17)3 {~}",
+      "recovery": "61",
+      "onBlock": "-46",
+      "onHit": "KD +4",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 4
+      },
+      "notes": "Grants +1 Drink Level to Jamie"
+    },
+    {
+      "name": "Bitter Strikes 1 (Drink 1)",
+      "input": "5LP > 5LK",
+      "damage": "210",
+      "startup": "6",
+      "active": "2",
+      "recovery": "16",
+      "onBlock": "-8",
+      "onHit": "-3",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Good checking tool in neutral against incoming moves like Drive Rush"
+    },
+    {
+      "name": "Bitter Strikes 2 (Drink 1)",
+      "input": "5LP > 5LK > 5MP",
+      "damage": "525",
+      "startup": "8",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-10",
+      "onHit": "-1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Primary combo tool"
+    },
+    {
+      "name": "Full Moon Kick (Drink 2)",
+      "input": "6MK > 5MK",
+      "damage": "1050 (630*210x2) {210x2}",
+      "startup": "15",
+      "active": "3(5)2",
+      "recovery": "28",
+      "onBlock": "-14",
+      "onHit": "KD +31",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 31
+      },
+      "notes": "17F Target Combo hit confirm window makes this a hit confirmable low crushing Overhead that leads to a drink (nice!)"
+    },
+    {
+      "name": "Full Moon Kick + Drink (Drink 2)",
+      "input": "6MK > 5MK > P",
+      "damage": "1050 (630*210x2) {210x2}",
+      "startup": "22+15+Drink",
+      "active": "3*3(5)2 {~}",
+      "recovery": "61",
+      "onBlock": "-43",
+      "onHit": "KD +2",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 2
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "Intoxicated Assault 1 (Drink 3)",
+      "input": "4HP > 5HP",
+      "damage": "630",
+      "startup": "21",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-9",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Cancelable into all Supers on Hit / Block"
+    },
+    {
+      "name": "Intoxicated Assault 2 (Drink 3)",
+      "input": "4HP > 5HP > 5HK",
+      "damage": "840",
+      "startup": "21",
+      "active": "3",
+      "recovery": "4+33",
+      "onBlock": "-20",
+      "onHit": "KD +23",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Airborne on frames 18-27 (Forced Knockdown state) on the last HK hit"
+    },
+    {
+      "name": "Back Shaver",
+      "input": "LPLK",
+      "damage": "1259(2141)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +23(+13)",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Throw Loop: Dash up for +4 mixup between throw/strike (not possible on mid-screen back-roll)"
+    },
+    {
+      "name": "Wheel Punch",
+      "input": "4LPLK",
+      "damage": "1259(2141)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +26",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "Back Throw Loop: Can Drive Rush into meaty strike / throw mix when performed while cornered"
+    },
+    {
+      "name": "Drive Impact: Vainglory Strike",
+      "input": "HPHK",
+      "damage": "840",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Leg Sweep",
+      "input": "6HPHK",
+      "damage": "525",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "LP Freeflow Strikes",
+      "input": "236LP",
+      "damage": "367",
+      "startup": "13",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "LP Freeflow Strikes 2",
+      "input": "236LP > 6P",
+      "damage": "367",
+      "startup": "13",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-13",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "LP Freeflow Strikes 3",
+      "input": "236LP > 6P > 6P",
+      "damage": "577",
+      "startup": "13",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-17",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "LP Freeflow Kicks 2",
+      "input": "236LP > 6K",
+      "damage": "262",
+      "startup": "14",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "LP Freeflow Kicks 3",
+      "input": "236LP > 6K > 6K",
+      "damage": "472",
+      "startup": "18",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-25",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "MP Freeflow Strikes",
+      "input": "236MP",
+      "damage": "420",
+      "startup": "16",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "MP Freeflow Strikes 2",
+      "input": "236MP > 6P",
+      "damage": "420",
+      "startup": "16",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-11",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "MP Freeflow Strikes 3",
+      "input": "236MP > 6P > 6P",
+      "damage": "630",
+      "startup": "16",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-15",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "MP Freeflow Kicks 2",
+      "input": "236MP > 6K",
+      "damage": "315",
+      "startup": "17",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "MP Freeflow Kicks 3",
+      "input": "236MP > 6K > 6K",
+      "damage": "525",
+      "startup": "21",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-26",
+      "onHit": "KD +22",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "HP Freeflow Strikes",
+      "input": "236HP",
+      "damage": "472",
+      "startup": "19",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "HP Freeflow Strikes 2",
+      "input": "236HP > 6P",
+      "damage": "472",
+      "startup": "19",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-9",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "HP Freeflow Strikes 3",
+      "input": "236HP > 6P > 6P",
+      "damage": "682",
+      "startup": "19",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-13",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "HP Freeflow Kicks 2",
+      "input": "236HP > 6K",
+      "damage": "315",
+      "startup": "20",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "HP Freeflow Kicks 3",
+      "input": "236HP > 6K > 6K",
+      "damage": "577",
+      "startup": "24",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-26",
+      "onHit": "KD +22",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Grants +1 Drink Level to Jamie as well as restoring 1/2 extra bar of Drive Gauge | 1/12th (~8%) of Burnout Gauge"
+    },
+    {
+      "name": "OD Freeflow Strikes",
+      "input": "236PP",
+      "damage": "472",
+      "startup": "13",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Cancelable into follow-up Punch / Kick rekkas (Punch rekkas can even be performed on whiff)"
+    },
+    {
+      "name": "OD Freeflow Strikes 2",
+      "input": "236PP > 6P",
+      "damage": "472",
+      "startup": "13",
+      "active": "2",
+      "recovery": "28",
+      "onBlock": "-9",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "OD Freeflow Strikes 3",
+      "input": "236PP > 6P > 6P",
+      "damage": "787",
+      "startup": "13",
+      "active": "2",
+      "recovery": "30",
+      "onBlock": "-13",
+      "onHit": "KD +28",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 28
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "OD Freeflow Kicks 2",
+      "input": "236PP > 6K",
+      "damage": "367",
+      "startup": "16",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "First kick follow-up is only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "OD Freeflow Kicks 3",
+      "input": "236PP > 6K > 6K",
+      "damage": "630",
+      "startup": "19",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-26",
+      "onHit": "KD +24",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 24
+      },
+      "notes": "Only Drink Rekka ender that's + on knockdown, granting Jamie an oki situation when used on a cornered opponent"
+    },
+    {
+      "name": "LP Swagger Step",
+      "input": "214LP",
+      "damage": "945",
+      "startup": "17",
+      "active": "9",
+      "recovery": "17",
+      "onBlock": "-6",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "A lot of active frames can be made + on block via spacing or oki"
+    },
+    {
+      "name": "MP Swagger Step",
+      "input": "214MP",
+      "damage": "1050",
+      "startup": "20",
+      "active": "9",
+      "recovery": "17",
+      "onBlock": "-6",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "A lot of active frames can be made + on block via spacing or oki"
+    },
+    {
+      "name": "HP Swagger Step",
+      "input": "214HP",
+      "damage": "1260",
+      "startup": "25",
+      "active": "9",
+      "recovery": "16",
+      "onBlock": "-3",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Safe on block unlike LP/MP Palm and also +42 KD which sets Jamie up for a safe jump (same as his LK Breakdance at Drink Levels 2+)"
+    },
+    {
+      "name": "OD Swagger Step",
+      "input": "214PP",
+      "damage": "1155",
+      "startup": "20",
+      "active": "9",
+      "recovery": "15",
+      "onBlock": "-1",
+      "onHit": "KD +73 (Tumble)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 73
+      },
+      "notes": "Sends opponents tumbling backwards (can hit them OTG in this tumbling state)"
+    },
+    {
+      "name": "LK Arrow Kick",
+      "input": "623LK",
+      "damage": "1050 (525*525)",
+      "startup": "5",
+      "active": "10",
+      "recovery": "52",
+      "onBlock": "-44",
+      "onHit": "KD +42",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Invincible to airborne strikes on frames 1-11"
+    },
+    {
+      "name": "MK Arrow Kick",
+      "input": "623MK",
+      "damage": "1260 (525*735)",
+      "startup": "8",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +34",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Invincible to airborne strikes on frames 1-14"
+    },
+    {
+      "name": "HK Arrow Kick",
+      "input": "623HK",
+      "damage": "1470 (525*420*525)",
+      "startup": "10",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +39",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Invincible to airborne strikes on frames 1-16"
+    },
+    {
+      "name": "OD Arrow Kick",
+      "input": "623KK",
+      "damage": "1574 (525*472*577)",
+      "startup": "6",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +40",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Fully invincible on frames 1-9"
+    },
+    {
+      "name": "Luminous Dive Kick (Drink 1)",
+      "input": "214K (air)",
+      "damage": "1050",
+      "startup": "11",
+      "active": "1(2)until land",
+      "recovery": "13",
+      "onBlock": "-8(2)",
+      "onHit": "KD +42(52)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Not an Overhead"
+    },
+    {
+      "name": "OD Luminous Dive Kick (Drink 1)",
+      "input": "214KK (air)",
+      "damage": "840",
+      "startup": "11",
+      "active": "1(2)until land",
+      "recovery": "13",
+      "onBlock": "-4(5)",
+      "onHit": "KD +58(65)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 58
+      },
+      "notes": "Puts opponent into a limited OTG juggle state"
+    },
+    {
+      "name": "LK Bakkai (Drink 2)",
+      "input": "236LK",
+      "damage": "1468 (262x3*682)",
+      "startup": "18",
+      "active": "2(2)3(4)2(11)2",
+      "recovery": "24",
+      "onBlock": "-12",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Projectle invincible on frames 3-43 (until end of active frames)"
+    },
+    {
+      "name": "MK Bakkai (Drink 2)",
+      "input": "236MK",
+      "damage": "1677 (262x5*367)",
+      "startup": "22",
+      "active": "2(1)2(3)2(5)2(12)2(5)2",
+      "recovery": "31",
+      "onBlock": "-16",
+      "onHit": "KD +35",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Projectle invincible on frames 4-59 (until end of active frames)"
+    },
+    {
+      "name": "HK Bakkai (Drink 2)",
+      "input": "236HK",
+      "damage": "1887 (262x6*315)",
+      "startup": "25",
+      "active": "3(6)2(6)2(6)2(13)2(7)2(15)2",
+      "recovery": "32",
+      "onBlock": "-17",
+      "onHit": "KD +34",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Projectle invincible on frames 5-92 (until end of active frames)"
+    },
+    {
+      "name": "OD Bakkai (Drink 2)",
+      "input": "236KK",
+      "damage": "2100 (189x9*399)",
+      "startup": "21",
+      "active": "3(3)2(8)2(3)2(7)2(7)2(12)2(11)2(4)2(4)2",
+      "recovery": "62",
+      "onBlock": "-46",
+      "onHit": "KD +12",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 12
+      },
+      "notes": "Projectle invincible on frames 3-100 (until end of active frames)"
+    },
+    {
+      "name": "Tenshin (Drink 3)",
+      "input": "63214K",
+      "damage": "-",
+      "startup": "8",
+      "active": "2",
+      "recovery": "52",
+      "onBlock": "-",
+      "onHit": "8",
+      "category": "normal",
+      "notes": "Range: 0.96"
+    },
+    {
+      "name": "OD Tenshin (Drink 3)",
+      "input": "63214KK",
+      "damage": "682",
+      "startup": "8",
+      "active": "2",
+      "recovery": "52",
+      "onBlock": "-",
+      "onHit": "HKD +86",
+      "category": "normal",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 86
+      },
+      "notes": "Range: 0.96"
+    },
+    {
+      "name": "Breakin'",
+      "input": "236236K",
+      "damage": "2304(1938)",
+      "startup": "8",
+      "active": "2*7(6)5(6)2(7)2(7)2(6)2(6)2(6)2(29)2(9)2(6)2(5)2",
+      "recovery": "74(93)",
+      "onBlock": "-60(-79)",
+      "onHit": "KD +12(25)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 12
+      },
+      "notes": "Strike and Throw invincible on frames 1-12"
+    },
+    {
+      "name": "Getsuga Saiho",
+      "input": "236236P",
+      "damage": "2729",
+      "startup": "10",
+      "active": "3(13)3",
+      "recovery": "42",
+      "onBlock": "-27",
+      "onHit": "HKD +71",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 71
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Getsuga Saiho (Critical Art)",
+      "input": "236236P",
+      "damage": "4724",
+      "startup": "10",
+      "active": "3(13)3",
+      "recovery": "42",
+      "onBlock": "-27",
+      "onHit": "HKD +18",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 18
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "330",
+      "startup": "5",
+      "active": "3",
+      "recovery": "9",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Very good range for a light normal (slightly shorter range hitbox for crouching opponents)"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "660",
+      "startup": "8",
+      "active": "4",
+      "recovery": "14",
+      "onBlock": "2",
+      "onHit": "6",
+      "category": "normal",
+      "notes": "Jamie's main frametrap / combo tool"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "990 (110x2*770)",
+      "startup": "5",
+      "active": "1(1)1(4)3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Very fast start-up and fast 3-hit string makes this a super strong tool against Drive Impacts"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "330",
+      "startup": "5",
+      "active": "2",
+      "recovery": "11",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "660",
+      "startup": "9",
+      "active": "3",
+      "recovery": "17(18)",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Great poke and buffer tool at close / mid-range"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "880",
+      "startup": "15",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-5",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Causes a crumple-like free juggle state on a grounded Punish Counter (opponent is in a grounded state for +9 frames before going airborne)"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "275",
+      "startup": "4",
+      "active": "2",
+      "recovery": "9",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "660",
+      "startup": "6",
+      "active": "3",
+      "recovery": "13(15)",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Good combo / buffer / frametrap tool with strong hitbox priority"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "990",
+      "startup": "8",
+      "active": "5",
+      "recovery": "23",
+      "onBlock": "-8",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Forces stand"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "220",
+      "startup": "5",
+      "active": "2",
+      "recovery": "11",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "550",
+      "startup": "7",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Incurs 20% hit damage scaling penalty if used as the first hit of a combo"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "880 (440*440)",
+      "startup": "9",
+      "active": "2(3)2",
+      "recovery": "28(29)",
+      "onBlock": "-11",
+      "onHit": "KD +33",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Second hit has quite bit a further range than the first hit"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "330",
+      "startup": "5",
+      "active": "9",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "770",
+      "startup": "7",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "cancels": [
+        "Special"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "880",
+      "startup": "10",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "330",
+      "startup": "6",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Has the furthest horizontal range of all of Jamie's jump-ins"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "550",
+      "startup": "7",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "990 (495*495)",
+      "startup": "8",
+      "active": "3(5)4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Amazing air-to-air / anti-air tool due to the rewards it leads to on airborne hit"
+    },
+    {
+      "name": "Indian Step",
+      "input": "5LK (mash)",
+      "damage": "330 ∞",
+      "startup": "5",
+      "active": "2(11)2 ∞",
+      "recovery": "11",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK / stand LK"
+    },
+    {
+      "name": "Tensei Kick",
+      "input": "2KK",
+      "damage": "660",
+      "startup": "9",
+      "active": "3",
+      "recovery": "22",
+      "onBlock": "-8",
+      "onHit": "KD +53",
+      "category": "normal",
+      "cancels": [
+        "j"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 53
+      },
+      "notes": "Jamie's head and kicking leg hurtboxes are invincible to airborne strikes on frames 9-11 (during the 3 active frames)"
+    },
+    {
+      "name": "Falling Star Kick",
+      "input": "6MK",
+      "damage": "660",
+      "startup": "22",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Overhead"
+    },
+    {
+      "name": "Hermit's Elbow",
+      "input": "4HP",
+      "damage": "880",
+      "startup": "18",
+      "active": "4",
+      "recovery": "21(19)",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Jamie pulls back his hurtboxes on frames 5-12 before striking back with his elbow (can be used to avoid throws and attacks, and then Punish Countering them)"
+    },
+    {
+      "name": "Senei Kick",
+      "input": "6HK",
+      "damage": "990",
+      "startup": "16",
+      "active": "4",
+      "recovery": "19",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Not a low attack (despite what it looks like)"
+    },
+    {
+      "name": "Phantom Sway",
+      "input": "2HK > HK",
+      "damage": "550",
+      "startup": "12",
+      "active": "3",
+      "recovery": "43",
+      "onBlock": "-28",
+      "onHit": "KD +22",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Jamie's optimal juggle ender to raising his drink levels"
+    },
+    {
+      "name": "Phantom Sway + Drink",
+      "input": "2HK > HK > P",
+      "damage": "550",
+      "startup": "9+12+Drink",
+      "active": "2(3)2(17)3 {~}",
+      "recovery": "61",
+      "onBlock": "-46",
+      "onHit": "KD +4",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 4
+      },
+      "notes": "Restores 1 extra bar of Drive Gauge | 1/6th (~17%) of Burnout Gauge"
+    },
+    {
+      "name": "Bitter Strikes 1 (Drink 1)",
+      "input": "5LP > 5LK",
+      "damage": "220",
+      "startup": "6",
+      "active": "2",
+      "recovery": "16",
+      "onBlock": "-8",
+      "onHit": "-3",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Good checking tool in neutral against incoming moves like Drive Rush"
+    },
+    {
+      "name": "Bitter Strikes 2 (Drink 1)",
+      "input": "5LP > 5LK > 5MP",
+      "damage": "550",
+      "startup": "8",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-10",
+      "onHit": "-1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Primary combo tool"
+    },
+    {
+      "name": "Full Moon Kick (Drink 2)",
+      "input": "6MK > 5MK",
+      "damage": "1100 (660*220x2) {220x2}",
+      "startup": "15",
+      "active": "3(5)2",
+      "recovery": "28",
+      "onBlock": "-14",
+      "onHit": "KD +31",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 31
+      },
+      "notes": "17F Target Combo hit confirm window makes this a hit confirmable low crushing Overhead that leads to a drink (nice!)"
+    },
+    {
+      "name": "Full Moon Kick + Drink (Drink 2)",
+      "input": "6MK > 5MK > P",
+      "damage": "1100 (660*220x2) {220x2}",
+      "startup": "22+15+Drink",
+      "active": "3*3(5)2 {~}",
+      "recovery": "61",
+      "onBlock": "-43",
+      "onHit": "KD -1",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Restores 1 extra bar of Drive Gauge | 1/6th (~17%) of Burnout Gauge"
+    },
+    {
+      "name": "Intoxicated Assault 1 (Drink 3)",
+      "input": "4HP > 5HP",
+      "damage": "660",
+      "startup": "21",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-9",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Cancelable into all Supers on Hit / Block"
+    },
+    {
+      "name": "Intoxicated Assault 2 (Drink 3)",
+      "input": "4HP > 5HP > 5HK",
+      "damage": "880",
+      "startup": "21",
+      "active": "3",
+      "recovery": "37",
+      "onBlock": "-20",
+      "onHit": "KD +23",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Airborne on frames 18-27 (Forced Knockdown state) on the last HK hit"
+    },
+    {
+      "name": "Ransui Haze (Drink 4)",
+      "input": "6HK > 4HK",
+      "damage": "990",
+      "startup": "16+Sway",
+      "active": "4",
+      "recovery": "76",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Can be performed on whiff"
+    },
+    {
+      "name": "Ransui Haze Headbutt (Drink 4)",
+      "input": "6HK > 4HK > 5P (headbutt)",
+      "damage": "935",
+      "startup": "15",
+      "active": "4",
+      "recovery": "28",
+      "onBlock": "-12",
+      "onHit": "KD +32",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Can be performed on whiff and reaches quite far"
+    },
+    {
+      "name": "Ransui Haze Triple Fist (Drink 4)",
+      "input": "6HK > 4HK > 5P (spinning fists)",
+      "damage": "1320 (330x2*660)",
+      "startup": "4",
+      "active": "2(8)2(11)2",
+      "recovery": "27",
+      "onBlock": "-9",
+      "onHit": "KD +35",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Can be performed on whiff"
+    },
+    {
+      "name": "Ransui Haze Drink (Drink 4)",
+      "input": "6HK > 4HK > 5P (drink)",
+      "damage": "880",
+      "startup": "76~100+Drink",
+      "active": "-",
+      "recovery": "52",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Can be performed on whiff"
+    },
+    {
+      "name": "Back Shaver",
+      "input": "LPLK",
+      "damage": "1320(2244)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +23(+7)",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Throw Loop: Dash up for +4 mixup between throw/strike (not possible on mid-screen back-roll)"
+    },
+    {
+      "name": "Wheel Punch",
+      "input": "4LPLK",
+      "damage": "1320(2244)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +26",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "Back Throw Loop: Can Drive Rush into meaty strike / throw mix when performed while cornered"
+    },
+    {
+      "name": "Drive Impact: Vainglory Strike",
+      "input": "HPHK",
+      "damage": "880",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Leg Sweep",
+      "input": "6HPHK",
+      "damage": "550",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "LP Freeflow Strikes",
+      "input": "236LP",
+      "damage": "440 (220*220)",
+      "startup": "13",
+      "active": "2(9)2",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Carries over Counter-Hit / Punish Counter bonus frame advantage to both hits"
+    },
+    {
+      "name": "LP Freeflow Strikes 2",
+      "input": "236LP > 6P",
+      "damage": "935 (220x3*275) {495 (220*275)}",
+      "startup": "15",
+      "active": "2(5)2",
+      "recovery": "27",
+      "onBlock": "-10",
+      "onHit": "-2",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "LP Freeflow Strikes 3",
+      "input": "236LP > 6P > 6P",
+      "damage": "1595 (220x3*275*132x2*396) {825 (165x2*495)}",
+      "startup": "16",
+      "active": "2(4)2(14)3",
+      "recovery": "28",
+      "onBlock": "-14",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "LP Freeflow Kicks 2",
+      "input": "236LP > 6K",
+      "damage": "275",
+      "startup": "14",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "Kick follow-ups are only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "LP Freeflow Kicks 3",
+      "input": "236LP > 6K > 6K",
+      "damage": "495",
+      "startup": "18",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD -1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Restores 1 extra bar of Drive Gauge | 1/6th (~17%) of Burnout Gauge"
+    },
+    {
+      "name": "MP Freeflow Strikes",
+      "input": "236MP",
+      "damage": "550 (220*330)",
+      "startup": "16",
+      "active": "2(9)2",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Carries over Counter-Hit / Punish Counter bonus frame advantage to both hits"
+    },
+    {
+      "name": "MP Freeflow Strikes 2",
+      "input": "236MP > 6P",
+      "damage": "1045 (220*330*220*275) {495 (220*275)}",
+      "startup": "15",
+      "active": "2(5)2",
+      "recovery": "27",
+      "onBlock": "-10",
+      "onHit": "-2",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "MP Freeflow Strikes 3",
+      "input": "236MP > 6P > 6P",
+      "damage": "1705 (220*330*220*275*132x2*396) {825 (165x2*495)}",
+      "startup": "16",
+      "active": "2(4)2(14)3",
+      "recovery": "28",
+      "onBlock": "-14",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "MP Freeflow Kicks 2",
+      "input": "236MP > 6K",
+      "damage": "330",
+      "startup": "17",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "Kick follow-ups are only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "MP Freeflow Kicks 3",
+      "input": "236MP > 6K > 6K",
+      "damage": "550",
+      "startup": "21",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD -1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Restores 1 extra bar of Drive Gauge | 1/6th (~17%) of Burnout Gauge"
+    },
+    {
+      "name": "HP Freeflow Strikes",
+      "input": "236HP",
+      "damage": "660 (220*440)",
+      "startup": "19",
+      "active": "2(9)2",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Carries over Counter-Hit / Punish Counter bonus frame advantage to both hits"
+    },
+    {
+      "name": "HP Freeflow Strikes 2",
+      "input": "236HP > 6P",
+      "damage": "1155 (220*440*220*275) {495 (220*275)}",
+      "startup": "15",
+      "active": "2(5)2",
+      "recovery": "27",
+      "onBlock": "-10",
+      "onHit": "-2",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "HP Freeflow Strikes 3",
+      "input": "236HP > 6P > 6P",
+      "damage": "1815 (220*440*220*275*132x2*396) {825 (165x2*495)}",
+      "startup": "16",
+      "active": "2(4)2(14)3",
+      "recovery": "28",
+      "onBlock": "-14",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "HP Freeflow Kicks 2",
+      "input": "236HP > 6K",
+      "damage": "330",
+      "startup": "20",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "Kick follow-ups are only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "HP Freeflow Kicks 3",
+      "input": "236HP > 6K > 6K",
+      "damage": "605",
+      "startup": "24",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD -1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Restores 1 extra bar of Drive Gauge | 1/6th (~17%) of Burnout Gauge"
+    },
+    {
+      "name": "OD Freeflow Strikes",
+      "input": "236PP",
+      "damage": "660 (220*440)",
+      "startup": "13",
+      "active": "2(9)2",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Carries over Counter-Hit / Punish Counter bonus frame advantage to both hits"
+    },
+    {
+      "name": "OD Freeflow Strikes 2",
+      "input": "236PP > 6P",
+      "damage": "1210 (220*440*220*330) {550 (220*330)}",
+      "startup": "15",
+      "active": "2(5)2",
+      "recovery": "27",
+      "onBlock": "-10",
+      "onHit": "-2",
+      "category": "special",
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "OD Freeflow Strikes 3",
+      "input": "236PP > 6P > 6P",
+      "damage": "2145 (220*440*220*330*165x2*605) {935 (165x2*605)}",
+      "startup": "16",
+      "active": "2(4)2(14)3",
+      "recovery": "28",
+      "onBlock": "-14",
+      "onHit": "KD +27",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Can be performed on whiff (but is delayed a few frames compared to when performed on hit / block)"
+    },
+    {
+      "name": "OD Freeflow Kicks 2",
+      "input": "236PP > 6K",
+      "damage": "385",
+      "startup": "14",
+      "active": "2",
+      "recovery": "32",
+      "onBlock": "-15",
+      "onHit": "-7",
+      "category": "special",
+      "notes": "Kick follow-ups are only possible on Hit / Block (not on whiff like the punch follow-ups)"
+    },
+    {
+      "name": "OD Freeflow Kicks 3",
+      "input": "236PP > 6K > 6K",
+      "damage": "660",
+      "startup": "18",
+      "active": "2",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "KD +1",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 1
+      },
+      "notes": "Only Drink Rekka ender that's + on knockdown, granting Jamie an oki situation when used on a cornered opponent"
+    },
+    {
+      "name": "LP Swagger Step",
+      "input": "214LP",
+      "damage": "990",
+      "startup": "17",
+      "active": "9",
+      "recovery": "17",
+      "onBlock": "-6",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "A lot of active frames can be made + on block via spacing or oki"
+    },
+    {
+      "name": "MP Swagger Step",
+      "input": "214MP",
+      "damage": "1100",
+      "startup": "20",
+      "active": "9",
+      "recovery": "17",
+      "onBlock": "-6",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "A lot of active frames can be made + on block via spacing or oki"
+    },
+    {
+      "name": "HP Swagger Step",
+      "input": "214HP",
+      "damage": "1320",
+      "startup": "25",
+      "active": "9",
+      "recovery": "16",
+      "onBlock": "-3",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Safe on block unlike LP/MP Palm and also +42 KD which sets Jamie up for a safe jump (same as his LK Breakdance at Drink Levels 2+)"
+    },
+    {
+      "name": "OD Swagger Step",
+      "input": "214PP",
+      "damage": "1210",
+      "startup": "20",
+      "active": "9",
+      "recovery": "15",
+      "onBlock": "-1",
+      "onHit": "KD +73 (Tumble)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 73
+      },
+      "notes": "Sends opponents tumbling backwards (can hit them OTG in this tumbling state)"
+    },
+    {
+      "name": "LK Arrow Kick",
+      "input": "623LK",
+      "damage": "1100 (550*550)",
+      "startup": "5",
+      "active": "10",
+      "recovery": "52",
+      "onBlock": "-44",
+      "onHit": "KD +42",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Invincible to airborne strikes on frames 1-11"
+    },
+    {
+      "name": "MK Arrow Kick",
+      "input": "623MK",
+      "damage": "1320 (550*770)",
+      "startup": "8",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +34",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Invincible to airborne strikes on frames 1-14"
+    },
+    {
+      "name": "HK Arrow Kick",
+      "input": "623HK",
+      "damage": "1540 (550*440*550)",
+      "startup": "10",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +39",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Invincible to airborne strikes on frames 1-16"
+    },
+    {
+      "name": "OD Arrow Kick",
+      "input": "623KK",
+      "damage": "1650 (550*495*605)",
+      "startup": "6",
+      "active": "9",
+      "recovery": "51",
+      "onBlock": "-43",
+      "onHit": "KD +40",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Fully invincible on frames 1-9"
+    },
+    {
+      "name": "Luminous Dive Kick (Drink 1)",
+      "input": "214K (air)",
+      "damage": "1100",
+      "startup": "11",
+      "active": "1(2)until land",
+      "recovery": "13",
+      "onBlock": "-8(2)",
+      "onHit": "KD +42(52)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Not an Overhead"
+    },
+    {
+      "name": "OD Luminous Dive Kick (Drink 1)",
+      "input": "214KK (air)",
+      "damage": "880",
+      "startup": "11",
+      "active": "1(2)until land",
+      "recovery": "13",
+      "onBlock": "-4(5)",
+      "onHit": "KD +58(65)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 58
+      },
+      "notes": "Puts opponent into a limited OTG juggle state"
+    },
+    {
+      "name": "LK Bakkai (Drink 2)",
+      "input": "236LK",
+      "damage": "1540 (275x3*715)",
+      "startup": "18",
+      "active": "2(2)3(4)2(11)2",
+      "recovery": "24",
+      "onBlock": "-12",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Projectle invincible on frames 3-43 (until end of active frames)"
+    },
+    {
+      "name": "MK Bakkai (Drink 2)",
+      "input": "236MK",
+      "damage": "1760 (275x5*385)",
+      "startup": "22",
+      "active": "2(1)2(3)2(5)2(12)2(5)2",
+      "recovery": "31",
+      "onBlock": "-16",
+      "onHit": "KD +35",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Projectle invincible on frames 4-59 (until end of active frames)"
+    },
+    {
+      "name": "HK Bakkai (Drink 2)",
+      "input": "236HK",
+      "damage": "1980 (275x6*330)",
+      "startup": "25",
+      "active": "3(6)2(6)2(6)2(13)2(7)2(15)2",
+      "recovery": "32",
+      "onBlock": "-17",
+      "onHit": "KD +34",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Projectle invincible on frames 5-92 (until end of active frames)"
+    },
+    {
+      "name": "OD Bakkai (Drink 2)",
+      "input": "236KK",
+      "damage": "2200 (198x9*418)",
+      "startup": "21",
+      "active": "3(3)2(8)2(3)2(7)2(7)2(12)2(11)2(4)2(4)2",
+      "recovery": "62",
+      "onBlock": "-46",
+      "onHit": "KD +12",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 12
+      },
+      "notes": "Projectle invincible on frames 3-100 (until end of active frames)"
+    },
+    {
+      "name": "Tenshin (Drink 3)",
+      "input": "63214K",
+      "damage": "-",
+      "startup": "8",
+      "active": "2",
+      "recovery": "52",
+      "onBlock": "-",
+      "onHit": "8",
+      "category": "normal",
+      "notes": "Range: 0.96"
+    },
+    {
+      "name": "OD Tenshin (Drink 3)",
+      "input": "63214KK",
+      "damage": "715",
+      "startup": "8",
+      "active": "2",
+      "recovery": "52",
+      "onBlock": "-",
+      "onHit": "HKD +86",
+      "category": "normal",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 86
+      },
+      "notes": "Range: 0.96"
+    },
+    {
+      "name": "LP Swagger Hermit Punch (Drink 4)",
+      "input": "214LP > 6P",
+      "damage": "1980 (990*990)",
+      "startup": "17",
+      "active": "9",
+      "recovery": "39",
+      "onBlock": "-23",
+      "onHit": "KD +20",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Cancelable into level 3 Super on Hit / Block"
+    },
+    {
+      "name": "MP Swagger Hermit Punch (Drink 4)",
+      "input": "214MP > 6P",
+      "damage": "2090 (1100*990)",
+      "startup": "20",
+      "active": "9",
+      "recovery": "39",
+      "onBlock": "-23",
+      "onHit": "KD +20",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Cancelable into level 3 Super on Hit / Block"
+    },
+    {
+      "name": "HP Swagger Hermit Punch (Drink 4)",
+      "input": "214HP > 6P",
+      "damage": "2310 (1320*990)",
+      "startup": "25",
+      "active": "9",
+      "recovery": "39",
+      "onBlock": "-23",
+      "onHit": "KD +19",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 19
+      },
+      "notes": "Cancelable into level 3 Super on Hit / Block"
+    },
+    {
+      "name": "OD Swagger Hermit Punch (Drink 4)",
+      "input": "214PP > 6P",
+      "damage": "2090 (1210*880)",
+      "startup": "20",
+      "active": "9",
+      "recovery": "39",
+      "onBlock": "-23",
+      "onHit": "KD +20",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Cancelable into level 2 and 3 Supers on Hit / Block"
+    },
+    {
+      "name": "Breakin'",
+      "input": "236236K",
+      "damage": "2420(2035)",
+      "startup": "8",
+      "active": "2*7(6)5(6)2(7)2(7)2(6)2(6)2(6)2(29)2(9)2(6)2(5)2",
+      "recovery": "74",
+      "onBlock": "-60(-93)",
+      "onHit": "KD +12(4)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 12
+      },
+      "notes": "Strike and Throw invincible on frames 1-12"
+    },
+    {
+      "name": "Getsuga Saiho",
+      "input": "236236P",
+      "damage": "2860",
+      "startup": "10",
+      "active": "3(13)3",
+      "recovery": "42",
+      "onBlock": "-27",
+      "onHit": "HKD +71",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 71
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Getsuga Saiho (Critical Art)",
+      "input": "236236P",
+      "damage": "4950",
+      "startup": "10",
+      "active": "3(13)3",
+      "recovery": "42",
+      "onBlock": "-27",
+      "onHit": "HKD +18",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 18
+      },
+      "notes": "Fully invincible on frames 1-12"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

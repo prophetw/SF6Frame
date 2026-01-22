@@ -1,0 +1,903 @@
+{
+  "character": {
+    "id": "jp",
+    "name": "JP",
+    "nameJp": "JP"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 22,
+    "backDash": 23,
+    "forwardWalk": 0.037,
+    "backWalk": 0.025
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "6",
+      "active": "3",
+      "recovery": "10",
+      "onBlock": "-2",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "700",
+      "startup": "12",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-6",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Solid poke tool with good range and hitbox priority"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "800",
+      "startup": "12",
+      "active": "2",
+      "recovery": "22",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "JP's main combo / juggle / punish tool, as well as being fully cancelable with solid range for checking the opponent"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "3",
+      "recovery": "11",
+      "onBlock": "-2",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Incurs 20% damage scaling penalty if used as the first hit of a combo"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "600",
+      "startup": "8",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Solid range combo tool that's fully cancelable"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "800",
+      "startup": "12",
+      "active": "4",
+      "recovery": "17",
+      "onBlock": "2",
+      "onHit": "7",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Head hurtbox is invincible to airborne strikes on frames 9-15"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "2",
+      "recovery": "11",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "JP's only 4F normal option"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "600",
+      "startup": "7",
+      "active": "4",
+      "recovery": "14",
+      "onBlock": "-2",
+      "onHit": "6",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Solid combo / poke / buffer tool"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "6",
+      "recovery": "20",
+      "onBlock": "-6",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Extended arm is invincible to airborne strikes on frames 10-14 (after first active frame)"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "6",
+      "active": "2",
+      "recovery": "10",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "700",
+      "startup": "9",
+      "active": "3",
+      "recovery": "17",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "notes": "Extremely far range low poke tool that shifts JP's positioning forward"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900",
+      "startup": "10",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-6",
+      "onHit": "KD +27",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Very short range sweep but has solid hitbox priority"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "10",
+      "recovery": "-",
+      "onBlock": "4~5",
+      "onHit": "8~9",
+      "category": "normal"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "700",
+      "startup": "12",
+      "active": "3",
+      "recovery": "-",
+      "onBlock": "8~9",
+      "onHit": "12~13",
+      "category": "normal",
+      "notes": "Very far horizontal reach (furthest of JP's air normals)"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "5~11",
+      "onHit": "9~15 (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents on Counter-Hit / Punish Counter"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "6",
+      "active": "8",
+      "recovery": "-",
+      "onBlock": "1~7",
+      "onHit": "4~10",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "600",
+      "startup": "7",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "5~9",
+      "onHit": "9~13 (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a limited juggle state on hit"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800",
+      "startup": "11",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "5~11",
+      "onHit": "9~15",
+      "category": "normal",
+      "notes": "Very far horizontal reach (furthest of JP's air normals)"
+    },
+    {
+      "name": "Guillotinna",
+      "input": "6MK",
+      "damage": "700",
+      "startup": "22",
+      "active": "2",
+      "recovery": "19",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "unique",
+      "notes": "Overhead"
+    },
+    {
+      "name": "Malice",
+      "input": "3HP",
+      "damage": "900",
+      "startup": "16",
+      "active": "3",
+      "recovery": "31",
+      "onBlock": "-14",
+      "onHit": "HKD +17",
+      "category": "unique",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 17
+      },
+      "notes": "Very far range sweep (albeit a bit slow start-up) that can be very hard to punish on block for some characters when spaced out properly"
+    },
+    {
+      "name": "Bylina",
+      "input": "6HK",
+      "damage": "900 (300*600)",
+      "startup": "11",
+      "active": "2*4",
+      "recovery": "24",
+      "onBlock": "-5(-8)",
+      "onHit": "KD +38",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Head and extended kicking leg hurtboxes are invincible to airborne strikes on frames 8-16"
+    },
+    {
+      "name": "Grom Strelka First",
+      "input": "4MP",
+      "damage": "500",
+      "startup": "8",
+      "active": "3",
+      "recovery": "16",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "unique",
+      "cancels": [
+        "Target Combo",
+        "Special",
+        "Super"
+      ],
+      "notes": "Fully cancelable combo tool that also has a Target Combo extension"
+    },
+    {
+      "name": "Grom Strelka",
+      "input": "4MP > 5MP",
+      "damage": "500",
+      "startup": "10",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-6",
+      "onHit": "3",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Fully cancelable combo tool"
+    },
+    {
+      "name": "Zilant",
+      "input": "5HK > 5HP",
+      "damage": "500",
+      "startup": "20",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "unique",
+      "cancels": [
+        "Target Combo",
+        "Special",
+        "Super"
+      ],
+      "notes": "Fully cancelable"
+    },
+    {
+      "name": "Zilant Mid",
+      "input": "5HK > 5HP > 5HP",
+      "damage": "1000",
+      "startup": "21",
+      "active": "3",
+      "recovery": "22",
+      "onBlock": "-4",
+      "onHit": "3",
+      "category": "unique",
+      "notes": "Overhead"
+    },
+    {
+      "name": "Zilant Low",
+      "input": "5HK > 5HP > 5HK",
+      "damage": "1000",
+      "startup": "21",
+      "active": "3",
+      "recovery": "22",
+      "onBlock": "-4",
+      "onHit": "3",
+      "category": "unique",
+      "notes": "Low"
+    },
+    {
+      "name": "Ravina",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +24",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 24
+      },
+      "notes": "Throw Loop: Dash forward +2 strike/throw mixup or walk forward and manually time a mixup (only works in the corner)"
+    },
+    {
+      "name": "Uragan",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +36",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "Back Throw oki when cornered: Can Drive Rush into Strike / Throw mix or just lock down with Torbalan (QCF Ghosts) or meaty Triglav (d,d+P)"
+    },
+    {
+      "name": "Tornado",
+      "input": "LPLK (air)",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD +32",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Switches sides with opponent"
+    },
+    {
+      "name": "Drive Impact: Espada",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Exilio",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "Triglav",
+      "input": "22P",
+      "damage": "800",
+      "startup": "22",
+      "active": "10",
+      "recovery": "34",
+      "onBlock": "-2",
+      "onHit": "KD +44",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 44
+      },
+      "notes": "1-hit projectile hitbox"
+    },
+    {
+      "name": "OD Triglav",
+      "input": "22PP",
+      "damage": "1000 (500*500)",
+      "startup": "20",
+      "active": "10*10",
+      "recovery": "33",
+      "onBlock": "3",
+      "onHit": "KD +53(50)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 53
+      },
+      "notes": "Two separate 1-hit OD projectile hitboxes"
+    },
+    {
+      "name": "LP Stribog",
+      "input": "236LP",
+      "damage": "1000 (300*700)",
+      "startup": "16",
+      "active": "3*3",
+      "recovery": "28",
+      "onBlock": "-10",
+      "onHit": "KD +38",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "First hit is a 3F strike hitbox with the second hit being a 3F projectile hitbox (second hit can still be perfect parried as if it was a strike)"
+    },
+    {
+      "name": "MP Stribog",
+      "input": "236MP",
+      "damage": "1200 (400*800)",
+      "startup": "20",
+      "active": "3(1)3",
+      "recovery": "27",
+      "onBlock": "-8",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "First hit is a 3F strike hitbox with the second hit being a 3F projectile hitbox (second hit can still be perfect parried as if it was a strike)"
+    },
+    {
+      "name": "HP Stribog",
+      "input": "236HP",
+      "damage": "800 (300*500)",
+      "startup": "28",
+      "active": "3(9)3",
+      "recovery": "19",
+      "onBlock": "4",
+      "onHit": "KD +67(87)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 67
+      },
+      "notes": "First hit is a 3F strike hitbox with the second hit being a 3F projectile hitbox (second hit can still be perfect parried as if it was a strike)"
+    },
+    {
+      "name": "OD Stribog",
+      "input": "236PP",
+      "damage": "1000 (600*400)",
+      "startup": "19",
+      "active": "3(6)3",
+      "recovery": "22",
+      "onBlock": "2",
+      "onHit": "KD +56(72)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 56
+      },
+      "notes": "First hit is a 3F strike hitbox with the second hit being a 3F OD projectile hitbox (second hit can still be perfect parried as if it was a strike)"
+    },
+    {
+      "name": "Departure",
+      "input": "214P",
+      "damage": "800",
+      "startup": "150",
+      "active": "10",
+      "recovery": "50",
+      "onBlock": "~(31)",
+      "onHit": "KD ~",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spawns a portal in the air according to button strength used (LP: Close | MP: Mid | HP: Far)"
+    },
+    {
+      "name": "OD Departure",
+      "input": "214PP",
+      "damage": "1000 (500*500)",
+      "startup": "110*140",
+      "active": "10(20)10",
+      "recovery": "40",
+      "onBlock": "~(31)",
+      "onHit": "KD ~",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spawns 2 portals in the air at different distances depending on which 2 button strengths are used (LP: Close | MP: Mid | HP: Far"
+    },
+    {
+      "name": "Departure: Shadow",
+      "input": "214P > 214HP",
+      "damage": "800",
+      "startup": "19(21)",
+      "active": "10",
+      "recovery": "21",
+      "onBlock": "9(11)",
+      "onHit": "KD +58(60)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 58
+      },
+      "notes": "Spawns a 1-hit projectile hitbox into the direction of the opponent from the active portal"
+    },
+    {
+      "name": "OD Departure: Shadow",
+      "input": "214PP > 214HP",
+      "damage": "1000 (500*500)",
+      "startup": "19(21)",
+      "active": "10(20)10",
+      "recovery": "21",
+      "onBlock": "39(41)",
+      "onHit": "KD +92(98)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 92
+      },
+      "notes": "Spawns 2 separate OD projectile hitboxes from each portal in this order: LP > MP > HP portal"
+    },
+    {
+      "name": "LK Torbalan",
+      "input": "236LK",
+      "damage": "800",
+      "startup": "14",
+      "active": "6",
+      "recovery": "36",
+      "onBlock": "-6",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "MK Torbalan",
+      "input": "236MK",
+      "damage": "1000",
+      "startup": "14",
+      "active": "6",
+      "recovery": "36",
+      "onBlock": "-8",
+      "onHit": "6",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit Overhead projectile"
+    },
+    {
+      "name": "HK Torbalan",
+      "input": "236HK",
+      "damage": "1000",
+      "startup": "14",
+      "active": "6",
+      "recovery": "36",
+      "onBlock": "-8",
+      "onHit": "6",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit Low hitting projectile"
+    },
+    {
+      "name": "OD Torbalan",
+      "input": "236KK",
+      "damage": "800 (400*400)",
+      "startup": "14",
+      "active": "6(14)6",
+      "recovery": "36",
+      "onBlock": "25",
+      "onHit": "KD +66",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 66
+      },
+      "notes": "2-hit OD projectile"
+    },
+    {
+      "name": "Embrace",
+      "input": "214K",
+      "damage": "1800",
+      "startup": "26",
+      "active": "3",
+      "recovery": "44",
+      "onBlock": "-",
+      "onHit": "HKD +18",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 18
+      },
+      "notes": "1-hit ranged Command Grab projectile"
+    },
+    {
+      "name": "OD Embrace",
+      "input": "214KK",
+      "damage": "2600",
+      "startup": "26",
+      "active": "3",
+      "recovery": "44",
+      "onBlock": "-",
+      "onHit": "HKD +18",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 18
+      },
+      "notes": "1-hit ranged Command Grab OD projectile "
+    },
+    {
+      "name": "Amnesia",
+      "input": "22K",
+      "damage": "800",
+      "startup": "3",
+      "active": "18",
+      "recovery": "35(18~20)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Counters Strikes (but not projectiles) frames 3-20"
+    },
+    {
+      "name": "Amnesia: Bomb",
+      "input": "22K (bomb)",
+      "damage": "800",
+      "startup": "59",
+      "active": "10",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD ~",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "This move refers to the projectile bomb that spawns after Amnesia is successfully triggered"
+    },
+    {
+      "name": "OD Amnesia",
+      "input": "22KK",
+      "damage": "1200 (600*600)",
+      "startup": "1",
+      "active": "20",
+      "recovery": "35(17~20)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Counters Strikes and Ground Throws (but not projectiles) frames 1-20"
+    },
+    {
+      "name": "OD Amnesia: Bomb",
+      "input": "22KK (bomb)",
+      "damage": "1200 (600*600)",
+      "startup": "59",
+      "active": "10(32)10",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD ~",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "This move refers to the projectile bomb that spawns after OD Amnesia is successfully triggered"
+    },
+    {
+      "name": "Chornobog",
+      "input": "236236P",
+      "damage": "2000 (400*1600)",
+      "startup": "8",
+      "active": "14*~",
+      "recovery": "62",
+      "onBlock": "-33(-23)",
+      "onHit": "KD +22(32)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Strike and Throw invincible on frames 1-10"
+    },
+    {
+      "name": "Lovushka",
+      "input": "214214P",
+      "damage": "2000 (500x4)",
+      "startup": "1",
+      "active": "-",
+      "recovery": "12",
+      "onBlock": "~(20)",
+      "onHit": "-",
+      "category": "super",
+      "notes": "No invincibility whatsoever"
+    },
+    {
+      "name": "Interdiction",
+      "input": "236236K",
+      "damage": "4000",
+      "startup": "18",
+      "active": "6",
+      "recovery": "62",
+      "onBlock": "-50",
+      "onHit": "HKD +23",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 23
+      },
+      "notes": "Teleports next to the opponent during startup (attack can whiff if opponent is too high in the air)"
+    },
+    {
+      "name": "Interdiction (Critical Art)",
+      "input": "236236K (CA)",
+      "damage": "4500",
+      "startup": "18",
+      "active": "6",
+      "recovery": "62",
+      "onBlock": "-50",
+      "onHit": "HKD +44",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 44
+      },
+      "notes": "Teleports next to the opponent during startup (attack can whiff if opponent is too high in the air)"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

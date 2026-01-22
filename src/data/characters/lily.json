@@ -1,0 +1,1092 @@
+{
+  "character": {
+    "id": "lily",
+    "name": "Lily",
+    "nameJp": "リリー"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 21,
+    "backDash": 24,
+    "forwardWalk": 0.042,
+    "backWalk": 0.027
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "350",
+      "startup": "5",
+      "active": "3",
+      "recovery": "8",
+      "onBlock": "-1",
+      "onHit": "6",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / stand LK / crouch LK"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "800",
+      "startup": "9",
+      "active": "4",
+      "recovery": "17",
+      "onBlock": "-4",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Incredible poke tool with great range and very strong hitbox priority"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "900",
+      "startup": "11",
+      "active": "3",
+      "recovery": "22",
+      "onBlock": "-5",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "No head hurtbox on frames 10-35"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "8",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / stand LK / crouch LK"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "600",
+      "startup": "7",
+      "active": "3",
+      "recovery": "15",
+      "onBlock": "-1",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Mostly just a combo tool"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "1000",
+      "startup": "14",
+      "active": "4",
+      "recovery": "21",
+      "onBlock": "-5",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Solid poke with good range and pushback"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "6",
+      "active": "3",
+      "recovery": "8",
+      "onBlock": "-1",
+      "onHit": "6",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / stand LK / crouch LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "700",
+      "startup": "8",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Good poke tool with very strong hitbox priority"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "1000 (500*500)",
+      "startup": "10",
+      "active": "2*4",
+      "recovery": "22",
+      "onBlock": "-2",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Second hit is fully cancelable"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "2",
+      "recovery": "12",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into stand LP / crouch LP / stand LK / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "500",
+      "startup": "9",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-5",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Bit slow start-up and a little bit stubby compared to other crouch MKs"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900 (450*450)",
+      "startup": "11",
+      "active": "2(6)2",
+      "recovery": "24",
+      "onBlock": "-12",
+      "onHit": "KD +32",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "First hit does not cause a knockdown (second hit can whiff in very long range whiff punish scenarios, resulting in Lily being -4 on whiff)"
+    },
+    {
+      "name": "Jump LP",
+      "input": "j.LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "9",
+      "recovery": "-",
+      "onBlock": "2~5",
+      "onHit": "6~9",
+      "category": "normal",
+      "notes": "Decent air-to-air"
+    },
+    {
+      "name": "Jump MP",
+      "input": "j.MP",
+      "damage": "700",
+      "startup": "9",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "1~7",
+      "onHit": "5~11 (KD)",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "j.HP",
+      "damage": "800",
+      "startup": "10",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "2~11",
+      "onHit": "6~15 (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents"
+    },
+    {
+      "name": "Jump LK",
+      "input": "j.LK",
+      "damage": "300",
+      "startup": "6",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "0~6",
+      "onHit": "4~10",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MK",
+      "input": "j.MK",
+      "damage": "500",
+      "startup": "8",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "3~9",
+      "onHit": "7~13",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "j.HK",
+      "damage": "800",
+      "startup": "11",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "5~11",
+      "onHit": "9~15",
+      "category": "normal",
+      "notes": "Projectile invincible on the lower body (legs) on frames 11-26"
+    },
+    {
+      "name": "Great Spin",
+      "input": "2HP (air)",
+      "damage": "800",
+      "startup": "9",
+      "active": "11",
+      "recovery": "-",
+      "onBlock": "7~11",
+      "onHit": "11~15",
+      "category": "unique",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Double Arrow",
+      "input": "8MP > 8MP",
+      "damage": "700",
+      "startup": "10",
+      "active": "3",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "unique",
+      "cancels": [
+        "SA2"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Both hits put airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Ridge Thrust",
+      "input": "3HP",
+      "damage": "900",
+      "startup": "25",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "unique",
+      "notes": "Overhead"
+    },
+    {
+      "name": "Horn Breaker",
+      "input": "4HP",
+      "damage": "1000",
+      "startup": "14",
+      "active": "4",
+      "recovery": "18",
+      "onBlock": "-2",
+      "onHit": "5",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Good range with incredibly strong hitbox priority, fully cancelable and hit confirmable makes this a key normal for Lily in the neutral and in her combos"
+    },
+    {
+      "name": "Desert Storm 1",
+      "input": "6HP",
+      "damage": "900",
+      "startup": "16",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-4",
+      "onHit": "2",
+      "category": "unique",
+      "cancels": [
+        "Target Combo",
+        "Special",
+        "Super"
+      ],
+      "notes": "Quite far range for a fully cancelable normal"
+    },
+    {
+      "name": "Desert Storm 2",
+      "input": "6HP > 5HP",
+      "damage": "500",
+      "startup": "20",
+      "active": "2",
+      "recovery": "27",
+      "onBlock": "-9",
+      "onHit": "0",
+      "category": "unique",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "2F gap on block between first and second hit (frametrap opportunity)"
+    },
+    {
+      "name": "Desert Storm Final",
+      "input": "6HP > 5HP > 5HP",
+      "damage": "800",
+      "startup": "20",
+      "active": "5",
+      "recovery": "39",
+      "onBlock": "-23",
+      "onHit": "KD +26",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "1F gap on block between the second and third hit (another frametrap opportunity)"
+    },
+    {
+      "name": "Canyon Throw",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +20",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Throw Loop: Drive Rush mixup between throw/strike (not possible on mid-screen back-roll) - although she can walk up and meaty throw Blanka, E. Honda, and Zangief with frame perfect timing (as they have a wider throw box)"
+    },
+    {
+      "name": "Falling Cliff",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +32",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Back Throw oki when cornered: Can dash up for a meaty strike or Drive Rush for a strike/throw mixup / Do immediate meaty Condor Spires for block pressure"
+    },
+    {
+      "name": "Drive Impact: Earth's Rage",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Cross Hammer",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "LP Condor Wind",
+      "input": "214LP",
+      "damage": "-",
+      "startup": "46",
+      "active": "-",
+      "recovery": "1",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Grants 1 Windclad stock on frame 46 and the button can be held to gain further stocks on frame 71 and 91"
+    },
+    {
+      "name": "LP Condor Wind (2 stocks)",
+      "input": "214LP (hold)",
+      "damage": "-",
+      "startup": "71",
+      "active": "-",
+      "recovery": "19",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Grants a second Windclad stock on frame 71 and the button can be held slightly longer for the third and final stock on frame 91"
+    },
+    {
+      "name": "LP Condor Wind (3 stocks)",
+      "input": "214LP (hold level 2)",
+      "damage": "-",
+      "startup": "90",
+      "active": "-",
+      "recovery": "19",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Grants the third and final Windclad stock on frame 90 followed by 19 recovery frames (total of 109F frames)"
+    },
+    {
+      "name": "MP Condor Wind",
+      "input": "214MP",
+      "damage": "900",
+      "startup": "23(4)",
+      "active": "4",
+      "recovery": "25",
+      "onBlock": "-8",
+      "onHit": "2",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Grants 1 Windclad stock on frame 23 (first active frame) if the MP button is released before by frame 45"
+    },
+    {
+      "name": "HP Condor Wind",
+      "input": "214HP",
+      "damage": "1100",
+      "startup": "25(4)",
+      "active": "4",
+      "recovery": "25",
+      "onBlock": "-8",
+      "onHit": "KD +30",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 30
+      },
+      "notes": "Grants 1 Windclad stock on frame 25 (first active frame) if the HP button is released before by frame 45"
+    },
+    {
+      "name": "OD Condor Wind (attack)",
+      "input": "214PP",
+      "damage": "1200",
+      "startup": "19(4)",
+      "active": "4",
+      "recovery": "23",
+      "onBlock": "-5",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Grants 1 Windclad stock on the first active frame"
+    },
+    {
+      "name": "OD Condor Wind (hold)",
+      "input": "214PP (hold)",
+      "damage": "-",
+      "startup": "38",
+      "active": "-",
+      "recovery": "2",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Grants 1 Windclad stock"
+    },
+    {
+      "name": "LK Condor Spire",
+      "input": "236LK",
+      "damage": "800",
+      "startup": "17",
+      "active": "13",
+      "recovery": "2+14",
+      "onBlock": "-8(4)",
+      "onHit": "KD +33(45)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Airborne on frames 8-31 (Forced Knockdown state)"
+    },
+    {
+      "name": "MK Condor Spire",
+      "input": "236MK",
+      "damage": "900",
+      "startup": "21",
+      "active": "13",
+      "recovery": "2+14",
+      "onBlock": "-8(4)",
+      "onHit": "KD +37(49)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 37
+      },
+      "notes": "Airborne on frames 9-35 (Forced Knockdown state)"
+    },
+    {
+      "name": "HK Condor Spire",
+      "input": "236HK",
+      "damage": "1000",
+      "startup": "25",
+      "active": "13",
+      "recovery": "2+14",
+      "onBlock": "-8(4)",
+      "onHit": "KD +37(49)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 37
+      },
+      "notes": "Airborne on frames 11-39 (Forced Knockdown state)"
+    },
+    {
+      "name": "OD Condor Spire",
+      "input": "236KK",
+      "damage": "1000",
+      "startup": "15",
+      "active": "13",
+      "recovery": "2+14",
+      "onBlock": "-8(4)",
+      "onHit": "KD +42(54)",
+      "category": "special",
+      "cancels": [
+        "SA2"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Airborne on frames 7-29 (Forced Knockdown state)"
+    },
+    {
+      "name": "LK Condor Spire (enhanced)",
+      "input": "236LK (enhanced)",
+      "damage": "1000 (100*100*800)",
+      "startup": "9*20",
+      "active": "5(6)11*7",
+      "recovery": "2+12",
+      "onBlock": "1(7)",
+      "onHit": "KD +47(46~52)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 47
+      },
+      "notes": "Enhanced: Faster start-up / 3 hits / better frame advantage and KDA"
+    },
+    {
+      "name": "MK Condor Spire (enhanced)",
+      "input": "236MK (enhanced)",
+      "damage": "1100 (100*100*900)",
+      "startup": "13*24",
+      "active": "5(6)11*7",
+      "recovery": "2+12",
+      "onBlock": "1(7)",
+      "onHit": "KD +49(47~53)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 49
+      },
+      "notes": "Enhanced: Faster start-up / 3 hits / better frame advantage and KDA"
+    },
+    {
+      "name": "HK Condor Spire (enhanced)",
+      "input": "236HK (enhanced)",
+      "damage": "1200 (100*100*1000)",
+      "startup": "17*28",
+      "active": "5(6)11*7",
+      "recovery": "2+12",
+      "onBlock": "1(7)",
+      "onHit": "KD +52(50~56)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 52
+      },
+      "notes": "Enhanced: Faster start-up / 3 hits / better frame advantage and KDA"
+    },
+    {
+      "name": "OD Condor Spire (enhanced)",
+      "input": "236KK (enhanced)",
+      "damage": "1200 (100*100*1000)",
+      "startup": "9",
+      "active": "14*3*7",
+      "recovery": "2+12",
+      "onBlock": "2(8)",
+      "onHit": "KD +56(62)",
+      "category": "special",
+      "cancels": [
+        "SA2"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 56
+      },
+      "notes": "Enhanced: Faster start-up / 3 hits / better frame advantage and KDA"
+    },
+    {
+      "name": "LP Tomahawk Buster",
+      "input": "623LP",
+      "damage": "900",
+      "startup": "6",
+      "active": "11",
+      "recovery": "21+12",
+      "onBlock": "-27",
+      "onHit": "KD +36(41)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "Invincible to airborne attacks on frames 1-10"
+    },
+    {
+      "name": "MP Tomahawk Buster",
+      "input": "623MP",
+      "damage": "1000",
+      "startup": "8",
+      "active": "12",
+      "recovery": "25+12",
+      "onBlock": "-32",
+      "onHit": "KD +36(42)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "Invincible to airborne attacks on frames 1-12"
+    },
+    {
+      "name": "HP Tomahawk Buster",
+      "input": "623HP",
+      "damage": "1200",
+      "startup": "10",
+      "active": "14",
+      "recovery": "26+12",
+      "onBlock": "-35",
+      "onHit": "KD +36(41)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "Invincible to airborne attacks on frames 1-14"
+    },
+    {
+      "name": "OD Tomahawk Buster",
+      "input": "623PP",
+      "damage": "1400 (800*600)",
+      "startup": "6",
+      "active": "3*9",
+      "recovery": "28+15",
+      "onBlock": "-35",
+      "onHit": "KD +32(37)",
+      "category": "special",
+      "cancels": [
+        "Special"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Cancelable into OD Condor Dive"
+    },
+    {
+      "name": "LP Tomahawk Buster (enhanced)",
+      "input": "623LP (enhanced)",
+      "damage": "1000 (400*600)",
+      "startup": "4",
+      "active": "4*9",
+      "recovery": "21+12",
+      "onBlock": "-25",
+      "onHit": "KD +41(43)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 41
+      },
+      "notes": "Enhanced: 2F Faster start-up / extra hit / 100 more damage / higher KDA / more juggle opportunities"
+    },
+    {
+      "name": "MP Tomahawk Buster (enhanced)",
+      "input": "623MP (enhanced)",
+      "damage": "1200 (400*800)",
+      "startup": "6",
+      "active": "4*10",
+      "recovery": "25+12",
+      "onBlock": "-30",
+      "onHit": "KD +41(43)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 41
+      },
+      "notes": "Enhanced: 2F Faster start-up / extra hit / 200 more damage / higher KDA / more juggle opportunities"
+    },
+    {
+      "name": "HP Tomahawk Buster (enhanced)",
+      "input": "623HP (enhanced)",
+      "damage": "1400 (400*1000)",
+      "startup": "8",
+      "active": "4*12",
+      "recovery": "26+12",
+      "onBlock": "-33",
+      "onHit": "KD +41(43)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 41
+      },
+      "notes": "Enhanced: 2F Faster start-up / extra hit / 200 more damage / higher KDA / more juggle opportunities"
+    },
+    {
+      "name": "OD Tomahawk Buster (enhanced)",
+      "input": "623PP (enhanced)",
+      "damage": "1600 (400*600*600)",
+      "startup": "4",
+      "active": "2*2*10",
+      "recovery": "28+15",
+      "onBlock": "-35",
+      "onHit": "KD +33(38)",
+      "category": "special",
+      "cancels": [
+        "Special"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Enhanced: 2F Faster start-up / extra hit / 200 more damage / higher KDA / more juggle opportunities"
+    },
+    {
+      "name": "Condor Dive",
+      "input": "8 or 9PP",
+      "damage": "800",
+      "startup": "12",
+      "active": "11(17)",
+      "recovery": "5+19",
+      "onBlock": "-24(-19)",
+      "onHit": "KD +32(37)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Not an overhead (can be blocked crouching)"
+    },
+    {
+      "name": "OD Condor Dive",
+      "input": "8 or 9PPP",
+      "damage": "1400",
+      "startup": "12",
+      "active": "10(14)",
+      "recovery": "5+19",
+      "onBlock": "-24(-19)",
+      "onHit": "KD +40(46)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Not an overhead (can be blocked crouching)"
+    },
+    {
+      "name": "Condor Dive (enhanced)",
+      "input": "8 or 9PP (enhanced)",
+      "damage": "1000 (200*800)",
+      "startup": "12",
+      "active": "11(17)",
+      "recovery": "5+19",
+      "onBlock": "-24(-19)",
+      "onHit": "KD +33(38)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Not an overhead (can be blocked crouching)"
+    },
+    {
+      "name": "OD Condor Dive (enhanced)",
+      "input": "8 or 9PPP (enhanced)",
+      "damage": "1600 (200*1400)",
+      "startup": "12",
+      "active": "10(14)",
+      "recovery": "5+19",
+      "onBlock": "-24(-19)",
+      "onHit": "KD +41(47)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 41
+      },
+      "notes": "Not an overhead (can be blocked crouching)"
+    },
+    {
+      "name": "LP Mexican Typhoon",
+      "input": "4268LP",
+      "damage": "2000",
+      "startup": "5",
+      "active": "3",
+      "recovery": "53",
+      "onBlock": "-",
+      "onHit": "HKD +28",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 28
+      },
+      "notes": "Range: 1.38"
+    },
+    {
+      "name": "MP Mexican Typhoon",
+      "input": "4268MP",
+      "damage": "2400",
+      "startup": "5",
+      "active": "3",
+      "recovery": "53",
+      "onBlock": "-",
+      "onHit": "HKD +28",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 28
+      },
+      "notes": "Range: 1.23"
+    },
+    {
+      "name": "HP Mexican Typhoon",
+      "input": "4268HP",
+      "damage": "2800",
+      "startup": "5",
+      "active": "3",
+      "recovery": "53",
+      "onBlock": "-",
+      "onHit": "HKD +28",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 28
+      },
+      "notes": "Range: 0.98"
+    },
+    {
+      "name": "OD Mexican Typhoon",
+      "input": "4268PP",
+      "damage": "2900",
+      "startup": "5",
+      "active": "3",
+      "recovery": "53",
+      "onBlock": "-",
+      "onHit": "HKD +28",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 28
+      },
+      "notes": "Range: 1.38"
+    },
+    {
+      "name": "Breezing Hawk",
+      "input": "236236P",
+      "damage": "2200(1840)",
+      "startup": "10",
+      "active": "2(5)2(7)2(8)2(8)2",
+      "recovery": "54",
+      "onBlock": "-36",
+      "onHit": "KD +27(19)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 27
+      },
+      "notes": "Strike and Throw invincible on frames 1-11"
+    },
+    {
+      "name": "Thunderbird",
+      "input": "236236K",
+      "damage": "2600",
+      "startup": "9",
+      "active": "4*3*3*3*3*3*3(9)2",
+      "recovery": "39+24",
+      "onBlock": "-60(-66)",
+      "onHit": "KD +42",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Thunderbird (enhanced)",
+      "input": "236236K (enhanced)",
+      "damage": "2900",
+      "startup": "9",
+      "active": "2*2*2*2*2*2*2*2*2*2*2*3(6)2",
+      "recovery": "39+24",
+      "onBlock": "-59(-65)",
+      "onHit": "KD +46",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 46
+      },
+      "notes": "Enhanced: +300 damage / +4 KDA / increased horizontal range to both sides of Lily during the initial few active frames"
+    },
+    {
+      "name": "Soaring Thunderbird",
+      "input": "236236K (air)",
+      "damage": "2600",
+      "startup": "9",
+      "active": "4*3*3*3*3*3*3(9)2",
+      "recovery": "25",
+      "onBlock": "-54(-66)",
+      "onHit": "KD +36(42)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "Fully invincible on frames 1-12"
+    },
+    {
+      "name": "Soaring Thunderbird (enhanced)",
+      "input": "236236K (air ehanced)",
+      "damage": "2900",
+      "startup": "9",
+      "active": "2*2*2*2*2*2*2*2*2*2*2*3(6)2",
+      "recovery": "25",
+      "onBlock": "-51(-65)",
+      "onHit": "KD +39(45)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Enhanced: +300 damage / +4 KDA / increased horizontal range to both sides of Lily during the initial few active frames"
+    },
+    {
+      "name": "Raging Typhoon",
+      "input": "214214P",
+      "damage": "4500",
+      "startup": "5+2",
+      "active": "2",
+      "recovery": "106",
+      "onBlock": "-",
+      "onHit": "HKD +4",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 4
+      },
+      "notes": "Fully invincible on frames 1-8"
+    },
+    {
+      "name": "Raging Typhoon (Critical Art)",
+      "input": "214214P (CA)",
+      "damage": "5000",
+      "startup": "5+2",
+      "active": "2",
+      "recovery": "106",
+      "onBlock": "-",
+      "onHit": "HKD +4",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 4
+      },
+      "notes": "Fully invincible on frames 1-8"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

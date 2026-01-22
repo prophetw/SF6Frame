@@ -1,0 +1,1074 @@
+{
+  "character": {
+    "id": "ken",
+    "name": "Ken",
+    "nameJp": "ケン"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 19,
+    "backDash": 23,
+    "forwardWalk": 0.047,
+    "backWalk": 0.032
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "7",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "600",
+      "startup": "5",
+      "active": "4",
+      "recovery": "14",
+      "onBlock": "-2",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Has a hit confirmable (17F) MP > HP Target Combo follow-up (Bread and Butter combo tool)"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "800",
+      "startup": "10",
+      "active": "5",
+      "recovery": "17",
+      "onBlock": "-2",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Fantastic combo / poke tool that's hit confirmable with a lot of active frames"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "2",
+      "recovery": "12",
+      "onBlock": "-2",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Good range for a light normal"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "600",
+      "startup": "8",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-5",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Whiffs on crouch from further ranges"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "800",
+      "startup": "12",
+      "active": "2",
+      "recovery": "23(25)",
+      "onBlock": "-5",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Good range poke (slightly further range than stand MK) with solid follow-up juggles on Punish"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "2",
+      "recovery": "9",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "700",
+      "startup": "6",
+      "active": "3",
+      "recovery": "14(16)",
+      "onBlock": "0",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Great combo / poke / buffer / pressure tool"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "800",
+      "startup": "8",
+      "active": "4",
+      "recovery": "24",
+      "onBlock": "-10",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Forces stand on hit"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "3",
+      "recovery": "10",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "500",
+      "startup": "7",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "-6",
+      "onHit": "-2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Standard shoto crouch MK"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900",
+      "startup": "8",
+      "active": "3",
+      "recovery": "24(27)",
+      "onBlock": "-10",
+      "onHit": "KD +40",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Has some Juggle potential naturally without Drive Rush"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "7",
+      "recovery": "-",
+      "onBlock": "5",
+      "onHit": "9",
+      "category": "normal",
+      "notes": "Fast and high aiming air-to-air option"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "700",
+      "startup": "6",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "5~7",
+      "onHit": "9~11 (KD)",
+      "category": "normal",
+      "cancels": [
+        "Special"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "3~11",
+      "onHit": "7~15",
+      "category": "normal",
+      "notes": "Spikes down airborne opponents on Counter-Hit or Punish Counter"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "6",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "1~6",
+      "onHit": "5~10",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "500",
+      "startup": "7",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "5~9",
+      "onHit": "9~13",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "7 or 9HK",
+      "damage": "800",
+      "startup": "10",
+      "active": "7",
+      "recovery": "-",
+      "onBlock": "7~11",
+      "onHit": "11~15",
+      "category": "normal",
+      "notes": "Ken's best horizontal jump-in tool"
+    },
+    {
+      "name": "Neutral Jump HK",
+      "input": "8HK",
+      "damage": "900",
+      "startup": "6",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "9~11",
+      "onHit": "13~15",
+      "category": "unique",
+      "notes": "Good air-to-air tool"
+    },
+    {
+      "name": "Chin Buster 2nd",
+      "input": "5MP > 5HP",
+      "damage": "400",
+      "startup": "11",
+      "active": "3",
+      "recovery": "27",
+      "onBlock": "-14",
+      "onHit": "KD +28",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 28
+      },
+      "notes": "Launches opponent into a limited juggle state"
+    },
+    {
+      "name": "Triple Flash Kicks 1",
+      "input": "5MK > 5MK",
+      "damage": "400",
+      "startup": "11",
+      "active": "2",
+      "recovery": "27",
+      "onBlock": "-12",
+      "onHit": "KD +28",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 28
+      },
+      "notes": "Easily hit confirmed into the last hit (HK)"
+    },
+    {
+      "name": "Triple Flash Kicks 2",
+      "input": "5MK > 5MK > 5HK",
+      "damage": "700",
+      "startup": "13",
+      "active": "3",
+      "recovery": "28",
+      "onBlock": "-11(-32)",
+      "onHit": "KD +32(30)",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Last hit whiffs on crouching if the first hits are blocked making it more punishable (-32)"
+    },
+    {
+      "name": "Knee Strikes",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +20",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Throw Loop: Walk forward into manually timed mixup between throw/strike (not possible on mid-screen back-roll)"
+    },
+    {
+      "name": "Hell Wheel",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +6",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 6
+      },
+      "notes": "Back Throw oki: Nope (only +6 at mid-range)"
+    },
+    {
+      "name": "Drive Impact: Flame Strike",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Lightning Crack",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "38(39)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "LP Hadoken",
+      "input": "236LP",
+      "damage": "600",
+      "startup": "16",
+      "active": "-",
+      "recovery": "33",
+      "onBlock": "-7",
+      "onHit": "-1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "MP Hadoken",
+      "input": "236MP",
+      "damage": "600",
+      "startup": "14",
+      "active": "-",
+      "recovery": "35",
+      "onBlock": "-9",
+      "onHit": "-3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "HP Hadoken",
+      "input": "236HP",
+      "damage": "600",
+      "startup": "12",
+      "active": "-",
+      "recovery": "37",
+      "onBlock": "-11",
+      "onHit": "-5",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "OD Hadoken",
+      "input": "236PP",
+      "damage": "800 (400*400)",
+      "startup": "12",
+      "active": "-",
+      "recovery": "28",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "2-hit OD projectile"
+    },
+    {
+      "name": "LP Shoryuken",
+      "input": "623LP",
+      "damage": "1100",
+      "startup": "5",
+      "active": "10",
+      "recovery": "21+12",
+      "onBlock": "-23",
+      "onHit": "KD +33",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Invincible to airborne strikes on frames 1-14"
+    },
+    {
+      "name": "MP Shoryuken",
+      "input": "623MP",
+      "damage": "1300 (700*600)",
+      "startup": "6",
+      "active": "10",
+      "recovery": "28+12",
+      "onBlock": "-28",
+      "onHit": "KD +33",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Invincible to airborne strikes on frames 1-8"
+    },
+    {
+      "name": "HP Shoryuken",
+      "input": "623HP",
+      "damage": "1400 (800*300x2)",
+      "startup": "7",
+      "active": "10",
+      "recovery": "35+15",
+      "onBlock": "-36(-38)",
+      "onHit": "KD +25",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 25
+      },
+      "notes": "Projectile invincible on frames 5-11"
+    },
+    {
+      "name": "OD Shoryuken",
+      "input": "623PP",
+      "damage": "1600 (200x5*600)",
+      "startup": "6",
+      "active": "10(14)10",
+      "recovery": "35+15",
+      "onBlock": "-40",
+      "onHit": "KD +22",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Fully invincible on frames 1-10"
+    },
+    {
+      "name": "LK Tatsumaki Senpukyaku",
+      "input": "214LK",
+      "damage": "700 (300*400)",
+      "startup": "4",
+      "active": "2(6)3",
+      "recovery": "14+18",
+      "onBlock": "-14",
+      "onHit": "KD +46*38",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 46
+      },
+      "notes": "Hits crouching on both hits"
+    },
+    {
+      "name": "MK Tatsumaki Senpukyaku",
+      "input": "214MK",
+      "damage": "900 (450*450)",
+      "startup": "14",
+      "active": "2(13)2",
+      "recovery": "11+20",
+      "onBlock": "-12",
+      "onHit": "KD +44*32",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 44
+      },
+      "notes": "Hits crouching on both hits"
+    },
+    {
+      "name": "HK Tatsumaki Senpukyaku",
+      "input": "214HK",
+      "damage": "1000 (300x2*400)",
+      "startup": "16",
+      "active": "2(13)2(13)2",
+      "recovery": "14+17",
+      "onBlock": "-12(-42)",
+      "onHit": "KD +36",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "Only first hit can hit crouching (much more punishable on crouch hit (-38) and block (-42) when second and third hits whiff)"
+    },
+    {
+      "name": "OD Tatsumaki Senpukyaku",
+      "input": "214KK",
+      "damage": "1700 (300*200x3*800)",
+      "startup": "9",
+      "active": "4(5)3(6)3(6)3(15)3",
+      "recovery": "21+13",
+      "onBlock": "-61",
+      "onHit": "KD +28",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 28
+      },
+      "notes": "Airborne on frames 10-77 (Forced Knockdown state)"
+    },
+    {
+      "name": "Air Tatsumaki Senpukyaku",
+      "input": "214K (air)",
+      "damage": "900",
+      "startup": "11",
+      "active": "2(5)2(6)2",
+      "recovery": "14",
+      "onBlock": "-5(0)",
+      "onHit": "KD +41(46)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 41
+      },
+      "notes": "Can hit cross-up"
+    },
+    {
+      "name": "OD Air Tatsumaki Senpukyaku",
+      "input": "214KK (air)",
+      "damage": "900(700)",
+      "startup": "11",
+      "active": "2(1)2(2)2(2)2(3)2",
+      "recovery": "14(21)",
+      "onBlock": "-5(0)",
+      "onHit": "5(10)",
+      "category": "special",
+      "notes": "Can hit cross-up"
+    },
+    {
+      "name": "LK Dragonlash Kick",
+      "input": "623LK",
+      "damage": "950(1000)",
+      "startup": "18(21)",
+      "active": "6",
+      "recovery": "4+17",
+      "onBlock": "-4",
+      "onHit": "2",
+      "category": "special",
+      "notes": "Airborne on frames 9-27 (Forced Knockdown state)"
+    },
+    {
+      "name": "MK Dragonlash Kick",
+      "input": "623MK",
+      "damage": "1100",
+      "startup": "23(25)",
+      "active": "5",
+      "recovery": "5+20",
+      "onBlock": "-8(-7)",
+      "onHit": "3(4)",
+      "category": "special",
+      "notes": "Airborne on frames 14-32 (Forced Knockdown state)"
+    },
+    {
+      "name": "HK Dragonlash Kick",
+      "input": "623HK",
+      "damage": "1200",
+      "startup": "28(30)",
+      "active": "5",
+      "recovery": "5+16",
+      "onBlock": "1(2)",
+      "onHit": "3(4)",
+      "category": "special",
+      "notes": "Airborne on frames 19-37 (Forced Knockdown state)"
+    },
+    {
+      "name": "OD Dragonlash Kick",
+      "input": "623KK",
+      "damage": "1200 (500*700)",
+      "startup": "9(19)",
+      "active": "2(7)6",
+      "recovery": "3+21",
+      "onBlock": "-9(-6)",
+      "onHit": "1(4)",
+      "category": "special",
+      "notes": "Airborne on frames 10-26 (Forced Knockdown state)"
+    },
+    {
+      "name": "LK Jinrai Kick",
+      "input": "236LK",
+      "damage": "500",
+      "startup": "12",
+      "active": "3",
+      "recovery": "28",
+      "onBlock": "-11",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Follow-ups can also be performed on whiff (can also delay the follow-ups by a few frames to enable more frametrap / juggle opportunities)"
+    },
+    {
+      "name": "MK Jinrai Kick",
+      "input": "236MK",
+      "damage": "600",
+      "startup": "16",
+      "active": "3",
+      "recovery": "24",
+      "onBlock": "-7",
+      "onHit": "2",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Follow-ups can also be performed on whiff (can also delay the follow-ups by a few frames to enable more frametrap / juggle opportunities)"
+    },
+    {
+      "name": "HK Jinrai Kick",
+      "input": "236HK",
+      "damage": "700",
+      "startup": "25",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "-2",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Follow-ups can also be performed on whiff (can also delay the follow-ups by a few frames to enable more frametrap / juggle opportunities)"
+    },
+    {
+      "name": "Kazekama Shin Kick",
+      "input": "236K > 6LK",
+      "damage": "500",
+      "startup": "6",
+      "active": "4",
+      "recovery": "19",
+      "onBlock": "-5",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Low attack"
+    },
+    {
+      "name": "Gorai Axe Kick",
+      "input": "236K > 6MK",
+      "damage": "1000",
+      "startup": "18",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Overhead"
+    },
+    {
+      "name": "Senka Snap Kick",
+      "input": "236K > 6HK",
+      "damage": "800",
+      "startup": "10",
+      "active": "3",
+      "recovery": "25",
+      "onBlock": "-3",
+      "onHit": "KD +33(+38)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Whiffs on crouching"
+    },
+    {
+      "name": "OD Jinrai Kick",
+      "input": "236KK",
+      "damage": "600",
+      "startup": "13",
+      "active": "3",
+      "recovery": "25",
+      "onBlock": "-7",
+      "onHit": "-4",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Follow-ups can also be performed on whiff (can also delay the follow-ups by a few frames to enable more frametrap / juggle opportunities)"
+    },
+    {
+      "name": "OD Kazekama Shin Kick",
+      "input": "236KK > 6LK",
+      "damage": "1100 (600*500)",
+      "startup": "6",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-5",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Low attack"
+    },
+    {
+      "name": "OD Gorai Axe Kick",
+      "input": "236KK > 6MK",
+      "damage": "1600 (600*1000)",
+      "startup": "17",
+      "active": "3",
+      "recovery": "24",
+      "onBlock": "-7",
+      "onHit": "-3",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Overhead"
+    },
+    {
+      "name": "OD Senka Snap Kick",
+      "input": "236KK > 6HK",
+      "damage": "1400 (600*800)",
+      "startup": "10",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-4",
+      "onHit": "KD +37",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 37
+      },
+      "notes": "Whiffs on crouching"
+    },
+    {
+      "name": "OD Kasai Thrust Kick (LK)",
+      "input": "236KK > 6LK > 6K",
+      "damage": "1500 (600*500*400)",
+      "startup": "15",
+      "active": "3",
+      "recovery": "29",
+      "onBlock": "-12",
+      "onHit": "KD +31",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 31
+      },
+      "notes": "Cancelable into Level 2 and 3 Supers on Hit or Block"
+    },
+    {
+      "name": "OD Kasai Thrust Kick (MK)",
+      "input": "236KK > 6MK > 6K",
+      "damage": "2000 (600*1000*400)",
+      "startup": "11",
+      "active": "3",
+      "recovery": "29",
+      "onBlock": "-12",
+      "onHit": "KD +34",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Cancelable into Level 2 and 3 Supers on Hit or Block"
+    },
+    {
+      "name": "OD Kasai Thrust Kick (HK)",
+      "input": "236KK > 6HK > 6K",
+      "damage": "1800 (600*800*400)",
+      "startup": "15",
+      "active": "3",
+      "recovery": "37",
+      "onBlock": "-20",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Whiffs on crouching"
+    },
+    {
+      "name": "Thunder Kick",
+      "input": "5KK > MK",
+      "damage": "1000",
+      "startup": "11+18",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Overhead"
+    },
+    {
+      "name": "Forward Step Kick",
+      "input": "5KK > HK",
+      "damage": "800",
+      "startup": "11+10",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-4",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Cancelable into all Supers on Hit or Block"
+    },
+    {
+      "name": "Run > Shoryuken",
+      "input": "5KK > 623P",
+      "damage": "1700 (500*450*250x3)",
+      "startup": "11+8",
+      "active": "11",
+      "recovery": "33+15",
+      "onBlock": "-35",
+      "onHit": "KD +25",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 25
+      },
+      "notes": "Shoryuken follow-up is invincible to airborne strikes on frames 1-19 as well as projectile invincible on frames 3-12"
+    },
+    {
+      "name": "Run > Tatsumaki Senpukyaku",
+      "input": "5KK > 214K",
+      "damage": "1200 (200x4*400)",
+      "startup": "11+13",
+      "active": "2(2)3(2)2(2)3(2)2(2)3(2)2(2)3(2)2(5)3",
+      "recovery": "3+17",
+      "onBlock": "-9",
+      "onHit": "3",
+      "category": "special",
+      "notes": "Tatsu follow-up is airborne on frames 10-61 (Forced Knockdown state)"
+    },
+    {
+      "name": "Run > Dragonlash",
+      "input": "5KK > 623K",
+      "damage": "1200 (500*700)",
+      "startup": "11+9",
+      "active": "4(5)6",
+      "recovery": "9+15",
+      "onBlock": "-8(-6)",
+      "onHit": "2(4)",
+      "category": "special",
+      "notes": "Dragonlash follow-up is airborne on frames 10-32 (Forced Knockdown state)"
+    },
+    {
+      "name": "Dragonlash Flame",
+      "input": "214214K",
+      "damage": "2000 (500*300x2*900)",
+      "startup": "7",
+      "active": "3",
+      "recovery": "41",
+      "onBlock": "-24",
+      "onHit": "KD +9",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 9
+      },
+      "notes": "Strike and Throw invincible frames 1-9"
+    },
+    {
+      "name": "Shippu Jinrai-kyaku",
+      "input": "236236K",
+      "damage": "2800 (300x4*200x5*600)",
+      "startup": "6",
+      "active": "2(10)3(10)3(12)3(11)2",
+      "recovery": "28",
+      "onBlock": "-5",
+      "onHit": "KD +36",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "No invincibility whatsoever"
+    },
+    {
+      "name": "Shinryu Reppa",
+      "input": "236236P",
+      "damage": "4000 (1800~2400)",
+      "startup": "7",
+      "active": "3(1)6(16)13",
+      "recovery": "30+25",
+      "onBlock": "-40(-43)",
+      "onHit": "HKD +15",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 15
+      },
+      "notes": "Fully invincible frames 1-18"
+    },
+    {
+      "name": "Shinryu Reppa (Critical Art)",
+      "input": "236236P (CA)",
+      "damage": "4500 (2000~2600)",
+      "startup": "7",
+      "active": "3(1)6(16)13",
+      "recovery": "30+25",
+      "onBlock": "-40(-43)",
+      "onHit": "HKD +21",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 21
+      },
+      "notes": "Fully invincible frames 1-18"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

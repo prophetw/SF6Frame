@@ -1,0 +1,946 @@
+{
+  "character": {
+    "id": "ed",
+    "name": "Ed",
+    "nameJp": "エド"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 19,
+    "backDash": 23,
+    "forwardWalk": 0.0475,
+    "backWalk": 0.032
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "7",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "600",
+      "startup": "7",
+      "active": "3",
+      "recovery": "15",
+      "onBlock": "-1",
+      "onHit": "6",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Combo tool mostly with a Target Combo follow-up (HP) that's a staple in a lot of Ed's combos"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "800",
+      "startup": "10(4~8)",
+      "active": "4",
+      "recovery": "18",
+      "onBlock": "-2",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Forces stand"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "6",
+      "active": "2",
+      "recovery": "13",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "One!"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "600",
+      "startup": "10",
+      "active": "2",
+      "recovery": "16(20)",
+      "onBlock": "-5",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Good poke tool with great range and an optional Target Combo follow-up"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "800",
+      "startup": "10",
+      "active": "3",
+      "recovery": "12",
+      "onBlock": "4",
+      "onHit": "8",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Whiffs on crouch"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "200",
+      "startup": "4",
+      "active": "3",
+      "recovery": "10",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into stand LP / crouch LP"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "500",
+      "startup": "8",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "-6",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Hits low (functions like other characters' crouch MK)"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "900",
+      "startup": "10",
+      "active": "4",
+      "recovery": "24",
+      "onBlock": "-12",
+      "onHit": "KD +30",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 30
+      },
+      "notes": "Ed's sweep button (crouch HK is a hit confirmable target combo tool)"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "2",
+      "recovery": "12",
+      "onBlock": "-4",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Great range for a light normal (functions similar to other characters stand LK)"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "600",
+      "startup": "9",
+      "active": "2",
+      "recovery": "16(17)",
+      "onBlock": "-1",
+      "onHit": "8",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Forces stand"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "800",
+      "startup": "12",
+      "active": "2",
+      "recovery": "17",
+      "onBlock": "-4",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Fully cancelable combo / poke tool with fantastic range that as a hit confirmable Target Combo extension"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "1~5",
+      "onHit": "5~9",
+      "category": "normal",
+      "notes": "Basically just a smaller but faster version of jump HP"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "500",
+      "startup": "8",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "2~9",
+      "onHit": "6~13",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "4~11",
+      "onHit": "8~15",
+      "category": "normal",
+      "notes": "Spikes down airborne opponents on Counter-Hit / Punish Counter"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "8",
+      "active": "3",
+      "recovery": "-",
+      "onBlock": "-3~5",
+      "onHit": "1~9",
+      "category": "normal",
+      "notes": "Solid vertical jump-in range"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "700",
+      "startup": "10",
+      "active": "2",
+      "recovery": "-",
+      "onBlock": "5~7",
+      "onHit": "9~11",
+      "category": "normal",
+      "notes": "Very far horizontal reach (furthest of Ed's air normals)"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800",
+      "startup": "8",
+      "active": "2",
+      "recovery": "-",
+      "onBlock": "11",
+      "onHit": "15 (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a juggle state"
+    },
+    {
+      "name": "Psycho Knuckle (level 1)",
+      "input": "5HP (hold level 1)",
+      "damage": "800",
+      "startup": "30+9",
+      "active": "1~15",
+      "recovery": "25~35",
+      "onBlock": "-2(2)",
+      "onHit": "Crumple +76",
+      "category": "unique",
+      "notes": "Requires Ed to hold HP for at least 30 frames before being released"
+    },
+    {
+      "name": "Psycho Knuckle (level 2)",
+      "input": "5HP (hold level 2)",
+      "damage": "1200",
+      "startup": "60+9",
+      "active": "1~15",
+      "recovery": "29~35",
+      "onBlock": "4",
+      "onHit": "Crumple +76",
+      "category": "unique",
+      "notes": "Strike hitbox that also has 1 hit of projectile durability (can pierce through 1-hit non-OD projectiles)"
+    },
+    {
+      "name": "Cobra Punch",
+      "input": "6HP",
+      "damage": "900",
+      "startup": "17",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "unique",
+      "notes": "Low crush on frames 7-19 (not actually airborne)"
+    },
+    {
+      "name": "Flicker Combination 1",
+      "input": "5LK > 5LK",
+      "damage": "400",
+      "startup": "7",
+      "active": "3",
+      "recovery": "15",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "unique",
+      "notes": "One, Two!"
+    },
+    {
+      "name": "Flicker Combination 2",
+      "input": "5LK > 5LK > 5LK",
+      "damage": "600",
+      "startup": "7",
+      "active": "3",
+      "recovery": "16",
+      "onBlock": "-8",
+      "onHit": "1",
+      "category": "unique",
+      "notes": "One, Two, Three!"
+    },
+    {
+      "name": "Body Blow Combination",
+      "input": "5MP > 5HP",
+      "damage": "1000 (600*400)",
+      "startup": "13",
+      "active": "2",
+      "recovery": "23",
+      "onBlock": "-8(-23)",
+      "onHit": "KD +38",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Combo tool that's fully cancelable"
+    },
+    {
+      "name": "Hitman Combination 1",
+      "input": "5MK > 5MK",
+      "damage": "900 (600*300)",
+      "startup": "7",
+      "active": "2",
+      "recovery": "20",
+      "onBlock": "-6(-20)",
+      "onHit": "0(-15)",
+      "category": "unique",
+      "notes": "Relatively safe on block if used from a good distance"
+    },
+    {
+      "name": "Hitman Combination 2",
+      "input": "5MK > 5MK > 5HP",
+      "damage": "600",
+      "startup": "11",
+      "active": "5",
+      "recovery": "23",
+      "onBlock": "-11",
+      "onHit": "KD +35",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Third hit (HP) is not an Overhead (despite looking like one)"
+    },
+    {
+      "name": "Low Smash Combination",
+      "input": "2HK > 5HP",
+      "damage": "1500 (800*700)",
+      "startup": "12",
+      "active": "5",
+      "recovery": "19",
+      "onBlock": "-8",
+      "onHit": "KD +34",
+      "category": "unique",
+      "cancels": [
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Cancelable into all Supers"
+    },
+    {
+      "name": "Face Buster",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +34",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Throw Loop (corner only): Drive Rush with 4F timing to throw the opponent (can block reversals out of this Drive Rush) | Dash forward and walk 3F for manually timed throw loop against Zangief only | LK Psycho Flicker (hold) with a manual 2F timing window pulls them in for +4 pressure on block (and it's safe from most Reversals and Drive Reversal)"
+    },
+    {
+      "name": "Rib Crusher",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +24",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 24
+      },
+      "notes": "Throw Loop (only when cornered): Dash up for pseudo strike/throw mix (can Drive Rush to get a real strike/throw mix)"
+    },
+    {
+      "name": "Drive Impact: Turn Punch",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Hammer Blow",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "Psycho Spark",
+      "input": "236P",
+      "damage": "400",
+      "startup": "14",
+      "active": "12",
+      "recovery": "8",
+      "onBlock": "-5(6)",
+      "onHit": "3(14)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit Projectile hitbox"
+    },
+    {
+      "name": "OD Psycho Spark",
+      "input": "236PP",
+      "damage": "200x2",
+      "startup": "14",
+      "active": "12",
+      "recovery": "7",
+      "onBlock": "-2(10)",
+      "onHit": "KD +43",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 43
+      },
+      "notes": "2-hit OD Projectile hitbox"
+    },
+    {
+      "name": "Psycho Shoot",
+      "input": "236P > 6P",
+      "damage": "600 (1000)",
+      "startup": "12",
+      "active": "-",
+      "recovery": "30",
+      "onBlock": "-8",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit Projectile hitbox"
+    },
+    {
+      "name": "OD Psycho Shoot",
+      "input": "236PP > 6P",
+      "damage": "400x2 (1200)",
+      "startup": "12",
+      "active": "-",
+      "recovery": "28",
+      "onBlock": "-2",
+      "onHit": "KD +46(50)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 46
+      },
+      "notes": "2-hit OD Projectile hitbox"
+    },
+    {
+      "name": "LP Psycho Uppercut",
+      "input": "623LP",
+      "damage": "900",
+      "startup": "10",
+      "active": "8",
+      "recovery": "28(23)",
+      "onBlock": "-13",
+      "onHit": "KD +38",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Invincible to airborne strikes on frames 1-15"
+    },
+    {
+      "name": "MP Psycho Uppercut",
+      "input": "623MP",
+      "damage": "1000",
+      "startup": "14",
+      "active": "6",
+      "recovery": "32",
+      "onBlock": "-20",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Invincible to airborne strikes on frames 1-19"
+    },
+    {
+      "name": "HP Psycho Uppercut",
+      "input": "623HP",
+      "damage": "1200",
+      "startup": "16",
+      "active": "6",
+      "recovery": "33",
+      "onBlock": "-21",
+      "onHit": "KD +38",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Invincible to airborne strikes on frames 1-19"
+    },
+    {
+      "name": "OD Psycho Uppercut",
+      "input": "623PP",
+      "damage": "800*800",
+      "startup": "13",
+      "active": "6",
+      "recovery": "36(41)",
+      "onBlock": "-28",
+      "onHit": "KD +18",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 18
+      },
+      "notes": "Fully invincible on frames 1-16 (gains extended invincibility on HIT for the follow-up swing)"
+    },
+    {
+      "name": "LP Psycho Blitz",
+      "input": "214LP",
+      "damage": "800 (200x2*400)",
+      "startup": "11",
+      "active": "3(3)3(6)4",
+      "recovery": "14",
+      "onBlock": "-5",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "3 hits"
+    },
+    {
+      "name": "MP Psycho Blitz",
+      "input": "214MP",
+      "damage": "900 (250x2*400)",
+      "startup": "13",
+      "active": "2(7)3(9)3",
+      "recovery": "16(24)",
+      "onBlock": "-12",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "3 hits"
+    },
+    {
+      "name": "HP Psycho Blitz",
+      "input": "214HP",
+      "damage": "1100 (250x2*600)",
+      "startup": "15",
+      "active": "2(11)2(6)2",
+      "recovery": "23(26)",
+      "onBlock": "-12",
+      "onHit": "KD +40",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "3 hits"
+    },
+    {
+      "name": "OD Psycho Blitz",
+      "input": "214PP",
+      "damage": "1400 (150x8*200)",
+      "startup": "13",
+      "active": "1(4)1(3)1(3)1(3)1(3)1(8)2",
+      "recovery": "20",
+      "onBlock": "-4",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "9 hits (7 hits on block/whiff)"
+    },
+    {
+      "name": "LK Psycho Flicker",
+      "input": "236LK",
+      "damage": "800",
+      "startup": "11+5",
+      "active": "4",
+      "recovery": "26(24)",
+      "onBlock": "-6",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit Projectile hitbox"
+    },
+    {
+      "name": "LK Psycho Flicker (hold)",
+      "input": "236LK (hold)",
+      "damage": "1000 (800*200)",
+      "startup": "26+5",
+      "active": "5",
+      "recovery": "24",
+      "onBlock": "4",
+      "onHit": "KD +61",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 61
+      },
+      "notes": "2-hit Projectile hitbox"
+    },
+    {
+      "name": "MK Psycho Flicker",
+      "input": "236MK",
+      "damage": "900",
+      "startup": "15+5",
+      "active": "4",
+      "recovery": "26(25)",
+      "onBlock": "-6",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit Projectile hitbox"
+    },
+    {
+      "name": "MK Psycho Flicker (hold)",
+      "input": "236MK (hold)",
+      "damage": "1000 (800*200)",
+      "startup": "30+5",
+      "active": "5",
+      "recovery": "24",
+      "onBlock": "4",
+      "onHit": "KD +61",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 61
+      },
+      "notes": "2-hit Projectile hitbox"
+    },
+    {
+      "name": "HK Psycho Flicker",
+      "input": "236HK",
+      "damage": "800",
+      "startup": "12+5",
+      "active": "8",
+      "recovery": "18",
+      "onBlock": "-",
+      "onHit": "KD ~",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "1-hit Projectile hitbox"
+    },
+    {
+      "name": "HK Psycho Flicker (hold)",
+      "input": "236HK (hold)",
+      "damage": "1000 (800*200)",
+      "startup": "30+5",
+      "active": "10",
+      "recovery": "19",
+      "onBlock": "-",
+      "onHit": "KD +56(68)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 56
+      },
+      "notes": "2-hit Projectile hitbox"
+    },
+    {
+      "name": "OD Psycho Flicker",
+      "input": "236KK",
+      "damage": "800 (1200)",
+      "startup": "25",
+      "active": "4",
+      "recovery": "32",
+      "onBlock": "4",
+      "onHit": "KD +61",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 61
+      },
+      "notes": "1-hit OD projectile hitbox"
+    },
+    {
+      "name": "Kill Rush > Kill Switch Break",
+      "input": "KK or 6KK / 66 (cancel) > 6P (early)",
+      "damage": "600",
+      "startup": "11+11",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-4",
+      "onHit": "KD +38",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "f+P must be input early (frames 1-11 of Kill Rush dash)"
+    },
+    {
+      "name": "Kill Rush > Kill Switch Chaser",
+      "input": "KK or 6KK / 66 (cancel) > 6P (late)",
+      "damage": "600",
+      "startup": "13+11",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-6",
+      "onHit": "KD +50",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 50
+      },
+      "notes": "f+P must be input late (frames 13-24 of Kill Rush dash)"
+    },
+    {
+      "name": "Psycho Storm",
+      "input": "236236K",
+      "damage": "2000",
+      "startup": "13",
+      "active": "2(7)2(16)2(3)2(16)1(1)1(1)1",
+      "recovery": "56",
+      "onBlock": "-32",
+      "onHit": "KD +33",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Strike and Throw invincible on frames 1-14"
+    },
+    {
+      "name": "Psycho Cannon",
+      "input": "214214P",
+      "damage": "1100 (150x6*200)",
+      "startup": "8",
+      "active": "-",
+      "recovery": "27",
+      "onBlock": "65~",
+      "onHit": "KD +115~",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 115
+      },
+      "notes": "No invincibility whatsoever"
+    },
+    {
+      "name": "Psycho Chamber",
+      "input": "236236P",
+      "damage": "4000",
+      "startup": "10",
+      "active": "10",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "HKD +24",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 24
+      },
+      "notes": "Fully invincible on frames 1-14"
+    },
+    {
+      "name": "Psycho Chamber (Critical Art)",
+      "input": "236236P (CA)",
+      "damage": "4500",
+      "startup": "10",
+      "active": "10",
+      "recovery": "64",
+      "onBlock": "-49",
+      "onHit": "HKD +24",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 24
+      },
+      "notes": "Fully invincible on frames 1-14"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

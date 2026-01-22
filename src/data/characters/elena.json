@@ -1,0 +1,1079 @@
+{
+  "character": {
+    "id": "elena",
+    "name": "Elena",
+    "nameJp": "エレナ"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 20,
+    "backDash": 23,
+    "forwardWalk": 0.048,
+    "backWalk": 0.033
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "4",
+      "recovery": "8",
+      "onBlock": "-2",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Fantastic range for a jab"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "600",
+      "startup": "8",
+      "active": "5",
+      "recovery": "15",
+      "onBlock": "-3(-1)",
+      "onHit": "3(5)",
+      "category": "normal",
+      "cancels": [
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Great poke / buffer / footsies tool in neutral with a hit confirmable Target Combo follow-up"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "800",
+      "startup": "12",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Forces stand on hit"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "3",
+      "recovery": "11",
+      "onBlock": "-4",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Amazing range for a light normal (furthest of Elena's light normals) but doesn't combo into LK Spin Scythe like her jabs do"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "500",
+      "startup": "6",
+      "active": "4",
+      "recovery": "13(15)",
+      "onBlock": "1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Core combo and frametrap tool"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "900",
+      "startup": "12",
+      "active": "4",
+      "recovery": "19",
+      "onBlock": "-4",
+      "onHit": "2",
+      "category": "normal",
+      "notes": "Crushes low attacks on frames 9-17"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "8",
+      "onBlock": "-1",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "600",
+      "startup": "8",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-4",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Combo / Poke / Buffer tool with good range"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "800 (400*400)",
+      "startup": "9",
+      "active": "3(4)3",
+      "recovery": "20",
+      "onBlock": "-7",
+      "onHit": "6",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Upper body (legs) are invincible to airborne strikes on frames 8-19"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "3",
+      "recovery": "8",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "600",
+      "startup": "9",
+      "active": "3",
+      "recovery": "16(18)",
+      "onBlock": "-4",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "+2 extra recovery frames (18F) on whiff or block"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900",
+      "startup": "11",
+      "active": "3",
+      "recovery": "24",
+      "onBlock": "-12",
+      "onHit": "KD +31",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 31
+      },
+      "notes": "Has some Juggle potential naturally without Drive Rush"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "1~6",
+      "onHit": "5~10",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Cross-up that can gain extra frame advantage with a Target Combo extension"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "700",
+      "startup": "8",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "5~7",
+      "onHit": "11~13 (KD)",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "10",
+      "active": "7",
+      "recovery": "-",
+      "onBlock": "5~11",
+      "onHit": "9~15",
+      "category": "normal",
+      "notes": "Elena's strongest general purpose jump-in (reaches grounded opponents faster and deals all its damage in one hit unlike jump HK"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-2~5",
+      "onHit": "2~9",
+      "category": "normal",
+      "notes": "Strong hitbox priority (especially vertically downwards) that can beat or trade with many anti-air normals"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "500",
+      "startup": "7",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "5~9",
+      "onHit": "9~13",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800 (400*400)",
+      "startup": "10",
+      "active": "2(1)8",
+      "recovery": "-",
+      "onBlock": "7~11",
+      "onHit": "11~15",
+      "category": "normal",
+      "notes": "First hit puts airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Trunk Slap 1",
+      "input": "6HP",
+      "damage": "900",
+      "startup": "16",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-4",
+      "onHit": "1",
+      "category": "unique",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Mid-range poke tool with high pushback that's mostly at safe on block (except at close range against exceptionally far-reaching 4F normals) and deals a good amount of drive gauge damage on block"
+    },
+    {
+      "name": "Handstand Whip 1",
+      "input": "6MK",
+      "damage": "600",
+      "startup": "20",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "unique",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Overhead with fast start-up and decent range"
+    },
+    {
+      "name": "Round Arch",
+      "input": "4HK",
+      "damage": "900",
+      "startup": "14",
+      "active": "4",
+      "recovery": "17(19)",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "unique",
+      "notes": "Crushes low attacks on frames 9-17 and shifts Elena's throw hurtbox backward starting on frame 5"
+    },
+    {
+      "name": "Slide",
+      "input": "3HK",
+      "damage": "900",
+      "startup": "14",
+      "active": "9",
+      "recovery": "18(22)",
+      "onBlock": "-10(-2)",
+      "onHit": "HKD +31(39)",
+      "category": "unique",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 31
+      },
+      "notes": "Crouching state for the entire duration of the move (can slide under attacks that don't hit Crouch) but does not low profile under fireballs"
+    },
+    {
+      "name": "Starling Beak",
+      "input": "5MP > MP",
+      "damage": "1000 (600*400)",
+      "startup": "17",
+      "active": "5",
+      "recovery": "20",
+      "onBlock": "-10(-30)",
+      "onHit": "-4(-24)",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Second hit is fully cancelable while the first hit is only Super cancelable"
+    },
+    {
+      "name": "Turning Tail",
+      "input": "5HP > HP",
+      "damage": "1600 (800*400x2)",
+      "startup": "17",
+      "active": "4(3)4",
+      "recovery": "17",
+      "onBlock": "-3(-10/-23)",
+      "onHit": "KD +45",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 45
+      },
+      "notes": "Both the follow-up hits on HP cannot hit crouching opponents"
+    },
+    {
+      "name": "Hind Kick",
+      "input": "5MK > HK",
+      "damage": "900 (500*400)",
+      "startup": "12",
+      "active": "3",
+      "recovery": "24",
+      "onBlock": "-8",
+      "onHit": "KD +33",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Elena's core target combo conversion on crouching opponents (stand HP and crouch MK target combos both can't hit crouching opponents)"
+    },
+    {
+      "name": "Fluttering Lark",
+      "input": "2MK > HK",
+      "damage": "920 (600*320)",
+      "startup": "15",
+      "active": "1",
+      "recovery": "20(24)",
+      "onBlock": "-9(-24)",
+      "onHit": "4(-18)",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Second hit is fully cancelable"
+    },
+    {
+      "name": "Trunk Slap 2",
+      "input": "6HP > HP",
+      "damage": "1400 (900*500)",
+      "startup": "13",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-11",
+      "onHit": "-2",
+      "category": "unique",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Hit confirmable extension from Elena's long range f+HP that leads to a knockdown ender on hit"
+    },
+    {
+      "name": "Trunk Slap Final",
+      "input": "6HP > HP > HP",
+      "damage": "2000 (900*500*296*304)",
+      "startup": "7",
+      "active": "3(5)3",
+      "recovery": "27",
+      "onBlock": "-16",
+      "onHit": "KD +40",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Target Combo ender with good corner carry and knockdown advantage"
+    },
+    {
+      "name": "Handstand Whip 2",
+      "input": "6MK > MK",
+      "damage": "1200 (600*600)",
+      "startup": "14",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-14",
+      "onHit": "KD +29",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Hit confirmable Target Combo that grants a meterless knockdown from Elena's long range overhead"
+    },
+    {
+      "name": "Soaring Raid",
+      "input": "8LP > 8MK",
+      "damage": "800 (300*500)",
+      "startup": "6",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "8",
+      "onHit": "12",
+      "category": "unique",
+      "notes": "Both hits cross-up and grant Elena +12 frame advantage combo follow-ups on hit"
+    },
+    {
+      "name": "Raptor Range",
+      "input": "8MP > 8HP",
+      "damage": "1400 (700*700)",
+      "startup": "12",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD ~",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Both hits put airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Leg Tackle",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +24",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 24
+      },
+      "notes": "Gets +70% damage increase (2040 damage), HKD (denies back-roll option on wake-up), and depletes 1 bar of Drive Gauge on a Punish Counter"
+    },
+    {
+      "name": "Leg Lift Throw",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +19",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 19
+      },
+      "notes": "Gets +70% damage increase (2040 damage), HKD (denies back-roll option on wake-up), and depletes 1 bar of Drive Gauge on a Punish Counter"
+    },
+    {
+      "name": "Drive Impact: Giraffe Neck",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Boar Charge",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "Taunt",
+      "input": "5PPPKKK",
+      "damage": "300",
+      "startup": "21",
+      "active": "3",
+      "recovery": "120",
+      "onBlock": "-106",
+      "onHit": "KD -50",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Framedata listed is for the down+Taunt version that deals a bit of damage (300) but is very punishable on hit or block"
+    },
+    {
+      "name": "LK Rhino Horn",
+      "input": "236LK",
+      "damage": "1100 (400*700)",
+      "startup": "13",
+      "active": "5(10)6",
+      "recovery": "3+13(3+16)",
+      "onBlock": "-9(-4)",
+      "onHit": "KD +39(44)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Airborne on frames 13-36 (crushes Low attacks on frames 15-34)"
+    },
+    {
+      "name": "MK Rhino Horn",
+      "input": "236MK",
+      "damage": "1200 (400*800)",
+      "startup": "17",
+      "active": "5(11)6",
+      "recovery": "3+13(3+17)",
+      "onBlock": "-9(-4)",
+      "onHit": "KD +39(44)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Airborne on frames 17-41 (crushes Low attacks on frames 19-39)"
+    },
+    {
+      "name": "HK Rhino Horn",
+      "input": "236HK",
+      "damage": "1300 (400*900)",
+      "startup": "21",
+      "active": "5(11)6",
+      "recovery": "3+13(3+17)",
+      "onBlock": "-9(-4)",
+      "onHit": "KD +39(44)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Airborne on frames 21-45 (crushes Low attacks on frames 23-43)"
+    },
+    {
+      "name": "OD Rhino Horn",
+      "input": "236KK",
+      "damage": "1200 (400x3)",
+      "startup": "11",
+      "active": "7(7)4*7",
+      "recovery": "3+10(3+16)",
+      "onBlock": "-9(-3)",
+      "onHit": "KD +43(49)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 43
+      },
+      "notes": "Airborne on frames 11-38 (crushes Low attacks on frames 13-35)"
+    },
+    {
+      "name": "LK Scratch Wheel",
+      "input": "623LK",
+      "damage": "1000",
+      "startup": "5",
+      "active": "5",
+      "recovery": "25+14",
+      "onBlock": "-24",
+      "onHit": "KD +36",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "Invincible to airborne strikes on frames 1-9"
+    },
+    {
+      "name": "MK Scratch Wheel",
+      "input": "623MK",
+      "damage": "1200 (600*600)",
+      "startup": "6",
+      "active": "3*3",
+      "recovery": "30+14",
+      "onBlock": "-30",
+      "onHit": "KD +26",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 26
+      },
+      "notes": "Invincible to airborne strikes on frames 1-11"
+    },
+    {
+      "name": "HK Scratch Wheel",
+      "input": "623HK",
+      "damage": "1400 (500*400*500)",
+      "startup": "7",
+      "active": "2*2*2",
+      "recovery": "34+14",
+      "onBlock": "-33",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Invincible to airborne strikes on frames 1-12"
+    },
+    {
+      "name": "OD Scratch Wheel",
+      "input": "623KK",
+      "damage": "1600 (450*350x2*450)",
+      "startup": "6",
+      "active": "4*2(12)2(1)2",
+      "recovery": "24+20",
+      "onBlock": "-46",
+      "onHit": "KD +25",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 25
+      },
+      "notes": "Fully invincible on frames 1-8"
+    },
+    {
+      "name": "Lynx Song > Leopard Snap",
+      "input": "236P > 6LK",
+      "damage": "1000",
+      "startup": "10",
+      "active": "5",
+      "recovery": "22",
+      "onBlock": "-5",
+      "onHit": "KD +35",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Combo / Poke / Harassment tool that's mostly safe on block due to the pushback"
+    },
+    {
+      "name": "Lynx Song > Harvest Circle",
+      "input": "236P > 6MK",
+      "damage": "900",
+      "startup": "8",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-9",
+      "onHit": "KD +44",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 44
+      },
+      "notes": "Projectile invincible on frames 1-10 (not factoring in the Projectile invincibility frames from the prior Lynx Song roll)"
+    },
+    {
+      "name": "Lynx Song > Mallet Smash",
+      "input": "236P > 6HK",
+      "damage": "800",
+      "startup": "22",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "special",
+      "notes": "Overhead + Low & Throw Crush tool"
+    },
+    {
+      "name": "Lynx Whirl > Leopard Snap",
+      "input": "Whirl > 6LK",
+      "damage": "1200 (600*600)",
+      "startup": "10",
+      "active": "5(5)3",
+      "recovery": "14(15)",
+      "onBlock": "1",
+      "onHit": "KD +48",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 48
+      },
+      "notes": "Combo / Pressure tool that lets Elena continue her pressure even on block (+1)"
+    },
+    {
+      "name": "Lynx Whirl > Harvest Circle",
+      "input": "Whirl > 6MK",
+      "damage": "1300 (600*700)",
+      "startup": "8",
+      "active": "3(6)3",
+      "recovery": "14(16)",
+      "onBlock": "-4",
+      "onHit": "KD +50",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 50
+      },
+      "notes": "Projectile invincible on frames 1-10 (not factoring in the Projectile invincibility frames from the prior Lynx Whirl roll)"
+    },
+    {
+      "name": "Lynx Whirl > Mallet Smash",
+      "input": "Whirl > 6HK",
+      "damage": "1000 (500*500)",
+      "startup": "22",
+      "active": "2(2)2",
+      "recovery": "16",
+      "onBlock": "3",
+      "onHit": "4",
+      "category": "special",
+      "notes": "Overhead + Low & Throw Crush tool"
+    },
+    {
+      "name": "LK Spin Scythe",
+      "input": "214LK",
+      "damage": "900 (300x2*150x2)",
+      "startup": "15",
+      "active": "4(14)3(24)2(3)3",
+      "recovery": "24",
+      "onBlock": "-12(-35)",
+      "onHit": "KD +34",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "First 2 hits force stand on hit (so the last 2 hits to also combo)"
+    },
+    {
+      "name": "MK Spin Scythe",
+      "input": "214MK",
+      "damage": "1000 (300x2*200x2)",
+      "startup": "20",
+      "active": "4(19)3(22)5(2)2",
+      "recovery": "27",
+      "onBlock": "-14(-37)",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "First 2 hits force stand on hit (so the last 2 hits to also combo)"
+    },
+    {
+      "name": "HK Spin Scythe",
+      "input": "214HK",
+      "damage": "1200 (400x2*200x2)",
+      "startup": "24",
+      "active": "4(17)3(22)5(2)2",
+      "recovery": "23",
+      "onBlock": "-10(-33)",
+      "onHit": "KD +52",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 52
+      },
+      "notes": "First 2 hits force stand on hit (so the last 2 hits to also combo)"
+    },
+    {
+      "name": "Spin Scythe > Lynx Whirl",
+      "input": "214K > 6P",
+      "damage": "600(800)",
+      "startup": "15/20/24",
+      "active": "4*3",
+      "recovery": "-",
+      "onBlock": "-12/-20/-22",
+      "onHit": "-3/-11/-13",
+      "category": "special",
+      "notes": "Start-up listed refers to the different versions of Spin Scythe (LK/MK/HK) used before canceling into Lynx Whirl (enhanced Roll)"
+    },
+    {
+      "name": "OD Spin Scythe",
+      "input": "214KK",
+      "damage": "1000 (300x2*200x2)",
+      "startup": "18",
+      "active": "4(12)3(24)2(3)3",
+      "recovery": "22",
+      "onBlock": "-10(-33)",
+      "onHit": "KD +52",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 52
+      },
+      "notes": "First 2 hits force stand on hit (so the last 2 hits to also combo)"
+    },
+    {
+      "name": "LP Moon Glider",
+      "input": "214LP",
+      "damage": "800",
+      "startup": "20",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Slightly evasive tool that's safe on block and grants follow-up combos on whiff punish (Punish Counter)"
+    },
+    {
+      "name": "MP Moon Glider",
+      "input": "214MP",
+      "damage": "800",
+      "startup": "24",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Evasive tool that's safe on block and grants follow-up combos on whiff punish (Punish Counter)"
+    },
+    {
+      "name": "HP Moon Glider",
+      "input": "214HP",
+      "damage": "800",
+      "startup": "28",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Very evasive tool that's safe on block and grants follow-up combos on whiff punish (Punish Counter)"
+    },
+    {
+      "name": "Moon Glider Follow-up",
+      "input": "214P > 6P",
+      "damage": "1400 (800*300x2)",
+      "startup": "16",
+      "active": "2(4)4",
+      "recovery": "25",
+      "onBlock": "-13",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Follow-up option from the Moon Glider sway that's hit confirmable (18F window)"
+    },
+    {
+      "name": "OD Moon Glider",
+      "input": "214PP",
+      "damage": "800",
+      "startup": "23",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Evasive tool that's safe on block and grants follow-up combos on whiff punish (Punish Counter)"
+    },
+    {
+      "name": "OD Moon Glider Follow-up",
+      "input": "214PP > 6P",
+      "damage": "1900 (800*300x2*500)",
+      "startup": "16",
+      "active": "2(4)4(19)3",
+      "recovery": "35",
+      "onBlock": "-19",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Follow-up option from the OD Moon Glider sway that's hit confirmable (18F window)"
+    },
+    {
+      "name": "Meteor Volley",
+      "input": "236236K",
+      "damage": "1800 (250*750*800)",
+      "startup": "9",
+      "active": "5(6)4(16)2",
+      "recovery": "24+31 (55)",
+      "onBlock": "-68",
+      "onHit": "KD +42",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Invincible to airborne strikes on frames 1-23"
+    },
+    {
+      "name": "Revival Dance",
+      "input": "236236P",
+      "damage": "2800(1950)",
+      "startup": "12",
+      "active": "6",
+      "recovery": "62",
+      "onBlock": "-47",
+      "onHit": "HKD +25(1)",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 25
+      },
+      "notes": "Fully invincible on frames 1-17"
+    },
+    {
+      "name": "Song of the Grasslands",
+      "input": "214214K",
+      "damage": "4000",
+      "startup": "8",
+      "active": "4",
+      "recovery": "68",
+      "onBlock": "-54",
+      "onHit": "HKD +24",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 24
+      },
+      "notes": "Fully invincible on frames 1-11"
+    },
+    {
+      "name": "Song of the Grasslands (Critical Art)",
+      "input": "214214K (CA)",
+      "damage": "4500",
+      "startup": "8",
+      "active": "4",
+      "recovery": "68",
+      "onBlock": "-54",
+      "onHit": "HKD +29",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 29
+      },
+      "notes": "Fully invincible on frames 1-11"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

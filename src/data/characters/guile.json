@@ -1,0 +1,930 @@
+{
+  "character": {
+    "id": "guile",
+    "name": "Guile",
+    "nameJp": "ガイル"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 21,
+    "backDash": 23,
+    "forwardWalk": 0.043,
+    "backWalk": 0.032
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "3",
+      "recovery": "7",
+      "onBlock": "-2",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "600",
+      "startup": "7",
+      "active": "3",
+      "recovery": "15",
+      "onBlock": "0",
+      "onHit": "6",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Main combo starter"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "900",
+      "startup": "7",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-6",
+      "onHit": "-1",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Fully cancelable combo / whiff punish tool"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "2",
+      "recovery": "12",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Incurs 20% damage scaling penalty if used as the first hit of a combo"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "700",
+      "startup": "7",
+      "active": "5",
+      "recovery": "18",
+      "onBlock": "-4",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Solid anti-air with good amount of active frames"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "800",
+      "startup": "13",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-4",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Cancelable into all Supers"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "8",
+      "onBlock": "-2",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "600",
+      "startup": "6",
+      "active": "3",
+      "recovery": "13(16)",
+      "onBlock": "-2",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Has very low pushback on hit"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "900",
+      "startup": "9",
+      "active": "5",
+      "recovery": "20",
+      "onBlock": "-9",
+      "onHit": "0",
+      "category": "normal",
+      "notes": "Forces stand"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "2",
+      "recovery": "12",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "500",
+      "startup": "8",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-5",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Incurs a 20% damage scaling penalty if used as the first hit of a combo"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900 (450*450)",
+      "startup": "9",
+      "active": "2(16)3",
+      "recovery": "21",
+      "onBlock": "-12",
+      "onHit": "KD +34",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Incurs a 20% damage scaling penalty if used as the first hit of a combo"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "10",
+      "recovery": "-",
+      "onBlock": "0~5",
+      "onHit": "4~9",
+      "category": "normal",
+      "notes": "Can be used as an instant Overhead"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "700",
+      "startup": "7",
+      "active": "3",
+      "recovery": "-",
+      "onBlock": "5~7",
+      "onHit": "9~11 (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "5~11",
+      "onHit": "9~15",
+      "category": "normal",
+      "notes": "Spikes down airborne opponents on Counter-Hit / Punish Counter"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "6",
+      "active": "10",
+      "recovery": "-",
+      "onBlock": "1~6",
+      "onHit": "5~10",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "600",
+      "startup": "7",
+      "active": "7",
+      "recovery": "-",
+      "onBlock": "7~9",
+      "onHit": "11~13",
+      "category": "normal",
+      "notes": "Projectile invincible on lower body (legs) on frames 7-20"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800",
+      "startup": "10",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "6~11",
+      "onHit": "10~15",
+      "category": "normal",
+      "notes": "Decent horizontal jump-in"
+    },
+    {
+      "name": "Full Bullet Magnum",
+      "input": "6MP",
+      "damage": "800",
+      "startup": "20",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "unique",
+      "notes": "Overhead"
+    },
+    {
+      "name": "Spinning Back Knuckle",
+      "input": "6HP",
+      "damage": "800",
+      "startup": "16",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "3",
+      "onHit": "5",
+      "category": "unique",
+      "notes": "Cannot hit crouch"
+    },
+    {
+      "name": "Burning Straight",
+      "input": "4HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-4",
+      "onHit": "1",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Combo / buffer tool"
+    },
+    {
+      "name": "Knee Bazooka",
+      "input": "4LK",
+      "damage": "500",
+      "startup": "8",
+      "active": "5",
+      "recovery": "15",
+      "onBlock": "-4(0)",
+      "onHit": "0(4)",
+      "category": "unique",
+      "notes": "Crushes lows on frames 7-17"
+    },
+    {
+      "name": "Rolling Sobat",
+      "input": "4 or 6+MK",
+      "damage": "700",
+      "startup": "11",
+      "active": "3",
+      "recovery": "18(21)",
+      "onBlock": "-6",
+      "onHit": "3",
+      "category": "unique",
+      "notes": "Crushes lows on frames 7-17"
+    },
+    {
+      "name": "Reverse Spin Kick",
+      "input": "6HK",
+      "damage": "1000",
+      "startup": "17",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-8",
+      "onHit": "-1 (KD +29)",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Throw invincible and crushes lows on frames 4-28"
+    },
+    {
+      "name": "Guile High Kick",
+      "input": "3HK",
+      "damage": "1000",
+      "startup": "10",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-9",
+      "onHit": "0",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Whiffs on most crouching moves (can still hit some like crouch HP)"
+    },
+    {
+      "name": "Recoil Cannon",
+      "input": "5MP > 4HP",
+      "damage": "1200 (600*600)",
+      "startup": "16",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-9",
+      "onHit": "KD +35",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Puts opponent into a limited juggle state on hit"
+    },
+    {
+      "name": "Double Shot",
+      "input": "2MP > 2MP",
+      "damage": "960 (600*360)",
+      "startup": "12",
+      "active": "3",
+      "recovery": "16",
+      "onBlock": "-6",
+      "onHit": "KD +44",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 44
+      },
+      "notes": "Second hit puts airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Drake Fang",
+      "input": "2MK > 6MP",
+      "damage": "800",
+      "startup": "20",
+      "active": "3",
+      "recovery": "21",
+      "onBlock": "-5",
+      "onHit": "1",
+      "category": "unique",
+      "notes": "Second hit (f+MP) is an Overhead"
+    },
+    {
+      "name": "Phantom Cutter",
+      "input": "2HK > 3HK",
+      "damage": "600",
+      "startup": "10",
+      "active": "3",
+      "recovery": "25",
+      "onBlock": "-12(-30)",
+      "onHit": "KD +33",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Launches opponent into a limited juggle state"
+    },
+    {
+      "name": "Dragon Suplex",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +15",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 15
+      },
+      "notes": "Pseudo-Throw Loop: Frame-perfect walk forward throw beats 6F attacks on wake-up (corner only) - Beats 4F attacks (real throw loop) against wider characters like Blanka / Honda / Marisa / Zangief"
+    },
+    {
+      "name": "Judo Throw",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +18",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 18
+      },
+      "notes": "Back Throw oki when cornered: Can Drive Rush for a strike/throw mix or just do a meaty Sonic Boom or strike"
+    },
+    {
+      "name": "Flying Mare",
+      "input": "LPLK (air)",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD +21(23)",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 21
+      },
+      "notes": "Gets oki when near the corner (can also Drive Rush to get a bit further)"
+    },
+    {
+      "name": "Flying Buster Drop",
+      "input": "4LPLK (air)",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD +15",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 15
+      },
+      "notes": "Back Throw oki when cornered: Yes but only a Drive Rush strike (throw not in range)"
+    },
+    {
+      "name": "Drive Impact: Blitz Combination",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Strike Eagle",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "LP Sonic Boom",
+      "input": "46LP",
+      "damage": "550(600)",
+      "startup": "10",
+      "active": "-",
+      "recovery": "30",
+      "onBlock": "-3",
+      "onHit": "3(4)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "MP Sonic Boom",
+      "input": "46MP",
+      "damage": "550(600)",
+      "startup": "10",
+      "active": "-",
+      "recovery": "30",
+      "onBlock": "-3",
+      "onHit": "3(4)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "HP Sonic Boom",
+      "input": "46HP",
+      "damage": "550(600)",
+      "startup": "10",
+      "active": "-",
+      "recovery": "30",
+      "onBlock": "-3",
+      "onHit": "3(4)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "OD Sonic Boom",
+      "input": "46PP",
+      "damage": "1000 (500*500)",
+      "startup": "10",
+      "active": "-",
+      "recovery": "28",
+      "onBlock": "3",
+      "onHit": "KD +48",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 48
+      },
+      "notes": "2-hit OD projectile"
+    },
+    {
+      "name": "LK Somersault Kick",
+      "input": "28LK",
+      "damage": "1000(1200)",
+      "startup": "5",
+      "active": "6",
+      "recovery": "26+15",
+      "onBlock": "-30",
+      "onHit": "KD +36",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "Takes 45 frames to charge (holds charge for 12F after leaving charge)"
+    },
+    {
+      "name": "MK Somersault Kick",
+      "input": "28MK",
+      "damage": "1100(1300)",
+      "startup": "6",
+      "active": "6",
+      "recovery": "27+15",
+      "onBlock": "-31",
+      "onHit": "KD +37",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 37
+      },
+      "notes": "Takes 45 frames to charge (holds charge for 12F after leaving charge)"
+    },
+    {
+      "name": "HK Somersault Kick",
+      "input": "28HK",
+      "damage": "1200(1400)",
+      "startup": "7",
+      "active": "6",
+      "recovery": "28+15",
+      "onBlock": "-32",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Takes 45 frames to charge (holds charge for 12F after leaving charge)"
+    },
+    {
+      "name": "OD Somersault Kick",
+      "input": "28KK",
+      "damage": "1600 (1000*600)",
+      "startup": "6",
+      "active": "4*2",
+      "recovery": "26+20",
+      "onBlock": "-33(-37)",
+      "onHit": "KD +29",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Fully invincible on frames 1-11 (holds charge for 15F after leaving charge)"
+    },
+    {
+      "name": "LP Sonic Blade",
+      "input": "214LP",
+      "damage": "400",
+      "startup": "16",
+      "active": "45",
+      "recovery": "26",
+      "onBlock": "-4",
+      "onHit": "-3",
+      "category": "special",
+      "notes": "1-hit projectile hitbox"
+    },
+    {
+      "name": "MP Sonic Blade",
+      "input": "214MP",
+      "damage": "400",
+      "startup": "21",
+      "active": "85",
+      "recovery": "29",
+      "onBlock": "-7",
+      "onHit": "-6",
+      "category": "special",
+      "notes": "1-hit projectile hitbox"
+    },
+    {
+      "name": "HP Sonic Blade",
+      "input": "214HP",
+      "damage": "500 (250*250)",
+      "startup": "31",
+      "active": "100",
+      "recovery": "23",
+      "onBlock": "-1",
+      "onHit": "1",
+      "category": "special",
+      "notes": "2-hit projectile hitbox"
+    },
+    {
+      "name": "Sonic Blade > Sonic Cross",
+      "input": "214P > 6P",
+      "damage": "1000(1200)",
+      "startup": "Blade*10",
+      "active": "-",
+      "recovery": "28",
+      "onBlock": "-1",
+      "onHit": "KD ~",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Can perform the follow-up Sonic Boom even without any charge on frames 35-40"
+    },
+    {
+      "name": "Sonic Blade > OD Sonic Cross",
+      "input": "214P > 6PP",
+      "damage": "1300 (400x2*500)",
+      "startup": "Blade*10",
+      "active": "-",
+      "recovery": "28",
+      "onBlock": "1",
+      "onHit": "KD ~",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Can perform the follow-up OD Sonic Boom even without charge"
+    },
+    {
+      "name": "OD Sonic Blade",
+      "input": "214PP",
+      "damage": "600 (300*300)",
+      "startup": "15",
+      "active": "100",
+      "recovery": "24",
+      "onBlock": "-4",
+      "onHit": "KD +57",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 57
+      },
+      "notes": "Allows for follow-up Sonic Boom even without charging it"
+    },
+    {
+      "name": "OD Sonic Blade > Sonic Cross",
+      "input": "214PP > 6PP",
+      "damage": "1300 (400x2*500)",
+      "startup": "15*10",
+      "active": "-",
+      "recovery": "28",
+      "onBlock": "-",
+      "onHit": "KD ~",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Can perform the follow-up Sonic Boom even without charge"
+    },
+    {
+      "name": "OD Sonic Blade > OD Sonic Cross",
+      "input": "214PP > 6PP",
+      "damage": "1700 (400x3*500)",
+      "startup": "15*10",
+      "active": "-",
+      "recovery": "28",
+      "onBlock": "-",
+      "onHit": "KD ~ (Spin+Splat)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Can perform the follow-up OD Sonic Boom even without charge"
+    },
+    {
+      "name": "Sonic Hurricane",
+      "input": "4646P",
+      "damage": "2000(1800)",
+      "startup": "8(7)",
+      "active": "51(52)",
+      "recovery": "81(68)",
+      "onBlock": "-26(-2)",
+      "onHit": "KD +41",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 41
+      },
+      "notes": "Takes 45 frames to charge (holds charge for 28F)"
+    },
+    {
+      "name": "Crossfire Somersault",
+      "input": "4646K",
+      "damage": "4000(3000)",
+      "startup": "9",
+      "active": "6",
+      "recovery": "30+40",
+      "onBlock": "-59",
+      "onHit": "HKD +16",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 16
+      },
+      "notes": "Takes 45 frames to charge"
+    },
+    {
+      "name": "Crossfire Somersault (Critical Art)",
+      "input": "4646K (CA)",
+      "damage": "4500(3500)",
+      "startup": "9",
+      "active": "6",
+      "recovery": "30+40",
+      "onBlock": "-59",
+      "onHit": "HKD +16",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 16
+      },
+      "notes": "Takes 45 frames to charge"
+    },
+    {
+      "name": "Sonic Break",
+      "input": "5PP",
+      "damage": "600",
+      "startup": "11",
+      "active": "-",
+      "recovery": "25",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "special",
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "Sonic Break Follow-up",
+      "input": "5P",
+      "damage": "600",
+      "startup": "11",
+      "active": "-",
+      "recovery": "25",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "special",
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "OD Sonic Break Follow-up",
+      "input": "OD > 5P",
+      "damage": "1000 (500*500)",
+      "startup": "11",
+      "active": "-",
+      "recovery": "24",
+      "onBlock": "3",
+      "onHit": "KD ~",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2-hit OD projectile"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

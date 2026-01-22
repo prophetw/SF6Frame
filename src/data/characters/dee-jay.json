@@ -1,0 +1,978 @@
+{
+  "character": {
+    "id": "dee-jay",
+    "name": "Dee Jay",
+    "nameJp": "ディージェイ"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 19,
+    "backDash": 23,
+    "forwardWalk": 0.043,
+    "backWalk": 0.032
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "6",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super",
+        "Target Combo"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "600",
+      "startup": "7",
+      "active": "3",
+      "recovery": "13",
+      "onBlock": "2",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Good combo and frametrap tool that can also go into two different target combos"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "800(700)",
+      "startup": "9",
+      "active": "6",
+      "recovery": "18",
+      "onBlock": "-4(1)",
+      "onHit": "3(8)",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Forces stand on active frames 1-2 (vital for his Jackknife Maximum combo routes)"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "2",
+      "recovery": "12",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "DJs only light button that combos into HK Sobat on hit and into OD Sobat in Punish situations, making this a good buffer tool"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "600",
+      "startup": "9",
+      "active": "3",
+      "recovery": "16",
+      "onBlock": "-1",
+      "onHit": "6",
+      "category": "normal",
+      "notes": "Combo starter as well as a decent poke tool"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "800",
+      "startup": "12",
+      "active": "3",
+      "recovery": "22(26)",
+      "onBlock": "-5",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Good range poke and whiff punish tool that leads to Drive Rush combos on Punish Counter"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "3",
+      "recovery": "8",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "600",
+      "startup": "6",
+      "active": "4",
+      "recovery": "14",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Core buffer / combo tool and also applicable in a lot of oki / meaty situations"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "800",
+      "startup": "8",
+      "active": "2",
+      "recovery": "20",
+      "onBlock": "-2",
+      "onHit": "6",
+      "category": "normal",
+      "notes": "Combo tool and a decent counterpoke with good hitbox priority"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "2",
+      "recovery": "10",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into stand LP / crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "700",
+      "startup": "8",
+      "active": "4",
+      "recovery": "19",
+      "onBlock": "-6",
+      "onHit": "KD +29",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Unorthodox sweep that only causes Hard Knockdown on Punish Counter"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900",
+      "startup": "14",
+      "active": "10",
+      "recovery": "15",
+      "onBlock": "-11(-2)",
+      "onHit": "HKD +33(42)",
+      "category": "normal",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 33
+      },
+      "notes": "Upper body and legs are invincible to airborne strikes on frames 12-23"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "7",
+      "recovery": "-",
+      "onBlock": "0~5",
+      "onHit": "4~9",
+      "category": "normal",
+      "notes": "Can be used as an instant Overhead"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "700",
+      "startup": "6",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "6~7",
+      "onHit": "10~11 (KD)",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "4~11",
+      "onHit": "8~15 (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents on hit"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "4",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "2~5",
+      "onHit": "6~9",
+      "category": "normal",
+      "notes": "Situational air-to-air"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "500",
+      "startup": "8",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "5~9",
+      "onHit": "9~13",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800",
+      "startup": "10",
+      "active": "5",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Decent jump-in that hits in front of Dee Jay before swinging his leg downward"
+    },
+    {
+      "name": "Knee Shot",
+      "input": "9 > 2LK",
+      "damage": "300",
+      "startup": "6",
+      "active": "until land",
+      "recovery": "3",
+      "onBlock": "2(8)",
+      "onHit": "5(11)",
+      "category": "unique",
+      "notes": "Alters DJ's trajectory causing him to fall slightly faster towards the ground, allowing DJ to manipulate his jump arcs and his pressure or setup options from a jump (up to 5F shorter airborne frames overall compared to a regular jump)"
+    },
+    {
+      "name": "Party in the Air",
+      "input": "8MP > 8HP",
+      "damage": "1400 (700*700)",
+      "startup": "8",
+      "active": "7",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "First hit (MP) puts airborne opponents into a limited juggle state and the second hit (HP) spikes down airborne opponents on hit"
+    },
+    {
+      "name": "Sunrise Heel",
+      "input": "6MK",
+      "damage": "700",
+      "startup": "19(21)",
+      "active": "5",
+      "recovery": "16",
+      "onBlock": "1(2)",
+      "onHit": "5(6)",
+      "category": "unique",
+      "cancels": [
+        "Super"
+      ],
+      "notes": "Not an Overhead (despite looking like one)"
+    },
+    {
+      "name": "Face Breaker",
+      "input": "4HK",
+      "damage": "800 (500*300)",
+      "startup": "7",
+      "active": "2*4",
+      "recovery": "20",
+      "onBlock": "-5",
+      "onHit": "1",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Head hurtbox is invincible to airborne strikes on frames 4-12"
+    },
+    {
+      "name": "Threebeat Combo 1",
+      "input": "5LP > 5MK",
+      "damage": "400",
+      "startup": "9",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3(-22)",
+      "onHit": "2(-17)",
+      "category": "unique",
+      "notes": "Solid poking tool from jab that's easily hit confirmed into the third hit for the extra damage and +3 strike / throw mixup"
+    },
+    {
+      "name": "Threebeat Combo 2",
+      "input": "5LP > 5MK > 5MK",
+      "damage": "625",
+      "startup": "14",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "-8",
+      "onHit": "3",
+      "category": "unique",
+      "notes": "Good target combo to convert into damage and pressure from DJ's stand LP"
+    },
+    {
+      "name": "Funky Dance 1",
+      "input": "5MP > 5MP",
+      "damage": "500",
+      "startup": "12",
+      "active": "2",
+      "recovery": "17(19)",
+      "onBlock": "-2",
+      "onHit": "2",
+      "category": "unique",
+      "notes": "The second hit can be delayed quite a bit which creates a frametrap on block for the opponent (cancel window is on frames 9-15 of MP)"
+    },
+    {
+      "name": "Funky Dance 2",
+      "input": "5MP > 5MP > 5HP",
+      "damage": "1125",
+      "startup": "20",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-8",
+      "onHit": "KD +43",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 43
+      },
+      "notes": "Last hit (HP) only combos if the second MP counter-hits (which can happen when the prior hits are delayed to create a frametrap scenario)"
+    },
+    {
+      "name": "Funky Dance Feint",
+      "input": "5MP > 5MP > 4HP",
+      "damage": "500",
+      "startup": "-",
+      "active": "-",
+      "recovery": "22",
+      "onBlock": "-5",
+      "onHit": "-3",
+      "category": "unique",
+      "notes": "A feint option to keep the opponent guessing on if they want to try to challenge DJ's MP Target Combo"
+    },
+    {
+      "name": "Dee Jay Special 1",
+      "input": "5MP > 5HP",
+      "damage": "500",
+      "startup": "11",
+      "active": "7",
+      "recovery": "24",
+      "onBlock": "-11(-7)",
+      "onHit": "-2(2)",
+      "category": "unique",
+      "notes": "Can be spaced so the HP hits in later active frames for + frames on hit/block"
+    },
+    {
+      "name": "Dee Jay Special 2",
+      "input": "5MP > 5HP > 5HK",
+      "damage": "600",
+      "startup": "13",
+      "active": "3",
+      "recovery": "30",
+      "onBlock": "-13",
+      "onHit": "KD +34",
+      "category": "unique",
+      "cancels": [
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Super cancelable"
+    },
+    {
+      "name": "Diss Track",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +34",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Throw Loop: Dash up > whiff 5LP for +3 mixup between strike / throw (not possible on mid-screen back roll)"
+    },
+    {
+      "name": "Flip Throw",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +22",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 22
+      },
+      "notes": "Back Throw oki when cornered: Can Drive Rush in for a strike/throw mix"
+    },
+    {
+      "name": "Drive Impact: Wild Beat",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Leg Scratch",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "MP Air Slasher",
+      "input": "46MP",
+      "damage": "600",
+      "startup": "17",
+      "active": "-",
+      "recovery": "27",
+      "onBlock": "-5",
+      "onHit": "0",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "HP Air Slasher",
+      "input": "46HP",
+      "damage": "1000 (500*500)",
+      "startup": "17,34",
+      "active": "-",
+      "recovery": "26",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Two separate 1-hit projectiles"
+    },
+    {
+      "name": "OD Air Slasher",
+      "input": "46PP",
+      "damage": "1000 (500*500)",
+      "startup": "10,23",
+      "active": "11(1)~",
+      "recovery": "23",
+      "onBlock": "2",
+      "onHit": "5",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Two separate 1-hit projectiles (combines into a 2-hit projectiles if the first projectiles doesn't connect up close)"
+    },
+    {
+      "name": "MK Jackknife Maximum",
+      "input": "28MK",
+      "damage": "1100 (600*500)",
+      "startup": "6",
+      "active": "4(9)4",
+      "recovery": "22+10",
+      "onBlock": "-32",
+      "onHit": "KD +41",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 41
+      },
+      "notes": "Takes 40 frames to charge (holds charge for 12F after leaving charge)"
+    },
+    {
+      "name": "HK Jackknife Maximum",
+      "input": "28HK",
+      "damage": "1300 (600*200*500)",
+      "startup": "5",
+      "active": "5(7)5(8)4",
+      "recovery": "17+15",
+      "onBlock": "-44",
+      "onHit": "KD +42",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Takes 40 frames to charge (holds charge for 12F after leaving charge)"
+    },
+    {
+      "name": "OD Jackknife Maximum",
+      "input": "28KK",
+      "damage": "1500 (300x5)",
+      "startup": "6",
+      "active": "6(7)3(9)3",
+      "recovery": "29+15",
+      "onBlock": "-55",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-11"
+    },
+    {
+      "name": "MK Double Rolling Sobat",
+      "input": "236MK",
+      "damage": "1000",
+      "startup": "12",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-6(-4)",
+      "onHit": "KD +34",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Fast start-up and solid range makes this a good combo and poke tool in neutral (can be spaced to be safe on block)"
+    },
+    {
+      "name": "HK Double Rolling Sobat",
+      "input": "236HK",
+      "damage": "1400 (700*700)",
+      "startup": "15",
+      "active": "3(18)4",
+      "recovery": "24",
+      "onBlock": "-10",
+      "onHit": "2",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Keeps DJ close on hit for +2 mixup pressure"
+    },
+    {
+      "name": "OD Double Rolling Sobat",
+      "input": "236KK",
+      "damage": "1300 (700*600)",
+      "startup": "19",
+      "active": "2(9)3",
+      "recovery": "19",
+      "onBlock": "-2",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Low crushes on frames 14-28"
+    },
+    {
+      "name": "LP Machine Gun Upper",
+      "input": "214LP",
+      "damage": "1650 (800~950)",
+      "startup": "15",
+      "active": "4",
+      "recovery": "35",
+      "onBlock": "-19",
+      "onHit": "KD +34",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Mostly a combo / juggle tool"
+    },
+    {
+      "name": "MP Machine Gun Upper",
+      "input": "214MP",
+      "damage": "1900 (800~900)",
+      "startup": "22",
+      "active": "4",
+      "recovery": "35",
+      "onBlock": "-19",
+      "onHit": "KD +32",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 32
+      },
+      "notes": "Mostly a combo / juggle tool"
+    },
+    {
+      "name": "HP Machine Gun Upper",
+      "input": "214HP",
+      "damage": "2200 (800~1900)",
+      "startup": "28",
+      "active": "4",
+      "recovery": "35",
+      "onBlock": "-19",
+      "onHit": "KD +40",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 40
+      },
+      "notes": "Mostly a combo / juggle tool"
+    },
+    {
+      "name": "OD Machine Gun Upper",
+      "input": "214PP",
+      "damage": "2500 (800)",
+      "startup": "28",
+      "active": "4",
+      "recovery": "35",
+      "onBlock": "-19",
+      "onHit": "HKD +23",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "hard",
+        "advantage": 23
+      },
+      "notes": "Mostly a combo / juggle tool"
+    },
+    {
+      "name": "Jus Cool > Funky Slicer",
+      "input": "214K > LK",
+      "damage": "800",
+      "startup": "13+12",
+      "active": "3",
+      "recovery": "22(25)",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Low attack"
+    },
+    {
+      "name": "Jus Cool > Waning Moon",
+      "input": "214K > MK",
+      "damage": "1000",
+      "startup": "13+25",
+      "active": "3",
+      "recovery": "16",
+      "onBlock": "1",
+      "onHit": "HKD +27(28)",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 27
+      },
+      "notes": "Overhead"
+    },
+    {
+      "name": "Jus Cool > Maximum Strike",
+      "input": "214K > HK",
+      "damage": "1000",
+      "startup": "13+15",
+      "active": "5",
+      "recovery": "25",
+      "onBlock": "-10",
+      "onHit": "KD +45",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 45
+      },
+      "notes": "Upper body invincible on start-up frames 6-14 and again on frames 20-44 (entire recovery frames) of the follow-up kick"
+    },
+    {
+      "name": "OD Jus Cool",
+      "input": "214KK",
+      "damage": "500",
+      "startup": "8",
+      "active": "5",
+      "recovery": "36(37)",
+      "onBlock": "-18",
+      "onHit": "KD +33",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Launches the opponent into a limited juggle state"
+    },
+    {
+      "name": "OD Jus Cool > Funky Slicer",
+      "input": "214KK > LK",
+      "damage": "900",
+      "startup": "25+9",
+      "active": "3",
+      "recovery": "19(24)",
+      "onBlock": "-2",
+      "onHit": "6",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Low attack"
+    },
+    {
+      "name": "OD Jus Cool > Waning Moon",
+      "input": "214KK > MK",
+      "damage": "1110",
+      "startup": "25+19",
+      "active": "5",
+      "recovery": "17",
+      "onBlock": "-2(-4)",
+      "onHit": "5(7)",
+      "category": "special",
+      "notes": "Overhead"
+    },
+    {
+      "name": "OD Jus Cool > Maximum Strike",
+      "input": "214KK > HK",
+      "damage": "1000",
+      "startup": "25+11",
+      "active": "5",
+      "recovery": "21",
+      "onBlock": "-8",
+      "onHit": "KD +55(57)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 55
+      },
+      "notes": "Upper body invincible on frames 6-36"
+    },
+    {
+      "name": "The Greatest Sobat",
+      "input": "236236K",
+      "damage": "2000",
+      "startup": "7",
+      "active": "4",
+      "recovery": "33",
+      "onBlock": "-12",
+      "onHit": "HKD +44",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 44
+      },
+      "notes": "No invincibility whatsoever"
+    },
+    {
+      "name": "Lowkey Sunrise Festival",
+      "input": "236236LP > LP > MP > HP > LK > MK > HK (bad)",
+      "damage": "1200(2600)",
+      "startup": "12",
+      "active": "5",
+      "recovery": "46",
+      "onBlock": "-29",
+      "onHit": "6",
+      "category": "super",
+      "notes": "Fully invincible on frames 1-16 (follow-ups are also projectile invincible)"
+    },
+    {
+      "name": "Marvelous Sunrise Festival",
+      "input": "236236MP > LP > MP > HP > LK > MK > HK (good)",
+      "damage": "1300(1700)",
+      "startup": "12",
+      "active": "5",
+      "recovery": "46",
+      "onBlock": "-29",
+      "onHit": "6 / Crumple +46",
+      "category": "super",
+      "notes": "Fully invincible on frames 1-16 (follow-ups are also projectile invincible)"
+    },
+    {
+      "name": "Headliner Sunrise Festival",
+      "input": "236236HP > LP > MP > HP > LK > MK > HK (great)",
+      "damage": "1300(1800)",
+      "startup": "12",
+      "active": "5",
+      "recovery": "46",
+      "onBlock": "-29",
+      "onHit": "6 / Crumple +46",
+      "category": "super",
+      "notes": "Fully invincible on frames 1-16 (follow-ups are also projectile invincible)"
+    },
+    {
+      "name": "Climactic Strike",
+      "input": "HP (after Level 2 Super (MP/HP) connects)",
+      "damage": "2800(3000)",
+      "startup": "1",
+      "active": "-",
+      "recovery": "180",
+      "onBlock": "-",
+      "onHit": "HKD +24",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 24
+      },
+      "notes": "Switches sides with the opponent and has less knockdown advantage than the HK finisher"
+    },
+    {
+      "name": "Encore Beat",
+      "input": "HK (after Level 2 Super (MP/HP) connects)",
+      "damage": "2800(3000)",
+      "startup": "1",
+      "active": "-",
+      "recovery": "150",
+      "onBlock": "-",
+      "onHit": "HKD +34",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 34
+      },
+      "notes": "Has increased knockdown advantage over the HP finisher"
+    },
+    {
+      "name": "Weekend Pleasure",
+      "input": "214214P",
+      "damage": "4000",
+      "startup": "9",
+      "active": "5",
+      "recovery": "48",
+      "onBlock": "-28",
+      "onHit": "HKD +26",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 26
+      },
+      "notes": "Fully invincible on frames 1-13"
+    },
+    {
+      "name": "Weekend Pleasure (Critical Art)",
+      "input": "214214P (CA)",
+      "damage": "4500",
+      "startup": "9",
+      "active": "5",
+      "recovery": "48",
+      "onBlock": "-28",
+      "onHit": "HKD +22",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 22
+      },
+      "notes": "Fully invincible on frames 1-13"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

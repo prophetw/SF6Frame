@@ -1,0 +1,1343 @@
+{
+  "character": {
+    "id": "marisa",
+    "name": "Marisa",
+    "nameJp": "マリーザ"
+  },
+  "stats": {
+    "health": 10500,
+    "forwardDash": 22,
+    "backDash": 25,
+    "forwardWalk": 0.039,
+    "backWalk": 0.027
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "400",
+      "startup": "6",
+      "active": "3",
+      "recovery": "11",
+      "onBlock": "-2",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Mostly just used for the LP > LP target combo"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "700",
+      "startup": "7",
+      "active": "4",
+      "recovery": "15(17)",
+      "onBlock": "-1",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Great combo tool with the MP > MP target combo"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "1000",
+      "startup": "12",
+      "active": "2",
+      "recovery": "23",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Can be held"
+    },
+    {
+      "name": "Stand HP (hold)",
+      "input": "5HP (hold)",
+      "damage": "1200",
+      "startup": "23(5)",
+      "active": "2",
+      "recovery": "21(22)",
+      "onBlock": "4",
+      "onHit": "7",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Uncharged version comes out in only 5 frames if HP is released between start-up frames 7-17"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "400",
+      "startup": "6",
+      "active": "2",
+      "recovery": "14",
+      "onBlock": "-2",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Does not combo into anything at farther ranges except Super Art 2"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "800",
+      "startup": "11",
+      "active": "4",
+      "recovery": "16",
+      "onBlock": "-2",
+      "onHit": "4",
+      "category": "normal",
+      "notes": "Strong poke and drive rush tool (but a bit slow start-up)"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "1000",
+      "startup": "15",
+      "active": "2",
+      "recovery": "25",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "normal",
+      "notes": "Can be held"
+    },
+    {
+      "name": "Stand HK (hold)",
+      "input": "5HK (hold)",
+      "damage": "1200",
+      "startup": "24(10)",
+      "active": "2",
+      "recovery": "25",
+      "onBlock": "1",
+      "onHit": "KD +36",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "Uncharged version comes out in only 10 frames if HK is released between start-up frames 5-13"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "2",
+      "recovery": "10",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Marisa's only 4F normal"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "700",
+      "startup": "8",
+      "active": "3",
+      "recovery": "16",
+      "onBlock": "-2",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Further range than most crouch MP (but slower start-up)"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "900",
+      "startup": "9",
+      "active": "5",
+      "recovery": "23",
+      "onBlock": "-6",
+      "onHit": "KD +35",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Can be held"
+    },
+    {
+      "name": "Crouch HP (hold)",
+      "input": "2HP (hold)",
+      "damage": "1000",
+      "startup": "21(4)",
+      "active": "6",
+      "recovery": "21",
+      "onBlock": "-3",
+      "onHit": "KD +52",
+      "category": "normal",
+      "cancels": [
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 52
+      },
+      "notes": "Uncharged version comes out in only 4 frames if HP is released between start-up frames 5-16"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "3",
+      "recovery": "12",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into crouch LP / crouch LK"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "600",
+      "startup": "9",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-2",
+      "onHit": "3",
+      "category": "normal",
+      "notes": "Solid low poke with good range and great hitbox priority"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "1000",
+      "startup": "11",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-11",
+      "onHit": "KD +29",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Can be held for a higher damage and juggle potential"
+    },
+    {
+      "name": "Crouch HK (hold)",
+      "input": "2HK (hold)",
+      "damage": "1200",
+      "startup": "20(4)",
+      "active": "3",
+      "recovery": "20(23)",
+      "onBlock": "-3",
+      "onHit": "KD +35",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Marisa's lifts up her front leg hurtbox on frames 8-22 which can avoid some low attacks during this window (this property is lost immediately if the HK button is released early during start-up)"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "7",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "700",
+      "startup": "7",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Puts airborne opponents into a limited juggle state"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "10",
+      "active": "7",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Can be held"
+    },
+    {
+      "name": "Jump HP (hold)",
+      "input": "8HP (hold)",
+      "damage": "1500",
+      "startup": "28(5)",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "HKD",
+      "category": "normal",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 20
+      },
+      "notes": "Uncharged version comes out in only 5 frames if HP is released between start-up frames 5-19"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "5",
+      "active": "10",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "500",
+      "startup": "8",
+      "active": "8",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Marisa's furthest reaching horizontal jump-in"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800",
+      "startup": "10",
+      "active": "7",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Can be held"
+    },
+    {
+      "name": "Jump HK (hold)",
+      "input": "8HK (hold)",
+      "damage": "1500",
+      "startup": "29(3)",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "HKD",
+      "category": "normal",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 20
+      },
+      "notes": "Uncharged version comes out in only 3 frames if HK is released between start-up frames 7-19"
+    },
+    {
+      "name": "Volare Combo",
+      "input": "8MP > 8MP",
+      "damage": "800",
+      "startup": "10",
+      "active": "3",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "KD",
+      "category": "unique",
+      "cancels": [
+        "Target Combo"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Spikes down airborne opponents on hit"
+    },
+    {
+      "name": "Caelum Arc",
+      "input": "8 > 2HP",
+      "damage": "800",
+      "startup": "9",
+      "active": "9",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "~ (KD)",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Can only be performed from a neutral jump"
+    },
+    {
+      "name": "Caelum Arc (hold)",
+      "input": "8 > 2HP (hold)",
+      "damage": "1500",
+      "startup": "28(4)",
+      "active": "9",
+      "recovery": "-",
+      "onBlock": "-",
+      "onHit": "HKD",
+      "category": "normal",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 20
+      },
+      "notes": "Can only be performed from a neutral jump"
+    },
+    {
+      "name": "Novacula",
+      "input": "6MP",
+      "damage": "800",
+      "startup": "10",
+      "active": "2",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "unique",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Forward moving attack with high/low follow-up options"
+    },
+    {
+      "name": "Novacula Swipe",
+      "input": "6MP > 5HP",
+      "damage": "800",
+      "startup": "11",
+      "active": "2",
+      "recovery": "26",
+      "onBlock": "-12",
+      "onHit": "KD +31",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 31
+      },
+      "notes": "Low follow-up"
+    },
+    {
+      "name": "Novacula Thrust",
+      "input": "6MP > 5HK",
+      "damage": "800",
+      "startup": "11",
+      "active": "4",
+      "recovery": "23",
+      "onBlock": "-10",
+      "onHit": "KD +39",
+      "category": "unique",
+      "cancels": [
+        "Super"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "High hitting (not an Overhead) follow-up that cannot hit crouching (-21 oH | -26 oB vs Crouch)"
+    },
+    {
+      "name": "Malleus",
+      "input": "3HP",
+      "damage": "900",
+      "startup": "21",
+      "active": "2",
+      "recovery": "21",
+      "onBlock": "-3",
+      "onHit": "0",
+      "category": "unique",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Overhead"
+    },
+    {
+      "name": "Malleus (hold)",
+      "input": "3HP (hold)",
+      "damage": "1000",
+      "startup": "28(14)",
+      "active": "2",
+      "recovery": "19",
+      "onBlock": "2",
+      "onHit": "5",
+      "category": "normal",
+      "cancels": [
+        "Target Combo"
+      ],
+      "notes": "Overhead"
+    },
+    {
+      "name": "Malleus Breaker",
+      "input": "3HP > 3HP",
+      "damage": "900",
+      "startup": "18",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-12",
+      "onHit": "KD +29",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "2-hit Overhead"
+    },
+    {
+      "name": "Magna Bunker",
+      "input": "4HP",
+      "damage": "900",
+      "startup": "8",
+      "active": "2",
+      "recovery": "21(24)",
+      "onBlock": "-1",
+      "onHit": "3",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Can be held"
+    },
+    {
+      "name": "Magna Bunker (hold)",
+      "input": "4HP (hold)",
+      "damage": "1000",
+      "startup": "20(3)",
+      "active": "2",
+      "recovery": "19(24)",
+      "onBlock": "4",
+      "onHit": "13",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Uncharged version comes out in only 3 frames if HP is released between start-up frames 5-16"
+    },
+    {
+      "name": "Knee",
+      "input": "6HK",
+      "damage": "900",
+      "startup": "14",
+      "active": "4",
+      "recovery": "21",
+      "onBlock": "-3",
+      "onHit": "0",
+      "category": "unique",
+      "cancels": [
+        "Target Combo",
+        "Special",
+        "Super"
+      ],
+      "notes": "Can be held"
+    },
+    {
+      "name": "Knee (hold)",
+      "input": "6HK (hold)",
+      "damage": "1000",
+      "startup": "27(7)",
+      "active": "4",
+      "recovery": "19",
+      "onBlock": "3",
+      "onHit": "10",
+      "category": "normal",
+      "cancels": [
+        "Target Combo",
+        "Special",
+        "Super"
+      ],
+      "notes": "Uncharged version comes out in only 7 frames if HK is released between start-up frames 7-14"
+    },
+    {
+      "name": "Falx Crusher",
+      "input": "6HK > 6HK",
+      "damage": "1000",
+      "startup": "16",
+      "active": "5",
+      "recovery": "25",
+      "onBlock": "-12",
+      "onHit": "KD +52",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 52
+      },
+      "notes": "Combo / Juggle tool mostly"
+    },
+    {
+      "name": "Light Two Hitter",
+      "input": "5LP > 5LP",
+      "damage": "600",
+      "startup": "14",
+      "active": "3",
+      "recovery": "22",
+      "onBlock": "-6",
+      "onHit": "-3",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Only combos on Counter-Hit or Punish Counter"
+    },
+    {
+      "name": "Medium Two Hitter",
+      "input": "5MP > 5MP",
+      "damage": "600",
+      "startup": "14",
+      "active": "2",
+      "recovery": "23",
+      "onBlock": "-8",
+      "onHit": "-3",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "One of Marisa's main combo / pressure / bully tools up close"
+    },
+    {
+      "name": "Heavy Two Hitter",
+      "input": "5HP > 5HP",
+      "damage": "1000",
+      "startup": "24",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "2",
+      "onHit": "KD +42",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "5F frametrap between hits on block (trades with 6F) - but only 1F frametrap between hits if performed from a held HP"
+    },
+    {
+      "name": "Mounted Grace",
+      "input": "LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +23",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Throw Loop: Can Drive Rush into a meaty throw in corner only"
+    },
+    {
+      "name": "Ponte Milvio",
+      "input": "4LPLK",
+      "damage": "1200(2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +33",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Throw Loop when used while cornered: Dash forward for a meaty strike or Drive Rush for a meaty strike/throw mix"
+    },
+    {
+      "name": "Drive Impact: Secutor",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Love Tap",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "LP Gladius",
+      "input": "236LP",
+      "damage": "1200",
+      "startup": "17",
+      "active": "4",
+      "recovery": "21",
+      "onBlock": "-5",
+      "onHit": "KD +36",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "1 hit of armor against High and Mid attacks (loses to Low attacks) on frames 5-10"
+    },
+    {
+      "name": "LP Gladius (hold)",
+      "input": "236LP (hold)",
+      "damage": "2400 (1200*1000*200)",
+      "startup": "30(4-5)",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "4",
+      "onHit": "HKD +40",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "hard",
+        "advantage": 40
+      },
+      "notes": "1 hit of armor against High and Mid attacks (loses to Low attacks) on frames 5-26"
+    },
+    {
+      "name": "MP Gladius",
+      "input": "236MP",
+      "damage": "1400",
+      "startup": "19",
+      "active": "4",
+      "recovery": "21",
+      "onBlock": "-5",
+      "onHit": "KD +36",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "1 hit of armor against High and Mid attacks (loses to Low attacks) on frames 5-12"
+    },
+    {
+      "name": "MP Gladius (hold)",
+      "input": "236MP (hold)",
+      "damage": "2600 (1400*1000*200)",
+      "startup": "35(6-7)",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "4",
+      "onHit": "HKD +40",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "hard",
+        "advantage": 40
+      },
+      "notes": "1 hit of armor against High and Mid attacks (loses to Low attacks) on frames 5-29"
+    },
+    {
+      "name": "HP Gladius",
+      "input": "236HP",
+      "damage": "1600",
+      "startup": "22",
+      "active": "4",
+      "recovery": "21",
+      "onBlock": "-5",
+      "onHit": "KD +36",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "1 hit of armor against High and Mid attacks (loses to Low attacks) on frames 5-15"
+    },
+    {
+      "name": "HP Gladius (hold)",
+      "input": "236HP (hold)",
+      "damage": "2800 (1600*1000*200)",
+      "startup": "41(8-10)",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "4",
+      "onHit": "HKD +40",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "hard",
+        "advantage": 40
+      },
+      "notes": "1 hit of armor against High and Mid attacks (loses to Low attacks) on frames 5-35"
+    },
+    {
+      "name": "OD Gladius",
+      "input": "236PP",
+      "damage": "1700",
+      "startup": "19",
+      "active": "4",
+      "recovery": "21",
+      "onBlock": "-2",
+      "onHit": "KD +36",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "Armor Break"
+    },
+    {
+      "name": "OD Gladius (hold)",
+      "input": "236PP (hold)",
+      "damage": "2900 (1700*1000*200)",
+      "startup": "35(6-8)",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "4",
+      "onHit": "HKD +40",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "hard",
+        "advantage": 40
+      },
+      "notes": "Armor Break"
+    },
+    {
+      "name": "LP Dimachaerus",
+      "input": "214LP",
+      "damage": "600",
+      "startup": "12",
+      "active": "4",
+      "recovery": "30",
+      "onBlock": "-16",
+      "onHit": "-3",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Invincible to airborne strikes on frames 5-15"
+    },
+    {
+      "name": "MP Dimachaerus",
+      "input": "214MP",
+      "damage": "700",
+      "startup": "16",
+      "active": "4",
+      "recovery": "30",
+      "onBlock": "-16",
+      "onHit": "0",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "Invincible to airborne strikes on frames 6-19 on head and upper body"
+    },
+    {
+      "name": "HP Dimachaerus",
+      "input": "214HP",
+      "damage": "800",
+      "startup": "22",
+      "active": "4",
+      "recovery": "30",
+      "onBlock": "-16",
+      "onHit": "KD +38",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Invincible to airborne strikes on frames 10-25 on head and shoulders only"
+    },
+    {
+      "name": "OD Dimachaerus",
+      "input": "214PP",
+      "damage": "600",
+      "startup": "16",
+      "active": "4",
+      "recovery": "26",
+      "onBlock": "-12",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Invincible to airborne strikes on frames 5-19"
+    },
+    {
+      "name": "LP Dimachaerus Follow-up",
+      "input": "214LP > 6P",
+      "damage": "1200 (600*600)",
+      "startup": "13",
+      "active": "5",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +31",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 31
+      },
+      "notes": "This follow-up is only possible on hit"
+    },
+    {
+      "name": "MP Dimachaerus Follow-up",
+      "input": "214MP > 6P",
+      "damage": "1300 (700*600)",
+      "startup": "13",
+      "active": "5",
+      "recovery": "24",
+      "onBlock": "-",
+      "onHit": "KD +36",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 36
+      },
+      "notes": "Puts airborne opponents into a limited OTG juggle state on hit"
+    },
+    {
+      "name": "HP Dimachaerus Follow-up",
+      "input": "214HP > 6P",
+      "damage": "1400 (800*600)",
+      "startup": "18",
+      "active": "5",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +56",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 56
+      },
+      "notes": "Puts the opponent into a limited OTG juggle state on hit"
+    },
+    {
+      "name": "OD Dimachaerus Follow-up",
+      "input": "214PP > 6P",
+      "damage": "1200 (600*600)",
+      "startup": "13",
+      "active": "5",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +58",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 58
+      },
+      "notes": "Puts the opponent into a limited OTG juggle state on hit"
+    },
+    {
+      "name": "LP Phalanx",
+      "input": "623LP",
+      "damage": "1500",
+      "startup": "25",
+      "active": "6",
+      "recovery": "15",
+      "onBlock": "2(3)",
+      "onHit": "KD +42(43)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "1 hit of armor against High and Mid attacks (loses to Low attacks) on frames 7-11"
+    },
+    {
+      "name": "MP Phalanx",
+      "input": "623MP",
+      "damage": "1600",
+      "startup": "28",
+      "active": "6",
+      "recovery": "15",
+      "onBlock": "2(3)",
+      "onHit": "KD +42(43)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "1 hit of armor against High and Mid attacks (loses to Low attacks) on frames 7-13"
+    },
+    {
+      "name": "HP Phalanx",
+      "input": "623HP",
+      "damage": "1700",
+      "startup": "32",
+      "active": "6",
+      "recovery": "15",
+      "onBlock": "2(3)",
+      "onHit": "KD +42(43)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "1 hit of armor against High and Mid attacks (loses to Low attacks) on frames 10-15"
+    },
+    {
+      "name": "OD Phalanx",
+      "input": "623PP",
+      "damage": "1400",
+      "startup": "28",
+      "active": "6",
+      "recovery": "15",
+      "onBlock": "4(6)",
+      "onHit": "KD +70 (Tumble) (HKD +138 Wall Splat)",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 70
+      },
+      "notes": "Armor Break"
+    },
+    {
+      "name": "LK Quadriga",
+      "input": "236LK",
+      "damage": "1400",
+      "startup": "20",
+      "active": "4",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "KD +35",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "About 50% screen length in range"
+    },
+    {
+      "name": "MK Quadriga",
+      "input": "236MK",
+      "damage": "1500",
+      "startup": "24",
+      "active": "4",
+      "recovery": "22",
+      "onBlock": "-4",
+      "onHit": "KD +37",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 37
+      },
+      "notes": "About 60% screen length in range"
+    },
+    {
+      "name": "HK Quadriga",
+      "input": "236HK",
+      "damage": "1600",
+      "startup": "29",
+      "active": "4",
+      "recovery": "21",
+      "onBlock": "-3",
+      "onHit": "KD +37",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 37
+      },
+      "notes": "About 70% screen length in range"
+    },
+    {
+      "name": "OD Quadriga",
+      "input": "236KK",
+      "damage": "1500",
+      "startup": "24",
+      "active": "4",
+      "recovery": "24",
+      "onBlock": "-6",
+      "onHit": "Wall Splat +50(68)",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "Armor Break"
+    },
+    {
+      "name": "Scutum (absorb)",
+      "input": "qcb+K (absorb)",
+      "damage": "700",
+      "startup": "7",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "-1",
+      "category": "special",
+      "notes": "This counter-attack automatically triggers whenever Marisa's armor during the stance absorbs any hit"
+    },
+    {
+      "name": "OD Scutum (absorb)",
+      "input": "qcb+KK (absorb)",
+      "damage": "700",
+      "startup": "7",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "-1",
+      "category": "special",
+      "notes": "This counter-attack automatically triggers whenever Marisa's armor during the stance absorbs any hit"
+    },
+    {
+      "name": "Tonitrus 1",
+      "input": "214K > P",
+      "damage": "900",
+      "startup": "8+15",
+      "active": "3(2)",
+      "recovery": "23(25)",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "notes": "Overhead"
+    },
+    {
+      "name": "Tonitrus 2",
+      "input": "214K > P > P",
+      "damage": "1900 (900*1000)",
+      "startup": "8+15+20",
+      "active": "3(19)3",
+      "recovery": "36",
+      "onBlock": "-21",
+      "onHit": "KD +31",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 31
+      },
+      "notes": "Knocks opponent down"
+    },
+    {
+      "name": "Procella",
+      "input": "214K > K",
+      "damage": "1200",
+      "startup": "8+16",
+      "active": "3",
+      "recovery": "37",
+      "onBlock": "-24",
+      "onHit": "HKD +22",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 22
+      },
+      "notes": "Low"
+    },
+    {
+      "name": "Enfold",
+      "input": "214K > LPLK",
+      "damage": "2500",
+      "startup": "8+5",
+      "active": "3",
+      "recovery": "54",
+      "onBlock": "-",
+      "onHit": "HKD +18",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 18
+      },
+      "notes": "Range: 1.11~1.17"
+    },
+    {
+      "name": "Javelin of Marisa",
+      "input": "236236P",
+      "damage": "2200",
+      "startup": "19",
+      "active": "5",
+      "recovery": "60",
+      "onBlock": "-43",
+      "onHit": "KD +14",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 14
+      },
+      "notes": "Strike and Throw invincible on frame 1 (during screen freeze)"
+    },
+    {
+      "name": "Javelin of Marisa (Hold)",
+      "input": "236236P (hold)",
+      "damage": "2900(2600)",
+      "startup": "42(6)",
+      "active": "6",
+      "recovery": "60",
+      "onBlock": "-42",
+      "onHit": "HKD +35(KD +17)",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 35
+      },
+      "notes": "Strike and Throw invincible on frame 1 (during screen freeze)"
+    },
+    {
+      "name": "Javelin of Marisa (Counter)",
+      "input": "236236P (counter)",
+      "damage": "2400",
+      "startup": "6",
+      "active": "3",
+      "recovery": "54",
+      "onBlock": "-37",
+      "onHit": "KD +46",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 46
+      },
+      "notes": "Fully invincible on frames 1-10"
+    },
+    {
+      "name": "Meteorite",
+      "input": "214214P",
+      "damage": "3000(2500)",
+      "startup": "9",
+      "active": "8(32)3",
+      "recovery": "59",
+      "onBlock": "-44(-77)",
+      "onHit": "HKD +17",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 17
+      },
+      "notes": "Fully invincible on frames 1-16"
+    },
+    {
+      "name": "Goddess of the Hunt",
+      "input": "236236K",
+      "damage": "4000",
+      "startup": "13",
+      "active": "7",
+      "recovery": "60",
+      "onBlock": "-39(-33)",
+      "onHit": "HKD +14",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 14
+      },
+      "notes": "Fully invincible on frames 1-19"
+    },
+    {
+      "name": "Goddess of the Hunt (Critical Art)",
+      "input": "236236K (CA)",
+      "damage": "4500",
+      "startup": "13",
+      "active": "7",
+      "recovery": "60",
+      "onBlock": "-39(-33)",
+      "onHit": "HKD +14",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 14
+      },
+      "notes": "Fully invincible on frames 1-19"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}

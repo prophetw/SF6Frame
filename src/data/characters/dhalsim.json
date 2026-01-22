@@ -1,0 +1,911 @@
+{
+  "character": {
+    "id": "dhalsim",
+    "name": "Dhalsim",
+    "nameJp": "ダルシム"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 25,
+    "backDash": 23,
+    "forwardWalk": 0.028,
+    "backWalk": 0.025
+  },
+  "moves": [
+    {
+      "name": "Stand LP",
+      "input": "5LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "3",
+      "recovery": "8",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / down back LK"
+    },
+    {
+      "name": "Stand MP",
+      "input": "5MP",
+      "damage": "700",
+      "startup": "14",
+      "active": "3",
+      "recovery": "19",
+      "onBlock": "-5",
+      "onHit": "0",
+      "category": "normal",
+      "notes": "Far range poke (fully extends hurtbox 1F before active so can be counterpoked)"
+    },
+    {
+      "name": "Stand HP",
+      "input": "5HP",
+      "damage": "1000",
+      "startup": "16",
+      "active": "4",
+      "recovery": "27",
+      "onBlock": "-11",
+      "onHit": "-6",
+      "category": "normal",
+      "notes": "Hurtboxes extend past max range and linger for a long time after active frames, allowing long range whiff punishes"
+    },
+    {
+      "name": "Stand LK",
+      "input": "5LK",
+      "damage": "300",
+      "startup": "9",
+      "active": "4",
+      "recovery": "11",
+      "onBlock": "-6",
+      "onHit": "2",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Incurs 20% damage scaling penalty if used as the first hit of a combo"
+    },
+    {
+      "name": "Stand MK",
+      "input": "5MK",
+      "damage": "600",
+      "startup": "12",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-6",
+      "onHit": "-2",
+      "category": "normal",
+      "notes": "Far range poke (fully extends hurtbox 1F before active so can be counterpoked)"
+    },
+    {
+      "name": "Stand HK",
+      "input": "5HK",
+      "damage": "800",
+      "startup": "17",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-6",
+      "onHit": "3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Cannot hit crouching from further away (has to be a closer to hit crouch)"
+    },
+    {
+      "name": "Crouch LP",
+      "input": "2LP",
+      "damage": "300",
+      "startup": "5",
+      "active": "3",
+      "recovery": "9",
+      "onBlock": "-1",
+      "onHit": "4",
+      "category": "normal",
+      "cancels": [
+        "Chain",
+        "Special",
+        "Super"
+      ],
+      "notes": "Chains into stand LP / crouch LP / down back LK"
+    },
+    {
+      "name": "Crouch MP",
+      "input": "2MP",
+      "damage": "600",
+      "startup": "12",
+      "active": "3",
+      "recovery": "16",
+      "onBlock": "-4",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Far range fully cancelable buffer / poke tool (fully extends hurtbox 1F before active so can be counterpoked)"
+    },
+    {
+      "name": "Crouch HP",
+      "input": "2HP",
+      "damage": "800",
+      "startup": "19",
+      "active": "4",
+      "recovery": "20(24)",
+      "onBlock": "-8",
+      "onHit": "3",
+      "category": "normal",
+      "notes": "Low attack"
+    },
+    {
+      "name": "Crouch LK",
+      "input": "2LK",
+      "damage": "200",
+      "startup": "4",
+      "active": "7",
+      "recovery": "16",
+      "onBlock": "-10(-4)",
+      "onHit": "-5(1)",
+      "category": "normal",
+      "notes": "Low profiles slightly on frames 2-26 (until fully recovered)"
+    },
+    {
+      "name": "Crouch MK",
+      "input": "2MK",
+      "damage": "500",
+      "startup": "10",
+      "active": "13",
+      "recovery": "14",
+      "onBlock": "-10(2)",
+      "onHit": "-3(9)",
+      "category": "normal",
+      "notes": "Low profiles slightly on frames 10-30"
+    },
+    {
+      "name": "Crouch HK",
+      "input": "2HK",
+      "damage": "900",
+      "startup": "12",
+      "active": "16",
+      "recovery": "20",
+      "onBlock": "-16(-1)",
+      "onHit": "HKD +22(37)",
+      "category": "normal",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 22
+      },
+      "notes": "Low profiles (further down than LK or MK slide) on frames 8-39"
+    },
+    {
+      "name": "Jump LP",
+      "input": "8LP",
+      "damage": "300",
+      "startup": "4",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "0~5",
+      "onHit": "8~13",
+      "category": "normal",
+      "notes": "Can be used as a fuzzy instant Overhead against tall characters (JP / Marisa / Zangief) after a deep jump-in Medium / Heavy"
+    },
+    {
+      "name": "Jump MP",
+      "input": "8MP",
+      "damage": "700",
+      "startup": "9",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "3~7",
+      "onHit": "9~13",
+      "category": "normal",
+      "cancels": [
+        "Special"
+      ],
+      "notes": "Cancelable into air fireball, teleport, and float"
+    },
+    {
+      "name": "Jump HP",
+      "input": "8HP",
+      "damage": "800",
+      "startup": "13",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "up to 15",
+      "onHit": "up to 19 (KD)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Can be used as a fuzzy instant Overhead against tall characters in burnout (JP / Marisa / Zangief) after a deep jump-in jump HP"
+    },
+    {
+      "name": "Jump LK",
+      "input": "8LK",
+      "damage": "300",
+      "startup": "6",
+      "active": "4",
+      "recovery": "-",
+      "onBlock": "-9~5",
+      "onHit": "-6~8",
+      "category": "normal",
+      "notes": "Cross-up"
+    },
+    {
+      "name": "Jump MK",
+      "input": "8MK",
+      "damage": "500",
+      "startup": "11",
+      "active": "6",
+      "recovery": "-",
+      "onBlock": "-11~9",
+      "onHit": "-7~13",
+      "category": "normal",
+      "notes": "Instant Overhead that cannot be crouched if used meaty on opponents wake-up from a properly spaced distance"
+    },
+    {
+      "name": "Jump HK",
+      "input": "8HK",
+      "damage": "800",
+      "startup": "10",
+      "active": "10",
+      "recovery": "-",
+      "onBlock": "5~11",
+      "onHit": "9~15",
+      "category": "normal",
+      "notes": "Very far range air-to-air tool"
+    },
+    {
+      "name": "LK Drill Kick",
+      "input": "1 or 2 or 3LK (air)",
+      "damage": "500",
+      "startup": "9",
+      "active": "until land",
+      "recovery": "6(11)",
+      "onBlock": "-30(5)",
+      "onHit": "-23(12)",
+      "category": "unique",
+      "notes": "Forced Knockdown state until landing"
+    },
+    {
+      "name": "MK Drill Kick",
+      "input": "1 or 2 or 3MK (air)",
+      "damage": "500",
+      "startup": "9",
+      "active": "until land",
+      "recovery": "6(11)",
+      "onBlock": "-20(5)",
+      "onHit": "-15(10)",
+      "category": "unique",
+      "notes": "Forced Knockdown state until landing"
+    },
+    {
+      "name": "HK Drill Kick",
+      "input": "1 or 2 or 3HK (air)",
+      "damage": "500",
+      "startup": "9",
+      "active": "until land",
+      "recovery": "6(11)",
+      "onBlock": "-22(5)",
+      "onHit": "-17(10)",
+      "category": "unique",
+      "notes": "Forced Knockdown state until landing"
+    },
+    {
+      "name": "Yoga Mummy",
+      "input": "2LP (air)",
+      "damage": "500",
+      "startup": "10",
+      "active": "until land",
+      "recovery": "9",
+      "onBlock": "-22(4)",
+      "onHit": "-18(8)",
+      "category": "unique",
+      "cancels": [
+        "Special"
+      ],
+      "notes": "Forced Knockdown state until landing"
+    },
+    {
+      "name": "Yoga Uppercut",
+      "input": "4MP",
+      "damage": "700",
+      "startup": "8",
+      "active": "6",
+      "recovery": "16",
+      "onBlock": "-3",
+      "onHit": "2",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Head and extended arm hurtboxes are air strike invincible on frames 8-13"
+    },
+    {
+      "name": "Yoga Lance",
+      "input": "4HP",
+      "damage": "900",
+      "startup": "14",
+      "active": "7",
+      "recovery": "29",
+      "onBlock": "-16",
+      "onHit": "-9",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Whiffs on crouching"
+    },
+    {
+      "name": "Nirvana Punch",
+      "input": "1HP",
+      "damage": "800",
+      "startup": "10",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "3",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Mostly a combo / buffer tool that's fully cancelable with decent range"
+    },
+    {
+      "name": "Agile Kick",
+      "input": "1LK",
+      "damage": "200",
+      "startup": "5",
+      "active": "3",
+      "recovery": "10",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "unique",
+      "cancels": [
+        "Chain"
+      ],
+      "notes": "Chains into stand LP / crouch LP / down back LK"
+    },
+    {
+      "name": "Divine Kick",
+      "input": "4MK",
+      "damage": "600",
+      "startup": "7",
+      "active": "4",
+      "recovery": "17",
+      "onBlock": "0",
+      "onHit": "3",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Primary combo tool that can also be a decent oki option"
+    },
+    {
+      "name": "Thrust Kick",
+      "input": "1MK",
+      "damage": "500",
+      "startup": "8",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-7",
+      "onHit": "-3",
+      "category": "unique",
+      "cancels": [
+        "Special",
+        "Super"
+      ],
+      "notes": "Short range fully cancelable low attack"
+    },
+    {
+      "name": "Yoga Mountain",
+      "input": "4HK",
+      "damage": "1000",
+      "startup": "14",
+      "active": "6",
+      "recovery": "20",
+      "onBlock": "-9",
+      "onHit": "0",
+      "category": "unique",
+      "notes": "Very slow anti-air"
+    },
+    {
+      "name": "Karma Kick",
+      "input": "1HK",
+      "damage": "900",
+      "startup": "9",
+      "active": "3",
+      "recovery": "22",
+      "onBlock": "-7",
+      "onHit": "KD +33",
+      "category": "unique",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "Traditional sweep"
+    },
+    {
+      "name": "Yoga Smash",
+      "input": "LPLK",
+      "damage": "1200",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +31",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 31
+      },
+      "notes": "Throw Loop (corner only): Walk fwd for manual timing / Dash forward for +6 into 1F delayed meaty throw / Whiff 2LK for +5 meaty throw timing"
+    },
+    {
+      "name": "Yoga Throw",
+      "input": "4LPLK",
+      "damage": "1200",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +19",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 19
+      },
+      "notes": "No meaty throw after throwing opponent into the corner, but can perform a meaty crouch MK slide (+0 oB) or DR 4MK (+6 oB)"
+    },
+    {
+      "name": "Yoga Splash",
+      "input": "4LPLK",
+      "damage": "1200",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +35",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Throw Loop (corner only): Walk forward or Dash for +10 into manually delayed throw"
+    },
+    {
+      "name": "Drive Impact: Yoga Rise",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3",
+      "onHit": "KD (notes)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "2 hits of armor on frames 1-27"
+    },
+    {
+      "name": "Drive Reversal: Yoga Illusion",
+      "input": "6HPHK",
+      "damage": "500",
+      "startup": "20(18)",
+      "active": "3",
+      "recovery": "26",
+      "onBlock": "-6",
+      "onHit": "KD +24",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 24
+      },
+      "notes": "Fully invincible on frames 1-22 (frames 1-20 when used on wake-up as a Reversal)"
+    },
+    {
+      "name": "Drive Parry",
+      "input": "MPMK",
+      "damage": "-",
+      "startup": "1",
+      "active": "12(2)",
+      "recovery": "33(1)notes",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Parries all strikes and projectiles (high and low) from frame 1"
+    },
+    {
+      "name": "Drive Rush",
+      "input": "MPMK / 66 (cancel)",
+      "damage": "-",
+      "startup": "9(11)",
+      "active": "45(46)",
+      "recovery": "24(23)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Dashes forward and enhances the next normal used out of the Drive Rush with +4 extra hitstun / blockstun (some moves also get unique properties enhanced such as juggle state)"
+    },
+    {
+      "name": "Yoga Float",
+      "input": "2 or 3KK",
+      "damage": "-",
+      "startup": "30",
+      "active": "91",
+      "recovery": "20+3",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Can perform air normals and specials or move left/right after 30F animation of Dhalsim rising up into the air"
+    },
+    {
+      "name": "Aerial Yoga Float (air)",
+      "input": "2KK (air)",
+      "damage": "-",
+      "startup": "15",
+      "active": "81",
+      "recovery": "18+3",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Can be initiated after at least 8F into his jumps"
+    },
+    {
+      "name": "Yoga Fire",
+      "input": "236P",
+      "damage": "600",
+      "startup": "15(11)",
+      "active": "-",
+      "recovery": "33",
+      "onBlock": "-6",
+      "onHit": "-2",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "Yoga Fire (hold)",
+      "input": "236P (hold)",
+      "damage": "800 (400*400)",
+      "startup": "43",
+      "active": "-",
+      "recovery": "30",
+      "onBlock": "-1",
+      "onHit": "KD +51",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 51
+      },
+      "notes": "2-hit projectile"
+    },
+    {
+      "name": "OD Yoga Fire",
+      "input": "236PP",
+      "damage": "1000 (500*500)",
+      "startup": "12",
+      "active": "-",
+      "recovery": "33",
+      "onBlock": "-3",
+      "onHit": "KD +49",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 49
+      },
+      "notes": "2-hit OD projectile"
+    },
+    {
+      "name": "Yoga Arch",
+      "input": "236K (Arch)",
+      "damage": "600",
+      "startup": "18",
+      "active": "~(81)+10",
+      "recovery": "27",
+      "onBlock": "-1",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "OD Yoga Arch",
+      "input": "236KK (Arch)",
+      "damage": "1000 (500*500)",
+      "startup": "18",
+      "active": "~(190)+10",
+      "recovery": "27",
+      "onBlock": "-3",
+      "onHit": "1",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "notes": "2-hit projectile"
+    },
+    {
+      "name": "LP Yoga Flame",
+      "input": "63214LP",
+      "damage": "800",
+      "startup": "16",
+      "active": "15",
+      "recovery": "15",
+      "onBlock": "-4",
+      "onHit": "KD +33",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "1-hit stationary projectile hitbox"
+    },
+    {
+      "name": "MP Yoga Flame",
+      "input": "63214MP",
+      "damage": "900 (450*450)",
+      "startup": "20",
+      "active": "15",
+      "recovery": "17",
+      "onBlock": "-4",
+      "onHit": "KD +33",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 33
+      },
+      "notes": "2-hit stationary projectile hitbox"
+    },
+    {
+      "name": "HP Yoga Flame",
+      "input": "63214HP",
+      "damage": "1200 (400x3)",
+      "startup": "26",
+      "active": "17",
+      "recovery": "16",
+      "onBlock": "-4(-2)",
+      "onHit": "KD +45(47)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 45
+      },
+      "notes": "3-hit projectile hitbox that increases in range until it reaches max distance on the 3rd active frame"
+    },
+    {
+      "name": "OD Yoga Flame",
+      "input": "63214PP",
+      "damage": "800 (100x2*200x3)",
+      "startup": "18",
+      "active": "5*5*5*5*5",
+      "recovery": "24",
+      "onBlock": "-11",
+      "onHit": "KD +50",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 50
+      },
+      "notes": "5-hit OD projectile hitbox"
+    },
+    {
+      "name": "LK Yoga Blast",
+      "input": "63214LK",
+      "damage": "1000",
+      "startup": "12",
+      "active": "10",
+      "recovery": "23",
+      "onBlock": "-6",
+      "onHit": "KD +39",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 39
+      },
+      "notes": "Strike hitbox that also nullifies 1 hit of a regular projectile"
+    },
+    {
+      "name": "MK Yoga Blast",
+      "input": "63214MK",
+      "damage": "1200",
+      "startup": "15",
+      "active": "10",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Strike hitbox that also nullifies 1 hit of a regular projectile"
+    },
+    {
+      "name": "HK Yoga Blast",
+      "input": "63214HK",
+      "damage": "1200",
+      "startup": "17",
+      "active": "10",
+      "recovery": "18",
+      "onBlock": "-1",
+      "onHit": "KD +47",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 47
+      },
+      "notes": "Strike hitbox that also nullifies 1 hit of a regular projectile"
+    },
+    {
+      "name": "OD Yoga Blast",
+      "input": "63214KK",
+      "damage": "1000 (500*500)",
+      "startup": "12",
+      "active": "10",
+      "recovery": "20",
+      "onBlock": "0",
+      "onHit": "KD +42",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 42
+      },
+      "notes": "Strike hitbox that also nullifies 2 hits of an OD projectile"
+    },
+    {
+      "name": "Yoga Comet (air)",
+      "input": "63214P (Air)",
+      "damage": "800",
+      "startup": "30",
+      "active": "~(55)",
+      "recovery": "8 land",
+      "onBlock": "-2~",
+      "onHit": "-4~",
+      "category": "special",
+      "notes": "1-hit projectile"
+    },
+    {
+      "name": "OD Yoga Comet (air)",
+      "input": "63214PP (Air)",
+      "damage": "1200 (600*600)",
+      "startup": "30",
+      "active": "-",
+      "recovery": "3 land",
+      "onBlock": "9~",
+      "onHit": "5~",
+      "category": "special",
+      "notes": "2-hit OD projectile"
+    },
+    {
+      "name": "Yoga Inferno",
+      "input": "236236P",
+      "damage": "1920~2100 (2040)",
+      "startup": "10",
+      "active": "104(84)",
+      "recovery": "15(40)",
+      "onBlock": "-10(-22)",
+      "onHit": "KD +24(27)",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 24
+      },
+      "notes": "Throw invincible on frames 1-11"
+    },
+    {
+      "name": "Yoga Sunburst",
+      "input": "214214K",
+      "damage": "2800 (450x4*1000)",
+      "startup": "7",
+      "active": "~(142)+20",
+      "recovery": "60",
+      "onBlock": "-4",
+      "onHit": "KD +50",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 50
+      },
+      "notes": "Fully invincible on frames 1-9"
+    },
+    {
+      "name": "Yoga Sunburst (hold)",
+      "input": "214214K (hold)",
+      "damage": "3100(4000)",
+      "startup": "23(71)",
+      "active": "-",
+      "recovery": "58",
+      "onBlock": "-",
+      "onHit": "KD",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "Fully invincible on frames 1-9"
+    },
+    {
+      "name": "Merciless Yoga",
+      "input": "236236K",
+      "damage": "4000",
+      "startup": "10",
+      "active": "5",
+      "recovery": "75",
+      "onBlock": "-62",
+      "onHit": "HKD +19",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 19
+      },
+      "notes": "Fully invincible on frames 1-14"
+    },
+    {
+      "name": "Merciless Yoga (Critical Art)",
+      "input": "236236K (CA)",
+      "damage": "4500",
+      "startup": "10",
+      "active": "5",
+      "recovery": "75",
+      "onBlock": "-62",
+      "onHit": "HKD +19",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 19
+      },
+      "notes": "Fully invincible on frames 1-14"
+    }
+  ],
+  "lastUpdated": "2026-01-22"
+}
