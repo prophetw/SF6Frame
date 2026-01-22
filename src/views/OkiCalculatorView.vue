@@ -8,14 +8,17 @@ const frameData = ref<FrameData | null>(null);
 const loading = ref(false);
 
 // Custom knockdown advantage (for unlisted moves)
-const customKnockdownAdv = ref<number>(0);
+const customKnockdownAdv = ref<number>(38);
 const useCustomKnockdown = ref(false);
 
-// Opponent's fastest reversal startup (e.g., 4 for 4f jab)
-const opponentReversalStartup = ref<number>(4);
+// Manual move selection
+const manualMoveSearch = ref('');
+const selectedManualMove = ref<Move | null>(null);
+const includeDash = ref(true);
 
-// Forward dash bonus frames (Drive Rush gives +4, normal dash gives +2 in pressure situations)
-const DASH_BONUS = 2;
+// Opponent's fastest reversal settings
+const opponentReversalStartup = ref<number>(4);
+const opponentReversalActive = ref<number>(3);
 
 // Effective knockdown advantage
 const effectiveKnockdownAdv = computed(() => {
@@ -25,18 +28,14 @@ const effectiveKnockdownAdv = computed(() => {
   return selectedKnockdownMove.value?.knockdown?.advantage || 0;
 });
 
-// Opponent wake-up frame (when they can first act)
-const opponentWakeupFrame = computed(() => {
-  return effectiveKnockdownAdv.value;
-});
-
 // Character stats
 const stats = computed<CharacterStats | undefined>(() => frameData.value?.stats);
 
-// Effective dash frames (actual dash frames minus bonus)
-const effectiveDashFrames = computed(() => {
-  if (!stats.value) return 0;
-  return stats.value.forwardDash - DASH_BONUS;
+// Opponent's reversal active frame range
+const opponentActiveRange = computed(() => {
+  const start = effectiveKnockdownAdv.value + opponentReversalStartup.value;
+  const end = start + opponentReversalActive.value - 1;
+  return { start, end };
 });
 
 // Knockdown moves with their frame advantages
@@ -45,100 +44,131 @@ const knockdownMoves = computed<Move[]>(() => {
   return frameData.value.moves.filter((m: Move) => m.knockdown && m.knockdown.type !== 'none');
 });
 
-// All potential oki moves
-const okiMoves = computed<Move[]>(() => {
+// ALL moves for oki (include all categories)
+const allMoves = computed<Move[]>(() => {
   if (!frameData.value) return [];
-  return frameData.value.moves.filter((m: Move) => 
-    m.category === 'normal' || m.category === 'special'
-  );
+  return frameData.value.moves.filter((m: Move) => {
+    const startup = parseInt(m.startup) || 0;
+    return startup > 0 && startup <= 30;  // Only moves with reasonable startup
+  });
 });
 
-// Extended Oki Result with combination info
+// Filtered moves for manual search
+const filteredMovesForSearch = computed<Move[]>(() => {
+  if (!frameData.value) return [];
+  const query = manualMoveSearch.value.toLowerCase();
+  if (!query) return allMoves.value.slice(0, 20);
+  return allMoves.value.filter((m: Move) => 
+    m.name.toLowerCase().includes(query) ||
+    m.input.toLowerCase().includes(query)
+  ).slice(0, 20);
+});
+
+// Extended Oki Result
 interface ExtendedOkiResult {
   move: Move;
   prefix: string;
   prefixFrames: number;
-  effectivePrefixFrames: number;  // After bonus adjustment
-  timing: number;
-  activeFrameHit: number;
-  totalFrames: number;
-  beatsReversal: boolean;
+  ourActiveStart: number;
+  ourActiveEnd: number;
+  coversOpponent: boolean;
+  overlaps: boolean;
+  coverageInfo: string;
 }
 
-// Parse active frames (handles formats like "3", "2(5)3", etc.)
-function parseActiveFrames(active: string): number {
+// Parse total active frames from string like "3", "2(5)3", "2*3" etc.
+function parseTotalActiveFrames(active: string): number {
   if (!active || active === '-') return 1;
-  const match = String(active).match(/^\d+/);
-  return match ? parseInt(match[0]) : 1;
+  // Sum all numbers in the string
+  const matches = String(active).match(/\d+/g);
+  if (!matches) return 1;
+  return matches.reduce((sum, n) => sum + parseInt(n), 0);
 }
+
+// Calculate result for a specific move
+function calculateMoveResult(move: Move, useDash: boolean): ExtendedOkiResult | null {
+  if (!stats.value) return null;
+  
+  const prefixFrames = useDash ? stats.value.forwardDash : 0;
+  const prefix = useDash ? '前冲' : '';
+  const startup = parseInt(move.startup) || 0;
+  const totalActive = parseTotalActiveFrames(move.active);
+  
+  if (startup <= 0) return null;
+  
+  const ourStart = prefixFrames + startup;
+  const ourEnd = ourStart + totalActive - 1;
+  
+  // Opponent's first reversal active frame
+  const opponentFirstFrame = opponentActiveRange.value.start;
+  
+  // Success = our active range contains opponent's first frame
+  // ourStart <= opponentFirstFrame <= ourEnd
+  const coversOpponent = ourStart <= opponentFirstFrame && opponentFirstFrame <= ourEnd;
+  
+  // Also check if we have any overlap at all
+  const opponentEnd = opponentActiveRange.value.end;
+  const overlaps = ourStart <= opponentEnd && ourEnd >= opponentFirstFrame;
+  
+  let coverageInfo = '';
+  if (coversOpponent) {
+    coverageInfo = '压制成功 ✓';
+  } else if (ourEnd < opponentFirstFrame) {
+    coverageInfo = '打击太早';
+  } else if (ourStart > opponentFirstFrame) {
+    coverageInfo = '打击太晚';
+  } else {
+    coverageInfo = '未覆盖';
+  }
+  
+  return {
+    move,
+    prefix,
+    prefixFrames,
+    ourActiveStart: ourStart,
+    ourActiveEnd: ourEnd,
+    coversOpponent,
+    overlaps,
+    coverageInfo,
+  };
+}
+
+// Manual move result
+const manualMoveResult = computed<ExtendedOkiResult | null>(() => {
+  if (!selectedManualMove.value || effectiveKnockdownAdv.value <= 0) return null;
+  return calculateMoveResult(selectedManualMove.value, includeDash.value);
+});
 
 // Calculate all oki combinations
 const okiResults = computed<ExtendedOkiResult[]>(() => {
   if (effectiveKnockdownAdv.value <= 0) return [];
   if (!stats.value) return [];
   
-  const kdAdv = effectiveKnockdownAdv.value;
-  const opponentFirstActive = kdAdv + opponentReversalStartup.value;
   const results: ExtendedOkiResult[] = [];
   
-  // Prefixes: no dash, or forward dash (with +2 bonus)
   const prefixes = [
-    { name: '', frames: 0, effectiveFrames: 0 },
-    { 
-      name: '前冲', 
-      frames: stats.value.forwardDash, 
-      effectiveFrames: stats.value.forwardDash - DASH_BONUS  // Dash gives +2 advantage
-    },
+    { useDash: false },
+    { useDash: true },
   ];
   
-  for (const prefix of prefixes) {
-    for (const move of okiMoves.value) {
-      const startup = parseInt(move.startup) || 0;
-      const totalActiveFrames = parseActiveFrames(move.active);
-      
-      if (startup <= 0) continue;
-      
-      // For each possible active frame
-      for (let activeFrame = 1; activeFrame <= Math.min(totalActiveFrames, 10); activeFrame++) {
-        // Formula: wait + effectivePrefixFrames + startup + (activeFrame - 1) = kdAdv
-        // So: wait = kdAdv - effectivePrefixFrames - startup - (activeFrame - 1)
-        const timing = kdAdv - prefix.effectiveFrames - startup - (activeFrame - 1);
-        
-        if (timing < 0) continue; // Can't start before knockdown
-        if (timing > 40) continue; // Too long to wait
-        
-        // Total frames consumed from knockdown
-        const totalFrames = timing + prefix.effectiveFrames + startup + (activeFrame - 1);
-        
-        // Check if this beats opponent's reversal
-        // Our hit frame = kdAdv (we calculated timing to hit exactly on wake-up)
-        // Opponent's reversal active frame = kdAdv + opponentReversalStartup
-        // We beat them if our active hits before their active starts
-        const ourActiveFrame = timing + prefix.effectiveFrames + startup + (activeFrame - 1);
-        const beatsReversal = ourActiveFrame < opponentFirstActive;
-        
-        results.push({
-          move,
-          prefix: prefix.name,
-          prefixFrames: prefix.frames,
-          effectivePrefixFrames: prefix.effectiveFrames,
-          timing,
-          activeFrameHit: activeFrame,
-          totalFrames,
-          beatsReversal,
-        });
+  for (const prefixConfig of prefixes) {
+    for (const move of allMoves.value) {
+      const result = calculateMoveResult(move, prefixConfig.useDash);
+      if (result && (result.overlaps || result.coversOpponent)) {
+        results.push(result);
       }
     }
   }
   
-  // Sort: prefer meaty (timing=0), then by total frames, then without prefix
+  // Sort: fully covers first, then by start time
   return results
     .sort((a, b) => {
-      if (a.timing !== b.timing) return a.timing - b.timing;
-      if (a.prefixFrames !== b.prefixFrames) return a.prefixFrames - b.prefixFrames;
-      return 0;
+      if (a.coversOpponent !== b.coversOpponent) {
+        return a.coversOpponent ? -1 : 1;
+      }
+      return a.ourActiveStart - b.ourActiveStart;
     })
-    .slice(0, 30);
+    .slice(0, 50);
 });
 
 async function loadCharacterData() {
@@ -152,6 +182,7 @@ async function loadCharacterData() {
     const module = await import(`../data/characters/${selectedCharacterId.value}.json`);
     frameData.value = module.default as FrameData;
     selectedKnockdownMove.value = null;
+    selectedManualMove.value = null;
     useCustomKnockdown.value = false;
   } catch {
     frameData.value = null;
@@ -169,13 +200,22 @@ function enableCustomKnockdown() {
   useCustomKnockdown.value = true;
   selectedKnockdownMove.value = null;
 }
+
+function selectManualMove(move: Move) {
+  selectedManualMove.value = move;
+  manualMoveSearch.value = '';
+}
+
+function clearManualMove() {
+  selectedManualMove.value = null;
+}
 </script>
 
 <template>
   <div class="oki-view container">
     <h1 class="page-title">压起身计算器</h1>
     <p class="page-desc">
-      选择角色和击倒招式，计算最佳压起身组合（支持前冲+招式组合）
+      计算我方打击帧范围是否覆盖对手反击帧范围
     </p>
     
     <!-- Character Stats -->
@@ -183,7 +223,6 @@ function enableCustomKnockdown() {
       <span class="stat-item">
         <span class="stat-label">前冲</span>
         <span class="stat-value">{{ stats.forwardDash }}F</span>
-        <span class="stat-bonus">(+{{ DASH_BONUS }}有利 = {{ effectiveDashFrames }}F)</span>
       </span>
       <span class="stat-item">
         <span class="stat-label">后冲</span>
@@ -227,7 +266,7 @@ function enableCustomKnockdown() {
     <section v-else-if="frameData" class="oki-section">
       <h2 class="section-title">
         <span class="step-number">2</span>
-        选择击倒招式
+        击倒数据
       </h2>
       
       <!-- Custom Knockdown Input -->
@@ -239,23 +278,19 @@ function enableCustomKnockdown() {
           自定义
         </button>
         <div v-if="useCustomKnockdown" class="custom-kd-input">
-          <span>击倒优势:</span>
+          <span>击倒后起身帧:</span>
           <input 
             type="number" 
             v-model.number="customKnockdownAdv" 
             min="1" 
             max="100"
-            placeholder="如40"
+            placeholder="38"
           />
           <span>F</span>
         </div>
       </div>
       
-      <div v-if="knockdownMoves.length === 0 && !useCustomKnockdown" class="empty-state">
-        <p>该角色暂无击倒招式数据，请使用自定义输入</p>
-      </div>
-      
-      <div v-else-if="!useCustomKnockdown" class="knockdown-grid">
+      <div v-if="!useCustomKnockdown" class="knockdown-grid">
         <button
           v-for="move in knockdownMoves"
           :key="move.name"
@@ -275,85 +310,143 @@ function enableCustomKnockdown() {
     <section v-if="effectiveKnockdownAdv > 0 && frameData" class="oki-section results-section">
       <h2 class="section-title">
         <span class="step-number">3</span>
-        计算结果
+        计算设置 & 结果
       </h2>
       
       <div class="oki-settings">
-        <div class="setting-row">
-          <div class="setting-group">
-            <label class="setting-label">击倒优势</label>
-            <div class="setting-value highlight">
-              <span class="frame-positive">+{{ effectiveKnockdownAdv }}F</span>
-              <span v-if="selectedKnockdownMove" class="setting-move-name">
-                ({{ selectedKnockdownMove.name }})
-              </span>
-              <span v-else class="setting-move-name">(自定义)</span>
-            </div>
-          </div>
-          
-          <div class="setting-group">
-            <label class="setting-label" for="reversalStartup">对手最快反击</label>
-            <div class="setting-input-wrapper">
+        <!-- Frame Calculation Display -->
+        <div class="frame-calc-box">
+          <div class="calc-row opponent-row">
+            <span class="calc-label">对手反击:</span>
+            <div class="calc-formula">
+              <span class="calc-value kd-value">{{ effectiveKnockdownAdv }}</span>
+              <span class="calc-op">+</span>
               <input 
-                id="reversalStartup"
                 type="number" 
                 v-model.number="opponentReversalStartup" 
                 min="1" 
-                max="20"
-                class="setting-input"
+                max="30"
+                class="calc-input"
+                title="发生帧"
               />
-              <span class="input-suffix">F 发生</span>
-            </div>
-          </div>
-          
-          <div class="setting-group">
-            <label class="setting-label">对手反击Active</label>
-            <div class="setting-value">
-              第 <strong class="frame-negative">{{ opponentWakeupFrame + opponentReversalStartup }}F</strong>
+              <span class="calc-label-small">发生</span>
+              <span class="calc-op">=</span>
+              <span class="calc-result">{{ opponentActiveRange.start }}~{{ opponentActiveRange.end }}F</span>
+              <span class="calc-label-small">(持续</span>
+              <input 
+                type="number" 
+                v-model.number="opponentReversalActive" 
+                min="1" 
+                max="10"
+                class="calc-input small"
+                title="持续帧"
+              />
+              <span class="calc-label-small">F)</span>
             </div>
           </div>
         </div>
         
-        <div class="formula-info">
-          <p><strong>公式:</strong> 等待 + 前冲({{ stats?.forwardDash }}F - {{ DASH_BONUS }}F有利) + 发生 + (Active-1) = 击倒优势</p>
-          <p class="hint">✓ 表示我方Active早于对手反击Active</p>
+        <!-- Manual Move Selector -->
+        <div class="manual-move-section">
+          <div class="manual-header">
+            <span class="manual-title">手动测试招式:</span>
+            <label class="dash-toggle">
+              <input type="checkbox" v-model="includeDash" />
+              使用前冲 ({{ stats?.forwardDash }}F)
+            </label>
+          </div>
+          
+          <div class="manual-search">
+            <input 
+              type="text"
+              v-model="manualMoveSearch"
+              placeholder="搜索招式名或指令 (如 6HP, 波动拳)"
+              class="search-input"
+            />
+            <button v-if="selectedManualMove" @click="clearManualMove" class="clear-btn">
+              清除
+            </button>
+          </div>
+          
+          <!-- Move Selection Dropdown -->
+          <div v-if="manualMoveSearch && !selectedManualMove" class="move-dropdown">
+            <button
+              v-for="move in filteredMovesForSearch"
+              :key="move.name"
+              class="move-option"
+              @click="selectManualMove(move)"
+            >
+              <span class="move-name">{{ move.name }}</span>
+              <span class="move-input">{{ move.input }}</span>
+              <span class="move-startup">{{ move.startup }}F</span>
+            </button>
+          </div>
+          
+          <!-- Manual Result -->
+          <div v-if="selectedManualMove && manualMoveResult" class="manual-result">
+            <div class="manual-result-header">
+              <span v-if="includeDash" class="combo-prefix">前冲 ({{ stats?.forwardDash }}F)</span>
+              <span v-if="includeDash" class="combo-arrow">+</span>
+              <span class="move-name">{{ selectedManualMove.name }}</span>
+              <span class="move-input">{{ selectedManualMove.input }}</span>
+            </div>
+            <div class="manual-result-calc">
+              <span class="calc-item">
+                <span class="calc-label-small">发生:</span>
+                <span>{{ selectedManualMove.startup }}F</span>
+              </span>
+              <span class="calc-item">
+                <span class="calc-label-small">持续:</span>
+                <span>{{ selectedManualMove.active }}</span>
+              </span>
+              <span class="calc-item">
+                <span class="calc-label-small">打击帧:</span>
+                <span class="frame-range-big">{{ manualMoveResult.ourActiveStart }}~{{ manualMoveResult.ourActiveEnd }}F</span>
+              </span>
+              <span class="calc-item">
+                <span class="calc-label-small">对手:</span>
+                <span class="frame-range-enemy">{{ opponentActiveRange.start }}~{{ opponentActiveRange.end }}F</span>
+              </span>
+              <span :class="['coverage-result', { success: manualMoveResult.coversOpponent, overlap: manualMoveResult.overlaps && !manualMoveResult.coversOpponent }]">
+                {{ manualMoveResult.coverageInfo }}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
       
-      <!-- Results Table -->
+      <!-- Auto Results Table -->
+      <h3 class="results-title">自动匹配结果 ({{ okiResults.length }})</h3>
+      
       <div v-if="okiResults.length > 0" class="results-table">
         <div class="result-header">
           <span>组合</span>
           <span>发生</span>
-          <span>Active</span>
-          <span>等待</span>
-          <span>有效帧</span>
-          <span></span>
+          <span>持续</span>
+          <span>打击帧</span>
+          <span>判定</span>
         </div>
         
         <div 
           v-for="result in okiResults" 
-          :key="`${result.prefix}${result.move.name}-${result.activeFrameHit}`"
-          :class="['result-row', { 'beats-reversal': result.beatsReversal, 'has-prefix': result.prefix }]"
+          :key="`${result.prefix}${result.move.name}`"
+          :class="['result-row', { 'covers': result.coversOpponent, 'has-prefix': result.prefix }]"
         >
           <div class="result-combo">
             <span v-if="result.prefix" class="combo-prefix">
-              {{ result.prefix }}
-              <span class="prefix-detail">({{ result.prefixFrames }}-{{ DASH_BONUS }}={{ result.effectivePrefixFrames }}F)</span>
+              {{ result.prefix }} ({{ result.prefixFrames }}F)
             </span>
-            <span v-if="result.prefix" class="combo-arrow">→</span>
+            <span v-if="result.prefix" class="combo-arrow">+</span>
             <span class="move-name">{{ result.move.name }}</span>
             <span class="move-input">{{ result.move.input }}</span>
           </div>
           <span>{{ result.move.startup }}F</span>
-          <span>{{ result.activeFrameHit }}/{{ result.move.active }}</span>
-          <span :class="result.timing === 0 ? 'frame-positive' : ''">
-            {{ result.timing }}F
+          <span>{{ result.move.active }}</span>
+          <span class="frame-range">
+            {{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F
           </span>
-          <span class="total-frames">{{ result.totalFrames }}F</span>
-          <span class="result-notes">
-            <span v-if="result.beatsReversal" class="beat-badge">✓</span>
-            <span v-if="result.timing === 0 && !result.prefix" class="meaty-badge">MEATY</span>
+          <span :class="['coverage-badge', { success: result.coversOpponent }]">
+            {{ result.coverageInfo }}
           </span>
         </div>
       </div>
@@ -365,7 +458,7 @@ function enableCustomKnockdown() {
     
     <!-- No Data State -->
     <div v-else-if="selectedCharacterId && !loading && !frameData" class="error-state">
-      <p>暂无该角色的帧数据，请先运行数据脚本</p>
+      <p>暂无该角色的帧数据</p>
       <code>pnpm exec tsx scripts/download-fat-data.ts</code>
     </div>
   </div>
@@ -412,12 +505,6 @@ function enableCustomKnockdown() {
 .stat-value {
   font-weight: 600;
   color: var(--color-accent);
-  font-family: var(--font-mono);
-}
-
-.stat-bonus {
-  font-size: var(--font-size-xs);
-  color: var(--color-positive);
   font-family: var(--font-mono);
 }
 
@@ -500,9 +587,9 @@ function enableCustomKnockdown() {
 
 .knockdown-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: var(--space-sm);
-  max-height: 250px;
+  max-height: 180px;
   overflow-y: auto;
 }
 
@@ -510,7 +597,7 @@ function enableCustomKnockdown() {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-xs) var(--space-sm);
   background: var(--color-bg-tertiary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -530,7 +617,6 @@ function enableCustomKnockdown() {
 
 .knockdown-card .move-name {
   font-weight: 600;
-  color: var(--color-text-primary);
   font-size: var(--font-size-sm);
 }
 
@@ -546,81 +632,243 @@ function enableCustomKnockdown() {
   font-weight: 600;
 }
 
-/* Settings */
-.oki-settings {
-  margin-bottom: var(--space-lg);
-  padding: var(--space-md);
+/* Frame Calculation Box */
+.frame-calc-box {
   background: var(--color-bg-tertiary);
   border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
 }
 
-.setting-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xl);
-  align-items: flex-start;
-}
-
-.setting-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-
-.setting-label {
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
-}
-
-.setting-value {
-  font-family: var(--font-mono);
+.calc-row {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  flex-wrap: wrap;
 }
 
-.setting-move-name {
+.calc-label {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  min-width: 80px;
+}
+
+.calc-formula {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.calc-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: 2px 8px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.kd-value {
+  color: var(--color-accent);
+}
+
+.calc-op {
+  color: var(--color-text-muted);
+}
+
+.calc-input {
+  width: 50px;
+  padding: 4px 8px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+}
+
+.calc-input.small {
+  width: 40px;
+}
+
+.calc-label-small {
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
 }
 
-.setting-input-wrapper {
+.calc-result {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-negative);
+  padding: 2px 8px;
+  background: rgba(248, 81, 73, 0.15);
+  border-radius: var(--radius-sm);
+}
+
+/* Manual Move Section */
+.manual-move-section {
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.manual-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.manual-title {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.dash-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.dash-toggle input {
+  width: 16px;
+  height: 16px;
+}
+
+.manual-search {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.search-input {
+  flex: 1;
+  padding: var(--space-sm);
+}
+
+.clear-btn {
+  padding: var(--space-xs) var(--space-md);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.move-dropdown {
+  max-height: 200px;
+  overflow-y: auto;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.move-option {
+  display: flex;
+  width: 100%;
+  gap: var(--space-md);
+  padding: var(--space-sm);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-border-light);
+  cursor: pointer;
+  text-align: left;
+}
+
+.move-option:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.move-option:last-child {
+  border-bottom: none;
+}
+
+.move-option .move-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.move-option .move-input {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.move-option .move-startup {
+  font-family: var(--font-mono);
+  color: var(--color-accent);
+}
+
+/* Manual Result */
+.manual-result {
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.manual-result-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-lg);
+}
+
+.manual-result-calc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.calc-item {
   display: flex;
   align-items: center;
   gap: var(--space-xs);
 }
 
-.setting-input {
-  width: 60px;
-  padding: var(--space-xs) var(--space-sm);
-  text-align: center;
+.frame-range-big {
   font-family: var(--font-mono);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  color: var(--color-positive);
 }
 
-.input-suffix {
+.frame-range-enemy {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-negative);
+}
+
+.coverage-result {
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  background: var(--color-bg-tertiary);
   color: var(--color-text-muted);
-  font-size: var(--font-size-sm);
 }
 
-.formula-info {
-  margin-top: var(--space-md);
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--color-border-light);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+.coverage-result.success {
+  background: var(--color-positive);
+  color: white;
 }
 
-.formula-info .hint {
-  color: var(--color-text-muted);
-  font-size: var(--font-size-xs);
-  margin-top: var(--space-xs);
+.coverage-result.overlap {
+  background: rgba(210, 153, 34, 0.2);
+  color: var(--color-warning);
 }
 
 /* Results */
 .results-section {
   border-color: var(--color-accent);
+}
+
+.results-title {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
 }
 
 .results-table {
@@ -630,7 +878,7 @@ function enableCustomKnockdown() {
 .result-header,
 .result-row {
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 0.5fr;
+  grid-template-columns: 2.5fr 1fr 1fr 1.5fr 1.5fr;
   gap: var(--space-sm);
   padding: var(--space-xs) var(--space-md);
   align-items: center;
@@ -652,16 +900,16 @@ function enableCustomKnockdown() {
   border-bottom: none;
 }
 
-.result-row.beats-reversal {
-  background: rgba(63, 185, 80, 0.08);
+.result-row.covers {
+  background: rgba(63, 185, 80, 0.1);
 }
 
 .result-row.has-prefix {
   background: rgba(0, 212, 255, 0.05);
 }
 
-.result-row.has-prefix.beats-reversal {
-  background: linear-gradient(90deg, rgba(0, 212, 255, 0.08), rgba(63, 185, 80, 0.08));
+.result-row.has-prefix.covers {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.08), rgba(63, 185, 80, 0.1));
 }
 
 .result-combo {
@@ -680,49 +928,39 @@ function enableCustomKnockdown() {
   font-weight: 600;
 }
 
-.prefix-detail {
-  font-size: 10px;
-  opacity: 0.8;
-}
-
 .combo-arrow {
   color: var(--color-text-muted);
+  font-weight: 600;
 }
 
-.result-combo .move-name {
+.result-combo .move-name,
+.manual-result-header .move-name {
   font-weight: 500;
 }
 
-.result-combo .move-input {
+.result-combo .move-input,
+.manual-result-header .move-input {
   font-family: var(--font-mono);
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
 }
 
-.total-frames {
+.frame-range {
   font-family: var(--font-mono);
-  color: var(--color-text-secondary);
 }
 
-.result-notes {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
+.coverage-badge {
+  font-size: var(--font-size-xs);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-muted);
 }
 
-.beat-badge {
-  color: var(--color-positive);
-  font-weight: 700;
-  font-size: var(--font-size-lg);
-}
-
-.meaty-badge {
+.coverage-badge.success {
   background: var(--color-positive);
   color: white;
-  font-size: 10px;
   font-weight: 700;
-  padding: 2px 4px;
-  border-radius: var(--radius-sm);
 }
 
 /* States */
@@ -751,32 +989,33 @@ function enableCustomKnockdown() {
     padding: var(--space-sm) var(--space-md);
   }
   
-  .stat-bonus {
-    display: none;
-  }
-  
   .knockdown-grid {
     grid-template-columns: 1fr 1fr;
   }
   
-  .setting-row {
+  .calc-label {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .manual-header {
     flex-direction: column;
-    gap: var(--space-md);
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+  
+  .manual-result-calc {
+    flex-direction: column;
+    align-items: flex-start;
   }
   
   .result-header,
   .result-row {
-    grid-template-columns: 2.5fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
   }
   
   .result-header > :nth-child(5),
-  .result-header > :nth-child(6),
-  .result-row > :nth-child(5),
-  .result-row > :nth-child(6) {
-    display: none;
-  }
-  
-  .prefix-detail {
+  .result-row > :nth-child(5) {
     display: none;
   }
 }
