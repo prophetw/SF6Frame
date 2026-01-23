@@ -31,9 +31,11 @@ const opponentReversalStartup = ref<number>(4);
 const useChainAsPrefix = ref(false);
 
 // Loop throw calculator inputs
+// Loop throw calculator inputs
 const throwStartup = ref<number>(5);
 const throwActive = ref<number>(3);
 const wakeupThrowInvul = ref<number>(1);
+const opponentAbareStartup = ref<number>(0);
 
 // Selected result for detail view
 const selectedResultKey = ref<string | null>(null);
@@ -59,6 +61,7 @@ const opponentFirstFrame = computed(() => {
 const normalizedThrowStartup = computed(() => Math.max(1, throwStartup.value || 1));
 const normalizedThrowActive = computed(() => Math.max(1, throwActive.value || 1));
 const normalizedThrowInvul = computed(() => Math.max(0, wakeupThrowInvul.value || 0));
+const normalizedAbare = computed(() => Math.max(0, opponentAbareStartup.value || 0));
 
 // 最早可投帧 = 击倒帧 + 起身投无敌帧 + 1
 // 例：38帧击倒，1帧投保护 → 第39帧是起身第1帧(投保护)，第40帧才可被投
@@ -66,12 +69,48 @@ const earliestThrowableFrame = computed(() => {
   return effectiveKnockdownAdv.value + normalizedThrowInvul.value + 1;
 });
 
-const throwDelayMax = computed(() => {
-  return earliestThrowableFrame.value - normalizedThrowStartup.value;
+// 最晚可投帧 = 最早可投帧 + (抢招发生帧 - 2)
+// 若对方抢招为0 (原地不动/防御)，则窗口仅为1帧 (最早可投帧)
+// 若对方抢招为4 (4F抢招)，则 39F起身，42F判定生效。
+// 我们需要在 42F 之前完成投。即 41F 也是安全的。
+// 41F = 40F + (4 - ?) -> 40 + (4 - 2) = 42? No.
+// Case: KD 38. Invul 1. Wakeup 39. Earliest 40.
+// Abare 4. Hit at 39 (start) + (4-1) = 42. (Actually simple: 38 + 4 = 42).
+// Safe frames: < 42. So Max 41. (40, 41).
+// Formula: KD(38) + Abare(4) = 42. Last Safe = 41.
+// Earliest = KD(38) + Invul(1) + 1 = 40.
+// So Latest = KD + Abare - 1.
+// But wait, what if Abare is small or 0?
+// If Abare=0, assume standard perfect meaty mode (Latest = Earliest).
+const latestThrowableFrame = computed(() => {
+  if (normalizedAbare.value <= 0) {
+    return earliestThrowableFrame.value;
+  }
+  // Opponent hits at: KD + Abare
+  // We must hit before: KD + Abare
+  // So latest safe frame is: KD + Abare - 1
+  // However, we must respect invul. So Max(Earliest, KD + Abare - 1)
+  const safeEnd = effectiveKnockdownAdv.value + normalizedAbare.value - 1;
+  return Math.max(earliestThrowableFrame.value, safeEnd);
 });
 
+// Max Delay (Late Meaty): Hit at Latest Frame with First Active
+// Wait, logical correction:
+// "Delay" is usually "Input Delay".
+// If I press at T. Active starts at T + Startup.
+// To hit at Frame F (Latest), I can press at F - Startup.
+const throwDelayMax = computed(() => {
+  return latestThrowableFrame.value - normalizedThrowStartup.value;
+});
+
+// Min Delay (Early Meaty): Hit at Earliest Frame with Last Active
+// To hit at Frame E (Earliest) with Last Active (A):
+// Active Window: [Start, Start + A - 1]
+// We want Start + A - 1 >= E -> Start >= E - A + 1.
+// Press time = Start - Startup.
+// So Press >= E - A + 1 - Startup.
 const throwDelayMin = computed(() => {
-  return throwDelayMax.value - (normalizedThrowActive.value - 1);
+  return earliestThrowableFrame.value - normalizedThrowActive.value + 1 - normalizedThrowStartup.value;
 });
 
 const throwDelayMinClamped = computed(() => {
@@ -713,20 +752,30 @@ function clearCombo() {
           <input type="number" v-model.number="throwActive" min="1" max="6" class="small-input" />
           <span class="summary-unit">F</span>
         </div>
+        <div class="summary-item">
+          <span class="summary-label">防守抢招</span>
+          <input type="number" v-model.number="opponentAbareStartup" min="0" max="20" class="small-input" />
+          <span class="summary-unit">F</span>
+        </div>
       </div>
 
       <div class="throw-math">
         <div class="math-row">
           <span class="math-label">最早可被投帧:</span>
-          <span class="math-value">N + I + 1 = {{ effectiveKnockdownAdv }} + {{ normalizedThrowInvul }} + 1 = {{ earliestThrowableFrame }}F</span>
+          <span class="math-value">{{ effectiveKnockdownAdv }} + {{ normalizedThrowInvul }} + 1 = {{ earliestThrowableFrame }}F</span>
+        </div>
+        <div class="math-row" v-if="normalizedAbare > 0">
+           <span class="math-label">最晚可被投帧:</span>
+           <span class="math-value">{{ effectiveKnockdownAdv }} + {{ normalizedAbare }} - 1 = {{ latestThrowableFrame }}F</span>
         </div>
         <div class="math-row">
           <span class="math-label">理想按投延迟:</span>
-          <span class="math-value">S = N + I + 1 − T = {{ effectiveKnockdownAdv }} + {{ normalizedThrowInvul }} + 1 − {{ normalizedThrowStartup }} = {{ throwDelayMax }}F</span>
-        </div>
-        <div class="math-row">
-          <span class="math-label">允许的按投窗口:</span>
-          <span class="math-value">{{ throwDelayMin }}F ~ {{ throwDelayMax }}F</span>
+          <span class="math-value">
+            {{ throwDelayMin }}F ~ {{ throwDelayMax }}F
+            <span v-if="throwDelayMax - (earliestThrowableFrame - normalizedThrowStartup) > 0" class="window-bonus">
+              (放宽了 {{ throwDelayMax - (earliestThrowableFrame - normalizedThrowStartup) }}F)
+            </span>
+          </span>
         </div>
         <div class="math-row">
           <span class="math-label">第一帧判定允许范围:</span>
@@ -1335,6 +1384,13 @@ function clearCombo() {
 .math-value {
   font-family: var(--font-mono);
   font-weight: 600;
+}
+
+.window-bonus {
+  color: #4caf50;
+  font-size: 0.9em;
+  margin-left: 8px;
+  font-weight: normal;
 }
 
 .throw-warning {
