@@ -184,11 +184,18 @@ function getMoveTotalFrames(move: Move): number {
   return startup + active + recovery;
 }
 
+function getActionTotalFrames(action: ComboAction): number {
+  if (action.type === 'move' && action.move) {
+    return getMoveTotalFrames(action.move);
+  }
+  return action.frames;
+}
+
 // Calculate combo result
 const comboResult = computed(() => {
   if (comboChain.value.length === 0 || effectiveKnockdownAdv.value <= 0) return null;
   
-  // Calculate total startup frames (all actions except last one's active)
+  // Calculate total frames (all actions except last one uses full duration)
   let totalStartup = 0;
   let lastActiveFrames = 1;
   
@@ -201,7 +208,7 @@ const comboResult = computed(() => {
       lastActiveFrames = action.active || 1;
     } else {
       // Not last action: add full frames
-      totalStartup += action.frames;
+      totalStartup += getActionTotalFrames(action);
     }
   }
   
@@ -251,11 +258,11 @@ interface ExtendedOkiResult {
   isTrade: boolean;
 }
 
-// Calculate prefix frames from combo chain (excluding last move if it has active)
+// Calculate prefix frames from combo chain (use full duration for moves)
 const comboChainPrefixFrames = computed(() => {
   let total = 0;
   for (const action of comboChain.value) {
-    total += action.frames;
+    total += getActionTotalFrames(action);
   }
   return total;
 });
