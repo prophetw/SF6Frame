@@ -60,8 +60,10 @@ const normalizedThrowStartup = computed(() => Math.max(1, throwStartup.value || 
 const normalizedThrowActive = computed(() => Math.max(1, throwActive.value || 1));
 const normalizedThrowInvul = computed(() => Math.max(0, wakeupThrowInvul.value || 0));
 
+// 最早可投帧 = 击倒帧 + 起身投无敌帧 + 1
+// 例：38帧击倒，1帧投保护 → 第39帧是起身第1帧(投保护)，第40帧才可被投
 const earliestThrowableFrame = computed(() => {
-  return effectiveKnockdownAdv.value + normalizedThrowInvul.value;
+  return effectiveKnockdownAdv.value + normalizedThrowInvul.value + 1;
 });
 
 const throwDelayMax = computed(() => {
@@ -716,11 +718,11 @@ function clearCombo() {
       <div class="throw-math">
         <div class="math-row">
           <span class="math-label">最早可被投帧:</span>
-          <span class="math-value">{{ effectiveKnockdownAdv }} + {{ normalizedThrowInvul }} = {{ earliestThrowableFrame }}F</span>
+          <span class="math-value">N + I + 1 = {{ effectiveKnockdownAdv }} + {{ normalizedThrowInvul }} + 1 = {{ earliestThrowableFrame }}F</span>
         </div>
         <div class="math-row">
           <span class="math-label">理想按投延迟:</span>
-          <span class="math-value">S = N + I − T = {{ effectiveKnockdownAdv }} + {{ normalizedThrowInvul }} − {{ normalizedThrowStartup }} = {{ throwDelayMax }}F</span>
+          <span class="math-value">S = N + I + 1 − T = {{ effectiveKnockdownAdv }} + {{ normalizedThrowInvul }} + 1 − {{ normalizedThrowStartup }} = {{ throwDelayMax }}F</span>
         </div>
         <div class="math-row">
           <span class="math-label">允许的按投窗口:</span>
