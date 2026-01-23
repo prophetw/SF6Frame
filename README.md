@@ -54,6 +54,48 @@ A Street Fighter 6 frame data and Oki calculator tool built with Vue 3 + TypeScr
 因此，只要我方打击帧覆盖 **39~41F** 任意一帧即可判定为**压制成功**。  
 若只在 **42F** 与对手判定第一帧重合，则判定为**相杀**。
 
+## Oki 循环投算法说明（当前实现）
+
+目标：让投的**第一帧判定**压在对手起身后、刚能被投的那一帧（或安全窗口内）。
+
+### 关键定义
+
+- **击倒优势 N**：例如 38F。
+- **起身投无敌 I**：对手起身自带的对投无敌时间（SF6通常为1F）。
+- **投起手 S**：普通投发生（5F）。
+- **投持续 A**：普通投持续（3F）。
+- **对手抢招发生 R**：对手起床最短反击技发生（例如4F）。
+
+### 可投窗口计算
+
+1. **最早可投帧 (Earliest)**  
+   对手起身第1帧通常有投无敌 `I`。  
+   `Earliest = N + I + 1`  
+   （例：38F击倒，1F投无敌 → 第40F可被投）
+
+2. **最晚可投帧 (Latest)**  
+   若对手抢招 `R`，我们需要在其判定生效前把它投掉。  
+   `Latest = N + R - 1`  
+   （例：对手4F抢招，判定在第 4F 生效，故需在判定生效前（第3F或更早）完成投）。  
+   
+   *注意*：如果对手不动（R=0），或者算出的 Latest < Earliest，则取 Earliest（即必须压起身第一帧）。
+
+### 延迟帧数计算 (Delay)
+
+我们希望通过 **前置动作 + 等待(Delay)** 来精确压起身。
+
+- **最大延迟 (Max Delay - 晚压)**  
+  让投的**第一帧持续**刚好打在 **Latest** 上。  
+  `Delay = Latest - S`
+
+- **最小延迟 (Min Delay - 早压)**  
+  让投的**最后一帧持续**刚好打在 **Earliest** 上。  
+  `Delay = Earliest - A + 1 - S`
+
+- **判定**  
+  如果 `前置动作耗时` 落在 `[Min Delay, Max Delay]` 区间内，说明可以直接投（或加细微微调）。  
+  如果 `前置 + 填充技` 落在区间内，则该填充技可用。
+
 ## 🚀 Deployment
 
 This project is configured to automatically deploy to **GitHub Pages** using GitHub Actions.
