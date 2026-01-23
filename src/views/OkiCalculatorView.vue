@@ -52,9 +52,20 @@ const effectiveKnockdownAdv = computed(() => {
 // Character stats
 const stats = computed<CharacterStats | undefined>(() => frameData.value?.stats);
 
-// Opponent's reversal first frame
-const opponentFirstFrame = computed(() => {
+// Opponent wakeup window and reversal first active frame
+const opponentWakeupFrame = computed(() => {
+  // First vulnerable frame after knockdown invul
+  return effectiveKnockdownAdv.value + 1;
+});
+const opponentFirstActiveFrame = computed(() => {
+  // First active (damage) frame of the reversal
   return effectiveKnockdownAdv.value + opponentReversalStartup.value;
+});
+const opponentPreActiveEnd = computed(() => {
+  return opponentFirstActiveFrame.value - 1;
+});
+const opponentPreActiveWindowValid = computed(() => {
+  return opponentPreActiveEnd.value >= opponentWakeupFrame.value;
 });
 
 // Loop throw calculator
@@ -197,11 +208,16 @@ const comboResult = computed(() => {
   const ourStart = totalStartup;
   const ourEnd = ourStart + lastActiveFrames - 1;
   
-  const oppFirst = opponentFirstFrame.value;
-  // Success: our first active is BEFORE opponent's first active
-  // Trade: our first active equals opponent's first active
-  const isSuccess = ourStart < oppFirst && oppFirst <= ourEnd;
-  const isTrade = ourStart === oppFirst && oppFirst <= ourEnd;
+  const oppFirst = opponentFirstActiveFrame.value;
+  const oppWindowStart = opponentWakeupFrame.value;
+  const oppWindowEnd = opponentPreActiveEnd.value;
+  const hasPreActiveWindow = oppWindowEnd >= oppWindowStart;
+  // Success: our active window overlaps opponent's vulnerable startup window
+  const overlapsPreActive =
+    hasPreActiveWindow && ourEnd >= oppWindowStart && ourStart <= oppWindowEnd;
+  const overlapsOppFirst = ourStart <= oppFirst && ourEnd >= oppFirst;
+  const isSuccess = overlapsPreActive;
+  const isTrade = overlapsOppFirst && !overlapsPreActive;
   const coversOpponent = isSuccess; // For backward compatibility
   
   let status = '';
@@ -209,7 +225,7 @@ const comboResult = computed(() => {
     status = '压制成功 ✓';
   } else if (isTrade) {
     status = '相杀';
-  } else if (ourEnd < oppFirst) {
+  } else if (ourEnd < oppWindowStart) {
     status = '打击太早';
   } else {
     status = '打击太晚';
@@ -285,7 +301,10 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
   if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
   
   const results: ExtendedOkiResult[] = [];
-  const oppFirst = opponentFirstFrame.value;
+  const oppFirst = opponentFirstActiveFrame.value;
+  const oppWindowStart = opponentWakeupFrame.value;
+  const oppWindowEnd = opponentPreActiveEnd.value;
+  const hasPreActiveWindow = oppWindowEnd >= oppWindowStart;
   
   let prefixes: { name: string; frames: number }[];
   
@@ -311,9 +330,11 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
       
       const ourStart = prefix.frames + startup;
       const ourEnd = ourStart + totalActive - 1;
-      // Success: ourStart < oppFirst (strict less than, not equal = trade)
-      const isSuccess = ourStart < oppFirst && oppFirst <= ourEnd;
-      const isTrade = ourStart === oppFirst && oppFirst <= ourEnd;
+      const overlapsPreActive =
+        hasPreActiveWindow && ourEnd >= oppWindowStart && ourStart <= oppWindowEnd;
+      const overlapsOppFirst = ourStart <= oppFirst && ourEnd >= oppFirst;
+      const isSuccess = overlapsPreActive;
+      const isTrade = overlapsOppFirst && !overlapsPreActive;
       
       if (isSuccess || isTrade) {
         results.push({
@@ -575,9 +596,15 @@ function clearCombo() {
       
       <!-- Opponent Info -->
       <div class="opponent-info">
-        <span>对手第一帧: {{ effectiveKnockdownAdv }} + </span>
+        <span>对手反击判定第一帧: {{ effectiveKnockdownAdv }} + </span>
         <input type="number" v-model.number="opponentReversalStartup" min="1" max="30" class="small-input" />
-        <span> = <strong class="frame-negative">{{ opponentFirstFrame }}F</strong></span>
+        <span> = <strong class="frame-negative">{{ opponentFirstActiveFrame }}F</strong></span>
+        <span v-if="opponentPreActiveWindowValid" class="opponent-window">
+          可命中窗口: {{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F
+        </span>
+        <span v-else class="opponent-window">
+          可命中窗口: 无
+        </span>
       </div>
       
       <!-- Combo Chain Builder -->
@@ -629,8 +656,15 @@ function clearCombo() {
           <span class="result-value">{{ comboResult.ourStart }}~{{ comboResult.ourEnd }}F</span>
         </div>
         <div class="result-row">
-          <span class="result-label">对手第一帧:</span>
-          <span class="result-value enemy">{{ opponentFirstFrame }}F</span>
+          <span class="result-label">对手反击判定第一帧:</span>
+          <span class="result-value enemy">{{ opponentFirstActiveFrame }}F</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">可命中窗口:</span>
+          <span class="result-value" v-if="opponentPreActiveWindowValid">
+            {{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F
+          </span>
+          <span class="result-value" v-else>无</span>
         </div>
         <div class="result-row">
           <span class="result-status" :class="{ success: comboResult.coversOpponent }">
@@ -705,13 +739,22 @@ function clearCombo() {
               <span class="frame-positive">{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
             </div>
             <div class="detail-row">
-              <span class="detail-label">对手第一帧:</span>
-              <span class="frame-negative">{{ opponentFirstFrame }}F</span>
+              <span class="detail-label">对手反击判定第一帧:</span>
+              <span class="frame-negative">{{ opponentFirstActiveFrame }}F</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">可命中窗口:</span>
+              <span v-if="opponentPreActiveWindowValid">{{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F</span>
+              <span v-else>无</span>
             </div>
             <div class="detail-row result">
               <span class="detail-label">判定:</span>
-              <span v-if="result.coversOpponent" class="success">✓ 压制成功: {{ result.ourActiveStart }} < {{ opponentFirstFrame }} ≤ {{ result.ourActiveEnd }}</span>
-              <span v-else-if="result.isTrade" class="trade">⚠ 相杀: {{ result.ourActiveStart }} = {{ opponentFirstFrame }}</span>
+              <span v-if="result.coversOpponent" class="success">
+                ✓ 压制成功: {{ result.ourActiveStart }}~{{ result.ourActiveEnd }} 与 {{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }} 有重叠
+              </span>
+              <span v-else-if="result.isTrade" class="trade">
+                ⚠ 相杀: 与对手判定第一帧重合 ({{ opponentFirstActiveFrame }}F)
+              </span>
             </div>
           </div>
         </div>
@@ -999,11 +1042,17 @@ function clearCombo() {
 .opponent-info {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-xs);
   margin-bottom: var(--space-md);
   padding: var(--space-sm);
   background: var(--color-bg-tertiary);
   border-radius: var(--radius-md);
+}
+
+.opponent-window {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
 }
 
 /* Combo Builder */
