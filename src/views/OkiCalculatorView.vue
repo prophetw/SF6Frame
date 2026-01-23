@@ -146,6 +146,9 @@ const knockdownMoves = computed<Move[]>(() => {
 const allMoves = computed<Move[]>(() => {
   if (!frameData.value) return [];
   return frameData.value.moves.filter((m: Move) => {
+    // Exclude jump moves as their frame data is incomplete (missing total frames)
+    if (m.name.includes('Jump')) return false;
+    
     const startup = parseInt(m.startup) || 0;
     return startup > 0 && startup <= 50;
   });
@@ -365,6 +368,7 @@ const throwFillerMoves = computed<Move[]>(() => {
   if (!frameData.value) return [];
   return frameData.value.moves.filter((m: Move) => {
     if (m.category === 'throw') return false;
+    if (m.name.includes('Jump')) return false;
     const startup = parseInt(m.startup) || 0;
     if (startup <= 0) return false;
     const totalFrames = getMoveTotalFrames(m);
