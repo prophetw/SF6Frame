@@ -447,7 +447,20 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
     }
   }
   
-  return results.sort((a, b) => a.ourActiveStart - b.ourActiveStart).slice(0, 50);
+  return results.sort((a, b) => {
+    // Sort by onBlock (descending)
+    const blockA = typeof a.calculatedOnBlock === 'number' ? a.calculatedOnBlock : -999;
+    const blockB = typeof b.calculatedOnBlock === 'number' ? b.calculatedOnBlock : -999;
+    if (blockA !== blockB) return blockB - blockA;
+
+    // Then by onHit (descending)
+    const hitA = typeof a.calculatedOnHit === 'number' ? a.calculatedOnHit : -999;
+    const hitB = typeof b.calculatedOnHit === 'number' ? b.calculatedOnHit : -999;
+    if (hitA !== hitB) return hitB - hitA;
+
+    // Finally by active start (ascending - earlier is usually easier to time?)
+    return a.ourActiveStart - b.ourActiveStart;
+  }).slice(0, 50);
 });
 
 // Throw filler moves (exclude throws, keep reasonable total frames)
