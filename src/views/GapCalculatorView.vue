@@ -12,6 +12,9 @@ const move2 = ref<Move | null>(null);
 
 // Calculation Mode
 const calculationMode = ref<'link' | 'cancel'>('link');
+const calculationType = ref<'block' | 'hit'>('block'); // New: Block (Gap) vs Hit (Combo)
+const hitState = ref<'normal' | 'ch' | 'pc'>('normal'); // New: Hit State
+
 const cancelFrame = ref(1); // 1-based index (1 = 1st active frame)
 
 // Search
@@ -121,69 +124,176 @@ function parseFrameValue(val: string | number | undefined): number {
 const calculationResult = computed(() => {
   if (!move1.value || !move2.value) return null;
   
-  const adv1Num = parseFrameValue(move1.value.onBlock);
+  const adv1Block = parseFrameValue(move1.value.onBlock);
+  const adv1Hit = parseFrameValue(move1.value.onHit); // Base OnHit
   const startup2Num = parseFrameValue(move2.value.startup);
   
-  if (isNaN(adv1Num) || isNaN(startup2Num)) {
+  let adv1Num = calculationType.value === 'block' ? adv1Block : adv1Hit;
+
+  if (calculationType.value === 'hit') {
+    // Apply modifiers
+    if (hitState.value === 'ch') adv1Num += 2;
+    if (hitState.value === 'pc') adv1Num += 4; // Using +4 modifier standard
+  }
+  
+  // Basic validation (only strictly need startup for logic)
+  if (isNaN(startup2Num)) {
     return {
-      valid: false,
-      error: '无法获取有效的帧数数据'
+       valid: false,
+       error: '无法获取有效的帧数数据'
     };
   }
 
   let gap = 0;
   let formulaDesc = '';
   let blockstun = 0;
-
-  if (calculationMode.value === 'link') {
-    // Standard Link Formula
-    // Gap = Startup2 - OnBlock1 - 1
-    gap = startup2Num - adv1Num - 1;
-    formulaDesc = `${startup2Num} (Startup) - ${adv1Num} (Adv) - 1`;
-  } else {
-    // Cancel/Combo Formula
-    // Need Blockstun
-    // Prefer raw.blockstun, else calculate: Active + Recovery + OnBlock
-    const m1 = move1.value;
-    const active1 = parseFrameValue(m1.active); // simplified, handles "2*3" poorly if not careful, but usually ok for main hit
-    const recovery1 = parseFrameValue(m1.recovery);
-    
-    if (m1.raw && typeof m1.raw.blockstun === 'number') {
-      blockstun = m1.raw.blockstun;
-    } else {
-      // Fallback calculation
-      // Blockstun = Active + Recovery + Advantage
-      // Note: This matches User's "4+11-1" example logic for 5MP
-      blockstun = active1 + recovery1 + adv1Num; // e.g. 4 + 11 + (-1) = 14
-    }
-
-    // Formula: Gap = CancelFrame + (Startup2 - 1) - Blockstun
-    const cFrame = cancelFrame.value;
-    gap = cFrame + (startup2Num - 1) - blockstun;
-    
-    formulaDesc = `${cFrame} (CancelFrame) + ${startup2Num - 1} (Startup-1) - ${blockstun} (Blockstun)`;
-  }
-  
   let status = '';
   let statusClass = '';
   let description = '';
   
-  if (gap <= 0) {
-    status = '连防 (True Blockstring)';
-    statusClass = 'status-safe';
-    description = '对手无法在两招之间做出任何动作。';
-  } else if (gap < 4) {
-    status = 'Frame Trap (伪连/打康陷阱)';
-    statusClass = 'status-trap';
-    description = '对手最快普通技（4F）无法抢动。';
-  } else if (gap >= 4 && gap <= 9) {
-    status = '可插动 (Interruptible)';
-    statusClass = 'status-warning';
-    description = '对手可以使用轻攻击抢动或相杀。';
-  } else {
-    status = '高风险 / 易被插 (High Risk)';
-    statusClass = 'status-danger';
-    description = '间隙过大，容易被无敌技或大伤害技确反。';
+  // === COMBO MODE (HIT) ===
+  if (calculationType.value === 'hit') {
+    // Formula: Link = Advantage - Startup
+    // Logic: If I am +7, and startup is 6. 7 - 6 = +1 (1 frame wiggle room implies link? No).
+    // Standard Link logic:
+    // If I am +7. I recover at T. Opponent recovers at T+7.
+    // Move 2 starts at T. Active at T + Startup - 1 ? No.
+    // Move 2 Startup 6 -> Active on 6th frame. 1,2,3,4,5 (Start), 6 (Active).
+    // So it hits at T + 5.
+    // Opponent is stunned until T + 7.
+    // Since T + 5 < T + 7, it combos.
+    // Surplus = Advantage - (Startup - 1)?
+    // Let's verify: +7 adv, 6 startup.
+    // Startup Frames: 5. Active: 6.
+    // Time available: 7.
+    // 7 >= 6? No.
+    // Usually: Link if Advantage >= Startup.
+    // Example: Ryu 5MP (+7). 2MP (6). +7 >= 6. Link!
+    // Example: Ryu 5MP (+7). 5HP (10). +7 < 10. No Link.
+    
+    // Gap/Surplus = Advantage - Startup.
+    // If >= 0: Link.
+    // If < 0: No link.
+    
+    // Wait, cancel logic for combo?
+    if (calculationMode.value === 'cancel') {
+        // Cancel Combo Logic
+        // Advantage is irrelevant.
+        // We cancel recovery.
+        // Hitstun is key.
+        // Hitstun = Active + Recovery + OnHit(Adv) (Derived) or Raw.Hitstun.
+        const m1 = move1.value;
+        const active1 = parseFrameValue(m1.active);
+        const recovery1 = parseFrameValue(m1.recovery);
+        let hitstun = 0;
+        
+        // Try getting raw hitstun
+        if (m1.raw && typeof m1.raw.hitstun === 'number') {
+           hitstun = m1.raw.hitstun;
+        } else {
+           hitstun = active1 + recovery1 + adv1Hit;
+        }
+        
+        // Modifiers for Hitstun?
+        // CH adds +2 to advantage, but does it add to hitstun? Yes.
+        if (hitState.value === 'ch') hitstun += 2;
+        if (hitState.value === 'pc') hitstun += 4;
+
+        // Cancel Gap:
+        // We cancel at cancelFrame.
+        // Move 2 comes out relative to Cancel Point.
+        // Move 2 hits at: cancelFrame + (Startup2 - 1).
+        // Hitstun ends at: Hitstun duration.
+        // Wait, active frames started at 1.
+        // Hitstun starts at 1 (first active hit).
+        // Condition: (cancelFrame + Startup2 - 1) <= hitstun.
+        // Surplus = Hitstun - (cancelFrame + Startup2 - 1).
+        
+        const hitFrame = cancelFrame.value + startup2Num - 1;
+        const surplus = hitstun - hitFrame;
+        gap = surplus; // Reusing "gap" variable name for "surplus/result"
+        
+        formulaDesc = `${hitstun} (Hitstun) - (${cancelFrame} + ${startup2Num} - 1)`;
+    } else {
+        // Link Combo Logic
+        // Surplus = Advantage - Startup
+        // Wait, standard is Advantage >= Startup.
+        // e.g. +4 adv, 4 startup.
+        // Recover at T. Opponent stuck until T+4.
+        // Start at T. Active at T+4-1 = T+3? No.
+        // Startup 4 means inactive 1,2,3. Active 4.
+        // So hits at T+3 (relative 0)? No.
+        // Let's count.
+        // Frame 1: Startup
+        // Frame 2: Startup
+        // Frame 3: Startup
+        // Frame 4: Active.
+        // You are +4. Opponent cannot block until Frame 5.
+        // Your move hits at Frame 4.
+        // 4 <= 4. Yes.
+        // So Advantage >= Startup.
+        
+        gap = adv1Num - startup2Num;
+        // Actually, let's call it "surplus".
+        // If 0, it means Exact Link (Just Frame if strictly equal? No, standard 1F link).
+        // If +1, 2F window.
+        
+        formulaDesc = `${adv1Num} (Adv) - ${startup2Num} (Startup)`;
+    }
+
+    if (gap >= 0) {
+        status = '连招成立 (Combo)';
+        statusClass = 'status-safe'; // Green
+        description = `余流 ${gap} 帧 (Link Window: ${gap + 1}F?)。`; // Gap 0 = 1F link? 
+        // If Gap = 0 (Adv 4, Startup 4), you must hit exactly 1 frame perfect?
+        // Actually in SF6 there is input buffer so it's easier.
+        // Let's just say "Successful Link".
+        description = '可以连上。';
+    } else {
+        status = '连招失败 (No Combo)';
+        statusClass = 'status-danger';
+        description = `差 ${Math.abs(gap)} 帧。`;
+    }
+
+  } 
+  // === BLOCK MODE (GAP) ===
+  else {
+      // Logic from previous step
+      if (calculationMode.value === 'link') {
+        gap = startup2Num - adv1Num - 1;
+        formulaDesc = `${startup2Num} (Startup) - ${adv1Num} (Adv) - 1`;
+      } else {
+        const m1 = move1.value;
+        const active1 = parseFrameValue(m1.active);
+        const recovery1 = parseFrameValue(m1.recovery);
+        
+        if (m1.raw && typeof m1.raw.blockstun === 'number') {
+          blockstun = m1.raw.blockstun;
+        } else {
+          blockstun = active1 + recovery1 + adv1Num; // adv1Num is OnBlock here
+        }
+        const cFrame = cancelFrame.value;
+        gap = cFrame + (startup2Num - 1) - blockstun;
+        formulaDesc = `${cFrame} (CancelFrame) + ${startup2Num - 1} (Startup-1) - ${blockstun} (Blockstun)`;
+      }
+
+      if (gap <= 0) {
+        status = '连防 (True Blockstring)';
+        statusClass = 'status-safe';
+        description = '对手无法在两招之间做出任何动作。';
+      } else if (gap < 4) {
+        status = 'Frame Trap (伪连/打康陷阱)';
+        statusClass = 'status-trap';
+        description = '对手最快普通技（4F）无法抢动。';
+      } else if (gap >= 4 && gap <= 9) {
+        status = '可插动 (Interruptible)';
+        statusClass = 'status-warning';
+        description = '对手可以使用轻攻击抢动或相杀。';
+      } else {
+        status = '高风险 / 易被插 (High Risk)';
+        statusClass = 'status-danger';
+        description = '间隙过大，容易被无敌技或大伤害技确反。';
+      }
   }
   
   return {
@@ -195,7 +305,8 @@ const calculationResult = computed(() => {
     adv1: adv1Num,
     startup2: startup2Num,
     formulaDesc,
-    blockstun // helpful for debug display
+    blockstun,
+    type: calculationType.value // Pass type to template
   };
 });
 
@@ -220,6 +331,24 @@ const calculationResult = computed(() => {
       </div>
     </section>
     
+    <!-- Calculation Type Switcher -->
+    <div class="card type-selector">
+        <button 
+          class="type-btn" 
+          :class="{ active: calculationType === 'block' }"
+          @click="calculationType = 'block'"
+        >
+          🛡️ 压制空隙 (Gap/Block)
+        </button>
+        <button 
+          class="type-btn" 
+          :class="{ active: calculationType === 'hit' }"
+          @click="calculationType = 'hit'"
+        >
+          👊 连招确认 (Link/Combo)
+        </button>
+    </div>
+
     <!-- Mode Selection -->
     <div class="card mode-selector">
       <div class="radio-group">
@@ -239,7 +368,7 @@ const calculationResult = computed(() => {
     <div v-else class="calculator-grid">
       <!-- Move 1 Input -->
       <div class="card input-card">
-        <h2>第 1 招 (被防)</h2>
+        <h2>第 1 招 ({{ calculationType === 'block' ? '被防' : '命中' }})</h2>
         <div class="move-selector">
           <input 
             v-model="search1" 
@@ -263,12 +392,21 @@ const calculationResult = computed(() => {
         </div>
         
         <div v-if="move1" class="move-stats">
-          <div class="stat-row">
+          <!-- Block/Hit Stats based on Type -->
+          <div v-if="calculationType === 'block'" class="stat-row">
             <span class="label">被防帧数 (On Block):</span>
             <span class="value" :class="parseInt(move1.onBlock) >= 0 ? 'plus' : 'minus'">
               {{ move1.onBlock }}
             </span>
           </div>
+          
+          <div v-if="calculationType === 'hit'" class="stat-row">
+            <span class="label">命中帧数 (On Hit):</span>
+            <span class="value" :class="parseInt(move1.onHit) >= 0 ? 'plus' : 'minus'">
+              {{ move1.onHit }}
+            </span>
+          </div>
+
           <div class="stat-row">
             <span class="label">发生 (Startup):</span>
             <span class="value">{{ move1.startup }}</span>
@@ -280,6 +418,35 @@ const calculationResult = computed(() => {
           <div class="stat-row">
             <span class="label">全体硬直 (Recovery):</span>
             <span class="value">{{ move1.recovery }}</span>
+          </div>
+          
+          <!-- Hit Modifiers (Only for Combo Mode + Link) -->
+          <div v-if="calculationType === 'hit'" class="hit-modifiers">
+             <hr class="separator">
+             <label class="control-label">命中状态:</label>
+             <div class="modifier-chips">
+               <button 
+                 class="mod-chip" 
+                 :class="{ active: hitState === 'normal' }"
+                 @click="hitState = 'normal'"
+               >
+                 Normal
+               </button>
+               <button 
+                 class="mod-chip counter" 
+                 :class="{ active: hitState === 'ch' }"
+                 @click="hitState = 'ch'"
+               >
+                 Counter (+2)
+               </button>
+               <button 
+                 class="mod-chip punish" 
+                 :class="{ active: hitState === 'pc' }"
+                 @click="hitState = 'pc'"
+               >
+                 Punish (+4)
+               </button>
+             </div>
           </div>
           
           <!-- Cancel Frame Input -->
@@ -307,6 +474,9 @@ const calculationResult = computed(() => {
       <div class="arrow-connector">
         <span>➡️</span>
         <span class="mode-badge">{{ calculationMode === 'link' ? 'Link' : 'Cancel' }}</span>
+        <span v-if="calculationType === 'hit' && hitState !== 'normal'" class="state-badge">
+           {{ hitState === 'ch' ? 'CH' : 'PC' }}
+        </span>
       </div>
       
       <!-- Move 2 Input -->
@@ -678,5 +848,81 @@ const calculationResult = computed(() => {
   font-size: 0.8rem;
   color: var(--color-text-muted);
   margin-bottom: 4px;
+}
+
+.type-selector {
+  display: flex;
+  margin: 0 auto var(--space-md);
+  max-width: 500px;
+  padding: 4px;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-full);
+  gap: var(--space-xs);
+}
+
+.type-btn {
+  flex: 1;
+  padding: var(--space-sm);
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  transition: all 0.2s;
+}
+
+.type-btn.active {
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-weight: 600;
+}
+
+.hit-modifiers {
+  margin-top: var(--space-md);
+}
+
+.modifier-chips {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.mod-chip {
+  padding: 4px 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: all 0.2s;
+}
+
+.mod-chip.active {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.mod-chip.counter.active {
+  background: #e6a23c; /* Orange for Counter */
+  border-color: #e6a23c;
+}
+
+.mod-chip.punish.active {
+  background: #f56c6c; /* Red for Punish */
+  border-color: #f56c6c;
+}
+
+.state-badge {
+  font-size: 0.8rem;
+  background: #f56c6c;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 4px;
+  display: block;
 }
 </style>
