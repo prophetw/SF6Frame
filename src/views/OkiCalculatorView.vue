@@ -35,7 +35,7 @@ const useChainAsPrefix = ref(false);
 const throwStartup = ref<number>(5);
 const throwActive = ref<number>(3);
 const wakeupThrowInvul = ref<number>(1);
-const opponentAbareStartup = ref<number>(0);
+const opponentAbareStartup = ref<number>(4);
 
 // Selected result for detail view
 const selectedResultKey = ref<string | null>(null);
@@ -150,6 +150,8 @@ const allMoves = computed<Move[]>(() => {
     if (m.name.includes('Jump')) return false;
     
     const startup = parseInt(m.startup) || 0;
+    // Exclude jump moves (starting with 8 or containing 8) as their frame data is often special/incorrect for oki
+    if (m.input.includes('8') || m.name.includes('Jump')) return false;
     return startup > 0 && startup <= 50;
   });
 });
@@ -368,7 +370,8 @@ const throwFillerMoves = computed<Move[]>(() => {
   if (!frameData.value) return [];
   return frameData.value.moves.filter((m: Move) => {
     if (m.category === 'throw') return false;
-    if (m.name.includes('Jump')) return false;
+    // Exclude jump moves (starting with 8 or containing 8)
+    if (m.input.includes('8') || m.name.includes('Jump')) return false;
     const startup = parseInt(m.startup) || 0;
     if (startup <= 0) return false;
     const totalFrames = getMoveTotalFrames(m);
