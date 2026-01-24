@@ -143,6 +143,7 @@ interface ConvertedMove {
         advantage: number;
     };
     notes?: string;
+    raw?: FATMove; // The complete original object
 }
 
 interface CharacterStats {
@@ -223,6 +224,7 @@ function convertFATMove(fatMove: FATMove): ConvertedMove {
         cancels: cancels,
         knockdown: parseKnockdown(fatMove.onHit),
         notes: fatMove.extraInfo ? fatMove.extraInfo[0] : undefined,
+        raw: fatMove,
     };
 }
 
