@@ -293,6 +293,7 @@ interface ExtendedOkiResult {
   calculatedOnBlock?: number | string;
   calculatedOnHit?: number | string;
   meatyBonus?: number;
+  effectiveHitFrame?: number;
 }
 
 function parseFrameAdvantage(adv: string): number | null {
@@ -472,6 +473,7 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
                 calculatedOnBlock: calcBlock,
                 calculatedOnHit: calcHit,
                 meatyBonus,
+                effectiveHitFrame,
             });
         }
       }
@@ -917,7 +919,9 @@ function formatFrame(val: number | string | undefined): string {
               <span class="detail-label">被防计算:</span>
               <span>
                 {{ result.move.onBlock }} (原始) 
-                <span v-if="result.meatyBonus && result.meatyBonus > 0"> + {{ result.meatyBonus }} (Meaty)</span>
+                <span v-if="result.meatyBonus && result.meatyBonus > 0" class="meaty-bonus-highlight">
+                   + {{ result.meatyBonus }} (Meaty: {{ result.effectiveHitFrame }}F击中 - {{ result.ourActiveStart }}F发生)
+                </span>
                 = <span :class="{'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock)}">{{ formatFrame(result.calculatedOnBlock) }}</span>
               </span>
             </div>
@@ -925,7 +929,9 @@ function formatFrame(val: number | string | undefined): string {
               <span class="detail-label">被击计算:</span>
               <span>
                 {{ result.move.onHit }} (原始)
-                <span v-if="result.meatyBonus && result.meatyBonus > 0"> + {{ result.meatyBonus }} (Meaty)</span>
+                <span v-if="result.meatyBonus && result.meatyBonus > 0" class="meaty-bonus-highlight">
+                   + {{ result.meatyBonus }} (Meaty: {{ result.effectiveHitFrame }}F击中 - {{ result.ourActiveStart }}F发生)
+                </span>
                 = <span :class="{'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit)}">{{ formatFrame(result.calculatedOnHit) }}</span>
               </span>
             </div>
@@ -1636,5 +1642,10 @@ function formatFrame(val: number | string | undefined): string {
 @media (max-width: 640px) {
   .combo-actions { flex-direction: column; }
   .move-search { min-width: 100%; }
+}
+.meaty-bonus-highlight {
+  color: #4ade80;
+  font-weight: bold;
+  margin: 0 4px;
 }
 </style>
