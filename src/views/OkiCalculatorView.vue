@@ -180,6 +180,42 @@ const filteredMoves = computed<Move[]>(() => {
   ).slice(0, 15);
 });
 
+// Logic for searchable defender move selector
+const defenderMoveSearchQuery = ref('');
+const showDefenderDropdown = ref(false);
+
+const filteredDefenderMoves = computed<Move[]>(() => {
+  if (!defenderMoves.value) return [];
+  const query = defenderMoveSearchQuery.value.toLowerCase();
+  // If query matches current selection exactly, maybe show others? 
+  // For now just partial match
+  if (!query) return defenderMoves.value.slice(0, 30);
+  
+  return defenderMoves.value.filter((m: Move) => 
+    m.name.toLowerCase().includes(query) ||
+    (m.input && m.input.toLowerCase().includes(query))
+  ).slice(0, 30);
+});
+
+function selectDefenderMove(move: Move) {
+  selectedDefenderMove.value = move;
+  defenderMoveSearchQuery.value = move.name;
+  showDefenderDropdown.value = false;
+}
+
+// Sync query with selected move (e.g. initial load)
+watch(selectedDefenderMove, (newVal) => {
+  if (newVal) {
+    defenderMoveSearchQuery.value = newVal.name;
+  } else {
+    // Only clear if the query doesn't match a valid move? 
+    // Or just leave it? If it's null, usually means manual input or cleared.
+    // If user clears input, we set to null.
+    // if (defenderMoveSearchQuery.value === '') ...
+  }
+});
+
+
 // Parse total active frames
 // Helper to evaluate frame string "2*3" or "10+2"
 function evaluateFrameString(val: string): number {
@@ -871,17 +907,29 @@ function formatFrame(val: number | string | undefined): string {
                 style="width: 60px"
               />
               <div class="flex-1">
-                 <select 
-                    v-model="selectedDefenderMove"
-                    :disabled="!defenderFrameData"
-                    class="w-full p-1 rounded bg-gray-700 border border-gray-600 text-xs"
-                    style="height: 100%"
-                  >
-                    <option :value="null">-- 自定义 (Manual) --</option>
-                    <option v-for="m in defenderMoves" :key="m.name" :value="m">
-                      {{ m.name }} ({{ m.startup }}F)
-                    </option>
-                  </select>
+                  <div class="move-search" style="min-width: 0">
+                    <input 
+                      type="text" 
+                      v-model="defenderMoveSearchQuery" 
+                      @focus="showDefenderDropdown = true"
+                      @blur="setTimeout(() => showDefenderDropdown = false, 200)"
+                      @input="selectedDefenderMove = null" 
+                      placeholder="选择或搜索招式..."
+                      class="move-search-input p-1 text-xs"
+                      :disabled="!defenderFrameData"
+                    />
+                    <div v-if="showDefenderDropdown && filteredDefenderMoves.length > 0" class="move-dropdown">
+                      <button
+                        v-for="move in filteredDefenderMoves"
+                        :key="move.name"
+                        class="move-option text-xs"
+                        @click="selectDefenderMove(move)"
+                      >
+                        <span class="truncate mr-2">{{ move.name }}</span>
+                        <span class="whitespace-nowrap text-gray-400">{{ move.startup }}F</span>
+                      </button>
+                    </div>
+                  </div>
               </div>
             </div>
             <p v-if="!defenderFrameData" class="text-xs text-gray-400 mt-1">请选择防守方角色以启用招式选择</p>
