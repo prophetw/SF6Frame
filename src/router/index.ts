@@ -21,6 +21,11 @@ const router = createRouter({
             name: 'oki',
             component: OkiCalculatorView,
         },
+        {
+            path: '/gap-calculator',
+            name: 'gap-calculator',
+            component: () => import('../views/GapCalculatorView.vue'),
+        },
     ],
 });
 

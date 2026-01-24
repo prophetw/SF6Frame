@@ -812,7 +812,7 @@ function generateTimelineFrames(
   
   const activeStart = prefixFrames + startup; 
   const activeEnd = prefixFrames + startup + active - 1;
-  const recoveryStart = activeEnd + 1;
+
   
   for (let i = 1; i <= total; i++) {
     const globalFrame = i;
@@ -954,7 +954,7 @@ function generateThrowTimelineFrames(
   // Startup: 5 -> Frames 1,2,3,4 are startup. 5 is Active.
   // Global Start: prefixFrames + 1.
   // Active Start: prefixFrames + fillerStartup.
-  const fillerStartFrame = prefixFrames + 1;
+  // Active Start: prefixFrames + fillerStartup.
   // If fillerStartup is 5, it means relative frame 5 is active.
   // Global: prefix + 5.
   const fillerActiveStart = prefixFrames + fillerStartup; 
@@ -1019,7 +1019,7 @@ function generateThrowTimelineFrames(
 }
 
 function generateThrowDefenderFrames(
-  result: ThrowComboResult,
+  _result: ThrowComboResult,
   oppWakeupFrame: number,
   throwFirstActive: number
 ): TimelineFrame[] {
@@ -1037,7 +1037,6 @@ function generateThrowDefenderFrames(
       } else {
           // Wakeup onwards
           // Usually 1F throw invuln?
-          const throwInvulnEnd = oppWakeupFrame + 0; // +0 means Frame X (Wakeup) is invuln?
           // If 1F invuln, WakeupFrame is Invuln. Wakeup+1 is Throwable.
           // Let's assume Wakeup Frame is "Rising", often invincible to throws or strikes?
           // SF6: 1F Throw Invuln on wakeup.

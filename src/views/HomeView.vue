@@ -41,6 +41,15 @@ const characters = computed(() => SF6_CHARACTERS);
         </div>
         <span class="quick-arrow">→</span>
       </RouterLink>
+
+      <RouterLink to="/gap-calculator" class="quick-link-card">
+        <span class="quick-icon">📐</span>
+        <div class="quick-content">
+          <h3>连招间隙计算器</h3>
+          <p>分析连招空隙与伪连判断</p>
+        </div>
+        <span class="quick-arrow">→</span>
+      </RouterLink>
     </section>
   </div>
 </template>
