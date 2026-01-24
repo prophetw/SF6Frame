@@ -263,6 +263,7 @@ interface ExtendedOkiResult {
   isTrade: boolean;
   calculatedOnBlock?: number | string;
   calculatedOnHit?: number | string;
+  meatyBonus?: number;
 }
 
 function parseFrameAdvantage(adv: string): number | null {
@@ -441,6 +442,7 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
                 isTrade: isTradeMatch,
                 calculatedOnBlock: calcBlock,
                 calculatedOnHit: calcHit,
+                meatyBonus,
             });
         }
       }
@@ -881,6 +883,22 @@ function formatFrame(val: number | string | undefined): string {
               <span class="detail-label">可命中窗口:</span>
               <span v-if="opponentPreActiveWindowValid">{{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F</span>
               <span v-else>无</span>
+            </div>
+            <div class="detail-row calc">
+              <span class="detail-label">被防计算:</span>
+              <span>
+                {{ result.move.onBlock }} (原始) 
+                <span v-if="result.meatyBonus && result.meatyBonus > 0"> + {{ result.meatyBonus }} (Meaty)</span>
+                = <span :class="{'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock)}">{{ formatFrame(result.calculatedOnBlock) }}</span>
+              </span>
+            </div>
+            <div class="detail-row calc">
+              <span class="detail-label">被击计算:</span>
+              <span>
+                {{ result.move.onHit }} (原始)
+                <span v-if="result.meatyBonus && result.meatyBonus > 0"> + {{ result.meatyBonus }} (Meaty)</span>
+                = <span :class="{'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit)}">{{ formatFrame(result.calculatedOnHit) }}</span>
+              </span>
             </div>
             <div class="detail-row result">
               <span class="detail-label">判定:</span>
