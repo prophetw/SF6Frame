@@ -774,6 +774,306 @@ function clearCombo() {
 }
 
 // Helpers for template
+interface TimelineFrame {
+  index: number;
+  globalFrame: number;
+  type: 'prefix' | 'startup' | 'active' | 'recovery' | 'down' | 'vulnerable' | 'hitstun' | 'blockstun' | 'neutral';
+  isWakeup: boolean;
+  isReversal: boolean;
+  isVulnerable: boolean;
+  isHit?: boolean; 
+  label?: number;
+}
+
+// Attacker Timeline
+function generateTimelineFrames(
+  result: ExtendedOkiResult,
+  oppWakeupFrame: number, 
+  oppReversalFrame: number
+): TimelineFrame[] {
+  const frames: TimelineFrame[] = [];
+  
+  const prefixFrames = result.prefixFrames;
+  const startup = parseInt(result.move.startup) || 0;
+  const active = parseTotalActiveFrames(result.move.active);
+  const recovery = parseTotalRecoveryFrames(result.move.recovery);
+  
+  const moveStartFrame = prefixFrames; 
+  
+  // Calculate Attacker Duration
+  // Prefix + Startup + Active + Recovery
+  const total = moveStartFrame + startup + active + recovery;
+  
+  // Also consider Defender's interaction to extend timeline if needed? 
+  // For Attacker Row, just show functionality.
+  // Actually, we should align lengths across rows for grid perfection.
+  // But let's let CSS handle alignment (width). 
+  // We'll generate up to Attacker's End for now.
+  
+  const activeStart = prefixFrames + startup; 
+  const activeEnd = prefixFrames + startup + active - 1;
+  const recoveryStart = activeEnd + 1;
+  
+  for (let i = 1; i <= total; i++) {
+    const globalFrame = i;
+    
+    let type: TimelineFrame['type'];
+    
+    if (i <= prefixFrames) {
+      type = 'prefix';
+    } else if (i < activeStart) {
+      type = 'startup';
+    } else if (i <= activeEnd) {
+      type = 'active';
+    } else {
+      type = 'recovery';
+    }
+    
+    // Markers (kept for reference, primarily on Defender/Interaction row)
+    const isWakeup = (globalFrame === oppWakeupFrame);
+    const isReversal = (globalFrame === oppReversalFrame);
+    const isVulnerable = (globalFrame >= oppWakeupFrame && globalFrame < oppReversalFrame);
+    
+    let isHit = false;
+    if (type === 'active') {
+       if (result.effectiveHitFrame && globalFrame === result.effectiveHitFrame) {
+         isHit = true;
+       }
+    }
+    
+    let label: number | undefined;
+    // Show label for: 1, Prefix End, Startup End, Active End, Total
+    if (i === 1) label = i;
+    else if (i === prefixFrames && prefixFrames > 0) label = i;
+    else if (i === activeStart && i !== 1) label = i; 
+    else if (i === activeEnd) label = i; 
+    else if (i === total) label = i; 
+    else if (isHit) label = i; 
+    
+    frames.push({
+      index: i,
+      globalFrame,
+      type,
+      isWakeup,
+      isReversal,
+      isVulnerable,
+      isHit,
+      label
+    });
+  }
+  
+  return frames;
+}
+
+// Defender Timeline
+function generateDefenderFrames(
+  result: ExtendedOkiResult,
+  oppWakeupFrame: number,
+  mode: 'hit' | 'block'
+): TimelineFrame[] {
+    const frames: TimelineFrame[] = [];
+    
+    // Calculate durations
+    const prefixFrames = result.prefixFrames;
+    const startup = parseInt(result.move.startup) || 0;
+    const active = parseTotalActiveFrames(result.move.active);
+    const recovery = parseTotalRecoveryFrames(result.move.recovery);
+    const attackerEnd = prefixFrames + startup + active + recovery;
+    
+    // Calculate Advantage & Stun End
+    const advantage = mode === 'hit' 
+      ? (typeof result.calculatedOnHit === 'number' ? result.calculatedOnHit : 0)
+      : (typeof result.calculatedOnBlock === 'number' ? result.calculatedOnBlock : 0);
+      
+    // Defender becomes free at: AttackerEnd + Advantage
+    // Note: If advantage is negative, defender is free BEFORE attacker.
+    // If advantage is positive, defender is free AFTER attacker.
+    const defenderFreeFrame = attackerEnd + advantage + 1;
+    
+    // Max Frame to render: at least up to AttackerEnd, or DefenderFreeFrame if later.
+    const totalRender = Math.max(attackerEnd, defenderFreeFrame - 1, oppWakeupFrame + 10);
+    
+    const impactFrame = result.effectiveHitFrame || 9999;
+    
+    for (let i = 1; i <= totalRender; i++) {
+        const globalFrame = i;
+        let type: TimelineFrame['type'] = 'neutral';
+        
+        if (i < oppWakeupFrame) {
+            type = 'down';
+        } else if (i < impactFrame) {
+            type = 'vulnerable';
+        } else if (i < defenderFreeFrame) {
+            // Stun state
+            type = mode === 'hit' ? 'hitstun' : 'blockstun';
+        } else {
+            type = 'neutral';
+        }
+        
+        const isWakeup = (globalFrame === oppWakeupFrame);
+        // Only show impact marker on defender row?
+        const isHit = (globalFrame === impactFrame);
+        
+        let label: number | undefined;
+        if (isWakeup || isHit || i === defenderFreeFrame - 1) label = i;
+        
+        frames.push({
+            index: i,
+            globalFrame,
+            type,
+            isWakeup,
+            isReversal: false,
+            isVulnerable: false,
+            isHit,
+            label
+        });
+    }
+    
+    return frames;
+}
+
+// Throw Timeline Generators
+// Throw Timeline Generators
+function generateThrowTimelineFrames(
+  result: ThrowComboResult,
+  oppWakeupFrame: number,
+  throwStartup: number,
+  throwActive: number
+): TimelineFrame[] {
+  const frames: TimelineFrame[] = [];
+  
+  const prefixFrames = result.prefixFrames;
+  
+  // Filler
+  const fillerStartup = result.fillerStartup || 0;
+  const fillerActive = result.fillerActive || 0;
+  const fillerRecovery = result.fillerRecovery || 0;
+  const fillerTotal = fillerStartup + fillerActive + fillerRecovery;
+  
+  // Calculate Filler Key Frames (Global)
+  // Startup: 5 -> Frames 1,2,3,4 are startup. 5 is Active.
+  // Global Start: prefixFrames + 1.
+  // Active Start: prefixFrames + fillerStartup.
+  const fillerStartFrame = prefixFrames + 1;
+  // If fillerStartup is 5, it means relative frame 5 is active.
+  // Global: prefix + 5.
+  const fillerActiveStart = prefixFrames + fillerStartup; 
+  const fillerActiveEnd = fillerActiveStart + fillerActive - 1;
+  const fillerEndFrame = prefixFrames + fillerTotal;
+
+  // Throw
+  // Start frame relative to start of sequence
+  const throwStartFrame = prefixFrames + fillerTotal + 1;
+  // Startup 5 -> Frame 5 (relative) is Active.
+  // Global Active Start = throwStartFrame + 5 - 1. 
+  // Wait. Index 1: Startup
+  // Index 5: Active.
+  // Offset = 4. (Startup - 1).
+  // Global = Start + (Startup - 1).
+  const throwActiveStart = throwStartFrame + throwStartup - 1; 
+  const throwActiveEnd = throwActiveStart + throwActive - 1;
+  const throwRecoveryTotal = 20; 
+  const total = throwActiveEnd + throwRecoveryTotal;
+  
+  for (let i = 1; i <= total; i++) {
+     const globalFrame = i;
+     let type: TimelineFrame['type'];
+     
+     if (i <= prefixFrames) {
+         type = 'prefix';
+     } else if (i <= fillerEndFrame) {
+         // Filler Logic
+         if (i < fillerActiveStart) type = 'startup';
+         else if (i <= fillerActiveEnd) type = 'active';
+         else type = 'recovery';
+     } else {
+         // Throw Logic
+         if (i < throwActiveStart) type = 'startup';
+         else if (i <= throwActiveEnd) type = 'active';
+         else type = 'recovery';
+     }
+     
+     const isWakeup = (globalFrame === oppWakeupFrame);
+     // Visualizing "Throwable" alignment
+     // Effective Throw Frame: result.firstActive
+     const isThrowConnect = (globalFrame === result.firstActive);
+     
+     let label: number | undefined;
+     if (i === 1) label = i;
+     else if (i === prefixFrames && prefixFrames > 0) label = i;
+     else if (isThrowConnect) label = i;
+     
+     frames.push({
+         index: i,
+         globalFrame,
+         type,
+         isWakeup,
+         isReversal: false,
+         isVulnerable: false,
+         isHit: isThrowConnect,
+         label
+     });
+  }
+  
+  return frames;
+}
+
+function generateThrowDefenderFrames(
+  result: ThrowComboResult,
+  oppWakeupFrame: number,
+  throwFirstActive: number
+): TimelineFrame[] {
+  const frames: TimelineFrame[] = [];
+  
+  // Render enough to show throw connect + some aftermath
+  const total = Math.max(oppWakeupFrame + 20, throwFirstActive + 10);
+  
+  for (let i = 1; i <= total; i++) {
+      const globalFrame = i;
+      let type: TimelineFrame['type'] = 'neutral';
+      
+      if (i < oppWakeupFrame) {
+          type = 'down';
+      } else {
+          // Wakeup onwards
+          // Usually 1F throw invuln?
+          const throwInvulnEnd = oppWakeupFrame + 0; // +0 means Frame X (Wakeup) is invuln?
+          // If 1F invuln, WakeupFrame is Invuln. Wakeup+1 is Throwable.
+          // Let's assume Wakeup Frame is "Rising", often invincible to throws or strikes?
+          // SF6: 1F Throw Invuln on wakeup.
+          // So if Wakeup is Frame 30. Frame 30 is Invuln. Frame 31 is Throwable.
+          if (i === oppWakeupFrame) {
+              type = 'recovery'; // "Invuln" visual? neutral is fine.
+          } else {
+              type = 'vulnerable'; // Throwable
+          }
+          
+          if (i >= throwFirstActive) {
+               type = 'hitstun'; // Thrown!
+          }
+      }
+      
+      const isWakeup = (i === oppWakeupFrame);
+      const isHit = (i === throwFirstActive);
+      
+      let label: number | undefined;
+      if (isWakeup || isHit) label = i;
+      
+      frames.push({
+          index: i,
+          globalFrame,
+          type,
+          isWakeup,
+          isReversal: false,
+          isVulnerable: false,
+          isHit,
+          label
+      });
+  }
+
+  return frames;
+}
+
 function isPositive(val: number | string | undefined): boolean {
   if (typeof val !== 'number') return false;
   return val >= 0;
@@ -1125,6 +1425,77 @@ function formatFrame(val: number | string | undefined): string {
                 ⚠ 相杀: 与对手判定第一帧重合 ({{ opponentFirstActiveFrame }}F)
               </span>
             </div>
+
+            <!-- Timeline UI (Multi-Row View) -->
+            <div class="timeline-wrapper">
+               <div class="timeline-header">
+                 <div class="legend-row">
+                    <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
+                    <span class="timeline-legend-item"><span class="legend-color startup"></span>发生</span>
+                    <span class="timeline-legend-item"><span class="legend-color active"></span>持续</span>
+                    <span class="timeline-legend-item"><span class="legend-color recovery"></span>硬直</span>
+                 </div>
+                 <div class="legend-row">
+                    <span class="timeline-legend-item"><span class="legend-color down"></span>倒地</span>
+                    <span class="timeline-legend-item"><span class="legend-color vulnerable"></span>可被击</span>
+                    <span class="timeline-legend-item"><span class="legend-color hitstun"></span>被击硬直</span>
+                    <span class="timeline-legend-item"><span class="legend-color blockstun"></span>被防硬直</span>
+                 </div>
+               </div>
+               
+               <div class="timeline-scroll-container">
+                  <!-- Row 1: Attacker -->
+                  <div class="timeline-row-label">进攻方 (Self)</div>
+                  <div class="timeline-blocks-container">
+                    <div 
+                      v-for="frame in generateTimelineFrames(result, opponentWakeupFrame, opponentFirstActiveFrame)" 
+                      :key="frame.index"
+                      :class="['frame-block', frame.type, { 
+                        'is-hit': frame.isHit,
+                        'is-vulnerable': frame.isVulnerable
+                      }]"
+                    >
+                      <div class="frame-content">
+                        <!-- Markers overlaid (Only Wakeup/Reversal reference on attacker row?) -->
+                        <!-- Maybe keep clean, put markers on Defender row -->
+                         <div v-if="frame.isWakeup" class="frame-marker wakeup ghost">▼</div>
+                      </div>
+                      <div class="frame-number" v-if="frame.label">{{ frame.label }}</div>
+                    </div>
+                  </div>
+
+                  <!-- Row 2: Defender (Hit) -->
+                  <div class="timeline-row-label mt-4">对手 - 被击 (Hit)</div>
+                  <div class="timeline-blocks-container">
+                    <div 
+                      v-for="frame in generateDefenderFrames(result, opponentWakeupFrame, 'hit')" 
+                      :key="frame.globalFrame"
+                      :class="['frame-block', frame.type]"
+                    >
+                      <div class="frame-content">
+                         <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
+                         <div v-if="frame.isHit" class="frame-marker hit-marker">💥</div>
+                      </div>
+                      <!-- Only show distinct frame numbers if needed -->
+                    </div>
+                  </div>
+
+                  <!-- Row 3: Defender (Block) -->
+                  <div class="timeline-row-label mt-2">对手 - 被防 (Block)</div>
+                   <div class="timeline-blocks-container">
+                    <div 
+                      v-for="frame in generateDefenderFrames(result, opponentWakeupFrame, 'block')" 
+                      :key="frame.globalFrame"
+                      :class="['frame-block', frame.type]"
+                    >
+                      <div class="frame-content">
+                         <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
+                         <div v-if="frame.isHit" class="frame-marker block-marker">🛡️</div>
+                      </div>
+                    </div>
+                  </div>
+               </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1249,6 +1620,56 @@ function formatFrame(val: number | string | undefined): string {
             <div class="detail-row calc">
               <span class="detail-label">第一帧:</span>
               <span>{{ result.delay }} + {{ normalizedThrowStartup }} = {{ result.firstActive }}F</span>
+            </div>
+            
+            <!-- Loop Throw Timeline -->
+            <div class="timeline-wrapper">
+               <div class="timeline-header">
+                 <div class="legend-row">
+                    <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
+                    <span class="timeline-legend-item"><span class="legend-color startup"></span>发生</span>
+                    <span class="timeline-legend-item"><span class="legend-color active"></span>持续/空挥</span>
+                    <span class="timeline-legend-item"><span class="legend-color hitstun"></span>被投</span>
+                 </div>
+                 <div class="legend-row">
+                    <span class="timeline-legend-item"><span class="legend-color down"></span>倒地</span>
+                    <span class="timeline-legend-item"><span class="legend-icon opponent-wakeup">▼</span>起身</span>
+                 </div>
+               </div>
+               
+               <div class="timeline-scroll-container">
+                  <!-- Row 1: Attacker -->
+                  <div class="timeline-row-label">进攻方 (Self)</div>
+                  <div class="timeline-blocks-container">
+                    <div 
+                      v-for="frame in generateThrowTimelineFrames(result, opponentWakeupFrame, normalizedThrowStartup, normalizedThrowActive)" 
+                      :key="frame.index"
+                      :class="['frame-block', frame.type, { 
+                        'is-hit': frame.isHit
+                      }]"
+                    >
+                      <div class="frame-content">
+                         <div v-if="frame.isWakeup" class="frame-marker wakeup ghost">▼</div>
+                      </div>
+                      <div class="frame-number" v-if="frame.label">{{ frame.label }}</div>
+                    </div>
+                  </div>
+
+                  <!-- Row 2: Defender -->
+                  <div class="timeline-row-label mt-4">对手 (Defender)</div>
+                  <div class="timeline-blocks-container">
+                    <div 
+                      v-for="frame in generateThrowDefenderFrames(result, opponentWakeupFrame, result.firstActive)" 
+                      :key="frame.globalFrame"
+                      :class="['frame-block', frame.type]"
+                    >
+                      <div class="frame-content">
+                         <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
+                         <div v-if="frame.isHit" class="frame-marker hit-marker">⚠️</div>
+                      </div>
+                    </div>
+                  </div>
+               </div>
             </div>
             <div class="detail-row">
               <span class="detail-label">允许窗口:</span>
@@ -1829,4 +2250,190 @@ function formatFrame(val: number | string | undefined): string {
   font-weight: bold;
   margin: 0 4px;
 }
+
+/* Timeline UI Redesign */
+.timeline-wrapper {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.timeline-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.legend-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.timeline-row-label {
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--color-text-secondary);
+    margin-bottom: 2px;
+}
+.mt-4 { margin-top: 16px; }
+.mt-2 { margin-top: 8px; }
+
+.timeline-scroll-container {
+  overflow-x: auto;
+  padding-bottom: 20px; /* Space for numbers */
+}
+
+.timeline-blocks-container {
+  display: flex;
+  align-items: flex-start;
+  min-width: max-content;
+  /* padding-top: 10px; */ /* Removed to keep rows tight */
+}
+
+.frame-block {
+  position: relative;
+  width: 14px;
+  height: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-right: 1px;
+  flex-shrink: 0;
+  /* Default background for safety */
+  background: #333;
+}
+
+/* Colors */
+.frame-block.prefix {
+    background-color: #374151; /* Dark Gray */
+    border-color: #4b5563;
+}
+.frame-block.startup {
+  background-color: #9ca3af; /* Light Gray */
+  border-color: #d1d5db;
+  color: #000; /* Contrast if needed */
+}
+.frame-block.active {
+  background-color: #dc2626; /* Red */
+  border-color: #ef4444;
+}
+.frame-block.recovery {
+  background-color: #2563eb; /* Blue */
+  border-color: #3b82f6;
+}
+
+/* Defender States */
+.frame-block.down {
+    background-color: #000;
+    border-color: #374151;
+}
+.frame-block.vulnerable {
+    background-color: rgba(74, 222, 128, 0.2);
+    border-color: var(--color-positive);
+}
+.frame-block.hitstun {
+    background-color: #ca8a04; /* Yellow/Gold */
+    border-color: #eab308;
+}
+.frame-block.blockstun {
+    background-color: #9333ea; /* Purple */
+    border-color: #a855f7;
+}
+.frame-block.neutral {
+    background-color: #1f2937;
+    border-color: #374151;
+}
+
+/* Legend Colors */
+.legend-color {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.legend-color.prefix { background-color: #374151; }
+.legend-color.startup { background-color: #9ca3af; }
+.legend-color.active { background-color: #dc2626; }
+.legend-color.recovery { background-color: #2563eb; }
+.legend-color.down { background-color: #000; }
+.legend-color.vulnerable { background-color: rgba(74, 222, 128, 0.2); border-color: var(--color-positive); }
+.legend-color.hitstun { background-color: #ca8a04; }
+.legend-color.blockstun { background-color: #9333ea; }
+
+.frame-block.is-hit {
+   /* Highlight the hit frame specifically? */
+   background-color: #fca5a5; /* Lighter red */
+   border-color: #fff;
+   z-index: 2;
+}
+
+/* Vulnerable Window indication */
+.frame-block.is-vulnerable {
+  box-shadow: 0 4px 0 0 rgba(74, 222, 128, 0.5); /* Green underline-ish */
+}
+.frame-block.is-vulnerable::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-positive);
+  opacity: 0.5;
+}
+
+/* Markers */
+.frame-marker {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  line-height: 1;
+  pointer-events: none;
+}
+.frame-marker.ghost {
+    opacity: 0.3; /* Less visible on attacker row */
+}
+.frame-marker.hit-marker, .frame-marker.block-marker {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    z-index: 5;
+}
+
+.frame-marker.wakeup {
+  color: var(--color-positive); /* Green */
+}
+
+.frame-marker.reversal {
+  color: #f59e0b; /* Orange */
+  top: -12px; /* Stack or adjust if both exist? */
+}
+
+/* Logic for stacking markers if both active? */
+.frame-block.is-wakeup.is-reversal .frame-marker.reversal {
+  top: -20px; /* Shift up if overlapping */
+}
+
+.frame-number {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+/* Legend Colors */
+.legend-icon.opponent-wakeup { color: var(--color-positive); }
+.legend-icon.opponent-reversal { color: #f59e0b; }
+
 </style>
