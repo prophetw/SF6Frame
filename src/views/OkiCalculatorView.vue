@@ -518,28 +518,22 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
 
             // Calculate Trade Advantage
             let tradeExpl = '';
-            if (isTradeMatch && selectedDefenderMove.value && move.raw && selectedDefenderMove.value.raw) {
-                const adv = calculateTradeAdvantage(move.raw, selectedDefenderMove.value.raw);
-                tradeAdv = adv;
-                tradeDet = `${adv > 0 ? '+' : ''}${adv}`;
+            if (isTradeMatch) {
+                if (selectedDefenderMove.value && move.raw && selectedDefenderMove.value.raw) {
+                    const adv = calculateTradeAdvantage(move.raw, selectedDefenderMove.value.raw);
+                    tradeAdv = adv;
+                    tradeDet = `${adv > 0 ? '+' : ''}${adv}`;
 
-                // Detailed explanation
-                // We need parseHitstun here. It is not imported yet, so I will add it to the import at the top first, 
-                // but since I can't do two disjoint edits easily without multi_replace or sequential, 
-                // I will assume I'll add the import in the next step or use the existing import line if possible.
-                // Wait, I can use multi_replace for this.
-                // For now, let's just use the values if I can? 
-                // Actually, I should update the import in a separate step or just assume I will do it.
-                // Let's use a temporary simpler approach or just add the logic.
-                // I'll assume parseHitstun is available (I will add it).
-                
-                const effA = getEffectiveHitstun(move.raw);
-                const effB = getEffectiveHitstun(selectedDefenderMove.value.raw);
-                
-                const labelA = effA.type === 'blockstun' ? `(Blockstun ${parseHitstun(move.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(move.raw.hitstun)} + 2CH)`;
-                const labelB = effB.type === 'blockstun' ? `(Blockstun ${parseHitstun(selectedDefenderMove.value.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(selectedDefenderMove.value.raw.hitstun)} + 2CH)`;
-                
-                tradeExpl = `${move.name} ${labelA} - ${selectedDefenderMove.value.name} ${labelB} = ${adv}`;
+                    const effA = getEffectiveHitstun(move.raw);
+                    const effB = getEffectiveHitstun(selectedDefenderMove.value.raw);
+                    
+                    const labelA = effA.type === 'blockstun' ? `(Blockstun ${parseHitstun(move.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(move.raw.hitstun)} + 2CH)`;
+                    const labelB = effB.type === 'blockstun' ? `(Blockstun ${parseHitstun(selectedDefenderMove.value.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(selectedDefenderMove.value.raw.hitstun)} + 2CH)`;
+                    
+                    tradeExpl = `${move.name} ${labelA} - ${selectedDefenderMove.value.name} ${labelB} = ${adv}`;
+                } else {
+                    tradeDet = '需选择招式';
+                }
             }
 
             results.push({
@@ -897,7 +891,7 @@ function formatFrame(val: number | string | undefined): string {
           <!-- Manual / Auto Abare -->
           <div>
             <label class="block text-sm font-medium mb-1">
-              对手抢招发生帧 (Startup)
+              对手抢招发生帧 (Startup) <span class="text-xs font-normal ml-1" style="color: var(--color-warning)">⚠ 计算相杀需要选择招式</span>
             </label>
             <div class="flex space-x-2">
                <input 
