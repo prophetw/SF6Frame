@@ -168,18 +168,47 @@ const filteredMoves = computed<Move[]>(() => {
 });
 
 // Parse total active frames
+// Helper to evaluate frame string "2*3" or "10+2"
+function evaluateFrameString(val: string): number {
+  if (!val || val === '-') return 0;
+  
+  // Try to sum parts separated by + first
+  const parts = val.split('+');
+  let sum = 0;
+  
+  for (const part of parts) {
+    const trimmed = part.trim();
+    if (trimmed.includes('*')) {
+      // Handle multiplication like 2*3
+      const factors = trimmed.split('*');
+      let product = 1;
+      let validProduct = false;
+      for (const f of factors) {
+        const num = parseInt(f);
+        if (!isNaN(num)) {
+          product *= num;
+          validProduct = true;
+        }
+      }
+      if (validProduct) sum += product;
+    } else {
+      // Handle simple number
+      const num = parseInt(trimmed);
+      if (!isNaN(num)) sum += num;
+    }
+  }
+  
+  return sum;
+}
+
+// Parse total active frames
 function parseTotalActiveFrames(active: string): number {
-  if (!active || active === '-') return 1;
-  const matches = String(active).match(/\d+/g);
-  if (!matches) return 1;
-  return matches.reduce((sum, n) => sum + parseInt(n), 0);
+  const result = evaluateFrameString(active);
+  return result > 0 ? result : 1;
 }
 
 function parseTotalRecoveryFrames(recovery: string): number {
-  if (!recovery || recovery === '-') return 0;
-  const matches = String(recovery).match(/\d+/g);
-  if (!matches) return 0;
-  return matches.reduce((sum, n) => sum + parseInt(n), 0);
+   return evaluateFrameString(recovery);
 }
 
 function getMoveTotalFrames(move: Move): number {
