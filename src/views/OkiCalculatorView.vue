@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { SF6_CHARACTERS, type Move, type FrameData, type CharacterStats } from '../types';
+import { calculateTradeAdvantage, parseHitstun, getEffectiveHitstun } from '../utils/trade';
 
-const selectedCharacterId = ref<string>('');
+const attackerCharId = ref<string>('');
+const defenderCharId = ref<string>('ryu'); // Default defender
 const selectedKnockdownMove = ref<Move | null>(null);
-const frameData = ref<FrameData | null>(null);
+const selectedDefenderMove = ref<Move | null>(null); // New: Defender's move
+const attackerFrameData = ref<FrameData | null>(null);
+const defenderFrameData = ref<FrameData | null>(null);
 const loading = ref(false);
 
 // Custom knockdown advantage
@@ -49,8 +53,8 @@ const effectiveKnockdownAdv = computed(() => {
   return selectedKnockdownMove.value?.knockdown?.advantage || 0;
 });
 
-// Character stats
-const stats = computed<CharacterStats | undefined>(() => frameData.value?.stats);
+// Character stats (Attacker)
+const stats = computed<CharacterStats | undefined>(() => attackerFrameData.value?.stats);
 
 // Opponent wakeup window and reversal first active frame
 const opponentWakeupFrame = computed(() => {
@@ -138,14 +142,14 @@ const throwFirstActiveMax = computed(() => {
 
 // Knockdown moves
 const knockdownMoves = computed<Move[]>(() => {
-  if (!frameData.value) return [];
-  return frameData.value.moves.filter((m: Move) => m.knockdown && m.knockdown.type !== 'none');
+  if (!attackerFrameData.value) return [];
+  return attackerFrameData.value.moves.filter((m: Move) => m.knockdown && m.knockdown.type !== 'none');
 });
 
-// ALL moves for selection
+// ALL moves for selection (Attacker)
 const allMoves = computed<Move[]>(() => {
-  if (!frameData.value) return [];
-  return frameData.value.moves.filter((m: Move) => {
+  if (!attackerFrameData.value) return [];
+  return attackerFrameData.value.moves.filter((m: Move) => {
     // Exclude jump moves as their frame data is incomplete (missing total frames)
     if (m.name.includes('Jump')) return false;
     
@@ -156,9 +160,18 @@ const allMoves = computed<Move[]>(() => {
   });
 });
 
-// Filtered moves for search
+// Defender Moves (for Reversal Selection)
+const defenderMoves = computed<Move[]>(() => {
+  if (!defenderFrameData.value) return [];
+  return defenderFrameData.value.moves.filter((m: Move) => {
+    const startup = parseInt(m.startup) || 0;
+    return startup > 0;
+  });
+});
+
+// Filtered moves for search (Attacker)
 const filteredMoves = computed<Move[]>(() => {
-  if (!frameData.value) return [];
+  if (!attackerFrameData.value) return [];
   const query = moveSearchQuery.value.toLowerCase();
   if (!query) return allMoves.value.slice(0, 15);
   return allMoves.value.filter((m: Move) => 
@@ -294,6 +307,8 @@ interface ExtendedOkiResult {
   calculatedOnHit?: number | string;
   meatyBonus?: number;
   effectiveHitFrame?: number;
+  tradeAdvantage?: number; // New
+  tradeDetail?: string; // New
 }
 
 function parseFrameAdvantage(adv: string): number | null {
@@ -447,6 +462,8 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
         if (isSuccessMatch || isTradeMatch) {
             let calcBlock: number | string | undefined;
             let calcHit: number | string | undefined;
+            let tradeAdv: number | undefined;
+            let tradeDet: string | undefined;
 
             const baseBlock = parseFrameAdvantage(move.onBlock);
             if (baseBlock !== null) {
@@ -462,6 +479,32 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
                 calcHit = move.onHit;
             }
 
+            // Calculate Trade Advantage
+            let tradeExpl = '';
+            if (isTradeMatch && selectedDefenderMove.value && move.raw && selectedDefenderMove.value.raw) {
+                const adv = calculateTradeAdvantage(move.raw, selectedDefenderMove.value.raw);
+                tradeAdv = adv;
+                tradeDet = `${adv > 0 ? '+' : ''}${adv}`;
+
+                // Detailed explanation
+                // We need parseHitstun here. It is not imported yet, so I will add it to the import at the top first, 
+                // but since I can't do two disjoint edits easily without multi_replace or sequential, 
+                // I will assume I'll add the import in the next step or use the existing import line if possible.
+                // Wait, I can use multi_replace for this.
+                // For now, let's just use the values if I can? 
+                // Actually, I should update the import in a separate step or just assume I will do it.
+                // Let's use a temporary simpler approach or just add the logic.
+                // I'll assume parseHitstun is available (I will add it).
+                
+                const effA = getEffectiveHitstun(move.raw);
+                const effB = getEffectiveHitstun(selectedDefenderMove.value.raw);
+                
+                const labelA = effA.type === 'blockstun' ? `(Blockstun ${parseHitstun(move.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(move.raw.hitstun)} + 2CH)`;
+                const labelB = effB.type === 'blockstun' ? `(Blockstun ${parseHitstun(selectedDefenderMove.value.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(selectedDefenderMove.value.raw.hitstun)} + 2CH)`;
+                
+                tradeExpl = `${move.name} ${labelA} - ${selectedDefenderMove.value.name} ${labelB} = ${adv}`;
+            }
+
             results.push({
                 move,
                 prefix: prefix.name,
@@ -474,6 +517,9 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
                 calculatedOnHit: calcHit,
                 meatyBonus,
                 effectiveHitFrame,
+                tradeAdvantage: tradeAdv,
+                tradeDetail: tradeDet,
+                tradeExplanation: tradeExpl, // New field
             });
         }
       }
@@ -498,8 +544,8 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
 
 // Throw filler moves (exclude throws, keep reasonable total frames)
 const throwFillerMoves = computed<Move[]>(() => {
-  if (!frameData.value) return [];
-  return frameData.value.moves.filter((m: Move) => {
+  if (!attackerFrameData.value) return [];
+  return attackerFrameData.value.moves.filter((m: Move) => {
     if (m.category === 'throw') return false;
     // Exclude jump moves (starting with 8 or containing 8)
     if (m.input.includes('8') || m.name.includes('Jump')) return false;
@@ -596,35 +642,65 @@ const throwResults = computed<ThrowComboResult[]>(() => {
 // Character data modules
 const characterModules = import.meta.glob('../data/characters/*.json');
 
-async function loadCharacterData() {
-  if (!selectedCharacterId.value) {
-    frameData.value = null;
+async function loadCharacterData(role: 'attacker' | 'defender', charId: string) {
+  if (!charId) {
+    if (role === 'attacker') attackerFrameData.value = null;
+    else defenderFrameData.value = null;
     return;
   }
+  
   loading.value = true;
   try {
-    const path = `../data/characters/${selectedCharacterId.value}.json`;
+    const path = `../data/characters/${charId}.json`;
     const loader = characterModules[path];
     
     if (!loader) {
-      console.error(`Character data not found for: ${selectedCharacterId.value}`);
-      frameData.value = null;
+      console.error(`Character data not found for: ${charId}`);
+      if (role === 'attacker') attackerFrameData.value = null;
+      else defenderFrameData.value = null;
       return;
     }
 
     const module = await loader() as { default: FrameData };
-    frameData.value = module.default;
-    
-    selectedKnockdownMove.value = null;
-    useCustomKnockdown.value = false;
-    comboChain.value = [];
+    if (role === 'attacker') {
+        attackerFrameData.value = module.default;
+        // Reset selection if character changes
+        selectedKnockdownMove.value = null;
+        useCustomKnockdown.value = false;
+        comboChain.value = [];
+    } else {
+        defenderFrameData.value = module.default;
+        selectedDefenderMove.value = null;
+    }
   } catch (e) {
-    console.error('Failed to load character data:', e);
-    frameData.value = null;
+    console.error(`Failed to load character data for ${charId}:`, e);
+    if (role === 'attacker') attackerFrameData.value = null;
+    else defenderFrameData.value = null;
   } finally {
     loading.value = false;
   }
 }
+
+// Watchers
+import { watch } from 'vue';
+
+watch(attackerCharId, (newVal) => {
+  loadCharacterData('attacker', newVal);
+});
+
+watch(defenderCharId, (newVal) => {
+  loadCharacterData('defender', newVal);
+}, { immediate: true });
+
+// When defender move changes, update abare startup
+watch(selectedDefenderMove, (newMove) => {
+  if (newMove) {
+    const startup = parseInt(newMove.startup) || 0;
+    if (startup > 0) {
+      opponentReversalStartup.value = startup;
+    }
+  }
+});
 
 function selectKnockdownMove(move: Move) {
   selectedKnockdownMove.value = move;
@@ -709,18 +785,32 @@ function formatFrame(val: number | string | undefined): string {
         <span class="step-number">1</span>
         选择角色
       </h2>
-      <select v-model="selectedCharacterId" @change="loadCharacterData" class="character-select">
-        <option value="">-- 选择角色 --</option>
-        <option v-for="char in SF6_CHARACTERS" :key="char.id" :value="char.id">
-          {{ char.name }} {{ char.nameJp ? `(${char.nameJp})` : '' }}
-        </option>
-      </select>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+           <label class="block text-sm font-medium mb-1">攻击方 (Attacker)</label>
+           <select v-model="attackerCharId" class="character-select">
+            <option value="">-- 选择角色 --</option>
+            <option v-for="char in SF6_CHARACTERS" :key="char.id" :value="char.id">
+              {{ char.name }} {{ char.nameJp ? `(${char.nameJp})` : '' }}
+            </option>
+          </select>
+        </div>
+        <div>
+           <label class="block text-sm font-medium mb-1">防守方 (Defender)</label>
+           <select v-model="defenderCharId" class="character-select">
+            <option value="">-- 选择角色 --</option>
+            <option v-for="char in SF6_CHARACTERS" :key="char.id" :value="char.id">
+              {{ char.name }} {{ char.nameJp ? `(${char.nameJp})` : '' }}
+            </option>
+          </select>
+        </div>
+      </div>
     </section>
     
     <div v-if="loading" class="loading-state"><p>加载中...</p></div>
     
     <!-- Step 2: Knockdown -->
-    <section v-else-if="frameData" class="oki-section">
+    <section v-else-if="attackerFrameData" class="oki-section">
       <h2 class="section-title">
         <span class="step-number">2</span>
         击倒数据
@@ -752,23 +842,61 @@ function formatFrame(val: number | string | undefined): string {
     </section>
     
     <!-- Step 3: Combo Builder -->
-    <section v-if="effectiveKnockdownAdv > 0 && frameData" class="oki-section results-section">
+    <section v-if="effectiveKnockdownAdv > 0 && attackerFrameData" class="oki-section results-section">
       <h2 class="section-title">
         <span class="step-number">3</span>
         组合链计算
       </h2>
       
-      <!-- Opponent Info -->
-      <div class="opponent-info">
-        <span>对手反击判定第一帧: {{ effectiveKnockdownAdv }} + </span>
-        <input type="number" v-model.number="opponentReversalStartup" min="1" max="30" class="small-input" />
-        <span> = <strong class="frame-negative">{{ opponentFirstActiveFrame }}F</strong></span>
-        <span v-if="opponentPreActiveWindowValid" class="opponent-window">
-          可命中窗口: {{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F
-        </span>
-        <span v-else class="opponent-window">
-          可命中窗口: 无
-        </span>
+      <!-- Opponent Info & Settings -->
+      <div class="opponent-info" style="display:block">
+        <div class="mb-2">
+            <strong>对手反击判定第一帧 (Reversal Active):</strong> 
+            {{ effectiveKnockdownAdv }} (击倒) + {{ opponentReversalStartup }} (发生) = 
+            <strong class="frame-negative">{{ opponentFirstActiveFrame }}F</strong>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+          <!-- Manual / Auto Abare -->
+          <div>
+            <label class="block text-sm font-medium mb-1">
+              对手抢招发生帧 (Startup)
+            </label>
+            <div class="flex space-x-2">
+               <input 
+                type="number" 
+                v-model.number="opponentReversalStartup" 
+                min="1" max="30"
+                class="small-input p-1"
+                style="width: 60px"
+              />
+              <div class="flex-1">
+                 <select 
+                    v-model="selectedDefenderMove"
+                    :disabled="!defenderFrameData"
+                    class="w-full p-1 rounded bg-gray-700 border border-gray-600 text-xs"
+                    style="height: 100%"
+                  >
+                    <option :value="null">-- 自定义 (Manual) --</option>
+                    <option v-for="m in defenderMoves" :key="m.name" :value="m">
+                      {{ m.name }} ({{ m.startup }}F)
+                    </option>
+                  </select>
+              </div>
+            </div>
+            <p v-if="!defenderFrameData" class="text-xs text-gray-400 mt-1">请选择防守方角色以启用招式选择</p>
+          </div>
+          
+           <div>
+             <div class="mb-1">
+                <strong>可命中窗口:</strong> 
+                 <span v-if="opponentPreActiveWindowValid" class="opponent-window">
+                  {{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F
+                </span>
+                <span v-else class="opponent-window">无</span>
+             </div>
+           </div>
+        </div>
       </div>
       
       <!-- Combo Chain Builder -->
@@ -859,6 +987,7 @@ function formatFrame(val: number | string | undefined): string {
           <span>打击帧</span>
           <span>被防</span>
           <span>被击</span>
+          <span>相杀</span>
         </div>
         <div 
           v-for="result in okiResults" 
@@ -882,6 +1011,7 @@ function formatFrame(val: number | string | undefined): string {
           <span>{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
           <span :class="{'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock)}">{{ formatFrame(result.calculatedOnBlock) }}</span>
           <span :class="{'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit)}">{{ formatFrame(result.calculatedOnHit) }}</span>
+          <span :class="{'frame-positive': isPositive(result.tradeAdvantage), 'frame-negative': isNegative(result.tradeAdvantage)}">{{ result.tradeDetail || '-' }}</span>
           
           <!-- Expandable Detail -->
           <div v-if="selectedResultKey === `${result.prefix}${result.move.name}`" class="result-detail" @click.stop>
@@ -934,6 +1064,14 @@ function formatFrame(val: number | string | undefined): string {
                 </span>
                 = <span :class="{'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit)}">{{ formatFrame(result.calculatedOnHit) }}</span>
               </span>
+            </div>
+            <div class="detail-row" v-if="result.isTrade">
+              <span class="detail-label">相杀有利 (Trade):</span>
+              <span>{{ result.tradeDetail }}</span>
+            </div>
+             <div class="detail-row calc" style="width: 100%" v-if="result.isTrade && result.tradeExplanation">
+              <span class="detail-label">相杀计算:</span>
+              <span>{{ result.tradeExplanation }}</span>
             </div>
             <div class="detail-row result">
               <span class="detail-label">判定:</span>
@@ -1423,7 +1561,7 @@ function formatFrame(val: number | string | undefined): string {
 
 .result-header, .result-row-auto {
   display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr;
+  grid-template-columns: 2.5fr 1fr 1.2fr 0.8fr 0.8fr 1fr;
   gap: var(--space-sm);
   padding: var(--space-xs) var(--space-md);
   align-items: center;
