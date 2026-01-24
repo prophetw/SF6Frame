@@ -38,6 +38,7 @@ export interface Move {
     cancels?: string[];  // What the move can cancel into (Special, Super, Chain, etc.)
     knockdown?: KnockdownData;
     notes?: string;
+    raw?: any;
 }
 
 export interface FrameData {

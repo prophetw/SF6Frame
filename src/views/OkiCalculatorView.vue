@@ -207,13 +207,13 @@ function selectDefenderMove(move: Move) {
 watch(selectedDefenderMove, (newVal) => {
   if (newVal) {
     defenderMoveSearchQuery.value = newVal.name;
-  } else {
-    // Only clear if the query doesn't match a valid move? 
-    // Or just leave it? If it's null, usually means manual input or cleared.
-    // If user clears input, we set to null.
-    // if (defenderMoveSearchQuery.value === '') ...
   }
 });
+
+function handleDefenderBlur() {
+  setTimeout(() => showDefenderDropdown.value = false, 200);
+}
+
 
 
 // Parse total active frames
@@ -345,6 +345,7 @@ interface ExtendedOkiResult {
   effectiveHitFrame?: number;
   tradeAdvantage?: number; // New
   tradeDetail?: string; // New
+  tradeExplanation?: string; // New
 }
 
 function parseFrameAdvantage(adv: string): number | null {
@@ -912,7 +913,7 @@ function formatFrame(val: number | string | undefined): string {
                       type="text" 
                       v-model="defenderMoveSearchQuery" 
                       @focus="showDefenderDropdown = true"
-                      @blur="setTimeout(() => showDefenderDropdown = false, 200)"
+                      @blur="handleDefenderBlur"
                       @input="selectedDefenderMove = null" 
                       placeholder="选择或搜索招式..."
                       class="move-search-input p-1 text-xs"
