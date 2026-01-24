@@ -322,6 +322,9 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
   
   const results: ExtendedOkiResult[] = [];
   const oppFirst = opponentFirstActiveFrame.value;
+  const oppWindowStart = opponentWakeupFrame.value;
+  const oppWindowEnd = opponentPreActiveEnd.value;
+  const hasPreActiveWindow = oppWindowEnd >= oppWindowStart;
   
   let prefixes: { name: string; frames: number }[];
   
@@ -347,60 +350,99 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
       
       const ourStart = prefix.frames + startup;
       const ourEnd = ourStart + totalActive - 1;
-      // Success: ourStart < oppFirst (strict less than, not equal = trade)
-      // Actually per logic: 
-      // Active: [Start, End]. Opponent Vulnerable: [OppFirst, inf)
-      // Hit if Active overlaps OppFirst.
-      // Since OppFirst is the first vulnerable frame.
-      // If OurStart <= OppFirst <= OurEnd -> Hit.
-      // Meaty Bonus = FrameHit - FirstActiveFrame.
-      // FrameHit is OppFirst.
-      // FirstActiveFrame is OurStart.
-      // Bonus = OppFirst - OurStart.
       
-      const isSuccess = ourStart < oppFirst && oppFirst <= ourEnd;
+      // Success: our active window overlaps opponent's vulnerable startup window
+      const overlapsPreActive =
+        hasPreActiveWindow && ourEnd >= oppWindowStart && ourStart <= oppWindowEnd;
+      const overlapsOppFirst = ourStart <= oppFirst && ourEnd >= oppFirst;
+      
+      // Let's restore stricter original logic + the new calc.
+      const isSuccessMatch = overlapsPreActive;
+      const isTradeMatch = overlapsOppFirst && !overlapsPreActive;
+
       // Logic from user: "12F active... 17F last active hits... +2 advantage"
       // If oppFirst > ourStart, it means we hit LATE (Meaty).
       // Bonus = oppFirst - ourStart.
       // Example: Start 20. OppFirst 22. Bonus +2.
       // If OppFirst == ourStart, Bonus 0.
       
-      const isTrade = ourStart === oppFirst && oppFirst <= ourEnd;
-      
-      if (isSuccess || isTrade) {
-        const meatyBonus = oppFirst - ourStart;
+      if (isSuccessMatch || isTradeMatch) {
+        // Calculate Meaty Bonus
+        // Bonus = OppFirst - (Frame we hit).
+        // If we hit at OppFirst, Bonus = 0.
+        // If we hit at OppFirst - 1, Bonus = +1.
+        // We hit at MAX(OurStart, OppWindowStart).
+        // Actually, effective hit frame is when both boxes overlap.
+        // Impact Frame = Max(OurStart, OppWindowStart).
+        // Meaty Bonus = OppFirst - ImpactFrame.
         
-        let calcBlock: number | string | undefined;
-        let calcHit: number | string | undefined;
+        // However, standard oki usually cares about hitting exactly at wakeup(OppFirst) or slightly later?
+        // No, Meaty means hitting active frames AS SOON AS they wake up.
+        // Opponent wakes up at OppFirst (Active).
+        // Wait, OppFirst is "Opponent First Active Frame" (Start of their reversal).
+        // Opponent IS VULNERABLE before that?
+        // Ah, `opponentWakeupFrame` is when they wake up?
+        // checking code... 
+        // `opponentFirstActiveFrame`: effectiveKnockdownAdv.value + opponentReversalStartup.value
+        // `opponentWakeupFrame`: effectiveKnockdownAdv.value + 1  (Usually)
         
-        const baseBlock = parseFrameAdvantage(move.onBlock);
-        if (baseBlock !== null) {
-          calcBlock = baseBlock + meatyBonus;
-        } else {
-          calcBlock = move.onBlock; // Keep string like "KD"
-        }
+        // Let's look at defining Meaty Bonus based on when the hit occurs relative to the move's active frames.
+        // Bonus = (Frame Index in Active Frames) - 1. (0-indexed)
+        // If 1st active frame hits: Bonus 0.
+        // If 3rd active frame hits: Bonus +2.
         
-        const baseHit = parseFrameAdvantage(move.onHit);
-        if (baseHit !== null) {
-          calcHit = baseHit + meatyBonus;
-        } else {
-          // If onHit is "KD", usually meaty doesn't change it much unless specific, 
-          // but strictly speaking KD advantage is fixed unless we know otherwise.
-          // For now keep as string.
-          calcHit = move.onHit;
-        }
+        // HitFrame = Max(OurStart, OppWindowStart).
+        // Wait, if OppWindowStart is the Wakeup Frame (e.g. 30), and OurStart is 20, OurEnd is 35.
+        // We hit at 30.
+        // Our 1st active was 20.
+        // So we hit on frame (30 - 20) = 10 -> 11th active frame.
+        // Bonus = +10.
+        
+        // So: EffectiveHitFrame = Math.max(ourStart, oppWindowStart);
+        // MeatyBonus = EffectiveHitFrame - ourStart;
+        
+        const effectiveHitFrame = Math.max(ourStart, oppWindowStart);
+        const meatyBonus = effectiveHitFrame - ourStart;
+        
+        // Recalculate Logic to be consistent with previous match count
+        // Previous logic used:
+        // const isSuccess = overlapsPreActive;
+        // const isTrade = overlapsOppFirst && !overlapsPreActive;
+        
+        // Let's restore that exactly to fix "missing data"
+        const isSuccessMatch = overlapsPreActive;
+        const isTradeMatch = overlapsOppFirst && !overlapsPreActive;
 
-        results.push({
-          move,
-          prefix: prefix.name,
-          prefixFrames: prefix.frames,
-          ourActiveStart: ourStart,
-          ourActiveEnd: ourEnd,
-          coversOpponent: isSuccess,
-          isTrade: isTrade,
-          calculatedOnBlock: calcBlock,
-          calculatedOnHit: calcHit,
-        });
+        if (isSuccessMatch || isTradeMatch) {
+            let calcBlock: number | string | undefined;
+            let calcHit: number | string | undefined;
+
+            const baseBlock = parseFrameAdvantage(move.onBlock);
+            if (baseBlock !== null) {
+                calcBlock = baseBlock + meatyBonus;
+            } else {
+                calcBlock = move.onBlock;
+            }
+
+            const baseHit = parseFrameAdvantage(move.onHit);
+            if (baseHit !== null) {
+                calcHit = baseHit + meatyBonus;
+            } else {
+                calcHit = move.onHit;
+            }
+
+            results.push({
+                move,
+                prefix: prefix.name,
+                prefixFrames: prefix.frames,
+                ourActiveStart: ourStart,
+                ourActiveEnd: ourEnd,
+                coversOpponent: isSuccessMatch,
+                isTrade: isTradeMatch,
+                calculatedOnBlock: calcBlock,
+                calculatedOnHit: calcHit,
+            });
+        }
       }
     }
   }
