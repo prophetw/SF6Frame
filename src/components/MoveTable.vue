@@ -4,7 +4,22 @@ import type { Move, CharacterStats } from '../types';
 const props = defineProps<{
   moves: Move[];
   stats?: CharacterStats;
+  sortKey?: string;
+  sortOrder?: 'asc' | 'desc';
 }>();
+
+const emit = defineEmits<{
+  (e: 'update:sort', key: string): void;
+}>();
+
+function handleSort(key: string) {
+  emit('update:sort', key);
+}
+
+function getSortIcon(key: string) {
+  if (props.sortKey !== key) return '↕';
+  return props.sortOrder === 'asc' ? '↑' : '↓';
+}
 
 function formatFrameValue(val: string): string {
   const num = parseInt(val);
@@ -30,8 +45,6 @@ function getCategoryLabel(cat: string): string {
   };
   return labels[cat] || cat;
 }
-
-
 </script>
 
 <template>
@@ -60,14 +73,14 @@ function getCategoryLabel(cat: string): string {
       <table v-else class="move-table">
         <thead>
           <tr>
-            <th class="col-name">招式</th>
-            <th class="col-input">指令</th>
-            <th class="col-damage">伤害</th>
-            <th class="col-startup">发生</th>
-            <th class="col-active">持续</th>
-            <th class="col-recovery">硬直</th>
-            <th class="col-onblock">防御</th>
-            <th class="col-onhit">命中</th>
+            <th class="col-name" @click="handleSort('name')">招式 <span class="sort-icon">{{ getSortIcon('name') }}</span></th>
+            <th class="col-input" @click="handleSort('input')">指令 <span class="sort-icon">{{ getSortIcon('input') }}</span></th>
+            <th class="col-damage" @click="handleSort('damage')">伤害 <span class="sort-icon">{{ getSortIcon('damage') }}</span></th>
+            <th class="col-startup" @click="handleSort('startup')">发生 <span class="sort-icon">{{ getSortIcon('startup') }}</span></th>
+            <th class="col-active" @click="handleSort('active')">持续 <span class="sort-icon">{{ getSortIcon('active') }}</span></th>
+            <th class="col-recovery" @click="handleSort('recovery')">硬直 <span class="sort-icon">{{ getSortIcon('recovery') }}</span></th>
+            <th class="col-onblock" @click="handleSort('onBlock')">防御 <span class="sort-icon">{{ getSortIcon('onBlock') }}</span></th>
+            <th class="col-onhit" @click="handleSort('onHit')">命中 <span class="sort-icon">{{ getSortIcon('onHit') }}</span></th>
             <th class="col-cancels">取消</th>
           </tr>
         </thead>
@@ -179,6 +192,20 @@ function getCategoryLabel(cat: string): string {
   position: sticky;
   top: 0;
   white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+.move-table th:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.sort-icon {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 0.8em;
+  opacity: 0.7;
 }
 
 .move-row:hover {

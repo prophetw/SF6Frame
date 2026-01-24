@@ -18,10 +18,23 @@ const character = computed(() => {
   return SF6_CHARACTERS.find(c => c.id === id);
 });
 
+const startupFilter = ref<number | ''>('');
+const sortKey = ref<string>('startup');
+const sortOrder = ref<'asc' | 'desc'>('asc');
+
+// Helper to parse frame values for sorting/filtering
+function parseFrameValue(val: string | number | undefined): number {
+  if (val === undefined || val === null || val === '-') return -999;
+  if (typeof val === 'number') return val;
+  // Handle "12+3" or "10~15"
+  const match = String(val).match(/-?\d+/);
+  return match ? parseInt(match[0]) : -999;
+}
+
 const filteredMoves = computed(() => {
   if (!frameData.value) return [];
   
-  let moves = frameData.value.moves;
+  let moves = [...frameData.value.moves];
   
   // Filter by category
   if (selectedCategory.value !== 'all') {
@@ -36,9 +49,49 @@ const filteredMoves = computed(() => {
       m.input.toLowerCase().includes(query)
     );
   }
+
+  // Filter by startup (max)
+  if (startupFilter.value !== '') {
+    moves = moves.filter(m => {
+      const s = parseFrameValue(m.startup);
+      return s > 0 && s <= (startupFilter.value as number);
+    });
+  }
+  
+  // Sorting
+  if (sortKey.value) {
+    moves.sort((a, b) => {
+      let valA: number | string = parseFrameValue((a as any)[sortKey.value]);
+      let valB: number | string = parseFrameValue((b as any)[sortKey.value]);
+      
+      // Special handling for string fields like name/input if needed, but primary use is frames
+      if (sortKey.value === 'name' || sortKey.value === 'input') {
+        valA = (a as any)[sortKey.value] || '';
+        valB = (b as any)[sortKey.value] || '';
+        return sortOrder.value === 'asc' 
+          ? String(valA).localeCompare(String(valB)) 
+          : String(valB).localeCompare(String(valA));
+      }
+
+      if (valA === -999 && valB !== -999) return 1; // pushing undefined to bottom
+      if (valB === -999 && valA !== -999) return -1;
+
+      return sortOrder.value === 'asc' ? (valA as number) - (valB as number) : (valB as number) - (valA as number);
+    });
+  }
   
   return moves;
 });
+
+function handleSort(key: string) {
+  if (sortKey.value === key) {
+    sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc';
+  } else {
+    sortKey.value = key;
+    sortOrder.value = 'asc';
+  }
+}
+
 
 const categories: { value: MoveCategory | 'all'; label: string }[] = [
   { value: 'all', label: '全部' },
@@ -107,12 +160,24 @@ onMounted(() => {
     <div v-else-if="frameData" class="frame-content">
       <!-- Filters -->
       <div class="filters">
-        <input
-          v-model="searchQuery"
-          type="text"
-          placeholder="搜索招式..."
-          class="search-input"
-        />
+        <div class="filters-row">
+          <input
+            v-model="searchQuery"
+            type="text"
+            placeholder="搜索招式..."
+            class="search-input"
+          />
+          <div class="filter-item">
+            <span class="filter-label">发生 &le;</span>
+            <input 
+              type="number" 
+              v-model.number="startupFilter" 
+              class="small-input" 
+              placeholder="F" 
+              min="1"
+            />
+          </div>
+        </div>
         
         <div class="category-filters">
           <button
@@ -127,7 +192,13 @@ onMounted(() => {
       </div>
       
       <!-- Move Table -->
-      <MoveTable :moves="filteredMoves" :stats="frameData.stats" />
+      <MoveTable 
+        :moves="filteredMoves" 
+        :stats="frameData.stats" 
+        :sort-key="sortKey"
+        :sort-order="sortOrder"
+        @update:sort="handleSort"
+      />
       
       <!-- Last Updated -->
       <p class="last-updated" v-if="frameData.lastUpdated">
@@ -221,10 +292,50 @@ onMounted(() => {
   margin-bottom: var(--space-lg);
 }
 
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+}
+
 .search-input {
-  width: 100%;
+  flex: 1;
+  min-width: 200px;
   max-width: 300px;
 }
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-bg-tertiary);
+  padding: 4px 8px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.filter-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.small-input {
+  width: 60px;
+  padding: 2px 4px;
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border-light);
+  text-align: center;
+}
+
+.small-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
 
 .category-filters {
   display: flex;
