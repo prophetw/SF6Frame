@@ -261,6 +261,14 @@ interface ExtendedOkiResult {
   ourActiveEnd: number;
   coversOpponent: boolean;
   isTrade: boolean;
+  calculatedOnBlock?: number | string;
+  calculatedOnHit?: number | string;
+}
+
+function parseFrameAdvantage(adv: string): number | null {
+  if (!adv || adv === 'KD') return null;
+  const match = adv.match(/^[+-]?\d+/);
+  return match ? parseInt(match[0]) : null;
 }
 
 // Calculate prefix frames from combo chain (use full duration for moves)
@@ -314,9 +322,6 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
   
   const results: ExtendedOkiResult[] = [];
   const oppFirst = opponentFirstActiveFrame.value;
-  const oppWindowStart = opponentWakeupFrame.value;
-  const oppWindowEnd = opponentPreActiveEnd.value;
-  const hasPreActiveWindow = oppWindowEnd >= oppWindowStart;
   
   let prefixes: { name: string; frames: number }[];
   
@@ -342,13 +347,49 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
       
       const ourStart = prefix.frames + startup;
       const ourEnd = ourStart + totalActive - 1;
-      const overlapsPreActive =
-        hasPreActiveWindow && ourEnd >= oppWindowStart && ourStart <= oppWindowEnd;
-      const overlapsOppFirst = ourStart <= oppFirst && ourEnd >= oppFirst;
-      const isSuccess = overlapsPreActive;
-      const isTrade = overlapsOppFirst && !overlapsPreActive;
+      // Success: ourStart < oppFirst (strict less than, not equal = trade)
+      // Actually per logic: 
+      // Active: [Start, End]. Opponent Vulnerable: [OppFirst, inf)
+      // Hit if Active overlaps OppFirst.
+      // Since OppFirst is the first vulnerable frame.
+      // If OurStart <= OppFirst <= OurEnd -> Hit.
+      // Meaty Bonus = FrameHit - FirstActiveFrame.
+      // FrameHit is OppFirst.
+      // FirstActiveFrame is OurStart.
+      // Bonus = OppFirst - OurStart.
+      
+      const isSuccess = ourStart < oppFirst && oppFirst <= ourEnd;
+      // Logic from user: "12F active... 17F last active hits... +2 advantage"
+      // If oppFirst > ourStart, it means we hit LATE (Meaty).
+      // Bonus = oppFirst - ourStart.
+      // Example: Start 20. OppFirst 22. Bonus +2.
+      // If OppFirst == ourStart, Bonus 0.
+      
+      const isTrade = ourStart === oppFirst && oppFirst <= ourEnd;
       
       if (isSuccess || isTrade) {
+        const meatyBonus = oppFirst - ourStart;
+        
+        let calcBlock: number | string | undefined;
+        let calcHit: number | string | undefined;
+        
+        const baseBlock = parseFrameAdvantage(move.onBlock);
+        if (baseBlock !== null) {
+          calcBlock = baseBlock + meatyBonus;
+        } else {
+          calcBlock = move.onBlock; // Keep string like "KD"
+        }
+        
+        const baseHit = parseFrameAdvantage(move.onHit);
+        if (baseHit !== null) {
+          calcHit = baseHit + meatyBonus;
+        } else {
+          // If onHit is "KD", usually meaty doesn't change it much unless specific, 
+          // but strictly speaking KD advantage is fixed unless we know otherwise.
+          // For now keep as string.
+          calcHit = move.onHit;
+        }
+
         results.push({
           move,
           prefix: prefix.name,
@@ -357,6 +398,8 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
           ourActiveEnd: ourEnd,
           coversOpponent: isSuccess,
           isTrade: isTrade,
+          calculatedOnBlock: calcBlock,
+          calculatedOnHit: calcHit,
         });
       }
     }
@@ -534,6 +577,25 @@ function removeAction(index: number) {
 function clearCombo() {
   comboChain.value = [];
 }
+
+// Helpers for template
+function isPositive(val: number | string | undefined): boolean {
+  if (typeof val !== 'number') return false;
+  return val >= 0;
+}
+
+function isNegative(val: number | string | undefined): boolean {
+  if (typeof val !== 'number') return false;
+  return val < 0;
+}
+
+function formatFrame(val: number | string | undefined): string {
+  if (val === undefined || val === null) return '-';
+  if (typeof val === 'number') {
+    return val > 0 ? `+${val}` : `${val}`;
+  }
+  return String(val);
+}
 </script>
 
 <template>
@@ -707,6 +769,8 @@ function clearCombo() {
           <span>组合</span>
           <span>发生</span>
           <span>打击帧</span>
+          <span>被防</span>
+          <span>被击</span>
         </div>
         <div 
           v-for="result in okiResults" 
@@ -728,6 +792,8 @@ function clearCombo() {
           </div>
           <span>{{ result.prefixFrames + parseInt(result.move.startup) }}F</span>
           <span>{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+          <span :class="{'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock)}">{{ formatFrame(result.calculatedOnBlock) }}</span>
+          <span :class="{'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit)}">{{ formatFrame(result.calculatedOnHit) }}</span>
           
           <!-- Expandable Detail -->
           <div v-if="selectedResultKey === `${result.prefix}${result.move.name}`" class="result-detail" @click.stop>
@@ -1249,7 +1315,7 @@ function clearCombo() {
 
 .result-header, .result-row-auto {
   display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr;
+  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr;
   gap: var(--space-sm);
   padding: var(--space-xs) var(--space-md);
   align-items: center;
