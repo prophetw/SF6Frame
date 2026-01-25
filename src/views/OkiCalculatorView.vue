@@ -263,7 +263,7 @@ function parseTotalRecoveryFrames(recovery: string | undefined): number {
   if (recovery && typeof recovery === 'string') {
     const whiffMatch = recovery.match(/\((\d+)\)/);
     if (whiffMatch) {
-      return parseInt(whiffMatch[1]);
+      return parseInt(whiffMatch[1] || '0');
     }
   }
   return evaluateFrameString(recovery);
@@ -1516,7 +1516,7 @@ function formatFrame(val: number | string | undefined): string {
         <div class="math-row" v-if="normalizedAbare > 0">
           <span class="math-label">最晚可被投帧:</span>
           <span class="math-value">{{ effectiveKnockdownAdv }} + {{ normalizedAbare }} - 1 = {{ latestThrowableFrame
-            }}F</span>
+          }}F</span>
         </div>
         <div class="math-row">
           <span class="math-label">理想按投延迟:</span>
