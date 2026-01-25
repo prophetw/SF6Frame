@@ -152,7 +152,7 @@ const allMoves = computed<Move[]>(() => {
   return attackerFrameData.value.moves.filter((m: Move) => {
     // Exclude jump moves as their frame data is incomplete (missing total frames)
     if (m.name.includes('Jump')) return false;
-    
+
     const startup = parseInt(m.startup) || 0;
     // Exclude jump moves (starting with 8 or containing 8) as their frame data is often special/incorrect for oki
     if (m.input.includes('8') || m.name.includes('Jump')) return false;
@@ -174,7 +174,7 @@ const filteredMoves = computed<Move[]>(() => {
   if (!attackerFrameData.value) return [];
   const query = moveSearchQuery.value.toLowerCase();
   if (!query) return allMoves.value.slice(0, 15);
-  return allMoves.value.filter((m: Move) => 
+  return allMoves.value.filter((m: Move) =>
     m.name.toLowerCase().includes(query) ||
     m.input.toLowerCase().includes(query)
   ).slice(0, 15);
@@ -190,8 +190,8 @@ const filteredDefenderMoves = computed<Move[]>(() => {
   // If query matches current selection exactly, maybe show others? 
   // For now just partial match
   if (!query) return defenderMoves.value.slice(0, 30);
-  
-  return defenderMoves.value.filter((m: Move) => 
+
+  return defenderMoves.value.filter((m: Move) =>
     m.name.toLowerCase().includes(query) ||
     (m.input && m.input.toLowerCase().includes(query))
   ).slice(0, 30);
@@ -218,13 +218,14 @@ function handleDefenderBlur() {
 
 // Parse total active frames
 // Helper to evaluate frame string "2*3" or "10+2"
-function evaluateFrameString(val: string): number {
+function evaluateFrameString(val: string | number | undefined): number {
   if (!val || val === '-') return 0;
-  
+  if (typeof val === 'number') return val;
+
   // Try to sum parts separated by + first
   const parts = val.split('+');
   let sum = 0;
-  
+
   for (const part of parts) {
     const trimmed = part.trim();
     if (trimmed.includes('*')) {
@@ -246,25 +247,36 @@ function evaluateFrameString(val: string): number {
       if (!isNaN(num)) sum += num;
     }
   }
-  
+
   return sum;
 }
 
 // Parse total active frames
-function parseTotalActiveFrames(active: string): number {
+function parseTotalActiveFrames(active: string | undefined): number {
   const result = evaluateFrameString(active);
   return result > 0 ? result : 1;
 }
 
-function parseTotalRecoveryFrames(recovery: string): number {
-   return evaluateFrameString(recovery);
+function parseTotalRecoveryFrames(recovery: string | undefined): number {
+  // If format is like "13(15)", the value in parentheses is Whiff recovery.
+  // For Oki calculation (Frame Kill), we want the Whiff recovery.
+  if (recovery && typeof recovery === 'string') {
+    const whiffMatch = recovery.match(/\((\d+)\)/);
+    if (whiffMatch) {
+      return parseInt(whiffMatch[1]);
+    }
+  }
+  return evaluateFrameString(recovery);
 }
 
 function getMoveTotalFrames(move: Move): number {
   const startup = parseInt(move.startup) || 0;
   const active = parseTotalActiveFrames(move.active);
   const recovery = parseTotalRecoveryFrames(move.recovery);
-  return startup + active + recovery;
+  // Startup in data is "First Active Frame" (e.g. 6 means hits on frame 6).
+  // So actual startup duration is startup - 1.
+  const startupFrames = Math.max(0, startup - 1);
+  return startupFrames + active + recovery;
 }
 
 function getActionTotalFrames(action: ComboAction): number {
@@ -277,11 +289,11 @@ function getActionTotalFrames(action: ComboAction): number {
 // Calculate combo result
 const comboResult = computed(() => {
   if (comboChain.value.length === 0 || effectiveKnockdownAdv.value <= 0) return null;
-  
+
   // Calculate total frames (all actions except last one uses full duration)
   let totalStartup = 0;
   let lastActiveFrames = 1;
-  
+
   for (let i = 0; i < comboChain.value.length; i++) {
     const action = comboChain.value[i];
     if (!action) continue;
@@ -294,10 +306,10 @@ const comboResult = computed(() => {
       totalStartup += getActionTotalFrames(action);
     }
   }
-  
+
   const ourStart = totalStartup;
   const ourEnd = ourStart + lastActiveFrames - 1;
-  
+
   const oppFirst = opponentFirstActiveFrame.value;
   const oppWindowStart = opponentWakeupFrame.value;
   const oppWindowEnd = opponentPreActiveEnd.value;
@@ -309,7 +321,7 @@ const comboResult = computed(() => {
   const isSuccess = overlapsPreActive;
   const isTrade = overlapsOppFirst && !overlapsPreActive;
   const coversOpponent = isSuccess; // For backward compatibility
-  
+
   let status = '';
   if (isSuccess) {
     status = '压制成功 ✓';
@@ -320,7 +332,7 @@ const comboResult = computed(() => {
   } else {
     status = '打击太晚';
   }
-  
+
   return {
     totalStartup,
     ourStart,
@@ -343,9 +355,10 @@ interface ExtendedOkiResult {
   calculatedOnHit?: number | string;
   meatyBonus?: number;
   effectiveHitFrame?: number;
-  tradeAdvantage?: number; // New
-  tradeDetail?: string; // New
-  tradeExplanation?: string; // New
+  tradeAdvantage?: number;
+  tradeDetail?: string;
+  tradeExplanation?: string;
+  tags?: string[]; // New: e.g. 'Corner Only'
 }
 
 function parseFrameAdvantage(adv: string): number | null {
@@ -402,173 +415,154 @@ function toggleThrowResultDetail(key: string) {
 // Auto results
 const okiResults = computed<ExtendedOkiResult[]>(() => {
   if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
-  
+
   const results: ExtendedOkiResult[] = [];
   const oppFirst = opponentFirstActiveFrame.value;
   const oppWindowStart = opponentWakeupFrame.value;
   const oppWindowEnd = opponentPreActiveEnd.value;
   const hasPreActiveWindow = oppWindowEnd >= oppWindowStart;
-  
-  let prefixes: { name: string; frames: number }[];
-  
+
+  let prefixes: { name: string; frames: number; isCorner?: boolean }[];
+
   if (useChainAsPrefix.value && comboChain.value.length > 0) {
     // Use combo chain as the only prefix
     prefixes = [
-      { name: comboChainPrefixName.value, frames: comboChainPrefixFrames.value },
+      { name: comboChainPrefixName.value, frames: comboChainPrefixFrames.value, isCorner: false },
     ];
   } else {
-    // Default prefixes
+    // Default prefixes (Dashes)
     prefixes = [
-      { name: '', frames: 0 },
-      { name: '前冲', frames: stats.value.forwardDash },
-      { name: '前冲x2', frames: stats.value.forwardDash * 2 },
+      { name: '', frames: 0, isCorner: false },
+      { name: '前冲', frames: stats.value.forwardDash, isCorner: false },
+      { name: '前冲x2', frames: stats.value.forwardDash * 2, isCorner: false },
     ];
+
+    // Add Frame Kill Moves (Single Move)
+    // Filter moves that are suitable for frame kills (Total frames < advantage)
+    // And generally not supers?
+    const validFrameKills = allMoves.value.filter(m => {
+      if (m.category === 'super' || m.category === 'throw') return false;
+      const total = getMoveTotalFrames(m);
+      // Heuristic: Frame kill should be faster than the knockdown advantage
+      // Also exclude moves that are too long (e.g. taunts)
+      return total > 0 && total < effectiveKnockdownAdv.value && total < 60;
+    });
+
+    for (const kill of validFrameKills) {
+      const total = getMoveTotalFrames(kill);
+      prefixes.push({
+        name: kill.name,
+        frames: total,
+        isCorner: true // Moves usually don't travel as far as dash, so imply corner
+      });
+
+      // Add Dash + Move (Common setup)
+      const dashTotal = stats.value.forwardDash + total;
+      if (dashTotal < effectiveKnockdownAdv.value) {
+        prefixes.push({
+          name: `前冲 + ${kill.name}`,
+          frames: dashTotal,
+          isCorner: true
+        });
+      }
+    }
   }
-  
+
   for (const prefix of prefixes) {
     for (const move of allMoves.value) {
       const startup = parseInt(move.startup) || 0;
       const totalActive = parseTotalActiveFrames(move.active);
       if (startup <= 0) continue;
-      
+
       const ourStart = prefix.frames + startup;
       const ourEnd = ourStart + totalActive - 1;
-      
+
       // Success: our active window overlaps opponent's vulnerable startup window
       const overlapsPreActive =
         hasPreActiveWindow && ourEnd >= oppWindowStart && ourStart <= oppWindowEnd;
       const overlapsOppFirst = ourStart <= oppFirst && ourEnd >= oppFirst;
-      
-      // Let's restore stricter original logic + the new calc.
+
       const isSuccessMatch = overlapsPreActive;
       const isTradeMatch = overlapsOppFirst && !overlapsPreActive;
 
-      // Logic from user: "12F active... 17F last active hits... +2 advantage"
-      // If oppFirst > ourStart, it means we hit LATE (Meaty).
-      // Bonus = oppFirst - ourStart.
-      // Example: Start 20. OppFirst 22. Bonus +2.
-      // If OppFirst == ourStart, Bonus 0.
-      
       if (isSuccessMatch || isTradeMatch) {
         // Calculate Meaty Bonus
-        // Bonus = OppFirst - (Frame we hit).
-        // If we hit at OppFirst, Bonus = 0.
-        // If we hit at OppFirst - 1, Bonus = +1.
-        // We hit at MAX(OurStart, OppWindowStart).
-        // Actually, effective hit frame is when both boxes overlap.
-        // Impact Frame = Max(OurStart, OppWindowStart).
-        // Meaty Bonus = OppFirst - ImpactFrame.
-        
-        // However, standard oki usually cares about hitting exactly at wakeup(OppFirst) or slightly later?
-        // No, Meaty means hitting active frames AS SOON AS they wake up.
-        // Opponent wakes up at OppFirst (Active).
-        // Wait, OppFirst is "Opponent First Active Frame" (Start of their reversal).
-        // Opponent IS VULNERABLE before that?
-        // Ah, `opponentWakeupFrame` is when they wake up?
-        // checking code... 
-        // `opponentFirstActiveFrame`: effectiveKnockdownAdv.value + opponentReversalStartup.value
-        // `opponentWakeupFrame`: effectiveKnockdownAdv.value + 1  (Usually)
-        
-        // Let's look at defining Meaty Bonus based on when the hit occurs relative to the move's active frames.
-        // Bonus = (Frame Index in Active Frames) - 1. (0-indexed)
-        // If 1st active frame hits: Bonus 0.
-        // If 3rd active frame hits: Bonus +2.
-        
-        // HitFrame = Max(OurStart, OppWindowStart).
-        // Wait, if OppWindowStart is the Wakeup Frame (e.g. 30), and OurStart is 20, OurEnd is 35.
-        // We hit at 30.
-        // Our 1st active was 20.
-        // So we hit on frame (30 - 20) = 10 -> 11th active frame.
-        // Bonus = +10.
-        
-        // So: EffectiveHitFrame = Math.max(ourStart, oppWindowStart);
-        // MeatyBonus = EffectiveHitFrame - ourStart;
-        
         const effectiveHitFrame = Math.max(ourStart, oppWindowStart);
         const meatyBonus = effectiveHitFrame - ourStart;
-        
-        // Recalculate Logic to be consistent with previous match count
-        // Previous logic used:
-        // const isSuccess = overlapsPreActive;
-        // const isTrade = overlapsOppFirst && !overlapsPreActive;
-        
-        // Let's restore that exactly to fix "missing data"
-        const isSuccessMatch = overlapsPreActive;
-        const isTradeMatch = overlapsOppFirst && !overlapsPreActive;
 
-        if (isSuccessMatch || isTradeMatch) {
-            let calcBlock: number | string | undefined;
-            let calcHit: number | string | undefined;
-            let tradeAdv: number | undefined;
-            let tradeDet: string | undefined;
+        let calcBlock: number | string | undefined;
+        let calcHit: number | string | undefined;
+        let tradeAdv: number | undefined;
+        let tradeDet: string | undefined;
+        let tradeExpl = '';
 
-            const baseBlock = parseFrameAdvantage(move.onBlock);
-            if (baseBlock !== null) {
-                calcBlock = baseBlock + meatyBonus;
-            } else {
-                calcBlock = move.onBlock;
-            }
-
-            const baseHit = parseFrameAdvantage(move.onHit);
-            if (baseHit !== null) {
-                calcHit = baseHit + meatyBonus;
-            } else {
-                calcHit = move.onHit;
-            }
-
-            // Calculate Trade Advantage
-            let tradeExpl = '';
-            if (isTradeMatch) {
-                if (selectedDefenderMove.value && move.raw && selectedDefenderMove.value.raw) {
-                    const adv = calculateTradeAdvantage(move.raw, selectedDefenderMove.value.raw);
-                    tradeAdv = adv;
-                    tradeDet = `${adv > 0 ? '+' : ''}${adv}`;
-
-                    const effA = getEffectiveHitstun(move.raw);
-                    const effB = getEffectiveHitstun(selectedDefenderMove.value.raw);
-                    
-                    const labelA = effA.type === 'blockstun' ? `(Blockstun ${parseHitstun(move.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(move.raw.hitstun)} + 2CH)`;
-                    const labelB = effB.type === 'blockstun' ? `(Blockstun ${parseHitstun(selectedDefenderMove.value.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(selectedDefenderMove.value.raw.hitstun)} + 2CH)`;
-                    
-                    tradeExpl = `${move.name} ${labelA} - ${selectedDefenderMove.value.name} ${labelB} = ${adv}`;
-                } else {
-                    tradeDet = '需选择招式';
-                }
-            }
-
-            results.push({
-                move,
-                prefix: prefix.name,
-                prefixFrames: prefix.frames,
-                ourActiveStart: ourStart,
-                ourActiveEnd: ourEnd,
-                coversOpponent: isSuccessMatch,
-                isTrade: isTradeMatch,
-                calculatedOnBlock: calcBlock,
-                calculatedOnHit: calcHit,
-                meatyBonus,
-                effectiveHitFrame,
-                tradeAdvantage: tradeAdv,
-                tradeDetail: tradeDet,
-                tradeExplanation: tradeExpl, // New field
-            });
+        const baseBlock = parseFrameAdvantage(move.onBlock);
+        if (baseBlock !== null) {
+          calcBlock = baseBlock + meatyBonus;
+        } else {
+          calcBlock = move.onBlock;
         }
+
+        const baseHit = parseFrameAdvantage(move.onHit);
+        if (baseHit !== null) {
+          // User requested: "Successful pressure is basically Counter Hit".
+          // So we add 2 frames for Counter Hit (since SF6 usually gives +2 for CH).
+          const chBonus = (isSuccessMatch) ? 2 : 0;
+          calcHit = baseHit + meatyBonus + chBonus;
+        } else {
+          calcHit = move.onHit;
+        }
+
+        // Calculate Trade Advantage
+        if (isTradeMatch) {
+          if (selectedDefenderMove.value && move.raw && selectedDefenderMove.value.raw) {
+            const adv = calculateTradeAdvantage(move.raw, selectedDefenderMove.value.raw);
+            tradeAdv = adv;
+            tradeDet = `${adv > 0 ? '+' : ''}${adv}`;
+
+            const effA = getEffectiveHitstun(move.raw);
+            const effB = getEffectiveHitstun(selectedDefenderMove.value.raw);
+
+            const labelA = effA.type === 'blockstun' ? `(Blockstun ${parseHitstun(move.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(move.raw.hitstun)} + 2CH)`;
+            const labelB = effB.type === 'blockstun' ? `(Blockstun ${parseHitstun(selectedDefenderMove.value.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(selectedDefenderMove.value.raw.hitstun)} + 2CH)`;
+
+            tradeExpl = `${move.name} ${labelA} - ${selectedDefenderMove.value.name} ${labelB} = ${adv}`;
+          } else {
+            tradeDet = '需选择招式';
+          }
+        }
+
+        results.push({
+          move,
+          prefix: prefix.name,
+          prefixFrames: prefix.frames,
+          ourActiveStart: ourStart,
+          ourActiveEnd: ourEnd,
+          coversOpponent: isSuccessMatch,
+          isTrade: isTradeMatch,
+          calculatedOnBlock: calcBlock,
+          calculatedOnHit: calcHit,
+          meatyBonus,
+          effectiveHitFrame,
+          tradeAdvantage: tradeAdv,
+          tradeDetail: tradeDet,
+          tradeExplanation: tradeExpl,
+          tags: prefix.isCorner ? ['版边(Corner)'] : []
+        });
       }
     }
   }
-  
+
   return results.sort((a, b) => {
+    // Sort logic
     // Sort by onBlock (descending)
     const blockA = typeof a.calculatedOnBlock === 'number' ? a.calculatedOnBlock : -999;
     const blockB = typeof b.calculatedOnBlock === 'number' ? b.calculatedOnBlock : -999;
+
+    // Group Safe ones first (>= -3? or just positive?)
+    // Actually standard heuristic sort
     if (blockA !== blockB) return blockB - blockA;
 
-    // Then by onHit (descending)
-    const hitA = typeof a.calculatedOnHit === 'number' ? a.calculatedOnHit : -999;
-    const hitB = typeof b.calculatedOnHit === 'number' ? b.calculatedOnHit : -999;
-    if (hitA !== hitB) return hitB - hitA;
-
-    // Finally by active start (ascending - earlier is usually easier to time?)
     return a.ourActiveStart - b.ourActiveStart;
   }).slice(0, 50);
 });
@@ -679,12 +673,12 @@ async function loadCharacterData(role: 'attacker' | 'defender', charId: string) 
     else defenderFrameData.value = null;
     return;
   }
-  
+
   loading.value = true;
   try {
     const path = `../data/characters/${charId}.json`;
     const loader = characterModules[path];
-    
+
     if (!loader) {
       console.error(`Character data not found for: ${charId}`);
       if (role === 'attacker') attackerFrameData.value = null;
@@ -694,14 +688,14 @@ async function loadCharacterData(role: 'attacker' | 'defender', charId: string) 
 
     const module = await loader() as { default: FrameData };
     if (role === 'attacker') {
-        attackerFrameData.value = module.default;
-        // Reset selection if character changes
-        selectedKnockdownMove.value = null;
-        useCustomKnockdown.value = false;
-        comboChain.value = [];
+      attackerFrameData.value = module.default;
+      // Reset selection if character changes
+      selectedKnockdownMove.value = null;
+      useCustomKnockdown.value = false;
+      comboChain.value = [];
     } else {
-        defenderFrameData.value = module.default;
-        selectedDefenderMove.value = null;
+      defenderFrameData.value = module.default;
+      selectedDefenderMove.value = null;
     }
   } catch (e) {
     console.error(`Failed to load character data for ${charId}:`, e);
@@ -781,44 +775,44 @@ interface TimelineFrame {
   isWakeup: boolean;
   isReversal: boolean;
   isVulnerable: boolean;
-  isHit?: boolean; 
+  isHit?: boolean;
   label?: number;
 }
 
 // Attacker Timeline
 function generateTimelineFrames(
   result: ExtendedOkiResult,
-  oppWakeupFrame: number, 
+  oppWakeupFrame: number,
   oppReversalFrame: number
 ): TimelineFrame[] {
   const frames: TimelineFrame[] = [];
-  
+
   const prefixFrames = result.prefixFrames;
   const startup = parseInt(result.move.startup) || 0;
   const active = parseTotalActiveFrames(result.move.active);
   const recovery = parseTotalRecoveryFrames(result.move.recovery);
-  
-  const moveStartFrame = prefixFrames; 
-  
+
+  const moveStartFrame = prefixFrames;
+
   // Calculate Attacker Duration
   // Prefix + Startup + Active + Recovery
   const total = moveStartFrame + startup + active + recovery;
-  
+
   // Also consider Defender's interaction to extend timeline if needed? 
   // For Attacker Row, just show functionality.
   // Actually, we should align lengths across rows for grid perfection.
   // But let's let CSS handle alignment (width). 
   // We'll generate up to Attacker's End for now.
-  
-  const activeStart = prefixFrames + startup; 
+
+  const activeStart = prefixFrames + startup;
   const activeEnd = prefixFrames + startup + active - 1;
 
-  
+
   for (let i = 1; i <= total; i++) {
     const globalFrame = i;
-    
+
     let type: TimelineFrame['type'];
-    
+
     if (i <= prefixFrames) {
       type = 'prefix';
     } else if (i < activeStart) {
@@ -828,28 +822,28 @@ function generateTimelineFrames(
     } else {
       type = 'recovery';
     }
-    
+
     // Markers (kept for reference, primarily on Defender/Interaction row)
     const isWakeup = (globalFrame === oppWakeupFrame);
     const isReversal = (globalFrame === oppReversalFrame);
     const isVulnerable = (globalFrame >= oppWakeupFrame && globalFrame < oppReversalFrame);
-    
+
     let isHit = false;
     if (type === 'active') {
-       if (result.effectiveHitFrame && globalFrame === result.effectiveHitFrame) {
-         isHit = true;
-       }
+      if (result.effectiveHitFrame && globalFrame === result.effectiveHitFrame) {
+        isHit = true;
+      }
     }
-    
+
     let label: number | undefined;
     // Show label for: 1, Prefix End, Startup End, Active End, Total
     if (i === 1) label = i;
     else if (i === prefixFrames && prefixFrames > 0) label = i;
-    else if (i === activeStart && i !== 1) label = i; 
-    else if (i === activeEnd) label = i; 
-    else if (i === total) label = i; 
-    else if (isHit) label = i; 
-    
+    else if (i === activeStart && i !== 1) label = i;
+    else if (i === activeEnd) label = i;
+    else if (i === total) label = i;
+    else if (isHit) label = i;
+
     frames.push({
       index: i,
       globalFrame,
@@ -861,7 +855,7 @@ function generateTimelineFrames(
       label
     });
   }
-  
+
   return frames;
 }
 
@@ -871,65 +865,65 @@ function generateDefenderFrames(
   oppWakeupFrame: number,
   mode: 'hit' | 'block'
 ): TimelineFrame[] {
-    const frames: TimelineFrame[] = [];
-    
-    // Calculate durations
-    const prefixFrames = result.prefixFrames;
-    const startup = parseInt(result.move.startup) || 0;
-    const active = parseTotalActiveFrames(result.move.active);
-    const recovery = parseTotalRecoveryFrames(result.move.recovery);
-    const attackerEnd = prefixFrames + startup + active + recovery;
-    
-    // Calculate Advantage & Stun End
-    const advantage = mode === 'hit' 
-      ? (typeof result.calculatedOnHit === 'number' ? result.calculatedOnHit : 0)
-      : (typeof result.calculatedOnBlock === 'number' ? result.calculatedOnBlock : 0);
-      
-    // Defender becomes free at: AttackerEnd + Advantage
-    // Note: If advantage is negative, defender is free BEFORE attacker.
-    // If advantage is positive, defender is free AFTER attacker.
-    const defenderFreeFrame = attackerEnd + advantage + 1;
-    
-    // Max Frame to render: at least up to AttackerEnd, or DefenderFreeFrame if later.
-    const totalRender = Math.max(attackerEnd, defenderFreeFrame - 1, oppWakeupFrame + 10);
-    
-    const impactFrame = result.effectiveHitFrame || 9999;
-    
-    for (let i = 1; i <= totalRender; i++) {
-        const globalFrame = i;
-        let type: TimelineFrame['type'] = 'neutral';
-        
-        if (i < oppWakeupFrame) {
-            type = 'down';
-        } else if (i < impactFrame) {
-            type = 'vulnerable';
-        } else if (i < defenderFreeFrame) {
-            // Stun state
-            type = mode === 'hit' ? 'hitstun' : 'blockstun';
-        } else {
-            type = 'neutral';
-        }
-        
-        const isWakeup = (globalFrame === oppWakeupFrame);
-        // Only show impact marker on defender row?
-        const isHit = (globalFrame === impactFrame);
-        
-        let label: number | undefined;
-        if (isWakeup || isHit || i === defenderFreeFrame - 1) label = i;
-        
-        frames.push({
-            index: i,
-            globalFrame,
-            type,
-            isWakeup,
-            isReversal: false,
-            isVulnerable: false,
-            isHit,
-            label
-        });
+  const frames: TimelineFrame[] = [];
+
+  // Calculate durations
+  const prefixFrames = result.prefixFrames;
+  const startup = parseInt(result.move.startup) || 0;
+  const active = parseTotalActiveFrames(result.move.active);
+  const recovery = parseTotalRecoveryFrames(result.move.recovery);
+  const attackerEnd = prefixFrames + startup + active + recovery;
+
+  // Calculate Advantage & Stun End
+  const advantage = mode === 'hit'
+    ? (typeof result.calculatedOnHit === 'number' ? result.calculatedOnHit : 0)
+    : (typeof result.calculatedOnBlock === 'number' ? result.calculatedOnBlock : 0);
+
+  // Defender becomes free at: AttackerEnd + Advantage
+  // Note: If advantage is negative, defender is free BEFORE attacker.
+  // If advantage is positive, defender is free AFTER attacker.
+  const defenderFreeFrame = attackerEnd + advantage + 1;
+
+  // Max Frame to render: at least up to AttackerEnd, or DefenderFreeFrame if later.
+  const totalRender = Math.max(attackerEnd, defenderFreeFrame - 1, oppWakeupFrame + 10);
+
+  const impactFrame = result.effectiveHitFrame || 9999;
+
+  for (let i = 1; i <= totalRender; i++) {
+    const globalFrame = i;
+    let type: TimelineFrame['type'] = 'neutral';
+
+    if (i < oppWakeupFrame) {
+      type = 'down';
+    } else if (i < impactFrame) {
+      type = 'vulnerable';
+    } else if (i < defenderFreeFrame) {
+      // Stun state
+      type = mode === 'hit' ? 'hitstun' : 'blockstun';
+    } else {
+      type = 'neutral';
     }
-    
-    return frames;
+
+    const isWakeup = (globalFrame === oppWakeupFrame);
+    // Only show impact marker on defender row?
+    const isHit = (globalFrame === impactFrame);
+
+    let label: number | undefined;
+    if (isWakeup || isHit || i === defenderFreeFrame - 1) label = i;
+
+    frames.push({
+      index: i,
+      globalFrame,
+      type,
+      isWakeup,
+      isReversal: false,
+      isVulnerable: false,
+      isHit,
+      label
+    });
+  }
+
+  return frames;
 }
 
 // Throw Timeline Generators
@@ -941,15 +935,15 @@ function generateThrowTimelineFrames(
   throwActive: number
 ): TimelineFrame[] {
   const frames: TimelineFrame[] = [];
-  
+
   const prefixFrames = result.prefixFrames;
-  
+
   // Filler
   const fillerStartup = result.fillerStartup || 0;
   const fillerActive = result.fillerActive || 0;
   const fillerRecovery = result.fillerRecovery || 0;
   const fillerTotal = fillerStartup + fillerActive + fillerRecovery;
-  
+
   // Calculate Filler Key Frames (Global)
   // Startup: 5 -> Frames 1,2,3,4 are startup. 5 is Active.
   // Global Start: prefixFrames + 1.
@@ -957,7 +951,7 @@ function generateThrowTimelineFrames(
   // Active Start: prefixFrames + fillerStartup.
   // If fillerStartup is 5, it means relative frame 5 is active.
   // Global: prefix + 5.
-  const fillerActiveStart = prefixFrames + fillerStartup; 
+  const fillerActiveStart = prefixFrames + fillerStartup;
   const fillerActiveEnd = fillerActiveStart + fillerActive - 1;
   const fillerEndFrame = prefixFrames + fillerTotal;
 
@@ -970,51 +964,51 @@ function generateThrowTimelineFrames(
   // Index 5: Active.
   // Offset = 4. (Startup - 1).
   // Global = Start + (Startup - 1).
-  const throwActiveStart = throwStartFrame + throwStartup - 1; 
+  const throwActiveStart = throwStartFrame + throwStartup - 1;
   const throwActiveEnd = throwActiveStart + throwActive - 1;
-  const throwRecoveryTotal = 20; 
+  const throwRecoveryTotal = 20;
   const total = throwActiveEnd + throwRecoveryTotal;
-  
+
   for (let i = 1; i <= total; i++) {
-     const globalFrame = i;
-     let type: TimelineFrame['type'];
-     
-     if (i <= prefixFrames) {
-         type = 'prefix';
-     } else if (i <= fillerEndFrame) {
-         // Filler Logic
-         if (i < fillerActiveStart) type = 'startup';
-         else if (i <= fillerActiveEnd) type = 'active';
-         else type = 'recovery';
-     } else {
-         // Throw Logic
-         if (i < throwActiveStart) type = 'startup';
-         else if (i <= throwActiveEnd) type = 'active';
-         else type = 'recovery';
-     }
-     
-     const isWakeup = (globalFrame === oppWakeupFrame);
-     // Visualizing "Throwable" alignment
-     // Effective Throw Frame: result.firstActive
-     const isThrowConnect = (globalFrame === result.firstActive);
-     
-     let label: number | undefined;
-     if (i === 1) label = i;
-     else if (i === prefixFrames && prefixFrames > 0) label = i;
-     else if (isThrowConnect) label = i;
-     
-     frames.push({
-         index: i,
-         globalFrame,
-         type,
-         isWakeup,
-         isReversal: false,
-         isVulnerable: false,
-         isHit: isThrowConnect,
-         label
-     });
+    const globalFrame = i;
+    let type: TimelineFrame['type'];
+
+    if (i <= prefixFrames) {
+      type = 'prefix';
+    } else if (i <= fillerEndFrame) {
+      // Filler Logic
+      if (i < fillerActiveStart) type = 'startup';
+      else if (i <= fillerActiveEnd) type = 'active';
+      else type = 'recovery';
+    } else {
+      // Throw Logic
+      if (i < throwActiveStart) type = 'startup';
+      else if (i <= throwActiveEnd) type = 'active';
+      else type = 'recovery';
+    }
+
+    const isWakeup = (globalFrame === oppWakeupFrame);
+    // Visualizing "Throwable" alignment
+    // Effective Throw Frame: result.firstActive
+    const isThrowConnect = (globalFrame === result.firstActive);
+
+    let label: number | undefined;
+    if (i === 1) label = i;
+    else if (i === prefixFrames && prefixFrames > 0) label = i;
+    else if (isThrowConnect) label = i;
+
+    frames.push({
+      index: i,
+      globalFrame,
+      type,
+      isWakeup,
+      isReversal: false,
+      isVulnerable: false,
+      isHit: isThrowConnect,
+      label
+    });
   }
-  
+
   return frames;
 }
 
@@ -1024,50 +1018,50 @@ function generateThrowDefenderFrames(
   throwFirstActive: number
 ): TimelineFrame[] {
   const frames: TimelineFrame[] = [];
-  
+
   // Render enough to show throw connect + some aftermath
   const total = Math.max(oppWakeupFrame + 20, throwFirstActive + 10);
-  
+
   for (let i = 1; i <= total; i++) {
-      const globalFrame = i;
-      let type: TimelineFrame['type'] = 'neutral';
-      
-      if (i < oppWakeupFrame) {
-          type = 'down';
+    const globalFrame = i;
+    let type: TimelineFrame['type'] = 'neutral';
+
+    if (i < oppWakeupFrame) {
+      type = 'down';
+    } else {
+      // Wakeup onwards
+      // Usually 1F throw invuln?
+      // If 1F invuln, WakeupFrame is Invuln. Wakeup+1 is Throwable.
+      // Let's assume Wakeup Frame is "Rising", often invincible to throws or strikes?
+      // SF6: 1F Throw Invuln on wakeup.
+      // So if Wakeup is Frame 30. Frame 30 is Invuln. Frame 31 is Throwable.
+      if (i === oppWakeupFrame) {
+        type = 'recovery'; // "Invuln" visual? neutral is fine.
       } else {
-          // Wakeup onwards
-          // Usually 1F throw invuln?
-          // If 1F invuln, WakeupFrame is Invuln. Wakeup+1 is Throwable.
-          // Let's assume Wakeup Frame is "Rising", often invincible to throws or strikes?
-          // SF6: 1F Throw Invuln on wakeup.
-          // So if Wakeup is Frame 30. Frame 30 is Invuln. Frame 31 is Throwable.
-          if (i === oppWakeupFrame) {
-              type = 'recovery'; // "Invuln" visual? neutral is fine.
-          } else {
-              type = 'vulnerable'; // Throwable
-          }
-          
-          if (i >= throwFirstActive) {
-               type = 'hitstun'; // Thrown!
-          }
+        type = 'vulnerable'; // Throwable
       }
-      
-      const isWakeup = (i === oppWakeupFrame);
-      const isHit = (i === throwFirstActive);
-      
-      let label: number | undefined;
-      if (isWakeup || isHit) label = i;
-      
-      frames.push({
-          index: i,
-          globalFrame,
-          type,
-          isWakeup,
-          isReversal: false,
-          isVulnerable: false,
-          isHit,
-          label
-      });
+
+      if (i >= throwFirstActive) {
+        type = 'hitstun'; // Thrown!
+      }
+    }
+
+    const isWakeup = (i === oppWakeupFrame);
+    const isHit = (i === throwFirstActive);
+
+    let label: number | undefined;
+    if (isWakeup || isHit) label = i;
+
+    frames.push({
+      index: i,
+      globalFrame,
+      type,
+      isWakeup,
+      isReversal: false,
+      isVulnerable: false,
+      isHit,
+      label
+    });
   }
 
   return frames;
@@ -1096,7 +1090,7 @@ function formatFrame(val: number | string | undefined): string {
   <div class="oki-view container">
     <h1 class="page-title">压起身计算器</h1>
     <p class="page-desc">组合链计算: 前冲 + 前冲 + 招式A + ...</p>
-    
+
     <!-- Character Stats -->
     <div v-if="stats" class="stats-bar">
       <span class="stat-item">
@@ -1108,7 +1102,7 @@ function formatFrame(val: number | string | undefined): string {
         <span class="stat-value">{{ stats.backDash }}F</span>
       </span>
     </div>
-    
+
     <!-- Step 1: Character -->
     <section class="oki-section">
       <h2 class="section-title">
@@ -1117,8 +1111,8 @@ function formatFrame(val: number | string | undefined): string {
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-           <label class="block text-sm font-medium mb-1">攻击方 (Attacker)</label>
-           <select v-model="attackerCharId" class="character-select">
+          <label class="block text-sm font-medium mb-1">攻击方 (Attacker)</label>
+          <select v-model="attackerCharId" class="character-select">
             <option value="">-- 选择角色 --</option>
             <option v-for="char in SF6_CHARACTERS" :key="char.id" :value="char.id">
               {{ char.name }} {{ char.nameJp ? `(${char.nameJp})` : '' }}
@@ -1126,8 +1120,8 @@ function formatFrame(val: number | string | undefined): string {
           </select>
         </div>
         <div>
-           <label class="block text-sm font-medium mb-1">防守方 (Defender)</label>
-           <select v-model="defenderCharId" class="character-select">
+          <label class="block text-sm font-medium mb-1">防守方 (Defender)</label>
+          <select v-model="defenderCharId" class="character-select">
             <option value="">-- 选择角色 --</option>
             <option v-for="char in SF6_CHARACTERS" :key="char.id" :value="char.id">
               {{ char.name }} {{ char.nameJp ? `(${char.nameJp})` : '' }}
@@ -1136,16 +1130,18 @@ function formatFrame(val: number | string | undefined): string {
         </div>
       </div>
     </section>
-    
-    <div v-if="loading" class="loading-state"><p>加载中...</p></div>
-    
+
+    <div v-if="loading" class="loading-state">
+      <p>加载中...</p>
+    </div>
+
     <!-- Step 2: Knockdown -->
     <section v-else-if="attackerFrameData" class="oki-section">
       <h2 class="section-title">
         <span class="step-number">2</span>
         击倒数据
       </h2>
-      
+
       <div class="custom-knockdown-row">
         <button :class="['custom-kd-btn', { active: useCustomKnockdown }]" @click="enableCustomKnockdown">
           自定义
@@ -1156,91 +1152,73 @@ function formatFrame(val: number | string | undefined): string {
           <span>F</span>
         </div>
       </div>
-      
+
       <div v-if="!useCustomKnockdown" class="knockdown-grid">
-        <button
-          v-for="move in knockdownMoves"
-          :key="move.name"
+        <button v-for="move in knockdownMoves" :key="move.name"
           :class="['knockdown-card', { active: selectedKnockdownMove?.name === move.name }]"
-          @click="selectKnockdownMove(move)"
-        >
+          @click="selectKnockdownMove(move)">
           <span class="move-name">{{ move.name }}</span>
           <span class="move-input">{{ move.input }}</span>
           <span class="move-advantage" v-if="move.knockdown">+{{ move.knockdown.advantage }}F</span>
         </button>
       </div>
     </section>
-    
+
     <!-- Step 3: Combo Builder -->
     <section v-if="effectiveKnockdownAdv > 0 && attackerFrameData" class="oki-section results-section">
       <h2 class="section-title">
         <span class="step-number">3</span>
         组合链计算
       </h2>
-      
+
       <!-- Opponent Info & Settings -->
       <div class="opponent-info" style="display:block">
         <div class="mb-2">
-            <strong>对手反击判定第一帧 (Reversal Active):</strong> 
-            {{ effectiveKnockdownAdv }} (击倒) + {{ opponentReversalStartup }} (发生) = 
-            <strong class="frame-negative">{{ opponentFirstActiveFrame }}F</strong>
+          <strong>对手反击判定第一帧 (Reversal Active):</strong>
+          {{ effectiveKnockdownAdv }} (击倒) + {{ opponentReversalStartup }} (发生) =
+          <strong class="frame-negative">{{ opponentFirstActiveFrame }}F</strong>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
           <!-- Manual / Auto Abare -->
           <div>
             <label class="block text-sm font-medium mb-1">
-              对手抢招发生帧 (Startup) <span class="text-xs font-normal ml-1" style="color: var(--color-warning)">⚠ 计算相杀需要选择招式</span>
+              对手抢招发生帧 (Startup) <span class="text-xs font-normal ml-1" style="color: var(--color-warning)">⚠
+                计算相杀需要选择招式</span>
             </label>
             <div class="flex space-x-2">
-               <input 
-                type="number" 
-                v-model.number="opponentReversalStartup" 
-                min="1" max="30"
-                class="small-input p-1"
-                style="width: 60px"
-              />
+              <input type="number" v-model.number="opponentReversalStartup" min="1" max="30" class="small-input p-1"
+                style="width: 60px" />
               <div class="flex-1">
-                  <div class="move-search" style="min-width: 0">
-                    <input 
-                      type="text" 
-                      v-model="defenderMoveSearchQuery" 
-                      @focus="showDefenderDropdown = true"
-                      @blur="handleDefenderBlur"
-                      @input="selectedDefenderMove = null" 
-                      placeholder="选择或搜索招式..."
-                      class="move-search-input p-1 text-xs"
-                      :disabled="!defenderFrameData"
-                    />
-                    <div v-if="showDefenderDropdown && filteredDefenderMoves.length > 0" class="move-dropdown">
-                      <button
-                        v-for="move in filteredDefenderMoves"
-                        :key="move.name"
-                        class="move-option text-xs"
-                        @click="selectDefenderMove(move)"
-                      >
-                        <span class="truncate mr-2">{{ move.name }}</span>
-                        <span class="whitespace-nowrap text-gray-400">{{ move.startup }}F</span>
-                      </button>
-                    </div>
+                <div class="move-search" style="min-width: 0">
+                  <input type="text" v-model="defenderMoveSearchQuery" @focus="showDefenderDropdown = true"
+                    @blur="handleDefenderBlur" @input="selectedDefenderMove = null" placeholder="选择或搜索招式..."
+                    class="move-search-input p-1 text-xs" :disabled="!defenderFrameData" />
+                  <div v-if="showDefenderDropdown && filteredDefenderMoves.length > 0" class="move-dropdown">
+                    <button v-for="move in filteredDefenderMoves" :key="move.name" class="move-option text-xs"
+                      @click="selectDefenderMove(move)">
+                      <span class="truncate mr-2">{{ move.name }}</span>
+                      <span class="whitespace-nowrap text-gray-400">{{ move.startup }}F</span>
+                    </button>
                   </div>
+                </div>
               </div>
             </div>
             <p v-if="!defenderFrameData" class="text-xs text-gray-400 mt-1">请选择防守方角色以启用招式选择</p>
           </div>
-          
-           <div>
-             <div class="mb-1">
-                <strong>可命中窗口:</strong> 
-                 <span v-if="opponentPreActiveWindowValid" class="opponent-window">
-                  {{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F
-                </span>
-                <span v-else class="opponent-window">无</span>
-             </div>
-           </div>
+
+          <div>
+            <div class="mb-1">
+              <strong>可命中窗口:</strong>
+              <span v-if="opponentPreActiveWindowValid" class="opponent-window">
+                {{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F
+              </span>
+              <span v-else class="opponent-window">无</span>
+            </div>
+          </div>
         </div>
       </div>
-      
+
       <!-- Combo Chain Builder -->
       <div class="combo-builder">
         <div class="combo-chain">
@@ -1252,25 +1230,15 @@ function formatFrame(val: number | string | undefined): string {
           </div>
           <span v-if="comboChain.length === 0" class="chain-empty">点击下方添加动作</span>
         </div>
-        
+
         <div class="combo-actions">
           <button class="action-btn dash-btn" @click="addDash">
             + 前冲 ({{ stats?.forwardDash }}F)
           </button>
           <div class="move-search">
-            <input 
-              type="text" 
-              v-model="moveSearchQuery" 
-              placeholder="搜索招式..."
-              class="move-search-input"
-            />
+            <input type="text" v-model="moveSearchQuery" placeholder="搜索招式..." class="move-search-input" />
             <div v-if="moveSearchQuery" class="move-dropdown">
-              <button
-                v-for="move in filteredMoves"
-                :key="move.name"
-                class="move-option"
-                @click="addMove(move)"
-              >
+              <button v-for="move in filteredMoves" :key="move.name" class="move-option" @click="addMove(move)">
                 <span>{{ move.name }}</span>
                 <span class="move-input">{{ move.input }}</span>
                 <span>{{ move.startup }}F</span>
@@ -1282,7 +1250,7 @@ function formatFrame(val: number | string | undefined): string {
           </button>
         </div>
       </div>
-      
+
       <!-- Combo Result -->
       <div v-if="comboResult" class="combo-result" :class="{ success: comboResult.coversOpponent }">
         <div class="result-row">
@@ -1306,22 +1274,19 @@ function formatFrame(val: number | string | undefined): string {
           </span>
         </div>
       </div>
-      
+
       <!-- Auto Results -->
       <div class="results-header-row">
         <h3 class="results-title">自动匹配 ({{ okiResults.length }}个成功)</h3>
-        <button 
-          v-if="comboChain.length > 0"
-          :class="['prefix-btn', { active: useChainAsPrefix }]"
-          @click="useChainAsPrefix = !useChainAsPrefix"
-        >
+        <button v-if="comboChain.length > 0" :class="['prefix-btn', { active: useChainAsPrefix }]"
+          @click="useChainAsPrefix = !useChainAsPrefix">
           {{ useChainAsPrefix ? '✓ 使用组合前置' : '以当前组合为前置' }}
         </button>
       </div>
       <p v-if="useChainAsPrefix" class="prefix-info">
         前置: <strong>{{ comboChainPrefixName }} ({{ comboChainPrefixFrames }}F)</strong> + 招式
       </p>
-      
+
       <div v-if="okiResults.length > 0" class="results-table">
         <div class="result-header">
           <span>组合</span>
@@ -1331,19 +1296,15 @@ function formatFrame(val: number | string | undefined): string {
           <span>被击</span>
           <span>相杀</span>
         </div>
-        <div 
-          v-for="result in okiResults" 
-          :key="`${result.prefix}${result.move.name}`"
-          :class="['result-row-auto', { 
-            expanded: selectedResultKey === `${result.prefix}${result.move.name}`,
-            success: result.coversOpponent,
-            trade: result.isTrade
-          }]"
-          @click="toggleResultDetail(`${result.prefix}${result.move.name}`)"
-        >
+        <div v-for="result in okiResults" :key="`${result.prefix}${result.move.name}`" :class="['result-row-auto', {
+          expanded: selectedResultKey === `${result.prefix}${result.move.name}`,
+          success: result.coversOpponent,
+          trade: result.isTrade
+        }]" @click="toggleResultDetail(`${result.prefix}${result.move.name}`)">
           <div class="result-combo">
             <span v-if="result.coversOpponent" class="success-badge">压制</span>
             <span v-if="result.isTrade" class="trade-badge">相杀</span>
+            <span v-if="result.tags && result.tags.length > 0" class="tag-badge">{{ result.tags.join(', ') }}</span>
             <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
             <span v-if="result.prefix">+</span>
             <span>{{ result.move.name }}</span>
@@ -1351,10 +1312,16 @@ function formatFrame(val: number | string | undefined): string {
           </div>
           <span>{{ result.prefixFrames + parseInt(result.move.startup) }}F</span>
           <span>{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
-          <span :class="{'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock)}">{{ formatFrame(result.calculatedOnBlock) }}</span>
-          <span :class="{'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit)}">{{ formatFrame(result.calculatedOnHit) }}</span>
-          <span :class="{'frame-positive': isPositive(result.tradeAdvantage), 'frame-negative': isNegative(result.tradeAdvantage)}">{{ result.tradeDetail || '-' }}</span>
-          
+          <span
+            :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
+              formatFrame(result.calculatedOnBlock) }}</span>
+          <span
+            :class="{ 'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit) }">{{
+              formatFrame(result.calculatedOnHit) }}</span>
+          <span
+            :class="{ 'frame-positive': isPositive(result.tradeAdvantage), 'frame-negative': isNegative(result.tradeAdvantage) }">{{
+              result.tradeDetail || '-' }}</span>
+
           <!-- Expandable Detail -->
           <div v-if="selectedResultKey === `${result.prefix}${result.move.name}`" class="result-detail" @click.stop>
             <div class="detail-title">帧数详情</div>
@@ -1390,11 +1357,13 @@ function formatFrame(val: number | string | undefined): string {
             <div class="detail-row calc">
               <span class="detail-label">被防计算:</span>
               <span>
-                {{ result.move.onBlock }} (原始) 
+                {{ result.move.onBlock }} (原始)
                 <span v-if="result.meatyBonus && result.meatyBonus > 0" class="meaty-bonus-highlight">
-                   + {{ result.meatyBonus }} (Meaty: {{ result.effectiveHitFrame }}F击中 - {{ result.ourActiveStart }}F发生)
+                  + {{ result.meatyBonus }} (Meaty: {{ result.effectiveHitFrame }}F击中 - {{ result.ourActiveStart }}F发生)
                 </span>
-                = <span :class="{'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock)}">{{ formatFrame(result.calculatedOnBlock) }}</span>
+                = <span
+                  :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
+                    formatFrame(result.calculatedOnBlock) }}</span>
               </span>
             </div>
             <div class="detail-row calc">
@@ -1402,23 +1371,29 @@ function formatFrame(val: number | string | undefined): string {
               <span>
                 {{ result.move.onHit }} (原始)
                 <span v-if="result.meatyBonus && result.meatyBonus > 0" class="meaty-bonus-highlight">
-                   + {{ result.meatyBonus }} (Meaty: {{ result.effectiveHitFrame }}F击中 - {{ result.ourActiveStart }}F发生)
+                  + {{ result.meatyBonus }} (Meaty)
                 </span>
-                = <span :class="{'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit)}">{{ formatFrame(result.calculatedOnHit) }}</span>
+                <span v-if="result.coversOpponent" class="meaty-bonus-highlight">
+                  + 2 (打康)
+                </span>
+                = <span
+                  :class="{ 'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit) }">{{
+                    formatFrame(result.calculatedOnHit) }}</span>
               </span>
             </div>
             <div class="detail-row" v-if="result.isTrade">
               <span class="detail-label">相杀有利 (Trade):</span>
               <span>{{ result.tradeDetail }}</span>
             </div>
-             <div class="detail-row calc" style="width: 100%" v-if="result.isTrade && result.tradeExplanation">
+            <div class="detail-row calc" style="width: 100%" v-if="result.isTrade && result.tradeExplanation">
               <span class="detail-label">相杀计算:</span>
               <span>{{ result.tradeExplanation }}</span>
             </div>
             <div class="detail-row result">
               <span class="detail-label">判定:</span>
               <span v-if="result.coversOpponent" class="success">
-                ✓ 压制成功: {{ result.ourActiveStart }}~{{ result.ourActiveEnd }} 与 {{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }} 有重叠
+                ✓ 压制成功: {{ result.ourActiveStart }}~{{ result.ourActiveEnd }} 与 {{ opponentWakeupFrame }}~{{
+                  opponentPreActiveEnd }} 有重叠
               </span>
               <span v-else-if="result.isTrade" class="trade">
                 ⚠ 相杀: 与对手判定第一帧重合 ({{ opponentFirstActiveFrame }}F)
@@ -1427,78 +1402,69 @@ function formatFrame(val: number | string | undefined): string {
 
             <!-- Timeline UI (Multi-Row View) -->
             <div class="timeline-wrapper">
-               <div class="timeline-header">
-                 <div class="legend-row">
-                    <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
-                    <span class="timeline-legend-item"><span class="legend-color startup"></span>发生</span>
-                    <span class="timeline-legend-item"><span class="legend-color active"></span>持续</span>
-                    <span class="timeline-legend-item"><span class="legend-color recovery"></span>硬直</span>
-                 </div>
-                 <div class="legend-row">
-                    <span class="timeline-legend-item"><span class="legend-color down"></span>倒地</span>
-                    <span class="timeline-legend-item"><span class="legend-color vulnerable"></span>可被击</span>
-                    <span class="timeline-legend-item"><span class="legend-color hitstun"></span>被击硬直</span>
-                    <span class="timeline-legend-item"><span class="legend-color blockstun"></span>被防硬直</span>
-                 </div>
-               </div>
-               
-               <div class="timeline-scroll-container">
-                  <!-- Row 1: Attacker -->
-                  <div class="timeline-row-label">进攻方 (Self)</div>
-                  <div class="timeline-blocks-container">
-                    <div 
-                      v-for="frame in generateTimelineFrames(result, opponentWakeupFrame, opponentFirstActiveFrame)" 
-                      :key="frame.index"
-                      :class="['frame-block', frame.type, { 
-                        'is-hit': frame.isHit,
-                        'is-vulnerable': frame.isVulnerable
-                      }]"
-                    >
-                      <div class="frame-content">
-                        <!-- Markers overlaid (Only Wakeup/Reversal reference on attacker row?) -->
-                        <!-- Maybe keep clean, put markers on Defender row -->
-                         <div v-if="frame.isWakeup" class="frame-marker wakeup ghost">▼</div>
-                      </div>
-                      <div class="frame-number" v-if="frame.label">{{ frame.label }}</div>
-                    </div>
-                  </div>
+              <div class="timeline-header">
+                <div class="legend-row">
+                  <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
+                  <span class="timeline-legend-item"><span class="legend-color startup"></span>发生</span>
+                  <span class="timeline-legend-item"><span class="legend-color active"></span>持续</span>
+                  <span class="timeline-legend-item"><span class="legend-color recovery"></span>硬直</span>
+                </div>
+                <div class="legend-row">
+                  <span class="timeline-legend-item"><span class="legend-color down"></span>倒地</span>
+                  <span class="timeline-legend-item"><span class="legend-color vulnerable"></span>可被击</span>
+                  <span class="timeline-legend-item"><span class="legend-color hitstun"></span>被击硬直</span>
+                  <span class="timeline-legend-item"><span class="legend-color blockstun"></span>被防硬直</span>
+                </div>
+              </div>
 
-                  <!-- Row 2: Defender (Hit) -->
-                  <div class="timeline-row-label mt-4">对手 - 被击 (Hit)</div>
-                  <div class="timeline-blocks-container">
-                    <div 
-                      v-for="frame in generateDefenderFrames(result, opponentWakeupFrame, 'hit')" 
-                      :key="frame.globalFrame"
-                      :class="['frame-block', frame.type]"
-                    >
-                      <div class="frame-content">
-                         <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
-                         <div v-if="frame.isHit" class="frame-marker hit-marker">💥</div>
-                      </div>
-                      <!-- Only show distinct frame numbers if needed -->
+              <div class="timeline-scroll-container">
+                <!-- Row 1: Attacker -->
+                <div class="timeline-row-label">进攻方 (Self)</div>
+                <div class="timeline-blocks-container">
+                  <div v-for="frame in generateTimelineFrames(result, opponentWakeupFrame, opponentFirstActiveFrame)"
+                    :key="frame.index" :class="['frame-block', frame.type, {
+                      'is-hit': frame.isHit,
+                      'is-vulnerable': frame.isVulnerable
+                    }]">
+                    <div class="frame-content">
+                      <!-- Markers overlaid (Only Wakeup/Reversal reference on attacker row?) -->
+                      <!-- Maybe keep clean, put markers on Defender row -->
+                      <div v-if="frame.isWakeup" class="frame-marker wakeup ghost">▼</div>
                     </div>
+                    <div class="frame-number" v-if="frame.label">{{ frame.label }}</div>
                   </div>
+                </div>
 
-                  <!-- Row 3: Defender (Block) -->
-                  <div class="timeline-row-label mt-2">对手 - 被防 (Block)</div>
-                   <div class="timeline-blocks-container">
-                    <div 
-                      v-for="frame in generateDefenderFrames(result, opponentWakeupFrame, 'block')" 
-                      :key="frame.globalFrame"
-                      :class="['frame-block', frame.type]"
-                    >
-                      <div class="frame-content">
-                         <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
-                         <div v-if="frame.isHit" class="frame-marker block-marker">🛡️</div>
-                      </div>
+                <!-- Row 2: Defender (Hit) -->
+                <div class="timeline-row-label mt-4">对手 - 被击 (Hit)</div>
+                <div class="timeline-blocks-container">
+                  <div v-for="frame in generateDefenderFrames(result, opponentWakeupFrame, 'hit')"
+                    :key="frame.globalFrame" :class="['frame-block', frame.type]">
+                    <div class="frame-content">
+                      <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
+                      <div v-if="frame.isHit" class="frame-marker hit-marker">💥</div>
+                    </div>
+                    <!-- Only show distinct frame numbers if needed -->
+                  </div>
+                </div>
+
+                <!-- Row 3: Defender (Block) -->
+                <div class="timeline-row-label mt-2">对手 - 被防 (Block)</div>
+                <div class="timeline-blocks-container">
+                  <div v-for="frame in generateDefenderFrames(result, opponentWakeupFrame, 'block')"
+                    :key="frame.globalFrame" :class="['frame-block', frame.type]">
+                    <div class="frame-content">
+                      <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
+                      <div v-if="frame.isHit" class="frame-marker block-marker">🛡️</div>
                     </div>
                   </div>
-               </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div v-else class="empty-state">
         <p>没有自动匹配的压制组合</p>
       </div>
@@ -1544,11 +1510,13 @@ function formatFrame(val: number | string | undefined): string {
       <div class="throw-math">
         <div class="math-row">
           <span class="math-label">最早可被投帧:</span>
-          <span class="math-value">{{ effectiveKnockdownAdv }} + {{ normalizedThrowInvul }} + 1 = {{ earliestThrowableFrame }}F</span>
+          <span class="math-value">{{ effectiveKnockdownAdv }} + {{ normalizedThrowInvul }} + 1 = {{
+            earliestThrowableFrame }}F</span>
         </div>
         <div class="math-row" v-if="normalizedAbare > 0">
-           <span class="math-label">最晚可被投帧:</span>
-           <span class="math-value">{{ effectiveKnockdownAdv }} + {{ normalizedAbare }} - 1 = {{ latestThrowableFrame }}F</span>
+          <span class="math-label">最晚可被投帧:</span>
+          <span class="math-value">{{ effectiveKnockdownAdv }} + {{ normalizedAbare }} - 1 = {{ latestThrowableFrame
+            }}F</span>
         </div>
         <div class="math-row">
           <span class="math-label">理想按投延迟:</span>
@@ -1582,12 +1550,9 @@ function formatFrame(val: number | string | undefined): string {
           <span>延迟S</span>
           <span>第一帧判定</span>
         </div>
-        <div
-          v-for="result in throwResults"
-          :key="result.key"
+        <div v-for="result in throwResults" :key="result.key"
           :class="['result-row-auto', 'throw-row', { expanded: selectedThrowResultKey === result.key }]"
-          @click="toggleThrowResultDetail(result.key)"
-        >
+          @click="toggleThrowResultDetail(result.key)">
           <div class="result-combo">
             <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
             <span v-if="result.prefix">+</span>
@@ -1608,7 +1573,8 @@ function formatFrame(val: number | string | undefined): string {
             <div class="detail-row">
               <span class="detail-label">空挥招式:</span>
               <span v-if="result.filler">
-                {{ result.fillerName }} = {{ result.fillerStartup }} + {{ result.fillerActive }} + {{ result.fillerRecovery }} = {{ result.fillerFrames }}F
+                {{ result.fillerName }} = {{ result.fillerStartup }} + {{ result.fillerActive }} + {{
+                  result.fillerRecovery }} = {{ result.fillerFrames }}F
               </span>
               <span v-else>无 = 0F</span>
             </div>
@@ -1620,55 +1586,50 @@ function formatFrame(val: number | string | undefined): string {
               <span class="detail-label">第一帧:</span>
               <span>{{ result.delay }} + {{ normalizedThrowStartup }} = {{ result.firstActive }}F</span>
             </div>
-            
+
             <!-- Loop Throw Timeline -->
             <div class="timeline-wrapper">
-               <div class="timeline-header">
-                 <div class="legend-row">
-                    <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
-                    <span class="timeline-legend-item"><span class="legend-color startup"></span>发生</span>
-                    <span class="timeline-legend-item"><span class="legend-color active"></span>持续/空挥</span>
-                    <span class="timeline-legend-item"><span class="legend-color hitstun"></span>被投</span>
-                 </div>
-                 <div class="legend-row">
-                    <span class="timeline-legend-item"><span class="legend-color down"></span>倒地</span>
-                    <span class="timeline-legend-item"><span class="legend-icon opponent-wakeup">▼</span>起身</span>
-                 </div>
-               </div>
-               
-               <div class="timeline-scroll-container">
-                  <!-- Row 1: Attacker -->
-                  <div class="timeline-row-label">进攻方 (Self)</div>
-                  <div class="timeline-blocks-container">
-                    <div 
-                      v-for="frame in generateThrowTimelineFrames(result, opponentWakeupFrame, normalizedThrowStartup, normalizedThrowActive)" 
-                      :key="frame.index"
-                      :class="['frame-block', frame.type, { 
-                        'is-hit': frame.isHit
-                      }]"
-                    >
-                      <div class="frame-content">
-                         <div v-if="frame.isWakeup" class="frame-marker wakeup ghost">▼</div>
-                      </div>
-                      <div class="frame-number" v-if="frame.label">{{ frame.label }}</div>
-                    </div>
-                  </div>
+              <div class="timeline-header">
+                <div class="legend-row">
+                  <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
+                  <span class="timeline-legend-item"><span class="legend-color startup"></span>发生</span>
+                  <span class="timeline-legend-item"><span class="legend-color active"></span>持续/空挥</span>
+                  <span class="timeline-legend-item"><span class="legend-color hitstun"></span>被投</span>
+                </div>
+                <div class="legend-row">
+                  <span class="timeline-legend-item"><span class="legend-color down"></span>倒地</span>
+                  <span class="timeline-legend-item"><span class="legend-icon opponent-wakeup">▼</span>起身</span>
+                </div>
+              </div>
 
-                  <!-- Row 2: Defender -->
-                  <div class="timeline-row-label mt-4">对手 (Defender)</div>
-                  <div class="timeline-blocks-container">
-                    <div 
-                      v-for="frame in generateThrowDefenderFrames(result, opponentWakeupFrame, result.firstActive)" 
-                      :key="frame.globalFrame"
-                      :class="['frame-block', frame.type]"
-                    >
-                      <div class="frame-content">
-                         <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
-                         <div v-if="frame.isHit" class="frame-marker hit-marker">⚠️</div>
-                      </div>
+              <div class="timeline-scroll-container">
+                <!-- Row 1: Attacker -->
+                <div class="timeline-row-label">进攻方 (Self)</div>
+                <div class="timeline-blocks-container">
+                  <div
+                    v-for="frame in generateThrowTimelineFrames(result, opponentWakeupFrame, normalizedThrowStartup, normalizedThrowActive)"
+                    :key="frame.index" :class="['frame-block', frame.type, {
+                      'is-hit': frame.isHit
+                    }]">
+                    <div class="frame-content">
+                      <div v-if="frame.isWakeup" class="frame-marker wakeup ghost">▼</div>
+                    </div>
+                    <div class="frame-number" v-if="frame.label">{{ frame.label }}</div>
+                  </div>
+                </div>
+
+                <!-- Row 2: Defender -->
+                <div class="timeline-row-label mt-4">对手 (Defender)</div>
+                <div class="timeline-blocks-container">
+                  <div v-for="frame in generateThrowDefenderFrames(result, opponentWakeupFrame, result.firstActive)"
+                    :key="frame.globalFrame" :class="['frame-block', frame.type]">
+                    <div class="frame-content">
+                      <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
+                      <div v-if="frame.isHit" class="frame-marker hit-marker">⚠️</div>
                     </div>
                   </div>
-               </div>
+                </div>
+              </div>
             </div>
             <div class="detail-row">
               <span class="detail-label">允许窗口:</span>
@@ -1780,7 +1741,8 @@ function formatFrame(val: number | string | undefined): string {
   font-weight: 600;
 }
 
-.custom-kd-btn:hover, .custom-kd-btn.active {
+.custom-kd-btn:hover,
+.custom-kd-btn.active {
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
@@ -1791,7 +1753,8 @@ function formatFrame(val: number | string | undefined): string {
   gap: var(--space-sm);
 }
 
-.custom-kd-input input, .small-input {
+.custom-kd-input input,
+.small-input {
   width: 60px;
   padding: var(--space-xs);
   text-align: center;
@@ -1817,15 +1780,30 @@ function formatFrame(val: number | string | undefined): string {
   cursor: pointer;
 }
 
-.knockdown-card:hover { border-color: var(--color-accent); }
+.knockdown-card:hover {
+  border-color: var(--color-accent);
+}
+
 .knockdown-card.active {
   border-color: var(--color-accent);
   background: var(--color-accent-light);
 }
 
-.knockdown-card .move-name { font-weight: 600; font-size: var(--font-size-sm); }
-.knockdown-card .move-input { font-family: var(--font-mono); font-size: var(--font-size-xs); color: var(--color-text-muted); }
-.knockdown-card .move-advantage { color: var(--color-positive); font-weight: 600; }
+.knockdown-card .move-name {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+.knockdown-card .move-input {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.knockdown-card .move-advantage {
+  color: var(--color-positive);
+  font-weight: 600;
+}
 
 /* Opponent Info */
 .opponent-info {
@@ -1873,8 +1851,16 @@ function formatFrame(val: number | string | undefined): string {
   border-radius: var(--radius-sm);
 }
 
-.chain-name { font-weight: 600; }
-.chain-frames { font-family: var(--font-mono); font-size: var(--font-size-xs); color: var(--color-text-muted); }
+.chain-name {
+  font-weight: 600;
+}
+
+.chain-frames {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
 .chain-remove {
   background: none;
   border: none;
@@ -1882,9 +1868,20 @@ function formatFrame(val: number | string | undefined): string {
   cursor: pointer;
   padding: 0 4px;
 }
-.chain-remove:hover { color: var(--color-negative); }
-.chain-plus { color: var(--color-text-muted); font-weight: 600; margin: 0 var(--space-xs); }
-.chain-empty { color: var(--color-text-muted); }
+
+.chain-remove:hover {
+  color: var(--color-negative);
+}
+
+.chain-plus {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  margin: 0 var(--space-xs);
+}
+
+.chain-empty {
+  color: var(--color-text-muted);
+}
 
 .combo-actions {
   display: flex;
@@ -1946,8 +1943,13 @@ function formatFrame(val: number | string | undefined): string {
   text-align: left;
 }
 
-.move-option:hover { background: var(--color-bg-tertiary); }
-.move-option:last-child { border-bottom: none; }
+.move-option:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.move-option:last-child {
+  border-bottom: none;
+}
 
 /* Combo Result */
 .combo-result {
@@ -1968,14 +1970,35 @@ function formatFrame(val: number | string | undefined): string {
   margin-bottom: var(--space-xs);
 }
 
-.result-label { color: var(--color-text-muted); }
-.result-value { font-family: var(--font-mono); font-weight: 600; }
-.result-value.enemy { color: var(--color-negative); }
-.result-status { font-weight: 700; padding: var(--space-xs) var(--space-md); border-radius: var(--radius-md); }
-.result-status.success { background: var(--color-positive); color: white; }
+.result-label {
+  color: var(--color-text-muted);
+}
+
+.result-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.result-value.enemy {
+  color: var(--color-negative);
+}
+
+.result-status {
+  font-weight: 700;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-md);
+}
+
+.result-status.success {
+  background: var(--color-positive);
+  color: white;
+}
 
 /* Auto Results */
-.results-section { border-color: var(--color-accent); }
+.results-section {
+  border-color: var(--color-accent);
+}
+
 .section-desc {
   color: var(--color-text-muted);
   margin-bottom: var(--space-md);
@@ -1988,7 +2011,11 @@ function formatFrame(val: number | string | undefined): string {
   margin: var(--space-lg) 0 var(--space-md);
 }
 
-.results-title { font-size: var(--font-size-md); color: var(--color-text-secondary); margin: 0; }
+.results-title {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
 
 .prefix-btn {
   padding: var(--space-xs) var(--space-md);
@@ -2020,9 +2047,12 @@ function formatFrame(val: number | string | undefined): string {
   border-radius: var(--radius-sm);
 }
 
-.results-table { overflow-x: auto; }
+.results-table {
+  overflow-x: auto;
+}
 
-.result-header, .result-row-auto {
+.result-header,
+.result-row-auto {
   display: grid;
   grid-template-columns: 2.5fr 1fr 1.2fr 0.8fr 0.8fr 1fr;
   gap: var(--space-sm);
@@ -2095,6 +2125,15 @@ function formatFrame(val: number | string | undefined): string {
   font-weight: 600;
 }
 
+.tag-badge {
+  background: rgba(147, 51, 234, 0.3);
+  color: #d8b4fe;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
 /* Result Detail Panel */
 .result-detail {
   grid-column: 1 / -1;
@@ -2158,11 +2197,33 @@ function formatFrame(val: number | string | undefined): string {
   font-weight: 600;
 }
 
-.result-combo { display: flex; gap: var(--space-xs); align-items: center; flex-wrap: wrap; }
-.combo-prefix { background: rgba(0, 212, 255, 0.2); color: #00d4ff; padding: 2px 6px; border-radius: var(--radius-sm); font-size: var(--font-size-xs); }
-.move-input { font-family: var(--font-mono); font-size: var(--font-size-xs); color: var(--color-text-muted); }
+.result-combo {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-.loading-state, .empty-state { text-align: center; padding: var(--space-xl); color: var(--color-text-muted); }
+.combo-prefix {
+  background: rgba(0, 212, 255, 0.2);
+  color: #00d4ff;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+}
+
+.move-input {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.loading-state,
+.empty-state {
+  text-align: center;
+  padding: var(--space-xl);
+  color: var(--color-text-muted);
+}
 
 /* Loop Throw */
 .throw-section {
@@ -2241,9 +2302,15 @@ function formatFrame(val: number | string | undefined): string {
 }
 
 @media (max-width: 640px) {
-  .combo-actions { flex-direction: column; }
-  .move-search { min-width: 100%; }
+  .combo-actions {
+    flex-direction: column;
+  }
+
+  .move-search {
+    min-width: 100%;
+  }
 }
+
 .meaty-bonus-highlight {
   color: #4ade80;
   font-weight: bold;
@@ -2275,24 +2342,32 @@ function formatFrame(val: number | string | undefined): string {
 }
 
 .timeline-row-label {
-    font-size: 11px;
-    font-weight: bold;
-    color: var(--color-text-secondary);
-    margin-bottom: 2px;
+  font-size: 11px;
+  font-weight: bold;
+  color: var(--color-text-secondary);
+  margin-bottom: 2px;
 }
-.mt-4 { margin-top: 16px; }
-.mt-2 { margin-top: 8px; }
+
+.mt-4 {
+  margin-top: 16px;
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
 
 .timeline-scroll-container {
   overflow-x: auto;
-  padding-bottom: 20px; /* Space for numbers */
+  padding-bottom: 20px;
+  /* Space for numbers */
 }
 
 .timeline-blocks-container {
   display: flex;
   align-items: flex-start;
   min-width: max-content;
-  /* padding-top: 10px; */ /* Removed to keep rows tight */
+  /* padding-top: 10px; */
+  /* Removed to keep rows tight */
 }
 
 .frame-block {
@@ -2308,73 +2383,115 @@ function formatFrame(val: number | string | undefined): string {
 
 /* Colors */
 .frame-block.prefix {
-    background-color: #374151; /* Dark Gray */
-    border-color: #4b5563;
+  background-color: #374151;
+  /* Dark Gray */
+  border-color: #4b5563;
 }
+
 .frame-block.startup {
-  background-color: #9ca3af; /* Light Gray */
+  background-color: #9ca3af;
+  /* Light Gray */
   border-color: #d1d5db;
-  color: #000; /* Contrast if needed */
+  color: #000;
+  /* Contrast if needed */
 }
+
 .frame-block.active {
-  background-color: #dc2626; /* Red */
+  background-color: #dc2626;
+  /* Red */
   border-color: #ef4444;
 }
+
 .frame-block.recovery {
-  background-color: #2563eb; /* Blue */
+  background-color: #2563eb;
+  /* Blue */
   border-color: #3b82f6;
 }
 
 /* Defender States */
 .frame-block.down {
-    background-color: #000;
-    border-color: #374151;
+  background-color: #000;
+  border-color: #374151;
 }
+
 .frame-block.vulnerable {
-    background-color: rgba(74, 222, 128, 0.2);
-    border-color: var(--color-positive);
+  background-color: rgba(74, 222, 128, 0.2);
+  border-color: var(--color-positive);
 }
+
 .frame-block.hitstun {
-    background-color: #ca8a04; /* Yellow/Gold */
-    border-color: #eab308;
+  background-color: #ca8a04;
+  /* Yellow/Gold */
+  border-color: #eab308;
 }
+
 .frame-block.blockstun {
-    background-color: #9333ea; /* Purple */
-    border-color: #a855f7;
+  background-color: #9333ea;
+  /* Purple */
+  border-color: #a855f7;
 }
+
 .frame-block.neutral {
-    background-color: #1f2937;
-    border-color: #374151;
+  background-color: #1f2937;
+  border-color: #374151;
 }
 
 /* Legend Colors */
 .legend-color {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 4px;
-    border: 1px solid rgba(255,255,255,0.2);
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
-.legend-color.prefix { background-color: #374151; }
-.legend-color.startup { background-color: #9ca3af; }
-.legend-color.active { background-color: #dc2626; }
-.legend-color.recovery { background-color: #2563eb; }
-.legend-color.down { background-color: #000; }
-.legend-color.vulnerable { background-color: rgba(74, 222, 128, 0.2); border-color: var(--color-positive); }
-.legend-color.hitstun { background-color: #ca8a04; }
-.legend-color.blockstun { background-color: #9333ea; }
+
+.legend-color.prefix {
+  background-color: #374151;
+}
+
+.legend-color.startup {
+  background-color: #9ca3af;
+}
+
+.legend-color.active {
+  background-color: #dc2626;
+}
+
+.legend-color.recovery {
+  background-color: #2563eb;
+}
+
+.legend-color.down {
+  background-color: #000;
+}
+
+.legend-color.vulnerable {
+  background-color: rgba(74, 222, 128, 0.2);
+  border-color: var(--color-positive);
+}
+
+.legend-color.hitstun {
+  background-color: #ca8a04;
+}
+
+.legend-color.blockstun {
+  background-color: #9333ea;
+}
 
 .frame-block.is-hit {
-   /* Highlight the hit frame specifically? */
-   background-color: #fca5a5; /* Lighter red */
-   border-color: #fff;
-   z-index: 2;
+  /* Highlight the hit frame specifically? */
+  background-color: #fca5a5;
+  /* Lighter red */
+  border-color: #fff;
+  z-index: 2;
 }
 
 /* Vulnerable Window indication */
 .frame-block.is-vulnerable {
-  box-shadow: 0 4px 0 0 rgba(74, 222, 128, 0.5); /* Green underline-ish */
+  box-shadow: 0 4px 0 0 rgba(74, 222, 128, 0.5);
+  /* Green underline-ish */
 }
+
 .frame-block.is-vulnerable::after {
   content: '';
   position: absolute;
@@ -2396,28 +2513,36 @@ function formatFrame(val: number | string | undefined): string {
   line-height: 1;
   pointer-events: none;
 }
+
 .frame-marker.ghost {
-    opacity: 0.3; /* Less visible on attacker row */
+  opacity: 0.3;
+  /* Less visible on attacker row */
 }
-.frame-marker.hit-marker, .frame-marker.block-marker {
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 14px;
-    z-index: 5;
+
+.frame-marker.hit-marker,
+.frame-marker.block-marker {
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  z-index: 5;
 }
 
 .frame-marker.wakeup {
-  color: var(--color-positive); /* Green */
+  color: var(--color-positive);
+  /* Green */
 }
 
 .frame-marker.reversal {
-  color: #f59e0b; /* Orange */
-  top: -12px; /* Stack or adjust if both exist? */
+  color: #f59e0b;
+  /* Orange */
+  top: -12px;
+  /* Stack or adjust if both exist? */
 }
 
 /* Logic for stacking markers if both active? */
 .frame-block.is-wakeup.is-reversal .frame-marker.reversal {
-  top: -20px; /* Shift up if overlapping */
+  top: -20px;
+  /* Shift up if overlapping */
 }
 
 .frame-number {
@@ -2432,7 +2557,11 @@ function formatFrame(val: number | string | undefined): string {
 }
 
 /* Legend Colors */
-.legend-icon.opponent-wakeup { color: var(--color-positive); }
-.legend-icon.opponent-reversal { color: #f59e0b; }
+.legend-icon.opponent-wakeup {
+  color: var(--color-positive);
+}
 
+.legend-icon.opponent-reversal {
+  color: #f59e0b;
+}
 </style>
