@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import { SF6_CHARACTERS, type Move, type FrameData } from '../types';
+import { calculateGap, calculateMoveStats, parseFrameValue, type CalculationResult } from '../utils/gapCalculator';
 
 // State
 const selectedCharId = ref<string>('ryu'); // Default to Ryu
@@ -112,202 +113,25 @@ function handleBlur2() {
   }, 200);
 }
 
-// Helpers
-function parseFrameValue(val: string | number | undefined): number {
-  if (typeof val === 'number') return val;
-  if (!val) return 0;
-  const parsed = parseInt(val);
-  return isNaN(parsed) ? 0 : parsed;
-}
+// Helpers - Imported from utils/gapCalculator
+
+const move1Stats = computed(() => {
+  if (!move1.value) return null;
+  return calculateMoveStats(move1.value);
+});
 
 // Calculation Logic
-const calculationResult = computed(() => {
+const calculationResult = computed<CalculationResult | null>(() => {
   if (!move1.value || !move2.value) return null;
-  
-  const adv1Block = parseFrameValue(move1.value.onBlock);
-  const adv1Hit = parseFrameValue(move1.value.onHit); // Base OnHit
-  const startup2Num = parseFrameValue(move2.value.startup);
-  
-  let adv1Num = calculationType.value === 'block' ? adv1Block : adv1Hit;
 
-  if (calculationType.value === 'hit') {
-    // Apply modifiers
-    if (hitState.value === 'ch') adv1Num += 2;
-    if (hitState.value === 'pc') adv1Num += 4; // Using +4 modifier standard
-  }
-  
-  // Basic validation (only strictly need startup for logic)
-  if (isNaN(startup2Num)) {
-    return {
-       valid: false,
-       error: '无法获取有效的帧数数据'
-    };
-  }
-
-  let gap = 0;
-  let formulaDesc = '';
-  let blockstun = 0;
-  let status = '';
-  let statusClass = '';
-  let description = '';
-  
-  // === COMBO MODE (HIT) ===
-  if (calculationType.value === 'hit') {
-    // Formula: Link = Advantage - Startup
-    // Logic: If I am +7, and startup is 6. 7 - 6 = +1 (1 frame wiggle room implies link? No).
-    // Standard Link logic:
-    // If I am +7. I recover at T. Opponent recovers at T+7.
-    // Move 2 starts at T. Active at T + Startup - 1 ? No.
-    // Move 2 Startup 6 -> Active on 6th frame. 1,2,3,4,5 (Start), 6 (Active).
-    // So it hits at T + 5.
-    // Opponent is stunned until T + 7.
-    // Since T + 5 < T + 7, it combos.
-    // Surplus = Advantage - (Startup - 1)?
-    // Let's verify: +7 adv, 6 startup.
-    // Startup Frames: 5. Active: 6.
-    // Time available: 7.
-    // 7 >= 6? No.
-    // Usually: Link if Advantage >= Startup.
-    // Example: Ryu 5MP (+7). 2MP (6). +7 >= 6. Link!
-    // Example: Ryu 5MP (+7). 5HP (10). +7 < 10. No Link.
-    
-    // Gap/Surplus = Advantage - Startup.
-    // If >= 0: Link.
-    // If < 0: No link.
-    
-    // Wait, cancel logic for combo?
-    if (calculationMode.value === 'cancel') {
-        // Cancel Combo Logic
-        // Advantage is irrelevant.
-        // We cancel recovery.
-        // Hitstun is key.
-        // Hitstun = Active + Recovery + OnHit(Adv) (Derived) or Raw.Hitstun.
-        const m1 = move1.value;
-        const active1 = parseFrameValue(m1.active);
-        const recovery1 = parseFrameValue(m1.recovery);
-        let hitstun = 0;
-        
-        // Try getting raw hitstun
-        if (m1.raw && typeof m1.raw.hitstun === 'number') {
-           hitstun = m1.raw.hitstun;
-        } else {
-           hitstun = active1 + recovery1 + adv1Hit;
-        }
-        
-        // Modifiers for Hitstun?
-        // CH adds +2 to advantage, but does it add to hitstun? Yes.
-        if (hitState.value === 'ch') hitstun += 2;
-        if (hitState.value === 'pc') hitstun += 4;
-
-        // Cancel Gap:
-        // We cancel at cancelFrame.
-        // Move 2 comes out relative to Cancel Point.
-        // Move 2 hits at: cancelFrame + (Startup2 - 1).
-        // Hitstun ends at: Hitstun duration.
-        // Wait, active frames started at 1.
-        // Hitstun starts at 1 (first active hit).
-        // Condition: (cancelFrame + Startup2 - 1) <= hitstun.
-        // Surplus = Hitstun - (cancelFrame + Startup2 - 1).
-        
-        const hitFrame = cancelFrame.value + startup2Num - 1;
-        const surplus = hitstun - hitFrame;
-        gap = surplus; // Reusing "gap" variable name for "surplus/result"
-        
-        formulaDesc = `${hitstun} (Hitstun) - (${cancelFrame} + ${startup2Num} - 1)`;
-    } else {
-        // Link Combo Logic
-        // Surplus = Advantage - Startup
-        // Wait, standard is Advantage >= Startup.
-        // e.g. +4 adv, 4 startup.
-        // Recover at T. Opponent stuck until T+4.
-        // Start at T. Active at T+4-1 = T+3? No.
-        // Startup 4 means inactive 1,2,3. Active 4.
-        // So hits at T+3 (relative 0)? No.
-        // Let's count.
-        // Frame 1: Startup
-        // Frame 2: Startup
-        // Frame 3: Startup
-        // Frame 4: Active.
-        // You are +4. Opponent cannot block until Frame 5.
-        // Your move hits at Frame 4.
-        // 4 <= 4. Yes.
-        // So Advantage >= Startup.
-        
-        gap = adv1Num - startup2Num;
-        // Actually, let's call it "surplus".
-        // If 0, it means Exact Link (Just Frame if strictly equal? No, standard 1F link).
-        // If +1, 2F window.
-        
-        formulaDesc = `${adv1Num} (Adv) - ${startup2Num} (Startup)`;
-    }
-
-    if (gap >= 0) {
-        status = '连招成立 (Combo)';
-        statusClass = 'status-safe'; // Green
-        description = `余流 ${gap} 帧 (Link Window: ${gap + 1}F?)。`; // Gap 0 = 1F link? 
-        // If Gap = 0 (Adv 4, Startup 4), you must hit exactly 1 frame perfect?
-        // Actually in SF6 there is input buffer so it's easier.
-        // Let's just say "Successful Link".
-        description = '可以连上。';
-    } else {
-        status = '连招失败 (No Combo)';
-        statusClass = 'status-danger';
-        description = `差 ${Math.abs(gap)} 帧。`;
-    }
-
-  } 
-  // === BLOCK MODE (GAP) ===
-  else {
-      // Logic from previous step
-      if (calculationMode.value === 'link') {
-        gap = startup2Num - adv1Num - 1;
-        formulaDesc = `${startup2Num} (Startup) - ${adv1Num} (Adv) - 1`;
-      } else {
-        const m1 = move1.value;
-        const active1 = parseFrameValue(m1.active);
-        const recovery1 = parseFrameValue(m1.recovery);
-        
-        if (m1.raw && typeof m1.raw.blockstun === 'number') {
-          blockstun = m1.raw.blockstun;
-        } else {
-          blockstun = active1 + recovery1 + adv1Num; // adv1Num is OnBlock here
-        }
-        const cFrame = cancelFrame.value;
-        gap = cFrame + (startup2Num - 1) - blockstun;
-        formulaDesc = `${cFrame} (CancelFrame) + ${startup2Num - 1} (Startup-1) - ${blockstun} (Blockstun)`;
-      }
-
-      if (gap <= 0) {
-        status = '连防 (True Blockstring)';
-        statusClass = 'status-safe';
-        description = '对手无法在两招之间做出任何动作。';
-      } else if (gap < 4) {
-        status = 'Frame Trap (伪连/打康陷阱)';
-        statusClass = 'status-trap';
-        description = '对手最快普通技（4F）无法抢动。';
-      } else if (gap >= 4 && gap <= 9) {
-        status = '可插动 (Interruptible)';
-        statusClass = 'status-warning';
-        description = '对手可以使用轻攻击抢动或相杀。';
-      } else {
-        status = '高风险 / 易被插 (High Risk)';
-        statusClass = 'status-danger';
-        description = '间隙过大，容易被无敌技或大伤害技确反。';
-      }
-  }
-  
-  return {
-    valid: true,
-    gap,
-    status,
-    statusClass,
-    description,
-    adv1: adv1Num,
-    startup2: startup2Num,
-    formulaDesc,
-    blockstun,
-    type: calculationType.value // Pass type to template
-  };
+  return calculateGap({
+    move1: move1.value,
+    move2: move2.value,
+    type: calculationType.value,
+    mode: calculationMode.value,
+    hitState: hitState.value,
+    cancelFrame: cancelFrame.value
+  });
 });
 
 </script>
@@ -411,13 +235,23 @@ const calculationResult = computed(() => {
             <span class="label">发生 (Startup):</span>
             <span class="value">{{ move1.startup }}</span>
           </div>
-           <div class="stat-row">
+          <div class="stat-row">
             <span class="label">持续 (Active):</span>
             <span class="value">{{ move1.active }}</span>
           </div>
           <div class="stat-row">
-            <span class="label">全体硬直 (Recovery):</span>
+            <span class="label">招数后硬直(Recovery):</span>
             <span class="value">{{ move1.recovery }}</span>
+          </div>
+          
+           <!-- Derived Stats -->
+          <div class="stat-row derived">
+            <span class="label">命中硬直 (Hitstun):</span>
+            <span class="value">{{ move1Stats?.hitstun }}</span>
+          </div>
+          <div class="stat-row derived">
+            <span class="label">防御硬直 (Blockstun):</span>
+            <span class="value">{{ move1Stats?.blockstun }}</span>
           </div>
           
           <!-- Hit Modifiers (Only for Combo Mode + Link) -->
@@ -521,8 +355,8 @@ const calculationResult = computed(() => {
     <section v-if="calculationResult && calculationResult.valid" class="result-section">
       <div class="result-card" :class="calculationResult.statusClass">
         <div class="result-header">
-          <span class="gap-value">{{ calculationResult.gap }}F</span>
-          <span class="gap-label">Gap (空隙)</span>
+          <span class="gap-value">{{ calculationResult.displayValue }}</span>
+          <span class="gap-label">{{ calculationResult.displayLabel }}</span>
         </div>
         
         <div class="result-details">
