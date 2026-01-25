@@ -955,16 +955,26 @@ function generateThrowTimelineFrames(
   // Filler
   const fillerStartup = result.fillerStartup || 0;
   const fillerActive = result.fillerActive || 0;
-  const fillerRecovery = result.fillerRecovery || 0;
-  const fillerTotal = fillerStartup + fillerActive + fillerRecovery;
+  // Use the pre-calculated total frames which (correctly) includes raw.total overrides
+  // If we just summed startup+active+recovery here, we might miss the raw.total override
+  const fillerTotal = result.fillerFrames || 0;
+  
+  // Recalculate recovery for visual consistency (so blocks add up to total)
+  // recovery = Total - Startup - Active
+  // Note: Startup here is typically full duration for visual blocks? 
+  // Wait, getMoveTotalFrames uses (startup-1).
+  // So fillerTotal = (Start-1) + Active + Recovery.
+  // Visuals: Startup blocks should be (Start-1)? 
+  // Let's check logic below: "if (i < fillerActiveStart) type = 'startup'".
+  // fillerActiveStart = prefix + fillerStartup.
+  // If Start=20. fillerActiveStart = 20. i < 20 (1..19). 19 blocks.
+  // Correct.
+  // So Recovery = Total - (Startup - 1) - Active.
+  // Recovery = 42 - 19 - 4 = 19.
+  // fillerEffectiveStartup removed
+  // fillerRecovery line removed
 
   // Calculate Filler Key Frames (Global)
-  // Startup: 5 -> Frames 1,2,3,4 are startup. 5 is Active.
-  // Global Start: prefixFrames + 1.
-  // Active Start: prefixFrames + fillerStartup.
-  // Active Start: prefixFrames + fillerStartup.
-  // If fillerStartup is 5, it means relative frame 5 is active.
-  // Global: prefix + 5.
   const fillerActiveStart = prefixFrames + fillerStartup;
   const fillerActiveEnd = fillerActiveStart + fillerActive - 1;
   const fillerEndFrame = prefixFrames + fillerTotal;
@@ -972,12 +982,6 @@ function generateThrowTimelineFrames(
   // Throw
   // Start frame relative to start of sequence
   const throwStartFrame = prefixFrames + fillerTotal + 1;
-  // Startup 5 -> Frame 5 (relative) is Active.
-  // Global Active Start = throwStartFrame + 5 - 1. 
-  // Wait. Index 1: Startup
-  // Index 5: Active.
-  // Offset = 4. (Startup - 1).
-  // Global = Start + (Startup - 1).
   const throwActiveStart = throwStartFrame + throwStartup - 1;
   const throwActiveEnd = throwActiveStart + throwActive - 1;
   const throwRecoveryTotal = 20;
@@ -1004,6 +1008,8 @@ function generateThrowTimelineFrames(
     const isWakeup = (globalFrame === oppWakeupFrame);
     // Visualizing "Throwable" alignment
     // Effective Throw Frame: result.firstActive
+    // Use throwActiveStart as the reference for "Hit"?
+    // The result.firstActive should match throwActiveStart exactly if calculations align.
     const isThrowConnect = (globalFrame === result.firstActive);
 
     let label: number | undefined;
