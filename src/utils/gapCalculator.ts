@@ -39,6 +39,15 @@ export interface DerivedMoveStats {
 export function parseFrameValue(val: string | number | undefined): number {
     if (typeof val === 'number') return val;
     if (!val) return 0;
+
+    if (val.includes('*')) {
+        const parts = val.split('*');
+        const last = parts[parts.length - 1];
+        if (last) {
+            return parseInt(last) || 0;
+        }
+    }
+
     const parsed = parseInt(val);
     return isNaN(parsed) ? 0 : parsed;
 }
