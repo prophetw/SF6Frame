@@ -649,7 +649,8 @@ const throwResults = computed<ThrowComboResult[]>(() => {
       const fillerStartup = parseInt(move.startup) || 0;
       const fillerActive = parseTotalActiveFrames(move.active);
       const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
-      const fillerFrames = fillerStartup + fillerActive + fillerRecovery;
+      // Use helper for correct total (handles raw.total and startup-1 logic)
+      const fillerFrames = getMoveTotalFrames(move); 
       const delay = prefix.frames + fillerFrames;
 
       if (delay < minDelay || delay > maxDelay) continue;
@@ -1586,8 +1587,13 @@ function formatFrame(val: number | string | undefined): string {
             <div class="detail-row">
               <span class="detail-label">空挥招式:</span>
               <span v-if="result.filler">
-                {{ result.fillerName }} = {{ result.fillerStartup }} + {{ result.fillerActive }} + {{
-                  result.fillerRecovery }} = {{ result.fillerFrames }}F
+                {{ result.fillerName }} = 
+                <span v-if="result.filler.raw?.total">
+                    {{ result.fillerFrames }}F (原始数据)
+                </span>
+                <span v-else>
+                    {{ result.fillerStartup }} + {{ result.fillerActive }} + {{ result.fillerRecovery }} = {{ result.fillerFrames }}F
+                </span>
               </span>
               <span v-else>无 = 0F</span>
             </div>
