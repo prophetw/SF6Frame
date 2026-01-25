@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import { SF6_CHARACTERS, type Move, type FrameData } from '../types';
-import { calculateGap, calculateMoveStats, parseFrameValue, type CalculationResult } from '../utils/gapCalculator';
+import { 
+  calculateGap, 
+  calculateMoveStats, 
+  parseFrameValue, 
+  findRecommendedMoves,
+  isCancelValid,
+  type CalculationResult,
+  type RecommendedMove 
+} from '../utils/gapCalculator';
 
 // State
 const selectedCharId = ref<string>('ryu'); // Default to Ryu
@@ -74,25 +82,35 @@ const allMoves = computed(() => {
   return frameData.value.moves;
 });
 
-function filterMoves(query: string) {
+function filterMoves(query: string, sourceMove?: Move | null, mode?: 'link' | 'cancel') {
   if (!allMoves.value) return [];
-  const q = query.toLowerCase();
-  if (!q) return allMoves.value.slice(0, 50);
   
-  return allMoves.value.filter(m => 
+  let candidates = allMoves.value;
+
+  // Filter by Cancel Validity if in Cancel mode
+  if (mode === 'cancel' && sourceMove) {
+    candidates = candidates.filter(m => isCancelValid(sourceMove, m));
+  }
+
+  const q = query.toLowerCase();
+  if (!q) return candidates.slice(0, 50);
+  
+  return candidates.filter(m => 
     m.name.toLowerCase().includes(q) || 
     m.input.toLowerCase().includes(q)
   ).slice(0, 50);
 }
 
 const filteredMoves1 = computed(() => filterMoves(search1.value));
-const filteredMoves2 = computed(() => filterMoves(search2.value));
+const filteredMoves2 = computed(() => filterMoves(search2.value, move1.value, calculationMode.value));
 
 function selectMove1(move: Move) {
   move1.value = move;
   search1.value = move.name;
   showDropdown1.value = false;
   cancelFrame.value = 1; // Reset cancel frame
+  move2.value = null; // Reset move 2 when move 1 changes
+  search2.value = '';
 }
 
 function selectMove2(move: Move) {
@@ -134,6 +152,25 @@ const calculationResult = computed<CalculationResult | null>(() => {
   });
 });
 
+// Recommendations
+const recommendedMoves = computed<RecommendedMove[]>(() => {
+  if (!move1.value || !allMoves.value) return [];
+  
+  return findRecommendedMoves(
+    move1.value,
+    allMoves.value,
+    calculationType.value,
+    calculationMode.value,
+    hitState.value,
+    cancelFrame.value
+  );
+});
+
+const recommendationTitle = computed(() => {
+  if (calculationMode.value === 'cancel') return '推荐取消连招 (Cancel)';
+  if (calculationType.value === 'hit') return '推荐连招 (Link)';
+  return '安全压制 (Pressure/Gap)';
+});
 </script>
 
 <template>
@@ -347,6 +384,26 @@ const calculationResult = computed<CalculationResult | null>(() => {
             <span class="label">持续帧数 (Active):</span>
             <span class="value">{{ move2.active }}</span>
           </div>
+        </div>
+        
+        <!-- Recommendations -->
+        <div v-if="move1 && recommendedMoves.length > 0" class="recommendation-box">
+           <h3 class="rec-title">{{ recommendationTitle }}</h3>
+           <div class="tags-container">
+             <button 
+               v-for="rec in recommendedMoves" 
+               :key="rec.move.name"
+               class="rec-tag"
+               :class="{ active: move2 && move2.name === rec.move.name }"
+               @click="selectMove2(rec.move)"
+             >
+               <span class="rec-name">{{ rec.move.name }}</span>
+               <span class="rec-input">{{ rec.move.input }}</span>
+               <span class="rec-gap" :class="rec.gap <= 0 ? 'safe' : 'unsafe'">
+                 {{ rec.gap > 0 ? '+' : ''}}{{ rec.gap }}F
+               </span>
+             </button>
+           </div>
         </div>
       </div>
     </div>
@@ -758,5 +815,90 @@ const calculationResult = computed<CalculationResult | null>(() => {
   border-radius: 4px;
   margin-left: 4px;
   display: block;
+}
+
+.recommendation-box {
+  margin-top: var(--space-md);
+  border: 1px solid var(--color-danger);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: rgba(245, 108, 108, 0.05);
+}
+
+.rec-title {
+  font-size: 0.9rem;
+  color: var(--color-danger);
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.rec-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg-primary);
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--color-text-primary);
+  transition: all 0.2s;
+}
+
+.rec-tag:hover {
+  border-color: var(--color-accent);
+  background: var(--color-bg-secondary);
+}
+
+.rec-tag.active {
+  border-color: var(--color-accent);
+  background: rgba(var(--color-accent-rgb), 0.1); /* Assuming variable exists or fallback */
+  background: var(--color-accent); /* Fallback */
+  color: white;
+}
+
+.rec-tag.active .rec-gap {
+  background: white;
+  color: var(--color-accent);
+}
+
+.rec-input {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  background: rgba(0,0,0,0.1);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+.rec-tag.active .rec-input {
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.2);
+}
+
+.rec-gap {
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  background: var(--color-text-muted);
+  color: white;
+}
+
+.rec-gap.safe {
+  background: var(--color-success);
+}
+
+.rec-gap.unsafe {
+  background: var(--color-danger);
 }
 </style>

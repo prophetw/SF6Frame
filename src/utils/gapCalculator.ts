@@ -194,3 +194,130 @@ export function calculateGap(input: CalculationInput): CalculationResult {
         blockstun: type === 'block' && mode === 'cancel' ? blockstun : undefined
     };
 }
+
+// === Helper for Cancel Validation ===
+export function getSuperLevel(move: Move): number {
+    if (move.category !== 'super') return 0;
+
+    // Check raw data first if available
+    if (move.raw?.cmnName) {
+        if (move.raw.cmnName.includes('Level 1')) return 1;
+        if (move.raw.cmnName.includes('Level 2')) return 2;
+        if (move.raw.cmnName.includes('Level 3')) return 3;
+        if (move.raw.cmnName.includes('Critical Art')) return 3;
+    }
+
+    // Fallback to name check
+    if (move.name.includes('SA1') || move.input.includes('236236P')) return 1; // Heuristic
+    // Note: Ryu SA1 is 236236P. SA2 is 214214P. SA3 is 236236K.
+
+    return 0;
+}
+
+export function isCancelValid(sourceMove: Move, targetMove: Move): boolean {
+    if (!sourceMove.cancels || sourceMove.cancels.length === 0) return false;
+
+    const cancelTags = sourceMove.cancels.map(t => t.toUpperCase());
+    const targetCat = targetMove.category?.toLowerCase() || '';
+
+    for (const tag of cancelTags) {
+        if (tag === 'SPECIAL') {
+            if (targetCat === 'special') return true;
+        }
+        else if (tag === 'SUPER') {
+            if (targetCat === 'super') return true;
+        }
+        else if (tag === 'SA3' || tag === 'CA') {
+            if (targetCat === 'super' && getSuperLevel(targetMove) === 3) return true;
+        }
+        else if (tag === 'SA2') {
+            if (targetCat === 'super' && getSuperLevel(targetMove) === 2) return true;
+        }
+        else if (tag === 'SA1') {
+            if (targetCat === 'super' && getSuperLevel(targetMove) === 1) return true;
+        }
+    }
+
+    return false;
+}
+
+export interface RecommendedMove {
+    move: Move;
+    gap: number;
+    reason: string;
+}
+
+export function findRecommendedMoves(
+    move1: Move,
+    allMoves: Move[],
+    type: CalculationType,
+    mode: CalculationMode,
+    hitState: HitState,
+    cancelFrame: number = 1
+): RecommendedMove[] {
+    const recommendations: RecommendedMove[] = [];
+
+    // Filter valid moves first
+    let candidates = allMoves;
+    if (mode === 'cancel') {
+        candidates = allMoves.filter(m => isCancelValid(move1, m));
+        // If cancels includes special/super, we should restrict to those categories
+    } else {
+        // For Link, generally exclude throws unless setup? usually normals/command normals
+        // Keeping it broad for now, but maybe filter out moves with no startup or weird moves
+        candidates = allMoves.filter(m => m.category !== 'throw' && m.raw?.moveType !== 'drive');
+    }
+
+    for (const move2 of candidates) {
+        // Skip self if needed, or obviously bad moves? 
+        // Just calculate
+        const result = calculateGap({
+            move1,
+            move2,
+            type,
+            mode,
+            hitState,
+            cancelFrame
+        });
+
+        if (!result.valid) continue;
+
+        let isRecommended = false;
+        let reason = '';
+
+        if (type === 'hit') {
+            // Combo Mode
+            if (result.gap >= 0) {
+                isRecommended = true;
+                reason = `Combo +${result.gap}F`;
+            }
+        } else {
+            // Block Mode (Pressure)
+            if (result.gap <= 0) {
+                isRecommended = true;
+                reason = `True Blockstring ${result.gap}F`;
+            } else if (result.gap <= 4) {
+                isRecommended = true;
+                reason = `Frame Trap ${result.gap}F`;
+            }
+        }
+
+        if (isRecommended) {
+            recommendations.push({
+                move: move2,
+                gap: result.gap,
+                reason
+            });
+        }
+    }
+
+    // Sort by best option
+    // For Combos (Hit): Smaller gap is usually tighter link, but larger gap is easier link. 
+    // Usually we want to show all possible combos. Maybe sort by damage? We don't have damage parsed easily yet.
+    // Let's sort by Gap value.
+
+    // For Block: Tighter gap (closer to 0 or negative) is better pressure? 
+    // Or 3-4f gap is good frame trap.
+
+    return recommendations.sort((a, b) => a.gap - b.gap);
+}
