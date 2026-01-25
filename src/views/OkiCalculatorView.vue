@@ -218,6 +218,7 @@ function handleDefenderBlur() {
 
 // Parse total active frames
 // Helper to evaluate frame string "2*3" or "10+2"
+// Helper to evaluate frame string "2*3" or "10+2"
 function evaluateFrameString(val: string | number | undefined): number {
   if (!val || val === '-') return 0;
   if (typeof val === 'number') return val;
@@ -229,18 +230,14 @@ function evaluateFrameString(val: string | number | undefined): number {
   for (const part of parts) {
     const trimmed = part.trim();
     if (trimmed.includes('*')) {
-      // Handle multiplication like 2*3
+      // Handle "2*3" -> 2 + 3 (Sum of active frames, NOT multiplication)
       const factors = trimmed.split('*');
-      let product = 1;
-      let validProduct = false;
       for (const f of factors) {
         const num = parseInt(f);
         if (!isNaN(num)) {
-          product *= num;
-          validProduct = true;
+          sum += num;
         }
       }
-      if (validProduct) sum += product;
     } else {
       // Handle simple number
       const num = parseInt(trimmed);
@@ -270,6 +267,22 @@ function parseTotalRecoveryFrames(recovery: string | undefined): number {
 }
 
 function getMoveTotalFrames(move: Move): number {
+  // Use raw total if available (most accurate)
+  if (move.raw && move.raw.total) {
+    // raw.total can be number or string like "22(24)"
+    const rawTotal = move.raw.total;
+    if (typeof rawTotal === 'number') return rawTotal;
+    if (typeof rawTotal === 'string') {
+        const whiffMatch = rawTotal.match(/\((\d+)\)/);
+        if (whiffMatch) {
+             return parseInt(whiffMatch[1] || '0');
+        }
+        // Fallback for string without parenthesis (e.g., "40")
+        const parsed = parseInt(rawTotal);
+        if (!isNaN(parsed)) return parsed;
+    }
+  }
+
   const startup = parseInt(move.startup) || 0;
   const active = parseTotalActiveFrames(move.active);
   const recovery = parseTotalRecoveryFrames(move.recovery);
