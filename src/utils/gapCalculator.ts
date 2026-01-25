@@ -314,7 +314,7 @@ export function findRecommendedMoves(
             if (result.gap <= 0) {
                 isRecommended = true;
                 reason = `True Blockstring ${result.gap}F`;
-            } else if (result.gap <= 4) {
+            } else if (result.gap <= 3) {
                 isRecommended = true;
                 reason = `Frame Trap ${result.gap}F`;
             }
