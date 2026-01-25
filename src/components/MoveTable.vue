@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Move, CharacterStats } from '../types';
+import { calculateMoveStats } from '../utils/gapCalculator';
 
 const props = defineProps<{
   moves: Move[];
@@ -45,6 +46,10 @@ function getCategoryLabel(cat: string): string {
   };
   return labels[cat] || cat;
 }
+
+function getMoveStats(move: Move) {
+  return calculateMoveStats(move);
+}
 </script>
 
 <template>
@@ -81,12 +86,14 @@ function getCategoryLabel(cat: string): string {
             <th class="col-recovery" @click="handleSort('recovery')">硬直 <span class="sort-icon">{{ getSortIcon('recovery') }}</span></th>
             <th class="col-onblock" @click="handleSort('onBlock')">防御 <span class="sort-icon">{{ getSortIcon('onBlock') }}</span></th>
             <th class="col-onhit" @click="handleSort('onHit')">命中 <span class="sort-icon">{{ getSortIcon('onHit') }}</span></th>
+            <th class="col-blockstun" @click="handleSort('blockstun')">防硬 <span class="sort-icon">{{ getSortIcon('blockstun') }}</span></th>
+            <th class="col-hitstun" @click="handleSort('hitstun')">命硬 <span class="sort-icon">{{ getSortIcon('hitstun') }}</span></th>
             <th class="col-cancels">取消</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="move in moves" :key="move.name" class="move-row">
-            <td class="col-name">
+            <td class="col-name" data-label="招式">
               <div class="move-name-wrap">
                 <span class="move-name">{{ move.name }}</span>
                 <span :class="['move-category', `cat-${move.category}`]">
@@ -94,20 +101,28 @@ function getCategoryLabel(cat: string): string {
                 </span>
               </div>
             </td>
-            <td class="col-input">
+            <td class="col-input" data-label="指令">
               <code class="input-code">{{ move.input }}</code>
             </td>
-            <td class="col-damage">{{ move.damage }}</td>
-            <td class="col-startup">{{ move.startup }}</td>
-            <td class="col-active">{{ move.active }}</td>
-            <td class="col-recovery">{{ move.recovery }}</td>
-            <td class="col-onblock" :class="getFrameClass(move.onBlock)">
+            <td class="col-damage" data-label="伤害">{{ move.damage }}</td>
+            <td class="col-startup" data-label="发生">{{ move.startup }}</td>
+            <td class="col-active" data-label="持续">{{ move.active }}</td>
+            <td class="col-recovery" data-label="硬直">{{ move.recovery }}</td>
+            <td class="col-onblock" data-label="防御差" :class="getFrameClass(move.onBlock)">
               {{ formatFrameValue(move.onBlock) }}
             </td>
-            <td class="col-onhit" :class="getFrameClass(move.onHit)">
+            <td class="col-onhit" data-label="命中差" :class="getFrameClass(move.onHit)">
               {{ formatFrameValue(move.onHit) }}
             </td>
-            <td class="col-cancels">
+            <!-- Derived Stats -->
+            <td class="col-blockstun" data-label="防御硬直">
+              {{ getMoveStats(move).blockstun }}
+            </td>
+             <td class="col-hitstun" data-label="命中硬直">
+              {{ getMoveStats(move).hitstun }}
+            </td>
+
+            <td class="col-cancels" data-label="取消">
               <span v-if="move.cancels && move.cancels.length > 0" class="cancel-tags">
                 <span 
                   v-for="cancel in move.cancels" 

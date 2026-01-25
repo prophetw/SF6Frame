@@ -3,6 +3,7 @@ import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { SF6_CHARACTERS, type FrameData, type MoveCategory } from '../types';
 import MoveTable from '../components/MoveTable.vue';
+import { calculateMoveStats } from '../utils/gapCalculator';
 
 const route = useRoute();
 const router = useRouter();
@@ -61,8 +62,19 @@ const filteredMoves = computed(() => {
   // Sorting
   if (sortKey.value) {
     moves.sort((a, b) => {
-      let valA: number | string = parseFrameValue((a as any)[sortKey.value]);
-      let valB: number | string = parseFrameValue((b as any)[sortKey.value]);
+      let valA: number | string = -999;
+      let valB: number | string = -999;
+
+      if (sortKey.value === 'hitstun') {
+         valA = calculateMoveStats(a).hitstun;
+         valB = calculateMoveStats(b).hitstun;
+      } else if (sortKey.value === 'blockstun') {
+         valA = calculateMoveStats(a).blockstun;
+         valB = calculateMoveStats(b).blockstun;
+      } else {
+         valA = parseFrameValue((a as any)[sortKey.value]);
+         valB = parseFrameValue((b as any)[sortKey.value]);
+      }
       
       // Special handling for string fields like name/input if needed, but primary use is frames
       if (sortKey.value === 'name' || sortKey.value === 'input') {
