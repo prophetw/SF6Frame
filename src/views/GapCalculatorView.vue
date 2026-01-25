@@ -23,6 +23,7 @@ const move2 = ref<Move | null>(null);
 const calculationMode = ref<'link' | 'cancel'>('link');
 const calculationType = ref<'block' | 'hit'>('block'); // New: Block (Gap) vs Hit (Combo)
 const hitState = ref<'normal' | 'ch' | 'pc'>('normal'); // New: Hit State
+const isBurnout = ref(false); // New: Burnout State
 
 const cancelFrame = ref(1); // 1-based index (1 = 1st active frame)
 
@@ -60,6 +61,7 @@ async function loadCharacterData(charId: string) {
     search1.value = '';
     search2.value = '';
     cancelFrame.value = 1;
+    isBurnout.value = false;
   } catch (e) {
     console.error(`Failed to load character data for ${charId}:`, e);
     frameData.value = null;
@@ -148,7 +150,8 @@ const calculationResult = computed<CalculationResult | null>(() => {
     type: calculationType.value,
     mode: calculationMode.value,
     hitState: hitState.value,
-    cancelFrame: cancelFrame.value
+    cancelFrame: cancelFrame.value,
+    isBurnout: isBurnout.value
   });
 });
 
@@ -162,7 +165,8 @@ const recommendedMoves = computed<RecommendedMove[]>(() => {
     calculationType.value,
     calculationMode.value,
     hitState.value,
-    cancelFrame.value
+    cancelFrame.value,
+    isBurnout.value
   );
 });
 
@@ -292,6 +296,7 @@ const recommendationTitle = computed(() => {
           </div>
           
           <!-- Hit Modifiers (Only for Combo Mode + Link) -->
+
           <div v-if="calculationType === 'hit'" class="hit-modifiers">
              <hr class="separator">
              <label class="control-label">命中状态:</label>
@@ -316,6 +321,21 @@ const recommendationTitle = computed(() => {
                  @click="hitState = 'pc'"
                >
                  Punish (+4)
+               </button>
+             </div>
+          </div>
+          
+          <!-- Block Modifiers -->
+          <div v-if="calculationType === 'block'" class="hit-modifiers">
+             <hr class="separator">
+             <label class="control-label">防御状态:</label>
+             <div class="modifier-chips">
+               <button 
+                 class="mod-chip burnout" 
+                 :class="{ active: isBurnout }"
+                 @click="isBurnout = !isBurnout"
+               >
+                 对方 Burnout (+4)
                </button>
              </div>
           </div>
@@ -805,6 +825,12 @@ const recommendationTitle = computed(() => {
 .mod-chip.punish.active {
   background: #f56c6c; /* Red for Punish */
   border-color: #f56c6c;
+}
+
+.mod-chip.burnout.active {
+  background: #909399; /* Grey for Burnout */
+  border-color: #909399;
+  color: white;
 }
 
 .state-badge {

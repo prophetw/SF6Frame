@@ -11,6 +11,7 @@ export interface CalculationInput {
     mode: CalculationMode;
     hitState: HitState;
     cancelFrame: number;
+    isBurnout?: boolean; // New
 }
 
 export interface CalculationResult {
@@ -66,7 +67,7 @@ export function calculateMoveStats(move: Move): DerivedMoveStats {
 }
 
 export function calculateGap(input: CalculationInput): CalculationResult {
-    const { move1, move2, type, mode, hitState, cancelFrame } = input;
+    const { move1, move2, type, mode, hitState, cancelFrame, isBurnout } = input;
 
     const adv1Block = parseFrameValue(move1.onBlock);
     const adv1Hit = parseFrameValue(move1.onHit);
@@ -95,6 +96,9 @@ export function calculateGap(input: CalculationInput): CalculationResult {
         // Apply modifiers
         if (hitState === 'ch') adv1Num += 2;
         if (hitState === 'pc') adv1Num += 4;
+    } else if (type === 'block' && isBurnout) {
+        // Burnout adds +4 frames on block (effectively)
+        adv1Num += 4;
     }
 
     let gap = 0;
@@ -151,13 +155,25 @@ export function calculateGap(input: CalculationInput): CalculationResult {
 
         if (mode === 'link') {
             gap = startup2Num - adv1Num - 1;
-            formulaDesc = `${startup2Num} (Startup) - ${adv1Num} (Adv) - 1`;
+            if (isBurnout) {
+                formulaDesc = `${startup2Num} (Startup) - (${adv1Num - 4} + 4 Burnout) - 1`;
+            } else {
+                formulaDesc = `${startup2Num} (Startup) - ${adv1Num} (Adv) - 1`;
+            }
         } else {
             const stats = calculateMoveStats(move1);
             blockstun = stats.blockstun;
 
+            // If burnout, blockstun increases by 4
+            if (isBurnout) blockstun += 4;
+
             gap = cancelFrame + (startup2Num - 1) - blockstun;
-            formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num - 1} (Startup-1) - ${blockstun} (Blockstun)`;
+
+            if (isBurnout) {
+                formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num - 1} (Startup-1) - (${blockstun - 4} + 4 Burnout)`;
+            } else {
+                formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num - 1} (Startup-1) - ${blockstun} (Blockstun)`;
+            }
         }
         if (gap <= 0) {
             status = '连防 (True Blockstring)';
@@ -253,7 +269,8 @@ export function findRecommendedMoves(
     type: CalculationType,
     mode: CalculationMode,
     hitState: HitState,
-    cancelFrame: number = 1
+    cancelFrame: number = 1,
+    isBurnout: boolean = false // New
 ): RecommendedMove[] {
     const recommendations: RecommendedMove[] = [];
 
@@ -277,7 +294,8 @@ export function findRecommendedMoves(
             type,
             mode,
             hitState,
-            cancelFrame
+            cancelFrame,
+            isBurnout
         });
 
         if (!result.valid) continue;
