@@ -426,7 +426,7 @@ function toggleThrowResultDetail(key: string) {
 }
 
 // Auto results
-const okiResults = computed<ExtendedOkiResult[]>(() => {
+const allOkiResults = computed<ExtendedOkiResult[]>(() => {
   if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
 
   const results: ExtendedOkiResult[] = [];
@@ -577,7 +577,11 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
     if (blockA !== blockB) return blockB - blockA;
 
     return a.ourActiveStart - b.ourActiveStart;
-  }).slice(0, 50);
+  });
+});
+
+const okiResults = computed<ExtendedOkiResult[]>(() => {
+  return allOkiResults.value.slice(0, 50);
 });
 
 // Throw filler moves (exclude throws, keep reasonable total frames)
@@ -608,7 +612,7 @@ interface ThrowComboResult {
   firstActive: number;
 }
 
-const throwResults = computed<ThrowComboResult[]>(() => {
+const allThrowResults = computed<ThrowComboResult[]>(() => {
   if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
   if (throwDelayMax.value < 0) return [];
 
@@ -673,8 +677,11 @@ const throwResults = computed<ThrowComboResult[]>(() => {
   }
 
   return results
-    .sort((a, b) => a.delay - b.delay)
-    .slice(0, 50);
+    .sort((a, b) => a.delay - b.delay);
+});
+
+const throwResults = computed(() => {
+  return allThrowResults.value.slice(0, 50);
 });
 
 // Actions
@@ -1212,7 +1219,7 @@ function formatFrame(val: number | string | undefined): string {
               <div class="flex-1">
                 <div class="move-search" style="min-width: 0">
                   <input type="text" v-model="defenderMoveSearchQuery" @focus="showDefenderDropdown = true"
-                    @blur="handleDefenderBlur" @input="selectedDefenderMove = null" placeholder="选择或搜索招式..."
+                    @blur="handleDefenderBlur" @input="selectedDefenderMove = null" placeholder="选择或搜索对手招式..."
                     class="move-search-input p-1 text-xs" :disabled="!defenderFrameData" />
                   <div v-if="showDefenderDropdown && filteredDefenderMoves.length > 0" class="move-dropdown">
                     <button v-for="move in filteredDefenderMoves" :key="move.name" class="move-option text-xs"
@@ -1248,7 +1255,7 @@ function formatFrame(val: number | string | undefined): string {
             <button class="chain-remove" @click="removeAction(idx)">×</button>
             <span v-if="idx < comboChain.length - 1" class="chain-plus">+</span>
           </div>
-          <span v-if="comboChain.length === 0" class="chain-empty">点击下方添加动作</span>
+          <span v-if="comboChain.length === 0" class="chain-empty">点击下方添加前置动作</span>
         </div>
 
         <div class="combo-actions">
@@ -1297,7 +1304,12 @@ function formatFrame(val: number | string | undefined): string {
 
       <!-- Auto Results -->
       <div class="results-header-row">
-        <h3 class="results-title">自动匹配 ({{ okiResults.length }}个成功)</h3>
+        <h3 class="results-title">
+          自动匹配 (共 {{ allOkiResults.length }} 个结果，显示前 {{ okiResults.length }} 条)
+          <div class="header-tip-icon" title="排序规则: 优先显示被防有利 (On Block) 的压制，其次为启动速度快。仅显示前 50 条最优解。">
+            ?
+          </div>
+        </h3>
         <button v-if="comboChain.length > 0" :class="['prefix-btn', { active: useChainAsPrefix }]"
           @click="useChainAsPrefix = !useChainAsPrefix">
           {{ useChainAsPrefix ? '✓ 使用组合前置' : '以当前组合为前置' }}
@@ -1558,7 +1570,7 @@ function formatFrame(val: number | string | undefined): string {
       </div>
 
       <div class="results-header-row throw-results-header">
-        <h3 class="results-title">循环投组合 ({{ throwResults.length }}个)</h3>
+        <h3 class="results-title">循环投组合 (共 {{ allThrowResults.length }} 个结果，显示前 {{ throwResults.length }} 条)</h3>
       </div>
       <p v-if="useChainAsPrefix && comboChain.length > 0" class="prefix-info">
         前置: <strong>{{ comboChainPrefixName }} ({{ comboChainThrowPrefixFrames }}F)</strong> + 空挥 + 投
@@ -2040,6 +2052,31 @@ function formatFrame(val: number | string | undefined): string {
   font-size: var(--font-size-md);
   color: var(--color-text-secondary);
   margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.header-tip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  margin-left: var(--space-sm);
+  cursor: help;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.header-tip-icon:hover {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
 }
 
 .prefix-btn {
