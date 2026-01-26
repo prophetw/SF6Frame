@@ -26,6 +26,7 @@ interface ComboAction {
 
 const comboChain = ref<ComboAction[]>([]);
 const moveSearchQuery = ref('');
+const autoMatchSearchQuery = ref(''); // New: Search query for auto match results
 
 // Opponent's fastest reversal settings
 const opponentReversalStartup = ref<number>(4);
@@ -616,7 +617,17 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
 });
 
 const okiResults = computed<ExtendedOkiResult[]>(() => {
-  return allOkiResults.value.slice(0, 50);
+  let filtered = allOkiResults.value;
+  
+  if (autoMatchSearchQuery.value) {
+    const query = autoMatchSearchQuery.value.toLowerCase().trim();
+    filtered = filtered.filter(result => 
+      result.move.name.toLowerCase().includes(query) ||
+      result.move.input.toLowerCase().includes(query)
+    );
+  }
+
+  return filtered.slice(0, 50);
 });
 
 // Throw filler moves (exclude throws, keep reasonable total frames)
@@ -1345,10 +1356,19 @@ function formatFrame(val: number | string | undefined): string {
             ?
           </div>
         </h3>
-        <button v-if="comboChain.length > 0" :class="['prefix-btn', { active: useChainAsPrefix }]"
-          @click="useChainAsPrefix = !useChainAsPrefix">
-          {{ useChainAsPrefix ? '✓ 使用组合前置' : '以当前组合为前置' }}
-        </button>
+        
+        <div class="results-controls">
+           <input 
+            type="text" 
+            v-model="autoMatchSearchQuery" 
+            placeholder="搜索招式..." 
+            class="auto-match-search-input" 
+          />
+          <button v-if="comboChain.length > 0" :class="['prefix-btn', { active: useChainAsPrefix }]"
+            @click="useChainAsPrefix = !useChainAsPrefix">
+            {{ useChainAsPrefix ? '✓ 使用组合前置' : '以当前组合为前置' }}
+          </button>
+        </div>
       </div>
       <p v-if="useChainAsPrefix" class="prefix-info">
         前置: <strong>{{ comboChainPrefixName }} ({{ comboChainPrefixFrames }}F)</strong> + 招式
@@ -2727,5 +2747,47 @@ function formatFrame(val: number | string | undefined): string {
 .sort-indicator {
   font-size: 0.8em;
   color: var(--color-accent);
+}
+
+.results-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+  flex: 1;
+}
+
+.auto-match-search-input {
+  flex: 1; /* Take available space */
+  max-width: 300px;
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.auto-match-search-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  .results-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+  
+  .results-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .auto-match-search-input {
+    flex: 1;
+    max-width: none;
+  }
 }
 </style>
