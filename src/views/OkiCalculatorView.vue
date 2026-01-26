@@ -137,7 +137,7 @@ const throwFirstActiveMin = computed(() => {
 });
 
 const throwFirstActiveMax = computed(() => {
-  return earliestThrowableFrame.value;
+  return latestThrowableFrame.value;
 });
 
 // Knockdown moves
@@ -1561,7 +1561,12 @@ function formatFrame(val: number | string | undefined): string {
         </div>
         <div class="math-row">
           <span class="math-label">第一帧判定允许范围:</span>
-          <span class="math-value">{{ throwFirstActiveMin }}F ~ {{ throwFirstActiveMax }}F</span>
+          <span class="math-value">
+            {{ throwFirstActiveMin }}F ~ {{ throwFirstActiveMax }}F
+            <span v-if="throwFirstActiveMax > earliestThrowableFrame" class="window-bonus">
+              (放宽了 {{ throwFirstActiveMax - earliestThrowableFrame }}F)
+            </span>
+          </span>
         </div>
       </div>
 
@@ -1571,6 +1576,14 @@ function formatFrame(val: number | string | undefined): string {
 
       <div class="results-header-row throw-results-header">
         <h3 class="results-title">循环投组合 (共 {{ allThrowResults.length }} 个结果，显示前 {{ throwResults.length }} 条)</h3>
+      </div>
+      <div class="throw-mixup-tip">
+        <span class="tip-icon">💡</span>
+        <span>
+          <strong>核心博弈</strong>：此处的“投”可以替换为 <strong>2LK (下轻脚)</strong>、<strong>5LP (站轻拳)</strong> 或者 <strong>垂直/前跳</strong>。
+          <br>
+          利用相同的延迟帧数，从“投”变为“打”或“跳”，触发街霸6核心猜拳机制 —— <strong>打投二择 (Strike/Throw Mixup)</strong>。
+        </span>
       </div>
       <p v-if="useChainAsPrefix && comboChain.length > 0" class="prefix-info">
         前置: <strong>{{ comboChainPrefixName }} ({{ comboChainThrowPrefixFrames }}F)</strong> + 空挥 + 投
@@ -1630,12 +1643,14 @@ function formatFrame(val: number | string | undefined): string {
                 <div class="legend-row">
                   <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
                   <span class="timeline-legend-item"><span class="legend-color startup"></span>发生</span>
-                  <span class="timeline-legend-item"><span class="legend-color active"></span>持续/空挥</span>
+                  <span class="timeline-legend-item"><span class="legend-color active"></span>持续</span>
+                  <span class="timeline-legend-item"><span class="legend-color recovery"></span>硬直/空挥</span>
                   <span class="timeline-legend-item"><span class="legend-color hitstun"></span>被投</span>
                 </div>
                 <div class="legend-row">
                   <span class="timeline-legend-item"><span class="legend-color down"></span>倒地</span>
                   <span class="timeline-legend-item"><span class="legend-icon opponent-wakeup">▼</span>起身</span>
+                  <span class="timeline-legend-item"><span class="legend-icon">⚠️</span>投命中</span>
                 </div>
               </div>
 
@@ -2625,5 +2640,28 @@ function formatFrame(val: number | string | undefined): string {
 
 .legend-icon.opponent-reversal {
   color: #f59e0b;
+}
+
+.throw-mixup-tip {
+  margin-bottom: var(--space-md);
+  padding: var(--space-md);
+  background: linear-gradient(to right, rgba(147, 51, 234, 0.15), rgba(59, 130, 246, 0.15));
+  border: 1px solid rgba(147, 51, 234, 0.3);
+  border-left: 4px solid #9333ea;
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  line-height: 1.6;
+}
+
+.throw-mixup-tip strong {
+  color: #d8b4fe;
+}
+
+.throw-mixup-tip .tip-icon {
+  font-size: 1.2em;
 }
 </style>
