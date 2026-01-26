@@ -417,11 +417,26 @@ function toggleResultDetail(key: string) {
   }
 }
 
+// Toggle throw result detail
 function toggleThrowResultDetail(key: string) {
   if (selectedThrowResultKey.value === key) {
     selectedThrowResultKey.value = null;
   } else {
     selectedThrowResultKey.value = key;
+  }
+}
+
+// Sort State
+const sortKey = ref<'block' | 'hit' | 'trade' | 'startup'>('block');
+const sortOrder = ref<'asc' | 'desc'>('desc');
+
+// Toggle Sort
+function toggleSort(key: 'block' | 'hit' | 'trade' | 'startup') {
+  if (sortKey.value === key) {
+    sortOrder.value = sortOrder.value === 'desc' ? 'asc' : 'desc';
+  } else {
+    sortKey.value = key;
+    sortOrder.value = 'desc'; // Default to desc for new key (usually better for advantage)
   }
 }
 
@@ -566,16 +581,36 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
     }
   }
 
+  // Sort logic using outer scope variables
   return results.sort((a, b) => {
-    // Sort logic
-    // Sort by onBlock (descending)
-    const blockA = typeof a.calculatedOnBlock === 'number' ? a.calculatedOnBlock : -999;
-    const blockB = typeof b.calculatedOnBlock === 'number' ? b.calculatedOnBlock : -999;
+    let valA = 0;
+    let valB = 0;
 
-    // Group Safe ones first (>= -3? or just positive?)
-    // Actually standard heuristic sort
-    if (blockA !== blockB) return blockB - blockA;
+    // Extract values based on key
+    switch (sortKey.value) {
+      case 'block':
+        valA = typeof a.calculatedOnBlock === 'number' ? a.calculatedOnBlock : -999;
+        valB = typeof b.calculatedOnBlock === 'number' ? b.calculatedOnBlock : -999;
+        break;
+      case 'hit':
+        valA = typeof a.calculatedOnHit === 'number' ? a.calculatedOnHit : -999;
+        valB = typeof b.calculatedOnHit === 'number' ? b.calculatedOnHit : -999;
+        break;
+      case 'trade':
+        valA = a.tradeAdvantage ?? -999;
+        valB = b.tradeAdvantage ?? -999;
+        break;
+      case 'startup':
+        valA = a.ourActiveStart;
+        valB = b.ourActiveStart;
+        break;
+    }
 
+    if (valA !== valB) {
+      return sortOrder.value === 'desc' ? valB - valA : valA - valB;
+    }
+
+    // Secondary sort: Startup (Ascending) for stability
     return a.ourActiveStart - b.ourActiveStart;
   });
 });
@@ -1322,11 +1357,23 @@ function formatFrame(val: number | string | undefined): string {
       <div v-if="okiResults.length > 0" class="results-table">
         <div class="result-header">
           <span>组合</span>
-          <span>发生</span>
+          <span class="sortable-header" @click="toggleSort('startup')">
+            发生
+            <span v-if="sortKey === 'startup'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
+          </span>
           <span>打击帧</span>
-          <span>被防</span>
-          <span>被击</span>
-          <span>相杀</span>
+          <span class="sortable-header" @click="toggleSort('block')">
+            被防
+            <span v-if="sortKey === 'block'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
+          </span>
+          <span class="sortable-header" @click="toggleSort('hit')">
+            被击
+            <span v-if="sortKey === 'hit'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
+          </span>
+          <span class="sortable-header" @click="toggleSort('trade')">
+            相杀
+            <span v-if="sortKey === 'trade'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
+          </span>
         </div>
         <div v-for="result in okiResults" :key="`${result.prefix}${result.move.name}`" :class="['result-row-auto', {
           expanded: selectedResultKey === `${result.prefix}${result.move.name}`,
@@ -2663,5 +2710,22 @@ function formatFrame(val: number | string | undefined): string {
 
 .throw-mixup-tip .tip-icon {
   font-size: 1.2em;
+}
+
+.sortable-header {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sortable-header:hover {
+  color: var(--color-accent);
+}
+
+.sort-indicator {
+  font-size: 0.8em;
+  color: var(--color-accent);
 }
 </style>
