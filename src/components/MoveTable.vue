@@ -50,6 +50,23 @@ function getCategoryLabel(cat: string): string {
 function getMoveStats(move: Move) {
   return calculateMoveStats(move);
 }
+
+function getTotalFrames(move: Move): string {
+  if (move.raw && move.raw.total !== undefined) {
+    return String(move.raw.total);
+  }
+  
+  // Calculate if not available in raw
+  const startup = parseInt(move.startup);
+  const active = parseInt(move.active);
+  const recovery = parseInt(move.recovery);
+  
+  if (!isNaN(startup) && !isNaN(active) && !isNaN(recovery)) {
+    return String(startup + active + recovery - 1);
+  }
+  
+  return '-';
+}
 </script>
 
 <template>
@@ -84,6 +101,7 @@ function getMoveStats(move: Move) {
             <th class="col-startup" @click="handleSort('startup')">发生 <span class="sort-icon">{{ getSortIcon('startup') }}</span></th>
             <th class="col-active" @click="handleSort('active')">持续 <span class="sort-icon">{{ getSortIcon('active') }}</span></th>
             <th class="col-recovery" @click="handleSort('recovery')">硬直 <span class="sort-icon">{{ getSortIcon('recovery') }}</span></th>
+            <th class="col-total" @click="handleSort('total')">总帧数 <span class="sort-icon">{{ getSortIcon('total') }}</span></th>
             <th class="col-onblock" @click="handleSort('onBlock')">防御 <span class="sort-icon">{{ getSortIcon('onBlock') }}</span></th>
             <th class="col-onhit" @click="handleSort('onHit')">命中 <span class="sort-icon">{{ getSortIcon('onHit') }}</span></th>
             <th class="col-blockstun" @click="handleSort('blockstun')">防硬 <span class="sort-icon">{{ getSortIcon('blockstun') }}</span></th>
@@ -108,6 +126,7 @@ function getMoveStats(move: Move) {
             <td class="col-startup" data-label="发生">{{ move.startup }}</td>
             <td class="col-active" data-label="持续">{{ move.active }}</td>
             <td class="col-recovery" data-label="硬直">{{ move.recovery }}</td>
+            <td class="col-total" data-label="总帧数">{{ getTotalFrames(move) }}</td>
             <td class="col-onblock" data-label="防御差" :class="getFrameClass(move.onBlock)">
               {{ formatFrameValue(move.onBlock) }}
             </td>
@@ -266,7 +285,8 @@ function getMoveStats(move: Move) {
 .col-startup,
 .col-active,
 .col-recovery,
-.col-damage {
+.col-damage,
+.col-total {
   text-align: center;
 }
 

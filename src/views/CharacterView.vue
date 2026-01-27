@@ -71,6 +71,24 @@ const filteredMoves = computed(() => {
       } else if (sortKey.value === 'blockstun') {
          valA = calculateMoveStats(a).blockstun;
          valB = calculateMoveStats(b).blockstun;
+      } else if (sortKey.value === 'total') {
+         if ((a as any).raw?.total !== undefined) {
+            valA = (a as any).raw.total;
+         } else {
+            const s = parseFrameValue(a.startup);
+            const ac = parseFrameValue(a.active);
+            const r = parseFrameValue(a.recovery);
+            valA = (s !== -999 && ac !== -999 && r !== -999) ? s + ac + r - 1 : -999;
+         }
+         
+         if ((b as any).raw?.total !== undefined) {
+            valB = (b as any).raw.total;
+         } else {
+            const s = parseFrameValue(b.startup);
+            const ac = parseFrameValue(b.active);
+            const r = parseFrameValue(b.recovery);
+            valB = (s !== -999 && ac !== -999 && r !== -999) ? s + ac + r - 1 : -999;
+         }
       } else {
          valA = parseFrameValue((a as any)[sortKey.value]);
          valB = parseFrameValue((b as any)[sortKey.value]);
