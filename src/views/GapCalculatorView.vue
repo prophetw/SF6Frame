@@ -175,6 +175,58 @@ const recommendationTitle = computed(() => {
   if (calculationType.value === 'hit') return '推荐连招 (Link)';
   return '安全压制 (Pressure/Gap)';
 });
+
+// Follow-up Recommendations (based on surplus)
+const validFollowUps = computed(() => {
+  if (
+    calculationType.value !== 'hit' || 
+    !calculationResult.value || 
+    calculationResult.value.gap < 0 ||
+    !allMoves.value
+  ) {
+    return [];
+  }
+
+  const surplus = calculationResult.value.gap;
+  const isDriveRushCancel = move2.value && (move2.value.name.includes('Drive Rush') || move2.value.input.includes('66 (cancel)'));
+  
+  return allMoves.value
+    .filter(m => {
+       // Filter out throws and non-hitting moves usually
+       if (m.category === 'throw') return false;
+       // Fix: Jump category might not be explicit, usage name check
+       if (m.name.includes('Jump') || m.input.includes('8') || m.input.startsWith('u+')) return false;
+
+       const startup = parseFrameValue(m.startup);
+       if (startup <= 0) return false;
+       
+       if (isDriveRushCancel) return true;
+       return startup <= surplus;
+    })
+    .sort((a, b) => {
+        // Prioritize Normals and Unique moves (Command Normals)
+        const isNormalA = a.category === 'normal' || a.category === 'unique';
+        const isNormalB = b.category === 'normal' || b.category === 'unique';
+        
+        if (isNormalA && !isNormalB) return -1;
+        if (!isNormalA && isNormalB) return 1;
+
+        // Then Sort by Damage desc
+        const dmgA = parseInt(a.damage) || 0;
+        const dmgB = parseInt(b.damage) || 0;
+        if (dmgA !== dmgB) return dmgB - dmgA;
+        
+        // Then Startup asc
+        const startA = parseFrameValue(a.startup);
+        const startB = parseFrameValue(b.startup);
+        return startA - startB;
+    })
+    .slice(0, 20); // Increased limit to 20 to show more options
+});
+
+function selectFollowUp(move: Move) {
+    selectMove2(move);
+}
 </script>
 
 <template>
@@ -449,6 +501,29 @@ const recommendationTitle = computed(() => {
           </div>
         </div>
       </div>
+
+       <!-- Follow-up Recommendations List -->
+       <div v-if="validFollowUps.length > 0" class="result-card follow-up-card">
+          <div class="rec-header">
+             <h3>可在窗口内命中的招式 (+{{ calculationResult.gap }}F)</h3>
+             <span class="subtitle-text">后续可以连的招数列表</span>
+          </div>
+          
+          <div class="tags-container follow-up-tags">
+             <button 
+               v-for="move in validFollowUps" 
+               :key="move.name"
+               class="rec-tag"
+               :class="{ active: move2 && move2.name === move.name }"
+               @click="selectFollowUp(move)"
+             >
+               <span class="rec-name">{{ move.name }}</span>
+               <span class="rec-input">{{ move.input }}</span>
+               <span class="rec-dmg" v-if="move.damage">{{ move.damage }}dmg</span>
+             </button>
+          </div>
+       </div>
+
     </section>
     
     <section v-else-if="move1 && move2" class="error-section">
@@ -808,6 +883,51 @@ const recommendationTitle = computed(() => {
   display: flex;
   gap: var(--space-xs);
   flex-wrap: wrap;
+}
+
+/* Follow Up Card */
+.follow-up-card {
+  margin-top: var(--space-md);
+  margin-left: var(--space-md);
+  text-align: left;
+  max-width: 400px;
+}
+
+@media (max-width: 1024px) {
+  .result-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .follow-up-card {
+    margin-left: 0;
+    margin-top: var(--space-lg);
+    max-width: 600px;
+  }
+}
+
+.rec-header h3 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.subtitle-text {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.follow-up-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rec-dmg {
+  font-size: 0.75rem;
+  color: var(--color-danger);
+  margin-left: auto;
+  padding-left: 8px;
 }
 
 .mod-chip {
