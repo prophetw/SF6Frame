@@ -443,6 +443,9 @@ const recommendationTitle = computed(() => {
           <div class="calculation-breakdown">
              <div class="formula-label">计算公式 ({{ calculationMode }})</div>
             <code>{{ calculationResult.formulaDesc }} = {{ calculationResult.gap }}</code>
+             <div v-if="calculationResult.formulaNote" class="formula-note">
+               ℹ️ {{ calculationResult.formulaNote }}
+             </div>
           </div>
         </div>
       </div>
@@ -759,6 +762,13 @@ const recommendationTitle = computed(() => {
   font-size: 0.8rem;
   color: var(--color-text-muted);
   margin-bottom: 4px;
+}
+
+.formula-note {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-style: italic;
 }
 
 .type-selector {

@@ -29,6 +29,7 @@ export interface CalculationResult {
     startup2: number;
     blockstun?: number;
     error?: string;
+    formulaNote?: string;
 }
 
 export interface DerivedMoveStats {
@@ -130,11 +131,16 @@ export function calculateGap(input: CalculationInput): CalculationResult {
             if (hitState === 'ch') hitstun += 2;
             if (hitState === 'pc') hitstun += 4;
 
-            const hitFrame = cancelFrame + startup2Num - 1;
+            // Special handling for Drive Rush: It seems to not require the -1 adjustment
+            const isDriveRush = move2.name.includes('Drive Rush') || move2.input.includes('66 (cancel)');
+            const startupAdjustment = isDriveRush ? 0 : -1;
+
+            const hitFrame = cancelFrame + startup2Num + startupAdjustment;
             const surplus = hitstun - hitFrame;
             gap = surplus;
 
-            formulaDesc = `${hitstun} (Hitstun) - (${cancelFrame} + ${startup2Num} - 1)`;
+            const formulaStartupStr = isDriveRush ? `${startup2Num}` : `${startup2Num} - 1`;
+            formulaDesc = `${hitstun} (Hitstun) - (${cancelFrame} + ${formulaStartupStr})`;
         } else {
             gap = adv1Num - startup2Num;
             formulaDesc = `${adv1Num} (Adv) - ${startup2Num} (Startup)`;
@@ -176,12 +182,19 @@ export function calculateGap(input: CalculationInput): CalculationResult {
             // If burnout, blockstun increases by 4
             if (isBurnout) blockstun += 4;
 
-            gap = cancelFrame + (startup2Num - 1) - blockstun;
+            // Special handling for Drive Rush
+            const isDriveRush = move2.name.includes('Drive Rush') || move2.input.includes('66 (cancel)');
+            const startupAdjustment = isDriveRush ? 0 : -1;
+
+            gap = cancelFrame + startup2Num + startupAdjustment - blockstun;
+
+            const formulaStartupStr = isDriveRush ? `${startup2Num}` : `${startup2Num} - 1`;
+            const formulaStartupLabel = isDriveRush ? '(Startup)' : '(Startup-1)';
 
             if (isBurnout) {
-                formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num - 1} (Startup-1) - (${blockstun - 4} + 4 Burnout)`;
+                formulaDesc = `${cancelFrame} (CancelFrame) + ${formulaStartupStr} ${formulaStartupLabel} - (${blockstun - 4} + 4 Burnout)`;
             } else {
-                formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num - 1} (Startup-1) - ${blockstun} (Blockstun)`;
+                formulaDesc = `${cancelFrame} (CancelFrame) + ${formulaStartupStr} ${formulaStartupLabel} - ${blockstun} (Blockstun)`;
             }
         }
         if (gap <= 0) {
@@ -205,6 +218,17 @@ export function calculateGap(input: CalculationInput): CalculationResult {
         displayValue = `${gap}F`;
     }
 
+    // Formula explanation note
+    let formulaNote = '';
+    if (mode === 'cancel') {
+        const isDriveRush = move2.name.includes('Drive Rush') || move2.input.includes('66 (cancel)');
+        if (isDriveRush) {
+            formulaNote = 'Drive Rush 为纯移动帧，无打击判定，故不需减 1。';
+        } else {
+            formulaNote = '普通招式 Startup 指第一生效帧 (Attack Frame)，故需减 1 计算消耗时间。';
+        }
+    }
+
     return {
         valid: true,
         gap,
@@ -216,6 +240,7 @@ export function calculateGap(input: CalculationInput): CalculationResult {
         adv1: adv1Num,
         startup2: startup2Num,
         formulaDesc,
+        formulaNote,
         blockstun: type === 'block' && mode === 'cancel' ? blockstun : undefined
     };
 }
