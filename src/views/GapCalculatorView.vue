@@ -508,6 +508,23 @@ function selectFollowUp(move: Move) {
         </div>
       </div>
 
+      <!-- Gap Mechanics Explanation -->
+      <div class="result-card explanation-card">
+        <details>
+          <summary>ℹ️ Gap 机制科普：为何有空隙就能插动？</summary>
+          <div class="explanation-content">
+            <h4>底层规则：只要出现“可动帧”，就可以 OD 升龙/无敌超必</h4>
+            <p>SF6 允许你把无敌反击（OD 升龙/无敌超必）在 blockstun 结束前最多提前 <strong>4F</strong> 缓冲，一旦进入第一帧可动就会立刻启动。（起身场景缓冲更大，可达 7F）。</p>
+            <p><strong>结论：</strong></p>
+            <ul>
+              <li>如果对手在两下之间有任何可动帧（哪怕只有 1 帧），他就能把 OD 升龙“卡在第一帧可动”启动。</li>
+              <li>依靠“启动第 1 帧就有无敌”的性质，可以穿掉你的下一次攻击。</li>
+              <li>简单来说：<strong>只要你的攻击没有覆盖到对手防御硬直的最后一帧，对手就可以在恢复的第一帧使用无敌技反击。</strong></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
        <!-- Follow-up Recommendations List -->
        <div v-if="validFollowUps.length > 0" class="result-card follow-up-card">
           <div class="rec-header">
@@ -1062,5 +1079,40 @@ function selectFollowUp(move: Move) {
 
 .rec-gap.unsafe {
   background: var(--color-danger);
+}
+.explanation-card {
+  margin-bottom: var(--space-md);
+  text-align: left;
+}
+
+.explanation-card summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-accent);
+  padding: var(--space-sm);
+  user-select: none;
+}
+
+.explanation-content {
+  padding: var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: 0.9em;
+  background: rgba(0,0,0,0.2);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-sm);
+}
+
+.explanation-content h4 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.explanation-content ul {
+  padding-left: var(--space-lg);
+  margin-top: var(--space-sm);
+}
+
+.explanation-content li {
+  margin-bottom: 4px;
 }
 </style>
