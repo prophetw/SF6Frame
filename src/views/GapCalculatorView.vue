@@ -204,19 +204,25 @@ const validFollowUps = computed(() => {
        return startup <= surplus;
     })
     .sort((a, b) => {
-        // Prioritize Normals and Unique moves (Command Normals)
+        // 1. Prioritize Drive Rush (66 cancel)
+        const isDRA = a.name.includes('Drive Rush') || a.input.includes('66 (cancel)');
+        const isDRB = b.name.includes('Drive Rush') || b.input.includes('66 (cancel)');
+        if (isDRA && !isDRB) return -1;
+        if (!isDRA && isDRB) return 1;
+
+        // 2. Prioritize Normals and Unique moves (Command Normals)
         const isNormalA = a.category === 'normal' || a.category === 'unique';
         const isNormalB = b.category === 'normal' || b.category === 'unique';
         
         if (isNormalA && !isNormalB) return -1;
         if (!isNormalA && isNormalB) return 1;
 
-        // Then Sort by Damage desc
+        // 3. Then Sort by Damage desc
         const dmgA = parseInt(a.damage) || 0;
         const dmgB = parseInt(b.damage) || 0;
         if (dmgA !== dmgB) return dmgB - dmgA;
         
-        // Then Startup asc
+        // 4. Then Startup asc
         const startA = parseFrameValue(a.startup);
         const startB = parseFrameValue(b.startup);
         return startA - startB;

@@ -73,7 +73,7 @@ const filteredMoves = computed(() => {
          valB = calculateMoveStats(b).blockstun;
       } else if (sortKey.value === 'total') {
          if ((a as any).raw?.total !== undefined) {
-            valA = (a as any).raw.total;
+            valA = parseFrameValue((a as any).raw.total);
          } else {
             const s = parseFrameValue(a.startup);
             const ac = parseFrameValue(a.active);
@@ -82,7 +82,7 @@ const filteredMoves = computed(() => {
          }
          
          if ((b as any).raw?.total !== undefined) {
-            valB = (b as any).raw.total;
+            valB = parseFrameValue((b as any).raw.total);
          } else {
             const s = parseFrameValue(b.startup);
             const ac = parseFrameValue(b.active);

@@ -356,5 +356,15 @@ export function findRecommendedMoves(
     // For Block: Tighter gap (closer to 0 or negative) is better pressure? 
     // Or 3-4f gap is good frame trap.
 
-    return recommendations.sort((a, b) => a.gap - b.gap);
+    return recommendations.sort((a, b) => {
+        // 1. Prioritize Drive Rush (66 cancel)
+        const isDRA = a.move.name.includes('Drive Rush') || a.move.input.includes('66 (cancel)');
+        const isDRB = b.move.name.includes('Drive Rush') || b.move.input.includes('66 (cancel)');
+
+        if (isDRA && !isDRB) return -1;
+        if (!isDRA && isDRB) return 1;
+
+        // 2. Sort by Gap (smaller gap / tighter link or pressure is usually better default)
+        return a.gap - b.gap;
+    });
 }
