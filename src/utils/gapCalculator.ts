@@ -190,22 +190,25 @@ export function calculateGap(input: CalculationInput): CalculationResult {
                 formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num} (Startup) - ${blockstun} (Blockstun)`;
             }
         }
-        if (gap <= 0) {
+        if (gap < 0) {
             status = '连防 (True Blockstring)';
             statusClass = 'status-safe';
-            description = '对手无法在两招之间做出任何动作。';
+            description = '真的连防，对手无法出任何招式，还处在防御硬直中。';
         } else if (gap < 4) {
-            status = 'Frame Trap (伪连/打康陷阱)';
+            // Gap 0, 1, 2, 3
+            status = 'Frame Trap (伪连/无敌技确反)';
             statusClass = 'status-trap';
-            description = '对手最快普通技（4F）无法抢动。';
+            description = '正常出招会被打康，但无敌帧的OD升龙或SA1/2/3可以放出来。';
         } else if (gap >= 4 && gap <= 9) {
+            // Gap >= 4 and <= 9
             status = '可插动 (Interruptible)';
             statusClass = 'status-warning';
-            description = '对手可以使用轻攻击抢动或相杀。';
+            description = '间隙较大，对手可以使用4帧抢动，或使用无敌技。';
         } else {
+            // Gap > 9
             status = '高风险 / 易被插 (High Risk)';
             statusClass = 'status-danger';
-            description = '间隙过大，容易被无敌技或大伤害技确反。';
+            description = '间隙过大，容易被跳入、大伤害技确反。';
         }
 
         displayValue = `${gap}F`;
