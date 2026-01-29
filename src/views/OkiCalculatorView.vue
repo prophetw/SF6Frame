@@ -1286,7 +1286,7 @@ function formatFrame(val: number | string | undefined): string {
 </script>
 
 <template>
-  <div class="oki-view container">
+  <div class="oki-view container" style="padding-bottom: 100px;">
     <h1 class="page-title">压起身计算器</h1>
     <p class="page-desc">组合链计算: 前冲 + 前冲 + 招式A + ...</p>
 
@@ -2045,8 +2045,8 @@ function formatFrame(val: number | string | undefined): string {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: var(--space-sm);
-  max-height: 160px;
-  overflow-y: auto;
+  /* max-height: 160px; REMOVED to show all moves */
+  /* overflow-y: auto; REMOVED */
 }
 
 .knockdown-card {

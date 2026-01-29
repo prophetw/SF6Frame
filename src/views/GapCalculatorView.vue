@@ -303,8 +303,8 @@ function selectFollowUp(move: Move) {
           />
           <div v-if="showDropdown1" class="dropdown-list">
             <div 
-              v-for="move in filteredMoves1" 
-              :key="move.name"
+              v-for="(move, index) in filteredMoves1" 
+              :key="`${move.name}-${move.input}-${index}`"
               class="dropdown-item"
               @mousedown="selectMove1(move)"
             >
@@ -442,8 +442,8 @@ function selectFollowUp(move: Move) {
           />
           <div v-if="showDropdown2" class="dropdown-list">
             <div 
-              v-for="move in filteredMoves2" 
-              :key="move.name"
+              v-for="(move, index) in filteredMoves2" 
+              :key="`${move.name}-${move.input}-${index}`"
               class="dropdown-item"
               @mousedown="selectMove2(move)"
             >
@@ -469,8 +469,8 @@ function selectFollowUp(move: Move) {
            <h3 class="rec-title">{{ recommendationTitle }}</h3>
            <div class="tags-container">
              <button 
-               v-for="rec in recommendedMoves" 
-               :key="rec.move.name"
+               v-for="(rec, index) in recommendedMoves" 
+               :key="`${rec.move.name}-${rec.move.input}-${index}`"
                class="rec-tag"
                :class="{ active: move2 && move2.name === rec.move.name }"
                @click="selectMove2(rec.move)"
@@ -534,8 +534,8 @@ function selectFollowUp(move: Move) {
           
           <div class="tags-container follow-up-tags">
              <button 
-               v-for="move in validFollowUps" 
-               :key="move.name"
+               v-for="(move, index) in validFollowUps" 
+               :key="`${move.name}-${move.input}-${index}`"
                class="rec-tag"
                :class="{ active: move2 && move2.name === move.name }"
                @click="selectFollowUp(move)"
