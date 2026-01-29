@@ -16,6 +16,8 @@ const loading = ref(false);
 const customKnockdownAdv = ref<number>(38);
 const useCustomKnockdown = ref(false);
 
+import { defaultCustomMoves } from '../data/defaultCustomMoves';
+
 // NEW: Custom Knockdown Move Interface & State
 export interface CustomMove {
   id: string; // unique timestamp
@@ -32,16 +34,35 @@ const newCustomMove = ref({
   frames: 40
 });
 
-// Load custom moves from localStorage
+// Load custom moves from localStorage and merge with defaults
 function loadCustomMoves() {
+  let storedMoves: CustomMove[] = [];
   const stored = localStorage.getItem('sf6_oki_custom_moves');
   if (stored) {
     try {
-      customMoves.value = JSON.parse(stored);
+      storedMoves = JSON.parse(stored);
     } catch (e) {
       console.error('Failed to parse custom moves', e);
     }
   }
+
+  // Merge: Defaults + Stored
+  // Prioritize Stored if ID conflict? Actually, we want to union.
+  // Use a Map to deduplicate by ID.
+  const moveMap = new Map<string, CustomMove>();
+  
+  // 1. Add defaults
+  defaultCustomMoves.forEach(m => moveMap.set(m.id, m));
+  
+  // 2. Add stored (overwrites defaults if IDs match, which effectively syncs updates if user edits a default and saves it)
+  // Wait, if user EDITS a default move, it gets saved to LS with the SAME ID? 
+  // currently saveCustomMove generates a NEW ID (Date.now()).
+  // So editing isn't really supported, it's "Add new". 
+  // If user deletes a default move, it will come back on reload unless we track "deleted IDs".
+  // For now, simple union is fine.
+  storedMoves.forEach(m => moveMap.set(m.id, m));
+
+  customMoves.value = Array.from(moveMap.values());
 }
 
 // Filter moves by current character
