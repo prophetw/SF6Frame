@@ -1320,14 +1320,12 @@ function formatFrame(val: number | string | undefined): string {
              <div class="list-label">已保存:</div>
              <div class="saved-moves-grid">
                 <div v-for="move in filteredCustomMoves" :key="move.id" 
-                    :class="['saved-move-card', { active: selectedKnockdownMove?.name === move.name && !useCustomKnockdown }]"
+                    :class="['knockdown-card', { active: selectedKnockdownMove?.name === move.name && !useCustomKnockdown }]"
                     @click="selectCustomMove(move)"
                 >
-                    <div class="move-info">
-                        <span class="name">{{ move.name }}</span>
-                        <span class="input">{{ move.input }}</span>
-                    </div>
-                    <span class="frames">+{{ move.frames }}F</span>
+                    <span class="move-name">{{ move.name }}</span>
+                    <span class="move-input">{{ move.input }}</span>
+                    <span class="move-advantage">+{{ move.frames }}F</span>
                     <button class="btn-delete" @click.stop="removeCustomMove(move.id)">×</button>
                 </div>
              </div>
@@ -2017,9 +2015,13 @@ function formatFrame(val: number | string | undefined): string {
   gap: 2px;
   padding: var(--space-xs) var(--space-sm);
   background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   cursor: pointer;
+  position: relative; /* For absolute delete button */
+  min-height: 60px; /* Ensure uniform height */
+  justify-content: center;
 }
 
 .knockdown-card:hover {
@@ -3013,86 +3015,43 @@ function formatFrame(val: number | string | undefined): string {
   gap: var(--space-sm);
 }
 
-.saved-move-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 8px 10px;
-  cursor: pointer;
-  transition: all 0.2s;
-  position: relative;
-}
 
-.saved-move-card:hover {
-  background: var(--color-surface-hover);
-  border-color: var(--color-primary);
-}
-
-.saved-move-card.active {
-  background: rgba(var(--color-primary-rgb), 0.15);
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
-}
-
-.saved-move-card .move-info {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.saved-move-card .name {
-  font-weight: 600;
-  font-size: 0.9em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.saved-move-card .input {
-  font-family: monospace;
-  font-size: 0.8em;
-  color: var(--color-text-secondary);
-}
-
-.saved-move-card .frames {
-  font-weight: 700;
-  color: var(--color-accent);
-  margin-left: 8px;
-}
 
 .btn-delete {
   position: absolute;
-  top: -6px;
-  right: -6px;
-  width: 18px;
-  height: 18px;
+  top: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background: var(--color-danger);
-  color: white;
-  border: none;
-  font-size: 10px;
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid transparent;
+  font-size: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  opacity: 0;
-  transform: scale(0.8);
+  opacity: 0.6;
   transition: all 0.2s;
+  z-index: 2;
 }
 
-.saved-move-card:hover .btn-delete {
+.btn-delete:hover {
   opacity: 1;
-  transform: scale(1);
+  color: var(--color-danger);
+  background: rgba(var(--color-danger-rgb), 0.1);
+}
+
+.knockdown-card:hover .btn-delete {
+  opacity: 1;
 }
 
 .section-divider {
   display: flex;
   align-items: center;
   margin: var(--space-lg) 0 var(--space-md);
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
   font-size: 0.9em;
 }
 
