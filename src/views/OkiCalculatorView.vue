@@ -12,8 +12,94 @@ const defenderFrameData = ref<FrameData | null>(null);
 const loading = ref(false);
 
 // Custom knockdown advantage
+// Custom knockdown advantage
 const customKnockdownAdv = ref<number>(38);
 const useCustomKnockdown = ref(false);
+
+// NEW: Custom Knockdown Move Interface & State
+export interface CustomMove {
+  id: string; // unique timestamp
+  characterId: string;
+  name: string;
+  input: string;
+  frames: number;
+}
+
+const customMoves = ref<CustomMove[]>([]);
+const newCustomMove = ref({
+  name: '',
+  input: '',
+  frames: 40
+});
+
+// Load custom moves from localStorage
+function loadCustomMoves() {
+  const stored = localStorage.getItem('sf6_oki_custom_moves');
+  if (stored) {
+    try {
+      customMoves.value = JSON.parse(stored);
+    } catch (e) {
+      console.error('Failed to parse custom moves', e);
+    }
+  }
+}
+
+// Filter moves by current character
+const filteredCustomMoves = computed(() => {
+    return customMoves.value.filter(m => m.characterId === attackerCharId.value);
+});
+
+// Convert CustomMove to compatible Move object for selection
+function selectCustomMove(custom: CustomMove) {
+    selectedKnockdownMove.value = {
+        name: custom.name,
+        input: custom.input,
+        startup: '0', 
+        active: '0',
+        recovery: '0',
+        onBlock: 0,
+        onHit: 0,
+        damage: '0',
+        category: 'normal',
+        type: 'normal', // Dummy
+        knockdown: {
+            type: 'hard',
+            advantage: custom.frames
+        }
+    } as unknown as Move;
+    useCustomKnockdown.value = false;
+}
+
+function saveCustomMove() {
+  if (!newCustomMove.value.name || !newCustomMove.value.frames) return;
+  
+  const move: CustomMove = {
+    id: Date.now().toString(),
+    characterId: attackerCharId.value,
+    name: newCustomMove.value.name,
+    input: newCustomMove.value.input,
+    frames: newCustomMove.value.frames
+  };
+  
+  customMoves.value.push(move);
+  // Persist
+  localStorage.setItem('sf6_oki_custom_moves', JSON.stringify(customMoves.value));
+  
+  // Clear form
+  newCustomMove.value = { name: '', input: '', frames: newCustomMove.value.frames };
+}
+
+function removeCustomMove(id: string) {
+  customMoves.value = customMoves.value.filter(m => m.id !== id);
+  localStorage.setItem('sf6_oki_custom_moves', JSON.stringify(customMoves.value));
+}
+
+// Load on mount
+import { onMounted } from 'vue';
+onMounted(() => {
+    loadCustomMoves();
+});
+
 
 // Combo chain - list of actions
 interface ComboAction {
@@ -1215,9 +1301,46 @@ function formatFrame(val: number | string | undefined): string {
         击倒数据
       </h2>
 
+      <!-- Custom Moves Section -->
+      <div class="custom-moves-section">
+        <div class="custom-form">
+            <h3 class="subsection-title">自定义招式</h3>
+            <div class="form-row">
+                <input type="text" v-model="newCustomMove.name" placeholder="名称 (e.g. 2MP)" class="input-sm" />
+                <input type="text" v-model="newCustomMove.input" placeholder="指令 (e.g. 236P)" class="input-sm" />
+                <div class="frames-input-group">
+                    <input type="number" v-model.number="newCustomMove.frames" class="input-sm frame-input" />
+                    <span class="unit">F</span>
+                </div>
+                <button class="btn-save" @click="saveCustomMove" :disabled="!newCustomMove.name || !newCustomMove.frames">保存</button>
+            </div>
+        </div>
+        
+        <div v-if="filteredCustomMoves.length > 0" class="custom-list">
+             <div class="list-label">已保存:</div>
+             <div class="saved-moves-grid">
+                <div v-for="move in filteredCustomMoves" :key="move.id" 
+                    :class="['saved-move-card', { active: selectedKnockdownMove?.name === move.name && !useCustomKnockdown }]"
+                    @click="selectCustomMove(move)"
+                >
+                    <div class="move-info">
+                        <span class="name">{{ move.name }}</span>
+                        <span class="input">{{ move.input }}</span>
+                    </div>
+                    <span class="frames">+{{ move.frames }}F</span>
+                    <button class="btn-delete" @click.stop="removeCustomMove(move.id)">×</button>
+                </div>
+             </div>
+        </div>
+      </div>
+
+      <div class="section-divider">
+        <span>预设数据 (Presets)</span>
+      </div>
+
       <div class="custom-knockdown-row">
         <button :class="['custom-kd-btn', { active: useCustomKnockdown }]" @click="enableCustomKnockdown">
-          自定义
+          快速自定义 (数字)
         </button>
         <div v-if="useCustomKnockdown" class="custom-kd-input">
           <span>击倒帧:</span>
@@ -1228,7 +1351,7 @@ function formatFrame(val: number | string | undefined): string {
 
       <div class="knockdown-grid">
         <button v-for="move in knockdownMoves" :key="move.name"
-          :class="['knockdown-card', { active: selectedKnockdownMove?.name === move.name }]"
+          :class="['knockdown-card', { active: selectedKnockdownMove?.name === move.name && !useCustomKnockdown }]"
           @click="selectKnockdownMove(move)">
           <span class="move-name">{{ move.name }}</span>
           <span class="move-input">{{ move.input }}</span>
@@ -2788,6 +2911,212 @@ function formatFrame(val: number | string | undefined): string {
   .auto-match-search-input {
     flex: 1;
     max-width: none;
+  }
+}
+/* Custom Moves Section */
+.custom-moves-section {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--color-border);
+}
+
+.custom-form {
+  margin-bottom: var(--space-md);
+}
+
+.subsection-title {
+  font-size: 0.9em;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-row {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input-sm {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+  flex: 1;
+  min-width: 100px;
+}
+
+.frames-input-group {
+  display: flex;
+  align-items: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding-right: 8px;
+  width: 100px;
+}
+
+.frames-input-group .frame-input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  padding: 6px 4px 6px 10px;
+  text-align: right;
+  color: var(--color-text-primary);
+}
+
+.frames-input-group .unit {
+  color: var(--color-text-secondary);
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.btn-save {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-save:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.btn-save:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.list-label {
+  font-size: 0.85em;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.saved-moves-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-sm);
+}
+
+.saved-move-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.saved-move-card:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-primary);
+}
+
+.saved-move-card.active {
+  background: rgba(var(--color-primary-rgb), 0.15);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.saved-move-card .move-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.saved-move-card .name {
+  font-weight: 600;
+  font-size: 0.9em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.saved-move-card .input {
+  font-family: monospace;
+  font-size: 0.8em;
+  color: var(--color-text-secondary);
+}
+
+.saved-move-card .frames {
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-left: 8px;
+}
+
+.btn-delete {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-danger);
+  color: white;
+  border: none;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.2s;
+}
+
+.saved-move-card:hover .btn-delete {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  margin: var(--space-lg) 0 var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: 0.9em;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.section-divider span {
+  padding: 0 var(--space-md);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .frames-input-group {
+    width: 100%;
   }
 }
 </style>
