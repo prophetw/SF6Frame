@@ -154,11 +154,30 @@ const selectedResultKey = ref<string | null>(null);
 const selectedThrowResultKey = ref<string | null>(null);
 
 // Effective knockdown advantage
+// Effective knockdown advantage
+// Helper to parse knockdown advantage from move
+function parseKnockdownAdvantage(move: Move): number {
+    if (!move) return 0;
+    
+    // Priority 1: Parse exact advantage from 'onHit' string
+    if (move.onHit && typeof move.onHit === 'string') {
+        const match = move.onHit.match(/(?:KD|HKD|Crumple)[^0-9]*(\d+)/i);
+        if (match) {
+            return parseInt(match[1] || '0', 10);
+        }
+    }
+    
+    // Priority 2: Use scraper's parsed object
+    return move.knockdown?.advantage || 0;
+}
+
+// Effective knockdown advantage
 const effectiveKnockdownAdv = computed(() => {
   if (useCustomKnockdown.value && customKnockdownAdv.value > 0) {
     return customKnockdownAdv.value;
   }
-  return selectedKnockdownMove.value?.knockdown?.advantage || 0;
+  
+  return parseKnockdownAdvantage(selectedKnockdownMove.value as Move);
 });
 
 // Character stats (Attacker)
@@ -1374,7 +1393,7 @@ function formatFrame(val: number | string | undefined): string {
           @click="selectKnockdownMove(move)">
           <span class="move-name">{{ move.name }}</span>
           <span class="move-input">{{ move.input }}</span>
-          <span class="move-advantage" v-if="move.knockdown">+{{ move.knockdown.advantage }}F</span>
+          <span class="move-advantage" v-if="move.knockdown">+{{ parseKnockdownAdvantage(move) }}F</span>
         </button>
       </div>
     </section>

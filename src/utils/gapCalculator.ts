@@ -259,12 +259,21 @@ export function isCancelValid(sourceMove: Move, targetMove: Move): boolean {
     const targetCat = targetMove.category?.toLowerCase() || '';
 
     for (const tag of cancelTags) {
-        if (tag === 'SPECIAL') {
+        // "Sp" or "Special" -> Special Moves
+        if (tag === 'SPECIAL' || tag === 'SP') {
             if (targetCat === 'special') return true;
         }
-        else if (tag === 'SUPER') {
+        // "SA" or "Super" -> Super Arts (Any Level)
+        else if (tag === 'SUPER' || tag === 'SA') {
             if (targetCat === 'super') return true;
         }
+        // "Chn" or "Chain" -> Chain Combos (Rapid Cancel)
+        // Usually target must be a normal. 
+        // We'll allow normals if "Chn" is present.
+        else if (tag === 'CHAIN' || tag === 'CHN') {
+            if (targetCat === 'normal') return true;
+        }
+        // Specific Super Levels
         else if (tag === 'SA3' || tag === 'CA') {
             if (targetCat === 'super' && getSuperLevel(targetMove) === 3) return true;
         }

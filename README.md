@@ -125,3 +125,24 @@ pnpm dev
 # Build for production
 pnpm build
 ```
+
+### Update Data (数据更新)
+
+Prerequisites:
+1. Close all running Chrome instances.
+2. Launch Chrome with remote debugging enabled from your terminal:
+   ```bash
+   "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:/ChromeDevSession"
+   ```
+   *(Ensure the port is 9222 and user-data-dir is set to preserve login sessions/settings)*
+
+Commands:
+
+```bash
+# Update a single character (e.g., Ryu)
+pnpm exec tsx scripts/scraper-puppeteer.ts ryu --connect
+
+# Update ALL characters (Batch)
+# 批量更新所有角色
+pnpm exec tsx scripts/scraper-puppeteer.ts --connect
+```

@@ -170,6 +170,16 @@ onMounted(() => {
       <div class="character-info" v-if="character">
         <h1 class="character-name">{{ character.name }}</h1>
         <span class="character-name-jp" v-if="character.nameJp">{{ character.nameJp }}</span>
+        <a 
+          v-if="character.wikiUrl" 
+          :href="character.wikiUrl" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="wiki-link"
+          title="SuperCombo Wiki"
+        >
+          <span class="icon">📖</span> Wiki
+        </a>
       </div>
     </div>
     
@@ -274,6 +284,32 @@ onMounted(() => {
 .character-name-jp {
   color: var(--color-text-muted);
   font-size: var(--font-size-lg);
+}
+
+.wiki-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: var(--space-sm);
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.wiki-link:hover {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.wiki-link .icon {
+  font-size: 1.1em;
 }
 
 /* Loading & Error States */
