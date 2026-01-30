@@ -1388,7 +1388,7 @@ function formatFrame(val: number | string | undefined): string {
       </div>
 
       <div class="knockdown-grid">
-        <button v-for="move in knockdownMoves" :key="move.name"
+        <button v-for="move in knockdownMoves" :key="`${move.name}-${move.input}`"
           :class="['knockdown-card', { active: selectedKnockdownMove?.name === move.name && !useCustomKnockdown }]"
           @click="selectKnockdownMove(move)">
           <span class="move-name">{{ move.name }}</span>
@@ -1429,7 +1429,7 @@ function formatFrame(val: number | string | undefined): string {
                     @blur="handleDefenderBlur" @input="selectedDefenderMove = null" placeholder="选择或搜索对手招式..."
                     class="move-search-input p-1 text-xs" :disabled="!defenderFrameData" />
                   <div v-if="showDefenderDropdown && filteredDefenderMoves.length > 0" class="move-dropdown">
-                    <button v-for="move in filteredDefenderMoves" :key="move.name" class="move-option text-xs"
+                    <button v-for="move in filteredDefenderMoves" :key="`${move.name}-${move.input}`" class="move-option text-xs"
                       @click="selectDefenderMove(move)">
                       <span class="truncate mr-2">{{ move.name }}</span>
                       <span class="whitespace-nowrap text-gray-400">{{ move.startup }}F</span>
@@ -1472,7 +1472,7 @@ function formatFrame(val: number | string | undefined): string {
           <div class="move-search">
             <input type="text" v-model="moveSearchQuery" placeholder="搜索招式..." class="move-search-input" />
             <div v-if="moveSearchQuery" class="move-dropdown">
-              <button v-for="move in filteredMoves" :key="move.name" class="move-option" @click="addMove(move)">
+              <button v-for="move in filteredMoves" :key="`${move.name}-${move.input}`" class="move-option" @click="addMove(move)">
                 <span>{{ move.name }}</span>
                 <span class="move-input">{{ move.input }}</span>
                 <span>{{ move.startup }}F</span>

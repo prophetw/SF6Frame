@@ -79,6 +79,7 @@ interface ScrapedMove {
     onHit: string;
     cancelText?: string;
     section?: string;
+    variant?: string;
 }
 
 interface ScrapedStats {
@@ -185,6 +186,67 @@ function normalizeInput(value: string): string {
 
 function normalizeMoveName(value: string): string {
     return simplifyMoveName(normalizeFrameText(value));
+}
+
+function normalizeVariantLabel(value?: string): string {
+    if (!value) return '';
+    return normalizeFrameText(value);
+}
+
+function applyVariantToInput(baseInput: string, variant: string): string {
+    if (!variant) return baseInput;
+    const base = normalizeFrameText(baseInput);
+    const label = normalizeFrameText(variant);
+    if (!label || label === '-') return base;
+
+    const upperLabel = label.toUpperCase();
+    const upperBase = base.toUpperCase();
+    const strengthSuffix = upperBase.match(/(LP|MP|HP|LK|MK|HK|PP|KK)$/);
+
+    // If variant itself looks like a full input, use it
+    if (/[0-9]/.test(label) && /[PK]/i.test(label)) {
+        return label;
+    }
+
+    const isOD = upperLabel === 'OD' || upperLabel === 'EX';
+    if (isOD) {
+        if (strengthSuffix) {
+            if (strengthSuffix[1].includes('P')) {
+                return base.replace(/(LP|MP|HP|PP)$/i, 'PP');
+            }
+            if (strengthSuffix[1].includes('K')) {
+                return base.replace(/(LK|MK|HK|KK)$/i, 'KK');
+            }
+        }
+        if (upperBase.includes('P')) return base.replace(/P(?!.*P)/i, 'PP');
+        if (upperBase.includes('K')) return base.replace(/K(?!.*K)/i, 'KK');
+        return `${base} OD`;
+    }
+
+    // Strength labels like LP/MP/HP/LK/MK/HK/PP/KK
+    if (/[LMH][PK]/i.test(upperLabel) || upperLabel === 'PP' || upperLabel === 'KK') {
+        if (strengthSuffix) {
+            return base.replace(/(LP|MP|HP|LK|MK|HK|PP|KK)$/i, label);
+        }
+        if (upperBase.match(/P(?!.*P)/i)) {
+            return base.replace(/P(?!.*P)/i, label);
+        }
+        if (upperBase.match(/K(?!.*K)/i)) {
+            return base.replace(/K(?!.*K)/i, label);
+        }
+        return `${base}${label}`;
+    }
+
+    return `${base} ${label}`;
+}
+
+function applyVariantToName(baseName: string, variant: string): string {
+    if (!variant) return baseName;
+    const label = normalizeFrameText(variant);
+    if (!label || label === '-') return baseName;
+    const lowerName = baseName.toLowerCase();
+    if (lowerName.includes(label.toLowerCase())) return baseName;
+    return `${baseName} (${label})`;
 }
 
 function parseKnockdown(onHit: string, category: MoveCategory): KnockdownData | undefined {
@@ -337,8 +399,11 @@ function loadExistingStats(filePath: string): CharacterStats | undefined {
 
 function normalizeScrapedMove(scraped: ScrapedMove): Move {
     const rawName = normalizeFrameText(scraped.name);
-    const input = normalizeInput(scraped.input);
-    const name = normalizeMoveName(rawName);
+    const variant = normalizeVariantLabel(scraped.variant);
+    const baseInput = normalizeInput(scraped.input);
+    const input = applyVariantToInput(baseInput, variant);
+    const baseName = normalizeMoveName(rawName);
+    const name = applyVariantToName(baseName, variant);
 
     const damage = normalizeFrameText(scraped.damage);
     const startup = normalizeFrameText(scraped.startup);
@@ -475,66 +540,134 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
 
   for (let i = 0; i < containers.length; i++) {
     const container = containers[i];
-    const nameContainer = container.querySelector('.movedata-flex-framedata-name');
-    if (!nameContainer) continue;
+    const section = findSectionTitle(container);
+    const nameContainers = Array.from(container.querySelectorAll('.movedata-flex-framedata-name'));
 
-    const nameItems = nameContainer.querySelectorAll('.movedata-flex-framedata-name-item');
-    let input = '';
-    let name = '';
+    const parseMoveBlock = (input, name, table) => {
+      if (!input || !name || !table) return;
 
-    if (nameItems.length >= 2) {
-      input = (nameItems[0].textContent || '').trim();
-      name = (nameItems[1].textContent || '').trim();
-    } else if (nameItems.length === 1) {
-      name = (nameItems[0].textContent || '').trim();
-      input = name;
-    } else {
-      continue;
-    }
+      input = input.replace(/\\s+/g, ' ').trim();
+      name = name.replace(/\\s+/g, ' ').trim();
 
-    input = input.replace(/\\s+/g, ' ').trim();
-    name = name.replace(/\\s+/g, ' ').trim();
+      const headers = Array.from(table.querySelectorAll('tr:first-child th')).map(th => (th.textContent || '').trim().toLowerCase());
 
-    const table = container.querySelector('table.wikitable');
-    if (!table) continue;
+      const idx = {
+        damage: headers.findIndex(h => h.includes('damage') || h.includes('dmg')),
+        startup: headers.findIndex(h => h.includes('startup')),
+        active: headers.findIndex(h => h.includes('active')),
+        recovery: headers.findIndex(h => h.includes('recovery')),
+        onBlock: headers.findIndex(h => h.includes('on block') || (h.includes('block') && !h.includes('guard'))),
+        onHit: headers.findIndex(h => h.includes('on hit') || h.includes('hit')),
+        cancel: headers.findIndex(h => h.includes('cancel')),
+        variant: headers.findIndex(h =>
+          h.includes('input') ||
+          h.includes('button') ||
+          h.includes('version') ||
+          h.includes('strength') ||
+          h === 'move'
+        ),
+      };
 
-    const headers = Array.from(table.querySelectorAll('tr:first-child th')).map(th => (th.textContent || '').trim().toLowerCase());
+      const dataIndices = [idx.damage, idx.startup, idx.active, idx.recovery, idx.onBlock, idx.onHit].filter(i => i >= 0);
+      const minDataIndex = dataIndices.length ? Math.min.apply(null, dataIndices) : -1;
+      if (idx.variant === -1 && minDataIndex > 0) {
+        idx.variant = 0;
+      }
 
-    const idx = {
-      damage: headers.findIndex(h => h.includes('damage') || h.includes('dmg')),
-      startup: headers.findIndex(h => h.includes('startup')),
-      active: headers.findIndex(h => h.includes('active')),
-      recovery: headers.findIndex(h => h.includes('recovery')),
-      onBlock: headers.findIndex(h => h.includes('on block') || (h.includes('block') && !h.includes('guard'))),
-      onHit: headers.findIndex(h => h.includes('on hit') || h.includes('hit')),
-      cancel: headers.findIndex(h => h.includes('cancel')),
+      const rows = table.querySelectorAll('tr');
+      if (rows.length < 2) return;
+
+      for (let r = 1; r < rows.length; r++) {
+        const dataRow = rows[r];
+        const cells = dataRow.querySelectorAll('td');
+        if (cells.length === 0) continue;
+
+        function getCell(index) {
+          if (index === -1 || index >= cells.length) return '-';
+          return ((cells[index].textContent || '').trim()).replace(/\\n/g, '') || '-';
+        }
+
+        let variant = idx.variant !== -1 ? getCell(idx.variant) : '';
+        if (!variant || variant === '-') {
+          const firstCell = getCell(0);
+          if (/^(LP|MP|HP|LK|MK|HK|PP|KK|OD|EX|L|M|H)$/i.test(firstCell)) {
+            variant = firstCell;
+          }
+        }
+
+        moves.push({
+          name,
+          input,
+          damage: getCell(idx.damage),
+          startup: getCell(idx.startup),
+          active: getCell(idx.active),
+          recovery: getCell(idx.recovery),
+          onBlock: getCell(idx.onBlock),
+          onHit: getCell(idx.onHit),
+          cancelText: getCell(idx.cancel),
+          section,
+          variant
+        });
+      }
     };
 
-    const rows = table.querySelectorAll('tr');
-    if (rows.length < 2) continue;
+    if (nameContainers.length > 0) {
+      for (const nameContainer of nameContainers) {
+        const nameItems = nameContainer.querySelectorAll('.movedata-flex-framedata-name-item');
+        let input = '';
+        let name = '';
 
-    const dataRow = rows[1];
-    const cells = dataRow.querySelectorAll('td');
+        if (nameItems.length >= 2) {
+          input = (nameItems[0].textContent || '').trim();
+          name = (nameItems[1].textContent || '').trim();
+        } else if (nameItems.length === 1) {
+          name = (nameItems[0].textContent || '').trim();
+          input = name;
+        }
 
-    function getCell(index) {
-      if (index === -1 || index >= cells.length) return '-';
-      return ((cells[index].textContent || '').trim()).replace(/\\n/g, '') || '-';
+        let table = null;
+        let node = nameContainer;
+        while (node && !table) {
+          node = node.nextElementSibling;
+          if (!node) break;
+          if (node.matches && node.matches('table.wikitable')) table = node;
+          else {
+            const nested = node.querySelector && node.querySelector('table.wikitable');
+            if (nested) table = nested;
+          }
+        }
+
+        parseMoveBlock(input, name, table);
+      }
+    } else {
+      // Fallback: try to parse heading above container
+      let heading = '';
+      let prev = container.previousElementSibling;
+      while (prev) {
+        const tag = prev.tagName.toLowerCase();
+        if (tag === 'h5' || tag === 'h4' || tag === 'h3' || tag === 'h2') {
+          heading = (prev.textContent || '').trim();
+          break;
+        }
+        prev = prev.previousElementSibling;
+      }
+
+      let input = '';
+      let name = '';
+      if (heading) {
+        const parts = heading.split(/[:\\-–—]/).map(p => p.trim()).filter(Boolean);
+        if (parts.length >= 2) {
+          input = parts[0];
+          name = parts.slice(1).join(' ');
+        } else {
+          name = heading;
+          input = heading;
+        }
+      }
+
+      const table = container.querySelector('table.wikitable');
+      parseMoveBlock(input, name, table);
     }
-
-    const section = findSectionTitle(container);
-
-    moves.push({
-      name,
-      input,
-      damage: getCell(idx.damage),
-      startup: getCell(idx.startup),
-      active: getCell(idx.active),
-      recovery: getCell(idx.recovery),
-      onBlock: getCell(idx.onBlock),
-      onHit: getCell(idx.onHit),
-      cancelText: getCell(idx.cancel),
-      section
-    });
   }
 
   function extractStats() {

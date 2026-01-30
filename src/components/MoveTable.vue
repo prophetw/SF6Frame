@@ -110,7 +110,7 @@ function getTotalFrames(move: Move): string {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="move in moves" :key="move.name" class="move-row">
+          <tr v-for="move in moves" :key="`${move.name}-${move.input}`" class="move-row">
             <td class="col-name" data-label="招式">
               <div class="move-name-wrap">
                 <span class="move-name">{{ move.name }}</span>
