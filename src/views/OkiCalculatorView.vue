@@ -1569,16 +1569,21 @@ function formatTolerance(val: number | undefined): string {
         </h3>
         
         <div class="results-controls">
-           <input 
-            type="text" 
-            v-model="autoMatchSearchQuery" 
-            placeholder="搜索招式..." 
-            class="auto-match-search-input" 
-          />
-          <button v-if="comboChain.length > 0" :class="['prefix-btn', { active: useChainAsPrefix }]"
-            @click="useChainAsPrefix = !useChainAsPrefix">
-            {{ useChainAsPrefix ? '✓ 使用组合前置' : '以当前组合为前置' }}
-          </button>
+          <div class="filter-group">
+             <input 
+              type="text" 
+              v-model="autoMatchSearchQuery" 
+              placeholder="搜索招式..." 
+              class="auto-match-search-input" 
+            />
+            <button v-if="comboChain.length > 0" 
+              :class="['filter-toggle-btn', { active: useChainAsPrefix }]"
+              @click="useChainAsPrefix = !useChainAsPrefix"
+              :title="useChainAsPrefix ? '点击取消前置过滤' : '点击使用当前组合作为前置过滤'">
+              <span class="icon">{{ useChainAsPrefix ? '★' : '☆' }}</span>
+              {{ useChainAsPrefix ? '以前置过滤: ' + comboChainPrefixName : '使用当前组合为前置' }}
+            </button>
+          </div>
         </div>
       </div>
       <div class="auto-match-notes">
@@ -1586,9 +1591,7 @@ function formatTolerance(val: number | undefined): string {
         <span class="note-item">容错：当前招式“最晚可以延迟几帧”仍能压制（0 表示必须精准卡帧）。</span>
         <span class="note-item">仅显示前 50 条最优解。</span>
       </div>
-      <p v-if="useChainAsPrefix" class="prefix-info">
-        前置: <strong>{{ comboChainPrefixName }} ({{ comboChainPrefixFrames }}F)</strong> + 招式
-      </p>
+      <!-- Removed separate text info as it's now in the button state -->
 
       <div v-if="okiResults.length > 0" class="results-table">
         <div class="result-header">
@@ -3005,27 +3008,65 @@ function formatTolerance(val: number | undefined): string {
 }
 
 .results-controls {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  margin-top: var(--space-sm);
   flex: 1;
+  margin-top: var(--space-sm);
+}
+
+.filter-group {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  background: var(--color-bg-tertiary);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
 }
 
 .auto-match-search-input {
   flex: 1; /* Take available space */
-  max-width: 300px;
-  padding: 6px 10px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background-color: var(--color-bg-tertiary);
+  min-width: 150px;
+  padding: 8px 12px;
+  border: none;
+  background-color: transparent;
   color: var(--color-text-primary);
   font-size: var(--font-size-sm);
 }
 
 .auto-match-search-input:focus {
   outline: none;
+}
+
+.filter-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.filter-toggle-btn:hover {
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  border-color: var(--color-text-muted);
+}
+
+.filter-toggle-btn.active {
+  background: var(--color-accent);
+  color: white;
   border-color: var(--color-accent);
+  font-weight: 500;
+  box-shadow: 0 0 10px rgba(var(--color-accent-rgb), 0.3);
+}
+
+.filter-toggle-btn .icon {
+  font-size: 1.1em;
 }
 
 @media (max-width: 768px) {
@@ -3037,12 +3078,24 @@ function formatTolerance(val: number | undefined): string {
   
   .results-controls {
     width: 100%;
-    justify-content: space-between;
+  }
+
+  .filter-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-xs);
+    padding: var(--space-sm);
   }
   
   .auto-match-search-input {
-    flex: 1;
-    max-width: none;
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
+  }
+
+  .filter-toggle-btn {
+    justify-content: center;
+    width: 100%;
   }
 }
 /* Custom Moves Section */
