@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
 import { SF6_CHARACTERS, type Move, type FrameData, type CharacterStats } from '../types';
 import { calculateTradeAdvantage, parseHitstun, getEffectiveHitstun } from '../utils/trade';
+import { buildOkiResultKeyBase, getUniqueOkiResultKey } from '../utils/okiResultKey';
 
 const attackerCharId = ref<string>('');
 const defenderCharId = ref<string>('ryu'); // Default defender
@@ -484,6 +485,7 @@ const comboResult = computed(() => {
 
 // Extended Oki Result for auto list
 interface ExtendedOkiResult {
+  key: string;
   move: Move;
   prefix: string;
   prefixInput?: string;
@@ -588,6 +590,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
   if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
 
   const results: ExtendedOkiResult[] = [];
+  const keyCounts = new Map<string, number>();
   const oppFirst = opponentFirstActiveFrame.value;
   const oppWindowStart = opponentWakeupFrame.value;
   const oppWindowEnd = opponentPreActiveEnd.value;
@@ -723,7 +726,19 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           }
         }
 
+        const baseKey = buildOkiResultKeyBase({
+          prefixName: prefix.name,
+          prefixFrames: prefix.frames,
+          prefixInput: prefix.input,
+          moveName: move.name,
+          moveInput: move.input,
+          ourActiveStart: ourStart,
+          ourActiveEnd: ourEnd
+        });
+        const key = getUniqueOkiResultKey(baseKey, keyCounts);
+
         results.push({
+          key,
           move,
           prefix: prefix.name,
           prefixInput: prefix.input,
@@ -1615,11 +1630,11 @@ function formatTolerance(val: number | undefined): string {
             <span v-if="sortKey === 'trade'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
           </span>
         </div>
-        <div v-for="result in okiResults" :key="`${result.prefix}${result.move.name}`" :class="['result-row-auto', {
-          expanded: selectedResultKey === `${result.prefix}${result.move.name}`,
+        <div v-for="result in okiResults" :key="result.key" :class="['result-row-auto', {
+          expanded: selectedResultKey === result.key,
           success: result.coversOpponent,
           trade: result.isTrade
-        }]" @click="toggleResultDetail(`${result.prefix}${result.move.name}`)">
+        }]" @click="toggleResultDetail(result.key)">
           <div class="result-combo">
             <span v-if="result.coversOpponent" class="success-badge">压制</span>
             <span v-if="result.isTrade" class="trade-badge">相杀</span>
@@ -1643,7 +1658,7 @@ function formatTolerance(val: number | undefined): string {
               result.tradeDetail || '-' }}</span>
 
           <!-- Expandable Detail -->
-          <div v-if="selectedResultKey === `${result.prefix}${result.move.name}`" class="result-detail" @click.stop>
+          <div v-if="selectedResultKey === result.key" class="result-detail" @click.stop>
             <div class="detail-title">帧数详情</div>
             <div class="detail-row">
               <span class="detail-label">前置动作:</span>
