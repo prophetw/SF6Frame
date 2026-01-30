@@ -509,6 +509,12 @@ function parseFrameAdvantage(adv: string): number | null {
   return match ? parseInt(match[0]) : null;
 }
 
+function isComboSequenceMove(move: Move): boolean {
+  const input = move.input || '';
+  const name = move.name || '';
+  return input.includes('~') || name.includes('~');
+}
+
 // Calculate prefix frames from combo chain (use full duration for moves)
 const comboChainPrefixFrames = computed(() => {
   let total = 0;
@@ -612,6 +618,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
     // And generally not supers?
     const validFrameKills = allMoves.value.filter(m => {
       if (m.category === 'super' || m.category === 'throw') return false;
+      if (isComboSequenceMove(m)) return false;
       const total = getMoveTotalFrames(m);
       // Heuristic: Frame kill should be faster than the knockdown advantage
       // Also exclude moves that are too long (e.g. taunts)
@@ -642,6 +649,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
 
   for (const prefix of prefixes) {
     for (const move of allMoves.value) {
+      if (isComboSequenceMove(move)) continue;
       const startup = parseInt(move.startup) || 0;
       const totalActive = parseTotalActiveFrames(move.active);
       if (startup <= 0) continue;
@@ -1565,7 +1573,7 @@ function formatTolerance(val: number | undefined): string {
       </div>
       <div class="auto-match-notes">
         <span class="note-item">排序规则：优先显示被防有利 (On Block) 的压制，其次为发生更快（发生F 更小）。</span>
-        <span class="note-item">容错：当前招式“最晚可以延迟几帧”仍能压制（0 表示必须卡帧）。</span>
+        <span class="note-item">容错：当前招式“最晚可以延迟几帧”仍能压制（0 表示必须精准卡帧）。</span>
         <span class="note-item">仅显示前 50 条最优解。</span>
       </div>
       <p v-if="useChainAsPrefix" class="prefix-info">

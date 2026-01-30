@@ -190,7 +190,7 @@ export function calculateGap(input: CalculationInput): CalculationResult {
                 formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num} (Startup) - ${blockstun} (Blockstun)`;
             }
         }
-        if (gap < 0) {
+        if (gap <= 0) {
             status = '连防 (True Blockstring)';
             statusClass = 'status-safe';
             description = '真的连防，对手无法出任何招式，还处在防御硬直中。';
