@@ -593,18 +593,37 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
   const oppWindowEnd = opponentPreActiveEnd.value;
   const hasPreActiveWindow = oppWindowEnd >= oppWindowStart;
 
+  const validFrameKills = allMoves.value.filter(m => {
+    if (m.category === 'super' || m.category === 'throw') return false;
+    if (isComboSequenceMove(m)) return false;
+    const total = getMoveTotalFrames(m);
+    // Heuristic: Frame kill should be faster than the knockdown advantage
+    // Also exclude moves that are too long (e.g. taunts)
+    return total > 0 && total < effectiveKnockdownAdv.value && total < 60;
+  });
+
   let prefixes: { name: string; frames: number; input?: string; isCorner?: boolean }[];
 
   if (useChainAsPrefix.value && comboChain.value.length > 0) {
     // Use combo chain as the only prefix
-    prefixes = [
-      {
-        name: comboChainPrefixName.value,
-        frames: comboChainPrefixFrames.value,
-        input: comboChainPrefixInput.value,
-        isCorner: false
-      },
-    ];
+    const basePrefix = {
+      name: comboChainPrefixName.value,
+      frames: comboChainPrefixFrames.value,
+      input: comboChainPrefixInput.value,
+      isCorner: false
+    };
+    prefixes = [basePrefix];
+
+    for (const kill of validFrameKills) {
+      const total = getMoveTotalFrames(kill);
+      const combinedFrames = basePrefix.frames + total;
+      prefixes.push({
+        name: basePrefix.name ? `${basePrefix.name} + ${kill.name}` : kill.name,
+        frames: combinedFrames,
+        input: basePrefix.input ? `${basePrefix.input} + ${kill.input}` : kill.input,
+        isCorner: true
+      });
+    }
   } else {
     // Default prefixes (Dashes)
     prefixes = [
@@ -616,15 +635,6 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
     // Add Frame Kill Moves (Single Move)
     // Filter moves that are suitable for frame kills (Total frames < advantage)
     // And generally not supers?
-    const validFrameKills = allMoves.value.filter(m => {
-      if (m.category === 'super' || m.category === 'throw') return false;
-      if (isComboSequenceMove(m)) return false;
-      const total = getMoveTotalFrames(m);
-      // Heuristic: Frame kill should be faster than the knockdown advantage
-      // Also exclude moves that are too long (e.g. taunts)
-      return total > 0 && total < effectiveKnockdownAdv.value && total < 60;
-    });
-
     for (const kill of validFrameKills) {
       const total = getMoveTotalFrames(kill);
       prefixes.push({
