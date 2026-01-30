@@ -26,6 +26,13 @@ puppeteer.use(StealthPlugin());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+type MoveCategory = 'normal' | 'unique' | 'special' | 'super' | 'throw';
+
+interface KnockdownData {
+    type: 'soft' | 'hard' | 'none';
+    advantage: number;
+}
+
 interface Move {
     name: string;
     input: string;
@@ -35,11 +42,19 @@ interface Move {
     recovery: string;
     onBlock: string;
     onHit: string;
-    category: 'normal' | 'unique' | 'special' | 'super' | 'throw';
-    knockdown?: {
-        type: 'soft' | 'hard' | 'none';
-        advantage: number;
-    };
+    category: MoveCategory;
+    cancels?: string[];
+    knockdown?: KnockdownData;
+    notes?: string;
+    raw?: any;
+}
+
+interface CharacterStats {
+    health: number;
+    forwardDash: number;
+    backDash: number;
+    forwardWalk?: number;
+    backWalk?: number;
 }
 
 interface FrameData {
@@ -48,8 +63,30 @@ interface FrameData {
         name: string;
         nameJp: string;
     };
+    stats: CharacterStats;
     moves: Move[];
     lastUpdated: string;
+}
+
+interface ScrapedMove {
+    name: string;
+    input: string;
+    damage: string;
+    startup: string;
+    active: string;
+    recovery: string;
+    onBlock: string;
+    onHit: string;
+    cancelText?: string;
+    section?: string;
+}
+
+interface ScrapedStats {
+    health?: string;
+    forwardDash?: string;
+    backDash?: string;
+    forwardWalk?: string;
+    backWalk?: string;
 }
 
 const OUTPUT_DIR = path.join(__dirname, '../src/data/characters');
@@ -57,6 +94,284 @@ const OUTPUT_DIR = path.join(__dirname, '../src/data/characters');
 // Ensure output directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {
     fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+}
+
+function normalizeWhitespace(value: string): string {
+    return value.replace(/\s+/g, ' ').trim();
+}
+
+function stripFootnotes(value: string): string {
+    return value.replace(/\[[^\]]+\]/g, '').trim();
+}
+
+function normalizeFrameText(value: string | undefined | null): string {
+    if (value === undefined || value === null) return '-';
+    let text = normalizeWhitespace(String(value));
+    text = stripFootnotes(text);
+    text = text.replace(/[−–—]/g, '-').replace(/[＋]/g, '+');
+    if (!text || text.toLowerCase() === 'n/a' || text === '—' || text === '--') return '-';
+    return text;
+}
+
+function extractNumber(value: string): number | null {
+    const match = value.match(/-?\d+/);
+    if (!match) return null;
+    return parseInt(match[0], 10);
+}
+
+function parseStatNumber(value?: string): number | null {
+    if (!value) return null;
+    const match = value.match(/-?\d+/);
+    return match ? parseInt(match[0], 10) : null;
+}
+
+function parseStatFloat(value?: string): number | null {
+    if (!value) return null;
+    const match = value.match(/-?\d+(\.\d+)?/);
+    return match ? parseFloat(match[0]) : null;
+}
+
+function parseFrameNumber(value: string): number | null {
+    const cleaned = normalizeFrameText(value);
+    if (cleaned === '-') return null;
+    if (/[a-z]/i.test(cleaned)) return null;
+    const match = cleaned.match(/-?\d+/);
+    return match ? parseInt(match[0], 10) : null;
+}
+
+function evaluateFrameString(value: string | undefined | null): number | null {
+    const cleaned = normalizeFrameText(value);
+    if (!cleaned || cleaned === '-') return null;
+    const normalized = cleaned.replace(/x/gi, '*');
+    if (normalized.includes('*')) {
+        let sum = 0;
+        let found = false;
+        for (const part of normalized.split('*')) {
+            const num = parseInt(part, 10);
+            if (!isNaN(num)) {
+                sum += num;
+                found = true;
+            }
+        }
+        return found ? sum : null;
+    }
+    const match = normalized.match(/-?\d+/);
+    return match ? parseInt(match[0], 10) : null;
+}
+
+function parseRecoveryFrames(value: string | undefined | null): number | null {
+    if (!value) return null;
+    const whiffMatch = String(value).match(/\((\d+)\)/);
+    if (whiffMatch) return parseInt(whiffMatch[1], 10);
+    return evaluateFrameString(value);
+}
+
+function normalizeOnHitValue(value: string): string {
+    const cleaned = normalizeFrameText(value);
+    if (cleaned === '-') return cleaned;
+    const upper = cleaned.toUpperCase();
+    const hasKD = /(HKD|KD|KNOCKDOWN|CRUMPLE)/.test(upper);
+    if (!hasKD) return cleaned;
+    if (/^\s*(HKD|KD|KNOCKDOWN|CRUMPLE)\b/i.test(cleaned)) return cleaned;
+    const num = extractNumber(cleaned);
+    const label = /(HKD|HARD KNOCKDOWN)/.test(upper) ? 'HKD' : 'KD';
+    if (num === null) return label;
+    return `${label} +${Math.abs(num)}`;
+}
+
+function normalizeInput(value: string): string {
+    return normalizeFrameText(value);
+}
+
+function normalizeMoveName(value: string): string {
+    return simplifyMoveName(normalizeFrameText(value));
+}
+
+function parseKnockdown(onHit: string, category: MoveCategory): KnockdownData | undefined {
+    const cleaned = normalizeFrameText(onHit);
+    if (!cleaned || cleaned === '-') return undefined;
+    const upper = cleaned.toUpperCase();
+    if (/(HKD|KD|KNOCKDOWN|CRUMPLE)/.test(upper)) {
+        const num = extractNumber(cleaned);
+        const type: KnockdownData['type'] = /(HKD|HARD KNOCKDOWN)/.test(upper) ? 'hard' : 'soft';
+        const advantage = num !== null ? Math.abs(num) : estimateKnockdownAdvantage({ category });
+        return { type, advantage };
+    }
+    return undefined;
+}
+
+function normalizeCancelTags(cancelText?: string): string[] | undefined {
+    if (!cancelText) return undefined;
+    const cleaned = normalizeFrameText(cancelText);
+    if (!cleaned || cleaned === '-' || cleaned.toLowerCase() === 'none') return undefined;
+
+    const tokens = cleaned
+        .replace(/[|/]/g, ' ')
+        .replace(/,/g, ' ')
+        .split(/\s+/)
+        .map(t => t.trim())
+        .filter(Boolean);
+
+    const result: string[] = [];
+    const seen = new Set<string>();
+
+    for (let i = 0; i < tokens.length; i++) {
+        const token = tokens[i];
+        const upper = token.toUpperCase();
+        const next = tokens[i + 1]?.toUpperCase();
+        let mapped: string | null = null;
+
+        if (upper === 'TARGET' && next === 'COMBO') {
+            mapped = 'Target Combo';
+            i++;
+        } else if (upper === 'SP' || upper === 'SPECIAL') mapped = 'Special';
+        else if (upper === 'SU' || upper === 'SUPER' || upper === 'SA') mapped = 'Super';
+        else if (upper === 'SA1' || upper === 'SA2' || upper === 'SA3') mapped = upper;
+        else if (upper === 'CA') mapped = 'CA';
+        else if (upper === 'CH' || upper === 'CHN' || upper === 'CHAIN') mapped = 'Chain';
+        else if (upper === 'TC' || upper === 'TARGET' || upper === 'TARGETCOMBO' || upper === 'TARGET-COMBO') mapped = 'Target Combo';
+        else mapped = token;
+
+        if (mapped && !seen.has(mapped)) {
+            seen.add(mapped);
+            result.push(mapped);
+        }
+    }
+
+    return result.length > 0 ? result : undefined;
+}
+
+function deriveSuperCmnName(name: string): string | undefined {
+    const upper = name.toUpperCase();
+    if (upper.includes('SA1') || upper.includes('SUPER ART 1') || upper.includes('LEVEL 1')) return 'Level 1';
+    if (upper.includes('SA2') || upper.includes('SUPER ART 2') || upper.includes('LEVEL 2')) return 'Level 2';
+    if (upper.includes('SA3') || upper.includes('SUPER ART 3') || upper.includes('LEVEL 3')) return 'Level 3';
+    if (upper.includes('CRITICAL ART')) return 'Critical Art';
+    return undefined;
+}
+
+function deriveMoveType(category: MoveCategory, name: string, input: string, section?: string): string {
+    const lowerName = name.toLowerCase();
+    const lowerInput = input.toLowerCase();
+    const lowerSection = section?.toLowerCase() || '';
+
+    if (lowerSection.includes('drive') || lowerName.includes('drive') || lowerInput.includes('mp+mk') || lowerInput.includes('di')) {
+        return 'drive';
+    }
+    if (category === 'throw') return 'throw';
+    if (category === 'super') return 'super';
+    if (category === 'special') return 'special';
+    if (category === 'unique') return 'unique';
+    return 'normal';
+}
+
+function computeRawTotals(startupText: string, activeText: string, recoveryText: string) {
+    const startup = extractNumber(startupText);
+    const active = evaluateFrameString(activeText);
+    const recovery = parseRecoveryFrames(recoveryText);
+
+    if (startup === null || active === null || recovery === null) return undefined;
+    const startupFrames = Math.max(0, startup - 1);
+    return startupFrames + active + recovery;
+}
+
+function buildRawMove(move: Move, section?: string) {
+    const startup = parseFrameNumber(move.startup);
+    const active = evaluateFrameString(move.active);
+    const recovery = parseRecoveryFrames(move.recovery);
+    const onBlock = parseFrameNumber(move.onBlock);
+    const onHit = parseFrameNumber(move.onHit);
+    const damage = parseFrameNumber(move.damage);
+
+    const total = computeRawTotals(move.startup, move.active, move.recovery);
+
+    const raw: any = {
+        source: 'supercombo',
+        moveName: move.name,
+        plnCmd: move.input,
+        startup,
+        active,
+        recovery,
+        onBlock,
+        onHit,
+        dmg: damage,
+        total,
+        moveType: deriveMoveType(move.category, move.name, move.input, section),
+        cmnName: deriveSuperCmnName(move.name),
+        section
+    };
+
+    if (active !== null && recovery !== null && onBlock !== null) {
+        raw.blockstun = active + recovery + onBlock;
+    }
+    if (active !== null && recovery !== null && onHit !== null) {
+        raw.hitstun = active + recovery + onHit;
+    }
+
+    return raw;
+}
+
+function normalizeStats(scraped: ScrapedStats | null, fallback?: CharacterStats): CharacterStats {
+    const health = parseStatNumber(scraped?.health) ?? fallback?.health ?? 10000;
+    const forwardDash = parseStatNumber(scraped?.forwardDash) ?? fallback?.forwardDash ?? 0;
+    const backDash = parseStatNumber(scraped?.backDash) ?? fallback?.backDash ?? 0;
+    const forwardWalk = parseStatFloat(scraped?.forwardWalk) ?? fallback?.forwardWalk;
+    const backWalk = parseStatFloat(scraped?.backWalk) ?? fallback?.backWalk;
+
+    return { health, forwardDash, backDash, forwardWalk, backWalk };
+}
+
+function loadExistingStats(filePath: string): CharacterStats | undefined {
+    if (!fs.existsSync(filePath)) return undefined;
+    try {
+        const content = fs.readFileSync(filePath, 'utf-8');
+        const parsed = JSON.parse(content);
+        if (parsed && parsed.stats) {
+            return parsed.stats as CharacterStats;
+        }
+    } catch {
+        return undefined;
+    }
+    return undefined;
+}
+
+function normalizeScrapedMove(scraped: ScrapedMove): Move {
+    const rawName = normalizeFrameText(scraped.name);
+    const input = normalizeInput(scraped.input);
+    const name = normalizeMoveName(rawName);
+
+    const damage = normalizeFrameText(scraped.damage);
+    const startup = normalizeFrameText(scraped.startup);
+    const active = normalizeFrameText(scraped.active);
+    const recovery = normalizeFrameText(scraped.recovery);
+    const onBlock = normalizeFrameText(scraped.onBlock);
+    const onHit = normalizeOnHitValue(scraped.onHit);
+
+    const category = categorizeMove(name, input, scraped.section);
+    const cancels = normalizeCancelTags(scraped.cancelText);
+    const knockdown = parseKnockdown(onHit, category);
+
+    const move: Move = {
+        name,
+        input,
+        damage,
+        startup,
+        active,
+        recovery,
+        onBlock,
+        onHit,
+        category,
+        cancels,
+        knockdown
+    };
+
+    const raw = buildRawMove(move, scraped.section);
+    raw.sourceName = rawName;
+    raw.sourceInput = input;
+    raw.cancelText = scraped.cancelText;
+    move.raw = raw;
+
+    return move;
 }
 
 function getCorrectWikiUrl(config: CharacterConfig): string {
@@ -137,271 +452,181 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
         }
 
         // Evaluate page to get raw data using the robust container logic
-        const rawMoves = await page.evaluate(function () {
-            const moves: any[] = [];
-            const containers = document.querySelectorAll('.movedata-container');
+        const scrapeScript = `
+(() => {
+  const moves = [];
+  const containers = document.querySelectorAll('.movedata-container');
 
-            for (let i = 0; i < containers.length; i++) {
-                const container = containers[i];
+  function findSectionTitle(node) {
+    let current = node;
+    while (current) {
+      let prev = current.previousElementSibling;
+      while (prev) {
+        const tag = prev.tagName.toLowerCase();
+        if (tag === 'h2' || tag === 'h3' || tag === 'h4' || tag === 'h5') {
+          return (prev.textContent || '').trim();
+        }
+        prev = prev.previousElementSibling;
+      }
+      current = current.parentElement;
+    }
+    return '';
+  }
 
-                // 1. Extract Name and Input
-                const nameContainer = container.querySelector('.movedata-flex-framedata-name');
-                if (!nameContainer) continue;
+  for (let i = 0; i < containers.length; i++) {
+    const container = containers[i];
+    const nameContainer = container.querySelector('.movedata-flex-framedata-name');
+    if (!nameContainer) continue;
 
-                const nameItems = nameContainer.querySelectorAll('.movedata-flex-framedata-name-item');
-                let input = '';
-                let name = '';
+    const nameItems = nameContainer.querySelectorAll('.movedata-flex-framedata-name-item');
+    let input = '';
+    let name = '';
 
-                if (nameItems.length >= 2) {
-                    input = nameItems[0].textContent?.trim() || '';
-                    name = nameItems[1].textContent?.trim() || '';
-                } else if (nameItems.length === 1) {
-                    name = nameItems[0].textContent?.trim() || '';
-                    input = name;
-                } else {
-                    continue;
-                }
+    if (nameItems.length >= 2) {
+      input = (nameItems[0].textContent || '').trim();
+      name = (nameItems[1].textContent || '').trim();
+    } else if (nameItems.length === 1) {
+      name = (nameItems[0].textContent || '').trim();
+      input = name;
+    } else {
+      continue;
+    }
 
-                input = input.replace(/\s+/g, ' ').trim();
-                name = name.replace(/\s+/g, ' ').trim();
+    input = input.replace(/\\s+/g, ' ').trim();
+    name = name.replace(/\\s+/g, ' ').trim();
 
-                // 2. Extract Table Data
-                const table = container.querySelector('table.wikitable');
-                if (!table) continue;
+    const table = container.querySelector('table.wikitable');
+    if (!table) continue;
 
-                // Headers
-                const headers = Array.from(table.querySelectorAll('tr:first-child th')).map(th => th.textContent?.trim().toLowerCase() || '');
+    const headers = Array.from(table.querySelectorAll('tr:first-child th')).map(th => (th.textContent || '').trim().toLowerCase());
 
-                const idx = {
-                    damage: headers.findIndex(h => h.includes('damage') || h.includes('dmg')),
-                    startup: headers.findIndex(h => h.includes('startup')),
-                    active: headers.findIndex(h => h.includes('active')),
-                    recovery: headers.findIndex(h => h.includes('recovery')),
-                    onBlock: headers.findIndex(h => h.includes('block')),
-                    onHit: headers.findIndex(h => h.includes('hit')),
-                    cancel: headers.findIndex(h => h.includes('cancel')),
-                };
+    const idx = {
+      damage: headers.findIndex(h => h.includes('damage') || h.includes('dmg')),
+      startup: headers.findIndex(h => h.includes('startup')),
+      active: headers.findIndex(h => h.includes('active')),
+      recovery: headers.findIndex(h => h.includes('recovery')),
+      onBlock: headers.findIndex(h => h.includes('on block') || (h.includes('block') && !h.includes('guard'))),
+      onHit: headers.findIndex(h => h.includes('on hit') || h.includes('hit')),
+      cancel: headers.findIndex(h => h.includes('cancel')),
+    };
 
-                // Data Row (2nd row)
-                const rows = table.querySelectorAll('tr');
-                if (rows.length < 2) continue;
+    const rows = table.querySelectorAll('tr');
+    if (rows.length < 2) continue;
 
-                if (name.includes('Drive Parry')) {
-                    console.log(`DEBUG: Drive Parry Headers: ${JSON.stringify(headers)}`);
-                    const debugCells = Array.from(rows[1].querySelectorAll('td')).map(td => td.textContent?.trim());
-                    console.log(`DEBUG: Drive Parry Cells: ${JSON.stringify(debugCells)}`);
-                    console.log(`DEBUG: onBlock index: ${idx.onBlock}, onHit index: ${idx.onHit}`);
-                }
+    const dataRow = rows[1];
+    const cells = dataRow.querySelectorAll('td');
 
-                const dataRow = rows[1];
-                const cells = dataRow.querySelectorAll('td');
+    function getCell(index) {
+      if (index === -1 || index >= cells.length) return '-';
+      return ((cells[index].textContent || '').trim()).replace(/\\n/g, '') || '-';
+    }
 
-                // 3. Extract Cancels
-                const cancelText = (idx.cancel === -1 || idx.cancel >= cells.length) ? '-' : (cells[idx.cancel].textContent?.trim().replace(/\n/g, '') || '-');
-                let cancels: string[] = [];
-                if (cancelText && cancelText !== '-') {
-                    cancels = cancelText.split(/[, ]+/).map(s => s.trim()).filter(s => s);
-                }
+    const section = findSectionTitle(container);
 
-                // 4. Knockdown Check
-                const onHit = (idx.onHit === -1 || idx.onHit >= cells.length) ? '-' : (cells[idx.onHit].textContent?.trim().replace(/\n/g, '') || '-');
-                const rawRowText = dataRow.textContent?.toLowerCase() || '';
-                let knockdown = undefined;
+    moves.push({
+      name,
+      input,
+      damage: getCell(idx.damage),
+      startup: getCell(idx.startup),
+      active: getCell(idx.active),
+      recovery: getCell(idx.recovery),
+      onBlock: getCell(idx.onBlock),
+      onHit: getCell(idx.onHit),
+      cancelText: getCell(idx.cancel),
+      section
+    });
+  }
 
-                if (rawRowText.includes('kd') || rawRowText.includes('knockdown') || onHit.toLowerCase().includes('kd')) {
-                    knockdown = { type: 'hard', advantage: 0 };
-                }
+  function extractStats() {
+    const tables = Array.from(document.querySelectorAll('table.wikitable'));
+    for (const table of tables) {
+      const headerCells = Array.from(table.querySelectorAll('tr:first-child th'));
+      const headers = headerCells.map(th => (th.textContent || '').trim().toLowerCase());
+      const dataRow = table.querySelector('tr:nth-child(2)');
+      if (headers.length > 0 && dataRow) {
+        const values = Array.from(dataRow.querySelectorAll('td')).map(td => (td.textContent || '').trim());
+        const healthIdx = headers.findIndex(h => h.includes('health'));
+        const fDashIdx = headers.findIndex(h => h.includes('forward') && h.includes('dash'));
+        const bDashIdx = headers.findIndex(h => h.includes('back') && h.includes('dash'));
+        const fWalkIdx = headers.findIndex(h => h.includes('forward') && h.includes('walk'));
+        const bWalkIdx = headers.findIndex(h => h.includes('back') && h.includes('walk'));
+        if (healthIdx !== -1 || fDashIdx !== -1 || bDashIdx !== -1) {
+          return {
+            health: values[healthIdx] || '',
+            forwardDash: values[fDashIdx] || '',
+            backDash: values[bDashIdx] || '',
+            forwardWalk: values[fWalkIdx] || '',
+            backWalk: values[bWalkIdx] || ''
+          };
+        }
+      }
 
-                // Helper for repeating get logic inline
-                // We use a small local closure that hopefully doesn't trigger __name, if it does we are doomed and must use string eval.
-                // Reverting to manual inline for safety.
+      const rows = Array.from(table.querySelectorAll('tr'));
+      const stats = {};
+      for (const row of rows) {
+        const cells = row.querySelectorAll('th, td');
+        if (cells.length < 2) continue;
+        const label = ((cells[0].textContent || '').trim()).toLowerCase();
+        const value = (cells[1].textContent || '').trim();
+        if (label.includes('health')) stats.health = value;
+        if (label.includes('forward') && label.includes('dash')) stats.forwardDash = value;
+        if (label.includes('back') && label.includes('dash')) stats.backDash = value;
+        if (label.includes('forward') && label.includes('walk')) stats.forwardWalk = value;
+        if (label.includes('back') && label.includes('walk')) stats.backWalk = value;
+      }
+      if (Object.keys(stats).length > 0) return stats;
+    }
+    return null;
+  }
 
-                // 5. Structure Data
-                moves.push({
-                    name,
-                    input,
-                    damage: (idx.damage === -1 || idx.damage >= cells.length) ? '-' : (cells[idx.damage].textContent?.trim().replace(/\n/g, '') || '-'),
-                    startup: (idx.startup === -1 || idx.startup >= cells.length) ? '-' : (cells[idx.startup].textContent?.trim().replace(/\n/g, '') || '-'),
-                    active: (idx.active === -1 || idx.active >= cells.length) ? '-' : (cells[idx.active].textContent?.trim().replace(/\n/g, '') || '-'),
-                    recovery: (idx.recovery === -1 || idx.recovery >= cells.length) ? '-' : (cells[idx.recovery].textContent?.trim().replace(/\n/g, '') || '-'),
-                    onBlock: (idx.onBlock === -1 || idx.onBlock >= cells.length) ? '-' : (cells[idx.onBlock].textContent?.trim().replace(/\n/g, '') || '-'),
-                    onHit: onHit,
-                    cancels,
-                    knockdown,
-                    rawMap: {
-                        startup: (idx.startup === -1 || idx.startup >= cells.length) ? '-' : (cells[idx.startup].textContent?.trim().replace(/\n/g, '') || '-'),
-                        active: (idx.active === -1 || idx.active >= cells.length) ? '-' : (cells[idx.active].textContent?.trim().replace(/\n/g, '') || '-'),
-                        recovery: (idx.recovery === -1 || idx.recovery >= cells.length) ? '-' : (cells[idx.recovery].textContent?.trim().replace(/\n/g, '') || '-'),
-                        damage: (idx.damage === -1 || idx.damage >= cells.length) ? '-' : (cells[idx.damage].textContent?.trim().replace(/\n/g, '') || '-'),
-                        onBlock: (idx.onBlock === -1 || idx.onBlock >= cells.length) ? '-' : (cells[idx.onBlock].textContent?.trim().replace(/\n/g, '') || '-'),
-                        onHit: onHit
-                    }
-                });
-            }
-
-            return moves;
-        });
+  return { moves, stats: extractStats() };
+})()
+        `;
+        const scrapeResult = await page.evaluate(scrapeScript);
 
         // Don't close reused pages, user might need them
         if (!reusedPage) {
             await page.close();
         }
 
-        if (!rawMoves || rawMoves.length === 0) {
+        if (!scrapeResult || !scrapeResult.moves || scrapeResult.moves.length === 0) {
             console.warn(`  Warning: No moves found for ${config.name}`);
             return null;
         }
-
-        // Read existing file if it exists
+        // Read existing stats (fallback only)
         const filePath = path.join(OUTPUT_DIR, `${config.id}.json`);
-        let existingMoves: Move[] = [];
-        let existingFrameData: FrameData | null = null;
-
-        if (fs.existsSync(filePath)) {
-            try {
-                const content = fs.readFileSync(filePath, 'utf-8');
-                existingFrameData = JSON.parse(content);
-                if (existingFrameData && Array.isArray(existingFrameData.moves)) {
-                    existingMoves = existingFrameData.moves;
-                    console.log(`  📂 Loaded ${existingMoves.length} existing moves for merge.`);
-                }
-            } catch (e) {
-                console.warn(`  ⚠️ Could not read existing file: ${filePath}`);
+        const existingStats = loadExistingStats(filePath);
+        const stats = normalizeStats(scrapeResult.stats || null, existingStats);
+        if (!scrapeResult.stats) {
+            if (existingStats) {
+                console.log('  ℹ️ Using existing stats as fallback.');
+            } else {
+                console.log('  ⚠️ No stats found on page; using defaults.');
             }
         }
 
-        // Helper to normalize input for matching (strip spaces, lowercase)
-        const normalize = (cmd: string) => cmd.toLowerCase().replace(/\s+/g, '');
+        const normalizedMoves: Move[] = [];
+        const seen = new Set<string>();
 
-        // Create a map of existing moves for fast lookup
-        const existingMap = new Map<string, Move>();
-        existingMoves.forEach(m => {
-            if (m.input) existingMap.set(normalize(m.input), m);
-        });
-
-        const mergedMoves: Move[] = [];
-        const scrapedMap = new Map<string, boolean>(); // Track what we found
-
-        // 1. Process Scraped Moves (Merge or Add)
-        rawMoves.forEach((m: any) => {
-            const category = categorizeMove(m.name, m.input);
-            const normalizedInput = normalize(m.input);
-            scrapedMap.set(normalizedInput, true);
-
-            // Refine knockdown
-            if (m.knockdown) {
-                m.knockdown.advantage = estimateKnockdownAdvantage({ ...m, category });
-            }
-
-            // Simplify Move Name
-            const simpleName = simplifyMoveName(m.name);
-
-            // Construct 'raw' object
-            const parseNum = (val: string) => {
-                if (!val) return null;
-                // Extract first number (handling negative sign)
-                const match = val.match(/-?\d+/);
-                if (!match) return null;
-                return parseInt(match[0], 10);
-            };
-
-            const raw = {
-                moveName: simpleName, // Use simplified name
-                plnCmd: m.input,
-                startup: parseNum(m.rawMap.startup),
-                active: parseNum(m.rawMap.active),
-                recovery: parseNum(m.rawMap.recovery),
-                onBlock: parseNum(m.rawMap.onBlock),
-                onHit: parseNum(m.rawMap.onHit),
-                dmg: parseNum(m.rawMap.damage),
-            };
-
-            const scrapedMove: Move = {
-                name: simpleName, // Use simplified name
-                input: m.input,
-                damage: m.damage,
-                startup: m.startup,
-                active: m.active,
-                recovery: m.recovery,
-                onBlock: m.onBlock,
-                onHit: m.onHit,
-                category: category,
-                cancels: m.cancels,
-                knockdown: m.knockdown,
-                raw: raw,
-            };
-
-            // MERGE LOGIC
-            if (existingMap.has(normalizedInput)) {
-                const existing = existingMap.get(normalizedInput)!;
-
-                // Smart Merge:
-                // 1. Deep merge 'raw' to preserve fields like 'numCmd', 'ezCmd' that we don't scrape
-                // 2. Only overwrite arrays/objects if we found something useful
-
-                const mergedRaw = {
-                    ...(existing.raw || {}),
-                    ...scrapedMove.raw
-                };
-
-                // Helper: Prefer new non-empty value, else keep old
-                const pick = (isRaw: boolean, key: keyof Move) => {
-                    const newVal = isRaw ? (scrapedMove as any)[key] : (scrapedMove as any)[key];
-                    const oldVal = (existing as any)[key];
-                    // If new is '-' or empty or null, keep old
-                    if (newVal === '-' || newVal === '' || newVal === null || newVal === undefined) return oldVal;
-                    return newVal;
-                };
-
-                const newCancels = (scrapedMove.cancels && scrapedMove.cancels.length > 0)
-                    ? scrapedMove.cancels
-                    : existing.cancels;
-
-                const newKnockdown = scrapedMove.knockdown
-                    ? scrapedMove.knockdown
-                    : existing.knockdown;
-
-                mergedMoves.push({
-                    ...existing, // Base: keep all existing fields (inc notes, custom props)
-
-                    // Specific Updates
-                    name: scrapedMove.name, // Name from wiki is usually canonical
-
-                    // Frame Data: Only update if scraper found a real value
-                    damage: pick(false, 'damage'),
-                    startup: pick(false, 'startup'),
-                    active: pick(false, 'active'),
-                    recovery: pick(false, 'recovery'),
-                    onBlock: pick(false, 'onBlock'),
-                    onHit: pick(false, 'onHit'),
-
-                    cancels: newCancels,
-                    knockdown: newKnockdown,
-                    raw: mergedRaw
-                });
-            } else {
-                // New move found on wiki
-                mergedMoves.push(scrapedMove);
-            }
-        });
-
-        // 2. Preserve Existing Moves NOT found in Scraper?
-        // If a move exists in the file but wasn't scraped (maybe scraper missed it, or it's a manual custom move), we should keep it.
-        existingMoves.forEach(existing => {
-            if (existing.input && !scrapedMap.has(normalize(existing.input))) {
-                mergedMoves.push(existing);
-            }
-        });
+        for (const rawMove of scrapeResult.moves) {
+            const move = normalizeScrapedMove(rawMove as ScrapedMove);
+            if (!move.name || !move.input) continue;
+            const key = `${move.name}||${move.input}`;
+            if (seen.has(key)) continue;
+            seen.add(key);
+            normalizedMoves.push(move);
+        }
 
         // Filter and Sort
-        const validMoves = mergedMoves.filter(m => m.name && m.input);
+        const validMoves = normalizedMoves.filter(m => m.name && m.input);
 
         // Sort: Normal -> Unique -> Throw -> Special -> Super
-        const categoryOrder = { 'normal': 1, 'unique': 2, 'throw': 3, 'special': 4, 'super': 5 };
+        const categoryOrder = { normal: 1, unique: 2, throw: 3, special: 4, super: 5 };
         validMoves.sort((a, b) => (categoryOrder[a.category] || 99) - (categoryOrder[b.category] || 99));
 
         return {
             character: { id: config.id, name: config.name, nameJp: config.nameJp },
+            stats,
             moves: validMoves,
             lastUpdated: new Date().toISOString().split('T')[0],
         };
@@ -415,9 +640,17 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
     }
 }
 
-function categorizeMove(name: string, input: string): Move['category'] {
+function categorizeMove(name: string, input: string, section?: string): MoveCategory {
     const lowerName = name.toLowerCase();
     const lowerInput = input.toLowerCase();
+    const lowerSection = section?.toLowerCase() || '';
+
+    if (lowerSection.includes('throw')) return 'throw';
+    if (lowerSection.includes('super')) return 'super';
+    if (lowerSection.includes('special')) return 'special';
+    if (lowerSection.includes('unique') || lowerSection.includes('command')) return 'unique';
+    if (lowerSection.includes('normal')) return 'normal';
+    if (lowerSection.includes('drive')) return 'special';
 
     if (lowerName.includes('throw') || lowerInput.includes('lp+lk')) return 'throw';
     if (lowerInput.includes('sa') || lowerName.includes('super')) return 'super';
