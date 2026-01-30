@@ -486,9 +486,11 @@ const comboResult = computed(() => {
 interface ExtendedOkiResult {
   move: Move;
   prefix: string;
+  prefixInput?: string;
   prefixFrames: number;
   ourActiveStart: number;
   ourActiveEnd: number;
+  toleranceFrames?: number;
   coversOpponent: boolean;
   isTrade: boolean;
   calculatedOnBlock?: number | string;
@@ -520,6 +522,14 @@ const comboChainPrefixFrames = computed(() => {
 const comboChainPrefixName = computed(() => {
   if (comboChain.value.length === 0) return '';
   return comboChain.value.map((a: ComboAction) => a.name).join(' + ');
+});
+
+const comboChainPrefixInput = computed(() => {
+  if (comboChain.value.length === 0) return '';
+  return comboChain.value.map((a: ComboAction) => {
+    if (a.type === 'dash') return a.name;
+    return a.move?.input || a.name;
+  }).join(' + ');
 });
 
 // Prefix frames for throw (includes move recovery)
@@ -577,12 +587,17 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
   const oppWindowEnd = opponentPreActiveEnd.value;
   const hasPreActiveWindow = oppWindowEnd >= oppWindowStart;
 
-  let prefixes: { name: string; frames: number; isCorner?: boolean }[];
+  let prefixes: { name: string; frames: number; input?: string; isCorner?: boolean }[];
 
   if (useChainAsPrefix.value && comboChain.value.length > 0) {
     // Use combo chain as the only prefix
     prefixes = [
-      { name: comboChainPrefixName.value, frames: comboChainPrefixFrames.value, isCorner: false },
+      {
+        name: comboChainPrefixName.value,
+        frames: comboChainPrefixFrames.value,
+        input: comboChainPrefixInput.value,
+        isCorner: false
+      },
     ];
   } else {
     // Default prefixes (Dashes)
@@ -608,6 +623,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
       prefixes.push({
         name: kill.name,
         frames: total,
+        input: kill.input,
         isCorner: true // Moves usually don't travel as far as dash, so imply corner
       });
 
@@ -617,6 +633,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
         prefixes.push({
           name: `前冲 + ${kill.name}`,
           frames: dashTotal,
+          input: kill.input,
           isCorner: true
         });
       }
@@ -639,6 +656,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
 
       const isSuccessMatch = overlapsPreActive;
       const isTradeMatch = overlapsOppFirst && !overlapsPreActive;
+      const toleranceFrames = isSuccessMatch ? Math.max(0, oppWindowEnd - ourStart) : undefined;
 
       if (isSuccessMatch || isTradeMatch) {
         // Calculate Meaty Bonus
@@ -690,9 +708,11 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
         results.push({
           move,
           prefix: prefix.name,
+          prefixInput: prefix.input,
           prefixFrames: prefix.frames,
           ourActiveStart: ourStart,
           ourActiveEnd: ourEnd,
+          toleranceFrames,
           coversOpponent: isSuccessMatch,
           isTrade: isTradeMatch,
           calculatedOnBlock: calcBlock,
@@ -928,6 +948,13 @@ function selectKnockdownMove(move: Move) {
 function enableCustomKnockdown() {
   useCustomKnockdown.value = true;
   selectedKnockdownMove.value = null;
+}
+
+function isSelectedKnockdown(move: { name: string; input: string }): boolean {
+  if (useCustomKnockdown.value) return false;
+  const selected = selectedKnockdownMove.value;
+  if (!selected) return false;
+  return selected.name === move.name && selected.input === move.input;
 }
 
 function addDash() {
@@ -1283,6 +1310,11 @@ function formatFrame(val: number | string | undefined): string {
   }
   return String(val);
 }
+
+function formatTolerance(val: number | undefined): string {
+  if (val === undefined || val === null) return '-';
+  return `${val}F`;
+}
 </script>
 
 <template>
@@ -1360,7 +1392,7 @@ function formatFrame(val: number | string | undefined): string {
              <div class="list-label">已保存:</div>
              <div class="saved-moves-grid">
                 <div v-for="move in filteredCustomMoves" :key="move.id" 
-                    :class="['knockdown-card', { active: selectedKnockdownMove?.name === move.name && !useCustomKnockdown }]"
+                    :class="['knockdown-card', { active: isSelectedKnockdown(move) }]"
                     @click="selectCustomMove(move)"
                 >
                     <span class="move-name">{{ move.name }}</span>
@@ -1389,7 +1421,7 @@ function formatFrame(val: number | string | undefined): string {
 
       <div class="knockdown-grid">
         <button v-for="move in knockdownMoves" :key="`${move.name}-${move.input}`"
-          :class="['knockdown-card', { active: selectedKnockdownMove?.name === move.name && !useCustomKnockdown }]"
+          :class="['knockdown-card', { active: isSelectedKnockdown(move) }]"
           @click="selectKnockdownMove(move)">
           <span class="move-name">{{ move.name }}</span>
           <span class="move-input">{{ move.input }}</span>
@@ -1432,6 +1464,7 @@ function formatFrame(val: number | string | undefined): string {
                     <button v-for="move in filteredDefenderMoves" :key="`${move.name}-${move.input}`" class="move-option text-xs"
                       @click="selectDefenderMove(move)">
                       <span class="truncate mr-2">{{ move.name }}</span>
+                      <span class="move-input text-xs">{{ move.input }}</span>
                       <span class="whitespace-nowrap text-gray-400">{{ move.startup }}F</span>
                     </button>
                   </div>
@@ -1455,6 +1488,7 @@ function formatFrame(val: number | string | undefined): string {
 
       <!-- Combo Chain Builder -->
       <div class="combo-builder">
+        <div class="combo-builder-title">前置动作</div>
         <div class="combo-chain">
           <div v-for="(action, idx) in comboChain" :key="idx" class="chain-item">
             <span class="chain-name">{{ action.name }}</span>
@@ -1513,9 +1547,7 @@ function formatFrame(val: number | string | undefined): string {
       <div class="results-header-row">
         <h3 class="results-title">
           自动匹配 (共 {{ allOkiResults.length }} 个结果，显示前 {{ okiResults.length }} 条)
-          <div class="header-tip-icon" title="排序规则: 优先显示被防有利 (On Block) 的压制，其次为启动速度快。仅显示前 50 条最优解。">
-            ?
-          </div>
+          <div class="header-tip-icon">?</div>
         </h3>
         
         <div class="results-controls">
@@ -1531,6 +1563,11 @@ function formatFrame(val: number | string | undefined): string {
           </button>
         </div>
       </div>
+      <div class="auto-match-notes">
+        <span class="note-item">排序规则：优先显示被防有利 (On Block) 的压制，其次为发生更快（发生F 更小）。</span>
+        <span class="note-item">容错：当前招式“最晚可以延迟几帧”仍能压制（0 表示必须卡帧）。</span>
+        <span class="note-item">仅显示前 50 条最优解。</span>
+      </div>
       <p v-if="useChainAsPrefix" class="prefix-info">
         前置: <strong>{{ comboChainPrefixName }} ({{ comboChainPrefixFrames }}F)</strong> + 招式
       </p>
@@ -1543,6 +1580,7 @@ function formatFrame(val: number | string | undefined): string {
             <span v-if="sortKey === 'startup'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
           </span>
           <span>打击帧</span>
+          <span>容错</span>
           <span class="sortable-header" @click="toggleSort('block')">
             被防
             <span v-if="sortKey === 'block'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
@@ -1572,6 +1610,7 @@ function formatFrame(val: number | string | undefined): string {
           </div>
           <span>{{ result.prefixFrames + parseInt(result.move.startup) }}F</span>
           <span>{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+          <span>{{ formatTolerance(result.toleranceFrames) }}</span>
           <span
             :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
               formatFrame(result.calculatedOnBlock) }}</span>
@@ -1587,11 +1626,15 @@ function formatFrame(val: number | string | undefined): string {
             <div class="detail-title">帧数详情</div>
             <div class="detail-row">
               <span class="detail-label">前置动作:</span>
-              <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+              <span>
+                {{ result.prefix || '无' }}
+                <span v-if="result.prefixInput"> ({{ result.prefixInput }})</span>
+                = {{ result.prefixFrames }}F
+              </span>
             </div>
             <div class="detail-row">
               <span class="detail-label">招式发生:</span>
-              <span>{{ result.move.name }} = {{ result.move.startup }}F</span>
+              <span>{{ result.move.name }} ({{ result.move.input }}) = {{ result.move.startup }}F</span>
             </div>
             <div class="detail-row">
               <span class="detail-label">招式持续:</span>
@@ -2173,6 +2216,12 @@ function formatFrame(val: number | string | undefined): string {
   flex-wrap: wrap;
 }
 
+.combo-builder-title {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
 .action-btn {
   padding: var(--space-xs) var(--space-md);
   border-radius: var(--radius-md);
@@ -2225,6 +2274,7 @@ function formatFrame(val: number | string | undefined): string {
   border-bottom: 1px solid var(--color-border-light);
   cursor: pointer;
   text-align: left;
+  color: var(--color-text-muted);
 }
 
 .move-option:hover {
@@ -2326,6 +2376,22 @@ function formatFrame(val: number | string | undefined): string {
   border-color: var(--color-accent);
 }
 
+.auto-match-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-md);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-sm);
+}
+
+.auto-match-notes .note-item {
+  padding: var(--space-xxs) var(--space-sm);
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+}
+
 .prefix-btn {
   padding: var(--space-xs) var(--space-md);
   background: var(--color-bg-tertiary);
@@ -2334,6 +2400,7 @@ function formatFrame(val: number | string | undefined): string {
   cursor: pointer;
   font-size: var(--font-size-sm);
   transition: all var(--transition-fast);
+  color: var(--color-text-muted);
 }
 
 .prefix-btn:hover {
@@ -2363,7 +2430,7 @@ function formatFrame(val: number | string | undefined): string {
 .result-header,
 .result-row-auto {
   display: grid;
-  grid-template-columns: 2.5fr 1fr 1.2fr 0.8fr 0.8fr 1fr;
+  grid-template-columns: 2.5fr 1fr 1.2fr 0.7fr 0.8fr 0.8fr 1fr;
   gap: var(--space-sm);
   padding: var(--space-xs) var(--space-md);
   align-items: center;
@@ -2393,6 +2460,11 @@ function formatFrame(val: number | string | undefined): string {
 
 .result-row-auto.trade {
   background: rgba(210, 153, 34, 0.1);
+}
+
+.result-header.throw-header,
+.result-row-auto.throw-row {
+  grid-template-columns: 2.5fr 1fr 1fr;
 }
 
 .result-row-auto.expanded {
