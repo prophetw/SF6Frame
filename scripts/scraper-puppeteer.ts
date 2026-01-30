@@ -416,6 +416,12 @@ function normalizeScrapedMove(scraped: ScrapedMove): Move {
     const cancels = normalizeCancelTags(scraped.cancelText);
     const knockdown = parseKnockdown(onHit, category);
 
+    if ((category === 'normal' || category === 'unique') && cancels && cancels.length > 0) {
+        if (!cancels.includes('Drive Rush')) {
+            cancels.push('Drive Rush');
+        }
+    }
+
     const move: Move = {
         name,
         input,

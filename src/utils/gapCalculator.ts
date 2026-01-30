@@ -273,6 +273,11 @@ export function isCancelValid(sourceMove: Move, targetMove: Move): boolean {
         else if (tag === 'CHAIN' || tag === 'CHN') {
             if (targetCat === 'normal') return true;
         }
+        // Drive Rush cancel
+        else if (tag === 'DR' || tag === 'DRIVE' || tag === 'DRIVE RUSH') {
+            if (targetMove.raw?.moveType === 'drive') return true;
+            if (targetMove.name.includes('Drive Rush') || targetMove.input.includes('66 (cancel)')) return true;
+        }
         // Specific Super Levels
         else if (tag === 'SA3' || tag === 'CA') {
             if (targetCat === 'super' && getSuperLevel(targetMove) === 3) return true;

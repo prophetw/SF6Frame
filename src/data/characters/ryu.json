@@ -25,7 +25,8 @@
       "cancels": [
         "Chain",
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -60,7 +61,8 @@
       "cancels": [
         "Special",
         "Super",
-        "Target Combo"
+        "Target Combo",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -95,7 +97,8 @@
       "cancels": [
         "Special",
         "Super",
-        "Target Combo"
+        "Target Combo",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -129,7 +132,8 @@
       "category": "normal",
       "cancels": [
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -224,7 +228,8 @@
       "cancels": [
         "Chain",
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -258,7 +263,8 @@
       "category": "normal",
       "cancels": [
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -292,7 +298,8 @@
       "category": "normal",
       "cancels": [
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -325,7 +332,8 @@
       "onHit": "+3",
       "category": "normal",
       "cancels": [
-        "Chain"
+        "Chain",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -359,7 +367,8 @@
       "category": "normal",
       "cancels": [
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -455,7 +464,8 @@
       "onHit": "+10(+13)",
       "category": "normal",
       "cancels": [
-        "Special"
+        "Special",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -641,7 +651,8 @@
       "onHit": "+1",
       "category": "normal",
       "cancels": [
-        "Target Combo"
+        "Target Combo",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -963,7 +974,8 @@
       "category": "unique",
       "cancels": [
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -997,7 +1009,8 @@
       "category": "unique",
       "cancels": [
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -1030,7 +1043,8 @@
       "onHit": "+2",
       "category": "unique",
       "cancels": [
-        "Sp*"
+        "Sp*",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
