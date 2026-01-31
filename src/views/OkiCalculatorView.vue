@@ -572,16 +572,16 @@ function toggleThrowResultDetail(key: string) {
 }
 
 // Sort State
-const sortKey = ref<'block' | 'hit' | 'trade' | 'startup'>('block');
+const sortKey = ref<'block' | 'hit' | 'trade' | 'startup' | 'tolerance'>('block');
 const sortOrder = ref<'asc' | 'desc'>('desc');
 
 // Toggle Sort
-function toggleSort(key: 'block' | 'hit' | 'trade' | 'startup') {
+function toggleSort(key: 'block' | 'hit' | 'trade' | 'startup' | 'tolerance') {
   if (sortKey.value === key) {
     sortOrder.value = sortOrder.value === 'desc' ? 'asc' : 'desc';
   } else {
     sortKey.value = key;
-    sortOrder.value = 'desc'; // Default to desc for new key (usually better for advantage)
+    sortOrder.value = key === 'startup' ? 'asc' : 'desc'; // Default order by key
   }
 }
 
@@ -761,12 +761,24 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
     }
   }
 
-  // Sort logic using outer scope variables
-  return results.sort((a, b) => {
+  return results;
+});
+
+const okiResults = computed<ExtendedOkiResult[]>(() => {
+  let filtered = allOkiResults.value;
+  
+  if (autoMatchSearchQuery.value) {
+    const query = autoMatchSearchQuery.value.toLowerCase().trim();
+    filtered = filtered.filter(result => 
+      result.move.name.toLowerCase().includes(query) ||
+      result.move.input.toLowerCase().includes(query)
+    );
+  }
+
+  const sorted = [...filtered].sort((a, b) => {
     let valA = 0;
     let valB = 0;
 
-    // Extract values based on key
     switch (sortKey.value) {
       case 'block':
         valA = typeof a.calculatedOnBlock === 'number' ? a.calculatedOnBlock : -999;
@@ -784,29 +796,20 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
         valA = a.ourActiveStart;
         valB = b.ourActiveStart;
         break;
+      case 'tolerance':
+        valA = a.toleranceFrames ?? -999;
+        valB = b.toleranceFrames ?? -999;
+        break;
     }
 
     if (valA !== valB) {
       return sortOrder.value === 'desc' ? valB - valA : valA - valB;
     }
 
-    // Secondary sort: Startup (Ascending) for stability
     return a.ourActiveStart - b.ourActiveStart;
   });
-});
 
-const okiResults = computed<ExtendedOkiResult[]>(() => {
-  let filtered = allOkiResults.value;
-  
-  if (autoMatchSearchQuery.value) {
-    const query = autoMatchSearchQuery.value.toLowerCase().trim();
-    filtered = filtered.filter(result => 
-      result.move.name.toLowerCase().includes(query) ||
-      result.move.input.toLowerCase().includes(query)
-    );
-  }
-
-  return filtered.slice(0, 50);
+  return sorted.slice(0, 50);
 });
 
 // Throw filler moves (exclude throws, keep reasonable total frames)
@@ -835,6 +838,7 @@ interface ThrowComboResult {
   fillerRecovery?: number;
   delay: number;
   firstActive: number;
+  toleranceFrames: number;
 }
 
 const allThrowResults = computed<ThrowComboResult[]>(() => {
@@ -871,6 +875,7 @@ const allThrowResults = computed<ThrowComboResult[]>(() => {
         fillerFrames: 0,
         delay: baseDelay,
         firstActive: baseDelay + throwStart,
+        toleranceFrames: Math.max(0, maxDelay - baseDelay),
       });
     }
 
@@ -884,7 +889,7 @@ const allThrowResults = computed<ThrowComboResult[]>(() => {
 
       if (delay < minDelay || delay > maxDelay) continue;
 
-      const key = `${prefix.name}|${move.name}|${prefix.frames}|${fillerFrames}`;
+      const key = `${prefix.name}|${prefix.frames}|${move.name}|${move.input}|${fillerFrames}`;
       results.push({
         key,
         prefix: prefix.name,
@@ -897,16 +902,48 @@ const allThrowResults = computed<ThrowComboResult[]>(() => {
         fillerRecovery,
         delay,
         firstActive: delay + throwStart,
+        toleranceFrames: Math.max(0, maxDelay - delay),
       });
     }
   }
 
-  return results
-    .sort((a, b) => a.delay - b.delay);
+  return results;
 });
 
+const throwSortKey = ref<'delay' | 'firstActive' | 'tolerance'>('delay');
+const throwSortOrder = ref<'asc' | 'desc'>('asc');
+
+function toggleThrowSort(key: 'delay' | 'firstActive' | 'tolerance') {
+  if (throwSortKey.value === key) {
+    throwSortOrder.value = throwSortOrder.value === 'desc' ? 'asc' : 'desc';
+  } else {
+    throwSortKey.value = key;
+    throwSortOrder.value = key === 'tolerance' ? 'desc' : 'asc';
+  }
+}
+
 const throwResults = computed(() => {
-  return allThrowResults.value.slice(0, 50);
+  const sorted = [...allThrowResults.value].sort((a, b) => {
+    const valA = throwSortKey.value === 'delay'
+      ? a.delay
+      : throwSortKey.value === 'firstActive'
+        ? a.firstActive
+        : a.toleranceFrames;
+    const valB = throwSortKey.value === 'delay'
+      ? b.delay
+      : throwSortKey.value === 'firstActive'
+        ? b.firstActive
+        : b.toleranceFrames;
+
+    if (valA !== valB) {
+      return throwSortOrder.value === 'desc' ? valB - valA : valA - valB;
+    }
+
+    // Secondary sort: Delay asc for stability
+    return a.delay - b.delay;
+  });
+
+  return sorted.slice(0, 50);
 });
 
 // Actions
@@ -1616,7 +1653,10 @@ function formatTolerance(val: number | undefined): string {
             <span v-if="sortKey === 'startup'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
           </span>
           <span>打击帧</span>
-          <span>容错</span>
+          <span class="sortable-header" @click="toggleSort('tolerance')">
+            容错
+            <span v-if="sortKey === 'tolerance'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
+          </span>
           <span class="sortable-header" @click="toggleSort('block')">
             被防
             <span v-if="sortKey === 'block'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
@@ -1899,8 +1939,18 @@ function formatTolerance(val: number | undefined): string {
       <div v-if="throwResults.length > 0" class="results-table">
         <div class="result-header throw-header">
           <span>组合</span>
-          <span>延迟S</span>
-          <span>第一帧判定</span>
+          <span class="sortable-header" @click="toggleThrowSort('delay')">
+            延迟S
+            <span v-if="throwSortKey === 'delay'" class="sort-indicator">{{ throwSortOrder === 'desc' ? '↓' : '↑' }}</span>
+          </span>
+          <span class="sortable-header" @click="toggleThrowSort('firstActive')">
+            第一帧判定
+            <span v-if="throwSortKey === 'firstActive'" class="sort-indicator">{{ throwSortOrder === 'desc' ? '↓' : '↑' }}</span>
+          </span>
+          <span class="sortable-header" @click="toggleThrowSort('tolerance')">
+            容错
+            <span v-if="throwSortKey === 'tolerance'" class="sort-indicator">{{ throwSortOrder === 'desc' ? '↓' : '↑' }}</span>
+          </span>
         </div>
         <div v-for="result in throwResults" :key="result.key"
           :class="['result-row-auto', 'throw-row', { expanded: selectedThrowResultKey === result.key }]"
@@ -1909,12 +1959,13 @@ function formatTolerance(val: number | undefined): string {
             <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
             <span v-if="result.prefix">+</span>
             <span v-if="result.fillerName !== '直接投'">{{ result.fillerName }}</span>
+            <span v-if="result.filler && result.fillerName !== '直接投'" class="move-input">({{ result.filler.input }})</span>
             <span v-if="result.fillerName !== '直接投'">+</span>
             <span>投</span>
-            <span v-if="result.filler" class="move-input">{{ result.filler.input }}</span>
           </div>
           <span>{{ result.delay }}F</span>
           <span>{{ result.firstActive }}F</span>
+          <span>{{ formatTolerance(result.toleranceFrames) }}</span>
 
           <div v-if="selectedThrowResultKey === result.key" class="result-detail" @click.stop>
             <div class="detail-title">帧数详情</div>
@@ -1925,7 +1976,7 @@ function formatTolerance(val: number | undefined): string {
             <div class="detail-row">
               <span class="detail-label">空挥招式:</span>
               <span v-if="result.filler">
-                {{ result.fillerName }} = 
+                {{ result.fillerName }}<span v-if="result.filler.input">({{ result.filler.input }})</span> = 
                 <span v-if="result.filler.raw?.total">
                     {{ result.fillerFrames }}F (原始数据)
                 </span>
@@ -2500,7 +2551,7 @@ function formatTolerance(val: number | undefined): string {
 
 .result-header.throw-header,
 .result-row-auto.throw-row {
-  grid-template-columns: 2.5fr 1fr 1fr;
+  grid-template-columns: 2.5fr 1fr 1fr 0.8fr;
 }
 
 .result-row-auto.expanded {
