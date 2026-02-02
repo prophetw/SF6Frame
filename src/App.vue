@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
+import { useLocale, type Locale } from './i18n';
+
+const { locale, setLocale } = useLocale();
+
+function handleLocaleChange(event: Event) {
+  setLocale((event.target as HTMLSelectElement).value as Locale);
+}
 </script>
 
 <template>
@@ -13,10 +20,19 @@ import { RouterLink, RouterView } from 'vue-router';
             <span class="brand-text">SF6 Frame Data</span>
           </RouterLink>
           
-          <div class="nav-links">
-            <RouterLink to="/" class="nav-link">角色列表</RouterLink>
-            <RouterLink to="/oki" class="nav-link">压起身计算器</RouterLink>
-            <RouterLink to="/gap-calculator" class="nav-link">连招间隙计算器</RouterLink>
+          <div class="nav-right">
+            <div class="nav-links">
+              <RouterLink to="/" class="nav-link">角色列表</RouterLink>
+              <RouterLink to="/oki" class="nav-link">压起身计算器</RouterLink>
+              <RouterLink to="/gap-calculator" class="nav-link">连招间隙计算器</RouterLink>
+            </div>
+
+            <div class="nav-actions">
+              <select class="lang-select" :value="locale" @change="handleLocaleChange" aria-label="Language">
+                <option value="zh-CN">中文</option>
+                <option value="en">English</option>
+              </select>
+            </div>
           </div>
         </nav>
       </div>
@@ -85,6 +101,32 @@ import { RouterLink, RouterView } from 'vue-router';
   gap: var(--space-lg);
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+.lang-select {
+  height: 36px;
+  padding: 0 var(--space-sm);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.lang-select:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 .nav-link {
   color: var(--color-text-secondary);
   font-weight: 500;
@@ -124,6 +166,11 @@ import { RouterLink, RouterView } from 'vue-router';
   
   .nav-links {
     gap: var(--space-md);
+  }
+
+  .nav-right {
+    flex-direction: column;
+    gap: var(--space-sm);
   }
   
   .nav-link {

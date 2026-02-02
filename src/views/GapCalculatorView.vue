@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import { SF6_CHARACTERS, type Move, type FrameData } from '../types';
+import { getMoveDisplayName } from '../i18n';
 import { 
   calculateGap, 
   calculateMoveStats, 
@@ -94,12 +95,14 @@ function filterMoves(query: string, sourceMove?: Move | null, mode?: 'link' | 'c
     candidates = candidates.filter(m => isCancelValid(sourceMove, m));
   }
 
-  const q = query.toLowerCase();
-  if (!q) return candidates.slice(0, 50);
+  const qRaw = query.trim();
+  const qLower = qRaw.toLowerCase();
+  if (!qRaw) return candidates.slice(0, 50);
   
   return candidates.filter(m => 
-    m.name.toLowerCase().includes(q) || 
-    m.input.toLowerCase().includes(q)
+    m.name.toLowerCase().includes(qLower) || 
+    (m.nameZh && m.nameZh.includes(qRaw)) ||
+    m.input.toLowerCase().includes(qLower)
   ).slice(0, 50);
 }
 
@@ -108,7 +111,7 @@ const filteredMoves2 = computed(() => filterMoves(search2.value, move1.value, ca
 
 function selectMove1(move: Move) {
   move1.value = move;
-  search1.value = move.name;
+  search1.value = getMoveDisplayName(move);
   showDropdown1.value = false;
   cancelFrame.value = 1; // Reset cancel frame
   move2.value = null; // Reset move 2 when move 1 changes
@@ -117,7 +120,7 @@ function selectMove1(move: Move) {
 
 function selectMove2(move: Move) {
   move2.value = move;
-  search2.value = move.name;
+  search2.value = getMoveDisplayName(move);
   showDropdown2.value = false;
 }
 
@@ -324,7 +327,7 @@ function selectFollowUp(move: Move) {
               class="dropdown-item"
               @mousedown="selectMove1(move)"
             >
-              <span class="move-name">{{ move.name }}</span>
+              <span class="move-name">{{ getMoveDisplayName(move) }}</span>
               <span class="move-input">{{ move.input }}</span>
             </div>
           </div>
@@ -463,7 +466,7 @@ function selectFollowUp(move: Move) {
               class="dropdown-item"
               @mousedown="selectMove2(move)"
             >
-              <span class="move-name">{{ move.name }}</span>
+              <span class="move-name">{{ getMoveDisplayName(move) }}</span>
               <span class="move-input">{{ move.input }}</span>
             </div>
           </div>
@@ -489,9 +492,9 @@ function selectFollowUp(move: Move) {
                :key="`${rec.move.name}-${rec.move.input}-${index}`"
                class="rec-tag"
                :class="{ active: isSameMove(move2, rec.move) }"
-               @click="selectMove2(rec.move)"
-             >
-               <span class="rec-name">{{ rec.move.name }}</span>
+             @click="selectMove2(rec.move)"
+           >
+               <span class="rec-name">{{ getMoveDisplayName(rec.move) }}</span>
                <span class="rec-input">{{ rec.move.input }}</span>
                <span class="rec-gap" :class="rec.gap <= 0 ? 'safe' : 'unsafe'">
                  {{ rec.gap > 0 ? '+' : ''}}{{ rec.gap }}F
@@ -539,7 +542,7 @@ function selectFollowUp(move: Move) {
                :class="{ active: isSameMove(move2, move) }"
                @click="selectFollowUp(move)"
              >
-               <span class="rec-name">{{ move.name }}</span>
+               <span class="rec-name">{{ getMoveDisplayName(move) }}</span>
                <span class="rec-input">{{ move.input }}</span>
                <span class="rec-dmg" v-if="move.damage">{{ move.damage }}dmg</span>
              </button>

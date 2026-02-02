@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Move, CharacterStats } from '../types';
 import { calculateMoveStats } from '../utils/gapCalculator';
+import { getMoveDisplayName } from '../i18n';
 
 const props = defineProps<{
   moves: Move[];
@@ -113,7 +114,7 @@ function getTotalFrames(move: Move): string {
           <tr v-for="move in moves" :key="`${move.name}-${move.input}`" class="move-row">
             <td class="col-name" data-label="招式">
               <div class="move-name-wrap">
-                <span class="move-name">{{ move.name }}</span>
+                <span class="move-name">{{ getMoveDisplayName(move) }}</span>
                 <span :class="['move-category', `cat-${move.category}`]">
                   {{ getCategoryLabel(move.category) }}
                 </span>

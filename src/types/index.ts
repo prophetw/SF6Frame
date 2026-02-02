@@ -27,6 +27,7 @@ export interface KnockdownData {
 
 export interface Move {
     name: string;
+    nameZh?: string;
     input: string;
     damage: string;
     startup: string;

@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { SF6_CHARACTERS, type FrameData, type MoveCategory } from '../types';
 import MoveTable from '../components/MoveTable.vue';
 import { calculateMoveStats } from '../utils/gapCalculator';
+import { getMoveDisplayName } from '../i18n';
 
 const route = useRoute();
 const router = useRouter();
@@ -44,10 +45,12 @@ const filteredMoves = computed(() => {
   
   // Filter by search
   if (searchQuery.value) {
-    const query = searchQuery.value.toLowerCase();
+    const queryRaw = searchQuery.value.trim();
+    const queryLower = queryRaw.toLowerCase();
     moves = moves.filter(m => 
-      m.name.toLowerCase().includes(query) ||
-      m.input.toLowerCase().includes(query)
+      m.name.toLowerCase().includes(queryLower) ||
+      (m.nameZh && m.nameZh.includes(queryRaw)) ||
+      m.input.toLowerCase().includes(queryLower)
     );
   }
 
@@ -96,8 +99,8 @@ const filteredMoves = computed(() => {
       
       // Special handling for string fields like name/input if needed, but primary use is frames
       if (sortKey.value === 'name' || sortKey.value === 'input') {
-        valA = (a as any)[sortKey.value] || '';
-        valB = (b as any)[sortKey.value] || '';
+        valA = sortKey.value === 'name' ? getMoveDisplayName(a) : ((a as any)[sortKey.value] || '');
+        valB = sortKey.value === 'name' ? getMoveDisplayName(b) : ((b as any)[sortKey.value] || '');
         return sortOrder.value === 'asc' 
           ? String(valA).localeCompare(String(valB)) 
           : String(valB).localeCompare(String(valA));

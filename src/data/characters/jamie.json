@@ -891,6 +891,7 @@
     },
     {
       "name": "Vainglory Strike (DL2)",
+      "nameZh": "斗气迸放",
       "input": "HPHK",
       "damage": "800",
       "startup": "26",
@@ -923,6 +924,7 @@
     },
     {
       "name": "Drive Parry",
+      "nameZh": "斗气招架",
       "input": "MPMK",
       "damage": "-",
       "startup": "1",
@@ -951,6 +953,7 @@
     },
     {
       "name": "Parry Drive Rush",
+      "nameZh": "斗气冲锋",
       "input": "MPMK~66",
       "damage": "-",
       "startup": "3+8",
@@ -978,6 +981,7 @@
     },
     {
       "name": "Drive Rush Cancel",
+      "nameZh": "斗气冲锋取消",
       "input": "MPMK or 66",
       "damage": "-",
       "startup": "9",
@@ -1194,6 +1198,7 @@
     },
     {
       "name": "Back Taunt",
+      "nameZh": "后挑衅",
       "input": "5PPPKKK",
       "damage": "-",
       "startup": "608 (total)",
@@ -1725,6 +1730,7 @@
     },
     {
       "name": "Leg Sweep (Block)",
+      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "20",
@@ -1758,6 +1764,7 @@
     },
     {
       "name": "Leg Sweep (Recovery)",
+      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "18",

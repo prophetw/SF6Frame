@@ -14,6 +14,7 @@
   "moves": [
     {
       "name": "Stand LP",
+      "nameZh": "站立轻拳",
       "input": "5LP",
       "damage": "300",
       "startup": "4",
@@ -51,6 +52,7 @@
     },
     {
       "name": "Stand MP",
+      "nameZh": "站立中拳",
       "input": "5MP",
       "damage": "600",
       "startup": "7",
@@ -85,6 +87,7 @@
     },
     {
       "name": "Stand HP",
+      "nameZh": "站立重拳",
       "input": "5HP",
       "damage": "800(700)",
       "startup": "9",
@@ -121,6 +124,7 @@
     },
     {
       "name": "Stand LK",
+      "nameZh": "站立轻脚",
       "input": "5LK",
       "damage": "300",
       "startup": "5",
@@ -156,6 +160,7 @@
     },
     {
       "name": "Stand MK",
+      "nameZh": "站立中脚",
       "input": "5MK",
       "damage": "600",
       "startup": "9",
@@ -186,6 +191,7 @@
     },
     {
       "name": "Stand HK",
+      "nameZh": "站立重脚",
       "input": "5HK",
       "damage": "800",
       "startup": "12",
@@ -216,6 +222,7 @@
     },
     {
       "name": "Crouch LP",
+      "nameZh": "蹲下轻拳",
       "input": "2LP",
       "damage": "300",
       "startup": "5",
@@ -252,6 +259,7 @@
     },
     {
       "name": "Crouch MP",
+      "nameZh": "蹲下中拳",
       "input": "2MP",
       "damage": "600",
       "startup": "6",
@@ -287,6 +295,7 @@
     },
     {
       "name": "Crouch HP",
+      "nameZh": "蹲下重拳",
       "input": "2HP",
       "damage": "800",
       "startup": "8",
@@ -317,6 +326,7 @@
     },
     {
       "name": "Crouch LK",
+      "nameZh": "蹲下轻脚",
       "input": "2LK",
       "damage": "200",
       "startup": "5",
@@ -351,6 +361,7 @@
     },
     {
       "name": "Crouch MK",
+      "nameZh": "蹲下中脚",
       "input": "2MK",
       "damage": "700",
       "startup": "8",
@@ -417,6 +428,7 @@
     },
     {
       "name": "Jump LP",
+      "nameZh": "跳跃轻拳",
       "input": "j.LP",
       "damage": "300",
       "startup": "4",
@@ -447,6 +459,7 @@
     },
     {
       "name": "Jump MP",
+      "nameZh": "跳跃中拳",
       "input": "j.MP",
       "damage": "700",
       "startup": "6",
@@ -481,6 +494,7 @@
     },
     {
       "name": "Jump HP",
+      "nameZh": "跳跃重拳",
       "input": "j.HP",
       "damage": "800",
       "startup": "9",
@@ -511,6 +525,7 @@
     },
     {
       "name": "Jump LK",
+      "nameZh": "跳跃轻脚",
       "input": "j.LK",
       "damage": "300",
       "startup": "4",
@@ -541,6 +556,7 @@
     },
     {
       "name": "Jump MK",
+      "nameZh": "跳跃中脚",
       "input": "j.MK",
       "damage": "500",
       "startup": "8",
@@ -571,6 +587,7 @@
     },
     {
       "name": "Jump HK",
+      "nameZh": "跳跃重脚",
       "input": "j.HK",
       "damage": "800",
       "startup": "10",
@@ -860,6 +877,7 @@
     },
     {
       "name": "Wild Beat",
+      "nameZh": "斗气迸放",
       "input": "HPHK",
       "damage": "800",
       "startup": "26",
@@ -892,6 +910,7 @@
     },
     {
       "name": "Drive Parry",
+      "nameZh": "斗气招架",
       "input": "MPMK",
       "damage": "-",
       "startup": "1",
@@ -920,6 +939,7 @@
     },
     {
       "name": "Parry Drive Rush",
+      "nameZh": "斗气冲锋",
       "input": "MPMK~66",
       "damage": "-",
       "startup": "3+8",
@@ -947,6 +967,7 @@
     },
     {
       "name": "Drive Rush Cancel",
+      "nameZh": "斗气冲锋取消",
       "input": "MPMK or 66",
       "damage": "-",
       "startup": "9",
@@ -1753,6 +1774,7 @@
     },
     {
       "name": "Neutral Taunt",
+      "nameZh": "原地挑衅",
       "input": "5PPPKKK",
       "damage": "-",
       "startup": "264 (total)",
@@ -1876,6 +1898,7 @@
     },
     {
       "name": "Leg Scratch (Block)",
+      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "20",
@@ -1909,6 +1932,7 @@
     },
     {
       "name": "Leg Scratch (Recovery)",
+      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "18",
@@ -2069,6 +2093,7 @@
     },
     {
       "name": "Forward Taunt",
+      "nameZh": "前挑衅",
       "input": "6PPPKKK",
       "damage": "-",
       "startup": "550 (total)",
@@ -2096,6 +2121,7 @@
     },
     {
       "name": "Back Taunt",
+      "nameZh": "后挑衅",
       "input": "4PPPKKK",
       "damage": "-",
       "startup": "429 (total)",

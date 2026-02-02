@@ -14,6 +14,7 @@
   "moves": [
     {
       "name": "Stand LP",
+      "nameZh": "站立轻拳",
       "input": "5LP",
       "damage": "300",
       "startup": "4",
@@ -50,6 +51,7 @@
     },
     {
       "name": "Stand MP",
+      "nameZh": "站立中拳",
       "input": "5MP",
       "damage": "600",
       "startup": "6",
@@ -86,6 +88,7 @@
     },
     {
       "name": "Stand HP",
+      "nameZh": "站立重拳",
       "input": "5HP",
       "damage": "800",
       "startup": "10",
@@ -122,6 +125,7 @@
     },
     {
       "name": "Stand LK",
+      "nameZh": "站立轻脚",
       "input": "5LK",
       "damage": "300",
       "startup": "5",
@@ -157,6 +161,7 @@
     },
     {
       "name": "Stand MK",
+      "nameZh": "站立中脚",
       "input": "5MK",
       "damage": "700",
       "startup": "9",
@@ -187,6 +192,7 @@
     },
     {
       "name": "Stand HK",
+      "nameZh": "站立重脚",
       "input": "5HK",
       "damage": "900",
       "startup": "12",
@@ -217,6 +223,7 @@
     },
     {
       "name": "Crouch LP",
+      "nameZh": "蹲下轻拳",
       "input": "2LP",
       "damage": "300",
       "startup": "4",
@@ -253,6 +260,7 @@
     },
     {
       "name": "Crouch MP",
+      "nameZh": "蹲下中拳",
       "input": "2MP",
       "damage": "600",
       "startup": "6",
@@ -288,6 +296,7 @@
     },
     {
       "name": "Crouch HP",
+      "nameZh": "蹲下重拳",
       "input": "2HP",
       "damage": "800",
       "startup": "9",
@@ -323,6 +332,7 @@
     },
     {
       "name": "Crouch LK",
+      "nameZh": "蹲下轻脚",
       "input": "2LK",
       "damage": "200",
       "startup": "5",
@@ -357,6 +367,7 @@
     },
     {
       "name": "Crouch MK",
+      "nameZh": "蹲下中脚",
       "input": "2MK",
       "damage": "500",
       "startup": "8",
@@ -425,6 +436,7 @@
     },
     {
       "name": "Jump LP",
+      "nameZh": "跳跃轻拳",
       "input": "j.LP",
       "damage": "300",
       "startup": "4",
@@ -455,6 +467,7 @@
     },
     {
       "name": "Jump MP",
+      "nameZh": "跳跃中拳",
       "input": "j.MP",
       "damage": "350x2",
       "startup": "8",
@@ -489,6 +502,7 @@
     },
     {
       "name": "Jump HP",
+      "nameZh": "跳跃重拳",
       "input": "j.HP",
       "damage": "800",
       "startup": "9",
@@ -519,6 +533,7 @@
     },
     {
       "name": "Jump LK",
+      "nameZh": "跳跃轻脚",
       "input": "j.LK",
       "damage": "300",
       "startup": "6",
@@ -549,6 +564,7 @@
     },
     {
       "name": "Jump MK",
+      "nameZh": "跳跃中脚",
       "input": "j.MK",
       "damage": "500",
       "startup": "7",
@@ -579,6 +595,7 @@
     },
     {
       "name": "Jump HK",
+      "nameZh": "跳跃重脚",
       "input": "j.HK",
       "damage": "800",
       "startup": "10",
@@ -709,6 +726,7 @@
     },
     {
       "name": "Shingeki",
+      "nameZh": "斗气迸放",
       "input": "HPHK",
       "damage": "800",
       "startup": "26",
@@ -741,6 +759,7 @@
     },
     {
       "name": "Drive Parry",
+      "nameZh": "斗气招架",
       "input": "MPMK",
       "damage": "-",
       "startup": "1",
@@ -769,6 +788,7 @@
     },
     {
       "name": "Parry Drive Rush",
+      "nameZh": "斗气冲锋",
       "input": "MPMK~66",
       "damage": "-",
       "startup": "3+8",
@@ -796,6 +816,7 @@
     },
     {
       "name": "Drive Rush Cancel",
+      "nameZh": "斗气冲锋取消",
       "input": "MPMK or 66",
       "damage": "-",
       "startup": "9",
@@ -823,6 +844,7 @@
     },
     {
       "name": "Denjin Charge",
+      "nameZh": "电刃练气",
       "input": "22P",
       "damage": "-",
       "startup": "50",
@@ -850,6 +872,7 @@
     },
     {
       "name": "Neutral Taunt",
+      "nameZh": "原地挑衅",
       "input": "5PPPKKK",
       "damage": "-",
       "startup": "210 (total)",
@@ -877,6 +900,7 @@
     },
     {
       "name": "Down Taunt",
+      "nameZh": "下蹲挑衅",
       "input": "2PPPKKK",
       "damage": "-",
       "startup": "154 (total)",
@@ -1068,6 +1092,7 @@
     },
     {
       "name": "Chest Strike (Block)",
+      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "20",
@@ -1101,6 +1126,7 @@
     },
     {
       "name": "Chest Strike (Recovery)",
+      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "18",
@@ -1134,6 +1160,7 @@
     },
     {
       "name": "Forward Taunt",
+      "nameZh": "前挑衅",
       "input": "6PPPKKK",
       "damage": "-",
       "startup": "124 (total)",
@@ -1161,6 +1188,7 @@
     },
     {
       "name": "Back Taunt",
+      "nameZh": "后挑衅",
       "input": "4PPPKKK",
       "damage": "-",
       "startup": "209 (total)",
@@ -1252,6 +1280,7 @@
     },
     {
       "name": "Aerial Tatsumaki Senpu-kyaku",
+      "nameZh": "空中龙卷旋风脚",
       "input": "6HK~214K",
       "damage": "900",
       "startup": "11",
@@ -1285,6 +1314,7 @@
     },
     {
       "name": "Aerial Tatsumaki Senpu-kyaku",
+      "nameZh": "空中龙卷旋风脚",
       "input": "6HK~214KK",
       "damage": "300,200x3,600 (1500)",
       "startup": "11",
@@ -1318,6 +1348,7 @@
     },
     {
       "name": "Hadoken",
+      "nameZh": "波动拳",
       "input": "236LP",
       "damage": "700",
       "startup": "16",
@@ -1348,6 +1379,7 @@
     },
     {
       "name": "Hadoken",
+      "nameZh": "波动拳",
       "input": "236MP",
       "damage": "700",
       "startup": "14",
@@ -1378,6 +1410,7 @@
     },
     {
       "name": "Hadoken",
+      "nameZh": "波动拳",
       "input": "236HP",
       "damage": "700",
       "startup": "12",
@@ -1408,6 +1441,7 @@
     },
     {
       "name": "Hadoken",
+      "nameZh": "波动拳",
       "input": "236PP",
       "damage": "500x2",
       "startup": "12",
@@ -1443,6 +1477,7 @@
     },
     {
       "name": "Denjin Charge Hadoken",
+      "nameZh": "练气 波动拳",
       "input": "236HP",
       "damage": "500x2",
       "startup": "12",
@@ -1477,6 +1512,7 @@
     },
     {
       "name": "Denjin Charge Hadoken",
+      "nameZh": "练气 波动拳",
       "input": "236PP",
       "damage": "400x3 (1200)",
       "startup": "12",
@@ -1512,6 +1548,7 @@
     },
     {
       "name": "Shoryuken",
+      "nameZh": "升龙拳",
       "input": "623LP",
       "damage": "1100(800)",
       "startup": "5",
@@ -1548,6 +1585,7 @@
     },
     {
       "name": "Shoryuken",
+      "nameZh": "升龙拳",
       "input": "623MP",
       "damage": "1200(800)",
       "startup": "6",
@@ -1584,6 +1622,7 @@
     },
     {
       "name": "Shoryuken",
+      "nameZh": "升龙拳",
       "input": "623HP",
       "damage": "1400(800)",
       "startup": "7",
@@ -1620,6 +1659,7 @@
     },
     {
       "name": "Shoryuken",
+      "nameZh": "升龙拳",
       "input": "623PP",
       "damage": "800x2",
       "startup": "6",
@@ -1653,6 +1693,7 @@
     },
     {
       "name": "Tatsumaki Senpu-kyaku",
+      "nameZh": "龙卷旋风脚",
       "input": "214LK",
       "damage": "900",
       "startup": "12",
@@ -1686,6 +1727,7 @@
     },
     {
       "name": "Tatsumaki Senpu-kyaku",
+      "nameZh": "龙卷旋风脚",
       "input": "214MK",
       "damage": "1000",
       "startup": "14",
@@ -1719,6 +1761,7 @@
     },
     {
       "name": "Tatsumaki Senpu-kyaku",
+      "nameZh": "龙卷旋风脚",
       "input": "214HK",
       "damage": "1200",
       "startup": "16",
@@ -1752,6 +1795,7 @@
     },
     {
       "name": "Tatsumaki Senpu-kyaku",
+      "nameZh": "龙卷旋风脚",
       "input": "214KK",
       "damage": "200x5",
       "startup": "13",
@@ -1785,6 +1829,7 @@
     },
     {
       "name": "Aerial Tatsumaki Senpu-kyaku",
+      "nameZh": "空中龙卷旋风脚",
       "input": "j.214K",
       "damage": "900",
       "startup": "11",
@@ -1818,6 +1863,7 @@
     },
     {
       "name": "Aerial Tatsumaki Senpu-kyaku",
+      "nameZh": "空中龙卷旋风脚",
       "input": "j.214KK",
       "damage": "300,200x3,600 (1500)",
       "startup": "11",
@@ -1992,6 +2038,7 @@
     },
     {
       "name": "Hashogeki",
+      "nameZh": "波掌击",
       "input": "214LP",
       "damage": "700",
       "startup": "12",
@@ -2025,6 +2072,7 @@
     },
     {
       "name": "Hashogeki",
+      "nameZh": "波掌击",
       "input": "214MP",
       "damage": "800",
       "startup": "19",
@@ -2058,6 +2106,7 @@
     },
     {
       "name": "Hashogeki",
+      "nameZh": "波掌击",
       "input": "214HP",
       "damage": "400x2",
       "startup": "30",
@@ -2094,6 +2143,7 @@
     },
     {
       "name": "Hashogeki",
+      "nameZh": "波掌击",
       "input": "214PP",
       "damage": "1100",
       "startup": "18",
@@ -2128,6 +2178,7 @@
     },
     {
       "name": "Denjin Charge Hashogeki",
+      "nameZh": "练气 波掌击",
       "input": "214HP",
       "damage": "400x2",
       "startup": "20",
@@ -2164,6 +2215,7 @@
     },
     {
       "name": "Denjin Charge Hashogeki",
+      "nameZh": "练气 波掌击",
       "input": "214PP",
       "damage": "800",
       "startup": "18",
@@ -2201,6 +2253,7 @@
     },
     {
       "name": "Shinku Hadoken",
+      "nameZh": "真空波动拳",
       "input": "236236P",
       "damage": "400x5 (2000)",
       "startup": "7",
@@ -2232,6 +2285,7 @@
     },
     {
       "name": "Denjin Hadoken",
+      "nameZh": "电刃波动拳",
       "input": "236236P",
       "damage": "200x7,1000 (2400)",
       "startup": "7",
@@ -2263,6 +2317,7 @@
     },
     {
       "name": "Shin Hashogeki Lv.1",
+      "nameZh": "真·波掌击 Lv.1",
       "input": "214214P",
       "damage": "2800",
       "startup": "12",
@@ -2296,6 +2351,7 @@
     },
     {
       "name": "Denjin Hashogeki Lv.1",
+      "nameZh": "练气 真·波掌击 Lv.1",
       "input": "214214P",
       "damage": "3200",
       "startup": "12",
@@ -2329,6 +2385,7 @@
     },
     {
       "name": "Shin Hashogeki Lv.2",
+      "nameZh": "真·波掌击 Lv.2",
       "input": "214214P (Hold Lv.2)",
       "damage": "2900",
       "startup": "18~",
@@ -2362,6 +2419,7 @@
     },
     {
       "name": "Denjin Hashogeki Lv.2",
+      "nameZh": "练气 真·波掌击 Lv.2",
       "input": "214214P (Hold Lv.2)",
       "damage": "3300",
       "startup": "18~",
@@ -2395,6 +2453,7 @@
     },
     {
       "name": "Shin Hashogeki Lv.3",
+      "nameZh": "真·波掌击 Lv.3",
       "input": "214214P (Hold Lv.3)",
       "damage": "3000",
       "startup": "50~",
@@ -2428,6 +2487,7 @@
     },
     {
       "name": "Denjin Hashogeki Lv.3",
+      "nameZh": "练气 真·波掌击 Lv.3",
       "input": "214214P (Hold Lv.3)",
       "damage": "3400",
       "startup": "50~",
@@ -2461,6 +2521,7 @@
     },
     {
       "name": "Shin Shoryuken",
+      "nameZh": "真·升龙拳",
       "input": "236236K",
       "damage": "4000 (3600)",
       "startup": "5(2)",
@@ -2494,6 +2555,7 @@
     },
     {
       "name": "Shin Shoryuken (CA)",
+      "nameZh": "真·升龙拳（CA）",
       "input": "236236K",
       "damage": "4500 (4400)",
       "startup": "5(2)",

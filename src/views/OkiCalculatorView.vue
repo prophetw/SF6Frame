@@ -3,6 +3,7 @@ import { ref, computed } from 'vue';
 import { SF6_CHARACTERS, type Move, type FrameData, type CharacterStats } from '../types';
 import { calculateTradeAdvantage, parseHitstun, getEffectiveHitstun } from '../utils/trade';
 import { buildOkiResultKeyBase, getUniqueOkiResultKey } from '../utils/okiResultKey';
+import { getMoveDisplayName } from '../i18n';
 
 const attackerCharId = ref<string>('');
 const defenderCharId = ref<string>('ryu'); // Default defender
@@ -300,11 +301,13 @@ const defenderMoves = computed<Move[]>(() => {
 // Filtered moves for search (Attacker)
 const filteredMoves = computed<Move[]>(() => {
   if (!attackerFrameData.value) return [];
-  const query = moveSearchQuery.value.toLowerCase();
-  if (!query) return allMoves.value.slice(0, 15);
+  const queryRaw = moveSearchQuery.value.trim();
+  const queryLower = queryRaw.toLowerCase();
+  if (!queryRaw) return allMoves.value.slice(0, 15);
   return allMoves.value.filter((m: Move) =>
-    m.name.toLowerCase().includes(query) ||
-    m.input.toLowerCase().includes(query)
+    m.name.toLowerCase().includes(queryLower) ||
+    (m.nameZh && m.nameZh.includes(queryRaw)) ||
+    m.input.toLowerCase().includes(queryLower)
   ).slice(0, 15);
 });
 
@@ -314,27 +317,29 @@ const showDefenderDropdown = ref(false);
 
 const filteredDefenderMoves = computed<Move[]>(() => {
   if (!defenderMoves.value) return [];
-  const query = defenderMoveSearchQuery.value.toLowerCase();
+  const queryRaw = defenderMoveSearchQuery.value.trim();
+  const queryLower = queryRaw.toLowerCase();
   // If query matches current selection exactly, maybe show others? 
   // For now just partial match
-  if (!query) return defenderMoves.value.slice(0, 30);
+  if (!queryRaw) return defenderMoves.value.slice(0, 30);
 
   return defenderMoves.value.filter((m: Move) =>
-    m.name.toLowerCase().includes(query) ||
-    (m.input && m.input.toLowerCase().includes(query))
+    m.name.toLowerCase().includes(queryLower) ||
+    (m.nameZh && m.nameZh.includes(queryRaw)) ||
+    (m.input && m.input.toLowerCase().includes(queryLower))
   ).slice(0, 30);
 });
 
 function selectDefenderMove(move: Move) {
   selectedDefenderMove.value = move;
-  defenderMoveSearchQuery.value = move.name;
+  defenderMoveSearchQuery.value = getMoveDisplayName(move);
   showDefenderDropdown.value = false;
 }
 
 // Sync query with selected move (e.g. initial load)
 watch(selectedDefenderMove, (newVal) => {
   if (newVal) {
-    defenderMoveSearchQuery.value = newVal.name;
+    defenderMoveSearchQuery.value = getMoveDisplayName(newVal);
   }
 });
 
@@ -518,7 +523,9 @@ const comboChainPrefixFrames = computed(() => {
 // Build prefix name from combo chain
 const comboChainPrefixName = computed(() => {
   if (comboChain.value.length === 0) return '';
-  return comboChain.value.map((a: ComboAction) => a.name).join(' + ');
+  return comboChain.value
+    .map((a: ComboAction) => (a.type === 'move' && a.move ? getMoveDisplayName(a.move) : a.name))
+    .join(' + ');
 });
 
 const comboChainPrefixInput = computed(() => {
@@ -709,7 +716,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
             const labelA = effA.type === 'blockstun' ? `(Blockstun ${parseHitstun(move.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(move.raw.hitstun)} + 2CH)`;
             const labelB = effB.type === 'blockstun' ? `(Blockstun ${parseHitstun(selectedDefenderMove.value.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(selectedDefenderMove.value.raw.hitstun)} + 2CH)`;
 
-            tradeExpl = `${move.name} ${labelA} - ${selectedDefenderMove.value.name} ${labelB} = ${adv}`;
+            tradeExpl = `${getMoveDisplayName(move)} ${labelA} - ${getMoveDisplayName(selectedDefenderMove.value)} ${labelB} = ${adv}`;
           } else {
             tradeDet = '需选择招式';
           }
@@ -757,10 +764,12 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
   let filtered = allOkiResults.value;
   
   if (autoMatchSearchQuery.value) {
-    const query = autoMatchSearchQuery.value.toLowerCase().trim();
+    const queryRaw = autoMatchSearchQuery.value.trim();
+    const queryLower = queryRaw.toLowerCase();
     filtered = filtered.filter(result => 
-      result.move.name.toLowerCase().includes(query) ||
-      result.move.input.toLowerCase().includes(query)
+      result.move.name.toLowerCase().includes(queryLower) ||
+      (result.move.nameZh && result.move.nameZh.includes(queryRaw)) ||
+      result.move.input.toLowerCase().includes(queryLower)
     );
   }
 
@@ -884,7 +893,7 @@ const allThrowResults = computed<ThrowComboResult[]>(() => {
         prefix: prefix.name,
         prefixFrames: prefix.frames,
         filler: move,
-        fillerName: move.name,
+        fillerName: getMoveDisplayName(move),
         fillerFrames,
         fillerStartup,
         fillerActive,
@@ -1454,7 +1463,7 @@ function formatTolerance(val: number | undefined): string {
                     :class="['knockdown-card', { active: isSelectedKnockdown(move) }]"
                     @click="selectCustomMove(move)"
                 >
-                    <span class="move-name">{{ move.name }}</span>
+                    <span class="move-name">{{ getMoveDisplayName(move) }}</span>
                     <span class="move-input">{{ move.input }}</span>
                     <span class="move-advantage">+{{ move.frames }}F</span>
                     <button class="btn-delete" @click.stop="removeCustomMove(move.id)">×</button>
@@ -1482,7 +1491,7 @@ function formatTolerance(val: number | undefined): string {
         <button v-for="move in knockdownMoves" :key="`${move.name}-${move.input}`"
           :class="['knockdown-card', { active: isSelectedKnockdown(move) }]"
           @click="selectKnockdownMove(move)">
-          <span class="move-name">{{ move.name }}</span>
+          <span class="move-name">{{ getMoveDisplayName(move) }}</span>
           <span class="move-input">{{ move.input }}</span>
           <span class="move-advantage" v-if="move.knockdown">+{{ parseKnockdownAdvantage(move) }}F</span>
         </button>
@@ -1522,7 +1531,7 @@ function formatTolerance(val: number | undefined): string {
                   <div v-if="showDefenderDropdown && filteredDefenderMoves.length > 0" class="move-dropdown">
                     <button v-for="move in filteredDefenderMoves" :key="`${move.name}-${move.input}`" class="move-option text-xs"
                       @click="selectDefenderMove(move)">
-                      <span class="truncate mr-2">{{ move.name }}</span>
+                      <span class="truncate mr-2">{{ getMoveDisplayName(move) }}</span>
                       <span class="move-input text-xs">{{ move.input }}</span>
                       <span class="whitespace-nowrap text-gray-400">{{ move.startup }}F</span>
                     </button>
@@ -1550,7 +1559,7 @@ function formatTolerance(val: number | undefined): string {
         <div class="combo-builder-title">前置动作</div>
         <div class="combo-chain">
           <div v-for="(action, idx) in comboChain" :key="idx" class="chain-item">
-            <span class="chain-name">{{ action.name }}</span>
+            <span class="chain-name">{{ action.type === 'move' && action.move ? getMoveDisplayName(action.move) : action.name }}</span>
             <span class="chain-frames">{{ action.frames }}F</span>
             <button class="chain-remove" @click="removeAction(idx)">×</button>
             <span v-if="idx < comboChain.length - 1" class="chain-plus">+</span>
@@ -1566,7 +1575,7 @@ function formatTolerance(val: number | undefined): string {
             <input type="text" v-model="moveSearchQuery" placeholder="搜索招式..." class="move-search-input" />
             <div v-if="moveSearchQuery" class="move-dropdown">
               <button v-for="move in filteredMoves" :key="`${move.name}-${move.input}`" class="move-option" @click="addMove(move)">
-                <span>{{ move.name }}</span>
+                <span>{{ getMoveDisplayName(move) }}</span>
                 <span class="move-input">{{ move.input }}</span>
                 <span>{{ move.startup }}F</span>
               </button>
@@ -1670,7 +1679,7 @@ function formatTolerance(val: number | undefined): string {
             <span v-if="result.tags && result.tags.length > 0" class="tag-badge">{{ result.tags.join(', ') }}</span>
             <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
             <span v-if="result.prefix">+</span>
-            <span>{{ result.move.name }}</span>
+            <span>{{ getMoveDisplayName(result.move) }}</span>
             <span class="move-input">{{ result.move.input }}</span>
           </div>
           <span>{{ result.prefixFrames + parseInt(result.move.startup) }}F</span>
@@ -1699,7 +1708,7 @@ function formatTolerance(val: number | undefined): string {
             </div>
             <div class="detail-row">
               <span class="detail-label">招式发生:</span>
-              <span>{{ result.move.name }} ({{ result.move.input }}) = {{ result.move.startup }}F</span>
+              <span>{{ getMoveDisplayName(result.move) }} ({{ result.move.input }}) = {{ result.move.startup }}F</span>
             </div>
             <div class="detail-row">
               <span class="detail-label">招式持续:</span>
