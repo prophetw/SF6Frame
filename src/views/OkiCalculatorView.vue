@@ -344,36 +344,25 @@ function handleDefenderBlur() {
 
 
 
-// Parse total active frames
-// Helper to evaluate frame string "2*3" or "10+2"
-// Helper to evaluate frame string "2*3" or "10+2"
+// Helper to evaluate frame strings like "2,3", "5(5)3", "10+2", "2*3".
 function evaluateFrameString(val: string | number | undefined): number {
   if (!val || val === '-') return 0;
   if (typeof val === 'number') return val;
 
-  // Try to sum parts separated by + first
-  const parts = val.split('+');
-  let sum = 0;
+  const text = String(val);
 
-  for (const part of parts) {
-    const trimmed = part.trim();
-    if (trimmed.includes('*')) {
-      // Handle "2*3" -> 2 + 3 (Sum of active frames, NOT multiplication)
-      const factors = trimmed.split('*');
-      for (const f of factors) {
-        const num = parseInt(f);
-        if (!isNaN(num)) {
-          sum += num;
-        }
-      }
-    } else {
-      // Handle simple number
-      const num = parseInt(trimmed);
-      if (!isNaN(num)) sum += num;
-    }
-  }
+  // If explicit total is provided, prefer it.
+  const totalMatch = text.match(/(\d+)\s*total/i);
+  if (totalMatch) return parseInt(totalMatch[1], 10);
 
-  return sum;
+  // Normalize ranges like "13~17" by keeping the first value (min).
+  let normalized = text.replace(/(\d+)\s*~\s*(\d+)/g, '$1');
+  normalized = normalized.replace(/(\d+)\s*~\s*/g, '$1');
+
+  const numbers = normalized.match(/-?\d+/g);
+  if (!numbers) return 0;
+
+  return numbers.reduce((sum, n) => sum + parseInt(n, 10), 0);
 }
 
 // Parse total active frames

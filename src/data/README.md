@@ -10,7 +10,7 @@ const action1 = {
     "name": "Axe Kick",
     "input": "4HK",
     "damage": "400x2",  // 2段伤害
-    "startup": "10(20)", // 10空挥 
+    "startup": "10(20)", 
     "active": "5(5)3",  // 表示 2段持续 中间相隔5帧   5帧+5帧+3帧 总持续时间13帧
     "recovery": "21",
     "onBlock": "-4",
@@ -35,7 +35,7 @@ const action3 = {
     "damage": "600",
     "startup": "6",
     "active": "4",
-    "recovery": "13(15)",  // 13帧击中 15帧未击中
+    "recovery": "13(15)",  // 13帧击中 15帧未击中空挥
     "onBlock": "0",
     "onHit": "+5",
     "category": "normal",
