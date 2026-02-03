@@ -141,6 +141,23 @@ function isSameMove(a?: Move | null, b?: Move | null): boolean {
   return a.name === b.name && a.input === b.input;
 }
 
+function formatAdvantage(val: string | number | undefined): string {
+  if (val === undefined || val === null || val === '-') return '-';
+  const match = String(val).match(/^[+-]?\d+/);
+  if (!match) return String(val);
+  const num = parseInt(match[0], 10);
+  return num > 0 ? `+${num}` : `${num}`;
+}
+
+function getAdvantageClass(val: string | number | undefined): string {
+  const match = String(val ?? '').match(/^[+-]?\d+/);
+  if (!match) return 'adv-neutral';
+  const num = parseInt(match[0], 10);
+  if (num > 0) return 'adv-plus';
+  if (num < 0) return 'adv-minus';
+  return 'adv-neutral';
+}
+
 // Helpers - Imported from utils/gapCalculator
 
 const move1Stats = computed(() => {
@@ -256,7 +273,8 @@ function selectFollowUp(move: Move) {
           <li>如果对手在两下之间有任何可动帧（哪怕只有 1 帧），他就能把 OD 升龙“卡在第一帧可动”启动。</li>
           <li>依靠“启动第 1 帧就有无敌”的性质，可以穿掉你的下一次攻击。</li>
           <li>简单来说：<strong>只要你的攻击没有覆盖到对手防御硬直的最后一帧，对手就可以在恢复的第一帧使用无敌技反击。</strong></li>
-          <li>Gap 0表示的是，第二招攻击的第一帧落在了对手防御硬直的最后一帧，对手无缝进入第二招的防御硬直。</li>
+          <li>下方的 Gap 0表示的是，参照街霸6帧数表，没有黑色的块，己方第二招攻击的第一帧落在了对手防御硬直完之后可动的第一帧，对方可以释放无敌技</li>
+          <li>下方的 Gap -1 表示的是，己方第二招攻击的第一帧落在了对手防御硬直的最后一帧，对方无法做任何操作</li>
         </ul>
       </div>
     </header>
@@ -412,7 +430,7 @@ function selectFollowUp(move: Move) {
                  :class="{ active: isBurnout }"
                  @click="isBurnout = !isBurnout"
                >
-                 对方 Burnout (+4)
+                 对方白了/己方绿冲 (+4)
                </button>
              </div>
           </div>
@@ -497,7 +515,14 @@ function selectFollowUp(move: Move) {
                <span class="rec-name">{{ getMoveDisplayName(rec.move) }}</span>
                <span class="rec-input">{{ rec.move.input }}</span>
                <span class="rec-gap" :class="rec.gap <= 0 ? 'safe' : 'unsafe'">
-                 {{ rec.gap > 0 ? '+' : ''}}{{ rec.gap }}F
+                 {{ calculationType === 'hit' ? 'Surplus' : 'Gap' }}({{ rec.gap > 0 ? '+' : ''}}{{ rec.gap }})
+               </span>
+               <span
+                 v-if="calculationType === 'block'"
+                 class="rec-onblock"
+                 :class="getAdvantageClass(rec.move.onBlock)"
+               >
+                 被防({{ formatAdvantage(rec.move.onBlock) }})
                </span>
              </button>
            </div>
@@ -1081,6 +1106,27 @@ function selectFollowUp(move: Move) {
 
 .rec-gap.unsafe {
   background: var(--color-danger);
+}
+
+.rec-onblock {
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  background: var(--color-text-muted);
+  color: white;
+}
+
+.rec-onblock.adv-plus {
+  background: var(--color-success);
+}
+
+.rec-onblock.adv-minus {
+  background: var(--color-danger);
+}
+
+.rec-onblock.adv-neutral {
+  background: var(--color-text-muted);
 }
 .explanation-card {
   margin-bottom: var(--space-md);

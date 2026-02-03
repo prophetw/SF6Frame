@@ -82,6 +82,8 @@ export function calculateGap(input: CalculationInput): CalculationResult {
     const adv1Block = parseFrameValue(move1.onBlock);
     const adv1Hit = parseFrameValue(move1.onHit);
     const startup2Num = parseFrameValue(move2.startup);
+    const startup2Frames = Math.max(0, startup2Num - 1);
+    const isChain = mode === 'cancel' && isChainCancel(move1, move2);
 
     // Basic validation
     if (isNaN(startup2Num)) {
@@ -131,14 +133,16 @@ export function calculateGap(input: CalculationInput): CalculationResult {
             if (hitState === 'ch') hitstun += 2;
             if (hitState === 'pc') hitstun += 4;
 
-            // User confirmed that -1 is NOT needed for Cancel calculations (Hit Mode)
-            // Previous conditional logic removed.
-
-            const hitFrame = cancelFrame + startup2Num;
-            const surplus = hitstun - hitFrame;
-            gap = surplus;
-
-            formulaDesc = `${hitstun} (Hitstun) - (${cancelFrame} + ${startup2Num})`;
+            if (isChain) {
+                const timeToHit = getChainTimeToHit(move1);
+                gap = hitstun - timeToHit;
+                formulaDesc = `${hitstun} (Hitstun) - (${parseFrameValue(move1.active)} + ${parseFrameValue(move1.recovery)} - 1 Chain)`;
+            } else {
+                const hitFrame = cancelFrame + startup2Frames;
+                const surplus = hitstun - hitFrame;
+                gap = surplus;
+                formulaDesc = `${hitstun} (Hitstun) - (${cancelFrame} + ${startup2Num} - 1)`;
+            }
         } else {
             gap = adv1Num - startup2Num;
             formulaDesc = `${adv1Num} (Adv) - ${startup2Num} (Startup)`;
@@ -181,13 +185,22 @@ export function calculateGap(input: CalculationInput): CalculationResult {
             // If burnout, blockstun increases by 4
             if (isBurnout) blockstun += 4;
 
-            // Standard Formula: specific startup adjustment removed as per user correction
-            gap = cancelFrame + startup2Num - blockstun;
-
-            if (isBurnout) {
-                formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num} (Startup) - (${blockstun - 4} + 4 Burnout)`;
+            if (isChain) {
+                const timeToHit = getChainTimeToHit(move1);
+                gap = timeToHit - blockstun;
+                if (isBurnout) {
+                    formulaDesc = `${parseFrameValue(move1.active)} + ${parseFrameValue(move1.recovery)} - 1 (Chain) - (${blockstun - 4} + 4 Burnout)`;
+                } else {
+                    formulaDesc = `${parseFrameValue(move1.active)} + ${parseFrameValue(move1.recovery)} - 1 (Chain) - ${blockstun} (Blockstun)`;
+                }
             } else {
-                formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num} (Startup) - ${blockstun} (Blockstun)`;
+                gap = cancelFrame + startup2Frames - blockstun;
+
+                if (isBurnout) {
+                    formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num} - 1 (Startup) - (${blockstun - 4} + 4 Burnout)`;
+                } else {
+                    formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num} - 1 (Startup) - ${blockstun} (Blockstun)`;
+                }
             }
         }
         if (gap <= 0) {
@@ -252,11 +265,87 @@ export function getSuperLevel(move: Move): number {
     return 0;
 }
 
+function isGroundedMove(move: Move): boolean {
+    const input = (move.input || '').toLowerCase().trim();
+    const name = (move.name || '').toLowerCase();
+    const rawName = (move.raw?.moveName || '').toLowerCase();
+    // Basic airborne detection for jump normals/specials
+    if (input.startsWith('j') || input.includes('j.')) return false;
+    if (name.includes('jump') || rawName.includes('jump')) return false;
+    return true;
+}
+
+function isLightNormal(move: Move): boolean {
+    if (move.category !== 'normal') return false;
+    const input = (move.input || '').toUpperCase();
+    if (input.includes('~')) return false;
+    const name = (move.name || '').toLowerCase();
+    const rawName = (move.raw?.moveName || '').toLowerCase();
+    const nameZh = (move.nameZh || '');
+    if (input.includes('LP') || input.includes('LK')) return true;
+    if (name.includes('light') || rawName.includes('light')) return true;
+    if (nameZh.includes('轻')) return true;
+    return false;
+}
+
+function isDriveRushCancelMove(move: Move): boolean {
+    const input = (move.input || '').toLowerCase();
+    const name = (move.name || '').toLowerCase();
+    const nameZh = (move.nameZh || '').toLowerCase();
+    return (
+        name.includes('drive rush cancel') ||
+        nameZh.includes('斗气冲锋取消') ||
+        input.includes('mpmk or 66') ||
+        input.includes('66 (cancel)')
+    );
+}
+
+function isExcludedDriveInput(move: Move): boolean {
+    const input = (move.input || '').replace(/\s+/g, '').toUpperCase();
+    return input === 'MPMK' || input === 'MPMK~66';
+}
+
+function parseOnBlockForSort(val: string | number | undefined): number {
+    if (val === undefined || val === null || val === '-') return -999;
+    if (typeof val === 'number') return val;
+    const match = String(val).match(/^[+-]?\d+/);
+    return match ? parseInt(match[0], 10) : -999;
+}
+
+function getGapPenalty(gap: number): number {
+    return Math.max(0, gap - 3);
+}
+
+function getOnBlockPenalty(onBlock: number): number {
+    return Math.max(0, -3 - onBlock);
+}
+
+function getPressurePriorityScore(gap: number, onBlock: number): number {
+    return getGapPenalty(gap) + getOnBlockPenalty(onBlock);
+}
+
+function isChainCancel(sourceMove: Move, targetMove: Move): boolean {
+    if (!sourceMove.cancels || sourceMove.cancels.length === 0) return false;
+    const hasChain = sourceMove.cancels.some(t => t.toUpperCase() === 'CHAIN' || t.toUpperCase() === 'CHN');
+    if (!hasChain) return false;
+    return targetMove.category?.toLowerCase() === 'normal' && isGroundedMove(targetMove) && isLightNormal(targetMove);
+}
+
+function getChainTimeToHit(move: Move): number {
+    const active = parseFrameValue(move.active);
+    const recovery = parseFrameValue(move.recovery);
+    return active + Math.max(0, recovery - 1);
+}
+
 export function isCancelValid(sourceMove: Move, targetMove: Move): boolean {
     if (!sourceMove.cancels || sourceMove.cancels.length === 0) return false;
 
     const cancelTags = sourceMove.cancels.map(t => t.toUpperCase());
     const targetCat = targetMove.category?.toLowerCase() || '';
+    const sourceGrounded = isGroundedMove(sourceMove);
+    const targetGrounded = isGroundedMove(targetMove);
+
+    if (sourceGrounded && !targetGrounded) return false;
 
     for (const tag of cancelTags) {
         // "Sp" or "Special" -> Special Moves
@@ -271,7 +360,7 @@ export function isCancelValid(sourceMove: Move, targetMove: Move): boolean {
         // Usually target must be a normal. 
         // We'll allow normals if "Chn" is present.
         else if (tag === 'CHAIN' || tag === 'CHN') {
-            if (targetCat === 'normal') return true;
+            if (targetCat === 'normal' && isGroundedMove(targetMove) && isLightNormal(targetMove)) return true;
         }
         // Drive Rush cancel
         else if (tag === 'DR' || tag === 'DRIVE' || tag === 'DRIVE RUSH') {
@@ -320,6 +409,7 @@ export function findRecommendedMoves(
         // Keeping it broad for now, but maybe filter out moves with no startup or weird moves
         candidates = allMoves.filter(m => m.category !== 'throw' && m.raw?.moveType !== 'drive');
     }
+    candidates = candidates.filter(m => !isExcludedDriveInput(m));
 
     for (const move2 of candidates) {
         // Skip self if needed, or obviously bad moves? 
@@ -347,7 +437,10 @@ export function findRecommendedMoves(
             }
         } else {
             // Block Mode (Pressure)
-            if (result.gap <= 0) {
+            if (mode === 'cancel') {
+                isRecommended = true;
+                reason = `Gap ${result.gap}F`;
+            } else if (result.gap <= 0) {
                 isRecommended = true;
                 reason = `True Blockstring ${result.gap}F`;
             } else if (result.gap <= 3) {
@@ -374,14 +467,29 @@ export function findRecommendedMoves(
     // Or 3-4f gap is good frame trap.
 
     return recommendations.sort((a, b) => {
-        // 1. Prioritize Drive Rush (66 cancel)
+        const isDRCA = isDriveRushCancelMove(a.move);
+        const isDRCB = isDriveRushCancelMove(b.move);
+        if (isDRCA && !isDRCB) return -1;
+        if (!isDRCA && isDRCB) return 1;
+
+        if (type === 'block') {
+            const onBlockA = parseOnBlockForSort(a.move.onBlock);
+            const onBlockB = parseOnBlockForSort(b.move.onBlock);
+            const scoreA = getPressurePriorityScore(a.gap, onBlockA);
+            const scoreB = getPressurePriorityScore(b.gap, onBlockB);
+            if (scoreA !== scoreB) return scoreA - scoreB;
+            if (a.gap !== b.gap) return a.gap - b.gap; // smaller gap first
+            if (onBlockA !== onBlockB) return onBlockB - onBlockA; // higher on-block first
+        }
+
+        // Prioritize Drive Rush (66 cancel)
         const isDRA = a.move.name.includes('Drive Rush') || a.move.input.includes('66 (cancel)');
         const isDRB = b.move.name.includes('Drive Rush') || b.move.input.includes('66 (cancel)');
 
         if (isDRA && !isDRB) return -1;
         if (!isDRA && isDRB) return 1;
 
-        // 2. Sort by Gap (smaller gap / tighter link or pressure is usually better default)
+        // Sort by Gap (smaller gap / tighter link or pressure is usually better default)
         return a.gap - b.gap;
     });
 }

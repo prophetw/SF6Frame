@@ -74,7 +74,7 @@ describe('calculateGap', () => {
             // Move 2: Startup 10.
             // Cancel Frame: 2.
             // Gap = CancelFrame + (Startup - 1) - Blockstun.
-            // Gap = 2 + (10 - 1) - 19 = 2 + 9 - 19 = -8. True Blockstring.
+            // Gap = 2 + 9 - 19 = -8. True Blockstring.
 
             const result = calculateGap({
                 move1: mockMove({ active: '4', recovery: '20', onBlock: '-5' }),
@@ -91,6 +91,19 @@ describe('calculateGap', () => {
             expect(result.gap).toBe(-8);
             expect(result.status).toContain('连防');
             expect(result.blockstun).toBe(19);
+        });
+
+        it('should calculate chain cancel gap correctly', () => {
+            const result = calculateGap({
+                move1: mockMove({ active: '3', recovery: '7', onBlock: '-1', cancels: ['Chain'] }),
+                move2: mockMove({ input: '5LP', category: 'normal' }),
+                type: 'block',
+                mode: 'cancel',
+                hitState: 'normal',
+                cancelFrame: 1
+            });
+            expect(result.gap).toBe(0);
+            expect(result.status).toContain('连防');
         });
     });
 
@@ -175,6 +188,19 @@ describe('calculateGap', () => {
             });
 
             expect(result.gap).toBe(14);
+            expect(result.status).toContain('连招成立');
+        });
+
+        it('should calculate chain cancel combo success', () => {
+            const result = calculateGap({
+                move1: mockMove({ active: '3', recovery: '7', onHit: '4', cancels: ['Chain'] }),
+                move2: mockMove({ input: '5LP', category: 'normal' }),
+                type: 'hit',
+                mode: 'cancel',
+                hitState: 'normal',
+                cancelFrame: 1
+            });
+            expect(result.gap).toBe(5);
             expect(result.status).toContain('连招成立');
         });
     });
