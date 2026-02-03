@@ -358,7 +358,8 @@ function evaluateFrameString(val: string | number | undefined): number {
 
   // If explicit total is provided, prefer it.
   const totalMatch = text.match(/(\d+)\s*total/i);
-  if (totalMatch) return parseInt(totalMatch[1], 10);
+  const totalValue = totalMatch?.[1];
+  if (totalValue) return parseInt(totalValue, 10);
 
   // Normalize ranges like "13~17" by keeping the first value (min).
   let normalized = text.replace(/(\d+)\s*~\s*(\d+)/g, '$1');
