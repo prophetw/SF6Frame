@@ -138,10 +138,10 @@ export function calculateGap(input: CalculationInput): CalculationResult {
                 gap = hitstun - timeToHit;
                 formulaDesc = `${hitstun} (Hitstun) - (${parseFrameValue(move1.active)} + ${parseFrameValue(move1.recovery)} - 1 Chain)`;
             } else {
-                const hitFrame = cancelFrame + startup2Frames;
+                const hitFrame = cancelFrame + startup2Num;
                 const surplus = hitstun - hitFrame;
                 gap = surplus;
-                formulaDesc = `${hitstun} (Hitstun) - (${cancelFrame} + ${startup2Num} - 1)`;
+                formulaDesc = `${hitstun} (Hitstun) - (${cancelFrame} + ${startup2Num})`;
             }
         } else {
             gap = adv1Num - startup2Num;

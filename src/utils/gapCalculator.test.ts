@@ -176,8 +176,8 @@ describe('calculateGap', () => {
             // Hitstun = 4 + 20 + 5 = 29.
             // Move 2 Startup 15.
             // Cancel Frame 1.
-            // Hit Frame = 1 + 14 = 15.
-            // Surplus = 29 - 15 = 14.
+            // Hit Frame = 1 + 15 = 16.
+            // Surplus = 29 - 16 = 13.
             const result = calculateGap({
                 move1: mockMove({ active: '4', recovery: '20', onHit: '5' }),
                 move2: mockMove({ startup: '15' }),
@@ -187,7 +187,7 @@ describe('calculateGap', () => {
                 cancelFrame: 1
             });
 
-            expect(result.gap).toBe(14);
+            expect(result.gap).toBe(13);
             expect(result.status).toContain('连招成立');
         });
 

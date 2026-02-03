@@ -288,7 +288,7 @@
         "moveType": "normal",
         "section": "",
         "blockstun": 19,
-        "hitstun": 24,
+        "hitstun": 22,
         "sourceName": "Crouching Medium Punch",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
