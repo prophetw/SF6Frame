@@ -2155,6 +2155,7 @@
       "onBlock": "+3",
       "onHit": "+3",
       "category": "special",
+      "noMeaty": true,
       "cancels": [
         "SA2",
         "SA3"
@@ -2190,6 +2191,7 @@
       "onBlock": "+3",
       "onHit": "KD +62 Spin",
       "category": "special",
+      "noMeaty": true,
       "cancels": [
         "SA3"
       ],
@@ -2227,6 +2229,7 @@
       "onBlock": "+4",
       "onHit": "KD +87 Crumple",
       "category": "special",
+      "noMeaty": true,
       "cancels": [
         "SA2",
         "SA3"
