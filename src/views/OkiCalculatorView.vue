@@ -1175,6 +1175,22 @@ function addDash() {
   });
 }
 
+function addEmptyJump() {
+  comboChain.value.push({
+    type: 'dash',
+    name: '空跳',
+    frames: 45,
+  });
+}
+
+function addJumpAction() {
+  comboChain.value.push({
+    type: 'dash',
+    name: '跳跃 + 动作',
+    frames: 46,
+  });
+}
+
 function addMove(move: Move) {
   const startup = parseInt(move.startup) || 0;
   const active = parseActiveWindowFrames(move.active);
@@ -1711,6 +1727,12 @@ function formatTolerance(val: number | undefined): string {
         <div class="combo-actions">
           <button class="action-btn dash-btn" @click="addDash">
             + 前冲 ({{ stats?.forwardDash }}F)
+          </button>
+          <button class="action-btn dash-btn" @click="addEmptyJump">
+            + 空跳 (45F)
+          </button>
+          <button class="action-btn dash-btn" @click="addJumpAction">
+            + 跳跃 + 动作 (46F)
           </button>
           <div class="move-search">
             <input type="text" v-model="moveSearchQuery" placeholder="搜索招式..." class="move-search-input" />
