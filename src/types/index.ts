@@ -38,6 +38,7 @@ export interface Move {
     category: MoveCategory;
     cancels?: string[];  // What the move can cancel into (Special, Super, Chain, etc.)
     knockdown?: KnockdownData;
+    noMeaty?: boolean; // If true, Meaty bonus is always 0
     notes?: string;
     raw?: any;
 }

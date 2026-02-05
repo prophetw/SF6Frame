@@ -2047,6 +2047,7 @@
       "onBlock": "-3",
       "onHit": "+2",
       "category": "special",
+      "noMeaty": true,
       "cancels": [
         "SA3"
       ],
@@ -2081,6 +2082,7 @@
       "onBlock": "-6",
       "onHit": "+2",
       "category": "special",
+      "noMeaty": true,
       "cancels": [
         "SA3"
       ],
@@ -2115,6 +2117,7 @@
       "onBlock": "+2",
       "onHit": "KD +61 Spin",
       "category": "special",
+      "noMeaty": true,
       "cancels": [
         "SA3"
       ],

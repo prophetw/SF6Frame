@@ -371,10 +371,115 @@ function evaluateFrameString(val: string | number | undefined): number {
   return numbers.reduce((sum, n) => sum + parseInt(n, 10), 0);
 }
 
-// Parse total active frames
+type ActiveSegmentInfo = {
+  segments: number[];
+  gaps: number[];
+  totalActive: number; // sum of active segments only
+  totalWindow: number; // active segments + gaps (window length)
+  lastSegmentLength: number;
+  lastSegmentStartOffset: number; // offset from first active frame
+};
+
+function parseActiveSegments(active: string | number | undefined): ActiveSegmentInfo {
+  if (!active || active === '-') {
+    return {
+      segments: [1],
+      gaps: [],
+      totalActive: 1,
+      totalWindow: 1,
+      lastSegmentLength: 1,
+      lastSegmentStartOffset: 0,
+    };
+  }
+
+  if (typeof active === 'number') {
+    const len = Math.max(1, active);
+    return {
+      segments: [len],
+      gaps: [],
+      totalActive: len,
+      totalWindow: len,
+      lastSegmentLength: len,
+      lastSegmentStartOffset: 0,
+    };
+  }
+
+  const text = String(active);
+  const totalOverrideMatch = text.match(/(\d+)\s*total/i);
+  const totalOverride = totalOverrideMatch && totalOverrideMatch[1] ? parseInt(totalOverrideMatch[1], 10) : undefined;
+
+  // Remove "(... total ...)" so it doesn't get treated as a gap
+  const sanitized = text.replace(/\([^)]*total[^)]*\)/gi, '');
+
+  const tokens: { type: 'segment' | 'gap'; value: number }[] = [];
+  let inParen = false;
+  for (let i = 0; i < sanitized.length; ) {
+    const ch = sanitized[i];
+    if (ch === '(') {
+      inParen = true;
+      i += 1;
+      continue;
+    }
+    if (ch === ')') {
+      inParen = false;
+      i += 1;
+      continue;
+    }
+
+    const numMatch = sanitized.slice(i).match(/^-?\d+/);
+    if (numMatch) {
+      const value = parseInt(numMatch[0], 10);
+      if (!isNaN(value)) {
+        tokens.push({ type: inParen ? 'gap' : 'segment', value });
+      }
+      i += numMatch[0].length;
+      continue;
+    }
+    i += 1;
+  }
+
+  const segments = tokens.filter(t => t.type === 'segment').map(t => t.value);
+  const gaps = tokens.filter(t => t.type === 'gap').map(t => t.value);
+  let totalActive = segments.reduce((sum, n) => sum + n, 0);
+  if (totalOverride !== undefined) totalActive = totalOverride;
+  if (totalActive <= 0) totalActive = 1;
+
+  const totalWindowRaw = evaluateFrameString(text);
+  const totalWindow = totalWindowRaw > 0 ? totalWindowRaw : totalActive;
+
+  const lastSegmentLength = segments.length > 0 ? (segments[segments.length - 1] ?? 1) : totalActive;
+  let lastSegmentStartOffset = 0;
+  if (segments.length > 0) {
+    let seenSegments = 0;
+    for (const token of tokens) {
+      if (token.type === 'segment') {
+        seenSegments += 1;
+        if (seenSegments === segments.length) break;
+      }
+      lastSegmentStartOffset += token.value;
+    }
+  }
+
+  return {
+    segments,
+    gaps,
+    totalActive,
+    totalWindow,
+    lastSegmentLength: Math.max(1, lastSegmentLength),
+    lastSegmentStartOffset,
+  };
+}
+
+// Parse total active frames (hit frames only, excludes gaps)
 function parseTotalActiveFrames(active: string | undefined): number {
-  const result = evaluateFrameString(active);
-  return result > 0 ? result : 1;
+  const info = parseActiveSegments(active);
+  return info.totalActive > 0 ? info.totalActive : 1;
+}
+
+// Parse active window length (includes gaps, for total duration)
+function parseActiveWindowFrames(active: string | undefined): number {
+  const info = parseActiveSegments(active);
+  return info.totalWindow > 0 ? info.totalWindow : 1;
 }
 
 function parseTotalRecoveryFrames(recovery: string | undefined): number {
@@ -407,7 +512,7 @@ function getMoveTotalFrames(move: Move): number {
   }
 
   const startup = parseInt(move.startup) || 0;
-  const active = parseTotalActiveFrames(move.active);
+  const active = parseActiveWindowFrames(move.active);
   const recovery = parseTotalRecoveryFrames(move.recovery);
   // Startup in data is "First Active Frame" (e.g. 6 means hits on frame 6).
   // So actual startup duration is startup - 1.
@@ -415,36 +520,109 @@ function getMoveTotalFrames(move: Move): number {
   return startupFrames + active + recovery;
 }
 
-function getActionTotalFrames(action: ComboAction): number {
-  if (action.type === 'move' && action.move) {
-    return getMoveTotalFrames(action.move);
+function getMoveDurationFrames(move: Move, startupOverride?: number): number {
+  const startupRaw = startupOverride ?? (parseInt(move.startup) || 0);
+  const startup = Math.max(1, startupRaw);
+  const startupFrames = Math.max(0, startup - 1);
+  const active = parseActiveWindowFrames(move.active);
+  const recovery = parseTotalRecoveryFrames(move.recovery);
+  return startupFrames + active + recovery;
+}
+
+function isGroundedMove(move: Move): boolean {
+  const input = (move.input || '').toLowerCase().trim();
+  const name = (move.name || '').toLowerCase();
+  const rawName = (move.raw?.moveName || '').toLowerCase();
+  if (input.startsWith('j') || input.includes('j.')) return false;
+  if (name.includes('jump') || rawName.includes('jump')) return false;
+  return true;
+}
+
+function isLightNormal(move: Move): boolean {
+  if (move.category !== 'normal') return false;
+  const input = (move.input || '').toUpperCase();
+  if (input.includes('~')) return false;
+  const name = (move.name || '').toLowerCase();
+  const rawName = (move.raw?.moveName || '').toLowerCase();
+  const nameZh = (move.nameZh || '');
+  if (input.includes('LP') || input.includes('LK')) return true;
+  if (name.includes('light') || rawName.includes('light')) return true;
+  if (nameZh.includes('轻')) return true;
+  return false;
+}
+
+function canChainCancel(sourceMove: Move, targetMove: Move): boolean {
+  if (!sourceMove.cancels || sourceMove.cancels.length === 0) return false;
+  const hasChain = sourceMove.cancels.some(t => {
+    const tag = t.toUpperCase();
+    return tag === 'CHAIN' || tag === 'CHN';
+  });
+  if (!hasChain) return false;
+  return targetMove.category?.toLowerCase() === 'normal' && isGroundedMove(targetMove) && isLightNormal(targetMove);
+}
+
+function computeComboChainTiming(actions: ComboAction[]): { ourStart: number; ourEnd: number; totalDuration: number } | null {
+  if (actions.length === 0) return null;
+
+  let timeBefore = 0;
+  let ourStart = 0;
+  let ourEnd = 0;
+  let hasLastMove = false;
+
+  for (let i = 0; i < actions.length; i++) {
+    const action = actions[i];
+    if (!action) continue;
+
+    if (action.type === 'dash') {
+      timeBefore += action.frames;
+      continue;
+    }
+
+    if (action.type === 'move' && action.move) {
+      const prevAction = i > 0 ? actions[i - 1] : undefined;
+      const prevMove = prevAction?.type === 'move' ? prevAction.move : undefined;
+      const chainedIn = !!(prevMove && canChainCancel(prevMove, action.move));
+
+      const baseStartup = parseInt(action.move.startup) || action.frames || 0;
+      const startup = chainedIn ? 1 : Math.max(1, baseStartup);
+      const active = parseActiveWindowFrames(action.move.active);
+      const activeStart = timeBefore + startup;
+      const activeEnd = activeStart + active - 1;
+
+      if (i === actions.length - 1) {
+        ourStart = activeStart;
+        ourEnd = activeEnd;
+        hasLastMove = true;
+      }
+
+      let duration = getMoveDurationFrames(action.move, startup);
+
+      const nextAction = actions[i + 1];
+      const nextMove = nextAction?.type === 'move' ? nextAction.move : undefined;
+      if (nextMove && canChainCancel(action.move, nextMove)) {
+        duration = Math.max(0, duration - 1);
+      }
+
+      timeBefore += duration;
+      continue;
+    }
+
+    // Fallback: unknown action, just add frames
+    timeBefore += action.frames;
   }
-  return action.frames;
+
+  if (!hasLastMove) return null;
+  return { ourStart, ourEnd, totalDuration: timeBefore };
 }
 
 // Calculate combo result
 const comboResult = computed(() => {
   if (comboChain.value.length === 0 || effectiveKnockdownAdv.value <= 0) return null;
 
-  // Calculate total frames (all actions except last one uses full duration)
-  let totalStartup = 0;
-  let lastActiveFrames = 1;
-
-  for (let i = 0; i < comboChain.value.length; i++) {
-    const action = comboChain.value[i];
-    if (!action) continue;
-    if (i === comboChain.value.length - 1 && action.type === 'move') {
-      // Last action: add startup, track active separately
-      totalStartup += action.frames;
-      lastActiveFrames = action.active || 1;
-    } else {
-      // Not last action: add full frames
-      totalStartup += getActionTotalFrames(action);
-    }
-  }
-
-  const ourStart = totalStartup;
-  const ourEnd = ourStart + lastActiveFrames - 1;
+  const timing = computeComboChainTiming(comboChain.value);
+  if (!timing) return null;
+  const ourStart = timing.ourStart;
+  const ourEnd = timing.ourEnd;
 
   const oppFirst = opponentFirstActiveFrame.value;
   const oppWindowStart = opponentWakeupFrame.value;
@@ -470,7 +648,7 @@ const comboResult = computed(() => {
   }
 
   return {
-    totalStartup,
+    totalStartup: ourStart,
     ourStart,
     ourEnd,
     coversOpponent,
@@ -487,6 +665,14 @@ interface ExtendedOkiResult {
   prefixFrames: number;
   ourActiveStart: number;
   ourActiveEnd: number;
+  activeDisplayStartOffset?: number;
+  activeDisplayLength?: number;
+  activeHasGap?: boolean;
+  activeHasMultipleSegments?: boolean;
+  activeHitTotal?: number;
+  meatyStartFrame?: number;
+  meatyStartOffset?: number;
+  meatyLength?: number;
   toleranceFrames?: number;
   coversOpponent: boolean;
   isTrade: boolean;
@@ -512,13 +698,10 @@ function isComboSequenceMove(move: Move): boolean {
   return input.includes('~') || name.includes('~');
 }
 
-// Calculate prefix frames from combo chain (use full duration for moves)
+// Calculate prefix frames from combo chain (use chain-aware timing)
 const comboChainPrefixFrames = computed(() => {
-  let total = 0;
-  for (const action of comboChain.value) {
-    total += getActionTotalFrames(action);
-  }
-  return total;
+  const timing = computeComboChainTiming(comboChain.value);
+  return timing ? timing.totalDuration : 0;
 });
 
 // Build prefix name from combo chain
@@ -537,17 +720,10 @@ const comboChainPrefixInput = computed(() => {
   }).join(' + ');
 });
 
-// Prefix frames for throw (includes move recovery)
+// Prefix frames for throw (chain-aware, includes move recovery)
 const comboChainThrowPrefixFrames = computed(() => {
-  let total = 0;
-  for (const action of comboChain.value) {
-    if (action.type === 'move' && action.move) {
-      total += getMoveTotalFrames(action.move);
-    } else {
-      total += action.frames;
-    }
-  }
-  return total;
+  const timing = computeComboChainTiming(comboChain.value);
+  return timing ? timing.totalDuration : 0;
 });
 
 // Toggle result detail
@@ -661,11 +837,21 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
     for (const move of allMoves.value) {
       if (isComboSequenceMove(move)) continue;
       const startup = parseInt(move.startup) || 0;
-      const totalActive = parseTotalActiveFrames(move.active);
+      const activeInfo = parseActiveSegments(move.active);
+      const activeHasGap = activeInfo.gaps.length > 0;
+      const activeHasMultipleSegments = activeInfo.segments.length > 1;
+      const activeHitTotal = parseTotalActiveFrames(move.active);
+      const activeDisplayStartOffset = activeHasGap ? activeInfo.lastSegmentStartOffset : 0;
+      const activeDisplayLength = activeHasGap ? activeInfo.lastSegmentLength : activeHitTotal;
+      const meatyStartOffset = activeHasMultipleSegments ? activeInfo.lastSegmentStartOffset : 0;
+      const meatyLength = activeHasMultipleSegments ? activeInfo.lastSegmentLength : activeHitTotal;
       if (startup <= 0) continue;
 
-      const ourStart = prefix.frames + startup;
-      const ourEnd = ourStart + totalActive - 1;
+      // Display/overlap window:
+      // - If there is a gap, only show the last segment as the effective window.
+      // - If no gap (e.g. "2,3"), treat as continuous 5F window.
+      const ourStart = prefix.frames + startup + activeDisplayStartOffset;
+      const ourEnd = ourStart + activeDisplayLength - 1;
 
       // Success: our active window overlaps opponent's vulnerable startup window
       const overlapsPreActive =
@@ -678,8 +864,10 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
 
       if (isSuccessMatch || isTradeMatch) {
         // Calculate Meaty Bonus
-        const effectiveHitFrame = Math.max(ourStart, oppWindowStart);
-        const meatyBonus = effectiveHitFrame - ourStart;
+        const meatyStartFrame = prefix.frames + startup + meatyStartOffset;
+        const effectiveHitFrame = Math.max(meatyStartFrame, oppWindowStart);
+        const canApplyMeaty = !move.noMeaty;
+        const meatyBonus = canApplyMeaty ? (effectiveHitFrame - meatyStartFrame) : 0;
 
         let calcBlock: number | string | undefined;
         let calcHit: number | string | undefined;
@@ -742,6 +930,14 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           prefixFrames: prefix.frames,
           ourActiveStart: ourStart,
           ourActiveEnd: ourEnd,
+          activeDisplayStartOffset,
+          activeDisplayLength,
+          activeHasGap,
+          activeHasMultipleSegments,
+          activeHitTotal,
+          meatyStartFrame,
+          meatyStartOffset,
+          meatyLength,
           toleranceFrames,
           coversOpponent: isSuccessMatch,
           isTrade: isTradeMatch,
@@ -767,11 +963,18 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
   if (autoMatchSearchQuery.value) {
     const queryRaw = autoMatchSearchQuery.value.trim();
     const queryLower = queryRaw.toLowerCase();
-    filtered = filtered.filter(result => 
-      result.move.name.toLowerCase().includes(queryLower) ||
-      (result.move.nameZh && result.move.nameZh.includes(queryRaw)) ||
-      result.move.input.toLowerCase().includes(queryLower)
-    );
+    filtered = filtered.filter(result => {
+      const fields = [
+        result.prefix,
+        result.prefixInput,
+        result.move.name,
+        result.move.nameZh,
+        result.move.input,
+        getMoveDisplayName(result.move)
+      ].filter((val): val is string => typeof val === 'string' && val.length > 0);
+
+      return fields.some(field => field.toLowerCase().includes(queryLower));
+    });
   }
 
   const sorted = [...filtered].sort((a, b) => {
@@ -880,7 +1083,7 @@ const allThrowResults = computed<ThrowComboResult[]>(() => {
 
     for (const move of throwFillerMoves.value) {
       const fillerStartup = parseInt(move.startup) || 0;
-      const fillerActive = parseTotalActiveFrames(move.active);
+      const fillerActive = parseActiveWindowFrames(move.active);
       const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
       // Use helper for correct total (handles raw.total and startup-1 logic)
       const fillerFrames = getMoveTotalFrames(move); 
@@ -1037,7 +1240,7 @@ function addDash() {
 
 function addMove(move: Move) {
   const startup = parseInt(move.startup) || 0;
-  const active = parseTotalActiveFrames(move.active);
+  const active = parseActiveWindowFrames(move.active);
   comboChain.value.push({
     type: 'move',
     name: move.name,
@@ -1078,7 +1281,7 @@ function generateTimelineFrames(
 
   const prefixFrames = result.prefixFrames;
   const startup = parseInt(result.move.startup) || 0;
-  const active = parseTotalActiveFrames(result.move.active);
+  const active = parseActiveWindowFrames(result.move.active);
   const recovery = parseTotalRecoveryFrames(result.move.recovery);
 
   const moveStartFrame = prefixFrames;
@@ -1159,7 +1362,7 @@ function generateDefenderFrames(
   // Calculate durations
   const prefixFrames = result.prefixFrames;
   const startup = parseInt(result.move.startup) || 0;
-  const active = parseTotalActiveFrames(result.move.active);
+  const active = parseActiveWindowFrames(result.move.active);
   const recovery = parseTotalRecoveryFrames(result.move.recovery);
   const attackerEnd = prefixFrames + startup + active + recovery;
 
@@ -1713,14 +1916,22 @@ function formatTolerance(val: number | undefined): string {
             </div>
             <div class="detail-row">
               <span class="detail-label">招式持续:</span>
-              <span>{{ result.move.active }} (共{{ result.ourActiveEnd - result.ourActiveStart + 1 }}帧)</span>
+              <span>{{ result.move.active }} (共{{ result.activeHitTotal ?? parseTotalActiveFrames(result.move.active) }}帧)</span>
             </div>
             <div class="detail-row calc">
               <span class="detail-label">计算:</span>
-              <span>{{ result.prefixFrames }} + {{ result.move.startup }} = {{ result.ourActiveStart }}F 第一次打击</span>
+              <span>
+                {{ result.prefixFrames }} + {{ result.move.startup }}
+                <span v-if="result.activeDisplayStartOffset && result.activeDisplayStartOffset > 0">
+                  + {{ result.activeDisplayStartOffset }}
+                </span>
+                = {{ result.ourActiveStart }}F
+              </span>
             </div>
             <div class="detail-row calc">
-              <span class="detail-label">打击范围:</span>
+              <span class="detail-label">
+                {{ result.activeHasGap ? '最后段打击范围:' : '打击范围:' }}
+              </span>
               <span class="frame-positive">{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
             </div>
             <div class="detail-row">
@@ -1737,7 +1948,7 @@ function formatTolerance(val: number | undefined): string {
               <span>
                 {{ result.move.onBlock }} (原始)
                 <span v-if="result.meatyBonus && result.meatyBonus > 0" class="meaty-bonus-highlight">
-                  + {{ result.meatyBonus }} (Meaty: {{ result.effectiveHitFrame }}F击中 - {{ result.ourActiveStart }}F发生)
+                  + {{ result.meatyBonus }} (Meaty: {{ result.effectiveHitFrame }}F击中 - {{ result.meatyStartFrame ?? result.ourActiveStart }}F发生)
                 </span>
                 = <span
                   :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
@@ -1770,7 +1981,7 @@ function formatTolerance(val: number | undefined): string {
             <div class="detail-row result">
               <span class="detail-label">判定:</span>
               <span v-if="result.coversOpponent" class="success">
-                ✓ 压制成功: {{ result.ourActiveStart }}~{{ result.ourActiveEnd }} 与 {{ opponentWakeupFrame }}~{{
+                ✓ 压制成功: {{ result.activeHasGap ? '最后段 ' : '' }}{{ result.ourActiveStart }}~{{ result.ourActiveEnd }} 与 {{ opponentWakeupFrame }}~{{
                   opponentPreActiveEnd }} 有重叠
               </span>
               <span v-else-if="result.isTrade" class="trade">
