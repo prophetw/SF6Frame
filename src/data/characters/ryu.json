@@ -1659,7 +1659,7 @@
     },
     {
       "name": "Shoryuken",
-      "nameZh": "升龙拳",
+      "nameZh": "OD升龙拳",
       "input": "623PP",
       "damage": "800x2",
       "startup": "6",
@@ -1795,7 +1795,7 @@
     },
     {
       "name": "Tatsumaki Senpu-kyaku",
-      "nameZh": "龙卷旋风脚",
+      "nameZh": "OD龙卷旋风脚",
       "input": "214KK",
       "damage": "200x5",
       "startup": "13",
@@ -2146,7 +2146,7 @@
     },
     {
       "name": "Hashogeki",
-      "nameZh": "波掌击",
+      "nameZh": "OD波掌击",
       "input": "214PP",
       "damage": "1100",
       "startup": "18",
@@ -2220,7 +2220,7 @@
     },
     {
       "name": "Denjin Charge Hashogeki",
-      "nameZh": "练气 波掌击",
+      "nameZh": "OD练气 波掌击",
       "input": "214PP",
       "damage": "800",
       "startup": "18",

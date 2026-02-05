@@ -520,109 +520,36 @@ function getMoveTotalFrames(move: Move): number {
   return startupFrames + active + recovery;
 }
 
-function getMoveDurationFrames(move: Move, startupOverride?: number): number {
-  const startupRaw = startupOverride ?? (parseInt(move.startup) || 0);
-  const startup = Math.max(1, startupRaw);
-  const startupFrames = Math.max(0, startup - 1);
-  const active = parseActiveWindowFrames(move.active);
-  const recovery = parseTotalRecoveryFrames(move.recovery);
-  return startupFrames + active + recovery;
-}
-
-function isGroundedMove(move: Move): boolean {
-  const input = (move.input || '').toLowerCase().trim();
-  const name = (move.name || '').toLowerCase();
-  const rawName = (move.raw?.moveName || '').toLowerCase();
-  if (input.startsWith('j') || input.includes('j.')) return false;
-  if (name.includes('jump') || rawName.includes('jump')) return false;
-  return true;
-}
-
-function isLightNormal(move: Move): boolean {
-  if (move.category !== 'normal') return false;
-  const input = (move.input || '').toUpperCase();
-  if (input.includes('~')) return false;
-  const name = (move.name || '').toLowerCase();
-  const rawName = (move.raw?.moveName || '').toLowerCase();
-  const nameZh = (move.nameZh || '');
-  if (input.includes('LP') || input.includes('LK')) return true;
-  if (name.includes('light') || rawName.includes('light')) return true;
-  if (nameZh.includes('轻')) return true;
-  return false;
-}
-
-function canChainCancel(sourceMove: Move, targetMove: Move): boolean {
-  if (!sourceMove.cancels || sourceMove.cancels.length === 0) return false;
-  const hasChain = sourceMove.cancels.some(t => {
-    const tag = t.toUpperCase();
-    return tag === 'CHAIN' || tag === 'CHN';
-  });
-  if (!hasChain) return false;
-  return targetMove.category?.toLowerCase() === 'normal' && isGroundedMove(targetMove) && isLightNormal(targetMove);
-}
-
-function computeComboChainTiming(actions: ComboAction[]): { ourStart: number; ourEnd: number; totalDuration: number } | null {
-  if (actions.length === 0) return null;
-
-  let timeBefore = 0;
-  let ourStart = 0;
-  let ourEnd = 0;
-  let hasLastMove = false;
-
-  for (let i = 0; i < actions.length; i++) {
-    const action = actions[i];
-    if (!action) continue;
-
-    if (action.type === 'dash') {
-      timeBefore += action.frames;
-      continue;
-    }
-
-    if (action.type === 'move' && action.move) {
-      const prevAction = i > 0 ? actions[i - 1] : undefined;
-      const prevMove = prevAction?.type === 'move' ? prevAction.move : undefined;
-      const chainedIn = !!(prevMove && canChainCancel(prevMove, action.move));
-
-      const baseStartup = parseInt(action.move.startup) || action.frames || 0;
-      const startup = chainedIn ? 1 : Math.max(1, baseStartup);
-      const active = parseActiveWindowFrames(action.move.active);
-      const activeStart = timeBefore + startup;
-      const activeEnd = activeStart + active - 1;
-
-      if (i === actions.length - 1) {
-        ourStart = activeStart;
-        ourEnd = activeEnd;
-        hasLastMove = true;
-      }
-
-      let duration = getMoveDurationFrames(action.move, startup);
-
-      const nextAction = actions[i + 1];
-      const nextMove = nextAction?.type === 'move' ? nextAction.move : undefined;
-      if (nextMove && canChainCancel(action.move, nextMove)) {
-        duration = Math.max(0, duration - 1);
-      }
-
-      timeBefore += duration;
-      continue;
-    }
-
-    // Fallback: unknown action, just add frames
-    timeBefore += action.frames;
+function getActionTotalFrames(action: ComboAction): number {
+  if (action.type === 'move' && action.move) {
+    return getMoveTotalFrames(action.move);
   }
-
-  if (!hasLastMove) return null;
-  return { ourStart, ourEnd, totalDuration: timeBefore };
+  return action.frames;
 }
 
 // Calculate combo result
 const comboResult = computed(() => {
   if (comboChain.value.length === 0 || effectiveKnockdownAdv.value <= 0) return null;
 
-  const timing = computeComboChainTiming(comboChain.value);
-  if (!timing) return null;
-  const ourStart = timing.ourStart;
-  const ourEnd = timing.ourEnd;
+  // Calculate total frames (all actions except last one uses full duration)
+  let totalStartup = 0;
+  let lastActiveFrames = 1;
+
+  for (let i = 0; i < comboChain.value.length; i++) {
+    const action = comboChain.value[i];
+    if (!action) continue;
+    if (i === comboChain.value.length - 1 && action.type === 'move') {
+      // Last action: add startup, track active separately
+      totalStartup += action.frames;
+      lastActiveFrames = action.active || 1;
+    } else {
+      // Not last action: add full frames
+      totalStartup += getActionTotalFrames(action);
+    }
+  }
+
+  const ourStart = totalStartup;
+  const ourEnd = ourStart + lastActiveFrames - 1;
 
   const oppFirst = opponentFirstActiveFrame.value;
   const oppWindowStart = opponentWakeupFrame.value;
@@ -648,7 +575,7 @@ const comboResult = computed(() => {
   }
 
   return {
-    totalStartup: ourStart,
+    totalStartup,
     ourStart,
     ourEnd,
     coversOpponent,
@@ -698,10 +625,13 @@ function isComboSequenceMove(move: Move): boolean {
   return input.includes('~') || name.includes('~');
 }
 
-// Calculate prefix frames from combo chain (use chain-aware timing)
+// Calculate prefix frames from combo chain (use full duration for moves)
 const comboChainPrefixFrames = computed(() => {
-  const timing = computeComboChainTiming(comboChain.value);
-  return timing ? timing.totalDuration : 0;
+  let total = 0;
+  for (const action of comboChain.value) {
+    total += getActionTotalFrames(action);
+  }
+  return total;
 });
 
 // Build prefix name from combo chain
@@ -720,10 +650,17 @@ const comboChainPrefixInput = computed(() => {
   }).join(' + ');
 });
 
-// Prefix frames for throw (chain-aware, includes move recovery)
+// Prefix frames for throw (includes move recovery)
 const comboChainThrowPrefixFrames = computed(() => {
-  const timing = computeComboChainTiming(comboChain.value);
-  return timing ? timing.totalDuration : 0;
+  let total = 0;
+  for (const action of comboChain.value) {
+    if (action.type === 'move' && action.move) {
+      total += getMoveTotalFrames(action.move);
+    } else {
+      total += action.frames;
+    }
+  }
+  return total;
 });
 
 // Toggle result detail
