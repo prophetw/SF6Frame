@@ -26,6 +26,11 @@ const router = createRouter({
             name: 'gap-calculator',
             component: () => import('../views/GapCalculatorView.vue'),
         },
+        {
+            path: '/ai-assistant',
+            name: 'ai-assistant',
+            component: () => import('../views/AiAssistantView.vue'),
+        },
     ],
 });
 

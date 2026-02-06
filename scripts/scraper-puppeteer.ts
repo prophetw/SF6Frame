@@ -35,6 +35,7 @@ interface KnockdownData {
 
 interface Move {
     name: string;
+    nameZh?: string;
     input: string;
     damage: string;
     startup: string;
@@ -45,6 +46,7 @@ interface Move {
     category: MoveCategory;
     cancels?: string[];
     knockdown?: KnockdownData;
+    noMeaty?: boolean;
     notes?: string;
     raw?: any;
 }
@@ -165,6 +167,15 @@ function parseRecoveryFrames(value: string | undefined | null): number | null {
     const whiffMatch = String(value).match(/\((\d+)\)/);
     if (whiffMatch) return parseInt(whiffMatch[1], 10);
     return evaluateFrameString(value);
+}
+
+function parseHitRecoveryFrames(value: string | undefined | null): number | null {
+    if (!value) return null;
+    const cleaned = normalizeFrameText(value);
+    if (!cleaned || cleaned === '-') return null;
+    // "13(15)" -> "13" (hit/contact recovery)
+    const main = cleaned.split('(')[0];
+    return evaluateFrameString(main);
 }
 
 function normalizeOnHitValue(value: string): string {
@@ -341,6 +352,7 @@ function buildRawMove(move: Move, section?: string) {
     const startup = parseFrameNumber(move.startup);
     const active = evaluateFrameString(move.active);
     const recovery = parseRecoveryFrames(move.recovery);
+    const hitRecovery = parseHitRecoveryFrames(move.recovery);
     const onBlock = parseFrameNumber(move.onBlock);
     const onHit = parseFrameNumber(move.onHit);
     const damage = parseFrameNumber(move.damage);
@@ -363,11 +375,11 @@ function buildRawMove(move: Move, section?: string) {
         section
     };
 
-    if (active !== null && recovery !== null && onBlock !== null) {
-        raw.blockstun = active + recovery + onBlock;
+    if (active !== null && hitRecovery !== null && onBlock !== null) {
+        raw.blockstun = active + hitRecovery + onBlock;
     }
-    if (active !== null && recovery !== null && onHit !== null) {
-        raw.hitstun = active + recovery + onHit;
+    if (active !== null && hitRecovery !== null && onHit !== null) {
+        raw.hitstun = active + hitRecovery + onHit;
     }
 
     return raw;
@@ -395,6 +407,25 @@ function loadExistingStats(filePath: string): CharacterStats | undefined {
         return undefined;
     }
     return undefined;
+}
+
+function loadExistingMoveExtras(filePath: string): Map<string, { nameZh?: string; noMeaty?: boolean }> {
+    const extras = new Map<string, { nameZh?: string; noMeaty?: boolean }>();
+    if (!fs.existsSync(filePath)) return extras;
+    try {
+        const content = fs.readFileSync(filePath, 'utf-8');
+        const parsed = JSON.parse(content);
+        const moves = Array.isArray(parsed?.moves) ? parsed.moves : [];
+        for (const move of moves) {
+            if (!move || !move.name || !move.input) continue;
+            if (move.nameZh === undefined && move.noMeaty === undefined) continue;
+            const key = `${move.name}||${move.input}`;
+            extras.set(key, { nameZh: move.nameZh, noMeaty: move.noMeaty });
+        }
+    } catch {
+        return extras;
+    }
+    return extras;
 }
 
 function normalizeScrapedMove(scraped: ScrapedMove): Move {
@@ -735,6 +766,7 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
         // Read existing stats (fallback only)
         const filePath = path.join(OUTPUT_DIR, `${config.id}.json`);
         const existingStats = loadExistingStats(filePath);
+        const existingMoveExtras = loadExistingMoveExtras(filePath);
         const stats = normalizeStats(scrapeResult.stats || null, existingStats);
         if (!scrapeResult.stats) {
             if (existingStats) {
@@ -758,6 +790,16 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
 
         // Filter and Sort
         const validMoves = normalizedMoves.filter(m => m.name && m.input);
+
+        if (existingMoveExtras.size > 0) {
+            for (const move of validMoves) {
+                const key = `${move.name}||${move.input}`;
+                const extras = existingMoveExtras.get(key);
+                if (!extras) continue;
+                if (extras.nameZh !== undefined) move.nameZh = extras.nameZh;
+                if (extras.noMeaty !== undefined) move.noMeaty = extras.noMeaty;
+            }
+        }
 
         // Sort: Normal -> Unique -> Throw -> Special -> Super
         const categoryOrder = { normal: 1, unique: 2, throw: 3, special: 4, super: 5 };

@@ -50,6 +50,15 @@ const characters = computed(() => SF6_CHARACTERS);
         </div>
         <span class="quick-arrow">→</span>
       </RouterLink>
+
+      <RouterLink to="/ai-assistant" class="quick-link-card">
+        <span class="quick-icon">🤖</span>
+        <div class="quick-content">
+          <h3>AI 对策助手</h3>
+          <p>分析对手连招，推荐反制招式</p>
+        </div>
+        <span class="quick-arrow">→</span>
+      </RouterLink>
     </section>
   </div>
 </template>
