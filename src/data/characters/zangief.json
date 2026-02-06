@@ -14,7 +14,6 @@
   "moves": [
     {
       "name": "Stand LP",
-      "nameZh": "站立轻拳",
       "input": "5LP",
       "damage": "400",
       "startup": "7(4)",
@@ -47,11 +46,11 @@
         "sourceName": "Standing Light Punch",
         "sourceInput": "5LP",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "站立轻拳"
     },
     {
       "name": "Stand MP",
-      "nameZh": "站立中拳",
       "input": "5MP",
       "damage": "700",
       "startup": "9",
@@ -82,11 +81,11 @@
         "sourceName": "Standing Medium Punch",
         "sourceInput": "5MP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "站立中拳"
     },
     {
       "name": "Stand HP",
-      "nameZh": "站立重拳",
       "input": "5HP",
       "damage": "1000",
       "startup": "(6~22)+10",
@@ -108,12 +107,13 @@
         "total": 32,
         "moveType": "normal",
         "section": "",
-        "blockstun": 24,
-        "hitstun": 30,
+        "blockstun": 22,
+        "hitstun": 28,
         "sourceName": "Standing Heavy Punch",
         "sourceInput": "5HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立重拳"
     },
     {
       "name": "Stand HP (hold)",
@@ -142,7 +142,7 @@
         "total": 58,
         "moveType": "normal",
         "section": "",
-        "blockstun": 30,
+        "blockstun": 28,
         "sourceName": "Standing Heavy Punch (hold)",
         "sourceInput": "5",
         "cancelText": "-"
@@ -150,7 +150,6 @@
     },
     {
       "name": "Stand LK",
-      "nameZh": "站立轻脚",
       "input": "5LK",
       "damage": "400",
       "startup": "7",
@@ -182,11 +181,11 @@
         "sourceName": "Standing Light Kick",
         "sourceInput": "5LK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "站立轻脚"
     },
     {
       "name": "Stand MK",
-      "nameZh": "站立中脚",
       "input": "5MK",
       "damage": "900",
       "startup": "10",
@@ -213,11 +212,11 @@
         "sourceName": "Standing Medium Kick",
         "sourceInput": "5MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立中脚"
     },
     {
       "name": "Stand HK",
-      "nameZh": "站立重脚",
       "input": "5HK",
       "damage": "1000",
       "startup": "13",
@@ -244,11 +243,11 @@
         "sourceName": "Standing Heavy Kick",
         "sourceInput": "5HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立重脚"
     },
     {
       "name": "Crouch LP",
-      "nameZh": "蹲下轻拳",
       "input": "2LP",
       "damage": "300",
       "startup": "6(3)",
@@ -281,11 +280,11 @@
         "sourceName": "Crouching Light Punch",
         "sourceInput": "2LP",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "蹲下轻拳"
     },
     {
       "name": "Crouch MP",
-      "nameZh": "蹲下中拳",
       "input": "2MP",
       "damage": "700",
       "startup": "8",
@@ -317,11 +316,11 @@
         "sourceName": "Crouching Medium Punch",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "蹲下中拳"
     },
     {
       "name": "Crouch HP",
-      "nameZh": "蹲下重拳",
       "input": "2HP",
       "damage": "1000",
       "startup": "11",
@@ -351,11 +350,11 @@
         "sourceName": "Crouching Heavy Punch",
         "sourceInput": "2HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蹲下重拳"
     },
     {
       "name": "Crouch LK",
-      "nameZh": "蹲下轻脚",
       "input": "2LK",
       "damage": "250",
       "startup": "4(3)",
@@ -386,11 +385,11 @@
         "sourceName": "Crouching Light Kick",
         "sourceInput": "2LK",
         "cancelText": "Chn"
-      }
+      },
+      "nameZh": "蹲下轻脚"
     },
     {
       "name": "Crouch MK",
-      "nameZh": "蹲下中脚",
       "input": "2MK",
       "damage": "700",
       "startup": "9",
@@ -417,7 +416,8 @@
         "sourceName": "Crouching Medium Kick",
         "sourceInput": "2MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蹲下中脚"
     },
     {
       "name": "Big Stampede",
@@ -454,7 +454,6 @@
     },
     {
       "name": "Jump LP",
-      "nameZh": "跳跃轻拳",
       "input": "j.LP",
       "damage": "300",
       "startup": "5",
@@ -481,11 +480,11 @@
         "sourceName": "Jumping Light Punch",
         "sourceInput": "j.LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻拳"
     },
     {
       "name": "Jump MP",
-      "nameZh": "跳跃中拳",
       "input": "j.MP",
       "damage": "700",
       "startup": "8",
@@ -512,11 +511,11 @@
         "sourceName": "Jumping Medium Punch",
         "sourceInput": "j.MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃中拳"
     },
     {
       "name": "Jump HP",
-      "nameZh": "跳跃重拳",
       "input": "j.HP",
       "damage": "800",
       "startup": "9",
@@ -543,11 +542,11 @@
         "sourceName": "Jumping Heavy Punch",
         "sourceInput": "j.HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重拳"
     },
     {
       "name": "Jump LK",
-      "nameZh": "跳跃轻脚",
       "input": "j.LK",
       "damage": "300",
       "startup": "5",
@@ -574,11 +573,11 @@
         "sourceName": "Jumping Light Kick",
         "sourceInput": "j.LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻脚"
     },
     {
       "name": "Jump MK",
-      "nameZh": "跳跃中脚",
       "input": "j.MK",
       "damage": "500",
       "startup": "8",
@@ -605,11 +604,11 @@
         "sourceName": "Jumping Medium Kick",
         "sourceInput": "j.MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃中脚"
     },
     {
       "name": "Jump HK",
-      "nameZh": "跳跃重脚",
       "input": "j.HK",
       "damage": "800",
       "startup": "10",
@@ -636,7 +635,8 @@
         "sourceName": "Jumping Heavy Kick",
         "sourceInput": "j.HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重脚"
     },
     {
       "name": "Jump HK (hold)",
@@ -661,7 +661,7 @@
         "total": 49,
         "moveType": "normal",
         "section": "",
-        "blockstun": -12,
+        "blockstun": 6,
         "sourceName": "Jumping Heavy Kick (hold)",
         "sourceInput": "j.",
         "cancelText": "-"
@@ -1101,7 +1101,6 @@
     },
     {
       "name": "Double Russian Chop",
-      "nameZh": "斗气迸放",
       "input": "HPHK",
       "damage": "800",
       "startup": "26",
@@ -1130,11 +1129,11 @@
         "sourceName": "Double Russian Chop",
         "sourceInput": "HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气迸放"
     },
     {
       "name": "Drive Parry",
-      "nameZh": "斗气招架",
       "input": "MPMK",
       "damage": "-",
       "startup": "1",
@@ -1159,11 +1158,11 @@
         "sourceName": "Drive Parry",
         "sourceInput": "MPMK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气招架"
     },
     {
       "name": "Parry Drive Rush",
-      "nameZh": "斗气冲锋",
       "input": "MPMK~66",
       "damage": "-",
       "startup": "3+8",
@@ -1187,11 +1186,11 @@
         "sourceName": "Parry Drive Rush",
         "sourceInput": "MPMK~66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋"
     },
     {
       "name": "Drive Rush Cancel",
-      "nameZh": "斗气冲锋取消",
       "input": "MPMK or 66",
       "damage": "-",
       "startup": "9",
@@ -1215,7 +1214,8 @@
         "sourceName": "Drive Rush Cancel",
         "sourceInput": "MPMK or 66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋取消"
     },
     {
       "name": "Double Lariat",
@@ -1327,7 +1327,6 @@
     },
     {
       "name": "Neutral Taunt",
-      "nameZh": "原地挑衅",
       "input": "5PPPKKK",
       "damage": "-",
       "startup": "194 (total)",
@@ -1351,11 +1350,11 @@
         "sourceName": "Neutral Taunt",
         "sourceInput": "5PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "原地挑衅"
     },
     {
       "name": "Down Taunt",
-      "nameZh": "下蹲挑衅",
       "input": "2PPPKKK",
       "damage": "-",
       "startup": "210 (total)",
@@ -1379,7 +1378,8 @@
         "sourceName": "Down Taunt",
         "sourceInput": "2PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "下蹲挑衅"
     },
     {
       "name": "Knee Hammer",
@@ -1439,8 +1439,8 @@
         "total": 35,
         "moveType": "unique",
         "section": "",
-        "blockstun": 26,
-        "hitstun": 30,
+        "blockstun": 24,
+        "hitstun": 28,
         "sourceName": "Headbutt",
         "sourceInput": "6HP",
         "cancelText": "Sp SA"
@@ -1545,7 +1545,6 @@
     },
     {
       "name": "Reverse Russian Kick (Block)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "20",
@@ -1571,15 +1570,15 @@
         "total": 53,
         "moveType": "unique",
         "section": "",
-        "blockstun": 28,
+        "blockstun": 23,
         "sourceName": "Reverse Russian Kick (Block)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Reverse Russian Kick (Recovery)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "18",
@@ -1605,11 +1604,12 @@
         "total": 51,
         "moveType": "unique",
         "section": "",
-        "blockstun": 28,
+        "blockstun": 23,
         "sourceName": "Reverse Russian Kick (Recovery)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Screw Piledriver",
@@ -1869,7 +1869,6 @@
     },
     {
       "name": "Forward Taunt",
-      "nameZh": "前挑衅",
       "input": "6PPPKKK",
       "damage": "-",
       "startup": "227 (total)",
@@ -1893,11 +1892,11 @@
         "sourceName": "Forward Taunt",
         "sourceInput": "6PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前挑衅"
     },
     {
       "name": "Back Taunt",
-      "nameZh": "后挑衅",
       "input": "4PPPKKK",
       "damage": "-",
       "startup": "202 (total)",
@@ -1921,7 +1920,8 @@
         "sourceName": "Back Taunt",
         "sourceInput": "4PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后挑衅"
     },
     {
       "name": "Russian Suplex",
@@ -2207,12 +2207,12 @@
         "total": 174,
         "moveType": "special",
         "section": "",
-        "blockstun": 122,
+        "blockstun": 95,
         "sourceName": "Cyclone Lariat (hold P)",
         "sourceInput": "236236",
         "cancelText": "-"
       }
     }
   ],
-  "lastUpdated": "2026-01-30"
+  "lastUpdated": "2026-02-06"
 }

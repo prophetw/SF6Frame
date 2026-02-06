@@ -14,7 +14,6 @@
   "moves": [
     {
       "name": "Stand LP",
-      "nameZh": "站立轻拳",
       "input": "5LP",
       "damage": "300",
       "startup": "4",
@@ -48,11 +47,11 @@
         "sourceName": "Standing Light Punch",
         "sourceInput": "5LP",
         "cancelText": "Chn Sp SA TC"
-      }
+      },
+      "nameZh": "站立轻拳"
     },
     {
       "name": "Stand MP",
-      "nameZh": "站立中拳",
       "input": "5MP",
       "damage": "600",
       "startup": "7",
@@ -83,11 +82,11 @@
         "sourceName": "Standing Medium Punch",
         "sourceInput": "5MP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "站立中拳"
     },
     {
       "name": "Stand HP",
-      "nameZh": "站立重拳",
       "input": "5HP",
       "damage": "800(700)",
       "startup": "9",
@@ -120,11 +119,11 @@
         "sourceName": "Standing Heavy Punch",
         "sourceInput": "5HP",
         "cancelText": "Sp SA (close)"
-      }
+      },
+      "nameZh": "站立重拳"
     },
     {
       "name": "Stand LK",
-      "nameZh": "站立轻脚",
       "input": "5LK",
       "damage": "300",
       "startup": "5",
@@ -156,11 +155,11 @@
         "sourceName": "Standing Light Kick",
         "sourceInput": "5LK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "站立轻脚"
     },
     {
       "name": "Stand MK",
-      "nameZh": "站立中脚",
       "input": "5MK",
       "damage": "600",
       "startup": "9",
@@ -187,11 +186,11 @@
         "sourceName": "Standing Medium Kick",
         "sourceInput": "5MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立中脚"
     },
     {
       "name": "Stand HK",
-      "nameZh": "站立重脚",
       "input": "5HK",
       "damage": "800",
       "startup": "12",
@@ -213,16 +212,16 @@
         "total": 40,
         "moveType": "normal",
         "section": "",
-        "blockstun": 24,
-        "hitstun": 30,
+        "blockstun": 20,
+        "hitstun": 26,
         "sourceName": "Standing Heavy Kick",
         "sourceInput": "5HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立重脚"
     },
     {
       "name": "Crouch LP",
-      "nameZh": "蹲下轻拳",
       "input": "2LP",
       "damage": "300",
       "startup": "5",
@@ -255,11 +254,11 @@
         "sourceName": "Crouching Light Punch",
         "sourceInput": "2LP",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "蹲下轻拳"
     },
     {
       "name": "Crouch MP",
-      "nameZh": "蹲下中拳",
       "input": "2MP",
       "damage": "600",
       "startup": "6",
@@ -291,11 +290,11 @@
         "sourceName": "Crouching Medium Punch",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "蹲下中拳"
     },
     {
       "name": "Crouch HP",
-      "nameZh": "蹲下重拳",
       "input": "2HP",
       "damage": "800",
       "startup": "8",
@@ -322,11 +321,11 @@
         "sourceName": "Crouching Heavy Punch",
         "sourceInput": "2HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蹲下重拳"
     },
     {
       "name": "Crouch LK",
-      "nameZh": "蹲下轻脚",
       "input": "2LK",
       "damage": "200",
       "startup": "5",
@@ -357,11 +356,11 @@
         "sourceName": "Crouching Light Kick",
         "sourceInput": "2LK",
         "cancelText": "Chn"
-      }
+      },
+      "nameZh": "蹲下轻脚"
     },
     {
       "name": "Crouch MK",
-      "nameZh": "蹲下中脚",
       "input": "2MK",
       "damage": "700",
       "startup": "8",
@@ -391,7 +390,8 @@
         "sourceName": "Crouching Medium Kick",
         "sourceInput": "2MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蹲下中脚"
     },
     {
       "name": "Sliding Heel Kick",
@@ -428,7 +428,6 @@
     },
     {
       "name": "Jump LP",
-      "nameZh": "跳跃轻拳",
       "input": "j.LP",
       "damage": "300",
       "startup": "4",
@@ -455,11 +454,11 @@
         "sourceName": "Jumping Light Punch",
         "sourceInput": "j.LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻拳"
     },
     {
       "name": "Jump MP",
-      "nameZh": "跳跃中拳",
       "input": "j.MP",
       "damage": "700",
       "startup": "6",
@@ -490,11 +489,11 @@
         "sourceName": "Jumping Medium Punch",
         "sourceInput": "j.MP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "跳跃中拳"
     },
     {
       "name": "Jump HP",
-      "nameZh": "跳跃重拳",
       "input": "j.HP",
       "damage": "800",
       "startup": "9",
@@ -521,11 +520,11 @@
         "sourceName": "Jumping Heavy Punch",
         "sourceInput": "j.HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重拳"
     },
     {
       "name": "Jump LK",
-      "nameZh": "跳跃轻脚",
       "input": "j.LK",
       "damage": "300",
       "startup": "4",
@@ -552,11 +551,11 @@
         "sourceName": "Jumping Light Kick",
         "sourceInput": "j.LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻脚"
     },
     {
       "name": "Jump MK",
-      "nameZh": "跳跃中脚",
       "input": "j.MK",
       "damage": "500",
       "startup": "8",
@@ -583,11 +582,11 @@
         "sourceName": "Jumping Medium Kick",
         "sourceInput": "j.MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃中脚"
     },
     {
       "name": "Jump HK",
-      "nameZh": "跳跃重脚",
       "input": "j.HK",
       "damage": "800",
       "startup": "10",
@@ -614,7 +613,8 @@
         "sourceName": "Jumping Heavy Kick",
         "sourceInput": "j.HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重脚"
     },
     {
       "name": "Knee Shot",
@@ -803,8 +803,8 @@
         "total": 32,
         "moveType": "normal",
         "section": "",
-        "blockstun": 19,
-        "hitstun": 23,
+        "blockstun": 17,
+        "hitstun": 21,
         "sourceName": "Funky Dance 1",
         "sourceInput": "5MP~MP",
         "cancelText": "TC"
@@ -844,6 +844,34 @@
       }
     },
     {
+      "name": "Party in the Air",
+      "input": "j.MP~HP",
+      "damage": "700",
+      "startup": "8",
+      "active": "7",
+      "recovery": "3 land",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Party in the Air",
+        "plnCmd": "j.MP~HP",
+        "startup": 8,
+        "active": 7,
+        "recovery": 3,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 700,
+        "total": 17,
+        "moveType": "normal",
+        "section": "",
+        "sourceName": "Party in the Air",
+        "sourceInput": "j.MP~HP",
+        "cancelText": "-"
+      }
+    },
+    {
       "name": "Diss Track",
       "input": "LPLK",
       "damage": "1200 (2040)",
@@ -877,7 +905,6 @@
     },
     {
       "name": "Wild Beat",
-      "nameZh": "斗气迸放",
       "input": "HPHK",
       "damage": "800",
       "startup": "26",
@@ -906,11 +933,11 @@
         "sourceName": "Wild Beat",
         "sourceInput": "HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气迸放"
     },
     {
       "name": "Drive Parry",
-      "nameZh": "斗气招架",
       "input": "MPMK",
       "damage": "-",
       "startup": "1",
@@ -935,11 +962,11 @@
         "sourceName": "Drive Parry",
         "sourceInput": "MPMK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气招架"
     },
     {
       "name": "Parry Drive Rush",
-      "nameZh": "斗气冲锋",
       "input": "MPMK~66",
       "damage": "-",
       "startup": "3+8",
@@ -963,11 +990,11 @@
         "sourceName": "Parry Drive Rush",
         "sourceInput": "MPMK~66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋"
     },
     {
       "name": "Drive Rush Cancel",
-      "nameZh": "斗气冲锋取消",
       "input": "MPMK or 66",
       "damage": "-",
       "startup": "9",
@@ -991,7 +1018,8 @@
         "sourceName": "Drive Rush Cancel",
         "sourceInput": "MPMK or 66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋取消"
     },
     {
       "name": "Jackknife Maximum",
@@ -1734,7 +1762,7 @@
         "total": 65,
         "moveType": "normal",
         "section": "",
-        "hitstun": 55,
+        "hitstun": 56,
         "sourceName": "+MK (Headliner Hit 5)",
         "sourceInput": "~MK (5)",
         "cancelText": "-"
@@ -1774,7 +1802,6 @@
     },
     {
       "name": "Neutral Taunt",
-      "nameZh": "原地挑衅",
       "input": "5PPPKKK",
       "damage": "-",
       "startup": "264 (total)",
@@ -1798,7 +1825,8 @@
         "sourceName": "Neutral Taunt",
         "sourceInput": "5PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "原地挑衅"
     },
     {
       "name": "Sunrise Heel",
@@ -1898,7 +1926,6 @@
     },
     {
       "name": "Leg Scratch (Block)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "20",
@@ -1924,15 +1951,15 @@
         "total": 53,
         "moveType": "unique",
         "section": "",
-        "blockstun": 28,
+        "blockstun": 23,
         "sourceName": "Leg Scratch (Block)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Leg Scratch (Recovery)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "18",
@@ -1958,11 +1985,12 @@
         "total": 51,
         "moveType": "unique",
         "section": "",
-        "blockstun": 28,
+        "blockstun": 23,
         "sourceName": "Leg Scratch (Recovery)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Air Slasher",
@@ -2093,7 +2121,6 @@
     },
     {
       "name": "Forward Taunt",
-      "nameZh": "前挑衅",
       "input": "6PPPKKK",
       "damage": "-",
       "startup": "550 (total)",
@@ -2117,11 +2144,11 @@
         "sourceName": "Forward Taunt",
         "sourceInput": "6PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前挑衅"
     },
     {
       "name": "Back Taunt",
-      "nameZh": "后挑衅",
       "input": "4PPPKKK",
       "damage": "-",
       "startup": "429 (total)",
@@ -2145,7 +2172,8 @@
         "sourceName": "Back Taunt",
         "sourceInput": "4PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后挑衅"
     },
     {
       "name": "Flip Throw",
@@ -2513,7 +2541,7 @@
         "total": 49,
         "moveType": "special",
         "section": "",
-        "blockstun": 24,
+        "blockstun": 23,
         "sourceName": "Jus Cool",
         "sourceInput": "214KK",
         "cancelText": "-"
@@ -2545,8 +2573,8 @@
         "total": 37,
         "moveType": "special",
         "section": "",
-        "blockstun": 22,
-        "hitstun": 27,
+        "blockstun": 20,
+        "hitstun": 25,
         "sourceName": "Funky Slicer",
         "sourceInput": "214K~LK",
         "cancelText": "SA3"
@@ -2579,8 +2607,8 @@
         "total": 51,
         "moveType": "special",
         "section": "",
-        "blockstun": 25,
-        "hitstun": 33,
+        "blockstun": 20,
+        "hitstun": 28,
         "sourceName": "Funky Slicer",
         "sourceInput": "214KK~LK",
         "cancelText": "SA2 SA3"
@@ -3028,5 +3056,5 @@
       }
     }
   ],
-  "lastUpdated": "2026-01-30"
+  "lastUpdated": "2026-02-06"
 }

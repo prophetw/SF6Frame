@@ -213,8 +213,8 @@
         "total": 29,
         "moveType": "normal",
         "section": "",
-        "blockstun": 18,
-        "hitstun": 23,
+        "blockstun": 17,
+        "hitstun": 22,
         "sourceName": "Stand MK (DL2)",
         "sourceInput": "5MK",
         "cancelText": "Sp SA"
@@ -319,8 +319,8 @@
         "total": 23,
         "moveType": "normal",
         "section": "",
-        "blockstun": 17,
-        "hitstun": 23,
+        "blockstun": 15,
+        "hitstun": 21,
         "sourceName": "Crouch MP (DL2)",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
@@ -461,7 +461,7 @@
         "total": 39,
         "moveType": "normal",
         "section": "",
-        "blockstun": 20,
+        "blockstun": 19,
         "sourceName": "Crouch HK (DL2)",
         "sourceInput": "2HK",
         "cancelText": "TC"
@@ -818,8 +818,8 @@
         "total": 33,
         "moveType": "normal",
         "section": "",
-        "blockstun": 16,
-        "hitstun": 25,
+        "blockstun": 14,
+        "hitstun": 23,
         "sourceName": "Bitter Strikes 2 (DL2)",
         "sourceInput": "5LP~LK~MP",
         "cancelText": "Sp SA"
@@ -891,7 +891,6 @@
     },
     {
       "name": "Vainglory Strike (DL2)",
-      "nameZh": "斗气迸放",
       "input": "HPHK",
       "damage": "800",
       "startup": "26",
@@ -920,11 +919,11 @@
         "sourceName": "Vainglory Strike (DL2)",
         "sourceInput": "HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气迸放"
     },
     {
       "name": "Drive Parry",
-      "nameZh": "斗气招架",
       "input": "MPMK",
       "damage": "-",
       "startup": "1",
@@ -949,11 +948,11 @@
         "sourceName": "Drive Parry",
         "sourceInput": "MPMK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气招架"
     },
     {
       "name": "Parry Drive Rush",
-      "nameZh": "斗气冲锋",
       "input": "MPMK~66",
       "damage": "-",
       "startup": "3+8",
@@ -977,11 +976,11 @@
         "sourceName": "Parry Drive Rush",
         "sourceInput": "MPMK~66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋"
     },
     {
       "name": "Drive Rush Cancel",
-      "nameZh": "斗气冲锋取消",
       "input": "MPMK or 66",
       "damage": "-",
       "startup": "9",
@@ -1005,7 +1004,8 @@
         "sourceName": "Drive Rush Cancel",
         "sourceInput": "MPMK or 66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋取消"
     },
     {
       "name": "The Devil Inside",
@@ -1198,7 +1198,6 @@
     },
     {
       "name": "Back Taunt",
-      "nameZh": "后挑衅",
       "input": "5PPPKKK",
       "damage": "-",
       "startup": "608 (total)",
@@ -1222,7 +1221,8 @@
         "sourceName": "Back Taunt",
         "sourceInput": "5PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后挑衅"
     },
     {
       "name": "Falling Star Kick (DL0)",
@@ -1350,8 +1350,8 @@
         "total": 40,
         "moveType": "unique",
         "section": "",
-        "blockstun": 20,
-        "hitstun": 24,
+        "blockstun": 22,
+        "hitstun": 26,
         "sourceName": "Hermit's Elbow (DL3)",
         "sourceInput": "4HP",
         "cancelText": "SA TC"
@@ -1730,7 +1730,6 @@
     },
     {
       "name": "Leg Sweep (Block)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "20",
@@ -1756,15 +1755,15 @@
         "total": 53,
         "moveType": "unique",
         "section": "",
-        "blockstun": 28,
+        "blockstun": 23,
         "sourceName": "Leg Sweep (Block)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Leg Sweep (Recovery)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "18",
@@ -1790,11 +1789,12 @@
         "total": 51,
         "moveType": "unique",
         "section": "",
-        "blockstun": 28,
+        "blockstun": 23,
         "sourceName": "Leg Sweep (Recovery)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Forward Taunt (DL0)",
@@ -3756,5 +3756,5 @@
       }
     }
   ],
-  "lastUpdated": "2026-01-30"
+  "lastUpdated": "2026-02-06"
 }

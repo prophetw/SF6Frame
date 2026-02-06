@@ -14,7 +14,6 @@
   "moves": [
     {
       "name": "Stand LP",
-      "nameZh": "站立轻拳",
       "input": "5LP",
       "damage": "300",
       "startup": "4",
@@ -26,7 +25,8 @@
       "cancels": [
         "Chain",
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -46,11 +46,11 @@
         "sourceName": "Standing Light Punch",
         "sourceInput": "5LP",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "站立轻拳"
     },
     {
       "name": "Stand MP",
-      "nameZh": "站立中拳",
       "input": "5MP",
       "damage": "600",
       "startup": "8",
@@ -61,7 +61,8 @@
       "category": "normal",
       "cancels": [
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -81,11 +82,11 @@
         "sourceName": "Standing Medium Punch",
         "sourceInput": "5MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "站立中拳"
     },
     {
       "name": "Stand HP",
-      "nameZh": "站立重拳",
       "input": "5HP",
       "damage": "800",
       "startup": "9",
@@ -96,7 +97,8 @@
       "category": "normal",
       "cancels": [
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -116,11 +118,11 @@
         "sourceName": "Standing Heavy Punch",
         "sourceInput": "5HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "站立重拳"
     },
     {
       "name": "Stand LK",
-      "nameZh": "站立轻脚",
       "input": "5LK",
       "damage": "300",
       "startup": "4",
@@ -132,7 +134,8 @@
       "cancels": [
         "Special",
         "Super",
-        "Target Combo"
+        "Target Combo",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -152,11 +155,11 @@
         "sourceName": "Standing Light Kick",
         "sourceInput": "5LK",
         "cancelText": "Sp SA TC"
-      }
+      },
+      "nameZh": "站立轻脚"
     },
     {
       "name": "Stand MK",
-      "nameZh": "站立中脚",
       "input": "5MK",
       "damage": "700",
       "startup": "9",
@@ -183,11 +186,11 @@
         "sourceName": "Standing Medium Kick",
         "sourceInput": "5MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立中脚"
     },
     {
       "name": "Stand HK",
-      "nameZh": "站立重脚",
       "input": "5HK",
       "damage": "900",
       "startup": "14",
@@ -209,16 +212,16 @@
         "total": 38,
         "moveType": "normal",
         "section": "",
-        "blockstun": 22,
-        "hitstun": 28,
+        "blockstun": 19,
+        "hitstun": 25,
         "sourceName": "Standing Heavy Kick",
         "sourceInput": "5HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立重脚"
     },
     {
       "name": "Crouch LP",
-      "nameZh": "蹲下轻拳",
       "input": "2LP",
       "damage": "300",
       "startup": "4",
@@ -230,7 +233,8 @@
       "cancels": [
         "Chain",
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -250,11 +254,11 @@
         "sourceName": "Crouching Light Punch",
         "sourceInput": "2LP",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "蹲下轻拳"
     },
     {
       "name": "Crouch MP",
-      "nameZh": "蹲下中拳",
       "input": "2MP",
       "damage": "600",
       "startup": "6",
@@ -265,7 +269,8 @@
       "category": "normal",
       "cancels": [
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -280,16 +285,16 @@
         "total": 26,
         "moveType": "normal",
         "section": "",
-        "blockstun": 18,
-        "hitstun": 26,
+        "blockstun": 16,
+        "hitstun": 24,
         "sourceName": "Crouching Medium Punch",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "蹲下中拳"
     },
     {
       "name": "Crouch HP",
-      "nameZh": "蹲下重拳",
       "input": "2HP",
       "damage": "400x2",
       "startup": "10",
@@ -316,11 +321,11 @@
         "sourceName": "Crouching Heavy Punch",
         "sourceInput": "2HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蹲下重拳"
     },
     {
       "name": "Crouch LK",
-      "nameZh": "蹲下轻脚",
       "input": "2LK",
       "damage": "200",
       "startup": "5",
@@ -330,7 +335,8 @@
       "onHit": "+2",
       "category": "normal",
       "cancels": [
-        "Chain"
+        "Chain",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -350,11 +356,11 @@
         "sourceName": "Crouching Light Kick",
         "sourceInput": "2LK",
         "cancelText": "Chn"
-      }
+      },
+      "nameZh": "蹲下轻脚"
     },
     {
       "name": "Crouch MK",
-      "nameZh": "蹲下中脚",
       "input": "2MK",
       "damage": "500",
       "startup": "7",
@@ -365,7 +371,8 @@
       "category": "normal",
       "cancels": [
         "Special",
-        "Super"
+        "Super",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -385,7 +392,8 @@
         "sourceName": "Crouching Medium Kick",
         "sourceInput": "2MK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "蹲下中脚"
     },
     {
       "name": "Sori Geri",
@@ -422,7 +430,6 @@
     },
     {
       "name": "Jump LP",
-      "nameZh": "跳跃轻拳",
       "input": "j.LP",
       "damage": "300",
       "startup": "4",
@@ -449,11 +456,11 @@
         "sourceName": "Jumping Light Punch",
         "sourceInput": "j.LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻拳"
     },
     {
       "name": "Jump MP",
-      "nameZh": "跳跃中拳",
       "input": "j.MP",
       "damage": "600",
       "startup": "7",
@@ -464,7 +471,8 @@
       "category": "normal",
       "cancels": [
         "Special",
-        "SA2"
+        "SA2",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -484,11 +492,11 @@
         "sourceName": "Jumping Medium Punch",
         "sourceInput": "j.MP",
         "cancelText": "Sp SA2"
-      }
+      },
+      "nameZh": "跳跃中拳"
     },
     {
       "name": "Jump HP",
-      "nameZh": "跳跃重拳",
       "input": "j.HP",
       "damage": "800",
       "startup": "9",
@@ -515,11 +523,11 @@
         "sourceName": "Jumping Heavy Punch",
         "sourceInput": "j.HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重拳"
     },
     {
       "name": "Jump LK",
-      "nameZh": "跳跃轻脚",
       "input": "j.LK",
       "damage": "300",
       "startup": "5",
@@ -546,11 +554,11 @@
         "sourceName": "Jumping Light Kick",
         "sourceInput": "j.LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻脚"
     },
     {
       "name": "Jump MK",
-      "nameZh": "跳跃中脚",
       "input": "j.MK",
       "damage": "500",
       "startup": "7",
@@ -577,11 +585,11 @@
         "sourceName": "Jumping Medium Kick",
         "sourceInput": "j.MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃中脚"
     },
     {
       "name": "Jump HK",
-      "nameZh": "跳跃重脚",
       "input": "j.HK",
       "damage": "800",
       "startup": "10",
@@ -608,7 +616,8 @@
         "sourceName": "Jumping Heavy Kick",
         "sourceInput": "j.HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重脚"
     },
     {
       "name": "Hien Ren Kyaku 1",
@@ -621,7 +630,8 @@
       "onHit": "-2",
       "category": "normal",
       "cancels": [
-        "Target Combo"
+        "Target Combo",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -655,7 +665,8 @@
       "category": "normal",
       "cancels": [
         "Sp*",
-        "SA2*"
+        "SA2*",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -743,7 +754,6 @@
     },
     {
       "name": "Botan Ichige",
-      "nameZh": "斗气迸放",
       "input": "HPHK",
       "damage": "800",
       "startup": "26",
@@ -772,11 +782,11 @@
         "sourceName": "Botan Ichige",
         "sourceInput": "HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气迸放"
     },
     {
       "name": "Drive Parry",
-      "nameZh": "斗气招架",
       "input": "MPMK",
       "damage": "-",
       "startup": "1",
@@ -801,11 +811,11 @@
         "sourceName": "Drive Parry",
         "sourceInput": "MPMK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气招架"
     },
     {
       "name": "Parry Drive Rush",
-      "nameZh": "斗气冲锋",
       "input": "MPMK~66",
       "damage": "-",
       "startup": "3+8",
@@ -829,11 +839,11 @@
         "sourceName": "Parry Drive Rush",
         "sourceInput": "MPMK~66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋"
     },
     {
       "name": "Drive Rush Cancel",
-      "nameZh": "斗气冲锋取消",
       "input": "MPMK or 66",
       "damage": "-",
       "startup": "9",
@@ -857,11 +867,11 @@
         "sourceName": "Drive Rush Cancel",
         "sourceInput": "MPMK or 66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋取消"
     },
     {
       "name": "Neutral Taunt",
-      "nameZh": "原地挑衅",
       "input": "5PPPKKK",
       "damage": "-",
       "startup": "279 (total)",
@@ -885,11 +895,11 @@
         "sourceName": "Neutral Taunt",
         "sourceInput": "5PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "原地挑衅"
     },
     {
       "name": "Neutral Taunt",
-      "nameZh": "原地挑衅",
       "input": "5PPPKKK~2PPPKKK",
       "damage": "-",
       "startup": "363 (total)",
@@ -913,11 +923,11 @@
         "sourceName": "Neutral Taunt",
         "sourceInput": "5PPPKKK~2PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "原地挑衅"
     },
     {
       "name": "Back Taunt",
-      "nameZh": "后挑衅",
       "input": "4",
       "damage": "100x7,800 (1500)",
       "startup": "616",
@@ -947,7 +957,8 @@
         "sourceName": "Back Taunt",
         "sourceInput": "4",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后挑衅"
     },
     {
       "name": "Senkotsu Uchi",
@@ -990,7 +1001,8 @@
       "onHit": "+3(+7))",
       "category": "unique",
       "cancels": [
-        "Target Combo"
+        "Target Combo",
+        "Drive Rush"
       ],
       "raw": {
         "source": "supercombo",
@@ -1039,7 +1051,7 @@
         "total": 47,
         "moveType": "unique",
         "section": "",
-        "blockstun": 28,
+        "blockstun": 20,
         "sourceName": "Hoshi Kujaku 2",
         "sourceInput": "4HK~HK",
         "cancelText": "-"
@@ -1079,7 +1091,6 @@
     },
     {
       "name": "Yusura Ume (Block)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "20",
@@ -1105,15 +1116,15 @@
         "total": 53,
         "moveType": "unique",
         "section": "",
-        "blockstun": 28,
+        "blockstun": 23,
         "sourceName": "Yusura Ume (Block)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Yusura Ume (Recovery)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "18",
@@ -1139,15 +1150,15 @@
         "total": 51,
         "moveType": "unique",
         "section": "",
-        "blockstun": 28,
+        "blockstun": 23,
         "sourceName": "Yusura Ume (Recovery)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Forward Taunt",
-      "nameZh": "前挑衅",
       "input": "6PPPKKK",
       "damage": "-",
       "startup": "405 (total)",
@@ -1171,11 +1182,11 @@
         "sourceName": "Forward Taunt",
         "sourceInput": "6PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前挑衅"
     },
     {
       "name": "Back Taunt",
-      "nameZh": "后挑衅",
       "input": "4PPPKKK",
       "damage": "100x8",
       "startup": "430",
@@ -1205,7 +1216,8 @@
         "sourceName": "Back Taunt",
         "sourceInput": "4PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后挑衅"
     },
     {
       "name": "Kachousen",
@@ -1710,7 +1722,7 @@
         "total": 41,
         "moveType": "special",
         "section": "",
-        "blockstun": 14,
+        "blockstun": 6,
         "sourceName": "Ryuuenbu",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3 (3rd)"
@@ -1858,7 +1870,7 @@
         "total": 41,
         "moveType": "special",
         "section": "",
-        "blockstun": 14,
+        "blockstun": 6,
         "sourceName": "Ryuuenbu (Flame)",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3 (3rd)"
@@ -2288,7 +2300,7 @@
         "total": 33,
         "moveType": "special",
         "section": "",
-        "blockstun": -12,
+        "blockstun": -16,
         "sourceName": "Hishou Ryuuenjin",
         "sourceInput": "623KK",
         "cancelText": "-"
@@ -2420,7 +2432,7 @@
         "total": 33,
         "moveType": "special",
         "section": "",
-        "blockstun": -12,
+        "blockstun": -17,
         "sourceName": "Hishou Ryuuenjin (Flame)",
         "sourceInput": "623KK",
         "cancelText": "-"
@@ -2649,7 +2661,7 @@
         "total": 45,
         "moveType": "special",
         "section": "",
-        "blockstun": 15,
+        "blockstun": 4,
         "sourceName": "Chou Hissatsu Shinobi Bachi",
         "sourceInput": "236236K",
         "cancelText": "-"
@@ -2715,7 +2727,7 @@
         "total": 58,
         "moveType": "special",
         "section": "",
-        "blockstun": 28,
+        "blockstun": 22,
         "sourceName": "Chou Hissatsu Shinobi Bachi (Flame)",
         "sourceInput": "236236K",
         "cancelText": "-"
@@ -2821,5 +2833,5 @@
       }
     }
   ],
-  "lastUpdated": "2026-01-30"
+  "lastUpdated": "2026-02-06"
 }

@@ -14,7 +14,6 @@
   "moves": [
     {
       "name": "Stand LP",
-      "nameZh": "站立轻拳",
       "input": "5LP",
       "damage": "300",
       "startup": "4",
@@ -47,11 +46,11 @@
         "sourceName": "Standing Light Punch",
         "sourceInput": "5LP",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "站立轻拳"
     },
     {
       "name": "Stand MP",
-      "nameZh": "站立中拳",
       "input": "5MP",
       "damage": "700",
       "startup": "14",
@@ -78,11 +77,11 @@
         "sourceName": "Standing Medium Punch",
         "sourceInput": "5MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立中拳"
     },
     {
       "name": "Stand HP",
-      "nameZh": "站立重拳",
       "input": "5HP",
       "damage": "1000",
       "startup": "16",
@@ -109,11 +108,11 @@
         "sourceName": "Standing Heavy Punch",
         "sourceInput": "5HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立重拳"
     },
     {
       "name": "Stand LK",
-      "nameZh": "站立轻脚",
       "input": "5LK",
       "damage": "300",
       "startup": "9",
@@ -145,11 +144,11 @@
         "sourceName": "Standing Light Kick",
         "sourceInput": "5LK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "站立轻脚"
     },
     {
       "name": "Stand MK",
-      "nameZh": "站立中脚",
       "input": "5MK",
       "damage": "600",
       "startup": "12",
@@ -176,11 +175,11 @@
         "sourceName": "Standing Medium Kick",
         "sourceInput": "5MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立中脚"
     },
     {
       "name": "Stand HK",
-      "nameZh": "站立重脚",
       "input": "5HK",
       "damage": "800",
       "startup": "17",
@@ -212,11 +211,11 @@
         "sourceName": "Standing Heavy Kick",
         "sourceInput": "5HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "站立重脚"
     },
     {
       "name": "Crouch LP",
-      "nameZh": "蹲下轻拳",
       "input": "2LP",
       "damage": "300",
       "startup": "5",
@@ -249,11 +248,11 @@
         "sourceName": "Crouching Light Punch",
         "sourceInput": "2LP",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "蹲下轻拳"
     },
     {
       "name": "Crouch MP",
-      "nameZh": "蹲下中拳",
       "input": "2MP",
       "damage": "600",
       "startup": "12",
@@ -285,11 +284,11 @@
         "sourceName": "Crouching Medium Punch",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "蹲下中拳"
     },
     {
       "name": "Crouch HP",
-      "nameZh": "蹲下重拳",
       "input": "2HP",
       "damage": "800",
       "startup": "19",
@@ -311,16 +310,16 @@
         "total": 46,
         "moveType": "normal",
         "section": "",
-        "blockstun": 20,
-        "hitstun": 31,
+        "blockstun": 16,
+        "hitstun": 27,
         "sourceName": "Crouching Heavy Punch",
         "sourceInput": "2HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蹲下重拳"
     },
     {
       "name": "Crouch LK",
-      "nameZh": "蹲下轻脚",
       "input": "2LK",
       "damage": "200",
       "startup": "4",
@@ -347,11 +346,11 @@
         "sourceName": "Crouching Light Kick",
         "sourceInput": "2LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蹲下轻脚"
     },
     {
       "name": "Crouch MK",
-      "nameZh": "蹲下中脚",
       "input": "2MK",
       "damage": "500",
       "startup": "10",
@@ -378,7 +377,8 @@
         "sourceName": "Crouching Medium Kick",
         "sourceInput": "2MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蹲下中脚"
     },
     {
       "name": "Long Sliding Kick",
@@ -415,7 +415,6 @@
     },
     {
       "name": "Jump LP",
-      "nameZh": "跳跃轻拳",
       "input": "j.LP",
       "damage": "300",
       "startup": "4",
@@ -442,11 +441,11 @@
         "sourceName": "Jumping Light Punch",
         "sourceInput": "j.LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻拳"
     },
     {
       "name": "Jump MP",
-      "nameZh": "跳跃中拳",
       "input": "j.MP",
       "damage": "700",
       "startup": "9",
@@ -477,11 +476,11 @@
         "sourceName": "Jumping Medium Punch",
         "sourceInput": "j.MP",
         "cancelText": "Sp"
-      }
+      },
+      "nameZh": "跳跃中拳"
     },
     {
       "name": "Jump HP",
-      "nameZh": "跳跃重拳",
       "input": "j.HP",
       "damage": "800",
       "startup": "13",
@@ -508,11 +507,11 @@
         "sourceName": "Jumping Heavy Punch",
         "sourceInput": "j.HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重拳"
     },
     {
       "name": "Jump LK",
-      "nameZh": "跳跃轻脚",
       "input": "j.LK",
       "damage": "300",
       "startup": "6",
@@ -539,11 +538,11 @@
         "sourceName": "Jumping Light Kick",
         "sourceInput": "j.LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻脚"
     },
     {
       "name": "Jump MK",
-      "nameZh": "跳跃中脚",
       "input": "j.MK",
       "damage": "500",
       "startup": "11",
@@ -570,11 +569,11 @@
         "sourceName": "Jumping Medium Kick",
         "sourceInput": "j.MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃中脚"
     },
     {
       "name": "Jump HK",
-      "nameZh": "跳跃重脚",
       "input": "j.HK",
       "damage": "800",
       "startup": "10",
@@ -601,7 +600,8 @@
         "sourceName": "Jumping Heavy Kick",
         "sourceInput": "j.HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重脚"
     },
     {
       "name": "Nirvana Punch",
@@ -918,7 +918,6 @@
     },
     {
       "name": "Yoga Rise",
-      "nameZh": "斗气迸放",
       "input": "HPHK",
       "damage": "800",
       "startup": "26",
@@ -947,11 +946,11 @@
         "sourceName": "Yoga Rise",
         "sourceInput": "HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气迸放"
     },
     {
       "name": "Drive Parry",
-      "nameZh": "斗气招架",
       "input": "MPMK",
       "damage": "-",
       "startup": "1",
@@ -976,11 +975,11 @@
         "sourceName": "Drive Parry",
         "sourceInput": "MPMK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气招架"
     },
     {
       "name": "Parry Drive Rush",
-      "nameZh": "斗气冲锋",
       "input": "MPMK~66",
       "damage": "-",
       "startup": "3+8",
@@ -1004,11 +1003,11 @@
         "sourceName": "Parry Drive Rush",
         "sourceInput": "MPMK~66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋"
     },
     {
       "name": "Drive Rush Cancel",
-      "nameZh": "斗气冲锋取消",
       "input": "MPMK or 66",
       "damage": "-",
       "startup": "9",
@@ -1032,7 +1031,8 @@
         "sourceName": "Drive Rush Cancel",
         "sourceInput": "MPMK or 66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋取消"
     },
     {
       "name": "Yoga Float",
@@ -1092,7 +1092,6 @@
     },
     {
       "name": "Neutral Taunt",
-      "nameZh": "原地挑衅",
       "input": "5PPPKKK",
       "damage": "-",
       "startup": "190 (total)",
@@ -1116,7 +1115,8 @@
         "sourceName": "Neutral Taunt",
         "sourceInput": "5PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "原地挑衅"
     },
     {
       "name": "Yoga Uppercut",
@@ -1255,7 +1255,6 @@
     },
     {
       "name": "Yoga Illusion (Block)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "250x2 recoverable",
       "startup": "20",
@@ -1281,15 +1280,15 @@
         "total": 54,
         "moveType": "unique",
         "section": "",
-        "blockstun": 29,
+        "blockstun": 23,
         "sourceName": "Yoga Illusion (Block)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Yoga Illusion (Recovery)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "250x2 recoverable",
       "startup": "18",
@@ -1315,11 +1314,12 @@
         "total": 52,
         "moveType": "unique",
         "section": "",
-        "blockstun": 29,
+        "blockstun": 23,
         "sourceName": "Yoga Illusion (Recovery)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Yoga Teleport",
@@ -1377,7 +1377,6 @@
     },
     {
       "name": "Forward Taunt",
-      "nameZh": "前挑衅",
       "input": "6PPPKKK",
       "damage": "-",
       "startup": "380 (total)",
@@ -1401,11 +1400,11 @@
         "sourceName": "Forward Taunt",
         "sourceInput": "6PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前挑衅"
     },
     {
       "name": "Back Taunt",
-      "nameZh": "后挑衅",
       "input": "4PPPKKK",
       "damage": "-",
       "startup": "430 (total)",
@@ -1429,7 +1428,8 @@
         "sourceName": "Back Taunt",
         "sourceInput": "4PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后挑衅"
     },
     {
       "name": "Yoga Throw",
@@ -2226,5 +2226,5 @@
       }
     }
   ],
-  "lastUpdated": "2026-01-30"
+  "lastUpdated": "2026-02-06"
 }

@@ -14,7 +14,6 @@
   "moves": [
     {
       "name": "Stand LP",
-      "nameZh": "站立轻拳",
       "input": "5LP",
       "damage": "300",
       "startup": "4",
@@ -48,11 +47,11 @@
         "sourceName": "Standing Light Punch",
         "sourceInput": "5LP",
         "cancelText": "SS Chn Sp SA"
-      }
+      },
+      "nameZh": "站立轻拳"
     },
     {
       "name": "Stand MP",
-      "nameZh": "站立中拳",
       "input": "5MP",
       "damage": "600",
       "startup": "5",
@@ -85,11 +84,11 @@
         "sourceName": "Standing Medium Punch",
         "sourceInput": "5MP",
         "cancelText": "SS Sp SA"
-      }
+      },
+      "nameZh": "站立中拳"
     },
     {
       "name": "Stand HP",
-      "nameZh": "站立重拳",
       "input": "5HP",
       "damage": "800",
       "startup": "13",
@@ -120,11 +119,11 @@
         "sourceName": "Standing Heavy Punch",
         "sourceInput": "5HP",
         "cancelText": "SS"
-      }
+      },
+      "nameZh": "站立重拳"
     },
     {
       "name": "Stand LK",
-      "nameZh": "站立轻脚",
       "input": "5LK",
       "damage": "300",
       "startup": "5",
@@ -157,11 +156,11 @@
         "sourceName": "Standing Light Kick",
         "sourceInput": "5LK",
         "cancelText": "SS Sp SA"
-      }
+      },
+      "nameZh": "站立轻脚"
     },
     {
       "name": "Stand MK",
-      "nameZh": "站立中脚",
       "input": "5MK",
       "damage": "500",
       "startup": "7",
@@ -194,11 +193,11 @@
         "sourceName": "Standing Medium Kick",
         "sourceInput": "5MK",
         "cancelText": "SS Sp SA"
-      }
+      },
+      "nameZh": "站立中脚"
     },
     {
       "name": "Stand HK",
-      "nameZh": "站立重脚",
       "input": "5HK",
       "damage": "900",
       "startup": "14",
@@ -229,11 +228,11 @@
         "sourceName": "Standing Heavy Kick",
         "sourceInput": "5HK",
         "cancelText": "SS"
-      }
+      },
+      "nameZh": "站立重脚"
     },
     {
       "name": "Crouch LP",
-      "nameZh": "蹲下轻拳",
       "input": "2LP",
       "damage": "300",
       "startup": "4",
@@ -267,11 +266,11 @@
         "sourceName": "Crouching Light Punch",
         "sourceInput": "2LP",
         "cancelText": "SS Chn Sp SA"
-      }
+      },
+      "nameZh": "蹲下轻拳"
     },
     {
       "name": "Crouch MP",
-      "nameZh": "蹲下中拳",
       "input": "2MP",
       "damage": "600",
       "startup": "6",
@@ -299,16 +298,16 @@
         "total": 23,
         "moveType": "normal",
         "section": "",
-        "blockstun": 16,
-        "hitstun": 22,
+        "blockstun": 15,
+        "hitstun": 21,
         "sourceName": "Crouching Medium Punch",
         "sourceInput": "2MP",
         "cancelText": "SS Sp SA"
-      }
+      },
+      "nameZh": "蹲下中拳"
     },
     {
       "name": "Crouch HP",
-      "nameZh": "蹲下重拳",
       "input": "2HP",
       "damage": "450x2",
       "startup": "11",
@@ -342,11 +341,11 @@
         "sourceName": "Crouching Heavy Punch",
         "sourceInput": "2HP",
         "cancelText": "SS Sp SA (2nd)"
-      }
+      },
+      "nameZh": "蹲下重拳"
     },
     {
       "name": "Crouch LK",
-      "nameZh": "蹲下轻脚",
       "input": "2LK",
       "damage": "200",
       "startup": "4",
@@ -380,11 +379,11 @@
         "sourceName": "Crouching Light Kick",
         "sourceInput": "2LK",
         "cancelText": "SS Chn Sp SA"
-      }
+      },
+      "nameZh": "蹲下轻脚"
     },
     {
       "name": "Crouch MK",
-      "nameZh": "蹲下中脚",
       "input": "2MK",
       "damage": "500",
       "startup": "7",
@@ -417,7 +416,8 @@
         "sourceName": "Crouching Medium Kick",
         "sourceInput": "2MK",
         "cancelText": "SS Sp SA"
-      }
+      },
+      "nameZh": "蹲下中脚"
     },
     {
       "name": "Gen Assassin Kick",
@@ -450,7 +450,7 @@
         "total": 35,
         "moveType": "normal",
         "section": "",
-        "blockstun": 18,
+        "blockstun": 16,
         "sourceName": "Gen Assassin Kick",
         "sourceInput": "2HK",
         "cancelText": "SS"
@@ -458,7 +458,6 @@
     },
     {
       "name": "Jump LP",
-      "nameZh": "跳跃轻拳",
       "input": "j.LP",
       "damage": "300",
       "startup": "4",
@@ -485,11 +484,11 @@
         "sourceName": "Jumping Light Punch",
         "sourceInput": "j.LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻拳"
     },
     {
       "name": "Jump MP",
-      "nameZh": "跳跃中拳",
       "input": "j.MP",
       "damage": "300x2",
       "startup": "7",
@@ -521,11 +520,11 @@
         "sourceName": "Jumping Medium Punch",
         "sourceInput": "j.MP",
         "cancelText": "Sp SA1"
-      }
+      },
+      "nameZh": "跳跃中拳"
     },
     {
       "name": "Jump HP",
-      "nameZh": "跳跃重拳",
       "input": "j.HP",
       "damage": "800(500)",
       "startup": "9",
@@ -556,11 +555,11 @@
         "sourceName": "Jumping Heavy Punch",
         "sourceInput": "j.HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "跳跃重拳"
     },
     {
       "name": "Jump LK",
-      "nameZh": "跳跃轻脚",
       "input": "j.LK",
       "damage": "300",
       "startup": "4",
@@ -587,11 +586,11 @@
         "sourceName": "Jumping Light Kick",
         "sourceInput": "j.LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻脚"
     },
     {
       "name": "Jump MK",
-      "nameZh": "跳跃中脚",
       "input": "j.MK",
       "damage": "500",
       "startup": "6",
@@ -618,11 +617,11 @@
         "sourceName": "Jumping Medium Kick",
         "sourceInput": "j.MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃中脚"
     },
     {
       "name": "Jump HK",
-      "nameZh": "跳跃重脚",
       "input": "7HK or 9HK",
       "damage": "800",
       "startup": "8",
@@ -649,11 +648,11 @@
         "sourceName": "Jumping Heavy Kick",
         "sourceInput": "7HK or 9HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重脚"
     },
     {
       "name": "Neutral Jump HK",
-      "nameZh": "垂直跳跃重脚",
       "input": "8HK",
       "damage": "800",
       "startup": "8",
@@ -680,7 +679,8 @@
         "sourceName": "Neutral Jump Heavy Kick",
         "sourceInput": "8HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "垂直跳跃重脚"
     },
     {
       "name": "Wall Jump",
@@ -968,7 +968,6 @@
     },
     {
       "name": "Hosen Kick",
-      "nameZh": "斗气迸放",
       "input": "HPHK",
       "damage": "800",
       "startup": "26",
@@ -997,11 +996,11 @@
         "sourceName": "Hosen Kick",
         "sourceInput": "HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气迸放"
     },
     {
       "name": "Drive Parry",
-      "nameZh": "斗气招架",
       "input": "MPMK",
       "damage": "-",
       "startup": "1",
@@ -1026,11 +1025,11 @@
         "sourceName": "Drive Parry",
         "sourceInput": "MPMK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气招架"
     },
     {
       "name": "Parry Drive Rush",
-      "nameZh": "斗气冲锋",
       "input": "MPMK~66",
       "damage": "-",
       "startup": "3+8",
@@ -1054,11 +1053,11 @@
         "sourceName": "Parry Drive Rush",
         "sourceInput": "MPMK~66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋"
     },
     {
       "name": "Drive Rush Cancel",
-      "nameZh": "斗气冲锋取消",
       "input": "MPMK or 66",
       "damage": "-",
       "startup": "9",
@@ -1082,11 +1081,11 @@
         "sourceName": "Drive Rush Cancel",
         "sourceInput": "MPMK or 66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋取消"
     },
     {
       "name": "Spinning Bird Kick",
-      "nameZh": "回旋鹤脚",
       "input": "8LK",
       "damage": "333x2,334 (1000)",
       "startup": "9",
@@ -1116,11 +1115,11 @@
         "sourceName": "Spinning Bird Kick",
         "sourceInput": "8LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "回旋鹤脚"
     },
     {
       "name": "Spinning Bird Kick",
-      "nameZh": "回旋鹤脚",
       "input": "8MK",
       "damage": "200x4,400 (1200)",
       "startup": "16",
@@ -1150,11 +1149,11 @@
         "sourceName": "Spinning Bird Kick",
         "sourceInput": "8MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "回旋鹤脚"
     },
     {
       "name": "Spinning Bird Kick",
-      "nameZh": "回旋鹤脚",
       "input": "8HK",
       "damage": "180x6,320 (1400)",
       "startup": "20",
@@ -1184,11 +1183,11 @@
         "sourceName": "Spinning Bird Kick",
         "sourceInput": "8HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "回旋鹤脚"
     },
     {
       "name": "Spinning Bird Kick",
-      "nameZh": "回旋鹤脚",
       "input": "8KK",
       "damage": "100x6,200 (800)",
       "startup": "16",
@@ -1218,7 +1217,8 @@
         "sourceName": "Spinning Bird Kick",
         "sourceInput": "8KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "回旋鹤脚"
     },
     {
       "name": "Tensho Kicks",
@@ -1354,7 +1354,6 @@
     },
     {
       "name": "Neutral Taunt",
-      "nameZh": "原地挑衅",
       "input": "5PPPKKK",
       "damage": "300",
       "startup": "35",
@@ -1381,7 +1380,8 @@
         "sourceName": "Neutral Taunt",
         "sourceInput": "5PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "原地挑衅"
     },
     {
       "name": "Swift Thrust",
@@ -1523,7 +1523,6 @@
     },
     {
       "name": "Hoyoku Kick (Block)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "250x2 recoverable",
       "startup": "20",
@@ -1549,15 +1548,15 @@
         "total": 55,
         "moveType": "unique",
         "section": "",
-        "blockstun": 30,
+        "blockstun": 23,
         "sourceName": "Hoyoku Kick (Block)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Hoyoku Kick (Recovery)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "250x2 recoverable",
       "startup": "18",
@@ -1583,15 +1582,15 @@
         "total": 53,
         "moveType": "unique",
         "section": "",
-        "blockstun": 30,
+        "blockstun": 23,
         "sourceName": "Hoyoku Kick (Recovery)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Kikoken",
-      "nameZh": "气功拳",
       "input": "6LP",
       "damage": "600",
       "startup": "15",
@@ -1619,11 +1618,11 @@
         "sourceName": "Kikoken",
         "sourceInput": "6LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "气功拳"
     },
     {
       "name": "Kikoken",
-      "nameZh": "气功拳",
       "input": "6MP",
       "damage": "600",
       "startup": "12",
@@ -1651,11 +1650,11 @@
         "sourceName": "Kikoken",
         "sourceInput": "6MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "气功拳"
     },
     {
       "name": "Kikoken",
-      "nameZh": "气功拳",
       "input": "6HP",
       "damage": "600",
       "startup": "11",
@@ -1683,11 +1682,11 @@
         "sourceName": "Kikoken",
         "sourceInput": "6HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "气功拳"
     },
     {
       "name": "Kikoken",
-      "nameZh": "气功拳",
       "input": "6PP",
       "damage": "400x2",
       "startup": "11",
@@ -1716,11 +1715,11 @@
         "sourceName": "Kikoken",
         "sourceInput": "6PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "气功拳"
     },
     {
       "name": "Forward Taunt",
-      "nameZh": "前挑衅",
       "input": "6PPPKKK",
       "damage": "-",
       "startup": "273 (total)",
@@ -1744,11 +1743,11 @@
         "sourceName": "Forward Taunt",
         "sourceInput": "6PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前挑衅"
     },
     {
       "name": "Back Taunt",
-      "nameZh": "后挑衅",
       "input": "4PPPKKK",
       "damage": "-",
       "startup": "401 (total)",
@@ -1772,7 +1771,8 @@
         "sourceName": "Back Taunt",
         "sourceInput": "4PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后挑衅"
     },
     {
       "name": "Serenity Stream",
@@ -2175,7 +2175,6 @@
     },
     {
       "name": "Lightning Kick Barrage",
-      "nameZh": "百裂连腿",
       "input": "236KK~KK",
       "damage": "700(560)",
       "startup": "11",
@@ -2205,7 +2204,8 @@
         "sourceName": "Lightning Kick Barrage",
         "sourceInput": "236KK~KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "百裂连腿"
     },
     {
       "name": "Aerial Hundred Lightning Kicks",
@@ -2230,8 +2230,8 @@
         "total": 27,
         "moveType": "special",
         "section": "",
-        "blockstun": 13,
-        "hitstun": 16,
+        "blockstun": 10,
+        "hitstun": 13,
         "sourceName": "Aerial Hundred Lightning Kicks",
         "sourceInput": "j.236LK",
         "cancelText": "-"
@@ -2260,8 +2260,8 @@
         "total": 29,
         "moveType": "special",
         "section": "",
-        "blockstun": 12,
-        "hitstun": 16,
+        "blockstun": 9,
+        "hitstun": 13,
         "sourceName": "Aerial Hundred Lightning Kicks",
         "sourceInput": "j.236MK",
         "cancelText": "-"
@@ -2290,8 +2290,8 @@
         "total": 31,
         "moveType": "special",
         "section": "",
-        "blockstun": 11,
-        "hitstun": 15,
+        "blockstun": 8,
+        "hitstun": 12,
         "sourceName": "Aerial Hundred Lightning Kicks",
         "sourceInput": "j.236HK",
         "cancelText": "-"
@@ -2324,7 +2324,7 @@
         "total": 12,
         "moveType": "special",
         "section": "",
-        "blockstun": -19,
+        "blockstun": -21,
         "sourceName": "Aerial Hundred Lightning Kicks",
         "sourceInput": "j.236KK",
         "cancelText": "-"
@@ -2422,8 +2422,8 @@
         "total": 52,
         "moveType": "special",
         "section": "",
-        "blockstun": 20,
-        "hitstun": 27,
+        "blockstun": 18,
+        "hitstun": 25,
         "sourceName": "Hazanshu",
         "sourceInput": "214HK",
         "cancelText": "SA3"
@@ -2635,5 +2635,5 @@
       }
     }
   ],
-  "lastUpdated": "2026-01-30"
+  "lastUpdated": "2026-02-06"
 }

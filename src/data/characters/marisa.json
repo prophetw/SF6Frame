@@ -14,7 +14,6 @@
   "moves": [
     {
       "name": "Stand LP",
-      "nameZh": "站立轻拳",
       "input": "5LP",
       "damage": "400",
       "startup": "6",
@@ -45,11 +44,11 @@
         "sourceName": "Standing Light Punch",
         "sourceInput": "5LP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "站立轻拳"
     },
     {
       "name": "Stand MP",
-      "nameZh": "站立中拳",
       "input": "5MP",
       "damage": "700",
       "startup": "7",
@@ -75,16 +74,16 @@
         "total": 27,
         "moveType": "normal",
         "section": "",
-        "blockstun": 20,
-        "hitstun": 23,
+        "blockstun": 18,
+        "hitstun": 21,
         "sourceName": "Standing Medium Punch",
         "sourceInput": "5MP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "站立中拳"
     },
     {
       "name": "Stand HP",
-      "nameZh": "站立重拳",
       "input": "5HP",
       "damage": "1000",
       "startup": "12",
@@ -115,7 +114,8 @@
         "sourceName": "Standing Heavy Punch",
         "sourceInput": "5HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "站立重拳"
     },
     {
       "name": "Marisa Style (HP)",
@@ -144,8 +144,8 @@
         "total": 46,
         "moveType": "normal",
         "section": "",
-        "blockstun": 28,
-        "hitstun": 31,
+        "blockstun": 27,
+        "hitstun": 30,
         "sourceName": "Marisa Style (HP)",
         "sourceInput": "5",
         "cancelText": "TC"
@@ -153,7 +153,6 @@
     },
     {
       "name": "Stand LK",
-      "nameZh": "站立轻脚",
       "input": "5LK",
       "damage": "400",
       "startup": "6",
@@ -185,11 +184,11 @@
         "sourceName": "Standing Light Kick",
         "sourceInput": "5LK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "站立轻脚"
     },
     {
       "name": "Stand MK",
-      "nameZh": "站立中脚",
       "input": "5MK",
       "damage": "800",
       "startup": "11",
@@ -216,11 +215,11 @@
         "sourceName": "Standing Medium Kick",
         "sourceInput": "5MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立中脚"
     },
     {
       "name": "Stand HK",
-      "nameZh": "站立重脚",
       "input": "5HK",
       "damage": "1000",
       "startup": "15",
@@ -247,7 +246,8 @@
         "sourceName": "Standing Heavy Kick",
         "sourceInput": "5HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立重脚"
     },
     {
       "name": "Marisa Style (HK)",
@@ -284,7 +284,6 @@
     },
     {
       "name": "Crouch LP",
-      "nameZh": "蹲下轻拳",
       "input": "2LP",
       "damage": "300",
       "startup": "4",
@@ -317,11 +316,11 @@
         "sourceName": "Crouching Light Punch",
         "sourceInput": "2LP",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "蹲下轻拳"
     },
     {
       "name": "Crouch MP",
-      "nameZh": "蹲下中拳",
       "input": "2MP",
       "damage": "700",
       "startup": "8",
@@ -353,11 +352,11 @@
         "sourceName": "Crouching Medium Punch",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "蹲下中拳"
     },
     {
       "name": "Crouch HP",
-      "nameZh": "蹲下重拳",
       "input": "2HP",
       "damage": "900",
       "startup": "9",
@@ -387,7 +386,8 @@
         "sourceName": "Crouching Heavy Punch",
         "sourceInput": "2HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蹲下重拳"
     },
     {
       "name": "Crouch HP (Hold)",
@@ -428,7 +428,6 @@
     },
     {
       "name": "Crouch LK",
-      "nameZh": "蹲下轻脚",
       "input": "2LK",
       "damage": "300",
       "startup": "5",
@@ -459,11 +458,11 @@
         "sourceName": "Crouching Light Kick",
         "sourceInput": "2LK",
         "cancelText": "Chn"
-      }
+      },
+      "nameZh": "蹲下轻脚"
     },
     {
       "name": "Crouch MK",
-      "nameZh": "蹲下中脚",
       "input": "2MK",
       "damage": "600",
       "startup": "9",
@@ -490,7 +489,8 @@
         "sourceName": "Crouching Medium Kick",
         "sourceInput": "2MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蹲下中脚"
     },
     {
       "name": "Gaia Bash",
@@ -552,7 +552,7 @@
         "total": 45,
         "moveType": "normal",
         "section": "",
-        "blockstun": 23,
+        "blockstun": 20,
         "sourceName": "Gaia Bash (Hold)",
         "sourceInput": "2",
         "cancelText": "-"
@@ -560,7 +560,6 @@
     },
     {
       "name": "Jump LP",
-      "nameZh": "跳跃轻拳",
       "input": "j.LP",
       "damage": "300",
       "startup": "4",
@@ -587,11 +586,11 @@
         "sourceName": "Jumping Light Punch",
         "sourceInput": "j.LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻拳"
     },
     {
       "name": "Jump MP",
-      "nameZh": "跳跃中拳",
       "input": "j.MP",
       "damage": "700",
       "startup": "7",
@@ -622,11 +621,11 @@
         "sourceName": "Jumping Medium Punch",
         "sourceInput": "j.MP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "跳跃中拳"
     },
     {
       "name": "Jump HP",
-      "nameZh": "跳跃重拳",
       "input": "j.HP",
       "damage": "800",
       "startup": "10",
@@ -653,7 +652,8 @@
         "sourceName": "Jumping Heavy Punch",
         "sourceInput": "j.HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重拳"
     },
     {
       "name": "Marisa Style (j.HP)",
@@ -690,7 +690,6 @@
     },
     {
       "name": "Jump LK",
-      "nameZh": "跳跃轻脚",
       "input": "j.LK",
       "damage": "300",
       "startup": "5",
@@ -717,11 +716,11 @@
         "sourceName": "Jumping Light Kick",
         "sourceInput": "j.LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻脚"
     },
     {
       "name": "Jump MK",
-      "nameZh": "跳跃中脚",
       "input": "j.MK",
       "damage": "500",
       "startup": "8",
@@ -748,11 +747,11 @@
         "sourceName": "Jumping Medium Kick",
         "sourceInput": "j.MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃中脚"
     },
     {
       "name": "Jump HK",
-      "nameZh": "跳跃重脚",
       "input": "j.HK",
       "damage": "800",
       "startup": "10",
@@ -779,7 +778,8 @@
         "sourceName": "Jumping Heavy Kick",
         "sourceInput": "j.HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重脚"
     },
     {
       "name": "Marisa Style (j.HK)",
@@ -842,8 +842,8 @@
         "total": 45,
         "moveType": "normal",
         "section": "",
-        "blockstun": 30,
-        "hitstun": 39,
+        "blockstun": 25,
+        "hitstun": 34,
         "sourceName": "Magna Bunker (Hold)",
         "sourceInput": "4",
         "cancelText": "Sp SA"
@@ -1214,7 +1214,6 @@
     },
     {
       "name": "Secutor",
-      "nameZh": "斗气迸放",
       "input": "HPHK",
       "damage": "800",
       "startup": "26",
@@ -1243,11 +1242,11 @@
         "sourceName": "Secutor",
         "sourceInput": "HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气迸放"
     },
     {
       "name": "Drive Parry",
-      "nameZh": "斗气招架",
       "input": "MPMK",
       "damage": "-",
       "startup": "1",
@@ -1272,11 +1271,11 @@
         "sourceName": "Drive Parry",
         "sourceInput": "MPMK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气招架"
     },
     {
       "name": "Parry Drive Rush",
-      "nameZh": "斗气冲锋",
       "input": "MPMK~66",
       "damage": "-",
       "startup": "3+8",
@@ -1300,11 +1299,11 @@
         "sourceName": "Parry Drive Rush",
         "sourceInput": "MPMK~66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋"
     },
     {
       "name": "Drive Rush Cancel",
-      "nameZh": "斗气冲锋取消",
       "input": "MPMK or 66",
       "damage": "-",
       "startup": "9",
@@ -1328,11 +1327,11 @@
         "sourceName": "Drive Rush Cancel",
         "sourceInput": "MPMK or 66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋取消"
     },
     {
       "name": "Neutral Taunt",
-      "nameZh": "原地挑衅",
       "input": "5PPPKKK",
       "damage": "-",
       "startup": "242 (total)",
@@ -1356,7 +1355,8 @@
         "sourceName": "Neutral Taunt",
         "sourceInput": "5PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "原地挑衅"
     },
     {
       "name": "Novacule 1",
@@ -1420,8 +1420,8 @@
         "total": 33,
         "moveType": "unique",
         "section": "",
-        "blockstun": 25,
-        "hitstun": 29,
+        "blockstun": 22,
+        "hitstun": 26,
         "sourceName": "Magna Bunker",
         "sourceInput": "4HP",
         "cancelText": "Sp SA"
@@ -1600,7 +1600,6 @@
     },
     {
       "name": "Love Tap (Block)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "20",
@@ -1626,15 +1625,15 @@
         "total": 53,
         "moveType": "unique",
         "section": "",
-        "blockstun": 28,
+        "blockstun": 23,
         "sourceName": "Love Tap (Block)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Love Tap (Recovery)",
-      "nameZh": "斗气反攻",
       "input": "6HPHK",
       "damage": "500 recoverable",
       "startup": "18",
@@ -1660,15 +1659,15 @@
         "total": 51,
         "moveType": "unique",
         "section": "",
-        "blockstun": 28,
+        "blockstun": 23,
         "sourceName": "Love Tap (Recovery)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Forward Taunt",
-      "nameZh": "前挑衅",
       "input": "6PPPKKK",
       "damage": "-",
       "startup": "85",
@@ -1692,11 +1691,11 @@
         "sourceName": "Forward Taunt",
         "sourceInput": "6PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前挑衅"
     },
     {
       "name": "Back Taunt",
-      "nameZh": "后挑衅",
       "input": "4PPPKKK",
       "damage": "-",
       "startup": "184 (total)",
@@ -1720,7 +1719,8 @@
         "sourceName": "Back Taunt",
         "sourceInput": "4PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后挑衅"
     },
     {
       "name": "Gladius",
@@ -2590,8 +2590,8 @@
         "total": 35,
         "moveType": "special",
         "section": "",
-        "blockstun": 25,
-        "hitstun": 29,
+        "blockstun": 23,
+        "hitstun": 27,
         "sourceName": "Tonitrus 1",
         "sourceInput": "214K~P",
         "cancelText": "TC"
@@ -2894,5 +2894,5 @@
       }
     }
   ],
-  "lastUpdated": "2026-01-30"
+  "lastUpdated": "2026-02-06"
 }
