@@ -110,12 +110,30 @@ const filteredMoves1 = computed(() => filterMoves(search1.value));
 const filteredMoves2 = computed(() => filterMoves(search2.value, move1.value, calculationMode.value));
 
 function selectMove1(move: Move) {
+  const oldMove2 = move2.value; // Store current move2
   move1.value = move;
   search1.value = getMoveDisplayName(move);
   showDropdown1.value = false;
   cancelFrame.value = 1; // Reset cancel frame
-  move2.value = null; // Reset move 2 when move 1 changes
-  search2.value = '';
+  
+  // Determine if we should clear move2
+  let keepMove2 = false;
+  if (oldMove2) {
+    if (calculationMode.value === 'link') {
+      // Keep for Link mode (user manually selected)
+      keepMove2 = true;
+    } else if (calculationMode.value === 'cancel') {
+      // Keep if valid cancel
+      if (isCancelValid(move, oldMove2)) {
+        keepMove2 = true;
+      }
+    }
+  }
+
+  if (!keepMove2) {
+    move2.value = null; 
+    search2.value = '';
+  }
 }
 
 function selectMove2(move: Move) {
