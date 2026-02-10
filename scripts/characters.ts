@@ -35,4 +35,5 @@ export const CHARACTERS: CharacterConfig[] = [
     { id: 'mai', name: 'Mai', nameJp: '不知火舞', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/Mai' },
     { id: 'elena', name: 'Elena', nameJp: 'エレナ', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/Elena' },
     { id: 'c-viper', name: 'C. Viper', nameJp: 'C. ヴァイパー', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/C.Viper' },
+    { id: 'sagat', name: 'Sagat', nameJp: 'サガト', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/Sagat' },
 ];
