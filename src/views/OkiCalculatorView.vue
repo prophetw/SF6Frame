@@ -3,6 +3,7 @@ import { ref, computed } from 'vue';
 import { SF6_CHARACTERS, type Move, type FrameData, type CharacterStats } from '../types';
 import { calculateTradeAdvantage, parseHitstun, getEffectiveHitstun } from '../utils/trade';
 import { buildOkiResultKeyBase, getUniqueOkiResultKey } from '../utils/okiResultKey';
+import { calculateMoveTotalFrames as calculateUnifiedMoveTotalFrames } from '../utils/frameTotals';
 import { getMoveDisplayName } from '../i18n';
 
 const attackerCharId = ref<string>('');
@@ -495,29 +496,7 @@ function parseTotalRecoveryFrames(recovery: string | undefined): number {
 }
 
 function getMoveTotalFrames(move: Move): number {
-  // Use raw total if available (most accurate)
-  if (move.raw && move.raw.total) {
-    // raw.total can be number or string like "22(24)"
-    const rawTotal = move.raw.total;
-    if (typeof rawTotal === 'number') return rawTotal;
-    if (typeof rawTotal === 'string') {
-        const whiffMatch = rawTotal.match(/\((\d+)\)/);
-        if (whiffMatch) {
-             return parseInt(whiffMatch[1] || '0');
-        }
-        // Fallback for string without parenthesis (e.g., "40")
-        const parsed = parseInt(rawTotal);
-        if (!isNaN(parsed)) return parsed;
-    }
-  }
-
-  const startup = parseInt(move.startup) || 0;
-  const active = parseActiveWindowFrames(move.active);
-  const recovery = parseTotalRecoveryFrames(move.recovery);
-  // Startup in data is "First Active Frame" (e.g. 6 means hits on frame 6).
-  // So actual startup duration is startup - 1.
-  const startupFrames = Math.max(0, startup - 1);
-  return startupFrames + active + recovery;
+  return calculateUnifiedMoveTotalFrames(move) ?? 0;
 }
 
 function getActionTotalFrames(action: ComboAction): number {

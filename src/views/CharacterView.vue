@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { SF6_CHARACTERS, type FrameData, type MoveCategory } from '../types';
 import MoveTable from '../components/MoveTable.vue';
 import { calculateMoveStats } from '../utils/gapCalculator';
+import { calculateMoveTotalFrames } from '../utils/frameTotals';
 import { getMoveDisplayName } from '../i18n';
 
 const route = useRoute();
@@ -75,23 +76,10 @@ const filteredMoves = computed(() => {
          valA = calculateMoveStats(a).blockstun;
          valB = calculateMoveStats(b).blockstun;
       } else if (sortKey.value === 'total') {
-         if ((a as any).raw?.total !== undefined) {
-            valA = parseFrameValue((a as any).raw.total);
-         } else {
-            const s = parseFrameValue(a.startup);
-            const ac = parseFrameValue(a.active);
-            const r = parseFrameValue(a.recovery);
-            valA = (s !== -999 && ac !== -999 && r !== -999) ? s + ac + r - 1 : -999;
-         }
-         
-         if ((b as any).raw?.total !== undefined) {
-            valB = parseFrameValue((b as any).raw.total);
-         } else {
-            const s = parseFrameValue(b.startup);
-            const ac = parseFrameValue(b.active);
-            const r = parseFrameValue(b.recovery);
-            valB = (s !== -999 && ac !== -999 && r !== -999) ? s + ac + r - 1 : -999;
-         }
+         const totalA = calculateMoveTotalFrames(a);
+         const totalB = calculateMoveTotalFrames(b);
+         valA = totalA === null ? -999 : totalA;
+         valB = totalB === null ? -999 : totalB;
       } else {
          valA = parseFrameValue((a as any)[sortKey.value]);
          valB = parseFrameValue((b as any)[sortKey.value]);

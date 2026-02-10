@@ -111,7 +111,7 @@ function normalizeFrameText(value: string | undefined | null): string {
     if (value === undefined || value === null) return '-';
     let text = normalizeWhitespace(String(value));
     text = stripFootnotes(text);
-    text = text.replace(/[−–—]/g, '-').replace(/[＋]/g, '+');
+    text = text.replace(/[−–—]/g, '-').replace(/[＋]/g, '+').replace(/[×✕✖]/g, 'x');
     if (!text || text.toLowerCase() === 'n/a' || text === '—' || text === '--') return '-';
     return text;
 }
@@ -145,27 +145,33 @@ function parseFrameNumber(value: string): number | null {
 function evaluateFrameString(value: string | undefined | null): number | null {
     const cleaned = normalizeFrameText(value);
     if (!cleaned || cleaned === '-') return null;
-    const normalized = cleaned.replace(/x/gi, '*');
-    if (normalized.includes('*')) {
-        let sum = 0;
-        let found = false;
-        for (const part of normalized.split('*')) {
-            const num = parseInt(part, 10);
-            if (!isNaN(num)) {
-                sum += num;
-                found = true;
-            }
-        }
-        return found ? sum : null;
+
+    const totalMatch = cleaned.match(/(\d+)\s*total/i);
+    if (totalMatch && totalMatch[1]) return parseInt(totalMatch[1], 10);
+
+    let normalized = cleaned
+        .replace(/(\d+)\s*~\s*(\d+)/g, '$1')
+        .replace(/(\d+)\s*~\s*/g, '$1');
+
+    const multPattern = /(\d+)\s*[x*]\s*(\d+)/i;
+    while (multPattern.test(normalized)) {
+        normalized = normalized.replace(multPattern, (_, a: string, b: string) => {
+            return String(parseInt(a, 10) * parseInt(b, 10));
+        });
     }
-    const match = normalized.match(/-?\d+/);
-    return match ? parseInt(match[0], 10) : null;
+
+    const numbers = normalized.match(/\d+/g);
+    if (!numbers || numbers.length === 0) return null;
+    return numbers.reduce((sum, n) => sum + parseInt(n, 10), 0);
 }
 
 function parseRecoveryFrames(value: string | undefined | null): number | null {
     if (!value) return null;
-    const whiffMatch = String(value).match(/\((\d+)\)/);
-    if (whiffMatch) return parseInt(whiffMatch[1], 10);
+    const whiffMatches = Array.from(String(value).matchAll(/\((\d+)\)/g));
+    if (whiffMatches.length > 0) {
+        const last = whiffMatches[whiffMatches.length - 1];
+        if (last && last[1]) return parseInt(last[1], 10);
+    }
     return evaluateFrameString(value);
 }
 

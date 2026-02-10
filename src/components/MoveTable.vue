@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Move, CharacterStats } from '../types';
 import { calculateMoveStats } from '../utils/gapCalculator';
+import { calculateMoveTotalFrames } from '../utils/frameTotals';
 import { getMoveDisplayName } from '../i18n';
 
 const props = defineProps<{
@@ -53,20 +54,8 @@ function getMoveStats(move: Move) {
 }
 
 function getTotalFrames(move: Move): string {
-  if (move.raw && move.raw.total !== undefined) {
-    return String(move.raw.total);
-  }
-  
-  // Calculate if not available in raw
-  const startup = parseInt(move.startup);
-  const active = parseInt(move.active);
-  const recovery = parseInt(move.recovery);
-  
-  if (!isNaN(startup) && !isNaN(active) && !isNaN(recovery)) {
-    return String(startup + active + recovery - 1);
-  }
-  
-  return '-';
+  const total = calculateMoveTotalFrames(move);
+  return total !== null ? String(total) : '-';
 }
 </script>
 
