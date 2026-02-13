@@ -87,13 +87,13 @@ function getTotalFrames(move: Move): string {
           <tr>
             <th class="col-name" @click="handleSort('name')">招式 <span class="sort-icon">{{ getSortIcon('name') }}</span></th>
             <th class="col-input" @click="handleSort('input')">指令 <span class="sort-icon">{{ getSortIcon('input') }}</span></th>
-            <th class="col-damage" @click="handleSort('damage')">伤害 <span class="sort-icon">{{ getSortIcon('damage') }}</span></th>
             <th class="col-startup" @click="handleSort('startup')">发生 <span class="sort-icon">{{ getSortIcon('startup') }}</span></th>
             <th class="col-active" @click="handleSort('active')">持续 <span class="sort-icon">{{ getSortIcon('active') }}</span></th>
             <th class="col-recovery" @click="handleSort('recovery')">硬直 <span class="sort-icon">{{ getSortIcon('recovery') }}</span></th>
             <th class="col-total" @click="handleSort('total')">总帧数 <span class="sort-icon">{{ getSortIcon('total') }}</span></th>
             <th class="col-onblock" @click="handleSort('onBlock')">防御 <span class="sort-icon">{{ getSortIcon('onBlock') }}</span></th>
             <th class="col-onhit" @click="handleSort('onHit')">命中 <span class="sort-icon">{{ getSortIcon('onHit') }}</span></th>
+            <th class="col-damage" @click="handleSort('damage')">伤害 <span class="sort-icon">{{ getSortIcon('damage') }}</span></th>
             <th class="col-blockstun" @click="handleSort('blockstun')">防硬 <span class="sort-icon">{{ getSortIcon('blockstun') }}</span></th>
             <th class="col-hitstun" @click="handleSort('hitstun')">命硬 <span class="sort-icon">{{ getSortIcon('hitstun') }}</span></th>
             <th class="col-cancels">取消</th>
@@ -112,25 +112,27 @@ function getTotalFrames(move: Move): string {
             <td class="col-input" data-label="指令">
               <code class="input-code">{{ move.input }}</code>
             </td>
-            <td class="col-damage" data-label="伤害">{{ move.damage }}</td>
+            <!-- Frame group 1: core frames -->
             <td class="col-startup" data-label="发生">{{ move.startup }}</td>
             <td class="col-active" data-label="持续">{{ move.active }}</td>
             <td class="col-recovery" data-label="硬直">{{ move.recovery }}</td>
             <td class="col-total" data-label="总帧数">{{ getTotalFrames(move) }}</td>
-            <td class="col-onblock" data-label="防御差" :class="getFrameClass(move.onBlock)">
+            <!-- Frame group 2: advantage -->
+            <td class="col-onblock" data-label="防御" :class="getFrameClass(move.onBlock)">
               {{ formatFrameValue(move.onBlock) }}
             </td>
-            <td class="col-onhit" data-label="命中差" :class="getFrameClass(move.onHit)">
+            <td class="col-onhit" data-label="命中" :class="getFrameClass(move.onHit)">
               {{ formatFrameValue(move.onHit) }}
             </td>
-            <!-- Derived Stats -->
-            <td class="col-blockstun" data-label="防御硬直">
+            <!-- Frame group 3: damage & stun -->
+            <td class="col-damage" data-label="伤害">{{ move.damage }}</td>
+            <td class="col-blockstun" data-label="防硬">
               {{ getMoveStats(move).blockstun }}
             </td>
-             <td class="col-hitstun" data-label="命中硬直">
+            <td class="col-hitstun" data-label="命硬">
               {{ getMoveStats(move).hitstun }}
             </td>
-
+            <!-- Cancels -->
             <td class="col-cancels" data-label="取消">
               <span v-if="move.cancels && move.cancels.length > 0" class="cancel-tags">
                 <span 
@@ -314,12 +316,18 @@ function getTotalFrames(move: Move): string {
   color: var(--color-text-muted);
 }
 
-/* Mobile responsive - card layout */
+/* Mobile responsive - compact card layout */
 @media (max-width: 768px) {
   .stats-bar {
     flex-wrap: wrap;
-    gap: var(--space-md);
+    gap: var(--space-sm);
     padding: var(--space-sm) var(--space-md);
+  }
+  
+  .move-table-wrapper {
+    border: none;
+    border-radius: 0;
+    overflow: visible;
   }
   
   .move-table {
@@ -331,43 +339,143 @@ function getTotalFrames(move: Move): string {
   }
   
   .move-table tbody {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
   }
   
+  /* Card grid: 20 micro-columns so row1 (4 items × span 5) and row2 (5 items × span 4) align */
   .move-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid !important;
+    grid-template-columns: repeat(20, 1fr);
     gap: var(--space-xs);
     padding: var(--space-md);
-    border-bottom: 1px solid var(--color-border);
+    border: 1px solid var(--color-border);
     background: var(--color-bg-card);
-    margin-bottom: var(--space-sm);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
+    align-items: start;
+  }
+  
+  .move-row:hover {
+    background: var(--color-bg-card);
   }
   
   .move-row td {
     border: none;
-    padding: var(--space-xs);
+    padding: 0;
   }
   
+  /* Reset default ::before */
   .move-row td::before {
-    content: attr(data-label);
-    font-size: var(--font-size-xs);
+    content: none;
+  }
+  
+  /* === Row 0: Name (full width) === */
+  .move-row .col-name {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+  
+  .move-row .col-name .move-name-wrap {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  
+  .move-row .col-name .move-name {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+  }
+  
+  /* === Row 1: Input (full width) === */
+  .move-row .col-input {
+    grid-column: 1 / -1;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .move-row .col-input .input-code {
+    font-size: var(--font-size-sm);
+  }
+  
+  /* === Common frame cell styling === */
+  .move-row .col-startup,
+  .move-row .col-active,
+  .move-row .col-recovery,
+  .move-row .col-total,
+  .move-row .col-onblock,
+  .move-row .col-onhit,
+  .move-row .col-damage,
+  .move-row .col-blockstun,
+  .move-row .col-hitstun {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 6px 2px !important;
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    line-height: 1.2;
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-sm);
+    min-width: 0;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Show data-label above value */
+  .move-row .col-startup::before,
+  .move-row .col-active::before,
+  .move-row .col-recovery::before,
+  .move-row .col-total::before,
+  .move-row .col-onblock::before,
+  .move-row .col-onhit::before,
+  .move-row .col-damage::before,
+  .move-row .col-blockstun::before,
+  .move-row .col-hitstun::before {
+    content: attr(data-label) !important;
+    display: block !important;
+    font-family: var(--font-family);
+    font-size: 10px;
+    font-weight: 400;
     color: var(--color-text-muted);
-    display: block;
-    margin-bottom: 2px;
+    letter-spacing: 0.3px;
   }
   
-  .col-name {
-    grid-column: 1 / -1;
+  /* === Row 2: Core frames — 4 items, each span 5 of 20 cols === */
+  .move-row .col-startup  { grid-column: span 5; }
+  .move-row .col-active   { grid-column: span 5; }
+  .move-row .col-recovery { grid-column: span 5; }
+  .move-row .col-total    { grid-column: span 5; }
+  
+  /* === Row 3: Advantage + Damage/Stun — 5 items, each span 4 of 20 cols === */
+  .move-row .col-onblock  { grid-column: span 4; }
+  .move-row .col-onhit    { grid-column: span 4; }
+  .move-row .col-damage   { grid-column: span 4; }
+  .move-row .col-blockstun { grid-column: span 4; }
+  .move-row .col-hitstun  { grid-column: span 4; }
+  
+  /* Advantage highlight pills */
+  .move-row .col-onblock.frame-positive,
+  .move-row .col-onhit.frame-positive {
+    background: rgba(63, 185, 80, 0.15);
   }
   
-  .col-input {
-    grid-column: 1 / -1;
+  .move-row .col-onblock.frame-negative,
+  .move-row .col-onhit.frame-negative {
+    background: rgba(248, 81, 73, 0.15);
   }
   
-  .col-cancels {
+  /* === Row 4: Cancels (full width) === */
+  .move-row .col-cancels {
     grid-column: 1 / -1;
+    padding-top: var(--space-xs);
+  }
+  
+  .move-row .col-cancels::before {
+    content: none;
   }
 }
 </style>
