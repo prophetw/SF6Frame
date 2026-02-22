@@ -21,6 +21,19 @@ const move1 = ref<Move | null>(null);
 const move2 = ref<Move | null>(null);
 const followUpMove = ref<Move | null>(null);
 
+type CustomStepType = 'move' | 'custom';
+type StepTransitionMode = 'link' | 'cancel';
+
+interface ComboStep {
+  id: number;
+  type: CustomStepType;
+  transitionMode: StepTransitionMode;
+  move: Move | null;
+  customName: string;
+  customStartup: number;
+  customAdvantage: number;
+}
+
 // Calculation Mode
 const calculationMode = ref<'link' | 'cancel'>('link');
 const calculationType = ref<'block' | 'hit'>('block'); // New: Block (Gap) vs Hit (Combo)
@@ -35,6 +48,17 @@ const search1 = ref('');
 const search2 = ref('');
 const showDropdown1 = ref(false);
 const showDropdown2 = ref(false);
+const sequenceSearch = ref('');
+const showSequenceDropdown = ref(false);
+const stepIdCounter = ref(1);
+
+const comboSteps = ref<ComboStep[]>([]);
+const newStepType = ref<CustomStepType>('move');
+const newStepTransitionMode = ref<StepTransitionMode>('link');
+const newStepMove = ref<Move | null>(null);
+const newStepCustomName = ref('自定义动作');
+const newStepCustomStartup = ref(10);
+const newStepCustomAdvantage = ref(0);
 
 // Character Data Handling
 const characterModules = import.meta.glob('../data/characters/*.json');
@@ -276,6 +300,107 @@ const validFollowUps = computed(() => {
 function selectFollowUp(move: Move) {
     followUpMove.value = move;
 }
+
+function createCustomMove(step: ComboStep): Move {
+  return {
+    name: step.customName || `自定义${step.id}`,
+    input: step.customName || `自定义${step.id}`,
+    damage: '0',
+    startup: String(step.customStartup),
+    active: '1',
+    recovery: '0',
+    onBlock: String(step.customAdvantage),
+    onHit: String(step.customAdvantage),
+    category: 'unique'
+  };
+}
+
+function getStepMove(step: ComboStep): Move | null {
+  if (step.type === 'move') return step.move;
+  return createCustomMove(step);
+}
+
+const filteredSequenceMoves = computed(() => filterMoves(sequenceSearch.value));
+
+function addComboStep() {
+  const type = newStepType.value;
+  if (type === 'move' && !newStepMove.value) return;
+
+  const step: ComboStep = {
+    id: stepIdCounter.value++,
+    type,
+    transitionMode: newStepTransitionMode.value,
+    move: type === 'move' ? newStepMove.value : null,
+    customName: newStepCustomName.value.trim() || `自定义${stepIdCounter.value}`,
+    customStartup: Math.max(1, Math.floor(newStepCustomStartup.value || 1)),
+    customAdvantage: Math.floor(newStepCustomAdvantage.value || 0)
+  };
+
+  comboSteps.value.push(step);
+  sequenceSearch.value = '';
+  newStepMove.value = null;
+  showSequenceDropdown.value = false;
+}
+
+function removeComboStep(stepId: number) {
+  comboSteps.value = comboSteps.value.filter(step => step.id !== stepId);
+}
+
+function selectSequenceMove(move: Move) {
+  newStepMove.value = move;
+  sequenceSearch.value = getMoveDisplayName(move);
+  showSequenceDropdown.value = false;
+}
+
+function handleSequenceBlur() {
+  setTimeout(() => {
+    showSequenceDropdown.value = false;
+  }, 200);
+}
+
+const comboStepCalculations = computed(() => {
+  if (comboSteps.value.length < 2) return [];
+
+  const rows: Array<{
+    key: string;
+    fromLabel: string;
+    toLabel: string;
+    transitionMode: StepTransitionMode;
+    result: CalculationResult | null;
+    nextAdvantage: number;
+  }> = [];
+
+  for (let i = 1; i < comboSteps.value.length; i++) {
+    const prev = comboSteps.value[i - 1];
+    const curr = comboSteps.value[i];
+    if (!prev || !curr) continue;
+
+    const prevMove = getStepMove(prev);
+    const currMove = getStepMove(curr);
+
+    if (!prevMove || !currMove) continue;
+
+    rows.push({
+      key: `${prev.id}-${curr.id}`,
+      fromLabel: getMoveDisplayName(prevMove),
+      toLabel: getMoveDisplayName(currMove),
+      transitionMode: curr.transitionMode,
+      result: calculateGap({
+        move1: prevMove,
+        move2: currMove,
+        type: 'hit',
+        mode: curr.transitionMode,
+        hitState: 'normal',
+        cancelFrame: 1,
+        isOpponentBurnout: false,
+        isDriveRush: false
+      }),
+      nextAdvantage: parseFrameValue(currMove.onHit)
+    });
+  }
+
+  return rows;
+});
 </script>
 
 <template>
@@ -604,6 +729,90 @@ function selectFollowUp(move: Move) {
     <section v-else-if="move1 && move2" class="error-section">
       <p class="error-text">{{ calculationResult?.error || '无法计算' }}</p>
     </section>
+
+    <section v-if="!loading" class="combo-builder-section card">
+      <div class="combo-builder-header">
+        <h2>自定义连段帧优势</h2>
+        <p>可持续追加动作，逐段计算每一步的窗口与下一步可用帧差。</p>
+      </div>
+
+      <div class="combo-builder-form">
+        <div class="form-group">
+          <label>类型</label>
+          <select v-model="newStepType" class="select-input">
+            <option value="move">招数</option>
+            <option value="custom">自定义</option>
+          </select>
+        </div>
+
+        <div class="form-group" v-if="comboSteps.length > 0">
+          <label>连接方式</label>
+          <select v-model="newStepTransitionMode" class="select-input">
+            <option value="link">普通 (Link)</option>
+            <option value="cancel">连招取消 (Cancel)</option>
+          </select>
+        </div>
+
+        <div v-if="newStepType === 'move'" class="move-selector">
+          <input
+            v-model="sequenceSearch"
+            type="text"
+            placeholder="搜索要添加的招式"
+            class="search-input"
+            @focus="showSequenceDropdown = true"
+            @blur="handleSequenceBlur"
+          />
+          <div v-if="showSequenceDropdown" class="dropdown-list">
+            <div
+              v-for="(move, index) in filteredSequenceMoves"
+              :key="`combo-builder-${move.name}-${move.input}-${index}`"
+              class="dropdown-item"
+              @mousedown="selectSequenceMove(move)"
+            >
+              <span class="move-name">{{ getMoveDisplayName(move) }}</span>
+              <span class="move-input">{{ move.input }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div v-else class="custom-step-fields">
+          <input v-model="newStepCustomName" type="text" class="search-input" placeholder="自定义动作名称" />
+          <input v-model.number="newStepCustomStartup" type="number" min="1" class="search-input" placeholder="发生帧数" />
+          <input v-model.number="newStepCustomAdvantage" type="number" class="search-input" placeholder="命中帧差" />
+        </div>
+
+        <button class="type-btn add-step-btn" @click="addComboStep">添加</button>
+      </div>
+
+      <div v-if="comboSteps.length > 0" class="combo-steps-list">
+        <div v-for="(step, index) in comboSteps" :key="step.id" class="combo-step-row">
+          <div class="combo-step-title">
+            <span class="step-index">{{ index + 1 }}.</span>
+            <span>
+              {{ step.type === 'move' ? (step.move ? getMoveDisplayName(step.move) : '-') : step.customName }}
+            </span>
+            <span class="move-input" v-if="step.type === 'move' && step.move">{{ step.move.input }}</span>
+            <span class="move-input" v-else>Startup {{ step.customStartup }}F / OnHit {{ step.customAdvantage >= 0 ? '+' : '' }}{{ step.customAdvantage }}</span>
+          </div>
+          <button class="remove-step-btn" @click="removeComboStep(step.id)">移除</button>
+        </div>
+      </div>
+
+      <div v-if="comboStepCalculations.length > 0" class="combo-calc-list">
+        <div v-for="row in comboStepCalculations" :key="row.key" class="combo-calc-row">
+          <div class="combo-calc-main">
+            <span>{{ row.fromLabel }} → {{ row.toLabel }}</span>
+            <span class="mode-badge">{{ row.transitionMode === 'link' ? 'Link' : 'Cancel' }}</span>
+          </div>
+          <div class="combo-calc-result" :class="row.result?.gap !== undefined && row.result.gap >= 0 ? 'plus' : 'minus'">
+            {{ row.result?.displayLabel || '结果' }}：{{ row.result?.displayValue || '-' }}
+          </div>
+          <div class="combo-calc-next">
+            当前招命中后帧差：{{ row.nextAdvantage >= 0 ? '+' : '' }}{{ row.nextAdvantage }}
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -820,6 +1029,84 @@ function selectFollowUp(move: Move) {
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
   font-size: 1rem;
+}
+
+
+.combo-builder-section {
+  margin-top: var(--space-xl);
+}
+
+.combo-builder-header {
+  margin-bottom: var(--space-md);
+}
+
+.combo-builder-form {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.custom-step-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-xs);
+}
+
+.add-step-btn {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.combo-steps-list,
+.combo-calc-list {
+  margin-top: var(--space-md);
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.combo-step-row,
+.combo-calc-row {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  background: var(--color-bg-primary);
+}
+
+.combo-step-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.combo-step-title {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.step-index {
+  color: var(--color-text-muted);
+}
+
+.remove-step-btn {
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  padding: 0 var(--space-sm);
+  cursor: pointer;
+}
+
+.combo-calc-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.combo-calc-next {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
 }
 
 @media (max-width: 768px) {
