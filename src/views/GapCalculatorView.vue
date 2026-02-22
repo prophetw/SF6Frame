@@ -263,12 +263,7 @@ const validFollowUps = computed(() => {
         if (isNormalA && !isNormalB) return -1;
         if (!isNormalA && isNormalB) return 1;
 
-        // 3. Then Sort by Damage desc
-        const dmgA = parseInt(a.damage) || 0;
-        const dmgB = parseInt(b.damage) || 0;
-        if (dmgA !== dmgB) return dmgB - dmgA;
-        
-        // 4. Then Startup asc
+        // 3. Then Startup asc
         const startA = parseFrameValue(a.startup);
         const startB = parseFrameValue(b.startup);
         return startA - startB;
@@ -590,7 +585,7 @@ function selectFollowUp(move: Move) {
              >
                <span class="rec-name">{{ getMoveDisplayName(move) }}</span>
                <span class="rec-input">{{ move.input }}</span>
-               <span class="rec-dmg" v-if="move.damage">{{ move.damage }}dmg</span>
+               <span class="rec-dmg">{{ parseFrameValue(move.startup) }}f</span>
              </button>
           </div>
        </div>
