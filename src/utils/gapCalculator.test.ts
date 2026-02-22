@@ -140,7 +140,7 @@ describe('calculateGap', () => {
             expect(result.status).toContain('连防');
         });
 
-        it('should apply drive rush cancel bonus when move2 is Drive Rush Cancel', () => {
+        it('should not apply drive rush cancel bonus in block gap formula when move2 is Drive Rush Cancel', () => {
             const result = calculateGap({
                 move1: mockMove({
                     active: '2',
@@ -159,10 +159,10 @@ describe('calculateGap', () => {
                 cancelFrame: 1
             });
 
-            // blockstun = 2 + 8 - 1 = 9, plus DRC bonus(+4) => 13.
-            // gap = 1 + (9 - 1) - 13 = -4.
-            expect(result.blockstun).toBe(13);
-            expect(result.gap).toBe(-4);
+            // blockstun = 2 + 8 - 1 = 9. DRC bonus should not be applied to gap formula.
+            // gap = 1 + (9 - 1) - 9 = 0.
+            expect(result.blockstun).toBe(9);
+            expect(result.gap).toBe(0);
             expect(result.status).toContain('连防');
         });
     });

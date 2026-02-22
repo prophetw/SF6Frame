@@ -476,7 +476,7 @@ const comboStepCalculations = computed(() => {
         hitState: 'normal',
         cancelFrame: 1,
         isOpponentBurnout: false,
-        isDriveRush: isDriveRushCancelMove(prevMoveBase) || prev.outcomeType === 'buff'
+        isDriveRush: prev.outcomeType === 'buff'
       }),
       nextAdvantage: curr.outcomeType === 'buff'
         ? 4
@@ -565,7 +565,7 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
     hitState: 'normal',
     cancelFrame: 1,
     isOpponentBurnout: false,
-    isDriveRush: isDriveRushCancelMove(prevMoveBase) || prevStep.outcomeType === 'buff'
+    isDriveRush: prevStep.outcomeType === 'buff'
   });
 
   if (!result.valid) {
