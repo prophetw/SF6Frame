@@ -19,6 +19,7 @@ const loading = ref(false);
 
 const move1 = ref<Move | null>(null);
 const move2 = ref<Move | null>(null);
+const followUpMove = ref<Move | null>(null);
 
 // Calculation Mode
 const calculationMode = ref<'link' | 'cancel'>('link');
@@ -133,6 +134,7 @@ function selectMove1(move: Move) {
   if (!keepMove2) {
     move2.value = null; 
     search2.value = '';
+    followUpMove.value = null;
   }
 }
 
@@ -140,6 +142,7 @@ function selectMove2(move: Move) {
   move2.value = move;
   search2.value = getMoveDisplayName(move);
   showDropdown2.value = false;
+  followUpMove.value = null;
 }
 
 function handleBlur1() {
@@ -274,7 +277,7 @@ const validFollowUps = computed(() => {
 });
 
 function selectFollowUp(move: Move) {
-    selectMove2(move);
+    followUpMove.value = move;
 }
 </script>
 
@@ -582,7 +585,7 @@ function selectFollowUp(move: Move) {
                v-for="(move, index) in validFollowUps" 
                :key="`${move.name}-${move.input}-${index}`"
                class="rec-tag"
-               :class="{ active: isSameMove(move2, move) }"
+               :class="{ active: isSameMove(followUpMove, move) }"
                @click="selectFollowUp(move)"
              >
                <span class="rec-name">{{ getMoveDisplayName(move) }}</span>
