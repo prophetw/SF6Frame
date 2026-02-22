@@ -105,6 +105,12 @@ export function calculateGap(input: CalculationInput): CalculationResult {
 
     let adv1Num = type === 'block' ? adv1Block : adv1Hit;
 
+    // Drive Rush Cancel state itself provides +4F advantage for the follow-up action.
+    // This is separate from the generic "isDriveRush" modifier used by the UI.
+    if (isDriveRushCancelMove(move1)) {
+        adv1Num += 4;
+    }
+
     if (type === 'hit') {
         // Apply modifiers
         if (hitState === 'ch') adv1Num += 2;
