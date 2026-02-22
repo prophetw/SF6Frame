@@ -199,17 +199,24 @@ export function calculateGap(input: CalculationInput): CalculationResult {
             const stats = calculateMoveStats(move1);
             blockstun = stats.blockstun;
 
+            const move2DriveRushBonus = isDriveRushCancelMove(move2) ? 4 : 0;
+
             if (isDriveRush) blockstun += 4;
             if (isOpponentBurnout) blockstun += 4;
+            if (move2DriveRushBonus) blockstun += move2DriveRushBonus;
 
             if (isChain) {
                 const timeToHit = getChainTimeToHit(move1);
                 gap = timeToHit - blockstun;
-                if (isDriveRush || isOpponentBurnout) {
-                    const baseBlockstun = blockstun - (isDriveRush ? 4 : 0) - (isOpponentBurnout ? 4 : 0);
+                if (isDriveRush || isOpponentBurnout || move2DriveRushBonus) {
+                    const baseBlockstun = blockstun
+                        - (isDriveRush ? 4 : 0)
+                        - (isOpponentBurnout ? 4 : 0)
+                        - move2DriveRushBonus;
                     const modifiers = [
                         isDriveRush ? '+ 4 Drive Rush' : '',
-                        isOpponentBurnout ? '+ 4 Opponent Burnout' : ''
+                        isOpponentBurnout ? '+ 4 Opponent Burnout' : '',
+                        move2DriveRushBonus ? '+ 4 Drive Rush Cancel' : ''
                     ].filter(Boolean).join(' ');
                     formulaDesc = `${parseFrameValue(move1.active)} + ${parseFrameValue(move1.recovery)} - 1 (Chain) - (${baseBlockstun} ${modifiers})`;
                 } else {
@@ -218,11 +225,15 @@ export function calculateGap(input: CalculationInput): CalculationResult {
             } else {
                 gap = cancelFrame + startup2Frames - blockstun;
 
-                if (isDriveRush || isOpponentBurnout) {
-                    const baseBlockstun = blockstun - (isDriveRush ? 4 : 0) - (isOpponentBurnout ? 4 : 0);
+                if (isDriveRush || isOpponentBurnout || move2DriveRushBonus) {
+                    const baseBlockstun = blockstun
+                        - (isDriveRush ? 4 : 0)
+                        - (isOpponentBurnout ? 4 : 0)
+                        - move2DriveRushBonus;
                     const modifiers = [
                         isDriveRush ? '+ 4 Drive Rush' : '',
-                        isOpponentBurnout ? '+ 4 Opponent Burnout' : ''
+                        isOpponentBurnout ? '+ 4 Opponent Burnout' : '',
+                        move2DriveRushBonus ? '+ 4 Drive Rush Cancel' : ''
                     ].filter(Boolean).join(' ');
                     formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num} - 1 (Startup) - (${baseBlockstun} ${modifiers})`;
                 } else {
