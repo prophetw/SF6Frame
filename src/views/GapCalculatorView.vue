@@ -326,6 +326,33 @@ function getStepMove(step: ComboStep): Move | null {
   return createCustomMove(step);
 }
 
+function getComboStepDriveRushBonus(stepIndex: number): number {
+  if (stepIndex <= 0) return 0;
+
+  const triggerStep = comboSteps.value[stepIndex - 1];
+  if (!triggerStep) return 0;
+
+  const triggerMove = getStepMove(triggerStep);
+  if (triggerStep.outcomeType === 'buff' || (triggerMove && isDriveRushCancelMove(triggerMove))) {
+    return 4;
+  }
+
+  return 0;
+}
+
+function applyFrameBonus(move: Move, bonus: number): Move {
+  if (bonus === 0) return move;
+
+  const onHit = parseFrameValue(move.onHit) + bonus;
+  const onBlock = parseFrameValue(move.onBlock) + bonus;
+
+  return {
+    ...move,
+    onHit: String(onHit),
+    onBlock: String(onBlock)
+  };
+}
+
 const filteredSequenceMoves = computed(() => filterMoves(sequenceSearch.value));
 
 function addComboStep() {
@@ -383,10 +410,15 @@ const comboStepCalculations = computed(() => {
     const curr = comboSteps.value[i];
     if (!prev || !curr) continue;
 
-    const prevMove = getStepMove(prev);
-    const currMove = getStepMove(curr);
+    const prevMoveBase = getStepMove(prev);
+    const currMoveBase = getStepMove(curr);
 
-    if (!prevMove || !currMove) continue;
+    if (!prevMoveBase || !currMoveBase) continue;
+
+    const prevDriveRushBonus = getComboStepDriveRushBonus(i - 1);
+    const currDriveRushBonus = getComboStepDriveRushBonus(i);
+    const prevMove = applyFrameBonus(prevMoveBase, prevDriveRushBonus);
+    const currMove = applyFrameBonus(currMoveBase, currDriveRushBonus);
 
     const prevCalcType = prev.outcomeType === 'block' ? 'block' : 'hit';
 
@@ -403,7 +435,7 @@ const comboStepCalculations = computed(() => {
         hitState: 'normal',
         cancelFrame: 1,
         isOpponentBurnout: false,
-        isDriveRush: isDriveRushCancelMove(prevMove)
+        isDriveRush: isDriveRushCancelMove(prevMoveBase) || prev.outcomeType === 'buff'
       }),
       nextAdvantage: curr.outcomeType === 'buff'
         ? 4
