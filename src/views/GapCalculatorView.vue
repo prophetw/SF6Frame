@@ -29,7 +29,7 @@ interface ComboStep {
   id: number;
   type: CustomStepType;
   transitionMode: StepTransitionMode;
-  outcomeType: 'hit' | 'block';
+  outcomeType: 'hit' | 'block' | 'buff';
   move: Move | null;
   customName: string;
   customStartup: number;
@@ -57,7 +57,7 @@ const stepIdCounter = ref(1);
 const comboSteps = ref<ComboStep[]>([]);
 const newStepType = ref<CustomStepType>('move');
 const newStepTransitionMode = ref<StepTransitionMode>('link');
-const newStepOutcomeType = ref<'hit' | 'block'>('hit');
+const newStepOutcomeType = ref<'hit' | 'block' | 'buff'>('hit');
 const newStepMove = ref<Move | null>(null);
 const newStepCustomName = ref('自定义动作');
 const newStepCustomStartup = ref(10);
@@ -305,8 +305,8 @@ function selectFollowUp(move: Move) {
 }
 
 function createCustomMove(step: ComboStep): Move {
-  const onHit = step.customAdvantage;
-  const onBlock = step.customAdvantage;
+  const onHit = step.outcomeType === 'buff' ? 0 : step.customAdvantage;
+  const onBlock = step.outcomeType === 'buff' ? 0 : step.customAdvantage;
 
   return {
     name: step.customName || `自定义${step.id}`,
@@ -332,11 +332,16 @@ function addComboStep() {
   const type = newStepType.value;
   if (type === 'move' && !newStepMove.value) return;
 
+  const effectiveOutcomeType =
+    type === 'move' && newStepMove.value && isDriveRushCancelMove(newStepMove.value)
+      ? 'buff'
+      : newStepOutcomeType.value;
+
   const step: ComboStep = {
     id: stepIdCounter.value++,
     type,
     transitionMode: newStepTransitionMode.value,
-    outcomeType: newStepOutcomeType.value,
+    outcomeType: effectiveOutcomeType,
     move: type === 'move' ? newStepMove.value : null,
     customName: newStepCustomName.value.trim() || `自定义${stepIdCounter.value}`,
     customStartup: Math.max(1, Math.floor(newStepCustomStartup.value || 1)),
@@ -375,7 +380,7 @@ const comboStepCalculations = computed(() => {
     transitionMode: StepTransitionMode;
     result: CalculationResult | null;
     nextAdvantage: number;
-    nextOutcomeType: 'hit' | 'block';
+    nextOutcomeType: 'hit' | 'block' | 'buff';
   }> = [];
 
   for (let i = 1; i < comboSteps.value.length; i++) {
@@ -388,22 +393,42 @@ const comboStepCalculations = computed(() => {
 
     if (!prevMove || !currMove) continue;
 
+    const isDriveRushStep = isDriveRushCancelMove(currMove);
+    const prevCalcType = prev.outcomeType === 'block' ? 'block' : 'hit';
+
+    const specialBuffResult: CalculationResult | null = isDriveRushStep
+      ? {
+          valid: true,
+          gap: 4,
+          displayLabel: 'Buff',
+          displayValue: '+4F',
+          status: '斗气冲锋取消 Buff',
+          statusClass: 'status-safe',
+          description: '该动作不以命中/被防计算，默认给予下一招 +4F 帧优势。',
+          formulaDesc: 'Drive Rush Cancel Buff +4F',
+          adv1: 4,
+          startup2: 0
+        }
+      : null;
+
     rows.push({
       key: `${prev.id}-${curr.id}`,
       fromLabel: getMoveDisplayName(prevMove),
       toLabel: getMoveDisplayName(currMove),
       transitionMode: curr.transitionMode,
-      result: calculateGap({
+      result: specialBuffResult ?? calculateGap({
         move1: prevMove,
         move2: currMove,
-        type: prev.outcomeType,
+        type: prevCalcType,
         mode: curr.transitionMode,
         hitState: 'normal',
         cancelFrame: 1,
         isOpponentBurnout: false,
         isDriveRush: isDriveRushCancelMove(prevMove)
       }),
-      nextAdvantage: parseFrameValue(curr.outcomeType === 'block' ? currMove.onBlock : currMove.onHit),
+      nextAdvantage: curr.outcomeType === 'buff'
+        ? 4
+        : parseFrameValue(curr.outcomeType === 'block' ? currMove.onBlock : currMove.onHit),
       nextOutcomeType: curr.outcomeType
     });
   }
@@ -767,6 +792,7 @@ const comboStepCalculations = computed(() => {
           <select v-model="newStepOutcomeType" class="select-input">
             <option value="hit">命中</option>
             <option value="block">被格挡</option>
+            <option value="buff">特殊 Buff（绿冲取消）</option>
           </select>
         </div>
 
@@ -816,7 +842,7 @@ const comboStepCalculations = computed(() => {
             <span class="move-input" v-if="step.type === 'move' && step.move">{{ step.move.input }}</span>
             <span class="move-input" v-else>
               Startup {{ step.customStartup }}F /
-              {{ step.outcomeType === 'hit' ? 'OnHit' : 'OnBlock' }}
+              {{ step.outcomeType === 'hit' ? 'OnHit' : step.outcomeType === 'block' ? 'OnBlock' : 'Buff' }}
               {{ step.customAdvantage >= 0 ? '+' : '' }}{{ step.customAdvantage }}
             </span>
           </div>
@@ -825,6 +851,7 @@ const comboStepCalculations = computed(() => {
             <select v-model="step.outcomeType" class="select-input step-select-input">
               <option value="hit">命中</option>
               <option value="block">被格挡</option>
+              <option value="buff">特殊 Buff（绿冲取消）</option>
             </select>
           </div>
           <button class="remove-step-btn" @click="removeComboStep(step.id)">移除</button>
@@ -841,7 +868,7 @@ const comboStepCalculations = computed(() => {
             {{ row.result?.displayLabel || '结果' }}：{{ row.result?.displayValue || '-' }}
           </div>
           <div class="combo-calc-next">
-            当前招{{ row.nextOutcomeType === 'block' ? '被防后' : '命中后' }}帧差：{{ row.nextAdvantage >= 0 ? '+' : '' }}{{ row.nextAdvantage }}
+            当前招{{ row.nextOutcomeType === 'block' ? '被防后' : row.nextOutcomeType === 'buff' ? '特殊 Buff' : '命中后' }}帧差：{{ row.nextOutcomeType === 'buff' ? '+4' : `${row.nextAdvantage >= 0 ? '+' : ''}${row.nextAdvantage}` }}
           </div>
         </div>
       </div>
