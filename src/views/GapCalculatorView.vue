@@ -332,16 +332,11 @@ function addComboStep() {
   const type = newStepType.value;
   if (type === 'move' && !newStepMove.value) return;
 
-  const effectiveOutcomeType =
-    type === 'move' && newStepMove.value && isDriveRushCancelMove(newStepMove.value)
-      ? 'buff'
-      : newStepOutcomeType.value;
-
   const step: ComboStep = {
     id: stepIdCounter.value++,
     type,
     transitionMode: newStepTransitionMode.value,
-    outcomeType: effectiveOutcomeType,
+    outcomeType: newStepOutcomeType.value,
     move: type === 'move' ? newStepMove.value : null,
     customName: newStepCustomName.value.trim() || `自定义${stepIdCounter.value}`,
     customStartup: Math.max(1, Math.floor(newStepCustomStartup.value || 1)),
@@ -393,30 +388,14 @@ const comboStepCalculations = computed(() => {
 
     if (!prevMove || !currMove) continue;
 
-    const isDriveRushStep = isDriveRushCancelMove(currMove);
     const prevCalcType = prev.outcomeType === 'block' ? 'block' : 'hit';
-
-    const specialBuffResult: CalculationResult | null = isDriveRushStep
-      ? {
-          valid: true,
-          gap: 4,
-          displayLabel: 'Buff',
-          displayValue: '+4F',
-          status: '斗气冲锋取消 Buff',
-          statusClass: 'status-safe',
-          description: '该动作不以命中/被防计算，默认给予下一招 +4F 帧优势。',
-          formulaDesc: 'Drive Rush Cancel Buff +4F',
-          adv1: 4,
-          startup2: 0
-        }
-      : null;
 
     rows.push({
       key: `${prev.id}-${curr.id}`,
       fromLabel: getMoveDisplayName(prevMove),
       toLabel: getMoveDisplayName(currMove),
       transitionMode: curr.transitionMode,
-      result: specialBuffResult ?? calculateGap({
+      result: calculateGap({
         move1: prevMove,
         move2: currMove,
         type: prevCalcType,
