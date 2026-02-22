@@ -25,7 +25,8 @@ const followUpMove = ref<Move | null>(null);
 const calculationMode = ref<'link' | 'cancel'>('link');
 const calculationType = ref<'block' | 'hit'>('block'); // New: Block (Gap) vs Hit (Combo)
 const hitState = ref<'normal' | 'ch' | 'pc'>('normal'); // New: Hit State
-const isBurnout = ref(false); // New: Burnout State
+const isOpponentBurnout = ref(false);
+const isDriveRush = ref(false);
 
 const cancelFrame = ref(1); // 1-based index (1 = 1st active frame)
 
@@ -63,7 +64,8 @@ async function loadCharacterData(charId: string) {
     search1.value = '';
     search2.value = '';
     cancelFrame.value = 1;
-    isBurnout.value = false;
+    isOpponentBurnout.value = false;
+    isDriveRush.value = false;
   } catch (e) {
     console.error(`Failed to load character data for ${charId}:`, e);
     frameData.value = null;
@@ -197,7 +199,8 @@ const calculationResult = computed<CalculationResult | null>(() => {
     mode: calculationMode.value,
     hitState: hitState.value,
     cancelFrame: cancelFrame.value,
-    isBurnout: isBurnout.value
+    isOpponentBurnout: isOpponentBurnout.value,
+    isDriveRush: isDriveRush.value
   });
 });
 
@@ -212,7 +215,8 @@ const recommendedMoves = computed<RecommendedMove[]>(() => {
     calculationMode.value,
     hitState.value,
     cancelFrame.value,
-    isBurnout.value
+    isOpponentBurnout.value,
+    isDriveRush.value
   );
 });
 
@@ -441,10 +445,17 @@ function selectFollowUp(move: Move) {
              <div class="modifier-chips">
                <button 
                  class="mod-chip burnout" 
-                 :class="{ active: isBurnout }"
-                 @click="isBurnout = !isBurnout"
+                 :class="{ active: isOpponentBurnout }"
+                 @click="isOpponentBurnout = !isOpponentBurnout"
                >
-                 对方白了/己方绿冲 (+4)
+                 对方白了（仅防御 +4）
+               </button>
+               <button 
+                 class="mod-chip burnout" 
+                 :class="{ active: isDriveRush }"
+                 @click="isDriveRush = !isDriveRush"
+               >
+                 己方绿冲（命中/防御 +4）
                </button>
              </div>
           </div>

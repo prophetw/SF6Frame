@@ -63,6 +63,40 @@ describe('calculateGap', () => {
             expect(result.status).toContain('Frame Trap');
         });
 
+        it('should apply opponent burnout only to block calculations', () => {
+            const result = calculateGap({
+                move1: mockMove({ onBlock: '-3' }),
+                move2: mockMove({ startup: '1' }),
+                type: 'block',
+                mode: 'link',
+                hitState: 'normal',
+                cancelFrame: 1,
+                isOpponentBurnout: true
+            });
+
+            // -3 on block becomes +1 when defender is burnout.
+            // Gap = 1 - 1 - 1 = -1.
+            expect(result.adv1).toBe(1);
+            expect(result.gap).toBe(-1);
+        });
+
+        it('should apply drive rush bonus on block', () => {
+            const result = calculateGap({
+                move1: mockMove({ onBlock: '-3' }),
+                move2: mockMove({ startup: '5' }),
+                type: 'block',
+                mode: 'link',
+                hitState: 'normal',
+                cancelFrame: 1,
+                isDriveRush: true
+            });
+
+            // -3 on block + drive rush(+4) => +1.
+            // Gap = 5 - 1 - 1 = 3.
+            expect(result.adv1).toBe(1);
+            expect(result.gap).toBe(3);
+        });
+
         // Cancel Mode
         it('should calculate cancel gap correctly', () => {
             // Move 1: Active 4, Recovery 20, OnBlock -5.
@@ -165,6 +199,20 @@ describe('calculateGap', () => {
                 mode: 'link',
                 hitState: 'pc',
                 cancelFrame: 1
+            });
+            expect(result.gap).toBe(0);
+            expect(result.status).toContain('连招成立');
+        });
+
+        it('should apply drive rush bonus on hit', () => {
+            const result = calculateGap({
+                move1: mockMove({ onHit: '1' }),
+                move2: mockMove({ startup: '5' }),
+                type: 'hit',
+                mode: 'link',
+                hitState: 'normal',
+                cancelFrame: 1,
+                isDriveRush: true
             });
             expect(result.gap).toBe(0);
             expect(result.status).toContain('连招成立');

@@ -135,7 +135,8 @@ function analyzeCombo() {
     mode: 'link',
     hitState: 'normal',
     cancelFrame: 1,
-    isBurnout: false
+    isOpponentBurnout: false,
+    isDriveRush: false
   });
 }
 
