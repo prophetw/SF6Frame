@@ -55,6 +55,7 @@ const showSequenceDropdown = ref(false);
 const stepIdCounter = ref(1);
 
 const comboSteps = ref<ComboStep[]>([]);
+const expandedComboCalcKey = ref<string | null>(null);
 const newStepType = ref<CustomStepType>('move');
 const newStepTransitionMode = ref<StepTransitionMode>('link');
 const newStepOutcomeType = ref<'hit' | 'block' | 'buff'>('hit');
@@ -380,6 +381,10 @@ function removeComboStep(stepId: number) {
   comboSteps.value = comboSteps.value.filter(step => step.id !== stepId);
 }
 
+function toggleComboCalcDetail(key: string) {
+  expandedComboCalcKey.value = expandedComboCalcKey.value === key ? null : key;
+}
+
 function selectSequenceMove(move: Move) {
   newStepMove.value = move;
   sequenceSearch.value = getMoveDisplayName(move);
@@ -446,6 +451,84 @@ const comboStepCalculations = computed(() => {
 
   return rows;
 });
+
+const comboBuilderContext = computed(() => {
+  if (comboSteps.value.length === 0) {
+    return {
+      summary: '暂无上一步动作，添加首招无需判断优势帧。',
+      modeLabel: '',
+      advText: '',
+      hasContext: false
+    };
+  }
+
+  const prevStep = comboSteps.value[comboSteps.value.length - 1];
+  if (!prevStep) {
+    return {
+      summary: '暂无上一步动作，添加首招无需判断优势帧。',
+      modeLabel: '',
+      advText: '',
+      hasContext: false
+    };
+  }
+
+  const prevMoveBase = getStepMove(prevStep);
+  const prevBonus = getComboStepDriveRushBonus(comboSteps.value.length - 1);
+  const prevMove = prevMoveBase ? applyFrameBonus(prevMoveBase, prevBonus) : null;
+  const prevOutcomeLabel = prevStep.outcomeType === 'block' ? '被防后' : prevStep.outcomeType === 'buff' ? 'Buff 后' : '命中后';
+  const type = prevStep.outcomeType === 'block' ? 'block' : 'hit';
+  const advantage = prevMove
+    ? parseFrameValue(type === 'block' ? prevMove.onBlock : prevMove.onHit)
+    : 0;
+
+  return {
+    summary: `当前最后一招：${prevMove ? getMoveDisplayName(prevMove) : '自定义动作'}（${prevOutcomeLabel}）`,
+    modeLabel: newStepTransitionMode.value === 'link' ? 'Link' : 'Cancel',
+    advText: `${advantage >= 0 ? '+' : ''}${advantage}F`,
+    hasContext: Boolean(prevMove)
+  };
+});
+
+function getSequenceCandidateEvaluation(move: Move): { text: string; className: string } {
+  if (comboSteps.value.length === 0) {
+    return { text: `${parseFrameValue(move.startup)}F`, className: '' };
+  }
+
+  const prevStep = comboSteps.value[comboSteps.value.length - 1];
+  if (!prevStep) {
+    return { text: `${parseFrameValue(move.startup)}F`, className: '' };
+  }
+
+  const prevMoveBase = getStepMove(prevStep);
+  if (!prevMoveBase) {
+    return { text: `${parseFrameValue(move.startup)}F`, className: '' };
+  }
+
+  const prevBonus = getComboStepDriveRushBonus(comboSteps.value.length - 1);
+  const prevMove = applyFrameBonus(prevMoveBase, prevBonus);
+  const prevCalcType = prevStep.outcomeType === 'block' ? 'block' : 'hit';
+  const result = calculateGap({
+    move1: prevMove,
+    move2: move,
+    type: prevCalcType,
+    mode: newStepTransitionMode.value,
+    hitState: 'normal',
+    cancelFrame: 1,
+    isOpponentBurnout: false,
+    isDriveRush: isDriveRushCancelMove(prevMoveBase) || prevStep.outcomeType === 'buff'
+  });
+
+  if (!result.valid) {
+    return { text: 'N/A', className: '' };
+  }
+
+  const success = prevCalcType === 'hit' ? result.gap >= 0 : result.gap <= 0;
+  const prefix = prevCalcType === 'hit' ? 'Surplus' : 'Gap';
+  return {
+    text: `${prefix} ${result.gap >= 0 ? '+' : ''}${result.gap} / ${parseFrameValue(move.startup)}F`,
+    className: success ? 'dropdown-item-pass' : 'dropdown-item-fail'
+  };
+}
 </script>
 
 <template>
@@ -808,6 +891,12 @@ const comboStepCalculations = computed(() => {
         </div>
 
         <div v-if="newStepType === 'move'" class="move-selector">
+          <div class="combo-context" :class="{ muted: !comboBuilderContext.hasContext }">
+            <div>{{ comboBuilderContext.summary }}</div>
+            <div v-if="comboBuilderContext.hasContext" class="combo-context-detail">
+              当前连接：{{ comboBuilderContext.modeLabel }} ｜ 当前优势/帧差：{{ comboBuilderContext.advText }}
+            </div>
+          </div>
           <input
             v-model="sequenceSearch"
             type="text"
@@ -821,10 +910,12 @@ const comboStepCalculations = computed(() => {
               v-for="(move, index) in filteredSequenceMoves"
               :key="`combo-builder-${move.name}-${move.input}-${index}`"
               class="dropdown-item"
+              :class="getSequenceCandidateEvaluation(move).className"
               @mousedown="selectSequenceMove(move)"
             >
               <span class="move-name">{{ getMoveDisplayName(move) }}</span>
               <span class="move-input">{{ move.input }}</span>
+              <span class="move-eval">{{ getSequenceCandidateEvaluation(move).text }}</span>
             </div>
           </div>
         </div>
@@ -870,7 +961,12 @@ const comboStepCalculations = computed(() => {
       </div>
 
       <div v-if="comboStepCalculations.length > 0" class="combo-calc-list">
-        <div v-for="row in comboStepCalculations" :key="row.key" class="combo-calc-row">
+        <div
+          v-for="row in comboStepCalculations"
+          :key="row.key"
+          class="combo-calc-row"
+          @click="toggleComboCalcDetail(row.key)"
+        >
           <div class="combo-calc-main">
             <span>{{ row.fromLabel }} → {{ row.toLabel }}</span>
             <span class="mode-badge">{{ row.transitionMode === 'link' ? 'Link' : 'Cancel' }}</span>
@@ -880,6 +976,10 @@ const comboStepCalculations = computed(() => {
           </div>
           <div class="combo-calc-next">
             当前招{{ row.nextOutcomeType === 'block' ? '被防后' : row.nextOutcomeType === 'buff' ? '特殊 Buff' : '命中后' }}帧差：{{ row.nextOutcomeType === 'buff' ? '+4' : `${row.nextAdvantage >= 0 ? '+' : ''}${row.nextAdvantage}` }}
+          </div>
+          <div v-if="expandedComboCalcKey === row.key && row.result" class="combo-calc-detail">
+            <div>计算详情：{{ row.result.formulaDesc }} = {{ row.result.gap }}</div>
+            <div>{{ row.result.status }} ｜ {{ row.result.description }}</div>
           </div>
         </div>
       </div>
@@ -988,6 +1088,22 @@ const comboStepCalculations = computed(() => {
 
 .dropdown-item:last-child {
   border-bottom: none;
+}
+
+.dropdown-item-pass .move-name,
+.dropdown-item-pass .move-eval {
+  color: var(--color-success);
+}
+
+.dropdown-item-fail .move-name,
+.dropdown-item-fail .move-eval {
+  color: var(--color-danger);
+}
+
+.move-eval {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
 }
 
 .move-name {
@@ -1116,6 +1232,24 @@ const comboStepCalculations = computed(() => {
   gap: var(--space-sm);
 }
 
+.combo-context {
+  margin-bottom: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  font-size: 0.85rem;
+}
+
+.combo-context.muted {
+  color: var(--color-text-muted);
+}
+
+.combo-context-detail {
+  margin-top: 2px;
+  color: var(--color-accent);
+}
+
 .custom-step-fields {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1140,6 +1274,18 @@ const comboStepCalculations = computed(() => {
   border-radius: var(--radius-md);
   padding: var(--space-sm);
   background: var(--color-bg-primary);
+}
+
+.combo-calc-row {
+  cursor: pointer;
+}
+
+.combo-calc-detail {
+  margin-top: 6px;
+  border-top: 1px dashed var(--color-border);
+  padding-top: 6px;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
 }
 
 .combo-step-row {
