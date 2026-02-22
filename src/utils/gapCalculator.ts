@@ -309,7 +309,7 @@ function isLightNormal(move: Move): boolean {
     return false;
 }
 
-function isDriveRushCancelMove(move: Move): boolean {
+export function isDriveRushCancelMove(move: Move): boolean {
     const input = (move.input || '').toLowerCase();
     const name = (move.name || '').toLowerCase();
     const nameZh = (move.nameZh || '').toLowerCase();

@@ -8,6 +8,7 @@ import {
   parseFrameValue, 
   findRecommendedMoves,
   isCancelValid,
+  isDriveRushCancelMove,
   type CalculationResult,
   type RecommendedMove 
 } from '../utils/gapCalculator';
@@ -28,6 +29,7 @@ interface ComboStep {
   id: number;
   type: CustomStepType;
   transitionMode: StepTransitionMode;
+  outcomeType: 'hit' | 'block';
   move: Move | null;
   customName: string;
   customStartup: number;
@@ -55,6 +57,7 @@ const stepIdCounter = ref(1);
 const comboSteps = ref<ComboStep[]>([]);
 const newStepType = ref<CustomStepType>('move');
 const newStepTransitionMode = ref<StepTransitionMode>('link');
+const newStepOutcomeType = ref<'hit' | 'block'>('hit');
 const newStepMove = ref<Move | null>(null);
 const newStepCustomName = ref('自定义动作');
 const newStepCustomStartup = ref(10);
@@ -302,6 +305,9 @@ function selectFollowUp(move: Move) {
 }
 
 function createCustomMove(step: ComboStep): Move {
+  const onHit = step.outcomeType === 'hit' ? step.customAdvantage : 0;
+  const onBlock = step.outcomeType === 'block' ? step.customAdvantage : 0;
+
   return {
     name: step.customName || `自定义${step.id}`,
     input: step.customName || `自定义${step.id}`,
@@ -309,8 +315,8 @@ function createCustomMove(step: ComboStep): Move {
     startup: String(step.customStartup),
     active: '1',
     recovery: '0',
-    onBlock: String(step.customAdvantage),
-    onHit: String(step.customAdvantage),
+    onBlock: String(onBlock),
+    onHit: String(onHit),
     category: 'unique'
   };
 }
@@ -330,6 +336,7 @@ function addComboStep() {
     id: stepIdCounter.value++,
     type,
     transitionMode: newStepTransitionMode.value,
+    outcomeType: newStepOutcomeType.value,
     move: type === 'move' ? newStepMove.value : null,
     customName: newStepCustomName.value.trim() || `自定义${stepIdCounter.value}`,
     customStartup: Math.max(1, Math.floor(newStepCustomStartup.value || 1)),
@@ -368,6 +375,7 @@ const comboStepCalculations = computed(() => {
     transitionMode: StepTransitionMode;
     result: CalculationResult | null;
     nextAdvantage: number;
+    nextOutcomeType: 'hit' | 'block';
   }> = [];
 
   for (let i = 1; i < comboSteps.value.length; i++) {
@@ -388,14 +396,15 @@ const comboStepCalculations = computed(() => {
       result: calculateGap({
         move1: prevMove,
         move2: currMove,
-        type: 'hit',
+        type: prev.outcomeType,
         mode: curr.transitionMode,
         hitState: 'normal',
         cancelFrame: 1,
         isOpponentBurnout: false,
-        isDriveRush: false
+        isDriveRush: isDriveRushCancelMove(prevMove)
       }),
-      nextAdvantage: parseFrameValue(currMove.onHit)
+      nextAdvantage: parseFrameValue(curr.outcomeType === 'block' ? currMove.onBlock : currMove.onHit),
+      nextOutcomeType: curr.outcomeType
     });
   }
 
@@ -753,6 +762,14 @@ const comboStepCalculations = computed(() => {
           </select>
         </div>
 
+        <div class="form-group">
+          <label>判定结果</label>
+          <select v-model="newStepOutcomeType" class="select-input">
+            <option value="hit">命中</option>
+            <option value="block">被格挡</option>
+          </select>
+        </div>
+
         <div v-if="newStepType === 'move'" class="move-selector">
           <input
             v-model="sequenceSearch"
@@ -778,7 +795,12 @@ const comboStepCalculations = computed(() => {
         <div v-else class="custom-step-fields">
           <input v-model="newStepCustomName" type="text" class="search-input" placeholder="自定义动作名称" />
           <input v-model.number="newStepCustomStartup" type="number" min="1" class="search-input" placeholder="发生帧数" />
-          <input v-model.number="newStepCustomAdvantage" type="number" class="search-input" placeholder="命中帧差" />
+          <input
+            v-model.number="newStepCustomAdvantage"
+            type="number"
+            class="search-input"
+            :placeholder="newStepOutcomeType === 'hit' ? '命中帧差' : '被防帧差'"
+          />
         </div>
 
         <button class="type-btn add-step-btn" @click="addComboStep">添加</button>
@@ -792,7 +814,11 @@ const comboStepCalculations = computed(() => {
               {{ step.type === 'move' ? (step.move ? getMoveDisplayName(step.move) : '-') : step.customName }}
             </span>
             <span class="move-input" v-if="step.type === 'move' && step.move">{{ step.move.input }}</span>
-            <span class="move-input" v-else>Startup {{ step.customStartup }}F / OnHit {{ step.customAdvantage >= 0 ? '+' : '' }}{{ step.customAdvantage }}</span>
+            <span class="move-input" v-else>
+              Startup {{ step.customStartup }}F /
+              {{ step.outcomeType === 'hit' ? 'OnHit' : 'OnBlock' }}
+              {{ step.customAdvantage >= 0 ? '+' : '' }}{{ step.customAdvantage }}
+            </span>
           </div>
           <button class="remove-step-btn" @click="removeComboStep(step.id)">移除</button>
         </div>
@@ -808,7 +834,7 @@ const comboStepCalculations = computed(() => {
             {{ row.result?.displayLabel || '结果' }}：{{ row.result?.displayValue || '-' }}
           </div>
           <div class="combo-calc-next">
-            当前招命中后帧差：{{ row.nextAdvantage >= 0 ? '+' : '' }}{{ row.nextAdvantage }}
+            当前招{{ row.nextOutcomeType === 'block' ? '被防后' : '命中后' }}帧差：{{ row.nextAdvantage >= 0 ? '+' : '' }}{{ row.nextAdvantage }}
           </div>
         </div>
       </div>
