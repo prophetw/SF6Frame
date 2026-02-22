@@ -11,7 +11,8 @@ export interface CalculationInput {
     mode: CalculationMode;
     hitState: HitState;
     cancelFrame: number;
-    isBurnout?: boolean; // New
+    isOpponentBurnout?: boolean;
+    isDriveRush?: boolean;
 }
 
 export interface CalculationResult {
@@ -77,7 +78,7 @@ export function calculateMoveStats(move: Move): DerivedMoveStats {
 }
 
 export function calculateGap(input: CalculationInput): CalculationResult {
-    const { move1, move2, type, mode, hitState, cancelFrame, isBurnout } = input;
+    const { move1, move2, type, mode, hitState, cancelFrame, isOpponentBurnout, isDriveRush } = input;
 
     const adv1Block = parseFrameValue(move1.onBlock);
     const adv1Hit = parseFrameValue(move1.onHit);
@@ -108,8 +109,14 @@ export function calculateGap(input: CalculationInput): CalculationResult {
         // Apply modifiers
         if (hitState === 'ch') adv1Num += 2;
         if (hitState === 'pc') adv1Num += 4;
-    } else if (type === 'block' && isBurnout) {
-        // Burnout adds +4 frames on block (effectively)
+    }
+
+    if (isDriveRush) {
+        adv1Num += 4;
+    }
+
+    if (type === 'block' && isOpponentBurnout) {
+        // Defender burnout adds +4 frames on block
         adv1Num += 4;
     }
 
@@ -172,8 +179,13 @@ export function calculateGap(input: CalculationInput): CalculationResult {
 
         if (mode === 'link') {
             gap = startup2Num - adv1Num - 1;
-            if (isBurnout) {
-                formulaDesc = `${startup2Num} (Startup) - (${adv1Num - 4} + 4 Burnout) - 1`;
+            if (isDriveRush || isOpponentBurnout) {
+                const baseAdv = adv1Num - (isDriveRush ? 4 : 0) - (isOpponentBurnout ? 4 : 0);
+                const modifiers = [
+                    isDriveRush ? '+ 4 Drive Rush' : '',
+                    isOpponentBurnout ? '+ 4 Opponent Burnout' : ''
+                ].filter(Boolean).join(' ');
+                formulaDesc = `${startup2Num} (Startup) - (${baseAdv} ${modifiers}) - 1`;
             } else {
                 formulaDesc = `${startup2Num} (Startup) - ${adv1Num} (Adv) - 1`;
             }
@@ -181,23 +193,32 @@ export function calculateGap(input: CalculationInput): CalculationResult {
             const stats = calculateMoveStats(move1);
             blockstun = stats.blockstun;
 
-            // If burnout, blockstun increases by 4
-            // If burnout, blockstun increases by 4
-            if (isBurnout) blockstun += 4;
+            if (isDriveRush) blockstun += 4;
+            if (isOpponentBurnout) blockstun += 4;
 
             if (isChain) {
                 const timeToHit = getChainTimeToHit(move1);
                 gap = timeToHit - blockstun;
-                if (isBurnout) {
-                    formulaDesc = `${parseFrameValue(move1.active)} + ${parseFrameValue(move1.recovery)} - 1 (Chain) - (${blockstun - 4} + 4 Burnout)`;
+                if (isDriveRush || isOpponentBurnout) {
+                    const baseBlockstun = blockstun - (isDriveRush ? 4 : 0) - (isOpponentBurnout ? 4 : 0);
+                    const modifiers = [
+                        isDriveRush ? '+ 4 Drive Rush' : '',
+                        isOpponentBurnout ? '+ 4 Opponent Burnout' : ''
+                    ].filter(Boolean).join(' ');
+                    formulaDesc = `${parseFrameValue(move1.active)} + ${parseFrameValue(move1.recovery)} - 1 (Chain) - (${baseBlockstun} ${modifiers})`;
                 } else {
                     formulaDesc = `${parseFrameValue(move1.active)} + ${parseFrameValue(move1.recovery)} - 1 (Chain) - ${blockstun} (Blockstun)`;
                 }
             } else {
                 gap = cancelFrame + startup2Frames - blockstun;
 
-                if (isBurnout) {
-                    formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num} - 1 (Startup) - (${blockstun - 4} + 4 Burnout)`;
+                if (isDriveRush || isOpponentBurnout) {
+                    const baseBlockstun = blockstun - (isDriveRush ? 4 : 0) - (isOpponentBurnout ? 4 : 0);
+                    const modifiers = [
+                        isDriveRush ? '+ 4 Drive Rush' : '',
+                        isOpponentBurnout ? '+ 4 Opponent Burnout' : ''
+                    ].filter(Boolean).join(' ');
+                    formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num} - 1 (Startup) - (${baseBlockstun} ${modifiers})`;
                 } else {
                     formulaDesc = `${cancelFrame} (CancelFrame) + ${startup2Num} - 1 (Startup) - ${blockstun} (Blockstun)`;
                 }
@@ -395,7 +416,8 @@ export function findRecommendedMoves(
     mode: CalculationMode,
     hitState: HitState,
     cancelFrame: number = 1,
-    isBurnout: boolean = false // New
+    isOpponentBurnout: boolean = false,
+    isDriveRush: boolean = false
 ): RecommendedMove[] {
     const recommendations: RecommendedMove[] = [];
 
@@ -421,7 +443,8 @@ export function findRecommendedMoves(
             mode,
             hitState,
             cancelFrame,
-            isBurnout
+            isOpponentBurnout,
+            isDriveRush
         });
 
         if (!result.valid) continue;
