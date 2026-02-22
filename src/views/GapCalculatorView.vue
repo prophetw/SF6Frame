@@ -305,8 +305,8 @@ function selectFollowUp(move: Move) {
 }
 
 function createCustomMove(step: ComboStep): Move {
-  const onHit = step.outcomeType === 'hit' ? step.customAdvantage : 0;
-  const onBlock = step.outcomeType === 'block' ? step.customAdvantage : 0;
+  const onHit = step.customAdvantage;
+  const onBlock = step.customAdvantage;
 
   return {
     name: step.customName || `自定义${step.id}`,
@@ -820,6 +820,13 @@ const comboStepCalculations = computed(() => {
               {{ step.customAdvantage >= 0 ? '+' : '' }}{{ step.customAdvantage }}
             </span>
           </div>
+          <div class="combo-step-controls">
+            <label class="step-control-label">判定结果</label>
+            <select v-model="step.outcomeType" class="select-input step-select-input">
+              <option value="hit">命中</option>
+              <option value="block">被格挡</option>
+            </select>
+          </div>
           <button class="remove-step-btn" @click="removeComboStep(step.id)">移除</button>
         </div>
       </div>
@@ -1100,6 +1107,7 @@ const comboStepCalculations = computed(() => {
 .combo-step-row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: var(--space-sm);
 }
 
@@ -1107,7 +1115,25 @@ const comboStepCalculations = computed(() => {
   display: flex;
   gap: var(--space-xs);
   align-items: center;
+  flex: 1;
   flex-wrap: wrap;
+}
+
+.combo-step-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.step-control-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.step-select-input {
+  min-width: 92px;
+  padding: 4px 8px;
 }
 
 .step-index {
