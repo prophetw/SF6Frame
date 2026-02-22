@@ -218,6 +218,70 @@ describe('calculateGap', () => {
             expect(result.status).toContain('连招成立');
         });
 
+        it('should treat Drive Rush Cancel move as +4 follow-up advantage', () => {
+            const result = calculateGap({
+                move1: mockMove({
+                    name: 'Drive Rush Cancel',
+                    nameZh: '斗气冲锋取消',
+                    input: 'MPMK or 66',
+                    onHit: '-',
+                    onBlock: '-'
+                }),
+                move2: mockMove({ startup: '4' }),
+                type: 'hit',
+                mode: 'link',
+                hitState: 'normal',
+                cancelFrame: 1
+            });
+
+            // DRC intrinsic bonus (+4) - startup 4 => 0F.
+            expect(result.adv1).toBe(4);
+            expect(result.gap).toBe(0);
+        });
+
+        it('should stack Drive Rush Cancel intrinsic bonus with drive rush state bonus', () => {
+            const result = calculateGap({
+                move1: mockMove({
+                    name: 'Drive Rush Cancel',
+                    nameZh: '斗气冲锋取消',
+                    input: 'MPMK or 66',
+                    onHit: '4',
+                    onBlock: '1'
+                }),
+                move2: mockMove({ startup: '4' }),
+                type: 'hit',
+                mode: 'link',
+                hitState: 'normal',
+                cancelFrame: 1,
+                isDriveRush: true
+            });
+
+            // 4 (on hit) + 4 (DRC intrinsic) + 4 (drive rush state) = 12.
+            expect(result.adv1).toBe(12);
+            expect(result.gap).toBe(8);
+        });
+
+        it('should apply Drive Rush Cancel intrinsic bonus on block links', () => {
+            const result = calculateGap({
+                move1: mockMove({
+                    name: 'Drive Rush Cancel',
+                    nameZh: '斗气冲锋取消',
+                    input: 'MPMK or 66',
+                    onHit: '-',
+                    onBlock: '-'
+                }),
+                move2: mockMove({ startup: '4' }),
+                type: 'block',
+                mode: 'link',
+                hitState: 'normal',
+                cancelFrame: 1
+            });
+
+            // DRC intrinsic bonus (+4) on block as well.
+            expect(result.adv1).toBe(4);
+            expect(result.gap).toBe(-1);
+        });
+
         // Cancel Combo
         it('should calculate cancel combo success', () => {
             // Active 4, Recovery 20, OnHit +5.
