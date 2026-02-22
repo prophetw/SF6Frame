@@ -52,6 +52,8 @@ const showDropdown1 = ref(false);
 const showDropdown2 = ref(false);
 const sequenceSearch = ref('');
 const showSequenceDropdown = ref(false);
+const editingStepId = ref<number | null>(null);
+const stepEditSearch = ref('');
 const stepIdCounter = ref(1);
 
 const comboSteps = ref<ComboStep[]>([]);
@@ -397,6 +399,40 @@ function handleSequenceBlur() {
   }, 200);
 }
 
+function getStepMoveLabel(step: ComboStep): string {
+  return step.type === 'move' ? (step.move ? getMoveDisplayName(step.move) : '-') : step.customName;
+}
+
+function openStepMoveEditor(step: ComboStep) {
+  if (step.type !== 'move') return;
+  const shouldClose = editingStepId.value === step.id;
+  editingStepId.value = shouldClose ? null : step.id;
+  stepEditSearch.value = shouldClose ? '' : (step.move ? getMoveDisplayName(step.move) : '');
+}
+
+function getEditableStepMoves(step: ComboStep, stepIndex: number): Move[] {
+  const prev = comboSteps.value[stepIndex - 1];
+  if (!prev || step.transitionMode !== 'cancel') {
+    return filterMoves(stepEditSearch.value);
+  }
+
+  const prevMove = getStepMove(prev);
+  return filterMoves(stepEditSearch.value, prevMove, 'cancel');
+}
+
+function replaceComboStepMove(step: ComboStep, move: Move) {
+  step.move = move;
+  editingStepId.value = null;
+  stepEditSearch.value = '';
+}
+
+function closeStepMoveEditor() {
+  setTimeout(() => {
+    editingStepId.value = null;
+    stepEditSearch.value = '';
+  }, 150);
+}
+
 const comboStepCalculations = computed(() => {
   if (comboSteps.value.length < 2) return [];
 
@@ -487,6 +523,20 @@ const comboBuilderContext = computed(() => {
     advText: `${advantage >= 0 ? '+' : ''}${advantage}F`,
     hasContext: Boolean(prevMove)
   };
+});
+
+const comboBuilderGapHint = computed(() => {
+  if (!comboBuilderContext.value.hasContext) return '';
+
+  const advantage = parseFrameValue(comboBuilderContext.value.advText);
+  const gap = newStepTransitionMode.value === 'cancel' ? advantage - 4 : advantage;
+  const safeStartup = gap <= 0 ? Math.abs(gap) : 0;
+
+  if (safeStartup <= 0) {
+    return `空隙${gap >= 0 ? '+' : ''}${gap}F`;
+  }
+
+  return `空隙${gap >= 0 ? '+' : ''}${gap}F，可以安全使用<=${safeStartup}F 招式`;
 });
 
 function getSequenceCandidateEvaluation(move: Move): { text: string; className: string } {
@@ -896,6 +946,9 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
             <div v-if="comboBuilderContext.hasContext" class="combo-context-detail">
               当前连接：{{ comboBuilderContext.modeLabel }} ｜ 当前优势/帧差：{{ comboBuilderContext.advText }}
             </div>
+            <div v-if="comboBuilderContext.hasContext" class="combo-context-gap-hint">
+              {{ comboBuilderGapHint }}
+            </div>
           </div>
           <input
             v-model="sequenceSearch"
@@ -938,9 +991,15 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
         <div v-for="(step, index) in comboSteps" :key="step.id" class="combo-step-row">
           <div class="combo-step-title">
             <span class="step-index">{{ index + 1 }}.</span>
-            <span>
-              {{ step.type === 'move' ? (step.move ? getMoveDisplayName(step.move) : '-') : step.customName }}
-            </span>
+            <button
+              v-if="step.type === 'move'"
+              class="step-move-name-btn"
+              type="button"
+              @click="openStepMoveEditor(step)"
+            >
+              {{ getStepMoveLabel(step) }}
+            </button>
+            <span v-else>{{ getStepMoveLabel(step) }}</span>
             <span class="move-input" v-if="step.type === 'move' && step.move">{{ step.move.input }}</span>
             <span class="move-input" v-else>
               Startup {{ step.customStartup }}F /
@@ -957,6 +1016,30 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
             </select>
           </div>
           <button class="remove-step-btn" @click="removeComboStep(step.id)">移除</button>
+
+          <div
+            v-if="step.type === 'move' && editingStepId === step.id"
+            class="step-edit-dropdown-wrap"
+          >
+            <input
+              v-model="stepEditSearch"
+              type="text"
+              class="search-input step-edit-search"
+              placeholder="搜索替换招式"
+              @blur="closeStepMoveEditor"
+            />
+            <div class="dropdown-list step-edit-dropdown">
+              <div
+                v-for="(move, moveIndex) in getEditableStepMoves(step, index)"
+                :key="`step-edit-${step.id}-${move.name}-${move.input}-${moveIndex}`"
+                class="dropdown-item"
+                @mousedown="replaceComboStepMove(step, move)"
+              >
+                <span class="move-name">{{ getMoveDisplayName(move) }}</span>
+                <span class="move-input">{{ move.input }}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1250,6 +1333,12 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
   color: var(--color-accent);
 }
 
+.combo-context-gap-hint {
+  margin-top: 2px;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+}
+
 .custom-step-fields {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1293,6 +1382,7 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
   justify-content: space-between;
   align-items: center;
   gap: var(--space-sm);
+  position: relative;
 }
 
 .combo-step-title {
@@ -1301,6 +1391,37 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
   align-items: center;
   flex: 1;
   flex-wrap: wrap;
+}
+
+.step-move-name-btn {
+  border: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.step-move-name-btn:hover {
+  color: var(--color-accent);
+}
+
+.step-edit-dropdown-wrap {
+  position: absolute;
+  left: var(--space-sm);
+  right: var(--space-sm);
+  top: calc(100% - 2px);
+  z-index: 120;
+}
+
+.step-edit-search {
+  margin-top: var(--space-xs);
+}
+
+.step-edit-dropdown {
+  position: static;
+  max-height: 220px;
 }
 
 .combo-step-controls {
