@@ -234,7 +234,6 @@ const validFollowUps = computed(() => {
   }
 
   const surplus = calculationResult.value.gap;
-  const isDriveRushCancel = move2.value && (move2.value.name.includes('Drive Rush') || move2.value.input.includes('66 (cancel)'));
   
   return allMoves.value
     .filter(m => {
@@ -246,7 +245,6 @@ const validFollowUps = computed(() => {
        const startup = parseFrameValue(m.startup);
        if (startup <= 0) return false;
        
-       if (isDriveRushCancel) return true;
        return startup <= surplus;
     })
     .sort((a, b) => {
