@@ -233,7 +233,7 @@ const validFollowUps = computed(() => {
     return [];
   }
 
-  const WINDOW_FRAMES = 4;
+  const surplus = calculationResult.value.gap;
   const isDriveRushCancel = move2.value && (move2.value.name.includes('Drive Rush') || move2.value.input.includes('66 (cancel)'));
   
   return allMoves.value
@@ -247,7 +247,7 @@ const validFollowUps = computed(() => {
        if (startup <= 0) return false;
        
        if (isDriveRushCancel) return true;
-       return startup <= WINDOW_FRAMES;
+       return startup <= surplus;
     })
     .sort((a, b) => {
         // 1. Prioritize Drive Rush (66 cancel)
@@ -571,7 +571,7 @@ function selectFollowUp(move: Move) {
        <!-- Follow-up Recommendations List -->
        <div v-if="validFollowUps.length > 0" class="result-card follow-up-card">
           <div class="rec-header">
-             <h3>可在窗口内命中的招式 (+4F)</h3>
+             <h3>可在窗口内命中的招式 (+{{ calculationResult.gap }}F)</h3>
              <span class="subtitle-text">后续可以连的招数列表</span>
           </div>
           
