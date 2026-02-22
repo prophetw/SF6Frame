@@ -139,6 +139,32 @@ describe('calculateGap', () => {
             expect(result.gap).toBe(0);
             expect(result.status).toContain('连防');
         });
+
+        it('should apply drive rush cancel bonus when move2 is Drive Rush Cancel', () => {
+            const result = calculateGap({
+                move1: mockMove({
+                    active: '2',
+                    recovery: '8',
+                    onBlock: '-1'
+                }),
+                move2: mockMove({
+                    name: 'Drive Rush Cancel',
+                    nameZh: '斗气冲锋取消',
+                    input: 'MPMK or 66',
+                    startup: '9'
+                }),
+                type: 'block',
+                mode: 'cancel',
+                hitState: 'normal',
+                cancelFrame: 1
+            });
+
+            // blockstun = 2 + 8 - 1 = 9, plus DRC bonus(+4) => 13.
+            // gap = 1 + (9 - 1) - 13 = -4.
+            expect(result.blockstun).toBe(13);
+            expect(result.gap).toBe(-4);
+            expect(result.status).toContain('连防');
+        });
     });
 
     describe('Hit Mode (Combo)', () => {
