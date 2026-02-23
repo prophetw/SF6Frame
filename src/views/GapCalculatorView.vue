@@ -474,8 +474,8 @@ const comboStepCalculations = computed(() => {
       isDriveRush: prev.outcomeType === 'buff'
     });
 
-    // 在“特殊 Buff（绿冲取消）”作为中间步骤时，连段构建器里更关注“连续压制”是否成立。
-    // 这里沿用上一段的 Gap 作为剩余压制帧，再叠加当前招 Startup 来判断是否连防。
+    // 在“特殊 Buff（绿冲取消）”作为中间步骤时，如果上一段是命中逻辑，
+    // 这里应沿用上一段的剩余连段窗口（Surplus）来判断下一招是否还能继续连招。
     const prevRow = rows[rows.length - 1];
     if (
       prev.outcomeType === 'buff'
@@ -484,20 +484,20 @@ const comboStepCalculations = computed(() => {
       && result.valid
     ) {
       const startup2Num = parseFrameValue(currMove.startup);
-      const chainedGap = prevRow.result.gap + startup2Num;
-      const isTrueBlockstring = chainedGap <= 0;
+      const chainedGap = prevRow.result.gap - startup2Num;
+      const isCombo = chainedGap >= 0;
 
       result = {
         ...result,
         gap: chainedGap,
-        displayLabel: 'Gap (空隙)',
+        displayLabel: isCombo ? '目押窗口 (Surplus)' : '缺失 (Missing)',
         displayValue: `${chainedGap > 0 ? '+' : ''}${chainedGap}F`,
-        formulaDesc: `${prevRow.result.gap} (Prev Gap) + ${startup2Num} (Startup)`,
-        status: isTrueBlockstring ? '连防 (True Blockstring)' : '可插招 (Interruptible)',
-        statusClass: isTrueBlockstring ? 'status-safe' : 'status-danger',
-        description: isTrueBlockstring
-          ? '真的连防，对手无法出任何招式，还处在防御硬直中。'
-          : `空隙 ${chainedGap} 帧，对手可插招。`
+        formulaDesc: `${prevRow.result.gap} (Prev Surplus) - ${startup2Num} (Startup)`,
+        status: isCombo ? '连招成立 (Combo)' : '连招失败 (No Combo)',
+        statusClass: isCombo ? 'status-safe' : 'status-danger',
+        description: isCombo
+          ? '可以连上。'
+          : `差 ${Math.abs(chainedGap)} 帧，对手可防御。`
       };
     }
 
