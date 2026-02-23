@@ -463,21 +463,50 @@ const comboStepCalculations = computed(() => {
 
     const prevCalcType = prev.outcomeType === 'block' ? 'block' : 'hit';
 
+    let result = calculateGap({
+      move1: prevMove,
+      move2: currMove,
+      type: prevCalcType,
+      mode: curr.transitionMode,
+      hitState: 'normal',
+      cancelFrame: 1,
+      isOpponentBurnout: false,
+      isDriveRush: prev.outcomeType === 'buff'
+    });
+
+    // 在“特殊 Buff（绿冲取消）”作为中间步骤时，连段构建器里更关注“连续压制”是否成立。
+    // 这里沿用上一段的 Gap 作为剩余压制帧，再叠加当前招 Startup 来判断是否连防。
+    const prevRow = rows[rows.length - 1];
+    if (
+      prev.outcomeType === 'buff'
+      && curr.transitionMode === 'link'
+      && prevRow?.result?.valid
+      && result.valid
+    ) {
+      const startup2Num = parseFrameValue(currMove.startup);
+      const chainedGap = prevRow.result.gap + startup2Num;
+      const isTrueBlockstring = chainedGap <= 0;
+
+      result = {
+        ...result,
+        gap: chainedGap,
+        displayLabel: 'Gap (空隙)',
+        displayValue: `${chainedGap > 0 ? '+' : ''}${chainedGap}F`,
+        formulaDesc: `${prevRow.result.gap} (Prev Gap) + ${startup2Num} (Startup)`,
+        status: isTrueBlockstring ? '连防 (True Blockstring)' : '可插招 (Interruptible)',
+        statusClass: isTrueBlockstring ? 'status-safe' : 'status-danger',
+        description: isTrueBlockstring
+          ? '真的连防，对手无法出任何招式，还处在防御硬直中。'
+          : `空隙 ${chainedGap} 帧，对手可插招。`
+      };
+    }
+
     rows.push({
       key: `${prev.id}-${curr.id}`,
       fromLabel: getMoveDisplayName(prevMove),
       toLabel: getMoveDisplayName(currMove),
       transitionMode: curr.transitionMode,
-      result: calculateGap({
-        move1: prevMove,
-        move2: currMove,
-        type: prevCalcType,
-        mode: curr.transitionMode,
-        hitState: 'normal',
-        cancelFrame: 1,
-        isOpponentBurnout: false,
-        isDriveRush: prev.outcomeType === 'buff'
-      }),
+      result,
       nextAdvantage: curr.outcomeType === 'buff'
         ? 4
         : parseFrameValue(curr.outcomeType === 'block' ? currMove.onBlock : currMove.onHit),
