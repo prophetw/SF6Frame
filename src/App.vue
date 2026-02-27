@@ -25,6 +25,7 @@ function handleLocaleChange(event: Event) {
               <RouterLink to="/" class="nav-link">角色列表</RouterLink>
               <RouterLink to="/oki" class="nav-link">压起身计算器</RouterLink>
               <RouterLink to="/gap-calculator" class="nav-link">连招间隙计算器</RouterLink>
+              <RouterLink to="/trade-calculator" class="nav-link">相杀计算器</RouterLink>
             </div>
 
             <div class="nav-actions">

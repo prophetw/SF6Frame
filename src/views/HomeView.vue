@@ -59,6 +59,15 @@ const characters = computed(() => SF6_CHARACTERS);
         </div>
         <span class="quick-arrow">→</span>
       </RouterLink>
+
+      <RouterLink to="/trade-calculator" class="quick-link-card">
+        <span class="quick-icon">⚔️</span>
+        <div class="quick-content">
+          <h3>相杀计算器</h3>
+          <p>实时计算双方招式相杀后的帧优势</p>
+        </div>
+        <span class="quick-arrow">→</span>
+      </RouterLink>
     </section>
   </div>
 </template>
