@@ -146,3 +146,13 @@ pnpm exec tsx scripts/scraper-puppeteer.ts ryu --connect
 # 批量更新所有角色
 pnpm exec tsx scripts/scraper-puppeteer.ts --connect
 ```
+
+Alternative (`/Frame_data` page):
+
+```bash
+# Update a single character from dedicated frame-data subpage
+pnpm exec tsx scripts/scraper-puppeteer-frame-data.ts ryu --connect
+
+# Update ALL characters from dedicated frame-data subpage
+pnpm exec tsx scripts/scraper-puppeteer-frame-data.ts --connect
+```
