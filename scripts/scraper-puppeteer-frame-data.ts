@@ -84,6 +84,7 @@ interface ScrapedMove {
     cancelText?: string;
     section?: string;
     variant?: string;
+    notes?: string;
 }
 
 interface ScrapedStats {
@@ -95,10 +96,37 @@ interface ScrapedStats {
 }
 
 const OUTPUT_DIR = path.join(__dirname, '../src/data/characters');
+const PAGE_GUARD_MARK = '__sf6FrameDataPageGuardInstalled';
+const PAGE_CONSOLE_MARK = '__sf6FrameDataConsoleHookInstalled';
+const BLOCKED_REQUEST_PATTERNS = [
+    'googlesyndication.com',
+    'doubleclick.net',
+    'nitropay.com',
+    'sharethrough.com',
+    'youtube.com',
+    'ytimg.com',
+    'google-analytics.com',
+    '/api.php?action=webapp-manifest'
+];
 
 // Ensure output directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {
     fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+}
+
+function shouldBlockRequestUrl(url: string): boolean {
+    const lower = url.toLowerCase();
+    return BLOCKED_REQUEST_PATTERNS.some(pattern => lower.includes(pattern));
+}
+
+function isLikelyPopupOrBlankUrl(url: string): boolean {
+    const lower = url.toLowerCase();
+    if (!lower || lower === 'about:blank') return true;
+    if (lower.startsWith('chrome://newtab') || lower.startsWith('chrome://new-tab-page')) return true;
+    if (lower.includes('googlesyndication.com') || lower.includes('doubleclick.net')) return true;
+    if (lower.includes('nitropay.com') || lower.includes('sharethrough.com')) return true;
+    if (lower.includes('youtube.com') || lower.includes('ytimg.com')) return true;
+    return false;
 }
 
 function normalizeWhitespace(value: string): string {
@@ -436,6 +464,28 @@ function loadExistingMoveExtras(filePath: string): Map<string, { nameZh?: string
     return extras;
 }
 
+function loadExistingMoveNameByInput(filePath: string): Map<string, string> {
+    const names = new Map<string, string>();
+    if (!fs.existsSync(filePath)) return names;
+    try {
+        const content = fs.readFileSync(filePath, 'utf-8');
+        const parsed = JSON.parse(content);
+        const moves = Array.isArray(parsed?.moves) ? parsed.moves : [];
+        for (const move of moves) {
+            if (!move || !move.input || !move.name) continue;
+            const input = normalizeInput(String(move.input));
+            const name = normalizeMoveName(String(move.name));
+            if (!input || input === '-' || !name || name === '-') continue;
+            if (!names.has(input)) {
+                names.set(input, name);
+            }
+        }
+    } catch {
+        return names;
+    }
+    return names;
+}
+
 function normalizeScrapedMove(scraped: ScrapedMove): Move {
     const rawName = normalizeFrameText(scraped.name);
     const variant = normalizeVariantLabel(scraped.variant);
@@ -472,7 +522,8 @@ function normalizeScrapedMove(scraped: ScrapedMove): Move {
         onHit,
         category,
         cancels,
-        knockdown
+        knockdown,
+        notes: scraped.notes ? normalizeFrameText(scraped.notes) : undefined
     };
 
     const raw = buildRawMove(move, scraped.section);
@@ -497,6 +548,82 @@ function normalizePageUrlForMatch(url: string): string {
     }
 }
 
+function getPageTargetId(page: any): string {
+    return page?.target?.()?._targetId || '';
+}
+
+async function ensurePageGuards(page: any): Promise<void> {
+    if ((page as any)[PAGE_GUARD_MARK]) return;
+    (page as any)[PAGE_GUARD_MARK] = true;
+
+    try {
+        await page.setRequestInterception(true);
+    } catch {
+        // Interception may already be enabled by other tooling.
+    }
+
+    page.on('request', (request: any) => {
+        try {
+            if (shouldBlockRequestUrl(request.url())) {
+                request.abort();
+                return;
+            }
+            request.continue();
+        } catch {
+            // Ignore request race errors (page closed, request handled, etc.)
+        }
+    });
+
+    page.on('popup', async (popup: any) => {
+        try {
+            const popupUrl = popup.url() || 'about:blank';
+            if (isLikelyPopupOrBlankUrl(popupUrl)) {
+                await popup.close();
+            }
+        } catch {
+            // Ignore popup close errors.
+        }
+    });
+
+    const disableWindowOpenScript = () => {
+        try {
+            const noop = () => null;
+            // @ts-ignore
+            window.open = noop;
+        } catch {
+            // Ignore assignment errors.
+        }
+    };
+
+    await page.evaluateOnNewDocument(disableWindowOpenScript);
+    try {
+        await page.evaluate(disableWindowOpenScript);
+    } catch {
+        // Ignore evaluate failures on non-ready pages.
+    }
+}
+
+async function cleanupUnexpectedNewPages(
+    browser: any,
+    baselinePageTargetIds: Set<string>,
+): Promise<void> {
+    const pages = await browser.pages();
+    for (const extraPage of pages) {
+        const targetId = getPageTargetId(extraPage);
+        if (!targetId || baselinePageTargetIds.has(targetId)) continue;
+
+        const pageUrl = extraPage.url() || '';
+        if (!isLikelyPopupOrBlankUrl(pageUrl)) continue;
+
+        try {
+            await extraPage.close();
+            console.log(`  🧹 Closed extra popup tab: ${pageUrl || 'about:blank'}`);
+        } catch {
+            // Ignore close errors for already-closed tabs.
+        }
+    }
+}
+
 async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<FrameData | null> {
     console.log(`Scraping ${config.name}...`);
     const targetUrl = getFrameDataWikiUrl(config);
@@ -507,6 +634,7 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
 
     // Check for existing pages
     const pages = await browser.pages();
+    const baselinePageTargetIds = new Set<string>(pages.map(getPageTargetId).filter(Boolean));
     // Reuse the exact frame-data page tab when possible.
     const existingPage = pages.find((p: any) => {
         const url = normalizePageUrlForMatch(p.url());
@@ -524,7 +652,11 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
         await page.setViewport({ width: 1920, height: 1080 });
     }
 
-    page.on('console', msg => console.log('PAGE LOG:', msg.text()));
+    await ensurePageGuards(page);
+    if (!(page as any)[PAGE_CONSOLE_MARK]) {
+        (page as any)[PAGE_CONSOLE_MARK] = true;
+        page.on('console', msg => console.log('PAGE LOG:', msg.text()));
+    }
 
     try {
         if (!reusedPage) {
@@ -540,15 +672,21 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
 
         try {
             console.log(`  Checking content on: ${page.url()}`);
-            await page.waitForSelector('.movedata-container', { timeout: 3000 });
+            await page.waitForFunction(
+                () => !!document.querySelector('.movedata-container, table.cargoDynamicTable, table.cargoTable'),
+                { timeout: 3000 }
+            );
         } catch (e) {
-            console.log('  ⚠️  No data containers found yet.');
+            console.log('  ⚠️  No frame-data tables found yet.');
 
             if (reusedPage) {
                 console.log('  🔄 Reused page might be stale. Reloading...');
                 await page.reload({ waitUntil: 'domcontentloaded' });
                 try {
-                    await page.waitForSelector('.movedata-container', { timeout: 5000 });
+                    await page.waitForFunction(
+                        () => !!document.querySelector('.movedata-container, table.cargoDynamicTable, table.cargoTable'),
+                        { timeout: 5000 }
+                    );
                 } catch (retryErr) {
                     console.log('  ❌ Still no data after reload.');
                 }
@@ -557,19 +695,55 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
             }
 
             // Only if we STILL don't have it, wait indefinitely
-            const found = await page.$('.movedata-container');
+            const found = await page.$('.movedata-container, table.cargoDynamicTable, table.cargoTable');
             if (!found) {
                 console.log('  🔴 ACTION REQUIRED: Please manually navigate/solve CAPTCHA in the browser window.');
                 console.log('     The script is waiting indefinitely for content...');
-                await page.waitForSelector('.movedata-container', { timeout: 0 });
+                await page.waitForFunction(
+                    () => !!document.querySelector('.movedata-container, table.cargoDynamicTable, table.cargoTable'),
+                    { timeout: 0 }
+                );
             }
         }
 
-        // Evaluate page to get raw data using the robust container logic
+        // Evaluate page data (supports legacy movedata layout and Frame_data cargo tables)
         const scrapeScript = `
 (() => {
   const moves = [];
-  const containers = document.querySelectorAll('.movedata-container');
+
+  function cleanText(value) {
+    return String(value || '').replace(/\\s+/g, ' ').trim();
+  }
+
+  function collectHeaders(table) {
+    const theadRow = table.querySelector('thead tr:last-child');
+    if (theadRow) {
+      const headerCells = Array.from(theadRow.querySelectorAll('th, td'));
+      if (headerCells.length > 0) {
+        return headerCells.map(cell => cleanText(cell.textContent).toLowerCase());
+      }
+    }
+    const firstRow = table.querySelector('tr');
+    if (!firstRow) return [];
+    return Array.from(firstRow.querySelectorAll('th, td')).map(cell => cleanText(cell.textContent).toLowerCase());
+  }
+
+  function collectRows(table) {
+    const bodyRows = Array.from(table.querySelectorAll('tbody tr'));
+    if (bodyRows.length > 0) return bodyRows;
+    return Array.from(table.querySelectorAll('tr'));
+  }
+
+  function findSectionTitleByDocumentOrder(node) {
+    const headings = Array.from(document.querySelectorAll('h2, h3, h4, h5'));
+    let found = '';
+    for (const heading of headings) {
+      if (heading.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING) {
+        found = cleanText(heading.textContent || '');
+      }
+    }
+    return found;
+  }
 
   function findSectionTitle(node) {
     let current = node;
@@ -578,35 +752,48 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
       while (prev) {
         const tag = prev.tagName.toLowerCase();
         if (tag === 'h2' || tag === 'h3' || tag === 'h4' || tag === 'h5') {
-          return (prev.textContent || '').trim();
+          return cleanText(prev.textContent || '');
         }
         prev = prev.previousElementSibling;
       }
       current = current.parentElement;
     }
-    return '';
+    return findSectionTitleByDocumentOrder(node);
   }
 
-  for (let i = 0; i < containers.length; i++) {
-    const container = containers[i];
-    const section = findSectionTitle(container);
-    const nameContainers = Array.from(container.querySelectorAll('.movedata-flex-framedata-name'));
+  function rowLooksLikeHeader(cells, headers) {
+    if (!cells || cells.length === 0) return true;
+    const first = cleanText(cells[0].textContent || '').toLowerCase();
+    if (!first) return true;
+    if (first === 'input' || first === 'move') return true;
 
-    const parseMoveBlock = (input, name, table) => {
+    const compareLen = Math.min(cells.length, headers.length, 8);
+    if (compareLen <= 0) return false;
+    let matches = 0;
+    for (let i = 0; i < compareLen; i++) {
+      const cellText = cleanText(cells[i].textContent || '').toLowerCase();
+      if (cellText && headers[i] && cellText === headers[i]) matches++;
+    }
+    return matches >= Math.max(2, compareLen - 1);
+  }
+
+  function parseLegacyMovedataContainers() {
+    const containers = document.querySelectorAll('.movedata-container');
+
+    const parseMoveBlock = (input, name, table, section) => {
       if (!input || !name || !table) return;
 
-      input = input.replace(/\\s+/g, ' ').trim();
-      name = name.replace(/\\s+/g, ' ').trim();
-
-      const headers = Array.from(table.querySelectorAll('tr:first-child th')).map(th => (th.textContent || '').trim().toLowerCase());
+      input = cleanText(input);
+      name = cleanText(name);
+      const headers = collectHeaders(table);
 
       const idx = {
         damage: headers.findIndex(h => h.includes('damage') || h.includes('dmg')),
         startup: headers.findIndex(h => h.includes('startup')),
         active: headers.findIndex(h => h.includes('active')),
         recovery: headers.findIndex(h => h.includes('recovery')),
-        onBlock: headers.findIndex(h => h.includes('on block') || (h.includes('block') && !h.includes('guard'))),
-        onHit: headers.findIndex(h => h.includes('on hit') || h.includes('hit')),
+        onBlock: headers.findIndex(h => h.includes('on block') || h.includes('block adv') || (h.includes('block') && !h.includes('guard'))),
+        onHit: headers.findIndex(h => h.includes('on hit') || h.includes('hit adv') || (h.includes('hit') && !h.includes('hitstop'))),
         cancel: headers.findIndex(h => h.includes('cancel')),
         variant: headers.findIndex(h =>
           h.includes('input') ||
@@ -623,17 +810,17 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
         idx.variant = 0;
       }
 
-      const rows = table.querySelectorAll('tr');
-      if (rows.length < 2) return;
+      const rows = collectRows(table);
+      if (rows.length < 1) return;
 
-      for (let r = 1; r < rows.length; r++) {
-        const dataRow = rows[r];
-        const cells = dataRow.querySelectorAll('td');
+      for (const row of rows) {
+        const cells = Array.from(row.querySelectorAll('td, th'));
         if (cells.length === 0) continue;
+        if (rowLooksLikeHeader(cells, headers)) continue;
 
         function getCell(index) {
           if (index === -1 || index >= cells.length) return '-';
-          return ((cells[index].textContent || '').trim()).replace(/\\n/g, '') || '-';
+          return cleanText(cells[index].textContent || '') || '-';
         }
 
         let variant = idx.variant !== -1 ? getCell(idx.variant) : '';
@@ -660,105 +847,215 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
       }
     };
 
-    if (nameContainers.length > 0) {
-      for (const nameContainer of nameContainers) {
-        const nameItems = nameContainer.querySelectorAll('.movedata-flex-framedata-name-item');
-        let input = '';
-        let name = '';
+    for (let i = 0; i < containers.length; i++) {
+      const container = containers[i];
+      const section = findSectionTitle(container);
+      const nameContainers = Array.from(container.querySelectorAll('.movedata-flex-framedata-name'));
 
-        if (nameItems.length >= 2) {
-          input = (nameItems[0].textContent || '').trim();
-          name = (nameItems[1].textContent || '').trim();
-        } else if (nameItems.length === 1) {
-          name = (nameItems[0].textContent || '').trim();
-          input = name;
+      if (nameContainers.length > 0) {
+        for (const nameContainer of nameContainers) {
+          const nameItems = nameContainer.querySelectorAll('.movedata-flex-framedata-name-item');
+          let input = '';
+          let name = '';
+
+          if (nameItems.length >= 2) {
+            input = cleanText(nameItems[0].textContent || '');
+            name = cleanText(nameItems[1].textContent || '');
+          } else if (nameItems.length === 1) {
+            name = cleanText(nameItems[0].textContent || '');
+            input = name;
+          }
+
+          let table = null;
+          let node = nameContainer;
+          while (node && !table) {
+            node = node.nextElementSibling;
+            if (!node) break;
+            if (node.matches && node.matches('table.wikitable')) table = node;
+            else {
+              const nested = node.querySelector && node.querySelector('table.wikitable');
+              if (nested) table = nested;
+            }
+          }
+
+          parseMoveBlock(input, name, table, section);
+        }
+      } else {
+        let heading = '';
+        let prev = container.previousElementSibling;
+        while (prev) {
+          const tag = prev.tagName.toLowerCase();
+          if (tag === 'h5' || tag === 'h4' || tag === 'h3' || tag === 'h2') {
+            heading = cleanText(prev.textContent || '');
+            break;
+          }
+          prev = prev.previousElementSibling;
         }
 
-        let table = null;
-        let node = nameContainer;
-        while (node && !table) {
-          node = node.nextElementSibling;
-          if (!node) break;
-          if (node.matches && node.matches('table.wikitable')) table = node;
-          else {
-            const nested = node.querySelector && node.querySelector('table.wikitable');
-            if (nested) table = nested;
+        let input = '';
+        let name = '';
+        if (heading) {
+          const parts = heading.split(/[:\\-–—]/).map(p => cleanText(p)).filter(Boolean);
+          if (parts.length >= 2) {
+            input = parts[0];
+            name = parts.slice(1).join(' ');
+          } else {
+            name = heading;
+            input = heading;
           }
         }
 
-        parseMoveBlock(input, name, table);
+        const table = container.querySelector('table.wikitable');
+        parseMoveBlock(input, name, table, section);
       }
-    } else {
-      // Fallback: try to parse heading above container
-      let heading = '';
-      let prev = container.previousElementSibling;
-      while (prev) {
-        const tag = prev.tagName.toLowerCase();
-        if (tag === 'h5' || tag === 'h4' || tag === 'h3' || tag === 'h2') {
-          heading = (prev.textContent || '').trim();
-          break;
-        }
-        prev = prev.previousElementSibling;
-      }
-
-      let input = '';
-      let name = '';
-      if (heading) {
-        const parts = heading.split(/[:\\-–—]/).map(p => p.trim()).filter(Boolean);
-        if (parts.length >= 2) {
-          input = parts[0];
-          name = parts.slice(1).join(' ');
-        } else {
-          name = heading;
-          input = heading;
-        }
-      }
-
-      const table = container.querySelector('table.wikitable');
-      parseMoveBlock(input, name, table);
     }
   }
 
-  function extractStats() {
+  function parseFrameDataCargoTables() {
+    const cargoTables = Array.from(document.querySelectorAll('table.cargoDynamicTable'));
+    if (cargoTables.length === 0) return;
+
+    const notesByInput = {};
+
+    // Collect notes from companion note tables.
+    for (const table of cargoTables) {
+      const headers = collectHeaders(table);
+      const idxInput = headers.findIndex(h => h === 'input' || h.includes('input'));
+      const idxNotes = headers.findIndex(h => h === 'notes' || h.includes('notes'));
+      if (idxInput === -1 || idxNotes === -1) continue;
+
+      for (const row of collectRows(table)) {
+        const cells = Array.from(row.querySelectorAll('td, th'));
+        if (cells.length === 0) continue;
+        if (rowLooksLikeHeader(cells, headers)) continue;
+
+        const input = cleanText(cells[idxInput]?.textContent || '');
+        const notes = cleanText(cells[idxNotes]?.textContent || '');
+        if (!input || input === '-' || !notes || notes === '-') continue;
+        notesByInput[input] = notes;
+      }
+    }
+
+    // Parse the core frame-data tables.
+    for (const table of cargoTables) {
+      const headers = collectHeaders(table);
+      const idxInput = headers.findIndex(h => h === 'input' || h.includes('input'));
+      const idxDamage = headers.findIndex(h => h.includes('damage') || h.includes('dmg'));
+      const idxStartup = headers.findIndex(h => h.includes('startup'));
+      const idxActive = headers.findIndex(h => h.includes('active'));
+      const idxRecovery = headers.findIndex(h => h.includes('recovery'));
+      const idxOnBlock = headers.findIndex(h => h.includes('on block') || h.includes('block adv') || (h.includes('block') && !h.includes('guard')));
+      const idxOnHit = headers.findIndex(h => h.includes('on hit') || h.includes('hit adv') || (h.includes('hit') && !h.includes('hitstop')));
+      const idxCancel = headers.findIndex(h => h.includes('cancel'));
+
+      const isCore = idxInput !== -1 && idxStartup !== -1 && idxActive !== -1 && idxRecovery !== -1;
+      if (!isCore) continue;
+
+      const section = findSectionTitle(table);
+
+      for (const row of collectRows(table)) {
+        const cells = Array.from(row.querySelectorAll('td, th'));
+        if (cells.length === 0) continue;
+        if (rowLooksLikeHeader(cells, headers)) continue;
+
+        function getCell(index) {
+          if (index === -1 || index >= cells.length) return '-';
+          return cleanText(cells[index].textContent || '') || '-';
+        }
+
+        const input = getCell(idxInput);
+        if (!input || input === '-') continue;
+
+        moves.push({
+          name: input,
+          input,
+          damage: getCell(idxDamage),
+          startup: getCell(idxStartup),
+          active: getCell(idxActive),
+          recovery: getCell(idxRecovery),
+          onBlock: getCell(idxOnBlock),
+          onHit: getCell(idxOnHit),
+          cancelText: getCell(idxCancel),
+          section,
+          notes: notesByInput[input] || ''
+        });
+      }
+    }
+  }
+
+  function extractStatsFromLegacyWikitable() {
     const tables = Array.from(document.querySelectorAll('table.wikitable'));
     for (const table of tables) {
-      const headerCells = Array.from(table.querySelectorAll('tr:first-child th'));
-      const headers = headerCells.map(th => (th.textContent || '').trim().toLowerCase());
-      const dataRow = table.querySelector('tr:nth-child(2)');
-      if (headers.length > 0 && dataRow) {
-        const values = Array.from(dataRow.querySelectorAll('td')).map(td => (td.textContent || '').trim());
-        const healthIdx = headers.findIndex(h => h.includes('health'));
-        const fDashIdx = headers.findIndex(h => h.includes('forward') && h.includes('dash'));
-        const bDashIdx = headers.findIndex(h => h.includes('back') && h.includes('dash'));
-        const fWalkIdx = headers.findIndex(h => h.includes('forward') && h.includes('walk'));
-        const bWalkIdx = headers.findIndex(h => h.includes('back') && h.includes('walk'));
-        if (healthIdx !== -1 || fDashIdx !== -1 || bDashIdx !== -1) {
-          return {
-            health: values[healthIdx] || '',
-            forwardDash: values[fDashIdx] || '',
-            backDash: values[bDashIdx] || '',
-            forwardWalk: values[fWalkIdx] || '',
-            backWalk: values[bWalkIdx] || ''
-          };
-        }
-      }
+      const headers = collectHeaders(table);
+      const rows = collectRows(table);
+      const dataRow = rows.find(row => row.querySelectorAll('td').length > 0);
+      if (!dataRow || headers.length === 0) continue;
 
-      const rows = Array.from(table.querySelectorAll('tr'));
-      const stats = {};
-      for (const row of rows) {
-        const cells = row.querySelectorAll('th, td');
-        if (cells.length < 2) continue;
-        const label = ((cells[0].textContent || '').trim()).toLowerCase();
-        const value = (cells[1].textContent || '').trim();
-        if (label.includes('health')) stats.health = value;
-        if (label.includes('forward') && label.includes('dash')) stats.forwardDash = value;
-        if (label.includes('back') && label.includes('dash')) stats.backDash = value;
-        if (label.includes('forward') && label.includes('walk')) stats.forwardWalk = value;
-        if (label.includes('back') && label.includes('walk')) stats.backWalk = value;
+      const values = Array.from(dataRow.querySelectorAll('td')).map(td => cleanText(td.textContent || ''));
+      const healthIdx = headers.findIndex(h => h.includes('health'));
+      const fDashIdx = headers.findIndex(h => h.includes('forward') && h.includes('dash'));
+      const bDashIdx = headers.findIndex(h => h.includes('back') && h.includes('dash'));
+      const fWalkIdx = headers.findIndex(h => h.includes('forward') && h.includes('walk'));
+      const bWalkIdx = headers.findIndex(h => h.includes('back') && h.includes('walk'));
+
+      if (healthIdx !== -1 || fDashIdx !== -1 || bDashIdx !== -1 || fWalkIdx !== -1 || bWalkIdx !== -1) {
+        return {
+          health: values[healthIdx] || '',
+          forwardDash: values[fDashIdx] || '',
+          backDash: values[bDashIdx] || '',
+          forwardWalk: values[fWalkIdx] || '',
+          backWalk: values[bWalkIdx] || ''
+        };
       }
-      if (Object.keys(stats).length > 0) return stats;
     }
     return null;
+  }
+
+  function extractStatsFromCargoTable() {
+    const table = document.querySelector('table.cargoTable');
+    if (!table) return null;
+
+    const headers = collectHeaders(table);
+    const rows = collectRows(table);
+    const dataRow = rows.find(row => row.querySelectorAll('td').length > 0);
+    if (!dataRow || headers.length === 0) return null;
+
+    const values = Array.from(dataRow.querySelectorAll('td')).map(td => cleanText(td.textContent || ''));
+    const valueOffset = headers.length - values.length;
+    const getValueByHeaderIndex = (headerIdx) => {
+      if (headerIdx < 0) return '';
+      const valueIdx = headerIdx - valueOffset;
+      if (valueIdx < 0 || valueIdx >= values.length) return '';
+      return values[valueIdx] || '';
+    };
+
+    const healthIdx = headers.findIndex(h => h === 'hp' || h.includes('health') || h.includes('hp'));
+    const fDashIdx = headers.findIndex(h => (h.includes('fwd') || h.includes('forward')) && h.includes('dash'));
+    const bDashIdx = headers.findIndex(h => h.includes('back') && h.includes('dash'));
+    const fWalkIdx = headers.findIndex(h => (h.includes('fwd') || h.includes('forward')) && h.includes('walk'));
+    const bWalkIdx = headers.findIndex(h => h.includes('back') && h.includes('walk'));
+
+    const result = {
+      health: getValueByHeaderIndex(healthIdx),
+      forwardDash: getValueByHeaderIndex(fDashIdx),
+      backDash: getValueByHeaderIndex(bDashIdx),
+      forwardWalk: getValueByHeaderIndex(fWalkIdx),
+      backWalk: getValueByHeaderIndex(bWalkIdx)
+    };
+
+    if (!result.health && !result.forwardDash && !result.backDash && !result.forwardWalk && !result.backWalk) {
+      return null;
+    }
+    return result;
+  }
+
+  function extractStats() {
+    return extractStatsFromLegacyWikitable() || extractStatsFromCargoTable() || null;
+  }
+
+  parseLegacyMovedataContainers();
+  if (moves.length === 0) {
+    parseFrameDataCargoTables();
   }
 
   return { moves, stats: extractStats() };
@@ -770,6 +1067,7 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
         if (!reusedPage) {
             await page.close();
         }
+        await cleanupUnexpectedNewPages(browser, baselinePageTargetIds);
 
         if (!scrapeResult || !scrapeResult.moves || scrapeResult.moves.length === 0) {
             console.warn(`  Warning: No moves found for ${config.name}`);
@@ -779,6 +1077,7 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
         const filePath = path.join(OUTPUT_DIR, `${config.id}.json`);
         const existingStats = loadExistingStats(filePath);
         const existingMoveExtras = loadExistingMoveExtras(filePath);
+        const existingMoveNameByInput = loadExistingMoveNameByInput(filePath);
         const stats = normalizeStats(scrapeResult.stats || null, existingStats);
         if (!scrapeResult.stats) {
             if (existingStats) {
@@ -792,7 +1091,14 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
         const seen = new Set<string>();
 
         for (const rawMove of scrapeResult.moves) {
-            const move = normalizeScrapedMove(rawMove as ScrapedMove);
+            const scrapedMove = { ...(rawMove as ScrapedMove) };
+            const normalizedInput = normalizeInput(scrapedMove.input);
+            const existingName = existingMoveNameByInput.get(normalizedInput);
+            if (existingName) {
+                scrapedMove.name = existingName;
+            }
+
+            const move = normalizeScrapedMove(scrapedMove);
             if (!move.name || !move.input) continue;
             const key = `${move.name}||${move.input}`;
             if (seen.has(key)) continue;
@@ -828,6 +1134,7 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
         console.error(`Failed to scrape ${config.name}:`, error.message);
         try {
             if (page && !page.isClosed() && !reusedPage) await page.close();
+            await cleanupUnexpectedNewPages(browser, baselinePageTargetIds);
         } catch { }
         return null;
     }
