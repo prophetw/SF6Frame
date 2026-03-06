@@ -151,6 +151,9 @@ const throwStartup = ref<number>(5);
 const throwActive = ref<number>(3);
 const wakeupThrowInvul = ref<number>(1);
 const opponentAbareStartup = ref<number>(4);
+const comboExtraDelayFrames = ref<number>(0);
+const throwExtraDelayFrames = ref<number>(0);
+const altExtraDelayFrames = ref<number>(0);
 const burstPressureOffset = ref<number>(1);
 const frameTrapAdvantageTarget = ref<number>(-3);
 
@@ -214,6 +217,9 @@ const normalizedThrowStartup = computed(() => Math.max(1, throwStartup.value || 
 const normalizedThrowActive = computed(() => Math.max(1, throwActive.value || 1));
 const normalizedThrowInvul = computed(() => Math.max(0, wakeupThrowInvul.value || 0));
 const normalizedAbare = computed(() => Math.max(0, opponentAbareStartup.value || 0));
+const normalizedComboExtraDelay = computed(() => Math.max(0, Math.trunc(comboExtraDelayFrames.value || 0)));
+const normalizedThrowExtraDelay = computed(() => Math.max(0, Math.trunc(throwExtraDelayFrames.value || 0)));
+const normalizedAltExtraDelay = computed(() => Math.max(0, Math.trunc(altExtraDelayFrames.value || 0)));
 const normalizedBurstPressureOffset = computed(() => Math.max(1, Math.trunc(burstPressureOffset.value || 1)));
 const normalizedFrameTrapAdvTarget = computed(() => Math.trunc(frameTrapAdvantageTarget.value || 0));
 
@@ -520,7 +526,7 @@ const comboResult = computed(() => {
   if (comboChain.value.length === 0 || effectiveKnockdownAdv.value <= 0) return null;
 
   // Calculate total frames (all actions except last one uses full duration)
-  let totalStartup = 0;
+  let baseTotalStartup = 0;
   let lastActiveFrames = 1;
 
   for (let i = 0; i < comboChain.value.length; i++) {
@@ -528,14 +534,15 @@ const comboResult = computed(() => {
     if (!action) continue;
     if (i === comboChain.value.length - 1 && action.type === 'move') {
       // Last action: add startup, track active separately
-      totalStartup += action.frames;
+      baseTotalStartup += action.frames;
       lastActiveFrames = action.active || 1;
     } else {
       // Not last action: add full frames
-      totalStartup += getActionTotalFrames(action);
+      baseTotalStartup += getActionTotalFrames(action);
     }
   }
 
+  const totalStartup = baseTotalStartup + normalizedComboExtraDelay.value;
   const ourStart = totalStartup;
   const ourEnd = ourStart + lastActiveFrames - 1;
 
@@ -563,6 +570,8 @@ const comboResult = computed(() => {
   }
 
   return {
+    baseTotalStartup,
+    extraDelayFrames: normalizedComboExtraDelay.value,
     totalStartup,
     ourStart,
     ourEnd,
@@ -614,12 +623,16 @@ function isComboSequenceMove(move: Move): boolean {
 }
 
 // Calculate prefix frames from combo chain (use full duration for moves)
-const comboChainPrefixFrames = computed(() => {
+const comboChainBasePrefixFrames = computed(() => {
   let total = 0;
   for (const action of comboChain.value) {
     total += getActionTotalFrames(action);
   }
   return total;
+});
+
+const comboChainPrefixFrames = computed(() => {
+  return comboChainBasePrefixFrames.value + normalizedComboExtraDelay.value;
 });
 
 // Build prefix name from combo chain
@@ -640,15 +653,7 @@ const comboChainPrefixInput = computed(() => {
 
 // Prefix frames for throw (includes move recovery)
 const comboChainThrowPrefixFrames = computed(() => {
-  let total = 0;
-  for (const action of comboChain.value) {
-    if (action.type === 'move' && action.move) {
-      total += getMoveTotalFrames(action.move);
-    } else {
-      total += action.frames;
-    }
-  }
-  return total;
+  return comboChainBasePrefixFrames.value + normalizedComboExtraDelay.value;
 });
 
 // Toggle result detail
@@ -979,6 +984,8 @@ interface ThrowComboResult {
   fillerStartup?: number;
   fillerActive?: number;
   fillerRecovery?: number;
+  baseDelay: number;
+  extraDelayFrames: number;
   delay: number;
   firstActive: number;
   toleranceFrames: number;
@@ -1005,10 +1012,12 @@ const allThrowResults = computed<ThrowComboResult[]>(() => {
   const minDelay = throwDelayMinClamped.value;
   const maxDelay = throwDelayMax.value;
   const throwStart = normalizedThrowStartup.value;
+  const extraDelay = normalizedThrowExtraDelay.value;
 
   for (const prefix of prefixes) {
     const baseDelay = prefix.frames;
-    if (baseDelay >= minDelay && baseDelay <= maxDelay) {
+    const actualDelay = baseDelay + extraDelay;
+    if (actualDelay >= minDelay && actualDelay <= maxDelay) {
       const key = `${prefix.name}|direct|${prefix.frames}`;
       results.push({
         key,
@@ -1016,9 +1025,11 @@ const allThrowResults = computed<ThrowComboResult[]>(() => {
         prefixFrames: prefix.frames,
         fillerName: '直接投',
         fillerFrames: 0,
-        delay: baseDelay,
-        firstActive: baseDelay + throwStart,
-        toleranceFrames: Math.max(0, maxDelay - baseDelay),
+        baseDelay,
+        extraDelayFrames: extraDelay,
+        delay: actualDelay,
+        firstActive: actualDelay + throwStart,
+        toleranceFrames: Math.max(0, maxDelay - actualDelay),
       });
     }
 
@@ -1028,7 +1039,8 @@ const allThrowResults = computed<ThrowComboResult[]>(() => {
       const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
       // Use helper for correct total (handles raw.total and startup-1 logic)
       const fillerFrames = getMoveTotalFrames(move); 
-      const delay = prefix.frames + fillerFrames;
+      const baseDelay = prefix.frames + fillerFrames;
+      const delay = baseDelay + extraDelay;
 
       if (delay < minDelay || delay > maxDelay) continue;
 
@@ -1043,6 +1055,8 @@ const allThrowResults = computed<ThrowComboResult[]>(() => {
         fillerStartup,
         fillerActive,
         fillerRecovery,
+        baseDelay,
+        extraDelayFrames: extraDelay,
         delay,
         firstActive: delay + throwStart,
         toleranceFrames: Math.max(0, maxDelay - delay),
@@ -1116,6 +1130,8 @@ interface BurstPressureResult {
   fillerStartup?: number;
   fillerActive?: number;
   fillerRecovery?: number;
+  baseDelay: number;
+  extraDelayFrames: number;
   delay: number;
   firstActive: number;
   lastActive: number;
@@ -1135,7 +1151,7 @@ const burstRequiredDelay = computed(() => {
 });
 
 const comboChainBurstFirstActive = computed(() => {
-  return comboChainPrefixFrames.value + BURST_STARTUP_FRAMES;
+  return comboChainPrefixFrames.value + normalizedAltExtraDelay.value + BURST_STARTUP_FRAMES;
 });
 
 const comboChainBurstLastActive = computed(() => {
@@ -1147,7 +1163,7 @@ const comboChainBurstOffset = computed(() => {
 });
 
 const comboChainBurstDelayDelta = computed(() => {
-  return comboChainPrefixFrames.value - burstRequiredDelay.value;
+  return comboChainPrefixFrames.value + normalizedAltExtraDelay.value - burstRequiredDelay.value;
 });
 
 const allBurstPressureResults = computed<BurstPressureResult[]>(() => {
@@ -1157,9 +1173,11 @@ const allBurstPressureResults = computed<BurstPressureResult[]>(() => {
   const results: BurstPressureResult[] = [];
   const prefixes = getAltPrefixes();
   const targetDelay = burstRequiredDelay.value;
+  const extraDelay = normalizedAltExtraDelay.value;
 
   for (const prefix of prefixes) {
-    const directDelay = prefix.frames;
+    const baseDelay = prefix.frames;
+    const directDelay = baseDelay + extraDelay;
     if (directDelay === targetDelay) {
       const firstActive = directDelay + BURST_STARTUP_FRAMES;
       results.push({
@@ -1168,6 +1186,8 @@ const allBurstPressureResults = computed<BurstPressureResult[]>(() => {
         prefixFrames: prefix.frames,
         fillerName: '直接迸放',
         fillerFrames: 0,
+        baseDelay,
+        extraDelayFrames: extraDelay,
         delay: directDelay,
         firstActive,
         lastActive: firstActive + BURST_ACTIVE_FRAMES - 1,
@@ -1181,7 +1201,8 @@ const allBurstPressureResults = computed<BurstPressureResult[]>(() => {
       const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
       const fillerFrames = getMoveTotalFrames(move);
       if (fillerFrames <= 0) continue;
-      const delay = prefix.frames + fillerFrames;
+      const baseDelay = prefix.frames + fillerFrames;
+      const delay = baseDelay + extraDelay;
       if (delay !== targetDelay) continue;
 
       const firstActive = delay + BURST_STARTUP_FRAMES;
@@ -1195,6 +1216,8 @@ const allBurstPressureResults = computed<BurstPressureResult[]>(() => {
         fillerStartup,
         fillerActive,
         fillerRecovery,
+        baseDelay,
+        extraDelayFrames: extraDelay,
         delay,
         firstActive,
         lastActive: firstActive + BURST_ACTIVE_FRAMES - 1,
@@ -1218,13 +1241,15 @@ interface FrameTrapResult {
   fillerStartup?: number;
   fillerActive?: number;
   fillerRecovery?: number;
+  baseTotalFrames: number;
+  extraDelayFrames: number;
   totalFrames: number;
   resultingAdvantage: number;
   deltaToTarget: number;
 }
 
 const comboChainFrameTrapAdvantage = computed(() => {
-  return effectiveKnockdownAdv.value - comboChainPrefixFrames.value;
+  return effectiveKnockdownAdv.value - (comboChainPrefixFrames.value + normalizedAltExtraDelay.value);
 });
 
 const comboChainFrameTrapDelta = computed(() => {
@@ -1237,9 +1262,11 @@ const allFrameTrapResults = computed<FrameTrapResult[]>(() => {
   const targetAdv = normalizedFrameTrapAdvTarget.value;
   const prefixes = getAltPrefixes();
   const results: FrameTrapResult[] = [];
+  const extraDelay = normalizedAltExtraDelay.value;
 
   for (const prefix of prefixes) {
-    const directTotal = prefix.frames;
+    const baseTotal = prefix.frames;
+    const directTotal = baseTotal + extraDelay;
     const directAdv = effectiveKnockdownAdv.value - directTotal;
     if (directAdv === targetAdv) {
       results.push({
@@ -1248,6 +1275,8 @@ const allFrameTrapResults = computed<FrameTrapResult[]>(() => {
         prefixFrames: prefix.frames,
         fillerName: '无追加动作',
         fillerFrames: 0,
+        baseTotalFrames: baseTotal,
+        extraDelayFrames: extraDelay,
         totalFrames: directTotal,
         resultingAdvantage: directAdv,
         deltaToTarget: directAdv - targetAdv,
@@ -1260,7 +1289,8 @@ const allFrameTrapResults = computed<FrameTrapResult[]>(() => {
       const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
       const fillerFrames = getMoveTotalFrames(move);
       if (fillerFrames <= 0) continue;
-      const totalFrames = prefix.frames + fillerFrames;
+      const baseTotalFrames = prefix.frames + fillerFrames;
+      const totalFrames = baseTotalFrames + extraDelay;
       const resultingAdvantage = effectiveKnockdownAdv.value - totalFrames;
       if (resultingAdvantage !== targetAdv) continue;
 
@@ -1274,6 +1304,8 @@ const allFrameTrapResults = computed<FrameTrapResult[]>(() => {
         fillerStartup,
         fillerActive,
         fillerRecovery,
+        baseTotalFrames,
+        extraDelayFrames: extraDelay,
         totalFrames,
         resultingAdvantage,
         deltaToTarget: resultingAdvantage - targetAdv,
@@ -1925,6 +1957,12 @@ function formatTolerance(val: number | undefined): string {
           <span v-if="comboChain.length === 0" class="chain-empty">点击下方添加前置动作</span>
         </div>
 
+        <div class="combo-delay-row">
+          <span class="summary-label">额外延迟</span>
+          <input type="number" v-model.number="comboExtraDelayFrames" min="0" class="small-input" />
+          <span class="summary-unit">F</span>
+        </div>
+
         <div class="combo-actions">
           <button class="action-btn dash-btn" @click="addDash">
             + 前冲 ({{ stats?.forwardDash }}F)
@@ -1953,6 +1991,16 @@ function formatTolerance(val: number | undefined): string {
 
       <!-- Combo Result -->
       <div v-if="comboResult" class="combo-result" :class="{ success: comboResult.coversOpponent }">
+        <div class="result-row">
+          <span class="result-label">额外延迟:</span>
+          <span class="result-value">{{ comboResult.extraDelayFrames }}F</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">计算:</span>
+          <span class="result-value">
+            {{ comboResult.baseTotalStartup }} + {{ comboResult.extraDelayFrames }} = {{ comboResult.totalStartup }}F
+          </span>
+        </div>
         <div class="result-row">
           <span class="result-label">打击帧范围:</span>
           <span class="result-value">{{ comboResult.ourStart }}~{{ comboResult.ourEnd }}F</span>
@@ -2254,9 +2302,18 @@ function formatTolerance(val: number | undefined): string {
           <input type="number" v-model.number="opponentAbareStartup" min="0" max="20" class="small-input" />
           <span class="summary-unit">F</span>
         </div>
+        <div class="summary-item">
+          <span class="summary-label">额外延迟</span>
+          <input type="number" v-model.number="throwExtraDelayFrames" min="0" class="small-input" />
+          <span class="summary-unit">F</span>
+        </div>
       </div>
 
       <div class="throw-math">
+        <div class="math-row">
+          <span class="math-label">额外延迟 E:</span>
+          <span class="math-value">{{ normalizedThrowExtraDelay }}F</span>
+        </div>
         <div class="math-row">
           <span class="math-label">最早可被投帧:</span>
           <span class="math-value">{{ effectiveKnockdownAdv }} + {{ normalizedThrowInvul }} + 1 = {{
@@ -2358,7 +2415,7 @@ function formatTolerance(val: number | undefined): string {
             </div>
             <div class="detail-row calc">
               <span class="detail-label">延迟 S:</span>
-              <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} = {{ result.delay }}F</span>
+              <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} + {{ result.extraDelayFrames }} = {{ result.delay }}F</span>
             </div>
             <div class="detail-row calc">
               <span class="detail-label">第一帧:</span>
@@ -2430,6 +2487,12 @@ function formatTolerance(val: number | undefined): string {
         另类压起身
       </h2>
 
+      <div class="alt-oki-delay-row">
+        <span class="summary-label">额外延迟</span>
+        <input type="number" v-model.number="altExtraDelayFrames" min="0" class="small-input" />
+        <span class="summary-unit">F</span>
+      </div>
+
       <div class="alt-oki-grid">
         <div class="alt-oki-card">
           <h3 class="subsection-title">斗气迸放压起身</h3>
@@ -2439,6 +2502,10 @@ function formatTolerance(val: number | undefined): string {
             <div class="summary-item">
               <span class="summary-label">击倒优势 N</span>
               <span class="summary-value">{{ effectiveKnockdownAdv }}F</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">额外延迟</span>
+              <span class="summary-value">{{ normalizedAltExtraDelay }}F</span>
             </div>
             <div class="summary-item">
               <span class="summary-label">压制帧</span>
@@ -2469,9 +2536,13 @@ function formatTolerance(val: number | undefined): string {
               <span class="math-value">{{ burstTargetFirstActiveFrame }} - {{ BURST_STARTUP_FRAMES }} = {{ burstRequiredDelay }}F</span>
             </div>
             <div class="math-row">
+              <span class="math-label">额外延迟 E:</span>
+              <span class="math-value">{{ normalizedAltExtraDelay }}F</span>
+            </div>
+            <div class="math-row">
               <span class="math-label">当前组合链:</span>
               <span class="math-value">
-                {{ comboChainPrefixFrames }} + {{ BURST_STARTUP_FRAMES }} = {{ comboChainBurstFirstActive }}~{{ comboChainBurstLastActive }}F
+                {{ comboChainPrefixFrames }} + {{ normalizedAltExtraDelay }} + {{ BURST_STARTUP_FRAMES }} = {{ comboChainBurstFirstActive }}~{{ comboChainBurstLastActive }}F
                 <span v-if="comboChainBurstDelayDelta === 0" class="frame-positive">(已匹配)</span>
                 <span v-else-if="comboChainBurstDelayDelta > 0" class="frame-negative">(慢 {{ comboChainBurstDelayDelta }}F)</span>
                 <span v-else class="frame-positive">(快 {{ -comboChainBurstDelayDelta }}F)</span>
@@ -2543,7 +2614,7 @@ function formatTolerance(val: number | undefined): string {
                 </div>
                 <div class="detail-row calc">
                   <span class="detail-label">前置总帧:</span>
-                  <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} = {{ result.delay }}F</span>
+                  <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} + {{ result.extraDelayFrames }} = {{ result.delay }}F</span>
                 </div>
                 <div class="detail-row calc">
                   <span class="detail-label">判定帧:</span>
@@ -2575,6 +2646,10 @@ function formatTolerance(val: number | undefined): string {
               <span class="summary-value">{{ effectiveKnockdownAdv }}F</span>
             </div>
             <div class="summary-item">
+              <span class="summary-label">额外延迟</span>
+              <span class="summary-value">{{ normalizedAltExtraDelay }}F</span>
+            </div>
+            <div class="summary-item">
               <span class="summary-label">目标优势帧</span>
               <input type="number" v-model.number="frameTrapAdvantageTarget" class="small-input" />
               <span class="summary-unit">F</span>
@@ -2587,8 +2662,12 @@ function formatTolerance(val: number | undefined): string {
               <span class="math-value">N - 组合总帧 = {{ normalizedFrameTrapAdvTarget }}</span>
             </div>
             <div class="math-row">
+              <span class="math-label">额外延迟 E:</span>
+              <span class="math-value">{{ normalizedAltExtraDelay }}F</span>
+            </div>
+            <div class="math-row">
               <span class="math-label">当前组合链:</span>
-              <span class="math-value">{{ effectiveKnockdownAdv }} - {{ comboChainPrefixFrames }} = {{ comboChainFrameTrapAdvantage }}F</span>
+              <span class="math-value">{{ effectiveKnockdownAdv }} - ({{ comboChainPrefixFrames }} + {{ normalizedAltExtraDelay }}) = {{ comboChainFrameTrapAdvantage }}F</span>
             </div>
             <div class="math-row">
               <span class="math-label">与目标差值:</span>
@@ -2657,7 +2736,7 @@ function formatTolerance(val: number | undefined): string {
                 </div>
                 <div class="detail-row calc">
                   <span class="detail-label">组合总帧:</span>
-                  <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} = {{ result.totalFrames }}F</span>
+                  <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} + {{ result.extraDelayFrames }} = {{ result.totalFrames }}F</span>
                 </div>
                 <div class="detail-row calc">
                   <span class="detail-label">结果优势:</span>
@@ -2928,6 +3007,14 @@ function formatTolerance(val: number | undefined): string {
   display: flex;
   gap: var(--space-sm);
   flex-wrap: wrap;
+}
+
+.combo-delay-row,
+.alt-oki-delay-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
 }
 
 .combo-builder-title {

@@ -11,5 +11,12 @@ export const defaultCustomMoves: CustomMove[] = [
         "name": "2HK(punish)",
         "input": "2HK(punish)",
         "frames": 47
+    },
+    {
+        "id": "1772776428815",
+        "characterId": "mai",
+        "name": "214HP~236LK",
+        "input": "214HP~236LK",
+        "frames": 30
     }
 ]
