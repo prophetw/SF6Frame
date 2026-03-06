@@ -151,10 +151,17 @@ const throwStartup = ref<number>(5);
 const throwActive = ref<number>(3);
 const wakeupThrowInvul = ref<number>(1);
 const opponentAbareStartup = ref<number>(4);
+const burstPressureOffset = ref<number>(1);
+const frameTrapAdvantageTarget = ref<number>(-3);
+
+const BURST_STARTUP_FRAMES = 26;
+const BURST_ACTIVE_FRAMES = 2;
 
 // Selected result for detail view
 const selectedResultKey = ref<string | null>(null);
 const selectedThrowResultKey = ref<string | null>(null);
+const selectedBurstResultKey = ref<string | null>(null);
+const selectedFrameTrapResultKey = ref<string | null>(null);
 
 // Effective knockdown advantage
 // Effective knockdown advantage
@@ -207,6 +214,8 @@ const normalizedThrowStartup = computed(() => Math.max(1, throwStartup.value || 
 const normalizedThrowActive = computed(() => Math.max(1, throwActive.value || 1));
 const normalizedThrowInvul = computed(() => Math.max(0, wakeupThrowInvul.value || 0));
 const normalizedAbare = computed(() => Math.max(0, opponentAbareStartup.value || 0));
+const normalizedBurstPressureOffset = computed(() => Math.max(1, Math.trunc(burstPressureOffset.value || 1)));
+const normalizedFrameTrapAdvTarget = computed(() => Math.trunc(frameTrapAdvantageTarget.value || 0));
 
 // 最早可投帧 = 击倒帧 + 起身投无敌帧 + 1
 // 例：38帧击倒，1帧投保护 → 第39帧是起身第1帧(投保护)，第40帧才可被投
@@ -660,6 +669,22 @@ function toggleThrowResultDetail(key: string) {
   }
 }
 
+function toggleBurstResultDetail(key: string) {
+  if (selectedBurstResultKey.value === key) {
+    selectedBurstResultKey.value = null;
+  } else {
+    selectedBurstResultKey.value = key;
+  }
+}
+
+function toggleFrameTrapResultDetail(key: string) {
+  if (selectedFrameTrapResultKey.value === key) {
+    selectedFrameTrapResultKey.value = null;
+  } else {
+    selectedFrameTrapResultKey.value = key;
+  }
+}
+
 // Sort State
 const sortKey = ref<'block' | 'hit' | 'trade' | 'startup' | 'tolerance'>('block');
 const sortOrder = ref<'asc' | 'desc'>('desc');
@@ -1062,6 +1087,203 @@ const throwResults = computed(() => {
   });
 
   return sorted.slice(0, 50);
+});
+
+type AltPrefixOption = {
+  name: string;
+  frames: number;
+};
+
+function getAltPrefixes(): AltPrefixOption[] {
+  if (!stats.value) return [];
+  if (useChainAsPrefix.value && comboChain.value.length > 0) {
+    return [{ name: comboChainPrefixName.value, frames: comboChainPrefixFrames.value }];
+  }
+  return [
+    { name: '', frames: 0 },
+    { name: '前冲', frames: stats.value.forwardDash },
+    { name: '前冲x2', frames: stats.value.forwardDash * 2 },
+  ];
+}
+
+interface BurstPressureResult {
+  key: string;
+  prefix: string;
+  prefixFrames: number;
+  filler?: Move;
+  fillerName: string;
+  fillerFrames: number;
+  fillerStartup?: number;
+  fillerActive?: number;
+  fillerRecovery?: number;
+  delay: number;
+  firstActive: number;
+  lastActive: number;
+  wakeupOffset: number;
+}
+
+const burstTargetFirstActiveFrame = computed(() => {
+  return opponentWakeupFrame.value + normalizedBurstPressureOffset.value - 1;
+});
+
+const burstTargetLastActiveFrame = computed(() => {
+  return burstTargetFirstActiveFrame.value + BURST_ACTIVE_FRAMES - 1;
+});
+
+const burstRequiredDelay = computed(() => {
+  return burstTargetFirstActiveFrame.value - BURST_STARTUP_FRAMES;
+});
+
+const comboChainBurstFirstActive = computed(() => {
+  return comboChainPrefixFrames.value + BURST_STARTUP_FRAMES;
+});
+
+const comboChainBurstLastActive = computed(() => {
+  return comboChainBurstFirstActive.value + BURST_ACTIVE_FRAMES - 1;
+});
+
+const comboChainBurstOffset = computed(() => {
+  return comboChainBurstFirstActive.value - opponentWakeupFrame.value + 1;
+});
+
+const comboChainBurstDelayDelta = computed(() => {
+  return comboChainPrefixFrames.value - burstRequiredDelay.value;
+});
+
+const allBurstPressureResults = computed<BurstPressureResult[]>(() => {
+  if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
+  if (burstRequiredDelay.value < 0) return [];
+
+  const results: BurstPressureResult[] = [];
+  const prefixes = getAltPrefixes();
+  const targetDelay = burstRequiredDelay.value;
+
+  for (const prefix of prefixes) {
+    const directDelay = prefix.frames;
+    if (directDelay === targetDelay) {
+      const firstActive = directDelay + BURST_STARTUP_FRAMES;
+      results.push({
+        key: `${prefix.name}|direct|${prefix.frames}`,
+        prefix: prefix.name,
+        prefixFrames: prefix.frames,
+        fillerName: '直接迸放',
+        fillerFrames: 0,
+        delay: directDelay,
+        firstActive,
+        lastActive: firstActive + BURST_ACTIVE_FRAMES - 1,
+        wakeupOffset: firstActive - opponentWakeupFrame.value + 1,
+      });
+    }
+
+    for (const move of throwFillerMoves.value) {
+      const fillerStartup = parseInt(move.startup) || 0;
+      const fillerActive = parseActiveWindowFrames(move.active);
+      const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
+      const fillerFrames = getMoveTotalFrames(move);
+      if (fillerFrames <= 0) continue;
+      const delay = prefix.frames + fillerFrames;
+      if (delay !== targetDelay) continue;
+
+      const firstActive = delay + BURST_STARTUP_FRAMES;
+      results.push({
+        key: `${prefix.name}|${prefix.frames}|${move.name}|${move.input}|${fillerFrames}`,
+        prefix: prefix.name,
+        prefixFrames: prefix.frames,
+        filler: move,
+        fillerName: getMoveDisplayName(move),
+        fillerFrames,
+        fillerStartup,
+        fillerActive,
+        fillerRecovery,
+        delay,
+        firstActive,
+        lastActive: firstActive + BURST_ACTIVE_FRAMES - 1,
+        wakeupOffset: firstActive - opponentWakeupFrame.value + 1,
+      });
+    }
+  }
+
+  return results
+    .sort((a, b) => a.delay - b.delay || a.prefixFrames - b.prefixFrames)
+    .slice(0, 50);
+});
+
+interface FrameTrapResult {
+  key: string;
+  prefix: string;
+  prefixFrames: number;
+  filler?: Move;
+  fillerName: string;
+  fillerFrames: number;
+  fillerStartup?: number;
+  fillerActive?: number;
+  fillerRecovery?: number;
+  totalFrames: number;
+  resultingAdvantage: number;
+  deltaToTarget: number;
+}
+
+const comboChainFrameTrapAdvantage = computed(() => {
+  return effectiveKnockdownAdv.value - comboChainPrefixFrames.value;
+});
+
+const comboChainFrameTrapDelta = computed(() => {
+  return comboChainFrameTrapAdvantage.value - normalizedFrameTrapAdvTarget.value;
+});
+
+const allFrameTrapResults = computed<FrameTrapResult[]>(() => {
+  if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
+
+  const targetAdv = normalizedFrameTrapAdvTarget.value;
+  const prefixes = getAltPrefixes();
+  const results: FrameTrapResult[] = [];
+
+  for (const prefix of prefixes) {
+    const directTotal = prefix.frames;
+    const directAdv = effectiveKnockdownAdv.value - directTotal;
+    if (directAdv === targetAdv) {
+      results.push({
+        key: `${prefix.name}|direct|${prefix.frames}`,
+        prefix: prefix.name,
+        prefixFrames: prefix.frames,
+        fillerName: '无追加动作',
+        fillerFrames: 0,
+        totalFrames: directTotal,
+        resultingAdvantage: directAdv,
+        deltaToTarget: directAdv - targetAdv,
+      });
+    }
+
+    for (const move of throwFillerMoves.value) {
+      const fillerStartup = parseInt(move.startup) || 0;
+      const fillerActive = parseActiveWindowFrames(move.active);
+      const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
+      const fillerFrames = getMoveTotalFrames(move);
+      if (fillerFrames <= 0) continue;
+      const totalFrames = prefix.frames + fillerFrames;
+      const resultingAdvantage = effectiveKnockdownAdv.value - totalFrames;
+      if (resultingAdvantage !== targetAdv) continue;
+
+      results.push({
+        key: `${prefix.name}|${prefix.frames}|${move.name}|${move.input}|${fillerFrames}`,
+        prefix: prefix.name,
+        prefixFrames: prefix.frames,
+        filler: move,
+        fillerName: getMoveDisplayName(move),
+        fillerFrames,
+        fillerStartup,
+        fillerActive,
+        fillerRecovery,
+        totalFrames,
+        resultingAdvantage,
+        deltaToTarget: resultingAdvantage - targetAdv,
+      });
+    }
+  }
+
+  return results
+    .sort((a, b) => a.totalFrames - b.totalFrames || a.prefixFrames - b.prefixFrames)
+    .slice(0, 50);
 });
 
 // Actions
@@ -2201,6 +2423,263 @@ function formatTolerance(val: number | undefined): string {
         <p>没有自动匹配的循环投组合</p>
       </div>
     </section>
+
+    <section v-if="effectiveKnockdownAdv > 0" class="oki-section">
+      <h2 class="section-title">
+        <span class="step-number">5</span>
+        另类压起身
+      </h2>
+
+      <div class="alt-oki-grid">
+        <div class="alt-oki-card">
+          <h3 class="subsection-title">斗气迸放压起身</h3>
+          <p class="section-desc">固定 26F 发生，26~27F 持续。输入“压制帧”定义第一段判定相对起身的对齐位置。</p>
+
+          <div class="throw-summary">
+            <div class="summary-item">
+              <span class="summary-label">击倒优势 N</span>
+              <span class="summary-value">{{ effectiveKnockdownAdv }}F</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">压制帧</span>
+              <input type="number" v-model.number="burstPressureOffset" min="1" class="small-input" />
+              <span class="summary-unit">F</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">迸放发生</span>
+              <span class="summary-value">{{ BURST_STARTUP_FRAMES }}F</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">迸放持续</span>
+              <span class="summary-value">{{ BURST_STARTUP_FRAMES }}~{{ BURST_STARTUP_FRAMES + BURST_ACTIVE_FRAMES - 1 }}F</span>
+            </div>
+          </div>
+
+          <div class="throw-math">
+            <div class="math-row">
+              <span class="math-label">目标第一帧:</span>
+              <span class="math-value">{{ opponentWakeupFrame }} + ({{ normalizedBurstPressureOffset }} - 1) = {{ burstTargetFirstActiveFrame }}F</span>
+            </div>
+            <div class="math-row">
+              <span class="math-label">目标判定范围:</span>
+              <span class="math-value">{{ burstTargetFirstActiveFrame }}~{{ burstTargetLastActiveFrame }}F</span>
+            </div>
+            <div class="math-row">
+              <span class="math-label">需要前置总帧:</span>
+              <span class="math-value">{{ burstTargetFirstActiveFrame }} - {{ BURST_STARTUP_FRAMES }} = {{ burstRequiredDelay }}F</span>
+            </div>
+            <div class="math-row">
+              <span class="math-label">当前组合链:</span>
+              <span class="math-value">
+                {{ comboChainPrefixFrames }} + {{ BURST_STARTUP_FRAMES }} = {{ comboChainBurstFirstActive }}~{{ comboChainBurstLastActive }}F
+                <span v-if="comboChainBurstDelayDelta === 0" class="frame-positive">(已匹配)</span>
+                <span v-else-if="comboChainBurstDelayDelta > 0" class="frame-negative">(慢 {{ comboChainBurstDelayDelta }}F)</span>
+                <span v-else class="frame-positive">(快 {{ -comboChainBurstDelayDelta }}F)</span>
+              </span>
+            </div>
+            <div class="math-row">
+              <span class="math-label">当前压制帧:</span>
+              <span class="math-value">{{ comboChainBurstOffset }}F</span>
+            </div>
+          </div>
+
+          <div v-if="burstRequiredDelay < 0" class="throw-warning">
+            当前目标需要负延迟（前置总帧 &lt; 0），无法成立。
+          </div>
+
+          <div class="results-header-row throw-results-header">
+            <h3 class="results-title">迸放匹配 (共 {{ allBurstPressureResults.length }} 条，显示前 {{ allBurstPressureResults.length }} 条)</h3>
+          </div>
+
+          <div v-if="allBurstPressureResults.length > 0" class="results-table">
+            <div class="result-header throw-header">
+              <span>组合</span>
+              <span>前置总帧</span>
+              <span>判定帧</span>
+              <span>压制帧</span>
+            </div>
+            <div
+              v-for="result in allBurstPressureResults"
+              :key="result.key"
+              :class="['result-row-auto', 'throw-row', { expanded: selectedBurstResultKey === result.key }]"
+              @click="toggleBurstResultDetail(result.key)"
+            >
+              <div class="result-combo">
+                <span class="combo-prefix">{{ result.prefix || '无前置' }}</span>
+                <span>+</span>
+                <span>{{ result.fillerName }}</span>
+                <span v-if="result.filler" class="move-input">({{ result.filler.input }})</span>
+              </div>
+              <span>{{ result.delay }}F</span>
+              <span>{{ result.firstActive }}~{{ result.lastActive }}F</span>
+              <span>{{ result.wakeupOffset }}F</span>
+
+              <div v-if="selectedBurstResultKey === result.key" class="result-detail" @click.stop>
+                <div class="detail-title">帧数详情</div>
+                <div class="detail-row">
+                  <span class="detail-label">前置动作:</span>
+                  <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">追加动作:</span>
+                  <span v-if="result.filler">
+                    {{ result.fillerName }}<span v-if="result.filler.input"> ({{ result.filler.input }})</span> =
+                    <span v-if="result.filler.raw?.total">
+                      {{ result.fillerFrames }}F (原始数据)
+                    </span>
+                    <span v-else>
+                      {{ result.fillerStartup }} + {{ result.fillerActive }} + {{ result.fillerRecovery }} = {{ result.fillerFrames }}F
+                    </span>
+                  </span>
+                  <span v-else>无 = 0F</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">迸放数据:</span>
+                  <span>{{ BURST_STARTUP_FRAMES }}F 发生, {{ BURST_ACTIVE_FRAMES }}F 持续</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">目标压制:</span>
+                  <span>起身第 {{ normalizedBurstPressureOffset }}F, 目标判定 {{ burstTargetFirstActiveFrame }}~{{ burstTargetLastActiveFrame }}F</span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">前置总帧:</span>
+                  <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} = {{ result.delay }}F</span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">判定帧:</span>
+                  <span>{{ result.delay }} + {{ BURST_STARTUP_FRAMES }} = {{ result.firstActive }}~{{ result.lastActive }}F</span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">压制帧:</span>
+                  <span>{{ result.firstActive }} - {{ opponentWakeupFrame }} + 1 = {{ result.wakeupOffset }}F</span>
+                </div>
+                <div class="detail-row result">
+                  <span class="detail-label">判定:</span>
+                  <span class="success">✓ 精确匹配目标压制帧</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-else-if="burstRequiredDelay >= 0" class="empty-state">
+            <p>没有匹配的迸放压起身组合</p>
+          </div>
+        </div>
+
+        <div class="alt-oki-card">
+          <h3 class="subsection-title">目标优势帧反算前置</h3>
+          <p class="section-desc">根据用户设置的目标优势帧，反算可用前置动作。公式：击倒总帧 - 组合总帧 = 目标优势帧。</p>
+
+          <div class="throw-summary">
+            <div class="summary-item">
+              <span class="summary-label">击倒总帧 N</span>
+              <span class="summary-value">{{ effectiveKnockdownAdv }}F</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">目标优势帧</span>
+              <input type="number" v-model.number="frameTrapAdvantageTarget" class="small-input" />
+              <span class="summary-unit">F</span>
+            </div>
+          </div>
+
+          <div class="throw-math">
+            <div class="math-row">
+              <span class="math-label">目标公式:</span>
+              <span class="math-value">N - 组合总帧 = {{ normalizedFrameTrapAdvTarget }}</span>
+            </div>
+            <div class="math-row">
+              <span class="math-label">当前组合链:</span>
+              <span class="math-value">{{ effectiveKnockdownAdv }} - {{ comboChainPrefixFrames }} = {{ comboChainFrameTrapAdvantage }}F</span>
+            </div>
+            <div class="math-row">
+              <span class="math-label">与目标差值:</span>
+              <span class="math-value">
+                <span v-if="comboChainFrameTrapDelta === 0" class="frame-positive">0F (已匹配)</span>
+                <span v-else :class="{ 'frame-negative': comboChainFrameTrapDelta < 0, 'frame-positive': comboChainFrameTrapDelta > 0 }">
+                  {{ formatFrame(comboChainFrameTrapDelta) }}F
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div class="results-header-row throw-results-header">
+            <h3 class="results-title">前置反算结果 (共 {{ allFrameTrapResults.length }} 条，显示前 {{ allFrameTrapResults.length }} 条)</h3>
+          </div>
+
+          <div v-if="allFrameTrapResults.length > 0" class="results-table">
+            <div class="result-header throw-header">
+              <span>组合</span>
+              <span>组合总帧</span>
+              <span>结果优势</span>
+              <span>目标差值</span>
+            </div>
+            <div
+              v-for="result in allFrameTrapResults"
+              :key="result.key"
+              :class="['result-row-auto', 'throw-row', { expanded: selectedFrameTrapResultKey === result.key }]"
+              @click="toggleFrameTrapResultDetail(result.key)"
+            >
+              <div class="result-combo">
+                <span class="combo-prefix">{{ result.prefix || '无前置' }}</span>
+                <span>+</span>
+                <span>{{ result.fillerName }}</span>
+                <span v-if="result.filler" class="move-input">({{ result.filler.input }})</span>
+              </div>
+              <span>{{ result.totalFrames }}F</span>
+              <span :class="{ 'frame-positive': isPositive(result.resultingAdvantage), 'frame-negative': isNegative(result.resultingAdvantage) }">
+                {{ formatFrame(result.resultingAdvantage) }}
+              </span>
+              <span :class="{ 'frame-positive': isPositive(result.deltaToTarget), 'frame-negative': isNegative(result.deltaToTarget) }">
+                {{ formatFrame(result.deltaToTarget) }}
+              </span>
+
+              <div v-if="selectedFrameTrapResultKey === result.key" class="result-detail" @click.stop>
+                <div class="detail-title">帧数详情</div>
+                <div class="detail-row">
+                  <span class="detail-label">前置动作:</span>
+                  <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">追加动作:</span>
+                  <span v-if="result.filler">
+                    {{ result.fillerName }}<span v-if="result.filler.input"> ({{ result.filler.input }})</span> =
+                    <span v-if="result.filler.raw?.total">
+                      {{ result.fillerFrames }}F (原始数据)
+                    </span>
+                    <span v-else>
+                      {{ result.fillerStartup }} + {{ result.fillerActive }} + {{ result.fillerRecovery }} = {{ result.fillerFrames }}F
+                    </span>
+                  </span>
+                  <span v-else>无 = 0F</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">目标优势帧:</span>
+                  <span>{{ formatFrame(normalizedFrameTrapAdvTarget) }}</span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">组合总帧:</span>
+                  <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} = {{ result.totalFrames }}F</span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">结果优势:</span>
+                  <span>{{ effectiveKnockdownAdv }} - {{ result.totalFrames }} = {{ formatFrame(result.resultingAdvantage) }}</span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">目标差值:</span>
+                  <span>{{ formatFrame(result.resultingAdvantage) }} - {{ formatFrame(normalizedFrameTrapAdvTarget) }} = {{ formatFrame(result.deltaToTarget) }}</span>
+                </div>
+                <div class="detail-row result">
+                  <span class="detail-label">判定:</span>
+                  <span class="success">✓ 精确匹配目标优势帧</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-else class="empty-state">
+            <p>没有匹配的前置反算组合</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -2915,6 +3394,19 @@ function formatTolerance(val: number | undefined): string {
   background: rgba(214, 51, 132, 0.1);
   color: var(--color-negative);
   font-weight: 600;
+}
+
+.alt-oki-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-lg);
+}
+
+.alt-oki-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
 }
 
 @media (max-width: 640px) {
