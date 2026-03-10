@@ -4,6 +4,7 @@ import { SF6_CHARACTERS, type Move, type FrameData, type CharacterStats } from '
 import { calculateTradeAdvantage, parseHitstun, getEffectiveHitstun } from '../utils/trade';
 import { buildOkiResultKeyBase, getUniqueOkiResultKey } from '../utils/okiResultKey';
 import { calculateMoveTotalFrames as calculateUnifiedMoveTotalFrames } from '../utils/frameTotals';
+import { isAirborneMove } from '../utils/moveFilters';
 import { getMoveDisplayName } from '../i18n';
 
 const attackerCharId = ref<string>('');
@@ -295,12 +296,8 @@ const knockdownMoves = computed<Move[]>(() => {
 const allMoves = computed<Move[]>(() => {
   if (!attackerFrameData.value) return [];
   return attackerFrameData.value.moves.filter((m: Move) => {
-    // Exclude jump moves as their frame data is incomplete (missing total frames)
-    if (m.name.includes('Jump')) return false;
-
+    if (isAirborneMove(m)) return false;
     const startup = parseInt(m.startup) || 0;
-    // Exclude jump moves (starting with 8 or containing 8) as their frame data is often special/incorrect for oki
-    if (m.input.includes('8') || m.name.includes('Jump')) return false;
     return startup > 0 && startup <= 50;
   });
 });
@@ -965,8 +962,7 @@ const throwFillerMoves = computed<Move[]>(() => {
   if (!attackerFrameData.value) return [];
   return attackerFrameData.value.moves.filter((m: Move) => {
     if (m.category === 'throw') return false;
-    // Exclude jump moves (starting with 8 or containing 8)
-    if (m.input.includes('8') || m.name.includes('Jump')) return false;
+    if (isAirborneMove(m)) return false;
     const startup = parseInt(m.startup) || 0;
     if (startup <= 0) return false;
     const totalFrames = getMoveTotalFrames(m);
@@ -1425,6 +1421,7 @@ function addJumpAction() {
 }
 
 function addMove(move: Move) {
+  if (isAirborneMove(move)) return;
   const startup = parseInt(move.startup) || 0;
   const active = parseActiveWindowFrames(move.active);
   comboChain.value.push({
