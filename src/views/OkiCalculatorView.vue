@@ -173,6 +173,9 @@ const selectedFrameTrapResultKey = ref<string | null>(null);
 function parseKnockdownAdvantage(move: Move): number {
     if (!move) return 0;
     
+    // Priority 0: Exact advantage defined on knockdown object
+    if (move.knockdown?.advantage) return move.knockdown.advantage;
+
     // Priority 1: Parse exact advantage from 'onHit' string
     if (move.onHit && typeof move.onHit === 'string') {
         const match = move.onHit.match(/(?:KD|HKD|Crumple)[^0-9]*(\d+)/i);
@@ -181,8 +184,7 @@ function parseKnockdownAdvantage(move: Move): number {
         }
     }
     
-    // Priority 2: Use scraper's parsed object
-    return move.knockdown?.advantage || 0;
+    return 0;
 }
 
 // Effective knockdown advantage
@@ -289,7 +291,26 @@ const throwFirstActiveMax = computed(() => {
 // Knockdown moves
 const knockdownMoves = computed<Move[]>(() => {
   if (!attackerFrameData.value) return [];
-  return attackerFrameData.value.moves.filter((m: Move) => m.knockdown && m.knockdown.type !== 'none');
+  const moves = attackerFrameData.value.moves.filter((m: Move) => m.knockdown && m.knockdown.type !== 'none');
+  
+  const expanded: Move[] = [];
+  for (const m of moves) {
+    expanded.push(m);
+    if (m.knockdown?.alternativeAdvantages && m.knockdown.alternativeAdvantages.length > 0) {
+      for (const alt of m.knockdown.alternativeAdvantages) {
+        const altMove: Move = { ...m };
+        altMove.name = `${m.name} (${alt.condition})`;
+        if (altMove.nameZh) {
+          altMove.nameZh = `${altMove.nameZh} (${alt.condition})`;
+        }
+        altMove.knockdown = { ...m.knockdown, advantage: alt.advantage };
+        // Remove alternativeAdvantages from the clone so we don't recurse if we ever did
+        delete altMove.knockdown.alternativeAdvantages;
+        expanded.push(altMove);
+      }
+    }
+  }
+  return expanded;
 });
 
 // ALL moves for selection (Attacker)

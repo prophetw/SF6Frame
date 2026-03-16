@@ -2346,7 +2346,13 @@
       ],
       "knockdown": {
         "type": "hard",
-        "advantage": 45
+        "advantage": 45,
+        "alternativeAdvantages": [
+          {
+            "condition": "Wall Splat",
+            "advantage": 63
+          }
+        ]
       },
       "raw": {
         "source": "supercombo",

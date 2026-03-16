@@ -23,6 +23,10 @@ export interface KnockdownData {
     type: KnockdownType;
     advantage: number; // frames of advantage on knockdown
     backRiseAdvantage?: number; // frames if opponent back rises
+    alternativeAdvantages?: {
+        condition: string; // description of the condition (e.g., "Wall Splat")
+        advantage: number;
+    }[];
 }
 
 export interface Move {
