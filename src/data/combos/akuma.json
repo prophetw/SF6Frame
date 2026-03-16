@@ -1,0 +1,350 @@
+{
+  "characterId": "akuma",
+  "combos": [
+    {
+      "combo": "2LP>2LP>2LP>623HP",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "1650",
+      "difficulty": "Easy",
+      "notes": "Simple light string confirm"
+    },
+    {
+      "combo": "5LP>2LK>2LP>214LK,2HK",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "1390",
+      "difficulty": "Easy",
+      "notes": "Useful low string to catch opponents walking away from pressure. Ends with a safejump or double dash oki. 214LK will whiff in very rare case opponent was crouching but not blocking."
+    },
+    {
+      "combo": "2MP,2MP>214MP~6P",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "2260",
+      "difficulty": "Easy",
+      "notes": "Slightly more reliable at longer range for less damage. 2nd 2MP still whiffs at max range"
+    },
+    {
+      "combo": "2MP,5MP~MP>214MP~6P",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "2540",
+      "difficulty": "Easy",
+      "notes": "TC will whiff at max range."
+    },
+    {
+      "combo": "5HK,5MK>214LK,2HK",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "2520",
+      "difficulty": "Easy",
+      "notes": "Basic 5HK conversion. Can replace 214LK with 214HK for corner carry. Replace 2HK with 623HP for damage"
+    },
+    {
+      "combo": "5HP>214HP~6P",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "2180",
+      "difficulty": "Easy",
+      "notes": "Basic most reliable poke conversion"
+    },
+    {
+      "combo": "j.HK,5HK,5MK>214LK,623HP",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "3050",
+      "difficulty": "Medium",
+      "notes": "Best driveless, meterless deep jump-in"
+    },
+    {
+      "combo": "DI (blocked) 2HP>236LP,214HK",
+      "section": "Day 1 BnBs",
+      "position": "Corner",
+      "damage": "2304",
+      "difficulty": "Medium",
+      "notes": "Best meterless damage on blocked DI"
+    },
+    {
+      "combo": "PC DI 2HP>214HK",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "2800",
+      "difficulty": "Easy",
+      "notes": "Easy combo with great corner carry"
+    },
+    {
+      "combo": "214PP~6P, DR 6HP~6HP~HK",
+      "section": "Combo Theory / Combo Enders"
+    },
+    {
+      "combo": "214PP~6P, DR 5HP>236LP,623HP",
+      "section": "Combo Theory / Combo Enders"
+    },
+    {
+      "combo": "214PP~6P,4HK>236[HP](lvl.2), 214HK",
+      "section": "Combo Theory / Combo Enders"
+    },
+    {
+      "combo": "214PP~6P,4HK>236[HP](lvl.2), DR 2HP>214MK,623LP>SA3",
+      "section": "Combo Theory / Combo Enders"
+    },
+    {
+      "combo": "2LP/5LP/5LK > DRC~2LP, 2HP",
+      "section": "Combo Theory / Drive Rush Extensions",
+      "position": "Anywhere",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Light extension that forces stand, allowing for more ender options. From a max range light whiff punish, link 5MK instead for more a more consistent link."
+    },
+    {
+      "combo": "2MK/5MP > DRC~5HP, 5MK",
+      "section": "Combo Theory / Drive Rush Extensions",
+      "position": "Anywhere",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "These medium buttons can't link into 6HP, so use this route for optimal damage while forcing stand. If you want a route ending in 214HP~6P, use DRC~2MP, 2HP instead."
+    },
+    {
+      "combo": "5MK/2MP/5MP~MP > DRC~6HP, 2HP",
+      "section": "Combo Theory / Drive Rush Extensions",
+      "position": "Anywhere",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Mediums that can DRC into a powerful 6HP extension. 5MK is the best starter for damage and consistency, while 5MP~MP incurs extra damage scaling."
+    },
+    {
+      "combo": "5HP/2HP > DRC~6HP, 2HP",
+      "section": "Combo Theory / Drive Rush Extensions",
+      "position": "Anywhere",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Same as above."
+    },
+    {
+      "combo": "2MP > 214PP~6P > SA2, 4HK>236HK~K, 214HK",
+      "section": "Combo Theory / SA2 Extensions",
+      "position": "Corner",
+      "damage": "4240",
+      "superMeter": "2",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "It is easier to cancel into SA2 from a Medium button using OD Flame at the cost of lower damage."
+    },
+    {
+      "combo": "5HP > SA2, 4HK>236HK~K, 2HK/214HK",
+      "section": "Combo Theory / SA2 Extensions",
+      "position": "Corner",
+      "damage": "4460/4600",
+      "superMeter": "2",
+      "difficulty": "Medium",
+      "notes": "You can opt for a little more damage with H Tatsu or setup a safejump"
+    },
+    {
+      "combo": "5HP > SA2, 4HK>214KK, 214HK",
+      "section": "Combo Theory / SA2 Extensions",
+      "position": "Corner",
+      "damage": "4880",
+      "superMeter": "2",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "A little more damage for 2 drive bars."
+    },
+    {
+      "combo": "PC DI 5HK,5MK>214HK",
+      "section": "Combo Lists / DI Combos",
+      "position": "Anywhere",
+      "damage": "2820",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Slightly more optimal than Day 1 version for better corner carry."
+    },
+    {
+      "combo": "PC DI 4HK>236LP,DR 5HP>214HP~6P",
+      "section": "Combo Lists / DI Combos",
+      "position": "Anywhere",
+      "damage": "3080",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "1 drive, a little more damage. Can replace 214HP~6P for 214HK more corner carry (~50%) and 3002 dmg"
+    },
+    {
+      "combo": "PC DI 4HK>236KK~214K, 214HK/623LP>SA3",
+      "section": "Combo Lists / DI Combos",
+      "position": "Anywhere",
+      "damage": "3310 (5060)",
+      "superMeter": "0 (3)",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "For 2 extra bar you can get more damage and corner carry. Can alternatively start with 4HK>214KK for easier execution. After OD Adamant Flame replace with L DP for SA3 cancel. Credit to Notz's spreadsheet."
+    },
+    {
+      "combo": "PC DI 2HP>214HP~6P, 623HP",
+      "section": "Combo Lists / DI Combos",
+      "position": "Corner",
+      "damage": "3120",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Driveless meterless corner variation"
+    },
+    {
+      "combo": "PC DI 2HP>214PP~6P, 4HK>236[HP](lvl2), 214HK",
+      "section": "Combo Lists / DI Combos",
+      "position": "Corner",
+      "damage": "3710",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "For 2 extra drive get more damage."
+    },
+    {
+      "combo": "DI (blocked) 2HP>214MK,623LP>SA3",
+      "section": "Combo Lists / DI Combos",
+      "position": "Corner",
+      "damage": "4138",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "Medium"
+    },
+    {
+      "combo": "DI (blocked) 4HK>236LP(lvl.2),214HK",
+      "section": "Combo Lists / DI Combos",
+      "position": "Corner",
+      "damage": "2940",
+      "difficulty": "Medium",
+      "notes": "Simple meterless driveless route that does not require too precise fireball timing."
+    },
+    {
+      "combo": "DI (wallsplat) 2HP>214MK,623LP>SA3",
+      "section": "Combo Lists / DI Combos",
+      "position": "Corner",
+      "damage": "4770",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "If opponent does not block the DI, this combo gets more damage."
+    },
+    {
+      "combo": "DI (wallsplat) 4HK>236[HP](lvl.2),214MK,623LP>SA3",
+      "section": "Combo Lists / DI Combos",
+      "position": "Corner",
+      "damage": "4970",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "Hard",
+      "notes": "Harder version than above for more damage. Tight timing on tatsu and fireball."
+    },
+    {
+      "combo": "DI (stun) j.HP,2HP>214PP~6P,4HK>236[HP](lvl.2),214HK",
+      "section": "Combo Lists / DI Combos",
+      "position": "Corner",
+      "damage": "3020",
+      "driveMeter": "3",
+      "difficulty": "Medium"
+    },
+    {
+      "combo": "DR 6MP, 5MK>214LK,623HP",
+      "section": "Combo Lists / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "2680",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Drive Rush overhead combo to start offense. KD +29"
+    },
+    {
+      "combo": "DR 6MP, 5MK>214HK",
+      "section": "Combo Lists / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "2580",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Alternatively end with 214HK for more corner carry and better oki (KD +33)."
+    },
+    {
+      "combo": "PC 5HK,2HP>Ender of choice",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Anywhere",
+      "damage": "-",
+      "difficulty": "Medium",
+      "notes": "5HK is your ideal shimmy button"
+    },
+    {
+      "combo": "PC 214HP,4HK>214KK,214HK",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Anywhere",
+      "damage": "3800",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "High damage DP punish midscreen for 2 drive bars"
+    },
+    {
+      "combo": "PC 214HP,2HP>214PP~6P,2HP>214MK,623LP>SA3",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Corner",
+      "damage": "6400",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "An easier DP punish route in the corner that does not require tight fireball timings."
+    },
+    {
+      "combo": "PC 214HP,2HP>214PP~6P,4HK>236KK~236P,214KK,623LP>SA3",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Corner",
+      "damage": "6690",
+      "superMeter": "3",
+      "driveMeter": "5.8",
+      "difficulty": "Medium",
+      "notes": "Extremely high damage meter dump route without going into burnout. Input the 214KK immediately."
+    },
+    {
+      "combo": "CH 2LP,5MK>214LK, 2HK/623HP",
+      "section": "Combo Lists / Counter-hit Combos",
+      "position": "Anywhere",
+      "damage": "1790(2090)",
+      "difficulty": "Medium",
+      "notes": "At max range, should go into sweep as DP will whiff."
+    },
+    {
+      "combo": "PC 2LP, 5HP",
+      "section": "Combo Theory",
+      "notes": "Max range Punish Counter starter"
+    },
+    {
+      "combo": "PC 2LP, 2HP",
+      "section": "Combo Theory",
+      "notes": "More optimal close range starter"
+    },
+    {
+      "combo": "PC 5LK>214MP~6P/214PP~6P",
+      "section": "Combo Theory",
+      "notes": "For 5f punishes that require more reach than 4f jab"
+    },
+    {
+      "combo": "PC 5LK>214MK/214LK,2HK",
+      "section": "Combo Theory",
+      "notes": "Can also go into L/M tatsu if the opponent is standing (Ken Jinrai low follow-up)"
+    },
+    {
+      "combo": "PC 2MP, 5HP",
+      "section": "Combo Theory",
+      "notes": "Long range starter, but 5HP will whiff at max range"
+    },
+    {
+      "combo": "PC 2MP, 2HP",
+      "section": "Combo Theory",
+      "notes": "Close range optimal starter"
+    },
+    {
+      "combo": "PC 2MP, 214HP~6P",
+      "section": "Combo Theory",
+      "notes": "Longest range 6f punish"
+    },
+    {
+      "combo": "PC 2MK>214HP~6P",
+      "section": "Combo Theory",
+      "notes": "Akuma can cancel into Heavy Adamant Flame on PC. Useful for longer range punishes."
+    }
+  ],
+  "comboTheory": "### Combo Enders",
+  "lastUpdated": "2026-03-16"
+}

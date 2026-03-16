@@ -54,6 +54,27 @@ export interface FrameData {
     lastUpdated: string;
 }
 
+// Combo Data Types
+export interface Combo {
+    combo: string;           // Notation string, e.g. "2LP, 5MP~MP>214HP~6P"
+    position?: string;       // "Anywhere", "Corner", "Midscreen", etc.
+    damage?: string;         // Damage value(s), can have slashes
+    superMeter?: string;     // Super meter bars used ("-", "1", "2", "3")
+    driveMeter?: string;     // Drive gauge bars used ("-", "1", "2", etc.)
+    difficulty?: string;     // "Very Easy", "Easy", "Medium", "Hard", "Very Hard"
+    notes?: string;          // Additional notes/tips
+    videoUrl?: string;       // Link to video demonstration
+    section: string;         // Parent section heading (e.g. "Day 1 BnBs")
+    starter?: string;        // Starter category for Combo Lists (e.g. "PC 2LP")
+}
+
+export interface ComboData {
+    characterId: string;
+    combos: Combo[];
+    comboTheory?: string;    // Free-text theory/tips from the wiki
+    lastUpdated: string;
+}
+
 export interface OkiResult {
     move: Move;
     timing: number; // frames to wait before executing
