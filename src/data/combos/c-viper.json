@@ -1,0 +1,105 @@
+{
+  "characterId": "c-viper",
+  "combos": [
+    {
+      "combo": "L~L~5LP > 214HP(~6PP)",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "L~L~2LP, 5LK ...",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "... > 214HP(~6PP)",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "... > 214MP > SA3",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "L~LP > 236KK > SA2/SA3",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "5MP, 2MP > 214K",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "5MP, 2MP > 236LK~PP",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "5MP, 2MP > 214LP~6PP (> SA3)",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "2MK, 5LK > 214HP(~6PP)",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "5MP, 2MP > 623PP > HJC ~ j.236HK, SA1",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "2HP > 623LP > HJC ~ j.236HK, 214HP~6PP",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "2HP > 623LP > HJC ~ j.MP > j.236MK",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "2HP > 623LP > HJC ~ j.236MK, 214MP~6PP (> SA3)",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "2HP > 623LP > HJC ~ j.236HK, SA1",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "2HP > 623LP > HJC ~ j.236HK, 236KK > SA2 / SA3",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "PC 5LP,",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "(5MP,) 2MP > 236LK > PP",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "MK > HJC ~ 214P > 6PP",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "PC 2LP, 2HP > 623LP > HJC ~ j.236HK, 214HP > 6PP",
+      "section": "Basic Combos"
+    },
+    {
+      "combo": "PC DI, 2HP > 623LP > HJC ~ j.236HK, 214HP > 6PP",
+      "section": "Drive Impact",
+      "driveMeter": "PC DI, 2HP > 623LP > HJC ~ j.236HK, 214HP > 6PP"
+    },
+    {
+      "combo": "DI Wall Splat, 2HP > 623LP > HJC ~ j.236HK, 214HP > 6PP",
+      "section": "Drive Impact"
+    },
+    {
+      "combo": "214[K], 2HP > 623LP > HJC ~ j.236HK, 214HP > 6PP",
+      "section": "Drive Impact"
+    },
+    {
+      "combo": "PC 5HK > HJC ~ j.HP, 2HP > 623PP > HJC ~ j.236HK, 5HK > HJC ~ 236KK > SA3",
+      "section": "Punish Combos",
+      "position": "Corner",
+      "damage": "6740 / (6990 with Critical Art)",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "Hard",
+      "notes": "Burns all available resources for an all-in combo."
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

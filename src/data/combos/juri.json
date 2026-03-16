@@ -1,0 +1,237 @@
+{
+  "characterId": "juri",
+  "combos": [
+    {
+      "combo": "2LK~2LP~2LP>214MK,",
+      "section": "Combo Notation Guide / Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "1010",
+      "difficulty": "Easy",
+      "notes": "Juri's confirms are relatively straightforward. Some lights may have to be cut depending on distance."
+    },
+    {
+      "combo": "5MP,2MP>214MK,",
+      "section": "Combo Notation Guide / Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "1680",
+      "difficulty": "Easy",
+      "notes": "Very common medium route"
+    },
+    {
+      "combo": "j.HK, 5HP>214HK, 623HP/SA1!/SA3",
+      "section": "Combo Notation Guide / Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "2630/3470/4800",
+      "difficulty": "Easy",
+      "notes": "Basic jump-in with typical heavy structure that allows for flexible ender"
+    },
+    {
+      "combo": "PC DI 5HP>214HK, 623HP",
+      "section": "Combo Notation Guide / Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "2490",
+      "difficulty": "Easy",
+      "notes": "PC DI combo that also works on blocked DIs and wallsplats"
+    },
+    {
+      "combo": "PC 6HP>236HK>SA3",
+      "section": "Combo Notation Guide / Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "5000",
+      "superMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Basic reversal punish combo; cancelling directly into 236HK is more optimal for SA3 cancel specifically"
+    },
+    {
+      "combo": "5MP, 2MP",
+      "section": "Links and Starters",
+      "notes": "Very important to both her combos and pressure game. 5LK can be used instead but has fewer options afterwards and lower damage in exchange for being faster (and not trading with 4f buttons like 2MP would)."
+    },
+    {
+      "combo": "2MP, 5LK",
+      "section": "Links and Starters",
+      "notes": "Not very common, but good to know regardless. Juri doesn't get much out of max range 5LK."
+    },
+    {
+      "combo": "5LP/2LP/2LK > 5LP/2LP > 5LP/5LK/2LP",
+      "section": "Links and Starters",
+      "notes": "Juri's light chain structure is pretty similar to most of the cast. At farther ranges, she has to use 5LK to end her chain."
+    },
+    {
+      "combo": "5LP, 5MK",
+      "section": "Links and Starters",
+      "notes": "Juri has to be point blank for this link to work, but 5MK(1) has more than enough hitstun to combo into 236MK and 214HK for extended follow-ups."
+    },
+    {
+      "combo": "CH 2MP, 2MP",
+      "section": "Links and Starters",
+      "notes": "Juri doesn't get anything particularly amazing on counter-hit."
+    },
+    {
+      "combo": "PC 5LP, 2HP",
+      "section": "Links and Starters",
+      "notes": "Juri has to be point blank for this to work."
+    },
+    {
+      "combo": "PC 5MP, 5HP > ...",
+      "section": "Links and Starters",
+      "notes": "Great starter for Juri. 5HP has a lot of hitstun, which lets her go for her most damaging cancel options and Drive Rush."
+    },
+    {
+      "combo": "PC 2MP, 2MK > ...",
+      "section": "Links and Starters",
+      "notes": "Decent against moves like Jamie's palm."
+    },
+    {
+      "combo": "PC 2MP > 214HK/236MK ...",
+      "section": "Links and Starters",
+      "notes": "Excellent way to route into moves that are normally only accessible by heavy starters"
+    },
+    {
+      "combo": "PC 2MK > 214HK/236MK ...",
+      "section": "Links and Starters",
+      "notes": "Good for punishing spaced moves like sweeps"
+    },
+    {
+      "combo": "5HP > 214HK, 214214[P] > 5HK > 2HP > jc dl.j.MK > j214K~K",
+      "section": "Feng Shui Engine",
+      "notes": "Midscreen route for damage off juggle activation."
+    },
+    {
+      "combo": "... 6MP > 4HK > 2HP > jc j.MP > j.MK > j214K",
+      "section": "Feng Shui Engine",
+      "notes": "Midscreen route for okizeme. 5HK > 2HP also works but does slightly less damage."
+    },
+    {
+      "combo": "... 5HK > 2HP > jc j.MK > j.HP > j.HK > j214K~K",
+      "section": "Feng Shui Engine",
+      "notes": "Corner combo optimized for damage."
+    },
+    {
+      "combo": "... 4HK > 2HP > jc j.MP > j.MK > j.HP > j.HK",
+      "section": "Feng Shui Engine",
+      "notes": "Corner route to immediately enter into a 50/50."
+    },
+    {
+      "combo": "236MKHK(3) > 214214P, 236HK",
+      "section": "Feng Shui Engine",
+      "notes": "Advancing OD activation route."
+    },
+    {
+      "combo": "236MKHK(2) > 214214[P] > 4HK(1) > 2HP > jc j.MP > j.MK > j214K",
+      "section": "Feng Shui Engine",
+      "notes": "Advancing OD activation route that focuses on corner carry."
+    },
+    {
+      "combo": "5HP > 214214P, 6MP > 5HK > 5HP > 236HK, 623HP",
+      "section": "Feng Shui Engine",
+      "notes": "Route that works anywhere on the screen off grounded activation. 5MK and 6MP are mostly interchangeable"
+    },
+    {
+      "combo": "... 6MP > 2HP > 214HK",
+      "section": "Feng Shui Engine",
+      "notes": "Midscreen stock positive safe jump route. 4HK(1) is more consistent than 2HP further away but does much less damage, 2310 compared to 1990."
+    },
+    {
+      "combo": "... 6MP > 4HK(1) > 2HP > jc j.MP > j.MK > j214K",
+      "section": "Feng Shui Engine",
+      "notes": "Midscreen route for corner carry. 6MP is much more consistent here than 5MK."
+    },
+    {
+      "combo": "... 5MK > 5HK > 2HP > jc j.MP > j.HP > j.HK > j214K~K",
+      "section": "Feng Shui Engine",
+      "notes": "Corner combo optimized for damage."
+    },
+    {
+      "combo": "... 5MK > 5HK > 2HP > jc dl.j.MP > j.HP > j.HK",
+      "section": "Feng Shui Engine",
+      "notes": "Corner route to immediately enter into a 50/50. It's really that simple."
+    },
+    {
+      "combo": "... 6HP > 236MK!, 6MP > 5HK > 6HP > DR~4HP > 2HP > jc j.MP > j.MK > j214K ~K",
+      "section": "Feng Shui Engine",
+      "notes": "Corner-to-corner combo. Can go into 50/50 routing if close enough to the corner."
+    },
+    {
+      "combo": "2LK > 2LP > 2LP > 5HP > 214MK",
+      "section": "Feng Shui Engine",
+      "notes": "Easy and quick stock gain combo, works from pretty much any light starter."
+    },
+    {
+      "combo": "... 5HP > 214MK, 623HP",
+      "section": "Feng Shui Engine",
+      "notes": "Corner version of the above combo. The additional height from 5HP's launch lets this combo work."
+    },
+    {
+      "combo": "... 6MP > 5HK > 5HP > 236HK, 623HP",
+      "section": "Feng Shui Engine",
+      "notes": "Must first use a medium to route into the BnB. 623HP ender adds ~300 damage."
+    },
+    {
+      "combo": "... 6MP > 2HP > jc j.MP > j214KK~dl.K, DR~5MP > 4HK > 2HP > jc j.MP > j.MK > j214K~K",
+      "section": "Feng Shui Engine",
+      "notes": "Alternative corner-to-corner route off lights. DR extension is finicky depending on height."
+    },
+    {
+      "combo": "5MP, 2MP > 2MK > 5HK > 5HP > 236HK, 623HP",
+      "section": "Feng Shui Engine",
+      "notes": "Essentially the FSE BnB because of the 236HK launch which gives the choice of oki, damage, and a super."
+    },
+    {
+      "combo": "... 2MK > 5HP > 214MK",
+      "section": "Feng Shui Engine",
+      "notes": "A shorter version of the above combo. Can add 623HP ender in the corner."
+    },
+    {
+      "combo": "... 2MK > 5HK > 5HP > 236HK, 623PP",
+      "section": "Feng Shui Engine",
+      "notes": "623PP ender only works in the corner. Auto-times slightly meaty 5MP."
+    },
+    {
+      "combo": "PC 5MP, 5HP > 236MK!, 6MP > 2HP > 5HK > 214HK",
+      "section": "Feng Shui Engine",
+      "notes": "Stock neutral DP punish that leads to safe jump. Can link into 623HP or 236236K to sacrifice safe jump."
+    },
+    {
+      "combo": "2MK > 6MP > 5HP > 214MK",
+      "section": "Feng Shui Engine",
+      "notes": "Neutral buffer that is safe to Drive Impact and also pulls Juri closer to the opponent on block."
+    },
+    {
+      "combo": "5HP > 5HK > 214MK",
+      "section": "Feng Shui Engine",
+      "notes": "Buffer in neutral from heavies. Can substitute 214MK for 214LK to allow 623HP ender in the corner."
+    },
+    {
+      "combo": "5HK > 6HP > 623HP",
+      "section": "Feng Shui Engine",
+      "notes": "Does not work as easily from further distances. 623HP ender does not work on PC 5HK."
+    },
+    {
+      "combo": "6HP > 4HK(1) > 214HK",
+      "section": "Feng Shui Engine",
+      "notes": "Heavy punish starter. Can choose between damage or safe jump with 623HP ender."
+    },
+    {
+      "combo": "6HP > 236MK!, 6MP > 5HP > 214MK",
+      "section": "Feng Shui Engine",
+      "notes": "Typical heavy punish starter with stocks."
+    },
+    {
+      "combo": "PC 6HP, 5MP > 5MK > 5HK > 5HP > 236HK, 236236K",
+      "section": "Feng Shui Engine",
+      "notes": "High damage DP/Super punish."
+    },
+    {
+      "combo": "... > 5HK > 2HP > jc dl.j.MP > j.HP > j.HK",
+      "section": "Feng Shui Engine",
+      "notes": "Looping corner 50/50 setup. Works from any hit in the corner, even lights."
+    },
+    {
+      "combo": "DI 6MP > 5MK > 4HK > 2HP > jc j.MP > j.MK > j.HP > j.HK",
+      "section": "Feng Shui Engine",
+      "notes": "Way to access 50/50 if DI wallsplats, works on hit and on block."
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

@@ -1,0 +1,131 @@
+{
+  "characterId": "chun-li",
+  "combos": [
+    {
+      "combo": "5MP, 2MP",
+      "section": "Links and Starters",
+      "notes": "Important combo piece, as it lets Chun build charge for Spinning Bird Kick. Unfortunately, not very good for pressure as the gap is big enough that 4f normals will beat 2MP clean."
+    },
+    {
+      "combo": "5MP, 5LP/5LK",
+      "section": "Links and Starters",
+      "notes": "Doesn't give Chun a knockdown anywhere near as easily, but is a lot better when it comes to pressure and still links on normal hit."
+    },
+    {
+      "combo": "5LP, 5LK",
+      "section": "Links and Starters",
+      "notes": "5LK will not link from 5LP if it's used as a link after a three-hit light chain. 5LP will link into itself but there's no real benefit to doing so."
+    },
+    {
+      "combo": "5LP/2LP/2LK > 5LP/2LP/2LK > 5LP/2LP/2LK",
+      "section": "Links and Starters",
+      "notes": "Chun's light chains are incredibly open-ended, but both 2LP and 2LK will whiff as the third part of a chain if it's not started at absolutely point-blank range."
+    },
+    {
+      "combo": "5LP, 5MP",
+      "section": "Links and Starters",
+      "notes": "Only works at point blank range."
+    },
+    {
+      "combo": "3HK, 5MP",
+      "section": "Links and Starters",
+      "notes": "3HK is easy to link out of and advantageous enough on block that 5MP will also frame trap."
+    },
+    {
+      "combo": "5HK > 214P~MK",
+      "section": "Links and Starters",
+      "notes": "Chun's only normal that combos into 214P~MK without any extra requirements. Commonly used after Drive Impact."
+    },
+    {
+      "combo": "CH 5LP/5MP, 2MK/6MP",
+      "section": "Links and Starters",
+      "notes": "Useful for converting 5LP pressure or a meaty 5MP into a smidge more damage. 2MK has more reach than 2MP which makes this combo more consistent at longer ranges. Otherwise, there’s never a reason to go for this if it can be avoided. Swift Thrust also works here but does not lead to a knockdown without spending Drive. 2MP is not listed here as it always links from 5MP, but CH 5LP, 2MP is a unique, CH only combo."
+    },
+    {
+      "combo": "CH 2LP/2MP, 2MP",
+      "section": "Links and Starters",
+      "notes": "2LP links into 2MP on counter-hit, which is useful after her previously mentioned 3-hit light chain. 2MP also links into itself on counter-hit. These combos also naturally build down charge for Spinning Bird."
+    },
+    {
+      "combo": "CH 5LP > 4HP",
+      "section": "Links and Starters",
+      "notes": "4HP is an excellent source of damage, especially early on in a combo. Serenity Stream also helps it convert into good damage without relying on having charge."
+    },
+    {
+      "combo": "PC 5LP, 4HP",
+      "section": "Links and Starters",
+      "notes": "Go-to close range punish starter."
+    },
+    {
+      "combo": "PC 5LP, 2HK",
+      "section": "Links and Starters",
+      "notes": "Basic, hit-confirmable link from a far Punish Counter 5LP."
+    },
+    {
+      "combo": "PC 5LP, 2MK",
+      "section": "Links and Starters",
+      "notes": "Alternate far PC 5LP with more damage potential. If going for a knockdown with MK SBK, you have to begin charging immediately and delay the 2MK by 2 frames in order to get the necessary charge."
+    },
+    {
+      "combo": "PC 2MP > 214P~MK > ...",
+      "section": "Links and Starters",
+      "notes": "4/6MP will lead to better damage, but 2MK may be needed when using this as a whiff punish against normals that hit lower to the ground."
+    },
+    {
+      "combo": "PC 6MP/2MK > 236HK",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "PC 4HP > 214P~MK > ...",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "PC 236LK, 5MP/2MK > ...",
+      "section": "Links and Starters",
+      "notes": "The same links work from 236MK, which is slower in exchange for more damage."
+    },
+    {
+      "combo": "Starting Normal",
+      "section": "Using Serenity Stream",
+      "notes": "Normal Hit",
+      "starter": "Starting Normal"
+    },
+    {
+      "combo": "214P~LP",
+      "section": "Using Serenity Stream",
+      "notes": "214P~LP has a lot of pushback, typically making Kikoken safe on block or even plus.",
+      "starter": "Starting Normal"
+    },
+    {
+      "combo": "214P~MP",
+      "section": "Using Serenity Stream",
+      "notes": "214P~MP is entirely a neutral tool and does not combo to or from anything useful.",
+      "starter": "Starting Normal"
+    },
+    {
+      "combo": "214P~HP",
+      "section": "Using Serenity Stream",
+      "notes": "Special cancelable overheads are always good to have. Especially when they're hitconfirmable.",
+      "starter": "Starting Normal"
+    },
+    {
+      "combo": "214P~LK",
+      "section": "Using Serenity Stream",
+      "notes": "Pretty similar to it's big sister in 214P~MK.",
+      "starter": "Starting Normal"
+    },
+    {
+      "combo": "214P~MK",
+      "section": "Using Serenity Stream",
+      "notes": "214P~MK has enough forward movement that it'll usually bring Chun into range to link after OD Kikoken.",
+      "starter": "Starting Normal"
+    },
+    {
+      "combo": "214P~HK",
+      "section": "Using Serenity Stream",
+      "notes": "Comboing into 214P~HK requires Drive 90% of the time. DRC 5LP, 4HP > 214P~HK works without any restrictions (but usually does more damage without 5LP if possible) and DRC 5MP, 4HP > 214P~HK only works on crouching opponents.",
+      "starter": "Starting Normal"
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

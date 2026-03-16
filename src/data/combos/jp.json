@@ -1,0 +1,224 @@
+{
+  "characterId": "jp",
+  "combos": [
+    {
+      "combo": "2LK ~ 2LP ~ 2LP > 236LP",
+      "section": "Combo Notation Guide",
+      "notes": "Simple low confirm into LP Stribog"
+    },
+    {
+      "combo": "5HK, 2MP > 236MP",
+      "section": "Combo Notation Guide",
+      "notes": "Best meterless combo midscreen, but works anywhere. Confirmable after jump-ins or Drive Impact crumples. At maximum range, 2MP into MP Stribog can whiff, use LP Stribog instead. If using MP Stribog in the corner, you can juggle level 1 at the end."
+    },
+    {
+      "combo": "5HK ~ 5HP > 236MP",
+      "section": "Combo Notation Guide",
+      "notes": "If 5HK is used at max range, 2MP will whiff. Target combo is a bit weaker but is more reliable at long-range."
+    },
+    {
+      "combo": "6HK > 236HP, 5HP > 22LP",
+      "section": "Combo Notation Guide",
+      "notes": "Staple corner combo using 6HK's launch."
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > Drive Rush 2HP > 236HP, 236MK, 22HP > (236236K)",
+      "section": "Combo Notation Guide",
+      "notes": "If you want to spend bar to increase your damage, this is the way to go. Costs three bars, but the opponent is left at full screen, forcing them to play your zoning mini-game. You could always replace 236MK with Dash, DR~6HK > 22MP for better corner carry at the cost of one additional bar and a bit damage. Add Level 3 super to the end for an additional 2,000 damage (note that Lvl3 Super must be *canceled* from 22HP, so try to buffer it quickly! Remember, you can setup 214HP while the enemy wakes up."
+    },
+    {
+      "combo": "Any Heavy Starter > 236KK, (236236P)",
+      "section": "Combo Notation Guide",
+      "notes": "OD Torbalan is plus on block and frame traps from all your Heavy starters, so it's a great sequence both on hit and block, and if it hits you have ample time to confirm into your Level 1"
+    },
+    {
+      "combo": "6HK > 236HP, Dash 5HP > 236KK, 22LP, (236LP/236236P)",
+      "section": "Combo Notation Guide",
+      "notes": "Corner extension using Drive Gauge. You can ommit 236LP for 3380 but the opportunity to setup Departure, or replace it with 236236P for 4380 damage but worse okizeme. Or cancel 236LP into 236236K for KO."
+    },
+    {
+      "combo": "5HK, 2MP > 236PP, DR~6HK > 236MP, 5HP > 22LP/(236KK, 22LP, 236LP) > (236236K)",
+      "section": "Combo Notation Guide",
+      "notes": "Extension from the previous combo, a 3-bar optimal combo that requires somewhat close to corner. Your DR~6HK has to hit twice and corner your opponent for this to work. Replace 2MP with 5HP ONLY WHEN opponent is too far for 2MP to land. Deals 319 more damage at the cost of two additional bars. Replacing 22LP with 236MP would result in slightly more damage (3815) at the cost of OD Departure Oki opportunity (+39F instead of +44F knockdown) and the ability to go into SA3."
+    },
+    {
+      "combo": "Any Light Starter > Drive Rush 2LP, 4MP~5MP > Any Heavy Starter combo",
+      "section": "Combo Notation Guide",
+      "notes": "If you want to convert your lights into stronger sequences."
+    },
+    {
+      "combo": "Drive Rush 2MK/6MK, 2MP > 236MP",
+      "section": "Combo Notation Guide",
+      "notes": "Basic Drive rush mixup combo"
+    },
+    {
+      "combo": "HPHK (PC), 236HP, 236MK , 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Basic Drive Impact Punish counter. Can go into level 3 or use 22PP instead to go into level 2. Works too when the DI(PC) juggles the opponent."
+    },
+    {
+      "combo": "HPHK (PC), dash(to stall), 5HP > 236HP, 236MK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Optimal Drive Impact Punish counter. Can go into level 3 or use 22PP instead to go into level 2. Note that this won't work when the DI(PC) juggles the opponent."
+    },
+    {
+      "combo": "HPHK (PC Juggle), j.MK, DR~6HK > 236HP, 236MK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Improved DI juggle combo that costs one bar for ~300 more damage and better corner carry compared to the 2780 combo. You could also replace 236MK with dash, DR~6HK > 22MP for almost full-stage corner carry distance at the cost of one additional bar and slightly less damage (3029)."
+    },
+    {
+      "combo": "HPHK (PC), j.HK, dl. 6HK, 236MP, 5HP, 22LP",
+      "section": "Combo Notation Guide",
+      "notes": "Updated corner DI punish counter. Can replace 22LP with 236KK extension like other 6HK corner combos."
+    },
+    {
+      "combo": "HPHK (Wallsplat), 5HK(DI-unblocked)/2MP(DI-blocked), 6HK > 236MP, 5HP > 236MK/22LP",
+      "section": "Combo Notation Guide",
+      "notes": "Basic corner Drive Impact combo. 236MK deals a bit more damage, while 22LP gives a better knockdown allowing for an OD Departure Oki. Damage numbers are in the following order: / 236MK unblocked(blocked) / 22LP unblocked(blocked)."
+    },
+    {
+      "combo": "HPHK (Wallsplat), 5HK(DI-unblocked)/2MP(DI-blocked), 6HK > 236MP, 5HP > 236KK, 22LP, 236LP/236236P",
+      "section": "Combo Notation Guide",
+      "notes": "Fusion of the above combo and the metered 6HK extension, with the same possibilities of replacing 236LP for either oki or damage. Can go into level 3 super from 236LP. Damage numbers are in the following order: / 236LP unblocked(blocked) / 236236P unblocked(blocked)."
+    },
+    {
+      "combo": "HPHK (Stun), 214P, j.HK/HP, 2HP > 214P (Followup) > 236HP, 5HP > 236KK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Stun combo that gives the option to go into 214P setups, level 1, or 236LP > level 3."
+    },
+    {
+      "combo": "HPHK (Stun), 214P, Dash, HP > 236MK [auto-timed 214P explosion], 6HK > 236MP, HP > 22P",
+      "section": "Combo Notation Guide"
+    },
+    {
+      "combo": "HPHK (Stun), 214P, j.MK (whiff), 5HP > 236MK, 6HK > 236MK, 5HP > 236MK/22LP",
+      "section": "Combo Notation Guide",
+      "notes": "Optimal Meterless Post-Stun Combo"
+    },
+    {
+      "combo": "HPHK (Stun), 214P, j.MK (whiff), 5HP > 236MK, 6HK > 236MK, 5HP > 236KK, 22LP, 236LP",
+      "section": "Combo Notation Guide",
+      "notes": "2 Bars Post-Stun Combo"
+    },
+    {
+      "combo": "HPHK (Stun), 214MP+HP, 236MP, (Spikes Trigger), 2HK (Whiff), 214MP+HP, 5HP > 236MK, 6HK (Whiff), 22LP, 22LP > (236236K)",
+      "section": "Combo Notation Guide",
+      "notes": "Meterdump Post-Stun Combo."
+    },
+    {
+      "combo": "5HP(PC) > 236HP , 236MK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Basic, meterless Punish Counter combo that works at any range."
+    },
+    {
+      "combo": "5HP(PC), dl DR 5HP > 236HP, 236MK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Slightly stronger combo for only one bar, as it uses a raw Drive Rush 5HP. Mostly useful if you hit the 5HP PC at max range, where you lose a hit of 236HP and some damage normally."
+    },
+    {
+      "combo": "5HP (PC) > 214LP+HP/214MP+HP, 5MK > 236MP, (spikes trigger), walk forward j.MK, 5HP > 22MP/22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Two bars Punish Counter combo that only works at close distance, for blocked reversals and such. Use LP+HP only if you land 5HP(PC) at a nearly seamless close distance, otherwise use MP+HP version. Walk forward enough before j.MK for the following 5HP to land. Does NOT work if you hit 5HP(PC) farther than about half a character's width."
+    },
+    {
+      "combo": "5HP (PC) > 214LP+HP/214MP+HP, 5MK > 236MP, dl. 214LP+MP, 5HP > 214HP, dl. 236MK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Extension of the previous combo with two additional bars. Use LP+HP only if you land 5HP(PC) at a nearly seamless close distance, otherwise use MP+HP version. Does NOT work if you hit 5HP(PC) farther than about half a character's width. Input the second OD Departure the moment the second spike of the first Departure is just about to hit."
+    },
+    {
+      "combo": "5HK(PC), 6HK > 236HP, Dash 5HP > 236KK, 22LP, 236236P/(236LP > 236236K)",
+      "section": "Combo Notation Guide",
+      "notes": "This two-bar Corner Punish Counter combo deals a ton of damage due to no immediate scaling going from 5HK(PC) to 6HK. Damage numbers are for ending with level 1 and level 3 super respectively."
+    },
+    {
+      "combo": "214MP+HP, 2HP/4MP~MP (PC) > 236MK, (Spikes Trigger), dl 6HK (1) > 236HP, 236MK, 22MP+HP, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Specific, but optimal punish for attacks that are at least -48. You can punish Dee Jay and Juri's DP (For Juri, you have to use the 4MP~MP Target Combo, due to it being -48), Jamie's Level 1, Manon's Level 2 (Recommended to hold back if you can afford it, to avoid the side-switch) or Zangief's Level 3. Damage is for using 2HP."
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > 214214P, 4MP~MP > 214HP, 5HK~5HP > 236MP, 5HP > 22LP",
+      "section": "Combo Notation Guide",
+      "notes": "Combo extension from most starters using Level 2 instead of Drive Gauge."
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > 214214P, 4MP~MP > 214LP, Forward Jump, 5HK~5HP, 5HP > 22MP",
+      "section": "Combo Notation Guide",
+      "notes": "Side Switch variation of the above combo, with very small loss of damage."
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > 214214P, 4MP~MP, 214HP, HP > HPHK > HP > 22MP",
+      "section": "Combo Notation Guide",
+      "notes": "Depletes 2 bars of the opponent's Drive Gauge (3 if started from a DI-counter)."
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > 214214P, 2MP, Forward Jump, 214HP, 5HP > HPHK > 5HP > 22LP",
+      "section": "Combo Notation Guide",
+      "notes": "Side-Switch variant of the above combo."
+    },
+    {
+      "combo": "... > 236HP, 236MK, 22MP+HP > 214214P, 214HP, Forward Jump, Forward Dash, 236MP, 236MP",
+      "section": "Combo Notation Guide",
+      "notes": "Extension of HP Stribog combos using Level 2"
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > 214214P, 2MK, 5HK~5HP > 214HP, 5HK~5HP > 22LP, 236HP, 236MK 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "A meterless route into heavy Stribog. Depending on the starter, the 236HP will have to be manually delayed until after the spike connects. Note that if the opponent is sent into corner the 236MK will whiff and the juggle must be continued with 5HP instead."
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > 214214P, 2MK, Forward Jump , 5HP> 214HP, 5HK~5HP > 22LP, 236HP, 236MK 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Side-Switch variant of the above combo."
+    },
+    {
+      "combo": "22KK (+7 or more), 2MP (PC) > 236MP, 236MK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Most basic OD Amnesia counter to punish a throw. Possible to go into Level 3 from 22HP"
+    },
+    {
+      "combo": "22KK (+7 or more), 2MP (PC) > 214HP, 5HK (whiff), 22HP, 236MK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Great way of punishing throws with OD Amnesia. Possible to go into Level 3 from 22HP"
+    },
+    {
+      "combo": "22KK (+7 or more), 2MP (PC) > 214HP, 214HP(trigger) > walk forward 6HK > 236HP, 236MK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "6HK must only hit once for 236HP to juggle."
+    },
+    {
+      "combo": "22KK (+8 or more), 5MK (PC) > 214HP, 236MK, 22HP, 236MK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Still works off throws"
+    },
+    {
+      "combo": "22KK (+7 or more), 2MP (PC) > 214MP+HP, 214MP (Teleport), j.MK > (Spike Triggers) > 6HK > 236MP, 5HP > 236MK/22LP",
+      "section": "Combo Notation Guide",
+      "notes": "Side-switch combo off OD Amnesia."
+    },
+    {
+      "combo": "22KK (+4 or more), 2LP (PC), 5MK > 214HP, 236LK, 22HP, 236LK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Great for punishing a lot of meaties such as overheads."
+    },
+    {
+      "combo": "22KK (+11 or more), 6HK (PC) > 214HP, 236MK, 22HP, 236MK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "The most common situation for this is after countering a Command Grab."
+    },
+    {
+      "combo": "22KK (+12 or more), 5MP (PC), 214HP, 236LK, 22HP, 236LK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Midscreen punish with 5MP, for moves with big recovery."
+    },
+    {
+      "combo": "22K (+9 or more), 2HP (PC) > 214HP, 6HK(1) > 214HP, 236HP, 236MK, 22HP",
+      "section": "Combo Notation Guide",
+      "notes": "Use this if you counter a Drive Impact in the corner"
+    },
+    {
+      "combo": "22K (+4 or more), 2LP (PC), 5MK > 236HP(1), 236MK, 22HP",
+      "section": "Combo Notation Guide"
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

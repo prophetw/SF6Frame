@@ -75,6 +75,22 @@ export interface ComboData {
     lastUpdated: string;
 }
 
+export interface KeyMove {
+    role: string;            // Short label, e.g. "Pressure", "Anti-Air"
+    moveInput: string;       // Stable move reference using input notation
+    moveName?: string;       // Optional fallback move name
+    reason: string;          // Why this move is important
+    tags?: string[];         // Optional UI tags
+}
+
+export interface KeyMoveData {
+    characterId: string;
+    keyMoves: KeyMove[];
+    source: 'manual' | 'generated';
+    notes?: string;
+    lastUpdated?: string;
+}
+
 export interface OkiResult {
     move: Move;
     timing: number; // frames to wait before executing

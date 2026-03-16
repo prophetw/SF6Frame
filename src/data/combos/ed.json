@@ -1,0 +1,620 @@
+{
+  "characterId": "ed",
+  "combos": [
+    {
+      "combo": "5MP~HP > 214HP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "1770",
+      "difficulty": "Easy",
+      "notes": "The good 'ol BnB. Works anywhere, pretty much any time. Gives a safejump which can lead to looping this combo on less aware oponents."
+    },
+    {
+      "combo": "5MP~HP > KK~dl.6P, 236LK",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "1900",
+      "difficulty": "Easy",
+      "notes": "The BnB, corner carry edition. Less damage and no way you get a safejump out of this, but you can chase with a DR into a meaty, and can give you the corner."
+    },
+    {
+      "combo": "5MP~HP > KK~dl.6P, 623HP",
+      "section": "Bread N' Butter Combos",
+      "position": "Corner",
+      "damage": "2140",
+      "difficulty": "Easy",
+      "notes": "The BnB, damage edition. No longer provides a true savejump, unless the reversal is particularly slow (ej. Ed's 623PP). Should be used over the base BnB on characters like Zangief or A.K.I that lack a meterless reversal, and/or their reversal beats the regular safejump anyway (ej. A.K.I's 236KK)."
+    },
+    {
+      "combo": "j.HP, 5HK, 5MP~HP > 214HP (> 236236P)",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "2910/4910",
+      "superMeter": "(3)",
+      "difficulty": "Easy",
+      "notes": "Basic Jump-In combo. 5HK will whiff on crouching opponents or drop if the j.HP hits too high so be careful (using 2MK instead avoids these issues at the cost of some damage). 214HP is your go-to ender for a good knockdown and safe jump. 236236P will always combo after any 214P."
+    },
+    {
+      "combo": "j.HP, 5MP~HP, KK~6P > 623MP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "2480",
+      "difficulty": "Medium",
+      "notes": "Most damaging meterless jump in, use killrush to get oki"
+    },
+    {
+      "combo": "j.HP, 5MP, 2LK > 623MP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "2340",
+      "difficulty": "Easy",
+      "notes": "Good hitconfirm combo, very easy to hit confirm 5mp with 2lk"
+    },
+    {
+      "combo": "2LP/5LP 5LP (5LP) > 214MP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "1440",
+      "difficulty": "Very Easy",
+      "notes": "Knockdowns from Pressure. Ed's 2LP isn't special cancellable and his 5LP has somewhat short reach. Recognizing spacing is important for his confirms."
+    },
+    {
+      "combo": "PC 5HK, 5HP > KK~dl.6P > 214HP / 623HP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "3010/3080",
+      "difficulty": "Medium",
+      "notes": "Punish combo for DPs and Supers. Exclude 'KK~dl.6P' for an easier combo."
+    },
+    {
+      "combo": "236[LK] / 236[MK], 623LP, 214HP / 623HP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "2380",
+      "difficulty": "Easy",
+      "notes": "Charged Flicker combo. If opponent is too far away for 623LP, finish the combo with 623HP, then dash in with KK for Oki."
+    },
+    {
+      "combo": "PC DI, 5HK, 5MP~HP > 214HP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "2700",
+      "difficulty": "Easy",
+      "notes": "Jump-in combo works just as well here."
+    },
+    {
+      "combo": "DI (stun) [5HP], 5HK, 5MP~HP > 236HK, 214MP",
+      "section": "Bread N' Butter Combos",
+      "position": "Corner",
+      "damage": "2700",
+      "difficulty": "Easy",
+      "notes": "Stun Combo. Easy Safe Jump after, or meaty 236P by whiffing 5LK first which beats wake-up Level 1. Optional Level 1 after 236HK."
+    },
+    {
+      "combo": "DI (stun) [5HP], 66, 5HK, KK~dl.6P > 623LP, 214LP",
+      "section": "Bread N' Butter Combos",
+      "position": "Corner",
+      "damage": "2770",
+      "difficulty": "Medium",
+      "notes": "Stun Combo. Easy Safe Jump after."
+    },
+    {
+      "combo": "DI (Blocked), HP > 236HK, 214HP",
+      "section": "Bread N' Butter Combos",
+      "position": "Corner",
+      "damage": "1984",
+      "difficulty": "Easy",
+      "notes": "Basic wallsplat combo. Simple enough."
+    },
+    {
+      "combo": "DI (Blocked), HP, KK~dl.6P, 623LP, 214LP",
+      "section": "Bread N' Butter Combos",
+      "position": "Corner",
+      "damage": "2080",
+      "difficulty": "Medium",
+      "notes": "Wallsplat combo. Gives a safejump"
+    },
+    {
+      "combo": "DI (Blocked), 5MP~HP > 236HK, 623LP, 214MP / 214HP",
+      "section": "Bread N' Butter Combos",
+      "position": "Corner",
+      "damage": "2032",
+      "difficulty": "Medium",
+      "notes": "Optimal wallsplat combo. 214MP gives a safe-jump, 214HP gives slightly higher damage (If DI isn't blocked, can end with 623HP for more damage)."
+    },
+    {
+      "combo": "j.MK, 2MK > KK~dl.6P > 214HP / 623HP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "2550/2620",
+      "difficulty": "Hard",
+      "notes": "Max-range jump-in combo from the farther-reaching j.MK."
+    },
+    {
+      "combo": "PC DI, 66, dl.5HP > 236[LK], 214HP / 623HP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "2794/2840",
+      "difficulty": "Very Hard",
+      "notes": "Much harder DI combo for a small damage increase. Must release 236[LK] the moment it's charged. Only for the brave."
+    },
+    {
+      "combo": "236MK PC, 5HP, 236[LK] > 214HP / 623HP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "3284/3340",
+      "difficulty": "Very Hard",
+      "notes": "Optimal meterless DP punish, give a safejump."
+    },
+    {
+      "combo": "PC DI, 8, j.5HP, DR 5HP > 236[LK], 214HP, (236236P)",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "2900/5150",
+      "superMeter": "(3)",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Timing on the charged flicker is tight, and the window for charge is proportional to how good your timing on the j.HP was. 214HP leads to a safejump, while 632HP is for damage."
+    },
+    {
+      "combo": "HP > 236KK, 236HK, KK~dl.6P, 6HP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "3085",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Allows for double dash oki into +6, good corner carry."
+    },
+    {
+      "combo": "j.HP, 5HK, 5MP~HP > 236KK, (214HP / KK ~ 6P, 236236K)",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "3344/3770",
+      "superMeter": "(1)",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "Metered Jump-In combo. 214HP is your go-to ender for a good knockdown and safe jump. Level 1 extension available for extra corner carry."
+    },
+    {
+      "combo": "j.HP, 5HP > 236KK, 236KK, 623LP, 214LP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "3710",
+      "driveMeter": "4",
+      "difficulty": "Easy",
+      "notes": "Pricey Jump-In combo. Safe jump in the corner."
+    },
+    {
+      "combo": "[5HP], dl.5HP > 236KK, 623LP, 214LP",
+      "section": "Bread N' Butter Combos",
+      "position": "Corner",
+      "damage": "3455",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "Stun combo with safe jump ender. Interestingly, 236KK does more damage when it connects airborne, so it's more rewarding to delay 5HP than connect it grounded."
+    },
+    {
+      "combo": "...236KK, 236LP ~ 6P, DR ~ 5HP > (KK ~ 6P, 214HP / KK ~ dl.6P, 6HP / 236[LK], 623HP)",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "2474/2506/2598",
+      "driveMeter": "3",
+      "difficulty": "Medium/Hard",
+      "notes": "Advanced OD Flicker combos. The first ender is recommended, though the second has notable wall carry, and 6HP can be swapped out for Level 1. The third is a minor damage increase, though it looks the coolest."
+    },
+    {
+      "combo": "...236KK, 236HK, DR ~ 2LK / 5MP > 623HP",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "2229/2406",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Combo for when the OD Flicker hits from too far away for 623LP or 236LP. use 2LK for consistency, and 5MP for damage."
+    },
+    {
+      "combo": "...236KK, 236HK, DR ~ 5LP > (KK ~ 6P, 214HP / KK ~ dl.6P, 6HP)",
+      "section": "Bread N' Butter Combos",
+      "position": "Anywhere",
+      "damage": "2297/2301",
+      "driveMeter": "3",
+      "difficulty": "Medium / Hard",
+      "notes": "Similar to above, but with improved corner carry. Even better if you can land the second ender."
+    },
+    {
+      "combo": "...... > 236KK, 623LP, 623HP",
+      "section": "Juggles and Extensions / Normal Hit",
+      "position": "Anywhere",
+      "damage": "1739 (1448)",
+      "difficulty": "Easy",
+      "notes": "Simple followup, light DP can whiff at max flicker range."
+    },
+    {
+      "combo": "5HP > 214214HP, 5HP > 236[HK], 623LP, 214LP",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "Anywhere",
+      "damage": "3745",
+      "superMeter": "2",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Easier combo. Slightly more damage but no wall carry."
+    },
+    {
+      "combo": "5HP > 214214HP, KK, 9, dl.jHK, KK ~ dl.6P, 214HP",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "Anywhere",
+      "damage": "3620",
+      "superMeter": "2",
+      "driveMeter": "0",
+      "difficulty": "Hard",
+      "notes": "Optimal meterless combo with great wall carry. Don't delay KK ~ 6P for an easier combo."
+    },
+    {
+      "combo": "5HP > 214214HP, 44, 9, dl.jHK, 236HK, 623LP, 214MP",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "Corner",
+      "damage": "4000",
+      "superMeter": "2",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Optimal corner combo with safe-jump potential. if you delay j.HK perfectly you can end with 214HP or 623HP"
+    },
+    {
+      "combo": "5HP > 214214HP, 5LK, 5HP > DI",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "Anywhere",
+      "damage": "3030",
+      "superMeter": "2",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Depletes 2 Bars of opponent's drive gauge. Useful if it will put them in burnout."
+    },
+    {
+      "combo": "5HP > 214PP > 214214LP, 623HP, 6HP, 623HP",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "Anywhere",
+      "damage": "4460",
+      "superMeter": "2",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Easy and rewarding. Decent wall carry. Do a micro-walk KK ~ dl.6P after 6HP to squeeze in a Level 1 at the end."
+    },
+    {
+      "combo": "5HP > 214PP > 214214LP, 623HP, KK ~ dl.6P, KK ~ dl.6P, 623HP",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "Anywhere",
+      "damage": "4445",
+      "superMeter": "2",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Little trickier, but the wall carry is well worth it. Replace the first KK ~ dl.6P with 6HP if you're past midscreen for some extra damage."
+    },
+    {
+      "combo": "5HP > 214PP > 214214LP, DR > 5HK > 236LP ~ 6LP, [5HP], KK ~ dl.6P, (236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "Anywhere",
+      "damage": "3885/4485",
+      "superMeter": "2/3",
+      "driveMeter": "0",
+      "difficulty": "Hard",
+      "notes": "Insane wall carry, will go corner to corner. Release [5HP] so that you hit the opponent while they're as high as possible."
+    },
+    {
+      "combo": "5HP > 214PP > 214214LP, 214HP, 623HP, dash, 623HP, 623HP",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "Midscreen",
+      "damage": "4875/4890",
+      "superMeter": "2/3",
+      "driveMeter": "0",
+      "difficulty": "Very Hard",
+      "notes": "7-8 frame delay on the 214HP, ~2-6 frame delay on the first 623HP (depends on how much you walk back in the first delay). Standard desync combo for everyone but Blanka, Marisa, Honda, and Zangief."
+    },
+    {
+      "combo": "5HP > 214PP > 214214LP, 214HP, 623HP, dash, 214LP, dash, 6HP, 623HP",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "Midscreen",
+      "damage": "4850",
+      "superMeter": "2/3",
+      "driveMeter": "0",
+      "difficulty": "Very Hard",
+      "notes": "Used to salvage the above combo if you see they bounced only once. Juggle them low with 214LP to get the 6HP to juggle properly."
+    },
+    {
+      "combo": "5HP > 214PP > 214214LP, 214HP, 623HP, 6HP, 6HP, 623HP",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "Midscreen",
+      "damage": "4860",
+      "superMeter": "2/3",
+      "driveMeter": "0",
+      "difficulty": "Hard",
+      "notes": "Desync combo for big bodies. No delays other than the standard 7-8 frame delay on the 214HP."
+    },
+    {
+      "combo": "5HP > 214PP > 214214LP, 6f delay, 2f bwalk, 214HP, 5f delay, 1f fwalk, 623HP, 2f delay, 623HP, dash, 623HP, dash, 623HP",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "Own Corner",
+      "damage": "5100",
+      "superMeter": "2/3",
+      "driveMeter": "0",
+      "difficulty": "Good Luck",
+      "notes": "Delays and walks must be done in the correct order. Confirmed working on Terry. Not practical."
+    },
+    {
+      "combo": "PC 5HP > 236KK, Whiff 5LP, 214214LP, 236P, Whiff 2LK, 623HP, 66, 214LP,",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4398/4998",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "After blocked 236[K] or 236KK, Backdash Shimmy, then punish with 5HP. Get used to seeing this alternating pattern of 623HP and 214LP."
+    },
+    {
+      "combo": "66, 623HP, 66, 214LP, 66, 623HP, (66, 236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4398/4998",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "After blocked 236[K] or 236KK, Backdash Shimmy, then punish with 5HP. Get used to seeing this alternating pattern of 623HP and 214LP."
+    },
+    {
+      "combo": "PC 5HP > 236KK, Whiff 5LP, 214214LP, 44, 623HP, Microwalk 623HP, 66, 623HP,",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4912/5212",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "After blocked DR~5LP, Backdash Shimmy, then punish with 5HP. Optional Level 1 ender for a bit more damage and carry. Time Microwalk 623HP by doing it the moment you see Ed walk."
+    },
+    {
+      "combo": "KK ~ dl.6P, (623HP / KK, 236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4912/5212",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "After blocked DR~5LP, Backdash Shimmy, then punish with 5HP. Optional Level 1 ender for a bit more damage and carry. Time Microwalk 623HP by doing it the moment you see Ed walk."
+    },
+    {
+      "combo": "DR ~ PC 5HK, 5HP > 236KK, Whiff 5LP, 214214LP, 236P, Whiff 2LK, 623HP, 66, 214LP,",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4486/5086",
+      "superMeter": "2/3",
+      "driveMeter": "1",
+      "difficulty": "Very Hard",
+      "notes": "Punish Combo. Identical to the first combo. Optional Level 1 ender for a bit more damage and carry."
+    },
+    {
+      "combo": "PC 5HK, 5HP > 236KK, Whiff 5LP, 214214LP, 236P, Whiff 2LP, 623HP, 66, 214LP,",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4406/5006",
+      "superMeter": "2/3",
+      "driveMeter": "0",
+      "difficulty": "Very Hard",
+      "notes": "Punish Combo. Similar to the above combo, but costs no Drive."
+    },
+    {
+      "combo": "66, 214LP, 66, 623HP, 66, 214LP, (KK, 236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4406/5006",
+      "superMeter": "2/3",
+      "driveMeter": "0",
+      "difficulty": "Very Hard",
+      "notes": "Punish Combo. Similar to the above combo, but costs no Drive."
+    },
+    {
+      "combo": "PC 5HP > 236KK, 214214LP, 236P, Whiff 2LK, 623HP, 66, 214LP, 66, 623HP,",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4308/4908",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "Honda, Marisa, & Zangief After blocked 236[K] or 236KK, Backdash Shimmy, then punish with 5HP. Familiar alternating route."
+    },
+    {
+      "combo": "66, 214LP, 66, 623HP, (66, 236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4308/4908",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "Honda, Marisa, & Zangief After blocked 236[K] or 236KK, Backdash Shimmy, then punish with 5HP. Familiar alternating route."
+    },
+    {
+      "combo": "PC 5HP > 236KK, 214214LP, 8, j.HK, 623HP, 66, 623HP,",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4795/5215",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "Honda, Marisa, & Zangief After blocked DR~5LP, Backdash Shimmy, then punish with 5HP. Optional Level 1 ender for a bit more damage and carry. Don't delay the j.HK too much."
+    },
+    {
+      "combo": "KK ~ dl.6P, 66, 623HP, (623HP / KK, 236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4795/5215",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "Honda, Marisa, & Zangief After blocked DR~5LP, Backdash Shimmy, then punish with 5HP. Optional Level 1 ender for a bit more damage and carry. Don't delay the j.HK too much."
+    },
+    {
+      "combo": "PC 5HK, 5HP > 236KK, 214214LP, 236P, Whiff 2LK, 623HP, 66, 214LP,",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4486/5086",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "Honda & Zangief Punish Combo. Familiar alternating route with different frame kill."
+    },
+    {
+      "combo": "PC 5HK, 5HP > 236KK, 214214LP, 236P, Whiff 5LP, 623HP, 66, 214LP,",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4486/5086",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "Marisa Punish Combo. Familiar alternating route with different frame-kill."
+    },
+    {
+      "combo": "PC 5HP > 236KK, 214214LP, 44, 623HP, Microwalk 623HP, 66, 623HP,",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4312/4912",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "Blanka After blocked 236[K] or 236KK, Backdash Shimmy, then punish with 5HP. Familiar backdash 623HP route."
+    },
+    {
+      "combo": "PC 5HP > 236KK, 214214LP, 236P, Whiff 2LK, 623HP, 66, 214LP,",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4398/4998",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "Blanka After blocked DR~5LP, Backdash Shimmy, then punish with 5HP. Familiar alternating route."
+    },
+    {
+      "combo": "PC 5HK, 5HP > 236KK, Whiff 5LP, 214214LP, 8, dl.jHK, 623HP, KK ~ dl.6P,",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4448/5048",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "Blanka Punish Combo. Remember to delay the j.HK"
+    },
+    {
+      "combo": "KK ~ dl.6P, 66, 623MP, (66, 236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "position": "2/3 Screen or more",
+      "damage": "4448/5048",
+      "superMeter": "2/3",
+      "difficulty": "Very Hard",
+      "notes": "Blanka Punish Combo. Remember to delay the j.HK"
+    },
+    {
+      "combo": "PC 5HP, 2MK > 236KK, Whiff 5LP, 214214LP, 236P, Whiff 2LP, 623HP, 66, 214LP, 66, 623HP, 66, 214LP, 66 (623HP/ 236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "damage": "4286/4766",
+      "difficulty": "Very Hard",
+      "notes": "After blocked 236[K] or 236KK, Backdash Shimmy, then punish with 5HP. Get used to seeing this alternating pattern of 623HP and 214LP.",
+      "videoUrl": "https://wiki.supercombo.gg/images/1/1f/SF6_Ed_Cannon_Flicker_Backdash.mp4"
+    },
+    {
+      "combo": "PC 5HP, 2MK > 236KK, Whiff 5LP, 214214LP, 8, dl.jHK, 623HP, 66, 623HP, 66, 623HP, (623HP/236K236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "damage": "4638/5058",
+      "difficulty": "Very Hard",
+      "notes": "After blocked DR~5LP, Backdash Shimmy, then punish with 5HP. Optional Level 1 ender for a bit more damage and carry."
+    },
+    {
+      "combo": "PC 5HK, 5HP > 236KK, Whiff 5LP, 214214LP, 236P, Whiff 2LP, 623HP, 66, 214LP, 66, 623HP, 66, 214LP, 66, (623HP, 236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "damage": "4486/4966",
+      "difficulty": "Very Hard",
+      "notes": "After blocking an OD Reversal. Ryu, Ken, Luke, Juri, Akuma, Rashid, and Deejay all have OD Reversals you can walk under if you need the space behind you to do the combo. (i.e. in the corner)"
+    },
+    {
+      "combo": "PC 5HP, 2MK > 236KK, Whiff 5LP, 214214LP, 8, dl.jHK, 623HP, 66, 214LP, KK~dl.6P, 66, 623HP, (623HP/236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "damage": "4468/4948",
+      "difficulty": "Very Hard",
+      "notes": "Blanka, Marisa, Honda, & Zangief: / After blocked 236[K] or 236KK, Backdash Shimmy, then punish with 5HP."
+    },
+    {
+      "combo": "PC 5HP, 2MK > 236KK, 214214LP, 8, dl.jHK, 623HP, 66, 623HP, KK~dl.6P, 66, 623HP, (623HP/236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "damage": "4608/5088",
+      "difficulty": "Very Hard",
+      "notes": "Marisa, Honda, & Zangief: / After blocked DR~5LP, Backdash Shimmy, then punish with 5HP."
+    },
+    {
+      "combo": "PC 5HP, 2MK > 236KK, 214214LP, 236P, Whiff 2LP, 623HP, 66, 214LP, KK~dl.6P, 66, 623HP, (623HP/236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "damage": "4196/4676",
+      "difficulty": "Very Hard",
+      "notes": "Blanka: / After blocked DR~5LP, Backdash Shimmy, then punish with 5HP."
+    },
+    {
+      "combo": "PC 5HK, 5HP > 236KK, (Whiff 5LP,) 214214LP, 8, dl.jHK, 623HP, 66, 623HP, KK~dl.6P, 66, 623HP, (623HP/236236K)",
+      "section": "Juggles and Extensions / Psycho Cannon",
+      "damage": "4808/5148",
+      "difficulty": "Very Hard",
+      "notes": "Marisa, Honda, Zangief, & Blanka: / After blocked OD Reversal or Super, then punish with 5HK. Only whiff the LP on Blanka. Whiffing the 5LP on the other three will drop the combo. It is completely identical otherwise."
+    },
+    {
+      "combo": "2LP 5LP",
+      "section": "Links and Starters",
+      "notes": "Vital to get anything out of Ed's fastest low and make sure that he doesn't end up -5 in the opponent's face."
+    },
+    {
+      "combo": "2MK, 5MP",
+      "section": "Links and Starters",
+      "notes": "Ed's 2MK is a strong wall of a normal, and he can link out of it as a hitconfirm."
+    },
+    {
+      "combo": "5HK, 5MP/2MP",
+      "section": "Links and Starters",
+      "notes": "Doesn't come up often, but good to know if opponent is standing as a minor optimization."
+    },
+    {
+      "combo": "j.MK, 2MK>..",
+      "section": "Links and Starters",
+      "notes": "Neutral jump ranged harassment.Can be cancelled into KK~dl.6P, 214HP or Psycho Flicker"
+    },
+    {
+      "combo": "2MK, 2MP>..",
+      "section": "Links and Starters",
+      "notes": "2MP can be used to extend the combo and confirm window. Can whiff at max 2MK range. Cancel into KK~6P, Psycho Blitz or 236LP"
+    },
+    {
+      "combo": "CH 5LP, 2LK/5LK",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "CH 5LK, 2LK",
+      "section": "Links and Starters",
+      "notes": "Season 2 removed the CH 2LK 2LK link. Use 5LK instead."
+    },
+    {
+      "combo": "CH 5MP, 5MP",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "CH 214LP, 2LK",
+      "section": "Links and Starters",
+      "notes": "Useful as a last-ditch attempt to catch mashing or if 214LP beats Drive Impact armor."
+    },
+    {
+      "combo": "PC 5LP, 5MP ~ 5HP...",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "PC 5LP > DR ~ 5MP, 5HP...",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "PC 2LK, 5MP ~ 5HP...",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "PC 2LK > DR ~ 5MP, 5HP...",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "PC 5MP, 2MK / 5HP...",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "PC 5MP > 236KK... / KK ~ dl.6P...",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "PC 2MP > 236KK... / KK ~ dl.6P...",
+      "section": "Links and Starters"
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

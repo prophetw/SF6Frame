@@ -1,0 +1,908 @@
+{
+  "characterId": "dhalsim",
+  "combos": [
+    {
+      "combo": "5LP/1LK~2LP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "540/440 + Ender",
+      "difficulty": "Very Easy",
+      "notes": "Light starter. Up to three lights can be chained if point blank."
+    },
+    {
+      "combo": "2LP/5LK > 236HP/236MPHP",
+      "section": "All Combos",
+      "position": "Close",
+      "damage": "960/1240",
+      "difficulty": "Very Easy",
+      "notes": "Has to be point blank for 236HP to connect after 5LP > 2LP. 2LP can hit at almost max range for 236MPHP to connect. Both fireballs can connect from further away if starting with 5LK.",
+      "videoUrl": "https://youtu.be/CWaz2IFJ8i4"
+    },
+    {
+      "combo": "2LP > 63214HK",
+      "section": "All Combos",
+      "position": "Close",
+      "damage": "1380",
+      "difficulty": "Easy",
+      "notes": "Has to be done point blank if starting with 5LP~2LP, same as above. 63214HK can connect from slightly further if starting with just one 2LP.",
+      "videoUrl": "https://youtu.be/8PpnR6GmCck"
+    },
+    {
+      "combo": "2LP > 63214KK > 214214HK",
+      "section": "All Combos",
+      "position": "Close",
+      "damage": "2920",
+      "difficulty": "Easy",
+      "notes": "Has to be done point blank if starting with 5LP~2LP, same as above. 63214HK can connect from slightly further if starting with just one 2LP.",
+      "videoUrl": "https://youtu.be/8PpnR6GmCck"
+    },
+    {
+      "combo": "2LP/5LK > 236236MP/236236K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "~2004/3340",
+      "difficulty": "Easy",
+      "notes": "Super enders without spending Drive Gauge. Overall best light confirm route into level 3 - going from 63214HK requires the opponent to be standing, and going from a Drive Rush costs 3 bars of Drive Gauge along with dealing nearly identical damage to this combo. Ending with raw level 2 isn't quite worthwhile here - it does 2540 damage but requires you to be point blank and start with just one light. If going for a punish with a single light, then it's better to just link into 4MK/4MP unless you're a bit further from point-blank range. Stick to using 63214KK in the above combo if you want to use level 2."
+    },
+    {
+      "combo": "5LK > 63214LP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "940",
+      "difficulty": "Easy",
+      "notes": "Has to be done somewhat close so that 63214LP can reach. Not a useful combo, especially since the light attack scaling nerf - just use 4MK or 1HP at this range.",
+      "videoUrl": "https://youtu.be/nhFBIjImL8s"
+    },
+    {
+      "combo": "2LP/5LK > DRC~5LP/2LP, 4MP/4MK...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "~1074 + Ender",
+      "difficulty": "Medium",
+      "notes": "Standard light confirm BnB. Does more damage, carries further, and doesn't have a range requirement like the other combos, but is meter-hungry. Up to three 2LPs can be linked to start this combo if done at point blank range. DRC~5LP is typically only used after a far range 5LK. This combo is typically ended with 4MP > 63214HK for good oki and to conserve meter. See \"Medium Starter\" section for other follow-ups.",
+      "videoUrl": "https://youtu.be/kKl8O5JPxqs"
+    },
+    {
+      "combo": "5LP/2LP > 63214LP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1000",
+      "difficulty": "Very Easy",
+      "notes": "Counter hit allows for a meterless knockdown from jab."
+    },
+    {
+      "combo": "5LK > 63214PP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1000 + Ender",
+      "difficulty": "Medium",
+      "notes": "The buff to 63214PP's range makes this combo more practical, but hit confirming 5LK is still hard, and 63214PP is quite minus on block."
+    },
+    {
+      "combo": "5LP, 4MK/4MP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "840/920 + Ender",
+      "difficulty": "Easy",
+      "notes": "Starting with 2LP is pointless since the rest of the combo will whiff when started outside of 5LP range anyway. 4MK/4MP will whiff if 5LP connects from max range."
+    },
+    {
+      "combo": "5LK > 63214MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1080",
+      "difficulty": "Very Easy"
+    },
+    {
+      "combo": "2MP > 236HP/236MPHP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1200/1600",
+      "difficulty": "Very Easy",
+      "notes": "Has to be close enough so that 236HP can hit, further away they will be forced to block. 2MP can hit from slightly further away if ending with 236MPHP.",
+      "videoUrl": "https://youtu.be/J6oNkxy4f6w"
+    },
+    {
+      "combo": "2MP > 63214LP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1400",
+      "difficulty": "Easy",
+      "notes": "2MP follow-ups. 63214LP has to be done slightly closer than 236HP/236MPHP/63214PP or else it will whiff. Use 236236LP if 2MP connects around max range. Don't bother using 214214K/2362326K since they will whiff unless in 1HP range. Tricky (but possible) to get 4MK after a nearly max range 2MP.",
+      "videoUrl": "https://youtu.be/SWq3j5xc1aU"
+    },
+    {
+      "combo": "2MP > 63214PP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1400 + Ender",
+      "difficulty": "Easy",
+      "notes": "2MP follow-ups. 63214LP has to be done slightly closer than 236HP/236MPHP/63214PP or else it will whiff. Use 236236LP if 2MP connects around max range. Don't bother using 214214K/2362326K since they will whiff unless in 1HP range. Tricky (but possible) to get 4MK after a nearly max range 2MP.",
+      "videoUrl": "https://youtu.be/SWq3j5xc1aU"
+    },
+    {
+      "combo": "2MP > 236236LP/236236MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2520/2700",
+      "difficulty": "Easy",
+      "notes": "2MP follow-ups. 63214LP has to be done slightly closer than 236HP/236MPHP/63214PP or else it will whiff. Use 236236LP if 2MP connects around max range. Don't bother using 214214K/2362326K since they will whiff unless in 1HP range. Tricky (but possible) to get 4MK after a nearly max range 2MP.",
+      "videoUrl": "https://youtu.be/SWq3j5xc1aU"
+    },
+    {
+      "combo": "2MP > DRC~4MK/4MP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1110/1195 + Ender",
+      "difficulty": "Easy",
+      "notes": "2MP follow-ups. 63214LP has to be done slightly closer than 236HP/236MPHP/63214PP or else it will whiff. Use 236236LP if 2MP connects around max range. Don't bother using 214214K/2362326K since they will whiff unless in 1HP range. Tricky (but possible) to get 4MK after a nearly max range 2MP.",
+      "videoUrl": "https://youtu.be/SWq3j5xc1aU"
+    },
+    {
+      "combo": "4MP > 63214HK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1900",
+      "difficulty": "Easy",
+      "notes": "4MP follow-ups. There's little reason to end with 63214MP since it only allows you to convert from *very* slightly further, 4MP forces stand, and 63214HK does more damage along with granting enough frame advantage for teleport oki."
+    },
+    {
+      "combo": "4MP > 63214PP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1500 + Ender",
+      "difficulty": "Easy",
+      "notes": "4MP follow-ups. There's little reason to end with 63214MP since it only allows you to convert from *very* slightly further, 4MP forces stand, and 63214HK does more damage along with granting enough frame advantage for teleport oki."
+    },
+    {
+      "combo": "4MP > 236236MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2800",
+      "difficulty": "Easy",
+      "notes": "4MP follow-ups. There's little reason to end with 63214MP since it only allows you to convert from *very* slightly further, 4MP forces stand, and 63214HK does more damage along with granting enough frame advantage for teleport oki."
+    },
+    {
+      "combo": "4MP > 214214K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3500",
+      "difficulty": "Easy",
+      "notes": "4MP follow-ups. There's little reason to end with 63214MP since it only allows you to convert from *very* slightly further, 4MP forces stand, and 63214HK does more damage along with granting enough frame advantage for teleport oki."
+    },
+    {
+      "combo": "4MP > 236236K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "4700",
+      "difficulty": "Easy",
+      "notes": "4MP follow-ups. There's little reason to end with 63214MP since it only allows you to convert from *very* slightly further, 4MP forces stand, and 63214HK does more damage along with granting enough frame advantage for teleport oki."
+    },
+    {
+      "combo": "4MP > DRC~1HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1380 + Ender",
+      "difficulty": "Easy",
+      "notes": "4MP follow-ups. There's little reason to end with 63214MP since it only allows you to convert from *very* slightly further, 4MP forces stand, and 63214HK does more damage along with granting enough frame advantage for teleport oki."
+    },
+    {
+      "combo": "4MK > 63214MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1500",
+      "difficulty": "Easy",
+      "notes": "4MK follow-ups. Uniquely has enough advantage on hit to Drive Rush into 4HP/4HK, unlike Dhalsim's other medium normals."
+    },
+    {
+      "combo": "4MK > 63214HK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1800",
+      "difficulty": "Easy",
+      "notes": "4MK follow-ups. Uniquely has enough advantage on hit to Drive Rush into 4HP/4HK, unlike Dhalsim's other medium normals."
+    },
+    {
+      "combo": "4MK > 63214PP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1400 + Ender",
+      "difficulty": "Easy",
+      "notes": "4MK follow-ups. Uniquely has enough advantage on hit to Drive Rush into 4HP/4HK, unlike Dhalsim's other medium normals."
+    },
+    {
+      "combo": "4MK > 236236MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2700",
+      "difficulty": "Easy",
+      "notes": "4MK follow-ups. Uniquely has enough advantage on hit to Drive Rush into 4HP/4HK, unlike Dhalsim's other medium normals."
+    },
+    {
+      "combo": "4MK > 214214K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3400",
+      "difficulty": "Easy",
+      "notes": "4MK follow-ups. Uniquely has enough advantage on hit to Drive Rush into 4HP/4HK, unlike Dhalsim's other medium normals."
+    },
+    {
+      "combo": "4MK > 236236K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "4600",
+      "difficulty": "Easy",
+      "notes": "4MK follow-ups. Uniquely has enough advantage on hit to Drive Rush into 4HP/4HK, unlike Dhalsim's other medium normals."
+    },
+    {
+      "combo": "4MK > DRC~1HP/4HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1280/1365 + Ender",
+      "difficulty": "Easy",
+      "notes": "4MK follow-ups. Uniquely has enough advantage on hit to Drive Rush into 4HP/4HK, unlike Dhalsim's other medium normals."
+    },
+    {
+      "combo": "4MK > DRC~4HK, 5LP~2LP > 63214HK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2443",
+      "difficulty": "Easy",
+      "notes": "4MK follow-ups. Uniquely has enough advantage on hit to Drive Rush into 4HP/4HK, unlike Dhalsim's other medium normals."
+    },
+    {
+      "combo": "DR~4MK > 63214HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1800",
+      "difficulty": "Easy",
+      "notes": "Follow-ups from Drive Rush 4MK."
+    },
+    {
+      "combo": "DR~4MK, 4MK...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1200 + Ender",
+      "difficulty": "Easy",
+      "notes": "Follow-ups from Drive Rush 4MK."
+    },
+    {
+      "combo": "1MK > 63214LP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1140",
+      "difficulty": "Easy",
+      "notes": "1MK follow-ups. Needs to opt for 63214LP instead of 63214MP, can only Drive Rush into 4MK instead of 1HP, and overall does less damage compared to Dhalsim's other mediums."
+    },
+    {
+      "combo": "1MK > 63214HK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1460",
+      "difficulty": "Easy",
+      "notes": "1MK follow-ups. Needs to opt for 63214LP instead of 63214MP, can only Drive Rush into 4MK instead of 1HP, and overall does less damage compared to Dhalsim's other mediums."
+    },
+    {
+      "combo": "1MK > 63214PP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1140 + Ender",
+      "difficulty": "Easy",
+      "notes": "1MK follow-ups. Needs to opt for 63214LP instead of 63214MP, can only Drive Rush into 4MK instead of 1HP, and overall does less damage compared to Dhalsim's other mediums."
+    },
+    {
+      "combo": "1MK > 236236MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2180",
+      "difficulty": "Easy",
+      "notes": "1MK follow-ups. Needs to opt for 63214LP instead of 63214MP, can only Drive Rush into 4MK instead of 1HP, and overall does less damage compared to Dhalsim's other mediums."
+    },
+    {
+      "combo": "1MK > 214214K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2740",
+      "difficulty": "Easy",
+      "notes": "1MK follow-ups. Needs to opt for 63214LP instead of 63214MP, can only Drive Rush into 4MK instead of 1HP, and overall does less damage compared to Dhalsim's other mediums."
+    },
+    {
+      "combo": "1MK > 236236K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3700",
+      "difficulty": "Easy",
+      "notes": "1MK follow-ups. Needs to opt for 63214LP instead of 63214MP, can only Drive Rush into 4MK instead of 1HP, and overall does less damage compared to Dhalsim's other mediums."
+    },
+    {
+      "combo": "1MK > DRC~4MK...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "908 + Ender",
+      "difficulty": "Easy",
+      "notes": "1MK follow-ups. Needs to opt for 63214LP instead of 63214MP, can only Drive Rush into 4MK instead of 1HP, and overall does less damage compared to Dhalsim's other mediums."
+    },
+    {
+      "combo": "2MK, 5LP/2LP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "740 + Ender",
+      "difficulty": "Medium/Hard",
+      "notes": "Links from slide. 5LP tends to whiff if slide was done from far away enough, so 2LP can be used for range at the cost of being a frame slower. 4MK requires slide to connect from almost max range. DR~2MK can link into 1HP from a bit closer since it can be up to +13 on hit."
+    },
+    {
+      "combo": "2MK, 4MK...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "980 + Ender",
+      "difficulty": "Medium/Hard",
+      "notes": "Links from slide. 5LP tends to whiff if slide was done from far away enough, so 2LP can be used for range at the cost of being a frame slower. 4MK requires slide to connect from almost max range. DR~2MK can link into 1HP from a bit closer since it can be up to +13 on hit."
+    },
+    {
+      "combo": "DR~2MK, 1HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1140 + Ender",
+      "difficulty": "Medium/Hard",
+      "notes": "Links from slide. 5LP tends to whiff if slide was done from far away enough, so 2LP can be used for range at the cost of being a frame slower. 4MK requires slide to connect from almost max range. DR~2MK can link into 1HP from a bit closer since it can be up to +13 on hit."
+    },
+    {
+      "combo": "2MP > DRC~1HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1400 + Ender",
+      "difficulty": "Easy",
+      "notes": "Counter hit allows 1HP to be comboed into for better reward."
+    },
+    {
+      "combo": "1MK > 63214MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1320",
+      "difficulty": "Easy",
+      "notes": "New follow-ups for 1MK on counter hit."
+    },
+    {
+      "combo": "1MK > DRC~1HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1144 + Ender",
+      "difficulty": "Easy",
+      "notes": "New follow-ups for 1MK on counter hit."
+    },
+    {
+      "combo": "4MK, 2LP > 63214HK",
+      "section": "All Combos",
+      "position": "Close",
+      "damage": "1980",
+      "difficulty": "Medium",
+      "notes": "Counter hit allows for a light to be linked from 4MK for a little more damage. This link is only worthwhile if ending with 63214HK with nothing else afterward, otherwise ignoring the light and going straight into the ender gives more damage. 4MP as a starter has too much pushback on hit and only leaves you +4, so don't try that."
+    },
+    {
+      "combo": "2MK, 1HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1240",
+      "difficulty": "Hard",
+      "notes": "Counter hit allows for 1HP to be linked into at max range without needing Drive Rush."
+    },
+    {
+      "combo": "j.2KK (instant), j.MP, 236236LP/236236MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2376/2520",
+      "difficulty": "Easy",
+      "notes": "Use 236236LP if j.MP connects at max range, otherwise use 236236MP for more damage."
+    },
+    {
+      "combo": "4MK > 63214HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1920",
+      "difficulty": "Easy"
+    },
+    {
+      "combo": "4MK, 4MK...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1320 + Ender",
+      "difficulty": "Easy"
+    },
+    {
+      "combo": "j.2KK (instant), j.MP, 2MP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1320 + Ender",
+      "difficulty": "Easy",
+      "notes": "Usually done when punishing a close fireball."
+    },
+    {
+      "combo": "1HP > 63214MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1700",
+      "difficulty": "Easy",
+      "notes": "1HP follow-ups. All of these follow-ups also work with 4HP, which does slightly more damage than 1HP if it's not the first move in the combo. If 1HP hits at further ranges then you'll have to do 63214MP. 63214HP will always connect after 4HP, though (except at the very tip). 214214K requires being point blank."
+    },
+    {
+      "combo": "1HP (close) > 63214HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2000",
+      "difficulty": "Easy",
+      "notes": "1HP follow-ups. All of these follow-ups also work with 4HP, which does slightly more damage than 1HP if it's not the first move in the combo. If 1HP hits at further ranges then you'll have to do 63214MP. 63214HP will always connect after 4HP, though (except at the very tip). 214214K requires being point blank."
+    },
+    {
+      "combo": "1HP > 63214PP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1600 + Ender",
+      "difficulty": "Easy",
+      "notes": "1HP follow-ups. All of these follow-ups also work with 4HP, which does slightly more damage than 1HP if it's not the first move in the combo. If 1HP hits at further ranges then you'll have to do 63214MP. 63214HP will always connect after 4HP, though (except at the very tip). 214214K requires being point blank."
+    },
+    {
+      "combo": "1HP > 236236MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2900",
+      "difficulty": "Easy",
+      "notes": "1HP follow-ups. All of these follow-ups also work with 4HP, which does slightly more damage than 1HP if it's not the first move in the combo. If 1HP hits at further ranges then you'll have to do 63214MP. 63214HP will always connect after 4HP, though (except at the very tip). 214214K requires being point blank."
+    },
+    {
+      "combo": "1HP > 214214K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3600",
+      "difficulty": "Easy",
+      "notes": "1HP follow-ups. All of these follow-ups also work with 4HP, which does slightly more damage than 1HP if it's not the first move in the combo. If 1HP hits at further ranges then you'll have to do 63214MP. 63214HP will always connect after 4HP, though (except at the very tip). 214214K requires being point blank."
+    },
+    {
+      "combo": "1HP > DRC~1HP/4HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1480/1565 + Ender",
+      "difficulty": "Easy",
+      "notes": "1HP follow-ups. All of these follow-ups also work with 4HP, which does slightly more damage than 1HP if it's not the first move in the combo. If 1HP hits at further ranges then you'll have to do 63214MP. 63214HP will always connect after 4HP, though (except at the very tip). 214214K requires being point blank."
+    },
+    {
+      "combo": "1HP > DRC~4HK, 5LP~2LP > 63214HK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2643",
+      "difficulty": "Easy",
+      "notes": "1HP follow-ups. All of these follow-ups also work with 4HP, which does slightly more damage than 1HP if it's not the first move in the combo. If 1HP hits at further ranges then you'll have to do 63214MP. 63214HP will always connect after 4HP, though (except at the very tip). 214214K requires being point blank."
+    },
+    {
+      "combo": "DR~1HP (max range) > 63214HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2000",
+      "difficulty": "Easy",
+      "notes": "New follow-ups with Drive Rush 1HP. Neither of these enders apply to 4HP, unlike the above combo - 63214HP always connects and DR~4HP is -5 on hit if not canceled."
+    },
+    {
+      "combo": "DR~1HP, 4MK...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1400 + Ender",
+      "difficulty": "Easy",
+      "notes": "New follow-ups with Drive Rush 1HP. Neither of these enders apply to 4HP, unlike the above combo - 63214HP always connects and DR~4HP is -5 on hit if not canceled."
+    },
+    {
+      "combo": "...DRC~4HK, 5LP~2LP > 63214HK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2380",
+      "difficulty": "Easy",
+      "notes": "Slightly higher damage if going for a Drive Rush and not spending any more meter afterward compared to DR~1HP, 4MK > 63214HK. This combo is only worth using if ending with 63214HK - scaling makes any other ender inferior to DR~1HP, 4MK..."
+    },
+    {
+      "combo": "5HK > 236236LP/236236MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2720/2900",
+      "difficulty": "Easy",
+      "notes": "5HK has to connect from fairly close for 1HP to combo - just about outside of 2MP range. 2MP can be used from further away, but still requires being decently close. 5MK should only be used from around max range for extra damage. This isn't worth spending the resources on normally but can be useful for securing a KO."
+    },
+    {
+      "combo": "5HK > DRC~5MK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1310",
+      "difficulty": "Easy",
+      "notes": "5HK has to connect from fairly close for 1HP to combo - just about outside of 2MP range. 2MP can be used from further away, but still requires being decently close. 5MK should only be used from around max range for extra damage. This isn't worth spending the resources on normally but can be useful for securing a KO."
+    },
+    {
+      "combo": "5HK > DRC~2HK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1565",
+      "difficulty": "Easy",
+      "notes": "5HK has to connect from fairly close for 1HP to combo - just about outside of 2MP range. 2MP can be used from further away, but still requires being decently close. 5MK should only be used from around max range for extra damage. This isn't worth spending the resources on normally but can be useful for securing a KO."
+    },
+    {
+      "combo": "5HK > DRC~2MP/1HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1310/1480 + Ender",
+      "difficulty": "Easy",
+      "notes": "5HK has to connect from fairly close for 1HP to combo - just about outside of 2MP range. 2MP can be used from further away, but still requires being decently close. 5MK should only be used from around max range for extra damage. This isn't worth spending the resources on normally but can be useful for securing a KO."
+    },
+    {
+      "combo": "j.2KK (instant), j.HK, 4MK/4MP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1280/1360 + Ender",
+      "difficulty": "Easy",
+      "notes": "Confirm from j.HK at instant air Yoga Float height. 2MP and 1HP will only combo if j.HK connects from further away. Performing j.HK early and drifting forward as Yoga Float ends is a good way to make this more consistent. Use 2MP if j.HK connects around max range - around Dhalsim's knee during j.HK."
+    },
+    {
+      "combo": "j.2KK (instant), j.HK (far), 2MP/1HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1280/1440 + Ender",
+      "difficulty": "Easy",
+      "notes": "Confirm from j.HK at instant air Yoga Float height. 2MP and 1HP will only combo if j.HK connects from further away. Performing j.HK early and drifting forward as Yoga Float ends is a good way to make this more consistent. Use 2MP if j.HK connects around max range - around Dhalsim's knee during j.HK."
+    },
+    {
+      "combo": "j.2KK (instant), j.HP, 2MP/1HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1280/1440 + Ender",
+      "difficulty": "Easy",
+      "notes": "Confirm from j.HP at instant air Yoga Float height. Use 2MP if j.HP connects from further away. More hitstun means no need to use 4MK/4MP, but you should opt for those if j.HP connects from higher up."
+    },
+    {
+      "combo": "1HP (max range) > 63214HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2160",
+      "difficulty": "Easy",
+      "notes": "Counter hit allows 63214HP to connect from max range instead of having to opt for 63214MP."
+    },
+    {
+      "combo": "1HP, 2LP > 63214HK",
+      "section": "All Combos",
+      "position": "Close",
+      "damage": "2220",
+      "difficulty": "Easy",
+      "notes": "Counter hit allows for a light to be linked from 1HP for a little more damage. This link is only worthwhile if ending with 63214HK with nothing else afterward, otherwise ignoring the light deals better damage due to scaling."
+    },
+    {
+      "combo": "5HK > DRC~4HK, 5LP~2LP > 63214HK",
+      "section": "All Combos",
+      "position": "Close",
+      "damage": "2803",
+      "difficulty": "Medium",
+      "notes": "Counter hit allows for DRC~4HK to combo, which does a bit more damage than DRC~1HP, 4MK > 63214HK. 5HK has to connect from fairly close for this to work - around 2MP range. This combo is much more practical if 5HK punishes, but is still technically possible off of a counter hit."
+    },
+    {
+      "combo": "1HP, 4MK...",
+      "section": "All Combos",
+      "position": "Close",
+      "damage": "1560 + Ender",
+      "difficulty": "Easy"
+    },
+    {
+      "combo": "5HK (close), 1HP/4HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1760/1860 + Ender",
+      "difficulty": "Easy",
+      "notes": "Main punish starter for stuff like baited DPs. 4HP grants a bit more damage if really close to opponent. Cancel into Drive Rush to link the 1HP/4HP if further away. DR~1HP can hit from a max range 5HK if the attack is delayed during the Drive Rush. DR~4HP can hit from decently far away if timed well - a little less than 5HK's max range. 2HK without a DRC will require you to be a bit closer to the opponent - slightly closer than a 5MK. Opting for teleport will leave you point blank and +3."
+    },
+    {
+      "combo": "5HK (far), 2HK/5HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1860/1960",
+      "difficulty": "Easy",
+      "notes": "Main punish starter for stuff like baited DPs. 4HP grants a bit more damage if really close to opponent. Cancel into Drive Rush to link the 1HP/4HP if further away. DR~1HP can hit from a max range 5HK if the attack is delayed during the Drive Rush. DR~4HP can hit from decently far away if timed well - a little less than 5HK's max range. 2HK without a DRC will require you to be a bit closer to the opponent - slightly closer than a 5MK. Opting for teleport will leave you point blank and +3."
+    },
+    {
+      "combo": "5HK (far), 5HK...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1760 + Ender",
+      "difficulty": "Easy",
+      "notes": "Main punish starter for stuff like baited DPs. 4HP grants a bit more damage if really close to opponent. Cancel into Drive Rush to link the 1HP/4HP if further away. DR~1HP can hit from a max range 5HK if the attack is delayed during the Drive Rush. DR~4HP can hit from decently far away if timed well - a little less than 5HK's max range. 2HK without a DRC will require you to be a bit closer to the opponent - slightly closer than a 5MK. Opting for teleport will leave you point blank and +3."
+    },
+    {
+      "combo": "5HK (far) > 6PPP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "960 + Mixup",
+      "difficulty": "Easy",
+      "notes": "Main punish starter for stuff like baited DPs. 4HP grants a bit more damage if really close to opponent. Cancel into Drive Rush to link the 1HP/4HP if further away. DR~1HP can hit from a max range 5HK if the attack is delayed during the Drive Rush. DR~4HP can hit from decently far away if timed well - a little less than 5HK's max range. 2HK without a DRC will require you to be a bit closer to the opponent - slightly closer than a 5MK. Opting for teleport will leave you point blank and +3."
+    },
+    {
+      "combo": "j.2KK (instant), j.LP (whiff), 5HK, 1HP/4HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1760/1860 + Ender",
+      "difficulty": "Easy",
+      "notes": "Same combo as above but used as a punish for command throws. Command throws have enough whiff recovery to cancel out of the float and go for 5HK. Starting with j.HK/j.HP will do less damage due to jump-in scaling."
+    },
+    {
+      "combo": "DR~4HK, 4MK/4MP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1800/1900 + Ender",
+      "difficulty": "Easy",
+      "notes": "DP punish that gets a bit more damage than 5HK, 1HP... but costs 1 bar of Drive Gauge."
+    },
+    {
+      "combo": "DR~5HK > 6PPP/6KKK, 4MK...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1560 + Ender",
+      "difficulty": "Easy",
+      "notes": "Can now opt for 4MK instead of 5LP after the buff to 5HK hitstun. This also means that front teleport (6KKK) works now, since 4MK has enough range to combo regardless."
+    },
+    {
+      "combo": "j.2KK (instant), j.HK (close), 1HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1600 + Ender",
+      "difficulty": "Easy",
+      "notes": "Yoga Float punish starter. j.HK can now link into 1HP even if it was done close. Typically used as a shimmy."
+    },
+    {
+      "combo": "63214K, 5MP/5HK/2HK/5HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1900/2000/2100/2200",
+      "difficulty": "Medium/Hard",
+      "notes": "Combos off of Yoga Blast. Any version of Yoga Blast works here, but keep in mind that the light and overdrive versions are 3 frames faster but deal 200 less damage. The light version additionally suffers from 3 extra frames of recovery, making links more difficult. / Combos off of Yoga Blast. Linking into 5MP/5HK/2HK/5HP requires Yoga Blast to be performed very early. Using the overdrive version can help with this, but it deals 200 less damage. / Combos off of Yoga Blast. 236236LP is only used if you did Yoga Blast late and the opponent is far. / Combos off of Yoga Blast. 236236HP will whiff if you did Yoga Blast too late. / Combos off of Yoga Blast. Note that 236236K has to be linked from Yoga Blast, not canceled. This link requires Yoga Blast to be done fairly early."
+    },
+    {
+      "combo": "63214K, 236236LP/236236MP/236236HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3120/3300/3240",
+      "difficulty": "Medium/Hard",
+      "notes": "Combos off of Yoga Blast. Any version of Yoga Blast works here, but keep in mind that the light and overdrive versions are 3 frames faster but deal 200 less damage. The light version additionally suffers from 3 extra frames of recovery, making links more difficult. / Combos off of Yoga Blast. Linking into 5MP/5HK/2HK/5HP requires Yoga Blast to be performed very early. Using the overdrive version can help with this, but it deals 200 less damage. / Combos off of Yoga Blast. 236236LP is only used if you did Yoga Blast late and the opponent is far. / Combos off of Yoga Blast. 236236HP will whiff if you did Yoga Blast too late. / Combos off of Yoga Blast. Note that 236236K has to be linked from Yoga Blast, not canceled. This link requires Yoga Blast to be done fairly early."
+    },
+    {
+      "combo": "63214K, 236236K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "5200",
+      "difficulty": "Medium/Hard",
+      "notes": "Combos off of Yoga Blast. Any version of Yoga Blast works here, but keep in mind that the light and overdrive versions are 3 frames faster but deal 200 less damage. The light version additionally suffers from 3 extra frames of recovery, making links more difficult. / Combos off of Yoga Blast. Linking into 5MP/5HK/2HK/5HP requires Yoga Blast to be performed very early. Using the overdrive version can help with this, but it deals 200 less damage. / Combos off of Yoga Blast. 236236LP is only used if you did Yoga Blast late and the opponent is far. / Combos off of Yoga Blast. 236236HP will whiff if you did Yoga Blast too late. / Combos off of Yoga Blast. Note that 236236K has to be linked from Yoga Blast, not canceled. This link requires Yoga Blast to be done fairly early."
+    },
+    {
+      "combo": "63214KK, 214214K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3800",
+      "difficulty": "Medium/Hard",
+      "notes": "Combos off of Yoga Blast. Any version of Yoga Blast works here, but keep in mind that the light and overdrive versions are 3 frames faster but deal 200 less damage. The light version additionally suffers from 3 extra frames of recovery, making links more difficult. / Combos off of Yoga Blast. Linking into 5MP/5HK/2HK/5HP requires Yoga Blast to be performed very early. Using the overdrive version can help with this, but it deals 200 less damage. / Combos off of Yoga Blast. 236236LP is only used if you did Yoga Blast late and the opponent is far. / Combos off of Yoga Blast. 236236HP will whiff if you did Yoga Blast too late. / Combos off of Yoga Blast. Note that 236236K has to be linked from Yoga Blast, not canceled. This link requires Yoga Blast to be done fairly early."
+    },
+    {
+      "combo": "236K, (Yoga Arch connects), DR~4MP > 63214HK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2131",
+      "difficulty": "Medium/Hard",
+      "notes": "Combos off of Yoga Arch. Linking into 5MP/5HK/2HK/5HP requires the opponent to be fairly high up. Using 63214KK instead of 63214HK can help with this, but it deals 200 less damage. / Combos off of Yoga Arch. 236236LP is only used if you did 4MP late and the opponent is far. / Combos off of Yoga Arch. 236236HP will whiff if you did 4MP too late. / Combos off of Yoga Arch. Note that 236236K has to be linked from 63214HK, not canceled."
+    },
+    {
+      "combo": "236K, (Yoga Arch connects), DR~4MP > 63214HK, 5MP/5HK/2HK/5HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2544/2603/2662/2721",
+      "difficulty": "Medium/Hard",
+      "notes": "Combos off of Yoga Arch. Linking into 5MP/5HK/2HK/5HP requires the opponent to be fairly high up. Using 63214KK instead of 63214HK can help with this, but it deals 200 less damage. / Combos off of Yoga Arch. 236236LP is only used if you did 4MP late and the opponent is far. / Combos off of Yoga Arch. 236236HP will whiff if you did 4MP too late. / Combos off of Yoga Arch. Note that 236236K has to be linked from 63214HK, not canceled."
+    },
+    {
+      "combo": "236K, (Yoga Arch connects), DR~4MP > 63214HK, 236236LP/236236MP/236236HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3259/3367/3331",
+      "difficulty": "Medium/Hard",
+      "notes": "Combos off of Yoga Arch. Linking into 5MP/5HK/2HK/5HP requires the opponent to be fairly high up. Using 63214KK instead of 63214HK can help with this, but it deals 200 less damage. / Combos off of Yoga Arch. 236236LP is only used if you did 4MP late and the opponent is far. / Combos off of Yoga Arch. 236236HP will whiff if you did 4MP too late. / Combos off of Yoga Arch. Note that 236236K has to be linked from 63214HK, not canceled."
+    },
+    {
+      "combo": "236K, (Yoga Arch connects), DR~4MP > 63214HK, 236236K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "4487",
+      "difficulty": "Medium/Hard",
+      "notes": "Combos off of Yoga Arch. Linking into 5MP/5HK/2HK/5HP requires the opponent to be fairly high up. Using 63214KK instead of 63214HK can help with this, but it deals 200 less damage. / Combos off of Yoga Arch. 236236LP is only used if you did 4MP late and the opponent is far. / Combos off of Yoga Arch. 236236HP will whiff if you did 4MP too late. / Combos off of Yoga Arch. Note that 236236K has to be linked from 63214HK, not canceled."
+    },
+    {
+      "combo": "236K, (Yoga Arch connects), DR~4MP > 63214KK, 214214K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3525",
+      "difficulty": "Medium/Hard",
+      "notes": "Combos off of Yoga Arch. Linking into 5MP/5HK/2HK/5HP requires the opponent to be fairly high up. Using 63214KK instead of 63214HK can help with this, but it deals 200 less damage. / Combos off of Yoga Arch. 236236LP is only used if you did 4MP late and the opponent is far. / Combos off of Yoga Arch. 236236HP will whiff if you did 4MP too late. / Combos off of Yoga Arch. Note that 236236K has to be linked from 63214HK, not canceled."
+    },
+    {
+      "combo": "DI (Punish Counter) 4HP > 63214MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2310",
+      "difficulty": "Easy",
+      "notes": "Main Drive Impact punish starter. 4HP normally isn't a good starter despite its higher damage due to scaling, but Drive Impact negates the scaling penalty. Use 63214MP if 4HP connects from further away (63214HP only combos from a tiny bit further than 63214HK). 214214K requires Drive Impact to connect at point-blank range. No microwalk is required for it if in the corner."
+    },
+    {
+      "combo": "DI (Punish Counter) 4HP > 63214HK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2520",
+      "difficulty": "Easy",
+      "notes": "Main Drive Impact punish starter. 4HP normally isn't a good starter despite its higher damage due to scaling, but Drive Impact negates the scaling penalty. Use 63214MP if 4HP connects from further away (63214HP only combos from a tiny bit further than 63214HK). 214214K requires Drive Impact to connect at point-blank range. No microwalk is required for it if in the corner."
+    },
+    {
+      "combo": "DI (Punish Counter) 4HP > 63214PP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2240 + Ender",
+      "difficulty": "Easy",
+      "notes": "Main Drive Impact punish starter. 4HP normally isn't a good starter despite its higher damage due to scaling, but Drive Impact negates the scaling penalty. Use 63214MP if 4HP connects from further away (63214HP only combos from a tiny bit further than 63214HK). 214214K requires Drive Impact to connect at point-blank range. No microwalk is required for it if in the corner."
+    },
+    {
+      "combo": "DI (Punish Counter) 4HP > 236236MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3144",
+      "difficulty": "Easy",
+      "notes": "Main Drive Impact punish starter. 4HP normally isn't a good starter despite its higher damage due to scaling, but Drive Impact negates the scaling penalty. Use 63214MP if 4HP connects from further away (63214HP only combos from a tiny bit further than 63214HK). 214214K requires Drive Impact to connect at point-blank range. No microwalk is required for it if in the corner."
+    },
+    {
+      "combo": "DI (Punish Counter) (microwalk) 4HP > 214214K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3640",
+      "difficulty": "Easy",
+      "notes": "Main Drive Impact punish starter. 4HP normally isn't a good starter despite its higher damage due to scaling, but Drive Impact negates the scaling penalty. Use 63214MP if 4HP connects from further away (63214HP only combos from a tiny bit further than 63214HK). 214214K requires Drive Impact to connect at point-blank range. No microwalk is required for it if in the corner."
+    },
+    {
+      "combo": "DI (Punish Counter) 4HP > 236236K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "4480",
+      "difficulty": "Easy",
+      "notes": "Main Drive Impact punish starter. 4HP normally isn't a good starter despite its higher damage due to scaling, but Drive Impact negates the scaling penalty. Use 63214MP if 4HP connects from further away (63214HP only combos from a tiny bit further than 63214HK). 214214K requires Drive Impact to connect at point-blank range. No microwalk is required for it if in the corner."
+    },
+    {
+      "combo": "DI (Punish Counter) 4HP > DRC~1HP/4HP...",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2152/2211 + Ender",
+      "difficulty": "Easy",
+      "notes": "Main Drive Impact punish starter. 4HP normally isn't a good starter despite its higher damage due to scaling, but Drive Impact negates the scaling penalty. Use 63214MP if 4HP connects from further away (63214HP only combos from a tiny bit further than 63214HK). 214214K requires Drive Impact to connect at point-blank range. No microwalk is required for it if in the corner."
+    },
+    {
+      "combo": "DI (Punish Counter) 4HP > DRC~4HK, 5LP~2LP > 63214HK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2957",
+      "difficulty": "Easy",
+      "notes": "Main Drive Impact punish starter. 4HP normally isn't a good starter despite its higher damage due to scaling, but Drive Impact negates the scaling penalty. Use 63214MP if 4HP connects from further away (63214HP only combos from a tiny bit further than 63214HK). 214214K requires Drive Impact to connect at point-blank range. No microwalk is required for it if in the corner."
+    },
+    {
+      "combo": "DI (Punish Counter), 6PPP 4MK > 63214MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2070",
+      "difficulty": "Easy",
+      "notes": "Side switch after a Drive Impact. Only the first hit of 63214PP will connect and it won't lead into anything else so don't do that."
+    },
+    {
+      "combo": "DI (Punish Counter), 6PPP 4MK > 236236MP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2904",
+      "difficulty": "Easy",
+      "notes": "Side switch after a Drive Impact. Only the first hit of 63214PP will connect and it won't lead into anything else so don't do that."
+    },
+    {
+      "combo": "DI (Punish Counter), 6PPP 4MK > 236236K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "4240",
+      "difficulty": "Easy",
+      "notes": "Side switch after a Drive Impact. Only the first hit of 63214PP will connect and it won't lead into anything else so don't do that."
+    },
+    {
+      "combo": "DI (Punish Counter), 6PPP 4MK > DRC~1HP > 63214HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2524",
+      "difficulty": "Medium",
+      "notes": "63214HP has more corner carry but less consistent oki compared to 63214HK. Level 3 ender without the second Drive Rush cancel will do less damage than the above combo so avoid that. Compared to the above combo, ending with 63214HP/63214HK can be worthwhile for oki and more damage, but all other options are just for squeezing out a bit more damage and generally aren't recommended."
+    },
+    {
+      "combo": "DI (Punish Counter), 6PPP 4MK > DRC~1HP (delayed) > 63214HK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2524",
+      "difficulty": "Medium",
+      "notes": "63214HP has more corner carry but less consistent oki compared to 63214HK. Level 3 ender without the second Drive Rush cancel will do less damage than the above combo so avoid that. Compared to the above combo, ending with 63214HP/63214HK can be worthwhile for oki and more damage, but all other options are just for squeezing out a bit more damage and generally aren't recommended."
+    },
+    {
+      "combo": "DI (Punish Counter), 6PPP 4MK > DRC~1HP > 236236HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2944",
+      "difficulty": "Medium",
+      "notes": "63214HP has more corner carry but less consistent oki compared to 63214HK. Level 3 ender without the second Drive Rush cancel will do less damage than the above combo so avoid that. Compared to the above combo, ending with 63214HP/63214HK can be worthwhile for oki and more damage, but all other options are just for squeezing out a bit more damage and generally aren't recommended."
+    },
+    {
+      "combo": "DI (Punish Counter), 6PPP 4MK > DRC~1HP (delayed) > 214214K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3338",
+      "difficulty": "Medium",
+      "notes": "63214HP has more corner carry but less consistent oki compared to 63214HK. Level 3 ender without the second Drive Rush cancel will do less damage than the above combo so avoid that. Compared to the above combo, ending with 63214HP/63214HK can be worthwhile for oki and more damage, but all other options are just for squeezing out a bit more damage and generally aren't recommended."
+    },
+    {
+      "combo": "DI (Punish Counter), 6PPP, 4MK > DRC~1HP > DRC~1HP (delayed) > 63214HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2824",
+      "difficulty": "Medium",
+      "notes": "Meter dump variant of the above combo."
+    },
+    {
+      "combo": "DI (Punish Counter), 6PPP, 4MK > DRC~1HP > DRC~1HP (delayed) > 63214HK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "2824",
+      "difficulty": "Medium",
+      "notes": "Meter dump variant of the above combo."
+    },
+    {
+      "combo": "DI (Punish Counter), 6PPP, 4MK > DRC~1HP > DRC~1HP (delayed) > 236236HP",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3172",
+      "difficulty": "Medium",
+      "notes": "Meter dump variant of the above combo."
+    },
+    {
+      "combo": "DI (Punish Counter), 6PPP, 4MK > DRC~1HP > DRC~1HP (delayed) > 214214K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "3496",
+      "difficulty": "Medium",
+      "notes": "Meter dump variant of the above combo."
+    },
+    {
+      "combo": "DI (Punish Counter), 6PPP, 4MK > DRC~1HP > DRC~1HP (delayed) > 236236K",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "4320",
+      "difficulty": "Medium",
+      "notes": "Meter dump variant of the above combo."
+    },
+    {
+      "combo": "DI (Punish Counter), j.6PPP, j.LK, 2HK (, 66)",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1830",
+      "difficulty": "Medium",
+      "notes": "Forward dash after 2HK will leave you +10 and in range for strike/throw."
+    },
+    {
+      "combo": "DI (Punish Counter), j.6PPP, j.LK, 5HK > 236MK/236HK, 6KKK",
+      "section": "All Combos",
+      "position": "Anywhere",
+      "damage": "1760",
+      "difficulty": "Medium",
+      "notes": "Side switch combo that does less damage but sets up a gimmicky offense with Yoga Arch. Use 236MK if the opponent is in the corner. Use 236HK otherwise. 5HK can cancel into 236236LP but some of the hits will whiff and it will do overall less damage than the above combos. This combo can be used for setting up offense, but there's a decent amount of time for the opponent to hit you before the Yoga Arch lands if you try to get close."
+    },
+    {
+      "combo": "DI, (DI stun), 236LK, j.2KK (instant), (Yoga Arch connects), j.HP (while moving forward), 1HP > 236HK, 4MP...",
+      "section": "All Combos",
+      "position": "Corner",
+      "damage": "2880 + Ender",
+      "difficulty": "Medium",
+      "notes": "DI stun combo. Don't go into DR~1HP unless trying to squeeze out as much damage as possible with a Level 3 ender - the scaling makes it inferior to other enders."
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

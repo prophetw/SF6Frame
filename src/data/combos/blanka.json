@@ -1,0 +1,895 @@
+{
+  "characterId": "blanka",
+  "combos": [
+    {
+      "combo": "2LK~2LP>214P",
+      "section": "Normal Hit Starters",
+      "damage": "1000",
+      "difficulty": "Beginner",
+      "notes": "Starting with 5LK instead of 2LK is 1 frame faster and adds 100 damage Starting with 2LP instead of 2LK is 1 frame slower and adds 100 damage Standard Light BNB Electric Thunder gives +39F on hit to keep pressure and is kind of safe with -3F on block OD: +140 damage, +40F on hit, +4F on block, SA2/SA3 cancelable / Standard Light BNB OD: +140 damage, +40F on hit, +4F on block, SA2/SA3 cancelable / Standard Light BNB Rolling Attack is more damaging and resets to neutral, but extremely unsafe if blocked",
+      "starter": "Basic Combos"
+    },
+    {
+      "combo": "2LK~2LP>214PP",
+      "section": "Normal Hit Starters",
+      "damage": "1140",
+      "driveMeter": "2",
+      "difficulty": "Beginner",
+      "notes": "Starting with 5LK instead of 2LK is 1 frame faster and adds 100 damage Starting with 2LP instead of 2LK is 1 frame slower and adds 100 damage",
+      "starter": "Basic Combos"
+    },
+    {
+      "combo": "1LK~1LP>[4]6MP",
+      "section": "Normal Hit Starters",
+      "damage": "1280",
+      "difficulty": "Easy",
+      "notes": "Starting with 5LK instead of 2LK is 1 frame faster and adds 100 damage Starting with 2LP instead of 2LK is 1 frame slower and adds 100 damage",
+      "starter": "Basic Combos"
+    },
+    {
+      "combo": "2LK~2LP>236236P",
+      "section": "Normal Hit Starters",
+      "damage": "1840",
+      "superMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Starting with 5LK instead of 2LK is 1 frame faster and adds 100 damage Starting with 2LP instead of 2LK is 1 frame slower and adds 100 damage",
+      "starter": "Basic Combos"
+    },
+    {
+      "combo": "2LK~2LP>236236K",
+      "section": "Normal Hit Starters",
+      "damage": "3240",
+      "superMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Starting with 5LK instead of 2LK is 1 frame faster and adds 100 damage Starting with 2LP instead of 2LK is 1 frame slower and adds 100 damage",
+      "starter": "Basic Combos"
+    },
+    {
+      "combo": "2LP~2LP~2LP>214P",
+      "section": "Normal Hit Starters",
+      "damage": "1130 +100",
+      "difficulty": "Beginner",
+      "notes": "Must be done point blank or the 3rd hit will whiff! Cannot start with 2LK -- Extra +100 damage from starting with 2LP can also be applied to other combos",
+      "starter": "3-hit Starters"
+    },
+    {
+      "combo": "2LK~2LP~2LP>214PP",
+      "section": "Normal Hit Starters",
+      "damage": "1250",
+      "driveMeter": "2",
+      "difficulty": "Beginner",
+      "notes": "Must be done point blank or the 3rd hit will whiff!",
+      "starter": "3-hit Starters"
+    },
+    {
+      "combo": "1LK~1LP~1LP>[4]6MP",
+      "section": "Normal Hit Starters",
+      "damage": "1370",
+      "difficulty": "Easy",
+      "notes": "Must be done point blank or the 3rd hit will whiff! Slightly more damage than the 2-hit version and gives extra time to buffer Rolling Attack.",
+      "starter": "3-hit Starters"
+    },
+    {
+      "combo": "2LK~2LP~2LP>236236P",
+      "section": "Normal Hit Starters",
+      "damage": "1850",
+      "superMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Must be done point blank or the 3rd hit will whiff! Only +10 extra damage. Very sad damage scaling",
+      "starter": "3-hit Starters"
+    },
+    {
+      "combo": "2LK~2LP~2LP>236236K",
+      "section": "Normal Hit Starters",
+      "damage": "3050",
+      "superMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Must be done point blank or the 3rd hit will whiff! Actually -190 damage. Damage scaling punishes Super Arts hard",
+      "starter": "3-hit Starters"
+    },
+    {
+      "combo": "2LK~2LP>DR~5LK,4MK,1MK>[4]6MP",
+      "section": "Normal Hit Starters",
+      "damage": "1541",
+      "driveMeter": "3",
+      "difficulty": "Hard",
+      "notes": "Only use these if you are going for a killing blow 3-Drive expenditure for little benefits / Only use this if you have no SA and this would be the killing blow",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "2LK~2LP>DR~5LK,4MK,2MK>236236P",
+      "section": "Normal Hit Starters",
+      "damage": "1813",
+      "superMeter": "1",
+      "driveMeter": "3",
+      "notes": "Only use these if you are going for a killing blow Just don't even try this. Go for a Basic Combo with SA1",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "2LK~2LP>DR~5LK,4MK,2MK>236236K",
+      "section": "Normal Hit Starters",
+      "superMeter": "3",
+      "driveMeter": "3",
+      "notes": "Only use these if you are going for a killing blow If I have to present any data to convince you to not execute this combo, this guide has failed you",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "4MK,5LP>214P",
+      "section": "Normal Hit Starters",
+      "damage": "1540",
+      "difficulty": "Beginner",
+      "notes": "4MK is your short-range, plus-frame friend More so a string, has 2 frame traps and is safe on block. Punishes mashing in case it's blocked. Be aware of parries 214PP cancels into SA2/3",
+      "starter": "4MK Combos"
+    },
+    {
+      "combo": "4MK,5LP>214PP",
+      "section": "Normal Hit Starters",
+      "damage": "1700",
+      "driveMeter": "2",
+      "difficulty": "Beginner",
+      "notes": "4MK is your short-range, plus-frame friend",
+      "starter": "4MK Combos"
+    },
+    {
+      "combo": "4MK,4LP>[4]6MP",
+      "section": "Normal Hit Starters",
+      "damage": "1860",
+      "difficulty": "Easy",
+      "notes": "4MK is your short-range, plus-frame friend If you hit confirm 4LP, re-route into this for extra damage, but less Oki",
+      "starter": "4MK Combos"
+    },
+    {
+      "combo": "4MK,5LP>214PP>236236K",
+      "section": "Normal Hit Starters",
+      "damage": "4100",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "4MK is your short-range, plus-frame friend 214PP has a very generous early cancel for 236236K, no need to time it",
+      "starter": "4MK Combos"
+    },
+    {
+      "combo": "4MK,5MK>214P",
+      "section": "Normal Hit Starters",
+      "damage": "1840",
+      "difficulty": "Easy",
+      "notes": "BNB route from 4MK. Electric is less damage but better to keep pressure 214PP is cancelable into SA2 for extended combo / BNB route from 4MK. Electric is less damage but better to keep pressure These all can be done with 2MK instead of 5MK, but less damage / BNB route from 4MK. Electric is less damage but better to keep pressure Never go for Rolling Attack without confirm, it is -23F on block Rolling Attack has to be done off 1MK because of charge / BNB route from 4MK. Electric is less damage but better to keep pressure Rolling Attack has to be done off 1MK because of charge",
+      "starter": "If you are cool confirming 4MK"
+    },
+    {
+      "combo": "4MK,5MK>214PP",
+      "section": "Normal Hit Starters",
+      "damage": "2000",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "starter": "If you are cool confirming 4MK"
+    },
+    {
+      "combo": "4MK,1MK>[4]6MP",
+      "section": "Normal Hit Starters",
+      "damage": "2060",
+      "difficulty": "Easy",
+      "starter": "If you are cool confirming 4MK"
+    },
+    {
+      "combo": "4MK,5MK>236236P",
+      "section": "Normal Hit Starters",
+      "damage": "2800",
+      "superMeter": "1",
+      "difficulty": "Easy",
+      "starter": "If you are cool confirming 4MK"
+    },
+    {
+      "combo": "4MK,5MK>236236K",
+      "section": "Normal Hit Starters",
+      "damage": "4400",
+      "superMeter": "3",
+      "difficulty": "Easy",
+      "starter": "If you are cool confirming 4MK"
+    },
+    {
+      "combo": "4MK,5MK>214PP>236236K",
+      "section": "Normal Hit Starters",
+      "damage": "4400",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "notes": "Not worth it! Just go for the previous line and save 2 bars",
+      "starter": "If you are cool confirming 4MK"
+    },
+    {
+      "combo": "4MK,1MK>[4]6PP,[2]8HK",
+      "section": "Normal Hit Starters",
+      "damage": "2720",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "2-Drive Route To land [2]8HK, begin holding the charge immediately after [4]6PP input. / 2-Drive Route If you opt to jump, do it in the charge direction to keep j.[4]6HP charged.",
+      "starter": "Spending some bars for extra bang! (1MK)"
+    },
+    {
+      "combo": "4MK,1MK>[4]6PP,j.4MP>j.[4]6HP",
+      "section": "Normal Hit Starters",
+      "damage": "2830",
+      "driveMeter": "2",
+      "difficulty": "Hard",
+      "starter": "Spending some bars for extra bang! (1MK)"
+    },
+    {
+      "combo": "4MK,1MK>[4]6PP,236236P",
+      "section": "Normal Hit Starters",
+      "damage": "3140",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "starter": "Spending some bars for extra bang! (1MK)"
+    },
+    {
+      "combo": "4MK,5MK>63214KK,3HP",
+      "section": "Normal Hit Starters",
+      "damage": "2700",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "Corner combo from 4MK with some options for ending 3HP for a easy hit / Corner combo from 4MK with some options for ending If you remembered to charge during 63214KK... [2]8HK does free extra damage / Corner combo from 4MK with some options for ending SA1 requires a 4F delay after 63214KK to not whiff",
+      "starter": "Corner (Point blank only)"
+    },
+    {
+      "combo": "4MK,5MK>63214KK,[2]8HK",
+      "section": "Normal Hit Starters",
+      "damage": "2980",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "starter": "Corner (Point blank only)"
+    },
+    {
+      "combo": "4MK,5MK>63214KK,dl.236236P",
+      "section": "Normal Hit Starters",
+      "damage": "3400",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "starter": "Corner (Point blank only)"
+    },
+    {
+      "combo": "4MK,5MK>63214KK,236236K",
+      "section": "Normal Hit Starters",
+      "damage": "4800",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "starter": "Corner (Point blank only)"
+    },
+    {
+      "combo": "1MP>[4]6MP",
+      "section": "Normal Hit Starters",
+      "damage": "1800",
+      "difficulty": "Medium",
+      "notes": "Requires at least 30F pre-charging",
+      "starter": "@ Poke Range (2MP)"
+    },
+    {
+      "combo": "2MP>214PP",
+      "section": "Normal Hit Starters",
+      "damage": "1600",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "Normal Electric whiff at max. range. Use only if routing into SA2, otherwise go for Drive Rush Cancel instead",
+      "starter": "@ Poke Range (2MP)"
+    },
+    {
+      "combo": "2MP>214PP>236236K",
+      "section": "Normal Hit Starters",
+      "damage": "4400",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "Amazing conversion value from a far away poke. Not worth it if poking with 2MK (3700 damage)",
+      "starter": "@ Poke Range (2MP)"
+    },
+    {
+      "combo": "2MK,5LP>214P",
+      "section": "Normal Hit Starters",
+      "damage": "1300",
+      "difficulty": "Beginner",
+      "notes": "Not much to say about these, 2MK gives you a 20% penalty on anything that follows compared to 2MP",
+      "starter": "@ Grab Range (2MK)"
+    },
+    {
+      "combo": "2MK,5LP>214PP",
+      "section": "Normal Hit Starters",
+      "damage": "1440",
+      "driveMeter": "2",
+      "difficulty": "Beginner",
+      "starter": "@ Grab Range (2MK)"
+    },
+    {
+      "combo": "1MK,4LP>[4]6MP",
+      "section": "Normal Hit Starters",
+      "damage": "1580",
+      "difficulty": "Easy",
+      "starter": "@ Grab Range (2MK)"
+    },
+    {
+      "combo": "2MK,5LP>214PP>236236K",
+      "section": "Normal Hit Starters",
+      "damage": "3440",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "starter": "@ Grab Range (2MK)"
+    },
+    {
+      "combo": "6MK,5LP>214P",
+      "section": "Normal Hit Starters",
+      "damage": "1540",
+      "difficulty": "Hard",
+      "notes": "6MK is easy to react to, not cancelable, not safe, DI magnet... but anyways Difficulty has been bumped for all of these because of low effectiveness and unsafe on block For [4]6MP you gotta start charging even before confirming 6MK hits",
+      "starter": "6MK Combos"
+    },
+    {
+      "combo": "6MK,5LP>214PP",
+      "section": "Normal Hit Starters",
+      "damage": "1700",
+      "driveMeter": "2",
+      "difficulty": "Hard",
+      "notes": "6MK is easy to react to, not cancelable, not safe, DI magnet... but anyways",
+      "starter": "6MK Combos"
+    },
+    {
+      "combo": "6MK,4LP>[4]6MP",
+      "section": "Normal Hit Starters",
+      "damage": "1860",
+      "difficulty": "Hard",
+      "notes": "6MK is easy to react to, not cancelable, not safe, DI magnet... but anyways",
+      "starter": "6MK Combos"
+    },
+    {
+      "combo": "6MK,5LP>214PP>236236K",
+      "section": "Normal Hit Starters",
+      "damage": "4100",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Hard",
+      "notes": "6MK is easy to react to, not cancelable, not safe, DI magnet... but anyways",
+      "starter": "6MK Combos"
+    },
+    {
+      "combo": "4MK,5MK>DR~5HK,5HP>2PP~P,[2]8MK",
+      "section": "Normal Hit Starters",
+      "damage": "3068",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Remember, Cancelable Medium>DR~5HK always connects Good cost-effective Drive Rush Cancel combo examples Low hit route, your best damage for a 2MP/2MK combo 2MK really eats away on your potential damage / Good cost-effective Drive Rush Cancel combo examples 2MK really eats away on your potential damage",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "2MP>DR~5HK,5HP>2PP~P,[2]8MK",
+      "section": "Normal Hit Starters",
+      "damage": "2841",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Remember, Cancelable Medium>DR~5HK always connects",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "2MK>DR~5HK,5HP>2PP~P,[2]8MK",
+      "section": "Normal Hit Starters",
+      "damage": "2368",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Remember, Cancelable Medium>DR~5HK always connects",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "4MK,5MK>DR~5HK,5HP>2PP~P,[4]6MP>236236K",
+      "section": "Normal Hit Starters",
+      "damage": "5026",
+      "superMeter": "3",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Remember, Cancelable Medium>DR~5HK always connects SA3 animation gives you 1,5 Drive bars back if not on burnout This makes DR + SA3 options not as costly as they look when compared to OD combos",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "2MP>DR~5HK,5HP>2PP~P,[4]6MP>236236K",
+      "section": "Normal Hit Starters",
+      "damage": "4790",
+      "superMeter": "3",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Remember, Cancelable Medium>DR~5HK always connects",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "2MK>DR~5HK,5HP>2PP~P,[4]6MP>236236K",
+      "section": "Normal Hit Starters",
+      "damage": "4326",
+      "superMeter": "3",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Remember, Cancelable Medium>DR~5HK always connects",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "5HP>2PP~P,214P",
+      "section": "Normal Hit Starters",
+      "damage": "2040",
+      "difficulty": "Easy",
+      "notes": "THE standard Heavy BNB. Often in longer combos where 5HP can be confirmed. 2PP~P has numerous potential follow-ups that can be utilized, including Blanka Doll setups, so become comfortable this route. / THE standard Heavy BNB. Often in longer combos where 5HP can be confirmed. Just keep holding 2 on Coward Crouch to charge [2]8MK If 5HP hit at max. range, [2]8MK is probably going to whiff, do [2]8LK instead (-80 damage) / THE standard Heavy BNB. Often in longer combos where 5HP can be confirmed. If 5HP hit at max. range, [2]8MK is probably going to whiff, do [2]8LK instead (-80 damage)",
+      "starter": "Basic Combos"
+    },
+    {
+      "combo": "5HP>2PP~P,3HP",
+      "section": "Normal Hit Starters",
+      "damage": "2200",
+      "difficulty": "Easy",
+      "starter": "Basic Combos"
+    },
+    {
+      "combo": "5HP>2PP~P,[2]8MK",
+      "section": "Normal Hit Starters",
+      "damage": "2440",
+      "difficulty": "Medium",
+      "starter": "Basic Combos"
+    },
+    {
+      "combo": "5HP>2PP~P,236236P",
+      "section": "Normal Hit Starters",
+      "damage": "3000",
+      "superMeter": "1",
+      "difficulty": "Easy",
+      "starter": "Basic Combos"
+    },
+    {
+      "combo": "5HP>2PP~P,236236K",
+      "section": "Normal Hit Starters",
+      "damage": "4600",
+      "superMeter": "3",
+      "difficulty": "Easy",
+      "starter": "Basic Combos"
+    },
+    {
+      "combo": "5HP>214P",
+      "section": "Normal Hit Starters",
+      "damage": "1600",
+      "difficulty": "Easy",
+      "notes": "Do not forget 5HP is cancelable, you can do a lot similar to Medium cancels These are not actually realistic to see use in a match, it is so hard to charge Coming out of DR gives you enough charging time, but then Coward Crouch route just deals more damage / These are not actually realistic to see use in a match, it is so hard to charge Also coming out of DR, you might not wanna spend 2 extra bars for the OD Ball route",
+      "starter": "Cancelables"
+    },
+    {
+      "combo": "4HP>[4]6MK",
+      "section": "Normal Hit Starters",
+      "damage": "2000",
+      "difficulty": "Medium",
+      "notes": "Do not forget 5HP is cancelable, you can do a lot similar to Medium cancels",
+      "starter": "Cancelables"
+    },
+    {
+      "combo": "4HP>[4]6PP,j.MP>j.[4]6HP",
+      "section": "Normal Hit Starters",
+      "damage": "2860",
+      "driveMeter": "2",
+      "difficulty": "Hard",
+      "notes": "Do not forget 5HP is cancelable, you can do a lot similar to Medium cancels",
+      "starter": "Cancelables"
+    },
+    {
+      "combo": "5HP>DR~5HK,5HP>2PP~P,214P",
+      "section": "Normal Hit Starters",
+      "damage": "2786",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Drive Rush Cancel is somewhat more worth in heavy combos spite of damage proration. / That said, it is hard to randomly hit a 5HP out of the blue.",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "5HP>DR~5HK,5HP>2PP~P,3HP",
+      "section": "Normal Hit Starters",
+      "damage": "2888",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "5HP>DR~5HK,5HP>2PP~P,[2]8MK",
+      "section": "Normal Hit Starters",
+      "damage": "3041",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "5HP>DR~5HK,5HP>2PP~P,236236P",
+      "section": "Normal Hit Starters",
+      "damage": "3398",
+      "superMeter": "1",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "5HP>DR~5HK,5HP>2PP~P,236236K",
+      "section": "Normal Hit Starters",
+      "damage": "4418",
+      "superMeter": "3",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "starter": "Drive Rush Cancel"
+    },
+    {
+      "combo": "5HP>DR~5HK,5HP>DR~5HK,5HP>2PP~P,236236K",
+      "section": "Normal Hit Starters",
+      "damage": "5156",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "Medium",
+      "notes": "You can Drive Rush Cancel into itself for an instant burnout The only moment that is going to be worth instantly burning yourself out like this is going for a K.O.",
+      "starter": "Burnout Speedrun"
+    },
+    {
+      "combo": "DR~5HK,5HP>DR~5HK,5HP>DR~5HK,5HP>2PP~P, [2]8MK>236236K",
+      "section": "Normal Hit Starters",
+      "damage": "5846",
+      "superMeter": "3",
+      "driveMeter": "7",
+      "difficulty": "Hard",
+      "notes": "You can Drive Rush Cancel into itself for an instant burnout This. Maximum damage without any extra shenanigans.",
+      "starter": "Burnout Speedrun"
+    },
+    {
+      "combo": "DI,5HP>2PP~P,[2]8HK",
+      "section": "Normal Hit Starters",
+      "damage": "2016",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Example of corner routes after guard crush. In this case, Vertical Rolling Attack won't hit after 63214KK",
+      "starter": "Corner Guard Crush"
+    },
+    {
+      "combo": "DI,5HP>2PP~P,63214KK,3HP",
+      "section": "Normal Hit Starters",
+      "damage": "2320",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "starter": "Corner Guard Crush"
+    },
+    {
+      "combo": "DI,5HP>2PP~P,63214KK,236236P",
+      "section": "Normal Hit Starters",
+      "damage": "2880",
+      "superMeter": "1",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "starter": "Corner Guard Crush"
+    },
+    {
+      "combo": "DI,5HP>2PP~P,63214KK,236236K",
+      "section": "Normal Hit Starters",
+      "damage": "4000",
+      "superMeter": "3",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "starter": "Corner Guard Crush"
+    },
+    {
+      "combo": "63214K,5HK,5LP>[4]6MP/236236P",
+      "section": "Jumping Normal Starters",
+      "position": "Anywhere",
+      "damage": "2880/3440",
+      "difficulty": "Easy",
+      "notes": "Meterless/SA1 conversion from a Rainbow Ball cross-up."
+    },
+    {
+      "combo": "63214K,5MK>Drive Rush Cancel>5HK,5HP>2PP~P,[2]8MK/236236P",
+      "section": "Jumping Normal Starters",
+      "position": "Anywhere",
+      "damage": "3468/3762",
+      "difficulty": "Medium",
+      "notes": "3-Drive conversion from a Rainbow Ball cross-up."
+    },
+    {
+      "combo": "j.MK,5HK,5LP>[4]6MP/236236P",
+      "section": "Jumping Normal Starters",
+      "position": "Anywhere",
+      "damage": "2380/2940",
+      "difficulty": "Easy",
+      "notes": "Standard cross-up confirm for when hitting the opponent as high/early as possible."
+    },
+    {
+      "combo": "j.MK,5HP>2PP~P,[2]8MK",
+      "section": "Jumping Normal Starters",
+      "position": "Anywhere",
+      "damage": "2690/3168",
+      "difficulty": "Medium",
+      "notes": "Cross-up confirm when hitting close to the ground or on crouching opponents, allowing standard HP routing."
+    },
+    {
+      "combo": "j.MK,5HP>Drive Rush Cancel>5HK,5HP>2PP~P,[2]8MK",
+      "section": "Jumping Normal Starters",
+      "position": "Anywhere",
+      "damage": "2690/3168",
+      "difficulty": "Medium",
+      "notes": "Cross-up confirm when hitting close to the ground or on crouching opponents, allowing standard HP routing."
+    },
+    {
+      "combo": "Drive Impact,5HP>2PP~P,[2]8MK/236236P",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "2800/3220/4500",
+      "difficulty": "Easy",
+      "notes": "Drive Impact Starter examples. Can tack on whatever ender you'd like w/ the right amount of meter, including SA2 if you choose to OD Electric."
+    },
+    {
+      "combo": "Drive Impact,5HP>2PP~P,214P>236236K",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "2800/3220/4500",
+      "difficulty": "Easy",
+      "notes": "Wild Lift has numerous follow-up options and setups, so experiment."
+    },
+    {
+      "combo": "[4]6HP,Drive Rush>3HP",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "2240",
+      "difficulty": "Easy",
+      "notes": "Punish combo extension from your standard Blanka Ball. 1-Drive for an extra 700 damage is great value, so get used to using this on reaction to a punish counter."
+    },
+    {
+      "combo": "5LK,5MK>214P",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "1540/2529/2340",
+      "difficulty": "Easy/Medium/Hard",
+      "notes": "Light punish combo examples. 1st is consistent at all ranges, the other two utilize drive for consistency and juiced damage, great for many attacks which are -4/-6. Application will require matchup knowledge."
+    },
+    {
+      "combo": "5LP/5LK>Drive Rush Cancel>5HK,5HP>2PP~P,[2]8MK",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "1540/2529/2340",
+      "difficulty": "Easy/Medium/Hard",
+      "notes": "Light punish combo examples. 1st is consistent at all ranges, the other two utilize drive for consistency and juiced damage, great for many attacks which are -4/-6. Application will require matchup knowledge."
+    },
+    {
+      "combo": "5LP/5LK>[4]6PP,j.MP>j.[4]6HP",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "1540/2529/2340",
+      "difficulty": "Easy/Medium/Hard",
+      "notes": "Light punish combo examples. 1st is consistent at all ranges, the other two utilize drive for consistency and juiced damage, great for many attacks which are -4/-6. Application will require matchup knowledge."
+    },
+    {
+      "combo": "5HK,5HP>2PP~P,[2]8MK",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "3150",
+      "difficulty": "Easy",
+      "notes": "-7 punish that happens to be your standard drive rush extension. As HK is only -2 and has a large animation for hit-confirming, having this as a hit-confirm alongside 5HK,5LP is pretty useful should you occasionally toss out 5HK in your pressure."
+    },
+    {
+      "combo": "5HK,3HP",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "2-5k",
+      "difficulty": "Medium",
+      "notes": "Anti-Air counter-hit combo routes. Enemy is propelled upward after counter-hit, allowing some follow-ups even after a trade. Just a few examples of what's possible."
+    },
+    {
+      "combo": "5HK,236236P/236236K",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "2-5k",
+      "difficulty": "Medium",
+      "notes": "Anti-Air counter-hit combo routes. Enemy is propelled upward after counter-hit, allowing some follow-ups even after a trade. Just a few examples of what's possible."
+    },
+    {
+      "combo": "5HK,[4]6PP,[2]8K",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "2-5k",
+      "difficulty": "Medium",
+      "notes": "Anti-Air counter-hit combo routes. Enemy is propelled upward after counter-hit, allowing some follow-ups even after a trade. Just a few examples of what's possible."
+    },
+    {
+      "combo": "5HK,Dash,63214KK,3HP",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "2-5k",
+      "difficulty": "Medium",
+      "notes": "Anti-Air counter-hit combo routes. Enemy is propelled upward after counter-hit, allowing some follow-ups even after a trade. Just a few examples of what's possible."
+    },
+    {
+      "combo": "5HK,Drive Rush>5HP>2PP~P,etc.",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "2-5k",
+      "difficulty": "Medium",
+      "notes": "Anti-Air counter-hit combo routes. Enemy is propelled upward after counter-hit, allowing some follow-ups even after a trade. Just a few examples of what's possible."
+    },
+    {
+      "combo": "6MP,5LP>214P",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "1660-2600",
+      "difficulty": "Easy",
+      "notes": "Overhead combo from Counter-hit and Punish Counter respectively."
+    },
+    {
+      "combo": "6MP,5HK,5LP>[4]6MP",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "1660-2600",
+      "difficulty": "Easy",
+      "notes": "Overhead combo from Counter-hit and Punish Counter respectively."
+    },
+    {
+      "combo": "6HP,Dash,5HP>2PP~P,[2]8LK/236236P",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "3100/3580/3440",
+      "difficulty": "Hard",
+      "notes": "Punishes for blocked reversals. Drive Rush can be used to guarantee the 5HP extension, but this will prorate the combo and cost drive meter which you may rather avoid."
+    },
+    {
+      "combo": "6HP,5HP>[4]6PP,j.MP>j.[4]6HP",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "3100/3580/3440",
+      "difficulty": "Hard",
+      "notes": "[4]6PP route is easier and more flexible (Numerous capable routings after [4]6PP leaves them airborne) at the cost of 2-drive but forces side-swap."
+    },
+    {
+      "combo": "6HP,Dash,5HP>2PP~P,63214KK,3HP/236236P",
+      "section": "Punish Combos",
+      "position": "Corner",
+      "damage": "3480/3980",
+      "difficulty": "Easy/Hard",
+      "notes": "Punish for blocked reversals near the corner. If the opponent is close to the corner, the dash is unnecessary, making the route much easier."
+    },
+    {
+      "combo": "2MP/5MK>Drive Rush Cancel>5HK,5HP>2PP~P,Etc.",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "2900 Minimum",
+      "difficulty": "Medium",
+      "notes": "3-Drive for a reliable, on-demand whiff punish route with numerous options left open for you after Wild Lift. Worth learning. / +3-4k damage can be easily tacked on with SA1-3 use."
+    },
+    {
+      "combo": "5LP/2LP>Drive Rush Cancel>5HK,5HP>2PP~P,Etc.",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "2500 Minimum",
+      "difficulty": "Medium",
+      "notes": "Similar to the above, but from 5LP/2LP which have above average range for Light Attacks. / Good for possible spacing traps such as after a blocked Electric."
+    },
+    {
+      "combo": "5LP/2LP>Drive Rush Cancel>5LK,4MK,2MK>[4]6MP/236236P",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "1903/2311",
+      "difficulty": "Easy",
+      "notes": "An easier alternative from 5LP/2LP utilizing the standard light drive rush combo. / Use if you cannot confirm the Punish Counter as this still leads to pressure/damage."
+    },
+    {
+      "combo": "2/5MP>236236P/K",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "2700/4700",
+      "difficulty": "Easy",
+      "notes": "Buffer super behind either MP for a quick and easy whiff punish requiring no Drive. Can also be used as a basic poke/counter-poke, but be careful as SA 1 and 3 are very punishable if blocked."
+    },
+    {
+      "combo": "2MP>[4]6PP,j.MP>j.[4]6HP",
+      "section": "Punish Combos",
+      "position": "Anywhere",
+      "damage": "2660",
+      "difficulty": "Hard",
+      "notes": "On the odd chance you have a charge ready when you whiff punish and really want to save 1 drive meter."
+    },
+    {
+      "combo": "DriveRush>6MK,5HP Routes",
+      "section": "Drive Rush Starters",
+      "position": "Anywhere",
+      "damage": "2790+",
+      "difficulty": "Medium",
+      "notes": "Your BNB. DR>6MK is an easy to confirm button due to its length and can be used as a meaty in some situations. / If it lands, opt for any 5HP routing you want. / Alternatively DR>4MK gives enormous frame advantage, making it a decent/safer option for extending pressure by simply looping into itself as shown in the combo below.",
+      "starter": "Basics"
+    },
+    {
+      "combo": "(No Hit-Confirm)",
+      "section": "Drive Rush Starters",
+      "position": "Anywhere",
+      "damage": "2000 / 2440+",
+      "difficulty": "Easy",
+      "notes": "Must be point-blank to the opponent: Easier to confirm due to repetition, HAS TO be reversed or parried. Can frame trap. / No Hit-Confirm: Use drive to 214PP for +4F and continue pressure if blocked. / Hit Confirm: Use drive to extend a combo with a [4]6PP Route.",
+      "starter": "Safer Options"
+    },
+    {
+      "combo": "DriveRush>4MK,4MK,5LK>214P",
+      "section": "Drive Rush Starters",
+      "position": "Anywhere",
+      "damage": "2000 / 2440+",
+      "difficulty": "Easy",
+      "notes": "Must be point-blank to the opponent: Easier to confirm due to repetition, HAS TO be reversed or parried. Can frame trap. / No Hit-Confirm: Use drive to 214PP for +4F and continue pressure if blocked. / Hit Confirm: Use drive to extend a combo with a [4]6PP Route.",
+      "starter": "Safer Options"
+    },
+    {
+      "combo": "(Hit Confirm)",
+      "section": "Drive Rush Starters",
+      "position": "Anywhere",
+      "damage": "2000 / 2440+",
+      "difficulty": "Easy",
+      "notes": "Must be point-blank to the opponent: Easier to confirm due to repetition, HAS TO be reversed or parried. Can frame trap. / No Hit-Confirm: Use drive to 214PP for +4F and continue pressure if blocked. / Hit Confirm: Use drive to extend a combo with a [4]6PP Route.",
+      "starter": "Safer Options"
+    },
+    {
+      "combo": "DriveRush>4MK,4MK,1MK>[4]6MP",
+      "section": "Drive Rush Starters",
+      "position": "Anywhere",
+      "damage": "2000 / 2440+",
+      "difficulty": "Easy",
+      "notes": "Must be point-blank to the opponent: Easier to confirm due to repetition, HAS TO be reversed or parried. Can frame trap. / No Hit-Confirm: Use drive to 214PP for +4F and continue pressure if blocked. / Hit Confirm: Use drive to extend a combo with a [4]6PP Route.",
+      "starter": "Safer Options"
+    },
+    {
+      "combo": "Drive Rush>6MP,2LP,2LP>214P",
+      "section": "Drive Rush Starters",
+      "position": "Anywhere",
+      "damage": "1700",
+      "difficulty": "Easy",
+      "notes": "The easier route to learn and less input heavy option, can still chain after a block if opponent still holding high block.",
+      "starter": "Overheads"
+    },
+    {
+      "combo": "Drive Rush>6MP,5LK>214P",
+      "section": "Drive Rush Starters",
+      "position": "Anywhere",
+      "damage": "1540",
+      "difficulty": "Easy",
+      "notes": "Route with 5LK frame trap to utilize if you have a hard time confirming the overhead hit and suspect the opponent will mash after blocking.",
+      "starter": "Overheads"
+    },
+    {
+      "combo": "Drive Rush>6MP,4HK,4LP>[4]6MP",
+      "section": "Drive Rush Starters",
+      "position": "Anywhere",
+      "damage": "2480",
+      "difficulty": "Medium",
+      "notes": "Overhead Drive Rush BNB.",
+      "starter": "Overheads"
+    },
+    {
+      "combo": "Drive Rush>2MK,4MK,1MK>[4]6MP",
+      "section": "Drive Rush Starters",
+      "position": "Anywhere",
+      "damage": "2050",
+      "difficulty": "Medium",
+      "notes": "Low Drive Rush BNB to mix in with your overhead. You'll want to be fairly close when landing the initial hit;",
+      "starter": "Mixup"
+    },
+    {
+      "combo": "(Blanka Doll On Field)",
+      "section": "Blanka Chan Setups/Routes",
+      "position": "Corner",
+      "damage": "3420/3720 / 4200/4600",
+      "difficulty": "Medium",
+      "notes": "A Blanka Doll confirm similar to the first, with increased damage and extra time to confirm or extend pressure if blocked."
+    },
+    {
+      "combo": "4MK,2MK>214P,63214LK,63214KK,3HP/236236P",
+      "section": "Blanka Chan Setups/Routes",
+      "position": "Corner",
+      "damage": "3420/3720 / 4200/4600",
+      "difficulty": "Medium",
+      "notes": "A Blanka Doll confirm similar to the first, with increased damage and extra time to confirm or extend pressure if blocked."
+    },
+    {
+      "combo": "4MK,2MK>214PP,63214LK,63214KK,3HP/236236P",
+      "section": "Blanka Chan Setups/Routes",
+      "position": "Corner",
+      "damage": "3420/3720 / 4200/4600",
+      "difficulty": "Medium",
+      "notes": "A Blanka Doll confirm similar to the first, with increased damage and extra time to confirm or extend pressure if blocked."
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

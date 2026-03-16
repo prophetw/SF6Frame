@@ -1,0 +1,213 @@
+{
+  "characterId": "elena",
+  "combos": [
+    {
+      "combo": "2LP, 2LP, 5LP > 214LK",
+      "section": "Light Starters",
+      "notes": "Can substitute 2LP starter with 2LK, can also do 3x 2LP."
+    },
+    {
+      "combo": "2LP, 2LP, 2LP, 5LK > 623HK",
+      "section": "Light Starters"
+    },
+    {
+      "combo": "2LP, 2LP, 2LP, 5LK > 236LK",
+      "section": "Light Starters",
+      "notes": "Must confirm standing."
+    },
+    {
+      "combo": "5LK > DRC, 2LP, 2HP > 214HK, 236MK",
+      "section": "Light Starters",
+      "notes": "Cannot end with SA3 unless you cancel during 214HK, can substitute 5LK starter with 2LP."
+    },
+    {
+      "combo": "CH 2LP, 5MK ~ HK > 236HK",
+      "section": "Light Starters",
+      "notes": "Have to be pretty close for this due to 5MK stubbiness, good after light empowered roll follow up."
+    },
+    {
+      "combo": "CH 2LP, 5MK, 5LP > 214LK",
+      "section": "Light Starters",
+      "notes": "Can substitute 5LP with 5LK with subsequent follow ups."
+    },
+    {
+      "combo": "CH 2LP, 5MK ~ HK > 214KK ~ 6P ~ 6MK, 236MK",
+      "section": "Light Starters"
+    },
+    {
+      "combo": "CH 2LP, 5MK ~ HK > 214KK ~ 6P ~ 6MK, 236LK, 623LK",
+      "section": "Light Starters",
+      "notes": "Knockdown advantage can be slightly variable here if you are late on the 623LK, numbers shown are for \"frame tight\"."
+    },
+    {
+      "combo": "CH 2LP, 5MK ~ HK > DRC, 5HP ~ HP, PDR, 2HP > 214MK ~ 6P ~ 6MK, 236MK > 214214K",
+      "section": "Light Starters",
+      "notes": "Decent 4 bar cashout that will restore 2 bars during super animation. Can use 2MP instead of 2HP midscreen."
+    },
+    {
+      "combo": "PC 2LP, 2MP > 214LP",
+      "section": "Light Starters",
+      "notes": "2MP is your most consistent PC follow up to 2LP. If you can confirm standing you can use 2MK ~ HK TC or 5MP ~ MP TC instead for a bit more damage. You can also substitute 5LP for a bit more range on PC but 2MK ~ HK TC will not work as a follow up in that case."
+    },
+    {
+      "combo": "PC 2LP, 2MP > 214MK",
+      "section": "Light Starters",
+      "notes": "Safe jump."
+    },
+    {
+      "combo": "PC 2LP, 5MK ~ HK > 214MK ~ 6HP",
+      "section": "Light Starters",
+      "notes": "Can route into ~ 6HP during 214MK for a side switch where you can extend with 6MP (to the new \"6\" direction) for a nasty mixup on either meaty 6LK at +2 or 6HK overhead. An empty 6LP extension leaves you +10 for meaty 2MK that is +6 on regular hit."
+    },
+    {
+      "combo": "PC 5LK > 236MK",
+      "section": "Light Starters",
+      "notes": "Good for known 5f PC situations where you just want to make sure you get a knockdown (i.e. Blocking Sagat Nexus OH)."
+    },
+    {
+      "combo": "PC 2LP, 2HP > 236LP ~ 6MK",
+      "section": "Light Starters",
+      "notes": "Rare situation due to the proximity needed but fantastic oki. You can do any standard 2HP follow up here, this one was chosen to illustrate this combo route. You can double dash up to be +4 point blank on oki."
+    },
+    {
+      "combo": "PC 2LP, 2MP > DRC, 5MK, 2HP > 214HK, PDR, 2MP > 236LP ~ 6MK, 214214K",
+      "section": "Light Starters",
+      "notes": "Nice four bar cash out that can also be done out of PDR 2LP. Not the most damage but can be good to end a round. Can also end with 236236P instead of PDR, 2MP ..."
+    },
+    {
+      "combo": "5MK, 5LK > 623LK",
+      "section": "Medium Starters",
+      "notes": "Good oki if you can be close enough for 623LK can use 623HK as a safety valve."
+    },
+    {
+      "combo": "5MP ~ MP > 236MK",
+      "section": "Medium Starters",
+      "notes": "Tough stand confirm but can be done safely on PC due to the force stand on the target combo."
+    },
+    {
+      "combo": "5MK, 5LK > 236KK, 236236K, 623HK",
+      "section": "Medium Starters",
+      "notes": "Solid, good damage 2 drive confirm. Can also end with 236236P instead of 236236K."
+    },
+    {
+      "combo": "2MK, 2LP > 214LK",
+      "section": "Medium Starters"
+    },
+    {
+      "combo": "2MK ~ HK > 214KK, PDR, 2MP > 214HP ~ 6P",
+      "section": "Medium Starters",
+      "notes": "Safe jump, relatively easy to go into DRC if you miss the confirm."
+    },
+    {
+      "combo": "MEATY 2MK, 5MK ~ HK > 214KK ~ 6P ~ 6MK, 236LK, 623HK",
+      "section": "Medium Starters",
+      "notes": "Can be used off a 2LP ~ 2LP frame kill from a +34 knockdown (for example). Also works on CH 2MK at close range."
+    },
+    {
+      "combo": "PDR 2MK, 2MP > 214LP ~ 6P",
+      "section": "Medium Starters",
+      "notes": "Common to get on midscreen oki. Any standard cancel here can work out of 2MP. Tiny bit more damage than 236HK follow up with a tiny bit less corner carry."
+    },
+    {
+      "combo": "2MP > 214LP ~ 6P",
+      "section": "Medium Starters",
+      "notes": "Confirmable into the 6P follow up, DI Safe, frame trap, safe on block. Really only vulnerable to perfect parry."
+    },
+    {
+      "combo": "2MP > DRC, 5MK, 2HP > 214HK, PDR, 2MP > 236PP ~ 6MK, 236MK > 214214K",
+      "section": "Medium Starters",
+      "notes": "Standard cashout from a 2MP > DRC combo. Can end with any other super if you remove the 236MK."
+    },
+    {
+      "combo": "PDR 6MK, 5MK ~ HK > 214KK ~ 6P ~ 6MK, 236LK, 623HK",
+      "section": "Medium Starters",
+      "notes": "Decent conversion off of PDR 6MK. Using different strengths of 623K will give you better KD advantage for less damage."
+    },
+    {
+      "combo": "CH 5MK, 5MK ~ HK > 236KK, 623HK",
+      "section": "Medium Starters",
+      "notes": "Side switch combo, need to be pretty close for this to work with this notation. Can be done out of any 5MK ~ HK combo sequence."
+    },
+    {
+      "combo": "CH 2MP > 214MP ~ 6P",
+      "section": "Medium Starters",
+      "notes": "Longer range than the 214LP confirm but only works on CH. All Moon Gliders have the same damage and oki data so this is a utility confirm over anything else."
+    },
+    {
+      "combo": "CH 2MP > 236PP ~ 6LK, PDR, 2LP > DRC, 2HP > DRC, dl.5HP ~ HP, 214MK ~ 6P ~ 6MK, 236MK > 214214K",
+      "section": "Medium Starters",
+      "notes": "Delay for 5HP is very specific, too late or too early and you will have to cancel directly out of 214MK losing ~400 damage. You need to get all hits of the TC at the highest possible height."
+    },
+    {
+      "combo": "CH 6MK, 2LP > 214LK",
+      "section": "Medium Starters",
+      "notes": "Mostly useful in the corner or off of meaty 6MK setups."
+    },
+    {
+      "combo": "PC 5MK, 2MP > 214PP ~ 6P > 236236P",
+      "section": "Medium Starters",
+      "notes": "Meter efficient, great damage punish for blocked drive reversal."
+    },
+    {
+      "combo": "PC 5MP ~ MP > 236KK, 236236K, 623HK",
+      "section": "Medium Starters",
+      "notes": "5MP forces stand on PC, allowing you to confirm into 236KK. You can also go into standard DRC, 5MK, 2HP... combos here as well."
+    },
+    {
+      "combo": "PC 2MP > 236PP ~ 6MK, 236MK",
+      "section": "Medium Starters",
+      "notes": "This is your baseline conversion from an expected PC 2MP. You can substitute 236MK with dl.236KK in order to get 236236P on cancel or 236236K in the corner for good damage."
+    },
+    {
+      "combo": "5HP ~ HP, 2HK",
+      "section": "Heavy Starters",
+      "notes": "Decent oki. Works at all except absolute tip range. You can end with 623K instead of 2HK depending on how close you are as well but this is the most consistent ender where you will usually hit regular hit 5HP. You can also get 236KK and subsequent follow ups as well."
+    },
+    {
+      "combo": "CH 5HK, 2LP > 214LK",
+      "section": "Heavy Starters",
+      "notes": "Rare, but one of the only meaningful CH conversion from Elena's heavies. Can do usual 2LP follow ups here."
+    },
+    {
+      "combo": "PC 5HP ~ HP, PDR, 2HP > 214HK ~ 6P ~ 6MK, 236LK, 236KK > 214214K",
+      "section": "Heavy Starters",
+      "notes": "Excellent, cheap cashout near corner on a PC 5HP TC. Can also end with 236236P for 5020 damage. There's a LOT of follow up you can do here, depending on where you are on screen and your drive total. This is your corner cash out. Midscreen you can route into PDR, 2MP > 214MK combos."
+    },
+    {
+      "combo": "PC 5HK, 236KK",
+      "section": "Heavy Starters",
+      "notes": "Sometimes if you hit an extended hurt box this CAN whiff. Can end with all three supers without any adjustments. 236236K requires the corner as does any 623K follow up. If you're burned out you can use 236LK in the corner to at least end with 214214K."
+    },
+    {
+      "combo": "PC 214HK ~ 6P ~ 6LK, PDR, 2LP > DRC, 5HP ~ HP, PDR, 2HP > DRC, dl.2HP > 214MK ~ 6P ~ 6MK, 236MK > 214214K",
+      "section": "Other Starters",
+      "notes": "Can also use this on a scythe reset or other oki situation where you use 236P ~ 6P ~ 6LK. Used on some reversal/super punishes. Credit Camzace and Gerri on the Elena discord for the damage optimization info on this one."
+    },
+    {
+      "combo": "236P ~ 6P ~ 6HK, 5MP ~ MP > 214LP",
+      "section": "Other Starters",
+      "notes": "The combo is easy but this situation really requires conditioning or someone who knows when Elena can throw out of roll. The 6HK follow up is completely throw immune making this a great punish at +8."
+    },
+    {
+      "combo": "PC 214HP, 5MK ~ HK...",
+      "section": "Other Starters",
+      "notes": "This also will apply to PC 214MP. You can get combos from the light version but the range is much more challenging to land a PC from and you have to follow up with 5LK. You are +6 on the punish and can follow up accordingly."
+    },
+    {
+      "combo": "Wall Splat DI, 5HP ~ HP, PDR, 2HP > 214MK ~ 6P ~ 6MK, 236LK, P623MK",
+      "section": "Other Starters",
+      "notes": "Quite a few enders you can do here after the 5HP TC."
+    },
+    {
+      "combo": "PC DI, dl.5HP ~ HP, PDR, 2MK ~ HK > 214HP",
+      "section": "Other Starters",
+      "notes": "Again, a lot of options you can do here. You can treat the 5HP like a PC with more scaling. The delay can be frame killed with a dash but preferably you want to walk and hit them when they drop to their knees after the PC DI to regenerate some drive."
+    },
+    {
+      "combo": "Stun DI, 9j.HP, 2HP > 236PP ~ 6LK, PDR, 2LP > 214MK ~ 6P ~ 6MK, 236236K, 236236K, 623HK",
+      "section": "Other Starters",
+      "notes": "Credit Gerri on the Elena Discord for optimizing stun combos and providing a full list on there. This is just one example that's not a complete cash while still doing solid damage."
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

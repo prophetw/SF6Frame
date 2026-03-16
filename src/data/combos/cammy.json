@@ -1,0 +1,480 @@
+{
+  "characterId": "cammy",
+  "combos": [
+    {
+      "combo": "5LP~5LP > 236MK",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "1290",
+      "difficulty": "Very Easy",
+      "notes": "Super basic 3-hit combo that knocks the opponent down and lets Cammy get in close."
+    },
+    {
+      "combo": "2MP/5HP > 236HK",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "1600(1800)",
+      "difficulty": "Very Easy",
+      "notes": "Higher damage and more corner carry than the above combo. Suitable if you happen to punish someone who is pressing buttons."
+    },
+    {
+      "combo": "j.HP/j.HK, 5HP > 236HK",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "2400",
+      "difficulty": "Very Easy",
+      "notes": "Basic jump-in combo. The hitbox of j.HP is easier to connect with, but j.HK hits from farther away."
+    },
+    {
+      "combo": "Punish Counter Drive Impact, 5HP > 236HK",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "2300",
+      "driveMeter": "1",
+      "difficulty": "Very Easy",
+      "notes": "Basic combo for a Punish Counter Drive Impact anywhere on screen."
+    },
+    {
+      "combo": "2LK~2LP~5LP > 236MK",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "1340",
+      "difficulty": "Easy",
+      "notes": "Basic confirm and frame trap string, as the LKs and LPs chain into each other."
+    },
+    {
+      "combo": "2HP, 2MP > 236HK",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "2100",
+      "difficulty": "Easy",
+      "notes": "Basic link from a 2HP starter. 2HP is easiest to land after Spiral Arrow; simply dash and hit the button immediately to beat any of the opponent's non-invincible wakeup options."
+    },
+    {
+      "combo": "j.HP/j.HK, 2HP, 2MP > 236HK",
+      "section": "Day 1 BnBs",
+      "position": "Anywhere",
+      "damage": "2680",
+      "difficulty": "Easy",
+      "notes": "A more complex version of the jump-in combo that uses the 2HP, 2MP link for more damage."
+    },
+    {
+      "combo": "...2MP/2MK > 66~2HP, 5HP...",
+      "section": "Combo Theory / Drive Rush Extensions",
+      "position": "Anywhere",
+      "damage": "1739 (1448)",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Any of her medium buttons getting Drive Rush Cancelled lets her get 2HP or 5HP as her next button",
+      "videoUrl": "https://www.youtube.com/watch?v=OAvCKn8FbFk&ab_channel=nth"
+    },
+    {
+      "combo": "...2MP > 66~5MP, 5HP...",
+      "section": "Combo Theory / Drive Rush Extensions",
+      "position": "Anywhere",
+      "damage": "1654",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "While 5MP is not directly cancelable, the extra hitstun on hit enables 5HP and 2HP links as well"
+    },
+    {
+      "combo": "...2MP > 66~5MP, 2HP, 2MP...",
+      "section": "Combo Theory / Drive Rush Extensions",
+      "position": "Anywhere",
+      "damage": "1940",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "videoUrl": "https://www.youtube.com/watch?v=VkN5kc8CYi0&ab_channel=nth"
+    },
+    {
+      "combo": "...5HP > 66~2HP, 5HP...",
+      "section": "Combo Theory / Drive Rush Extensions",
+      "position": "Anywhere",
+      "damage": "1939",
+      "driveMeter": "3",
+      "difficulty": "Easy"
+    },
+    {
+      "combo": "...5LP/5LK > 66~5LP, 5HP...",
+      "section": "Combo Theory / Drive Rush Extensions",
+      "position": "Anywhere",
+      "damage": "1072",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "She's not limited to only 2MP or 5HP as her starters either. If LP or 5LK is Drive Rush Cancelled, Cammy can easily get 5LP, 5HP as a link"
+    },
+    {
+      "combo": "4HK, 236MK/SA3",
+      "section": "Combo Theory / 4HK Juggles",
+      "position": "Anywhere",
+      "damage": "1680 (4000)",
+      "superMeter": "(0)3",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "The medium Spiral Arrow is the most reliable zero-drive follow-up as light and heavy versions can whiff"
+    },
+    {
+      "combo": "4HK, DR 5HP~HK",
+      "section": "Combo Theory / 4HK Juggles",
+      "position": "Anywhere",
+      "damage": "1975",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Simple follow-up by linking DR 5HP into target combo"
+    },
+    {
+      "combo": "4HK, DR 5HP>236[HK], 623HK",
+      "section": "Combo Theory / 4HK Juggles",
+      "position": "Anywhere",
+      "damage": "2222 (2994)",
+      "superMeter": "0(1)",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Higher damage combo that side switches. 623HK can be replaced with SA1 for damage. Not recommended to end with SA3 as it will deal less damage than 4HK, SA3"
+    },
+    {
+      "combo": "4HK, 236MK, 623HK",
+      "section": "Combo Theory / 4HK Juggles",
+      "position": "Corner",
+      "damage": "2520",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Corner combo for more damage"
+    },
+    {
+      "combo": "5HP > DR 4HK, 236HK, 623HK",
+      "section": "Combo Theory / 4HK Juggles",
+      "position": "Anywhere",
+      "damage": "2868",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Incredible corner carry combo. Note that if you cancel instead of linking 236HK, this will whiff."
+    },
+    {
+      "combo": "5HP > DR 4HK, DR, 5HP>214LP, 236LK, 623MK",
+      "section": "Combo Theory / 4HK Juggles",
+      "position": "Anywhere",
+      "damage": "3240",
+      "driveMeter": "4",
+      "difficulty": "Medium",
+      "notes": "For 1 more drive gauge you can get 400 more damage"
+    },
+    {
+      "combo": "5HP > DR 4HK, 4HK, 236MK, 623HK",
+      "section": "Combo Theory / 4HK Juggles",
+      "position": "Corner",
+      "damage": "3167",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Corner lets Cammy followup with another 4HK after DR 4HK. Can replace 623HK with SA1/SA3 for 3575(4595) damage."
+    },
+    {
+      "combo": "5HP > DR 4HK, 4HK, DR, 5HP>236HK, 623HK",
+      "section": "Combo Theory / 4HK Juggles",
+      "position": "Corner",
+      "damage": "3357",
+      "driveMeter": "4",
+      "difficulty": "Medium",
+      "notes": "Can still followup 2nd 4HK with 5HP, but in this case you can't cancel into spin knuckle, as it won't juggle"
+    },
+    {
+      "combo": "CH 2LP/5LP, 2MP > 236HK",
+      "section": "Combo Lists / Counter-hit Combos",
+      "position": "Anywhere",
+      "damage": "1700",
+      "difficulty": "Easy",
+      "notes": "Good follow-up to a LP that's part of a frame trap light string."
+    },
+    {
+      "combo": "CH 5MP, 5HP > 236HK",
+      "section": "Combo Lists / Counter-hit Combos",
+      "position": "Anywhere",
+      "damage": "2320",
+      "difficulty": "Easy",
+      "notes": "Scores a bit more damage by linking 5MP into 5HP. 5MP is a good frame trap tool from Drive Rush starters on block; a common sequence is DR~5MP (blocked), CH 5MP, 5HP which can be confirmed on reaction."
+    },
+    {
+      "combo": "CH 214LP, 2LP/5LP > 236MK",
+      "section": "Combo Lists / Counter-hit Combos",
+      "position": "Anywhere",
+      "damage": "1980",
+      "difficulty": "Easy",
+      "notes": "Basic combo from a CH Spin Knuckle if the opponent is too slow when trying to interrupt the startup. HP Spin Knuckle has too much pushback for 4MP to connect, so the route is actually weaker than the MP version. 5HP > 214LP is a frame trap against lights, while 5HP > 214MP frame traps during Burnout. 214HP is never a true 4f trap without Drive Rush + Burnout."
+    },
+    {
+      "combo": "CH 214MP, 4MP~HK, j.MP > j.214K",
+      "section": "Combo Lists / Counter-hit Combos",
+      "position": "Anywhere",
+      "damage": "(2440)",
+      "difficulty": "Easy",
+      "notes": "Basic combo from a CH Spin Knuckle if the opponent is too slow when trying to interrupt the startup. HP Spin Knuckle has too much pushback for 4MP to connect, so the route is actually weaker than the MP version. 5HP > 214LP is a frame trap against lights, while 5HP > 214MP frame traps during Burnout. 214HP is never a true 4f trap without Drive Rush + Burnout."
+    },
+    {
+      "combo": "CH 214HP, 2MP > 236HK",
+      "section": "Combo Lists / Counter-hit Combos",
+      "position": "Anywhere",
+      "damage": "(2140)",
+      "difficulty": "Easy",
+      "notes": "Basic combo from a CH Spin Knuckle if the opponent is too slow when trying to interrupt the startup. HP Spin Knuckle has too much pushback for 4MP to connect, so the route is actually weaker than the MP version. 5HP > 214LP is a frame trap against lights, while 5HP > 214MP frame traps during Burnout. 214HP is never a true 4f trap without Drive Rush + Burnout."
+    },
+    {
+      "combo": "CH 5MP, 5HP > DR~5HP > 236236K",
+      "section": "Combo Lists / Counter-hit Combos",
+      "position": "Anywhere",
+      "damage": "3244",
+      "superMeter": "1",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Short combo ending in Super Art 1 from CH 5MP."
+    },
+    {
+      "combo": "CH 5MP, 5HP > DR~2HP, 5HP > DR~2HP, 5HP > 623[HK] > 236236P",
+      "section": "Combo Lists / Counter-hit Combos",
+      "position": "Anywhere",
+      "damage": "5535 / (CA:5785)",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "Medium",
+      "notes": "Meter dump combo from CH 5MP. Useful to keep in mind if the opponent is around half health or below."
+    },
+    {
+      "combo": "CH 5MP, 5HP > DR~4HK, microwalk 4HK > partial 236[HK], 623HK",
+      "section": "Combo Lists / Counter-hit Combos",
+      "position": "Anywhere",
+      "damage": "3397",
+      "driveMeter": "3",
+      "difficulty": "Hard",
+      "notes": "A difficult juggle that allows a midscreen launch into Spiral Arrow + Cannon Spike. If you fully hold the 236[HK], it will juggle for a side switch and slightly less damage."
+    },
+    {
+      "combo": "PC 5LP/2LP, 5HP~HK > 236MK",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Anywhere",
+      "damage": "1880",
+      "difficulty": "Easy",
+      "notes": "Useful 4f punish starter that works from max jab range. Converting jab punishes into 236MK gives better damage, oki, and corner carry than the usual light confirms."
+    },
+    {
+      "combo": "PC 5LK > DR~5HP, 4MP~HK, j.MP > j.214K",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Anywhere",
+      "damage": "2220",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Important punish for many of the game's -5 or -6 attacks with high pushback. Somewhat expensive relative to its damage output, but useful for securing a kill against \"safe-ish\" moves. To conserve Drive meter, 5LK > 236HK also combos on Punish Counter for 1260 damage."
+    },
+    {
+      "combo": "PC 5HP > 214HP, 2LP > 236MK",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Anywhere",
+      "damage": "2510",
+      "difficulty": "Easy",
+      "notes": "Reliable 8f punish option even from max range 5HP. Can also end with 236KK > 623HK or SA1/SA3 to increase damage."
+    },
+    {
+      "combo": "PC 5HP > 236[HK], 623HK",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Anywhere",
+      "damage": "2720",
+      "difficulty": "Easy",
+      "notes": "Meterless side switch that does slightly more damage than the 214HP route. Useful if you start with your back to the wall, but doesn't allow for good oki."
+    },
+    {
+      "combo": "PC 2HP, 4HK, DR~5HP > 236[HK], SA1/SA3",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Anywhere",
+      "damage": "3674(4694)",
+      "superMeter": "1(3)",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Fairly strong punish for 1 Drive bar. Switches sides and returns back to midscreen, so it's most useful as an SA1 kill route when you want to conserve meter for the next round. Must be fairly close for the 4HK to link properly."
+    },
+    {
+      "combo": "PC 2HP, 4HK, DR~5HP > 236MK, 623HK/SA1/SA3",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Corner",
+      "damage": "3327(3735/4755)",
+      "superMeter": "0(1/3)",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Cheap corner optimization for significant damage. 623HK can be replaced with SA1 or SA3 with forgiving timing."
+    },
+    {
+      "combo": "PC 2HP, 4HK, SA3",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Corner",
+      "damage": "4840",
+      "superMeter": "3",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Example of more optimal SA3 route due to combo scaling"
+    },
+    {
+      "combo": "PC 2HP, 5HP > DR~2HP, 5HP > DR~2HP, 5HP > 623[HK] > SA3",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Anywhere",
+      "damage": "5655 / (CA:5905)",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "Medium",
+      "notes": "High damage Punish Counter combo that spends all resources to ensure a kill. If only SA1 is available, you can instead end the last Drive Rush loop with DR~4HK, 4HK, 236LK, SA1 for 4204 damage. If starting from full Drive meter, it is possible to microwalk in between DR~2HP and 5HP to allow an extra Drive Rush loop. However, the damage boost is small, the difficulty is high, and it won't work if you blocked anything right before the punish starter."
+    },
+    {
+      "combo": "PC 2HP, 5HP > DR~4HK, DR~5HP > 214LP, DR~4HK > DR~6HK > 623[HK] > SA3",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Corner",
+      "damage": "5947 / (CA:6197)",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "Hard",
+      "notes": "A slightly more damaging but more difficult cash out combo to ensure a kill. As long as you have over 5 bars of Drive meter before the first Drive Rush cancel, you will have enough meter for the combo. If starting the combo from midscreen, you should instead replace the 623[HK] with a 236LK and then link into SA3 for slightly less damage (5872, 6122 with CA). Slightly higher damage if started with 8/9HP"
+    },
+    {
+      "combo": "PC 214HP/214PP, 5HP > 236HK",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Anywhere",
+      "damage": "2300",
+      "driveMeter": "0(2)",
+      "difficulty": "Easy",
+      "notes": "Strong anti-fireball punish option that leads to damage and corner carry."
+    },
+    {
+      "combo": "PC 214HP/214PP, 4HK, 236MK, 623HK",
+      "section": "Combo Lists / Punish Counter Combos",
+      "position": "Corner",
+      "damage": "2950",
+      "driveMeter": "0(2)",
+      "difficulty": "Easy",
+      "notes": "Corner version of the fireball punish that launches for extra damage."
+    },
+    {
+      "combo": "Drive Impact (blocked), 5HP > 236LK, 623HK",
+      "section": "Combo Lists / Drive Impact Combos",
+      "position": "Corner",
+      "damage": "2048",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Basic combo after a blocked Drive Impact into wallsplat. If the DI connects too far from the corner, you must walk forward slightly before 5HP. If you accidentally use 236MK, only 623LK is fast enough to finish the juggle (for slightly less damage)."
+    },
+    {
+      "combo": "Drive Impact (ground hit), 5HP > 236MK,",
+      "section": "Combo Lists / Drive Impact Combos",
+      "position": "Corner",
+      "damage": "2790",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "5HP > 236MK allows a 623HK juggle after a grounded Drive Impact on hit only, for slightly more damage than the blocked wallsplat version"
+    },
+    {
+      "combo": "623HK",
+      "section": "Combo Lists / Drive Impact Combos",
+      "position": "Corner",
+      "damage": "2790",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "5HP > 236MK allows a 623HK juggle after a grounded Drive Impact on hit only, for slightly more damage than the blocked wallsplat version"
+    },
+    {
+      "combo": "Drive Impact (high wallsplat), 5HP > 236HK, 623HK",
+      "section": "Combo Lists / Drive Impact Combos",
+      "position": "Corner",
+      "damage": "2650",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "If the wallsplat occurs high up after the DI hits airborne, you can juggle the 2nd hit of 236HK instead of the usual 236LK/236MK."
+    },
+    {
+      "combo": "PC Drive Impact, 2HP, 2MP > 236HK",
+      "section": "Combo Lists / Drive Impact Combos",
+      "position": "Anywhere",
+      "damage": "2540",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Basic corner carry combo from a Punish Counter Drive Impact. Ending with 623HK instead gives slightly better damage, but much worse midscreen oki."
+    },
+    {
+      "combo": "PC Drive Impact, 4HK, 236MK, 623HK",
+      "section": "Combo Lists / Drive Impact Combos",
+      "position": "Corner",
+      "damage": "2950",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "In the corner, Cammy gets increased damage by going directly into her 4HK launcher."
+    },
+    {
+      "combo": "PC Drive Impact, walk forward, 5MP, 4MP~HK, j.MP > 214K/214KK",
+      "section": "Combo Lists / Drive Impact Combos",
+      "position": "Anywhere",
+      "damage": "2690+",
+      "driveMeter": "1(3)",
+      "difficulty": "Medium",
+      "notes": "Basic launch combo from a Punish Counter Drive Impact. Must be at close range for 5MP, 4MP to link, but if you wait too long the opponent will become airborne. 214K brings the opponent straight down, while 214KK allows a cancel to SA2 > 236LK or a juggle into SA1/SA3 for extra damage and corner carry. Additionally, after an immediate forward dash upon landing, 2HP is an autotimed +4 meaty. Only works if you end the combo with 214HK; the j.MP > 214HK must be performed immediately after the jump."
+    },
+    {
+      "combo": "PC Drive Impact, dl.5HP > 236LK, 236MK",
+      "section": "Combo Lists / Drive Impact Combos",
+      "position": "Anywhere",
+      "damage": "2700",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "As of Patch 10.15.2025, 236LK can occasionally juggle into 236MK, giving slightly higher damage and improved corner carry. The 5HP must be delayed until the opponent begins the falling-on-knees animation before continuing the combo. After the PC Drive Impact, you can forward dash twice to autotime the 5HP, which increases corner carry, but the timing is very strict, with only a 2-frame margin of error. Midscreen, the combo can end with 236MK for 60 extra damage, but this significantly reduces oki. In the corner, other combos are generally more optimal."
+    },
+    {
+      "combo": "236P (Slide), 623HK",
+      "section": "Combo Lists / Hooligan Combination Combos",
+      "position": "Anywhere",
+      "damage": "1960(2160)",
+      "driveMeter": "0(2)",
+      "difficulty": "Easy",
+      "notes": "Basic follow-up from Razor's Edge Slicer. The [HP] and OD versions can juggle after the 2nd hit, giving more damage and hitconfirm time."
+    },
+    {
+      "combo": "236[HP]/PP~2K, 5HP...",
+      "section": "Combo Lists / Hooligan Combination Combos",
+      "position": "Anywhere",
+      "damage": "1840+",
+      "driveMeter": "0(2)",
+      "difficulty": "Easy",
+      "notes": "Follow-up to Reverse Edge that leaves the opponent grounded. Can cash out with any ender of choice after 5HP. For a slightly easier link, can use 2MP instead."
+    },
+    {
+      "combo": "236[HP]/PP~2K, 4MP~HK...",
+      "section": "Combo Lists / Hooligan Combination Combos",
+      "position": "Anywhere",
+      "damage": "2020+",
+      "driveMeter": "0(2)",
+      "difficulty": "Medium",
+      "notes": "Launches the opponent after a Reverse Edge overhead, allowing for a +54 knockdown to comfortably loop Hooligan setups."
+    },
+    {
+      "combo": "236[HP]/PP~LPLK, 236MK, 623HK",
+      "section": "Combo Lists / Hooligan Combination Combos",
+      "position": "Corner",
+      "damage": "2560",
+      "driveMeter": "0(2)",
+      "difficulty": "Medium",
+      "notes": "Damage cashout after an enhanced Fatal Leg Twister. Using 236LK makes the juggle easier for 80 less damage. Opponent will reach the corner if thrown ~1/3 screen away from the corner."
+    },
+    {
+      "combo": "236[HP]/PP~LPLK, 236236K/236236P",
+      "section": "Combo Lists / Hooligan Combination Combos",
+      "position": "Anywhere",
+      "damage": "2600(4200)",
+      "superMeter": "1(3)",
+      "driveMeter": "0(2)",
+      "difficulty": "Easy",
+      "notes": "A simple Super cashout after enhanced Fatal Leg Twister that works without any additional Drive cost."
+    },
+    {
+      "combo": "236[HP]/PP~LPLK, DR~5HP > 236LK...",
+      "section": "Combo Lists / Hooligan Combination Combos",
+      "position": "Anywhere",
+      "damage": "2016+",
+      "driveMeter": "1(3)",
+      "difficulty": "Medium",
+      "notes": "Sets up a +54 knockdown for Hooligan pressure after enhanced Fatal Leg Twister. Can optionally juggle 623HK, SA1, or SA3 after the 236LK. SA3 damage is actually weaker in this route compared to an immediate SA3 juggle."
+    }
+  ],
+  "comboTheory": "### Opening Strings",
+  "lastUpdated": "2026-03-16"
+}

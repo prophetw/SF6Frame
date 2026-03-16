@@ -1,0 +1,299 @@
+{
+  "characterId": "terry",
+  "combos": [
+    {
+      "combo": "5LK/2LP>236LK/214MP",
+      "section": "Links and Starters",
+      "notes": "Simple 2-hit Light>Special confirm. L Power Charge +3/+4 oH. +30 KD"
+    },
+    {
+      "combo": "5LP>5LP>5LP>623HP",
+      "section": "Links and Starters",
+      "notes": "Basic Far-Light confirm into DP. +27 KD"
+    },
+    {
+      "combo": "2LK>2LP>2LP>236LK",
+      "section": "Links and Starters",
+      "notes": "Low string looping into +3 strike/throw but very unsafe oB -9."
+    },
+    {
+      "combo": "2LK>2LP>214MP",
+      "section": "Links and Starters",
+      "notes": "Low string into Burn Knuckle. +30 KD / Light Auto Combo in Modern"
+    },
+    {
+      "combo": "5MP~HP (Power Drive Target Combo)",
+      "section": "Links and Starters",
+      "notes": "Knocks down on hit (+29)"
+    },
+    {
+      "combo": "5MP~HK~HK (Power Dunk Target Combo)",
+      "section": "Links and Starters",
+      "notes": "Requires CH/PC/DR or a juggle state for 5MP~HK to combo. Reference point for damage."
+    },
+    {
+      "combo": "5MK, 5LK>236LK, 2LP>214MP",
+      "section": "Links and Starters",
+      "notes": "Link combo from Standing MK. +30 KD."
+    },
+    {
+      "combo": "2MK>236LP/236MP",
+      "section": "Links and Starters",
+      "notes": "Classic Crouching MK > Fireball combo. Good for checking ankles. / 236LP is minus pointblank (-3 oH) but will combo from max 2MK range (+1 oH) / 236MP is safe (0 ~ +3 oH) but will not combo if too far. (-2 ~ 0 oB)"
+    },
+    {
+      "combo": "2MP>236LP/236MP",
+      "section": "Links and Starters",
+      "notes": "Faster and safer version of above combo, albeit w/ shorter range. / 236LP is minus pointblank (-3 oH) but will combo from max 2MP range (+4 oH). / 236MP is safe (0 ~ +5 oH) but will not combo if too far. (0 ~ +1 oB)"
+    },
+    {
+      "combo": "2MK>214MP/623HP",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "2MP>214MP/623HP",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "2MK~2HK>214HP",
+      "section": "Links and Starters",
+      "notes": "Easy combo from 2MK target combo. +30 KD."
+    },
+    {
+      "combo": "2MK~2HK>236HK, 623HP",
+      "section": "Links and Starters",
+      "notes": "BnB from 2MK target combo. Delay 623HP or it will whiff if you are not in the corner. +27 KD."
+    },
+    {
+      "combo": "2MP>236LK, 2LP>5LP>623HP",
+      "section": "Links and Starters",
+      "notes": "Power Charge must connect at max range to link into 2LP. Builds 1/4 SA Gauge."
+    },
+    {
+      "combo": "2MP>236MK, 236236K (SA1)",
+      "section": "Links and Starters",
+      "notes": "Simple confirm into Buster Wolf. / Medium Auto Combo in Modern"
+    },
+    {
+      "combo": "2MK~2HK>236236K (SA1), 236236K (SA1)",
+      "section": "Links and Starters",
+      "notes": "Double Buster Wolf route"
+    },
+    {
+      "combo": "2MP>DR~2HP>236HK>236HP, DR~2HP>236MK, 214214P(SA2)~PP~PP",
+      "section": "Links and Starters",
+      "notes": "Optimal Cash out combo w/o CA. Will use ALL resources so hope it kills."
+    },
+    {
+      "combo": "2MP>DR~2HP>236HK>236HP, DR~2HP>236MK, 623HP>236236P (SA3)",
+      "section": "Links and Starters",
+      "notes": "Variation of above combo using SA3. Optimal w/ Critical Art."
+    },
+    {
+      "combo": "5HP>236HK>214HP",
+      "section": "Links and Starters",
+      "notes": "Corner Carry Combo. +44 KD"
+    },
+    {
+      "combo": "5HP>236HK>214HK, 214LP",
+      "section": "Links and Starters",
+      "notes": "BNB variant for +21 meterless oki but slightly lower damage. Dash forward into +2 strike/throw even if opponent recovers backward. / Delay Crack Shoot for all three hits to connect. 214LP ender will drop if Crack Shoot is not delayed."
+    },
+    {
+      "combo": "5HP>236HK>214HK, 623HP",
+      "section": "Links and Starters",
+      "notes": "Bread & Butter Combo. +27 KD / Delay Crack Shoot for all three hits to connect. Deals 2460 damage with only two hits of Crack Shoot."
+    },
+    {
+      "combo": "5HP>236HK>236HP, 623HP",
+      "section": "Links and Starters",
+      "notes": "Corner BnB using Round Wave. +27 KD / Delay Rising Tackle for more damage."
+    },
+    {
+      "combo": "5HP>236HK>236HP, 236MK, 623HP",
+      "section": "Links and Starters",
+      "notes": "Slightly more difficult variant of Corner BnB for extra damage. +27 KD"
+    },
+    {
+      "combo": "5HP>236HK>dl.236LP, DR~5MP~HK~HK",
+      "section": "Links and Starters",
+      "notes": "DR extension off of 236HK. +25 KD / Power Wave and DR~5MP must be delayed or combo can drop."
+    },
+    {
+      "combo": "5HP>236HK>dl.214HK, 236236K (SA1)",
+      "section": "Links and Starters",
+      "notes": "Basic driveless combo into Buster Wolf. / Can also use M Crackshoot for less damage (2960) but no need for a delay."
+    },
+    {
+      "combo": "5HP>236HK>dl.236LP, DR~5MP>214MK, 236236K (SA1)",
+      "section": "Links and Starters",
+      "notes": "DR extension off of 236HK into Buster Wolf. / Power Wave and DR~5MP must be delayed or combo can drop."
+    },
+    {
+      "combo": "5HP>236HK>214KK, 236236K (SA1)",
+      "section": "Links and Starters",
+      "notes": "OD Crackshoot Adds another 600 dmg."
+    },
+    {
+      "combo": "5HP>236HK>214HK, 623HP>236236P (SA3)",
+      "section": "Links and Starters",
+      "notes": "Bread & Butter w/ a cherry on top [Rising Fang (SA3)]. / Heavy Auto Combo in Modern."
+    },
+    {
+      "combo": "5HP>236HK>dl.236HP, DR~2MP>DR~5HP, DR~5LP>236MK, 214214P(SA2)~PP~PP",
+      "section": "Links and Starters",
+      "notes": "Optimal midscreen full meter dump combo. In order for the link to DR~2MP to work, you must delay cancel 236HP by 4-5 frames. Can replace 2MP with 5MP, but you must delay cancel by exactly 4 frames, so it is much harder, for only minimal extra damage. / 5892 with j.HK starter"
+    },
+    {
+      "combo": "5HP>236HK>236HP, DR~5HP>DR~5HP>236HP, DR~5LP>236MK, 214214P(SA2)~PP~PP",
+      "section": "Links and Starters",
+      "notes": "Optimal full meter dump corner combo, not including PC DR~2HP starter."
+    },
+    {
+      "combo": "5HP>236HK>236HP, DR~2HP>236MK, 623HP>236236P (SA3)",
+      "section": "Links and Starters",
+      "notes": "3 Super stock combo using Rising Fang (SA3) w/ CA."
+    },
+    {
+      "combo": "5HP>236HK>236HP, DR~2HP>236MK, 214214P(SA2)~PP~PP",
+      "section": "Links and Starters",
+      "notes": "3 Super stock combo using Triple Geyser (SA2++) instead when w/o CA."
+    },
+    {
+      "combo": "5HK, 5MP~HK~HK",
+      "section": "Punish Counter Combos",
+      "notes": "Forget your combo? Target Combo has your back. +25 KD."
+    },
+    {
+      "combo": "5HK, DR~5MP~HK~HK",
+      "section": "Punish Counter Combos",
+      "notes": "Forget your combo AND out of 5MP range? DR Target Combo has your back. +25 KD."
+    },
+    {
+      "combo": "5HK, 5MP>236MK, 236236K (SA1)",
+      "section": "Punish Counter Combos",
+      "notes": "Are you okay? / Alternatively, 2MP>236MK for slightly less damage."
+    },
+    {
+      "combo": "5HK, 2MK>2HK>236HK>623HP",
+      "section": "Punish Counter Combos",
+      "notes": "Doesn't work after Drive Rush, but works at most ranges. +28 KD."
+    },
+    {
+      "combo": "5HP>236HP, 2HP>236PP, 5MP>236K, 2LP>5LP>DR~2LP, 2MP, 5LK>236K, 2LP>5LP>623HP>236236P (SA3)",
+      "section": "Punish Counter Combos",
+      "notes": "Power Charge loop into SA3 Cash out combo. Builds 1/2 SA Gauge."
+    },
+    {
+      "combo": "5HP>236HP, 2HP>DR~2HP>236HK>236HP, DR~2HP>236MK, 214214P(SA2)~PP~PP",
+      "section": "Punish Counter Combos",
+      "notes": "Big boy cashout combo for a reversal punish (or a PC DI if you do DR>5HP at the start) without CA at your disposal. You can replace the first link to 2HP to 2MP for a 4 frame window."
+    },
+    {
+      "combo": "5HP>236HP, 2HP>DR~2HP>236HK>236HP, DR~2HP>DR~dl.2HP>236MK, 623HP>236236P",
+      "section": "Punish Counter Combos",
+      "notes": "Above but with CA now. Comically large amounts of damage. / Replacing dl.2HP onwards with 2HP>236HK, 214LP>236236P nets 6225 damage."
+    },
+    {
+      "combo": "5HP>236HK>236HP, DR~5HP>DR~5HP, DR~5LP>DR~5MP>236HP>236236P",
+      "section": "Punish Counter Combos",
+      "notes": "BnB corner combo to really cash out. You should let 5HP hit twice in all instances here. Many enders possible after 5LP (236MK > 214214P(SA2)~PP~PP for lvl2)"
+    },
+    {
+      "combo": "214MPHP, 236HK>236HP, DR~2HP>214MK, 214LPMP>214214P(SA2)~PP~PP",
+      "section": "Punish Counter Combos",
+      "notes": "More situational - useful after a whiffed DP to really maximize damage. / Can be extended to use CA but this will do ~50 or so less damage."
+    },
+    {
+      "combo": "DI, dl.5MP~HK~HK",
+      "section": "Drive Impact Combos",
+      "notes": "Forget your punish? Here's a Power Dunk Target Combo. Frame Perfect adds 100 dmg. +25 KD"
+    },
+    {
+      "combo": "DI, 5HP>236HK>214HP",
+      "section": "Drive Impact Combos",
+      "notes": "Corner Carry Combo. +44 KD"
+    },
+    {
+      "combo": "DI, 5HP>236HK>214HK, 623HP",
+      "section": "Drive Impact Combos",
+      "notes": "Bread & Butter Combo. +27 KD"
+    },
+    {
+      "combo": "DI, 5HP>236HK>214KK, 623HP",
+      "section": "Drive Impact Combos",
+      "notes": "OD Crack Shoot adds 500 dmg +27 KD"
+    },
+    {
+      "combo": "DI, dl.2HP>214KK, 236236K (SA1)",
+      "section": "Drive Impact Combos",
+      "notes": "Drive Impact combo into SA1."
+    },
+    {
+      "combo": "DI, dl.2HP>214KK, 623HP>236236P (SA3)",
+      "section": "Drive Impact Combos",
+      "notes": "Drive Impact combo into SA3."
+    },
+    {
+      "combo": "5MP~HK~HK",
+      "section": "Wall Splat (Blocked DI)",
+      "notes": "Forget your punish? Here's a Power Dunk Target Combo. +25 KD"
+    },
+    {
+      "combo": "2HP>214MK, 623HP",
+      "section": "Wall Splat (Blocked DI)",
+      "notes": "Basic meterless combo from wallsplat. +27 KD"
+    },
+    {
+      "combo": "2HP>236MK, 236236K (SA1)",
+      "section": "Wall Splat (Blocked DI)",
+      "notes": "Basic SA1 combo from Wallsplat."
+    },
+    {
+      "combo": "2HP>236PP, 236236K (SA1), 236236K (SA1)",
+      "section": "Wall Splat (Blocked DI)",
+      "notes": "\"Double Wolf\" combo. SA1 must come out right as you recover from OD Power Wave for the second SA1 to juggle."
+    },
+    {
+      "combo": "2HP>214214P(SA2)~PP, 623HP",
+      "section": "Wall Splat (Blocked DI)",
+      "notes": "Wallsplat > SA2 combo. +27 KD"
+    },
+    {
+      "combo": "2HP>214MPHP>214214P(SA2)>PP, 623PP",
+      "section": "Wall Splat (Blocked DI)",
+      "notes": "2-Bar Cashout Combo from Wallsplat."
+    },
+    {
+      "combo": "2HP>236PP, DR~5HP>236HP, 214LPMP>214214P(SA2)~PP~PP",
+      "section": "Wall Splat (Blocked DI)",
+      "notes": "Full cashout combo from wallsplat. Needs all 6 Drive Gauge bars."
+    },
+    {
+      "combo": "2HP>236PP, DR~5HP>236MK, 214214P(SA2)~PP~PP",
+      "section": "Wall Splat (Blocked DI)",
+      "notes": "Version of previous combo that still uses all Drive Bars but works if you start with 4. More practical but does less damage."
+    },
+    {
+      "combo": "5MP",
+      "section": "Day 1 Combo Dump",
+      "notes": "Simple Combo starting with 5MP"
+    },
+    {
+      "combo": "2MK>DRC 2MP, 5HP>236HK>214HK, 623HP(>SA3)",
+      "section": "Day 1 Combo Dump",
+      "notes": "DRC cashout with 2MK"
+    },
+    {
+      "combo": "j.HK, 5HP>236HK>214HK, 623HP",
+      "section": "Day 1 Combo Dump",
+      "notes": "Common heavy combo structure. If you delay Rising Tackle you can get more damage."
+    },
+    {
+      "combo": "5HP>236HK>236HP, DR~2HP>DR~2HP>236MK, DR~5LK>236MK, 214214P(SA2)~PP~PP",
+      "section": "Day 1 Combo Dump",
+      "notes": "Optimal 3 Super stock combo using Triple Geyser (SA2++) instead when w/o CA."
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

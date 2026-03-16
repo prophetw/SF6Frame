@@ -1,0 +1,1197 @@
+{
+  "characterId": "mai",
+  "combos": [
+    {
+      "combo": "L ~ L ~ LP > 236LK (> SA3)",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "12303230(3480)",
+      "superMeter": "0 / 3",
+      "difficulty": "Easy",
+      "notes": "KD +27. Leaves the opponent close enough to dash up to even when mid-screen.Also allows for an easy albeit heavily scaled conversion into SA3."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > 214MP (> SA3)",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "13503350(3600)",
+      "superMeter": "0 / 3",
+      "difficulty": "Easy",
+      "notes": "KD +35. Less corner carry than the above, and less confirm range due to needing to end with 5LP.This knockdown advantage makes charged fan setups safer against Drive Impact and forward jump, and in the corner sets up frame-kill 5LK into meaty 6MP overhead."
+    },
+    {
+      "combo": "L ~ L ~ LP > 623HK",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1470",
+      "superMeter": "0 / 3",
+      "difficulty": "Easy",
+      "notes": "KD +31. A more damaging route that knocks the opponent further away, so while this does work mid-screen it is better suited for the corner."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > 214LP (> SA3)",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1230",
+      "superMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+3 on hit, leaving the opponent standing so they cannot use Wake-up Drive Reversal.Technically also cancels into SA3, but other specials do that job better."
+    },
+    {
+      "combo": "(LP,) 5LK~LK~LK > j.214P",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1570",
+      "difficulty": "Easy",
+      "notes": "KD +41, or +42~43 if spaced. Sets up a 5f safe jump if spaced correctly to be +42.Short range confirm. Linking from 5LP or 2LP is interruptible on block so it's usually better to immediately start with 5LK."
+    },
+    {
+      "combo": "(LP,) 5LK~LK~LK > j.214PP, 623HK/KK/SA2",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "229024903090",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "Burning resources after confirming the target combo.Knockdown advantage per combo ender: 623HK +30 / 623KK +19 / SA2 +34"
+    },
+    {
+      "combo": "(LP,) 5LK~LK~LK > j.214PP, SA1",
+      "section": "Light Confirm Combos",
+      "position": "Corner",
+      "damage": "2690",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +26. A very useful way to stock up near the corner."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > 236KK, j.MP > j.214P",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1770",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +33, or +32 in the corner. Spending resources for corner carry."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > 236KK, j.MP, 623HK",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1830",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +32. More damage, but not as effective mid-screen due to the longer range knockdown."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > 236KK, j.MP, SA1",
+      "section": "Light Confirm Combos",
+      "position": "Corner",
+      "damage": "2070",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +31. A fairly inexpensive way to get stocks when close enough to the corner."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > 236KK, j.MP, dl.SA2",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2590",
+      "superMeter": "2",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +34~37. Exact advantage depends on the timing of the delay after landing.Performing SA2 immediately upon landing whiffs a hit for 200 less damage but will always be +35, which in the corner sets up frame-kill 5LK into meaty 6MP overhead."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > 236KK, j.MP, j.214PP > j.SA2",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2950",
+      "superMeter": "2",
+      "driveMeter": "4",
+      "difficulty": "Medium",
+      "notes": "KD +9. A way to burn more drive, but at a significant cost to knockdown advantage."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > 236KK, dl.j.MP, 214LP > SA3",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "3710(3960)",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Hard",
+      "notes": "3 frame timing window on the delay for 214LP to work. Too late and j.MP doesn't connect, too early and 214LP doesn't connect."
+    },
+    {
+      "combo": "L ~ LP > SA1",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1940",
+      "superMeter": "1",
+      "difficulty": "Medium",
+      "notes": "KD +26. The only way to get SA1 from light attacks without spending Drive Gauge is to go straight into it."
+    },
+    {
+      "combo": "L ~ L ~ LP > SA2",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2430",
+      "superMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +33. Useful for taking away the last bit of an opponent's Drive Gauge.Also provides a lot of corner carry but doesn't lead to the best follow-ups if the opponent doesn't make it to the corner."
+    },
+    {
+      "combo": "L ~ L ~ LP > DRC~5LP, (Drive Rush Combo)",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1647+",
+      "driveMeter": "3+",
+      "difficulty": "Medium",
+      "notes": "Links into any of 5HP, 4HK or 2MP."
+    },
+    {
+      "combo": "L ~ L ~ LP > F.236LK > (SA3)",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "12903290(3540)",
+      "superMeter": "0 / 3",
+      "difficulty": "Easy",
+      "notes": "KD +27. Leaves the opponent close enough to dash up to even when mid-screen."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.214MP > (SA3)",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "14103410(3660)",
+      "superMeter": "0 / 3",
+      "difficulty": "Easy",
+      "notes": "KD +42, setting up a 5f safe jump.Use F.214LP instead to get the same +35 setup as flameless 214MP."
+    },
+    {
+      "combo": "L ~ L ~ LP > F.623HK",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1530",
+      "superMeter": "0 / 3",
+      "difficulty": "Easy",
+      "notes": "KD +32, 1 more frame than flameless.A more damaging route that knocks the opponent further away, so while this does work mid-screen it is better suited for the corner."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.214LP",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1290",
+      "superMeter": "0",
+      "difficulty": "Easy",
+      "notes": "KD +35, equivalent to flameless 214MP.This knockdown advantage makes charged fan setups safer against Drive Impact and forward jump, and in the corner sets up frame-kill 5LK into meaty 6MP overhead."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.236KK, j.MP > *.j.214P",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1990{2030}",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +33, or +32 in the corner. Spending resources for corner carry."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.236KK, j.MP, *.623HK",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2080{2110}",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +32 with 1 stock, or +35 with 2 stocks.More damage, but not as effective mid-screen due to the longer range knockdown.The 2 stock version in the corner sets up frame-kill 5LK into meaty 6MP overhead."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.236KK, j.MP, SA1",
+      "section": "Light Confirm Combos",
+      "position": "Corner",
+      "damage": "2390",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +31. A fairly inexpensive way to get stocks when close enough to the corner."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.236KK, j.MP, F.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2510",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +42. The previous combo with 2 Flame Stocks works mid-screen and sets up a 5f safe jump near the corner."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.236KK, j.MP, dl.SA2",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2710",
+      "superMeter": "2",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +34~37. Exact advantage depends on the timing of the delay after landing.Performing SA2 immediately upon landing whiffs a hit for 200 less damage but will always be +35, which in the corner sets up frame-kill 5LK into meaty 6MP overhead."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.236KK, j.MP, j.214PP > j.SA2",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "3190",
+      "superMeter": "2",
+      "driveMeter": "4",
+      "difficulty": "Medium",
+      "notes": "KD +9. A way to burn more drive, but at a significant cost to knockdown advantage."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.236KK, j.MP, F.j.214PP,... 623LK / F.623HK / *.623KK / *.SA",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2260{2500} 2590{2620} 2710{2800} 3230{3310} 4110(4360)",
+      "superMeter": "0-3",
+      "driveMeter": "4-6",
+      "difficulty": "Medium",
+      "notes": "Drive dump using Flame Stocks, optionally ending with any SA.Knockdown advantage per combo ender:623LK +27 / 623KK +21 / SA1 +20 / SA2 +37F.623HK +35 / F.623KK +30 / F.SA1 +40"
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.236KK, j.MP, F.j.214PP, F.SA2,... F.623HK / *.623KK / *.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Corner*",
+      "damage": "3310{3440} 3470{3480} 3910{4000}",
+      "superMeter": "2-3",
+      "driveMeter": "4-6",
+      "difficulty": "Medium",
+      "notes": "Carries almost the entire stage width. Works as long as not backed into a corner.Knockdown advantage per combo ender:F.SA2 +41 / 623KK +20 / SA1 +27F.623HK +33 / F.623MK +34 / F.623KK +29 / F.SA1 +38"
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.236KK, dl.j.MP, *.214LP > SA3",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "3710(3960){+40}",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Hard",
+      "notes": "3 frame timing window on the delay for 214LP to work. Too late and j.MP doesn't connect, too early and 214LP doesn't connect."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.214MP, *.623MK",
+      "section": "Light Confirm Combos",
+      "position": "Corner",
+      "damage": "1850{1890}",
+      "superMeter": "1",
+      "difficulty": "Medium",
+      "notes": "KD +30 with 1 stock, or +33 with 2 stocks. Driveless corner juggle."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.214MP, F.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2330",
+      "superMeter": "1",
+      "difficulty": "Medium",
+      "notes": "KD +37. Driveless restock combo."
+    },
+    {
+      "combo": "L ~ L ~ 5LP > F.214MP, SA1",
+      "section": "Light Confirm Combos",
+      "position": "Corner",
+      "damage": "2210",
+      "superMeter": "1",
+      "difficulty": "Medium",
+      "notes": "KD +26. Near the corner the previous combo only needs 1 Flame Stock."
+    },
+    {
+      "combo": "L ~ L ~ LP > F.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2130",
+      "superMeter": "1",
+      "difficulty": "Medium",
+      "notes": "KD +40. When only 1 Flame Stock remains, it's possible restock mid-screen with a 3-hit chain directly into SA1."
+    },
+    {
+      "combo": "L ~ L ~ LP > F.SA2",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2550",
+      "superMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +38. Useful for taking away the last bit of an opponent's Drive Gauge.Also provides a lot of corner carry, and even if it doesn't make it to the corner the opponent is close enough to dash after."
+    },
+    {
+      "combo": "L ~ L ~ LP > F.SA2, *.623LK",
+      "section": "Light Confirm Combos",
+      "position": "Corner",
+      "damage": "2910{2950}",
+      "superMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +29 with 1 stock, or +32 with 2 stocks.When the previous combo carries all the way into the corner."
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214P",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1630",
+      "difficulty": "Easy",
+      "notes": "KD +42, or +43~44 if spaced.Sets up a 5f safe jump at point blank, but the extra advantage when spaced will cause safe jump attempts to whiff."
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, *.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2750{2900}",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +29 with 1 stock, or +41 with 2 stocks.A convenient way to restock with only 1 stock remaining."
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, F.214HP, F.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "3120",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +39. Extended restock route when starting with 3 Flame Stocks."
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, *.214HP, SA1",
+      "section": "Light Confirm Combos",
+      "position": "Corner",
+      "damage": "2750{3000}",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "KD +28. Same combo as above, but near the corner it works with fewer stocks."
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, *.214PP, *.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "3050{3100~3220}",
+      "superMeter": "1",
+      "driveMeter": "4",
+      "difficulty": "Medium",
+      "notes": "KD +33 with 1-2 stocks, or +43 with 3 stocks.A more expensive 1 stock restock route."
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, *.214PP, *.236LK, *.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Corner",
+      "damage": "3170{3220~3350}",
+      "superMeter": "1",
+      "driveMeter": "4",
+      "difficulty": "Medium",
+      "notes": "KD +27 with 1-2 stocks, +28 with 3 stocks, or +39 with 4 stocks.Corner extended version of the previous combo."
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, F.236KK, dl.j.MP > F.623MK, *.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Corner",
+      "damage": "3400{3490}",
+      "superMeter": "1",
+      "driveMeter": "4",
+      "difficulty": "Hard",
+      "notes": "KD +26 with 3 stocks, or +37 with 4 stocks.A more damaging corner stock dump into SA1."
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, F.214PP, F.236KK, dl.j.MP > F.623MK, *.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Corner",
+      "damage": "3680{3770}",
+      "superMeter": "1",
+      "driveMeter": "6",
+      "difficulty": "Hard",
+      "notes": "KD +26 with 4 stocks, or +37 with 5 stocks.An even bigger drive and stock dump into SA1."
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, 214HP,... 623HK / SA2 / (236LK > SA3)",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "251032704390(4640)",
+      "superMeter": "0 / 2 / 3",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "Basic juggle route when no stocks remain after dive.Knockdown advantage per combo ender:623HK +30 / SA2 +35"
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, F.214MP,... *.623HK / F.SA1 / *.SA2 / (*.236LK > SA3)",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2660{2690} 29903420{3500} 4540(4790){+30}",
+      "superMeter": "0-3",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "With 2 stocks it's more efficient to use F.214MP over F.214HPKnockdown advantage per combo ender:623HK +30 / SA2 +35F.623HK +33 / F.623MK +34 / F.SA1 +39 / F.SA2 +38"
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, *.214PP, j.MP > *.j.214P",
+      "section": "Light Confirm Combos",
+      "position": "Corner",
+      "damage": "2790{2840~2870}",
+      "driveMeter": "4",
+      "difficulty": "Hard",
+      "notes": "KD +31. 4 drive combo that leaves the opponent close enough for dash up pressure."
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, F.214PP, j.MP > F.j.214PP,... (*.214LP > SA3) / F.623HK / *.623KK / *.SA1 / SA2",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "3090{3190} 3250{3270} 3530{3620} 40505090(5340){+20}",
+      "superMeter": "0-3",
+      "driveMeter": "6",
+      "difficulty": "Hard",
+      "notes": "Drive dump combo with a variety of ways to end. j.MP builds drive to avoid burning out when starting from max drive.214LP only combos mid-screen and must be skipped in the corner.Knockdown advantage per combo ender:214LP +36 / 623KK +21 / SA1 +29 / SA2 +37F.623HK +35 / F.623KK +30 / F.SA1 +40 / F.SA2 +41"
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, F.SA2,... 623HK / 623KK / SA1",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "3610{3640} 3730{3760} 3850{3940}",
+      "superMeter": "2-3",
+      "driveMeter": "2 / 4",
+      "difficulty": "Medium",
+      "notes": "F.SA2 is a special case with follow-up combo options.Knockdown advantage per combo ender:623HK +30 / 623KK +20 / SA1 +28"
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, F.214HP/PP, F.SA2,... *.623MK / *.623KK / *.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "3620{3640} 3720{3740} 4000{4090}",
+      "superMeter": "2-3",
+      "driveMeter": "2 / 4 / 6",
+      "difficulty": "Medium",
+      "notes": "214PP into delayed SA2 adds 100 damage for 2 drive, and adds extra frame advantage which allows 623HK to link if timed well.Knockdown advantage per combo ender:623MK +30 / 623KK +19 / SA1 +26F.623MK +33 / F.623KK +28 / F.SA1 +37"
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, F.214PP, F.236LK, F.SA2,... F.623MK / *.623KK / *.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Corner",
+      "damage": "39804020{4030} 4460{4550}",
+      "superMeter": "2-3",
+      "driveMeter": "2 / 4",
+      "difficulty": "Medium",
+      "notes": "Corner extension when there's stocks to spare.Knockdown advantage per combo ender:623MK +30 / 623KK +19 / SA1 +26F.623MK +33 / F.623KK +28 / F.SA1 +37"
+    },
+    {
+      "combo": "5LK~LK~LK > F.j.214PP, F.214PP, j.MP > F.j.214PP, F.SA2,... F.623HK / *.623KK / *.SA1",
+      "section": "Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "42604290{4300} 4730{4820}",
+      "superMeter": "2-3",
+      "driveMeter": "6 / 8",
+      "difficulty": "Hard",
+      "notes": "Full stage carry.Knockdown advantage per combo ender:623KK +20 / SA1 +27F.623HK +33 / F.623MK +34 / F.623KK +29 / F.SA1 +38"
+    },
+    {
+      "combo": "4HK~HK",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2000",
+      "difficulty": "Easy",
+      "notes": "Single-hit confirmable."
+    },
+    {
+      "combo": "4HK~HK, 623MK/623KK/SA1",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Corner",
+      "damage": "266029603200",
+      "superMeter": "001",
+      "driveMeter": "020",
+      "difficulty": "Easy",
+      "notes": "Knockdown advantage per combo ender: 623MK +30 / 623KK +19 / SA1 +27"
+    },
+    {
+      "combo": "M/5HP > 236P/PP",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1300",
+      "driveMeter": "0/2",
+      "difficulty": "Easy",
+      "notes": "Safe on block if spaced so doesn't need to be hit-confirmed, but doesn't knock down and is vulnerable to Drive Impact before the normal move.Use 236LP to get the best frame advantage, or 236HP when further away to keep it gapless on block. Or forget all that and just toss 236PP to try to get something started."
+    },
+    {
+      "combo": "M/5HP > 623HK/236HK/SA1/SA2/SA3",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1800/2000280036004800(5300)",
+      "superMeter": "0123",
+      "difficulty": "Medium",
+      "notes": "Single-hit confirming 5HP into an unsafe special. The combo is easy but confirming it is not.Use 236HK for corner carry or 623HK for damage.Useful in situations where the hit has already confirmed such as after a jump attack or Drive Rush, particularly to go into SA1."
+    },
+    {
+      "combo": "M/5HP > 214HP, 236LK > (SA3)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "AnywhereStanding",
+      "damage": "21604160(4410)",
+      "superMeter": "03",
+      "difficulty": "Medium",
+      "notes": "More difficult to confirm due to only connecting against standing opponents.More practical as a combo ender after already confirming the opponent to be standing.+30 knockdown after 236LK."
+    },
+    {
+      "combo": "M/5HP > 214HP, 623HK",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "AnywhereStanding",
+      "damage": "2440",
+      "difficulty": "Medium",
+      "notes": "Better damage than 236LK, but less corner carry makes this better suited for the corner.+30 knockdown."
+    },
+    {
+      "combo": "M/5HP > 214PP, SA1",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "3400",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "One of the simplest ways to combo into SA1 mid-screen."
+    },
+    {
+      "combo": "M/5HP > 214PP, DR~5LP > 236LK, SA1",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Corner",
+      "damage": "3492",
+      "superMeter": "1",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Corner carry into SA1."
+    },
+    {
+      "combo": "M/5HP > 214PP, 236KK, j.MP, SA1",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Corner",
+      "damage": "3800",
+      "superMeter": "1",
+      "driveMeter": "4",
+      "difficulty": "Medium",
+      "notes": "A slightly more expensive way to get slightly more corner carry into SA1."
+    },
+    {
+      "combo": "M/5HP > 214PP, 236KK, dl.j.MP, 6~SA1",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "3800",
+      "superMeter": "1",
+      "driveMeter": "4",
+      "difficulty": "Very Hard",
+      "notes": "Using manual delays and a micro-walk to make the previous combo work mid-screen."
+    },
+    {
+      "combo": "2MP, 2LP > (Light Combo)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1540+",
+      "difficulty": "Medium",
+      "notes": "Must be close to the opponent. Typically confirms into 236LK or Drive Rush.Goes well with throw setups due to preventing jump and backdash at the same advantage."
+    },
+    {
+      "combo": "2HP, 5LP/2LP > (Light Combo)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1900+",
+      "difficulty": "Medium",
+      "notes": "Typically confirms into 5LP > 214MP or 5LP > 236KK."
+    },
+    {
+      "combo": "M/5HP > DRC~4HK/2MP, (Drive Rush Combo)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1480+",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "DR~4HK forces stand and links back into 2MP.DR~2MP links into 5HP for slightly different combo options."
+    },
+    {
+      "combo": "MP/5HP > DRC~5HP, (Drive Rush Combo)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1480+",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Typically used to initiate OD Fan combos."
+    },
+    {
+      "combo": "2MP/5HP > DRC~5HK/2HP, (Drive Rush Combo)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1565+",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "DR~5HK links into 2MP, dealing more damage than 4HK in cases where the opponent doesn't need to be forced to stand up for 214HP.DR~2HP links into 4HK~HK which is sometimes better in the corner."
+    },
+    {
+      "combo": "CH 2MP/5MK, 2MP/2MK > (Medium Combo)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2120+",
+      "difficulty": "Medium",
+      "notes": "A fairly straightforward counter-hit confirm into one of the other combos listed above."
+    },
+    {
+      "combo": "CH 2HP, 2MP > (Medium Combo)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2360+",
+      "difficulty": "Medium",
+      "notes": "Not something to particularly aim for since 2HP is a little slow for counter-hit fishing, but something to be aware of just in case it happens."
+    },
+    {
+      "combo": "CH 5HK, 2LP > (Light Combo)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1880+",
+      "difficulty": "Medium",
+      "notes": "Another slow counter-hit confirm to be aware of just in case it happens. Must be close to the opponent, typically confirming directly into 236LK or Drive Rush."
+    },
+    {
+      "combo": "Meaty 2MP/4HK, 2MP > (Medium Combo)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2000+",
+      "difficulty": "Hard",
+      "notes": "2MP after a +6-8 setup, or 4HK after +10-11 setup, the latter also being advantageous on block.It's practical to manually time Meaty 2MP, recovering with a 2LP confirm if mistimed too late.The second 2MP combos into one of the other combos listed above."
+    },
+    {
+      "combo": "Meaty 6MP, 5LK/5LP/2LP > (Light Combo)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2170+",
+      "difficulty": "Hard",
+      "notes": "Meaty after a +21 setup, or more commonly +34 to +36 using a whiffed light attack to frame kill.Typically confirms into 5LK~LK~LK, but LP routes have better reach and are sometimes better for routing into SA3 or mid-screen SA1."
+    },
+    {
+      "combo": "4HK~HK, F.623MK/F.623KK/F.SA1",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Corner",
+      "damage": "272030203380",
+      "superMeter": "001",
+      "driveMeter": "020",
+      "difficulty": "Easy",
+      "notes": "The same as flameless but with higher damage and advantage.Knockdown advantage per combo ender: F.623MK +33 / F.623KK +28 / F.SA1 +37"
+    },
+    {
+      "combo": "M/5HP > F.236P/PP",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1400",
+      "superMeter": "0",
+      "driveMeter": "0 / 2",
+      "difficulty": "Easy",
+      "notes": "Safe on block and gaining advantage when spaced, with the OD version in particular being +1 even when point-blank.Also safe against Drive Impact. If the OD version breaks DI it leads to a +5 counter-hit combo using any light attack."
+    },
+    {
+      "combo": "M/5HP > F.214MP, (*.623KK/F.SA1)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "19003020{3090} 3510",
+      "superMeter": "0-1",
+      "driveMeter": "0 / 2",
+      "difficulty": "Medium",
+      "notes": "Knockdown advantage per combo ender: F.214MP +42 / 623KK +19 / F.623KK +28 / F.SA1 +37Safe jump setup when cut short. The follow-ups only work when fairly close to the opponent."
+    },
+    {
+      "combo": "M/5HP > F.214HP, 236LK",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "AnywhereStanding",
+      "damage": "2340",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "KD +35. In the corner this sets up frame-kill 5LK into meaty 6MP overhead."
+    },
+    {
+      "combo": "M/5HP > F.214HP, ...623HK236LK214MP, (corner 623LK)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "AnywhereStanding",
+      "damage": "266023402500(3130)",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Basic options when Flame runs out after the initial launch.623HK: KD +32, use for midscreen damage.236LK: KD +35, use for corner carry. Optional 5LK frame-kill into meaty 6MP overhead.214MP: KD +38 (KD +29 with 623LK juggle), use for advantage or corner damage."
+    },
+    {
+      "combo": "M/5HP > F.214HP, F.214MP, (F.623HK)",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "AnywhereStanding",
+      "damage": "2580{3360}",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "KD +42 / +39. Setting up mid-screen pressure with 2 or 3 stocks.F.214MP sets up a 5f safe jump, and F.623HK sets up double dash into +3."
+    },
+    {
+      "combo": "M/5HP > F.214HP, F.236LK, *.623LK",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "CornerStanding",
+      "damage": "3050{3120}",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "KD +29 with 2 stocks, or +32 with 3 stocks.More useful with 2 stocks as there are better 3 stock routes."
+    },
+    {
+      "combo": "M/5HP > F.214HP, *.214LP > SA3",
+      "section": "Medium/Heavy Confirm Combos",
+      "position": "AnywhereStanding",
+      "damage": "4340(4590){+80}",
+      "superMeter": "3",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "214LP consistently juggles into SA3 with or without flame, whereas other specials can be a bit finicky."
+    },
+    {
+      "combo": "PC 5LP, 5HP > (Heavy Combo)",
+      "section": "Punish Counter Combos / 4f-5f",
+      "position": "Anywhere",
+      "damage": "2160+",
+      "difficulty": "Medium",
+      "notes": "Generally the best option if in range for 5LP."
+    },
+    {
+      "combo": "PC 2LP, 2MK > (Medium Combo)",
+      "section": "Punish Counter Combos / 4f-5f",
+      "position": "Anywhere",
+      "damage": "1920+",
+      "difficulty": "Medium",
+      "notes": "Slightly more reach than 5LP.Can use 5MP instead of 2MK for a tiny bit more damage when slightly closer."
+    },
+    {
+      "combo": "PC 2LP, 236MK/214MP (> SA3)",
+      "section": "Punish Counter Combos / 4f-5f",
+      "position": "Anywhere",
+      "damage": "11603560(3860)",
+      "difficulty": "Medium",
+      "notes": "For when to far to link 2MK.Unsafe on block so only do it when the punish is guaranteed.236MK deals slightly less damage but has more corner carry."
+    },
+    {
+      "combo": "PC 2LP, 214HP > (Combo Ender)",
+      "section": "Punish Counter Combos / 4f-5f",
+      "position": "AnywhereStanding",
+      "damage": "1720+",
+      "difficulty": "Medium",
+      "notes": "Leads to better combos but does not work against crouching opponents."
+    },
+    {
+      "combo": "PC 2LP, 236KK, j.MP > (Combo Ender)",
+      "section": "Punish Counter Combos / 4f-5f",
+      "position": "Anywhere",
+      "damage": "1960+",
+      "driveMeter": "2",
+      "difficulty": "Medium"
+    },
+    {
+      "combo": "PC 2LP, DRC~4HK > (Drive Rush Combo)",
+      "section": "Punish Counter Combos / 4f-5f",
+      "position": "Anywhere",
+      "damage": "2074+",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Works at a significantly longer distance than other options."
+    },
+    {
+      "combo": "PC 2MP, 5HP/4HK > (Heavy Combo)",
+      "section": "Punish Counter Combos / 6f",
+      "position": "Anywhere",
+      "damage": "2880+",
+      "difficulty": "Medium",
+      "notes": "Standard punish for a blocked Drive Reversal.4HK has less reach but sometimes leads to better damage in the corner."
+    },
+    {
+      "combo": "PC 2MK > (Medium Combo)",
+      "section": "Punish Counter Combos / 7f",
+      "position": "Anywhere",
+      "damage": "1960+",
+      "difficulty": "Medium",
+      "notes": "Less potent than 2MP but has more reach. Combo by canceling into a Special Move or Drive Rush Cancel.As a punish, a DRC can combo into 5MK, 5HP, or 2HP for enhanced damage.Cannot combo into DRC~5HK."
+    },
+    {
+      "combo": "PC 4HK, 2MP/2MK > (Medium Combo)",
+      "section": "Punish Counter Combos / 8f",
+      "position": "Anywhere",
+      "damage": "2920+",
+      "difficulty": "Medium",
+      "notes": "Forces stand, but this has very limited punish application outside of point blank sweeps.When punishing most moves, 2MP is more reliable with its greater range and link to 5HP.Whiff punishing with 4HK almost always leaves Mai too far for a link."
+    },
+    {
+      "combo": "PC 5MK, 5HP > (Heavy Combo)",
+      "section": "Punish Counter Combos / 9f",
+      "position": "Anywhere",
+      "damage": "3000+",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "A good meterless punish even for things much worse than -9.Needs to be slightly closer than 2MP does for the combo to work."
+    },
+    {
+      "combo": "PC 5HP > 236[PP], 5HP > (Heavy Combo)",
+      "section": "Punish Counter Combos / 9f",
+      "position": "Anywhere",
+      "damage": "3360+",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "Cashout combo starter."
+    },
+    {
+      "combo": "PC 5HP > F.236[PP], j.HK, 5HP > (Heavy Combo)",
+      "section": "Punish Counter Combos / 9f",
+      "position": "Anywhere",
+      "damage": "4340+",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "Cashout combo starter when Flame Stocks are available."
+    },
+    {
+      "combo": "PC 5HP > 236[PP], 5HP > DRC~5HK, 2MP > DRC~5HK, 2MP > 214HP, 236LK > SA3",
+      "section": "Punish Counter Combos / 9f",
+      "position": "Anywhere",
+      "damage": "5883(6133)",
+      "superMeter": "3",
+      "driveMeter": "7",
+      "difficulty": "Hard",
+      "notes": "Full cashout combo."
+    },
+    {
+      "combo": "PC 5HP > F.236[PP], j.HK, 5HP > DRC~5HK, 2MP > DRC~5HK, 2MP > *.214HP, (F.236MP), *.236LK > SA3",
+      "section": "Punish Counter Combos / 9f",
+      "position": "Anywhere",
+      "damage": "6227(6477)",
+      "superMeter": "3",
+      "driveMeter": "7",
+      "difficulty": "Hard",
+      "notes": "Full cashout combo with Flame Stocks.F.236MP only works if the opponent gets carried to the corner before the end."
+    },
+    {
+      "combo": "PC 5HP > F.236[PP],Walk DR~5HP > F.236[PP],Walk DR~5HP > F.236[PP],j.HK, 5HP > *.214HP, (F.236MP), *.236LK > SA3",
+      "section": "Punish Counter Combos / 9f",
+      "position": "Anywhere",
+      "damage": "5990(6240)",
+      "superMeter": "3",
+      "driveMeter": "8",
+      "difficulty": "Very Hard",
+      "notes": "Full cashout combo that builds an entire SA Bar midscreen.At least one forward walk is needed to build enough Drive to avoid burning out.Drive Rush late to avoid pushing the opponent away from the fans.F.236MP only works if the opponent gets carried to the corner before the end."
+    },
+    {
+      "combo": "PC 5HP > F.236[PP], j.HK, 5HP > DRC~5HP > F.236[PP],j.HK, 5HP > F.214HP, (F.236MP), *.236LK > SA3",
+      "section": "Punish Counter Combos / 9f",
+      "position": "Corner",
+      "damage": "6307(6557)",
+      "superMeter": "3",
+      "driveMeter": "7",
+      "difficulty": "Hard",
+      "notes": "Full cashout combo that builds an entire SA Bar.Works midscreen if F.236MP is skipped but no longer builds a full SA Bar."
+    },
+    {
+      "combo": "PC 2HP, 4HK~HK, (623MK/SA1)",
+      "section": "Punish Counter Combos / 10f",
+      "position": "Anywhere(Corner)",
+      "damage": "27203270/(3720)",
+      "superMeter": "00(1)",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Strong meterless punish starter; link only works if both hits of 2HP connect.Corner is required for 623MK/SA1 juggle ender.Works well after a shimmy, and can punish some closer-range sweeps where 5HP > 214HP would whiff."
+    },
+    {
+      "combo": "PC 5HK, Dash, 2LP > 236HK",
+      "section": "Punish Counter Combos / 14f",
+      "position": "Anywhere",
+      "damage": "2020",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Consistent route from max range or whiff punish scenarios."
+    },
+    {
+      "combo": "PC 5HK, Dash, 5LK~LK~LK > j.214P",
+      "section": "Punish Counter Combos / 14f",
+      "position": "Anywhere",
+      "damage": "2400",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Requires closer positioning than the Dash + 2LP extension.Deals more meterless damage with slightly less corner carry.Dive can whiff at very specific spacing."
+    },
+    {
+      "combo": "PC 5HK, 5HP > 236LK, 623LK",
+      "section": "Punish Counter Combos / 14f",
+      "position": "Corner",
+      "damage": "2820",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Uses no meter/bar, +29 after combo."
+    },
+    {
+      "combo": "PC 5HK, Dash, 2LP > 236LK, 623HK/SA1",
+      "section": "Punish Counter Combos / 14f",
+      "position": "Corner",
+      "damage": "2600(3080)",
+      "superMeter": "0(1)",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Improved version when 236LK reaches the corner."
+    },
+    {
+      "combo": "Drive Impact, 4HK~HK, 623MK",
+      "section": "Punish Counter Combos / 26f / Crumple DI",
+      "position": "Corner",
+      "damage": "2880",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Meterless after the DI."
+    },
+    {
+      "combo": "Drive Impact, Dash x2, 5HP > 214PP, 236HK",
+      "section": "Punish Counter Combos / 26f / Crumple DI",
+      "position": "Anywhere",
+      "damage": "2900",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Great corner carry and oki from a crumple. Drive regeneration resumes quickly, making the meter cost less impactful. Strict timing on the 5HP after dashing twice; dashes are not required, but are useful for timing and for extra corner carry."
+    },
+    {
+      "combo": "Drive Impact, Neutral Jump j.HP/j.HK, 236LK, SA1",
+      "section": "Punish Counter Combos / 26f / Crumple DI",
+      "position": "Near Corner",
+      "damage": "3360",
+      "superMeter": "1",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Solid damage and builds Flame Stocks if close enough to the corner. Stronger than other meterless juggle routes like 4HK~HK. By the time the opponent recovers, almost the entire Drive bar from DI is regained."
+    },
+    {
+      "combo": "Drive Impact, Neutral Jump j.HP/j.HK, DR, 5HP, 236KK, 214PP, SA2",
+      "section": "Punish Counter Combos / 26f / Crumple DI",
+      "position": "Corner",
+      "damage": "4008",
+      "superMeter": "2",
+      "driveMeter": "5.8",
+      "difficulty": "Medium",
+      "notes": "+7 after the combo."
+    },
+    {
+      "combo": "Drive Impact, Neutral Jump j.HP/j.HK, DR, 5HP, DRC, 5HP, DRC, 5HP, 214HP, SA3",
+      "section": "Punish Counter Combos / 26f / Crumple DI",
+      "position": "Corner",
+      "damage": "5088",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "Hard",
+      "notes": "+19 after the combo, but with some distance from the corner. Need to juggle the enemy at the correct height for max damage from the 2 hits of 214HP. If done too fast, will be launched too high and do 68 damage less."
+    },
+    {
+      "combo": "(LP/M/5HP >) DR~5LP, 5HP > (Heavy Combo)",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "2575",
+      "driveMeter": "3/1",
+      "difficulty": "Medium",
+      "notes": "Basic drive rush extension from any cancelable normal move except for 5LK."
+    },
+    {
+      "combo": "(LP/M/5HP >) DR~LP, 4HK~HK > 623MK/KK/SA1",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Corner",
+      "damage": "268128512987",
+      "superMeter": "001",
+      "driveMeter": "3/15/33/1",
+      "difficulty": "Medium",
+      "notes": "Alternative basic route for better damage in the corner."
+    },
+    {
+      "combo": "(LP/M/5HP >) DR~L ~ LP, 5LK~LK~LK > j.214P",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "2575",
+      "driveMeter": "3/1",
+      "difficulty": "Medium",
+      "notes": "+42 knockdown for a 5f safe jump setup."
+    },
+    {
+      "combo": "(LP/M/5HP >) DR~2LK, 2MP > (Medium Combo)",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "2345",
+      "driveMeter": "3/1",
+      "difficulty": "Medium",
+      "notes": "Low hit attack to catch the opponent standing up.2MP combos on hit and frame-traps on block."
+    },
+    {
+      "combo": "(M/5HP >) DR~2MP, 5HP > (Heavy Combo)",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "2830",
+      "driveMeter": "3/1",
+      "difficulty": "Medium",
+      "notes": "Consistent way to loop back into a BnB from any Medium hit."
+    },
+    {
+      "combo": "(MP/5HP >) DR~5MK, 5HP > (Heavy Combo)",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "2915",
+      "driveMeter": "3/1",
+      "difficulty": "Medium",
+      "notes": "Slightly more damage but doesn't work from 2MK.5MK is worse than 2MP on block."
+    },
+    {
+      "combo": "(M/5HP >) DR~4HK, 2MP > (Medium Combo)",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "2864",
+      "driveMeter": "3/1",
+      "difficulty": "Medium",
+      "notes": "Forces the opponent to stand up for a 214HP combo ender.4HK is more vulnerable to Drive Impact and Drive Reversal than 2MP."
+    },
+    {
+      "combo": "(M/5HP >) DR~4HK, 5LK~LK~LK > j.214P",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "2595",
+      "driveMeter": "3/1",
+      "difficulty": "Medium",
+      "notes": "+42 knockdown for a 5f safe jump setup."
+    },
+    {
+      "combo": "(MP/5HP >) DR~5HP > 236[PP], 5HP > (Heavy Combo)",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "3176",
+      "driveMeter": "5/3",
+      "difficulty": "Medium",
+      "notes": "Using 236[PP] instead of a second Drive Rush to avoid burning out."
+    },
+    {
+      "combo": "(2MP/5HP >) DR~5HK, 2MP > (Medium Combo)",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "2949",
+      "driveMeter": "3/1",
+      "difficulty": "Medium",
+      "notes": "Using 5HK instead of 4HK deals more damage than 4HK in cases where the opponent doesn't need to be forced to stand up for 214HP."
+    },
+    {
+      "combo": "(2MP/5HP >) DR~2HP, 4HK~HK > 623MK/KK/SA1",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Corner",
+      "damage": "310632763412",
+      "superMeter": "001",
+      "driveMeter": "3/15/33/1",
+      "difficulty": "Medium"
+    },
+    {
+      "combo": "DR~6MP, 2MP > (Medium Combo)",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "2160",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Overhead into BnB combo."
+    },
+    {
+      "combo": "DR~6MP, 5LK~LK~LK > j.214P",
+      "section": "Combo Theory / Drive Rush Combos",
+      "position": "Anywhere",
+      "damage": "2170",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Overhead into +42 knockdown for a 5f safe jump setup."
+    },
+    {
+      "combo": "5LP",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "2LK",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "2LP,",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "5MK",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "2MK",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "CH 2LP/5LP,",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "CH 5MP",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "CH 2MP",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "CH 5MK",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "CH 2MK",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "CH 5HP",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "PC 5HP",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "PC 5HK",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "DR 5LP",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "DR 2LK",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "DR 5MP",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "DR 2MP",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    },
+    {
+      "combo": "DR 5HP",
+      "section": "Links & Chains",
+      "notes": "Sample Text"
+    }
+  ],
+  "comboTheory": "### Picking an Ender",
+  "lastUpdated": "2026-03-16"
+}

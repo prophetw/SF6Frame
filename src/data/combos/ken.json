@@ -1,0 +1,488 @@
+{
+  "characterId": "ken",
+  "combos": [
+    {
+      "combo": "2LK~2LP~5LP > 623HP",
+      "section": "Normal Hit Meterless / Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1490",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[1] Very Easy",
+      "notes": "Pressure string and confirm string in one."
+    },
+    {
+      "combo": "2LP~2LK~5LP > 623HP",
+      "section": "Normal Hit Meterless / Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1510",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[1] Very Easy",
+      "notes": "Pressure string and confirm string in one."
+    },
+    {
+      "combo": "5LP~5LP~5LP > 623HP",
+      "section": "Normal Hit Meterless / Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1590",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[1] Very Easy",
+      "notes": "Pressure string and confirm string in one."
+    },
+    {
+      "combo": "2LP~2LP, 5LK > 623HP",
+      "section": "Normal Hit Meterless / Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1590",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy",
+      "notes": "Far light confirm, use 1 less 2LP if farther away."
+    },
+    {
+      "combo": "2LP, 214LK, 623MP/623LP",
+      "section": "Normal Hit Meterless / Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1770",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium",
+      "notes": "2LP is plus enough to allow linking on reaction into LK tatsu, which itself enables numerous combos."
+    },
+    {
+      "combo": "2LP, 5MP~HP > KK > 623K, 623HP",
+      "section": "Normal Hit Meterless / Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2080",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium",
+      "notes": "Close up midscreen 5MP Link. Maximum damage and side switches."
+    },
+    {
+      "combo": "2LP, 5MP~HP > KK > 214K",
+      "section": "Normal Hit Meterless / Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "1460",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy",
+      "notes": "Close up midscreen 5MP link. Corner carry."
+    },
+    {
+      "combo": "2LP, 5MP > 214LK, 623MP",
+      "section": "Normal Hit Meterless / Light Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2050",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy",
+      "notes": "Close up midscreen 5MP link. Compromise of Damage and Corner Carry with no side swap."
+    },
+    {
+      "combo": "2LP, 5MP~HP > 236MK~dl.6HK, 623HP",
+      "section": "Normal Hit Meterless / Light Confirm Combos",
+      "position": "Corner",
+      "damage": "2100",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium",
+      "notes": "Close up corner 5MP link. Does more damage than a Jinrai Loop but less stylish."
+    },
+    {
+      "combo": "5HP > 623HP",
+      "section": "Normal Hit Meterless / Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2200",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy",
+      "notes": "Stand HP easier confirm. Combo should be relatively easy, confirming it is harder. If unsure, cancel into MK Jinrai Kicks for safety."
+    },
+    {
+      "combo": "5HP > KK > 623P",
+      "section": "Normal Hit Meterless / Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "2500",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium",
+      "notes": "Stand HP harder confirm. Higher damage, better corner carry but harder to confirm."
+    },
+    {
+      "combo": "j.HP, 2HP > 214LK > 623MP",
+      "section": "Normal Hit Meterless / Heavy Confirm Combos",
+      "position": "Anywhere",
+      "damage": "3070",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy",
+      "notes": "Max damage Jump-in midscreen."
+    },
+    {
+      "combo": "j.HP, 2HP > 236HK~6HK, 623LP",
+      "section": "Normal Hit Meterless / Heavy Confirm Combos",
+      "position": "Corner",
+      "damage": "3380",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium",
+      "notes": "Similar damage to the optimal jump-in corner combo, but without the manually timed Jinrai follow-up."
+    },
+    {
+      "combo": "j.HP, 2HP > 236HK~dl.6LK, 236LK~6LK, 623HP",
+      "section": "Normal Hit Meterless / Heavy Confirm Combos",
+      "position": "Corner",
+      "damage": "3430",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[4] Hard",
+      "notes": "Max damage Jump-in corner."
+    },
+    {
+      "combo": "2LP, 5MP~HP > KK > 623P",
+      "section": "Punish Counter Combos / 4f",
+      "position": "Anywhere",
+      "damage": "1970",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy"
+    },
+    {
+      "combo": "2LP, 2HP > KK > 623P",
+      "section": "Punish Counter Combos / 4f",
+      "position": "Anywhere",
+      "damage": "2190",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[4] Hard",
+      "notes": "4f Punish Counter with Ken's run ender. 2LP can be switched with 5LP for additional range all KK > enders can be used; KK > 214K for corner carry, KK > 623P for damage, and KK > 623K > 623HP for a sideswitch."
+    },
+    {
+      "combo": "2LP, 2HP > 214LK, 623MP",
+      "section": "Punish Counter Combos / 4f",
+      "position": "Anywhere",
+      "damage": "2270",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[4] Hard",
+      "notes": "Max damage 4f Punish Counter"
+    },
+    {
+      "combo": "5MP, 5MP~HP > KK > 623P",
+      "section": "Punish Counter Combos / 5f",
+      "position": "Anywhere",
+      "damage": "2660",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy"
+    },
+    {
+      "combo": "5MP, 2HP > KK > 623P",
+      "section": "Punish Counter Combos / 5f",
+      "position": "Anywhere",
+      "damage": "2880",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium"
+    },
+    {
+      "combo": "5MP, 2HP > 214LK, 623MP",
+      "section": "Punish Counter Combos / 5f",
+      "position": "Anywhere",
+      "damage": "2990",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium"
+    },
+    {
+      "combo": "5MP, 2HP > 236HK~6HK, 623LP",
+      "section": "Punish Counter Combos / 5f",
+      "position": "Corner",
+      "damage": "3300",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium",
+      "notes": "Very similar damage to the optimal punish but significantly easier."
+    },
+    {
+      "combo": "5MP, 2HP > 236HK~dl.6LK, 236LK~6LK, 623HP",
+      "section": "Punish Counter Combos / 5f",
+      "position": "Corner",
+      "damage": "3350",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[4] Hard",
+      "notes": "Optimal corner grounded punish. Can be linked into supers instead of 623HP."
+    },
+    {
+      "combo": "5MP, 2HP > 236HK~dl.6LK, 236LK~6HK > 236236P",
+      "section": "Punish Counter Combos / 5f",
+      "position": "Corner",
+      "damage": "5065",
+      "superMeter": "3",
+      "driveMeter": "0",
+      "difficulty": "[4] Hard",
+      "notes": "Optimal super 3 corner grounded punish."
+    },
+    {
+      "combo": "2MP, 5MP~HP > KK > 623P",
+      "section": "Punish Counter Combos / 6f",
+      "position": "Anywhere",
+      "damage": "2780",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium"
+    },
+    {
+      "combo": "2MP, 2MK > 214LK, 623MP",
+      "section": "Punish Counter Combos / 6f",
+      "position": "Anywhere",
+      "damage": "2810",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium"
+    },
+    {
+      "combo": "236236P",
+      "section": "Punish Counter Combos / 7f",
+      "position": "Anywhere",
+      "damage": "4000",
+      "superMeter": "3",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy",
+      "notes": "The single 7f punish that is more optimal than 6f meterless combos"
+    },
+    {
+      "combo": "2HP, 2MP > 623HP",
+      "section": "Punish Counter Combos / 8f",
+      "position": "Anywhere",
+      "damage": "2780",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium"
+    },
+    {
+      "combo": "2HP > KK~LK, 5MP~HP > KK > 623P",
+      "section": "Punish Counter Combos / 8f",
+      "position": "Anywhere",
+      "damage": "2900",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[4] Hard"
+    },
+    {
+      "combo": "5HP, 2MK > 623HP",
+      "section": "Punish Counter Combos / 10f",
+      "position": "Anywhere",
+      "damage": "2580",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy",
+      "notes": "2MK doesn't reach at tip range"
+    },
+    {
+      "combo": "5HP, 2MP > 623HP",
+      "section": "Punish Counter Combos / 10f",
+      "position": "Anywhere",
+      "damage": "2780",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy",
+      "notes": "Medium range combo"
+    },
+    {
+      "combo": "5HP, 5MP~HP > KK~623P",
+      "section": "Punish Counter Combos / 10f",
+      "position": "Anywhere",
+      "damage": "2900",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy",
+      "notes": "Need to be very close for 5MP to reach"
+    },
+    {
+      "combo": "5HP > DR~5HP, 2MP > DR~5HP, 5MP~5HP > KK~623K, 236236P",
+      "section": "Punish Counter Combos / 10f",
+      "position": "Anywhere",
+      "damage": "5306",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "[3] Medium",
+      "notes": "Cash out combo with sideswap"
+    },
+    {
+      "combo": "5HK, KK > 623P",
+      "section": "Punish Counter Combos / 12f",
+      "position": "Anywhere",
+      "damage": "2150",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy",
+      "notes": "The timing can be a bit tricky due to 5HK's recovery and the need to cancel KK into 623P fairly early."
+    },
+    {
+      "combo": "623HK, 2LP, 5MP~HP > KK > 623P",
+      "section": "Punish Counter Combos / 23f",
+      "position": "Anywhere",
+      "damage": "2720",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium",
+      "notes": "Long range punish counter confirm. The ender can be substituted for KK > 214K/623K."
+    },
+    {
+      "combo": "623HK, 5MP~HP > KK > 623P",
+      "section": "Punish Counter Combos / 23f",
+      "position": "Anywhere",
+      "damage": "2780",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy",
+      "notes": "Easier version. Slightly less carry without 2LP. The ender can be substituted for KK > 214K/623K."
+    },
+    {
+      "combo": "KK > 214K, 2MP > 214LK, 623MP",
+      "section": "Punish Counter Combos / 23f",
+      "position": "Anywhere",
+      "damage": "3405",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium",
+      "notes": "Another long range punish counter confirm. You could alternatively do 5MP ~ 5HP > Run 623P/214K/623K after 214K."
+    },
+    {
+      "combo": "KK~214K, 2MP > DR~5HP, 2MP > DR~5HP, 2MP > 623HP > 236236P",
+      "section": "Punish Counter Combos / 23f",
+      "position": "Anywhere",
+      "damage": "5790",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "[3] Medium",
+      "notes": "Cash out combo"
+    },
+    {
+      "combo": "KK~214K, (2MP > DR~2HP > KK~LK) X2, 2MP > ~236MK~6HK > 236236P",
+      "section": "Punish Counter Combos / 23f",
+      "position": "Anywhere",
+      "damage": "5900",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "[3] Hard",
+      "notes": "Optimal Cash out combo"
+    },
+    {
+      "combo": "DI, 5MP~HP > KK, 214K",
+      "section": "Punish Counter Combos / 26f",
+      "position": "Anywhere",
+      "damage": "2140",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "[2] Easy",
+      "notes": "Corner carry, +43 oki."
+    },
+    {
+      "combo": "DI, 5HP > KK, 214K",
+      "section": "Punish Counter Combos / 26f",
+      "position": "Anywhere",
+      "damage": "2440",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "[2] Easy",
+      "notes": "Max damage DI 1 bar corner carry, but +3 with no knockdown."
+    },
+    {
+      "combo": "DI, 5MP~HP > KK, 623K, 623HP",
+      "section": "Punish Counter Combos / 26f",
+      "position": "Anywhere",
+      "damage": "2740",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "[2] Easy",
+      "notes": "Side switches."
+    },
+    {
+      "combo": "DI, 5HP > KK, 623P",
+      "section": "Punish Counter Combos / 26f",
+      "position": "Anywhere",
+      "damage": "2790",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "[2] Easy"
+    },
+    {
+      "combo": "DI, f~f, 5HP > KK, dl.623K, 623HP",
+      "section": "Punish Counter Combos / 26f",
+      "position": "Anywhere",
+      "damage": "3140",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "[3] Medium",
+      "notes": "Side switches. If you don't delay 623K a bit it goes under the opponent. Max damage DI 1 bar combo."
+    },
+    {
+      "combo": "DI, 5HP > 236236P",
+      "section": "Punish Counter Combos / 26f",
+      "position": "Anywhere",
+      "damage": "4400",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "[2] Easy"
+    },
+    {
+      "combo": "DI, 5HP > KK~HK, 236236P",
+      "section": "Punish Counter Combos / 26f",
+      "position": "Anywhere",
+      "damage": "4560",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "[2] Easy"
+    },
+    {
+      "combo": "DI, 5HP > 236KK~6HK~6K > 236236K",
+      "section": "Punish Counter Combos / 26f",
+      "position": "Anywhere",
+      "damage": "3830",
+      "superMeter": "2",
+      "driveMeter": "3",
+      "difficulty": "[2] Easy"
+    },
+    {
+      "combo": "DI, f~f, 5HP > KK, dl.623K, 236236P",
+      "section": "Punish Counter Combos / 26f",
+      "position": "Anywhere",
+      "damage": "4570",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "[3] Medium",
+      "notes": "Side switches. Delay 623K for at least 3 frames or else 623K or 236236P whiffs. After the first 3 frames you have a comfortable 9 frame window, so it's pretty consistent."
+    },
+    {
+      "combo": "5MP~HP > 236LK~dl.6LK, 236LK~6LK, 623HP",
+      "section": "Jinrai Loops / 4f"
+    },
+    {
+      "combo": "236HK~dl.6LK, 236LK~6LK, 623HP",
+      "section": "Jinrai Loops / 4f"
+    },
+    {
+      "combo": "(5HP > 623MK, 2LP, 5MP > DRC)x2, 5HP > 623MK, 2LP, 5MP~HP > KK~623K, 236236P",
+      "section": "Dragonlash Loops / 4f"
+    },
+    {
+      "combo": "(5HP > 623MK, 2LP, 5MP > DRC)x2, 5HP > 623MK, 2LP, 5MP~HP > 236LK~dl.6LK, 236LK~6HK > 236236P",
+      "section": "Dragonlash Loops / 4f"
+    },
+    {
+      "combo": "5HP > 623KK, 2LP, 5MP > DRC, 5HP > 623MK, 2LP, 2LP, 5MP > DRC, 5HP > 623MK, 2LP, 2LP, 5MP~HP >",
+      "section": "Dragonlash Loops / 4f"
+    },
+    {
+      "combo": "236LK~dl.6LK, 236LK~6HK > 236236P",
+      "section": "Dragonlash Loops / 4f"
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

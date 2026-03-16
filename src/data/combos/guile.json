@@ -1,0 +1,313 @@
+{
+  "characterId": "guile",
+  "combos": [
+    {
+      "combo": "2LP > 2LP > [2]8HK",
+      "section": "Combo List / Light Starter",
+      "position": "Anywhere",
+      "damage": "1520",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[1] Very Easy"
+    },
+    {
+      "combo": "2LP > 2LP > SA1, [2]8KK",
+      "section": "Combo List / Light Starter",
+      "position": "Anywhere",
+      "damage": "2160",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "[2] Easy",
+      "notes": "Only 1 hit of OD Flash kick, maybe you can microwalk to get both but i cant do it"
+    },
+    {
+      "combo": "2LP > 2LP, 5LK > DR > 5LP, 5MP, 2MP > [2]8HK",
+      "section": "Combo List / Light Starter",
+      "position": "Anywhere",
+      "damage": "1709",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "[3] Medium"
+    },
+    {
+      "combo": "2LP > 2LP, 5LK > DR > 5LP, 5MP~4HP > SA1 > [2]8KK",
+      "section": "Combo List / Light Starter",
+      "position": "Anywhere",
+      "damage": "2120",
+      "superMeter": "1",
+      "driveMeter": "5",
+      "difficulty": "[2] Easy"
+    },
+    {
+      "combo": "2LP > 2LP, 5LK > DR > 5LP, 5HP > DR > 5HK, 5MP~4HP > [2]8HK",
+      "section": "Combo List / Light Starter",
+      "position": "Anywhere",
+      "damage": "1917",
+      "superMeter": "0",
+      "driveMeter": "6",
+      "difficulty": "[3] Medium"
+    },
+    {
+      "combo": "2LP > 2LP, 5LK > DR > 5LP, 5HP > DR > 5HK, 5MP~4HP > SA1",
+      "section": "Combo List / Light Starter",
+      "position": "Anywhere",
+      "damage": "2345",
+      "superMeter": "1",
+      "driveMeter": "6",
+      "difficulty": "[2] Easy"
+    },
+    {
+      "combo": "2LP > 2LP, 5LK > DR > 5LP, 5HP > DR > 5HK, 2MP > [2]8HK > SA3",
+      "section": "Combo List / Light Starter",
+      "position": "Anywhere",
+      "damage": "3941",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "[3] Medium"
+    },
+    {
+      "combo": "5MP, 2MP, [2]8HK",
+      "section": "Combo List / Medium Starter",
+      "position": "Anywhere",
+      "damage": "2320",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[3] Medium",
+      "notes": "Hold downback the moment you press 5MP and delay flashkick",
+      "videoUrl": "https://youtu.be/xYVcgsoWBGc?si=1Ms8n6n1hCMmVILp/"
+    },
+    {
+      "combo": "5MP, 2MP > DR > 2MP, 5MP, 2MP > [2]8HK",
+      "section": "Combo List / Medium Starter",
+      "position": "Anywhere",
+      "damage": "2856",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "[3] Medium",
+      "notes": "Avoid doing the 2MP 2MP target combo because it will drop the combo aside from the last one where it will only do 2754",
+      "videoUrl": "https://youtu.be/xYVcgsoWBGc?si=miAzjadUnjmTpdl8&t=3/"
+    },
+    {
+      "combo": "5MP, 2MP > DR > 2MP, 5MP~4HP > SA1 > [2]8KK",
+      "section": "Combo List / Medium Starter",
+      "position": "Anywhere",
+      "damage": "3466",
+      "superMeter": "1",
+      "driveMeter": "5",
+      "difficulty": "[2] Easy",
+      "videoUrl": "https://youtu.be/xYVcgsoWBGc?si=BAVFKD16S2BeTyam&t=8/"
+    },
+    {
+      "combo": "5MP, 2MP > DR > 2MP, 5HP > DR > 5HK, 5MP~4HP > [2]8HK",
+      "section": "Combo List / Medium Starter",
+      "position": "Anywhere",
+      "damage": "3353",
+      "superMeter": "0",
+      "driveMeter": "6",
+      "difficulty": "[3] Medium",
+      "videoUrl": "https://youtu.be/xYVcgsoWBGc?si=bYe4OYii5UP_Pgco&t=15/"
+    },
+    {
+      "combo": "5MP, 2MP > DR > 2MP, 5HP > DR > 5HK, 5MP~4HP > SA1",
+      "section": "Combo List / Medium Starter",
+      "position": "Anywhere",
+      "damage": "3543",
+      "superMeter": "1",
+      "driveMeter": "6",
+      "difficulty": "[2] Easy",
+      "videoUrl": "https://youtu.be/xYVcgsoWBGc?si=ho3v-ugmTEd6TEsA&t=22/"
+    },
+    {
+      "combo": "5MP, 2MP > DR > 2MP, 5HP > DR > 5HK, 2MP > [2]8HK > SA3",
+      "section": "Combo List / Medium Starter",
+      "position": "Anywhere",
+      "damage": "5275",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "[3] Medium",
+      "videoUrl": "https://youtu.be/xYVcgsoWBGc?si=UvO--4VQ3vPQZI1-&t=30/"
+    },
+    {
+      "combo": "CH 6MK, 5LK > DR > 5LP, 5MP, 2MP > [2]8HK",
+      "section": "Combo List / Medium Starter",
+      "position": "Anywhere",
+      "damage": "2592",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "[3] Medium",
+      "notes": "Replacing 5MP, 2MP with the 5MP~4HP target combo deals the same damage",
+      "videoUrl": "https://youtu.be/xYVcgsoWBGc?si=XYKGMJu_NPyBmA4t&t=44/"
+    },
+    {
+      "combo": "CH 6MK, 5LK > DR > 5LP, 5MP~4HP > SA1 > [2]8KK",
+      "section": "Combo List / Medium Starter",
+      "position": "Anywhere",
+      "damage": "3202",
+      "superMeter": "1",
+      "driveMeter": "5",
+      "difficulty": "[2] Easy",
+      "notes": "6MK must be done close enough for 5LK to link afterwards",
+      "videoUrl": "https://youtu.be/xYVcgsoWBGc?si=VraDZ2GyEXoPR6fF=49/"
+    },
+    {
+      "combo": "PC 2MK > [2]8KK",
+      "section": "Combo List / Medium Starter",
+      "position": "Anywhere",
+      "damage": "1880",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "[3] Medium",
+      "notes": "At closer ranges you can do [2]8HK to save drive",
+      "videoUrl": "https://youtu.be/xYVcgsoWBGc?si=QCRNjQMPoMiZaYLy&t=56/"
+    },
+    {
+      "combo": "jHK, 5HP > DR > 5HK, 2MP > [4]6LP, 2MP > [4]6LP, 4HP > [4]6LP > [2]8HK",
+      "section": "Combo List / Heavy Starter",
+      "position": "Corner",
+      "damage": "3774",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "[5] Very Hard"
+    },
+    {
+      "combo": "... > DR > 5MP, 5MP, 2MP > [4]6LP, 4HP > [4]6LP, [2]8HK",
+      "section": "Combo List / Boom Loops",
+      "position": "Corner",
+      "damage": "3000",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "[4] Hard"
+    },
+    {
+      "combo": "... > DR > 5HK, 2MP > [4]6LP, 2MP > [4]6LP, 4HP > [4]6LP, [2]8HK",
+      "section": "Combo List / Boom Loops",
+      "position": "Corner",
+      "damage": "3300",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "[5] Very Hard"
+    },
+    {
+      "combo": "DI w! 2HK~3HK > [2]8HK",
+      "section": "Combo List / Drive Impact Combos",
+      "position": "Anywhere",
+      "damage": "2340",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "[2] Easy",
+      "notes": "2180 damage on wallsplat"
+    },
+    {
+      "combo": "DI w! 2HK~3HK > [2]8HK > [2]8KK",
+      "section": "Combo List / Drive Impact Combos",
+      "position": "Corner",
+      "damage": "3140",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "[2] Easy",
+      "notes": "2980 damage on wallsplat"
+    },
+    {
+      "combo": "DI w! 5HP > 214LP > [2]8HK",
+      "section": "Combo List / Drive Impact Combos",
+      "position": "Corner",
+      "damage": "2640",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "[3] Medium"
+    },
+    {
+      "combo": "DI w! 5HK > SA1(H) > [2]8KK",
+      "section": "Combo List / Drive Impact Combos",
+      "position": "Anywhere",
+      "damage": "3640",
+      "superMeter": "1",
+      "driveMeter": "3",
+      "difficulty": "[2] Easy",
+      "notes": "3480 damage on wallsplat"
+    },
+    {
+      "combo": "DI w! 5HK > SA3",
+      "section": "Combo List / Drive Impact Combos",
+      "position": "Anywhere",
+      "damage": "4400",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "[1] Very Easy",
+      "notes": "4240 damage on wallsplat"
+    },
+    {
+      "combo": "PC 2LP, 5MP ~ 4HP > Ender",
+      "section": "Core Combos"
+    },
+    {
+      "combo": "PC 2LP, 5HP > DR...",
+      "section": "Core Combos"
+    },
+    {
+      "combo": "PC 2MP, 5MP ~ 4HP > Ender",
+      "section": "Core Combos"
+    },
+    {
+      "combo": "PC 2MP, 5HP > DR...",
+      "section": "Core Combos"
+    },
+    {
+      "combo": "PC 5MP, 5HP > DR...",
+      "section": "Core Combos"
+    },
+    {
+      "combo": "PC 5HP, 5HP > DR...",
+      "section": "Core Combos",
+      "notes": "5HP has 20% scaling penalty as a starter. Easy to use but gives up damage."
+    },
+    {
+      "combo": "PC 5HP, 3HK > [2]8K",
+      "section": "Core Combos"
+    },
+    {
+      "combo": "PC 2MK, [2]8K",
+      "section": "Core Combos"
+    },
+    {
+      "combo": "PC 2MK, SA1",
+      "section": "Core Combos"
+    },
+    {
+      "combo": "PC 2MK, 2MP > [2]8K",
+      "section": "Core Combos",
+      "notes": "Limited Range"
+    },
+    {
+      "combo": "PC 2MK, 5HP > DR...,",
+      "section": "Core Combos",
+      "notes": "Limited Range"
+    },
+    {
+      "combo": "PC 2HK ~ 3HK > [2]8HK",
+      "section": "Core Combos",
+      "notes": "2HK has a scaling penalty when starting combo; used only when needed for its long range."
+    },
+    {
+      "combo": "PC 2HK ~ 3HK > [2]8HK > SA1",
+      "section": "Core Combos"
+    },
+    {
+      "combo": "PC 5HK, 5MP ~ 4HP > (SA1 / SA3)",
+      "section": "Core Combos"
+    },
+    {
+      "combo": "PC 5HK, 5HP > DR...",
+      "section": "Core Combos"
+    },
+    {
+      "combo": "DR > PC 5HK, 3HK > [2]8K",
+      "section": "Core Combos"
+    },
+    {
+      "combo": "DR > PC 5HK, 4HP > (SA1 / SA3)",
+      "section": "Core Combos"
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

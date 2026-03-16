@@ -1,0 +1,190 @@
+{
+  "characterId": "marisa",
+  "combos": [
+    {
+      "combo": "5MP~MP > 236MP",
+      "section": "Links and Starters / Light Starters",
+      "position": "Anywhere",
+      "damage": "2420",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[1] Very Easy"
+    },
+    {
+      "combo": "5MP~MP > 214MP~6P",
+      "section": "Links and Starters / Light Starters",
+      "position": "Anywhere",
+      "damage": "2280",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[1] Very Easy",
+      "notes": "Trades damage for better midscreen okizeme."
+    },
+    {
+      "combo": "5MP~MP > 214PP~6P, 236MK",
+      "section": "Links and Starters / Light Starters",
+      "position": "Anywhere",
+      "damage": "2950",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "[2] Easy",
+      "notes": "BnB combo with full screen carry. +16 after dash."
+    },
+    {
+      "combo": "5MP~MP > 214PP~6P, DR~4HP > 623HP",
+      "section": "Links and Starters / Light Starters",
+      "position": "Anywhere",
+      "damage": "3156",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "[3] Medium",
+      "notes": "BnB combo with corner carry from midstage. Sets up a safe jump."
+    },
+    {
+      "combo": "5MP~MP > 214PP~6P, 2[HP], DR~4HP > 623MP",
+      "section": "Links and Starters / Light Starters",
+      "position": "Corner",
+      "damage": "3406",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "[3] Medium",
+      "notes": "BnB corner combo. Can substitute DR~4HP for DR~2MP for an easier link, in exchange for less damage."
+    },
+    {
+      "combo": "5MP~MP > 214PP~6P, 2[HP], Parry Rush > 4HP > 623PP, 4[HP] > 236HP",
+      "section": "Links and Starters / Light Starters",
+      "position": "Corner",
+      "damage": "3564",
+      "superMeter": "0",
+      "driveMeter": "5",
+      "difficulty": "[3] Medium",
+      "notes": "BnB corner combo. Can substitute DR~4HP for DR~2MP for an easier link, in exchange for less damage."
+    },
+    {
+      "combo": "2MP xx DRC 5MK > 4HP xx 214HP~6HP...",
+      "section": "Links and Starters / Light Starters",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "[3] Medium",
+      "notes": "High damage but expensive conversion from 2MP. Extremely useful to buffer behind 2MP in neutral."
+    },
+    {
+      "combo": "4HP > 214HP~6P, 236LK",
+      "section": "Links and Starters / Light Starters",
+      "position": "Anywhere",
+      "damage": "3020",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[1] Very Easy",
+      "notes": "Meterless BnB with full screen carry. +16 after dash."
+    },
+    {
+      "combo": "4HP > 214HP~6P, 236HP",
+      "section": "Links and Starters / Light Starters",
+      "position": "Anywhere",
+      "damage": "3140",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[1] Very Easy",
+      "notes": "Meterless BnB with full screen carry. Resets to neutral."
+    },
+    {
+      "combo": "4HP > 214HP~6P, 236236P",
+      "section": "Links and Starters / Light Starters",
+      "position": "Anywhere",
+      "damage": "3500",
+      "superMeter": "1",
+      "driveMeter": "0",
+      "difficulty": "[1] Very Easy",
+      "notes": "SA2 can be used, but for only +30 damage."
+    },
+    {
+      "combo": "4HP > 214HP~6P, 236LK > 236236K",
+      "section": "Links and Starters / Light Starters",
+      "position": "Anywhere",
+      "damage": "5020 (5270 CA)",
+      "superMeter": "3",
+      "driveMeter": "0",
+      "difficulty": "[1] Very Easy"
+    },
+    {
+      "combo": "4HP > 214HP~6P, Parry Drive Rush > 4HP > 623HP",
+      "section": "Links and Starters / Light Starters",
+      "position": "Anywhere",
+      "damage": "3353",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "[3] Medium",
+      "notes": "Sets up a safe jump near corner."
+    },
+    {
+      "combo": "4HP > 214HP~6P, 4[HP] > 236HP",
+      "section": "Links and Starters / Light Starters",
+      "position": "Corner",
+      "damage": "3580",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy"
+    },
+    {
+      "combo": "4HP > 214HP~6P, 4[HP] > 623LP",
+      "section": "Links and Starters / Light Starters",
+      "position": "Corner",
+      "damage": "3530",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "[2] Easy",
+      "notes": "Sets up safe jump."
+    },
+    {
+      "combo": "4HP > 214HP~6P, 2[HP], DR~4HP > 236HP",
+      "section": "Links and Starters / Light Starters",
+      "position": "Corner",
+      "damage": "3702",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "[2] Easy"
+    },
+    {
+      "combo": "4HP > 214HP~6P, 2[HP], DR~4HP > 623PP, 4[HP] > 236HP",
+      "section": "Links and Starters / Light Starters",
+      "position": "Corner",
+      "damage": "3932",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "[3] Medium"
+    },
+    {
+      "combo": "6HK > 236KK, 4HP > 623MP",
+      "section": "Links and Starters / Light Starters",
+      "position": "Corner",
+      "damage": "4240",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "[2] Easy",
+      "notes": "High damage safe jump setup"
+    },
+    {
+      "combo": "6HK xx 236KK > 4HP xx DRC 6HK~6HK > Parry Drive Rush > 4HP xx DRC 4{HP] xx 236HP xx 236236K",
+      "section": "Links and Starters / Light Starters",
+      "position": "Corner",
+      "damage": "7279 (7529 CA)",
+      "superMeter": "3",
+      "driveMeter": "5",
+      "difficulty": "[3] Medium",
+      "notes": "Max damage, full meter dump combo. Can be routed into after punish counter 5[HP]. If there's not enough drive gauge for the last drive rush cancel end with DRC 4[HP] > 236HP > 236236K."
+    },
+    {
+      "combo": "6HK > 236KK, DR 6HK/4HP > 214HP~6P, Etc.",
+      "section": "Links and Starters / Light Starters",
+      "position": "Near Corner",
+      "damage": "~4505",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "[4] Hard",
+      "notes": "Works at a bit past midscreen. Use DR 6HK when further and DR 4HP when closer to the corner (about 70-60 training stage tick marks from corner for 6HK, 60-50 for 4HP)"
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

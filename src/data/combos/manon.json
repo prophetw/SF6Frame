@@ -1,0 +1,162 @@
+{
+  "characterId": "manon",
+  "combos": [
+    {
+      "combo": "CH 5MP, 5LP",
+      "section": "Links and Starters / Counter-hit"
+    },
+    {
+      "combo": "CH 2MP, 2MP/5MP",
+      "section": "Links and Starters / Counter-hit"
+    },
+    {
+      "combo": "CH 2MK, 2LP",
+      "section": "Links and Starters / Counter-hit"
+    },
+    {
+      "combo": "CH 4HP, 5LK",
+      "section": "Links and Starters / Counter-hit"
+    },
+    {
+      "combo": "236KK (ground)",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "236P~K",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "236HK (air)",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "236KK (air)",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "PC 236P~K",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "236PP~K",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "any launcher, 236KK",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "... > 2HK",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "... > 214LK",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "... > 214MK",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "... > 236P",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "... > 236236K",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "... > 214214K",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "... > 236P(1) > 236236P",
+      "section": "Juggles and Extenders / The Pieces"
+    },
+    {
+      "combo": "2LP > 2LP > 236HK",
+      "section": "BnBs",
+      "notes": "Easy combo for getting used to Manon's cancel options. She has other things she can do from 2LP, but this is the most common."
+    },
+    {
+      "combo": "j.HK, 4HP > 236MP",
+      "section": "BnBs",
+      "notes": "Manon's easiest jump in medal (Damage is medal dependent, listed for Level 1)"
+    },
+    {
+      "combo": "2LP > 2LP > 236HK",
+      "section": "Combo Tables",
+      "notes": "Easy combo for getting used to Manon's cancel options. She has other things she can do from 2LP, but this is the most common."
+    },
+    {
+      "combo": "5LP/2LP/2LK > 5LP/2LP > 236LK/236MK",
+      "section": "Combo Tables",
+      "notes": "Mix and match these moves for 12 easy Manon combos!"
+    },
+    {
+      "combo": "5LP/2LP/2LK > 5LP > 214LK",
+      "section": "Combo Tables",
+      "notes": "You can get 214LK oki off of 5LP"
+    },
+    {
+      "combo": "2LK > 5LP > 214LK/214MK",
+      "section": "Combo Tables",
+      "notes": "LK ender better oki, MK better corner carry"
+    },
+    {
+      "combo": "2LK >2LP > 236MK/HK",
+      "section": "Combo Tables",
+      "notes": "HK gives oki, MK is better damage"
+    },
+    {
+      "combo": "2LK > 2LP > 236KK, 214MK",
+      "section": "Combo Tables"
+    },
+    {
+      "combo": "*2LK > 5LP > DR > 5LP > 4HP > 236MP",
+      "section": "Combo Tables",
+      "notes": "Low damage but gets a medal off a 2LK confirm"
+    },
+    {
+      "combo": "2MP, 5LK > 236HK",
+      "section": "Combo Tables",
+      "notes": "Close range confirm into oki"
+    },
+    {
+      "combo": "5MP~MK",
+      "section": "Combo Tables",
+      "notes": "Target combo hitconfirm from 5MP"
+    },
+    {
+      "combo": "5HP~HP",
+      "section": "Combo Tables",
+      "notes": "This is why we love Manon, very hitconfirmable into her best pressure"
+    },
+    {
+      "combo": "j.HK, 4HP > 236MP",
+      "section": "Combo Tables",
+      "notes": "Manon's easiest jump in medal."
+    },
+    {
+      "combo": "2MP, 4HP > 236MP",
+      "section": "Combo Tables",
+      "notes": "Easy Medal"
+    },
+    {
+      "combo": "2MP, 4HP > 236PP~K, 4HP > 236HK, 236LP",
+      "section": "Combo Tables",
+      "notes": "Recommended punish for 2 drive"
+    },
+    {
+      "combo": "4HP > 236MP~K, 236KK, 214MK",
+      "section": "Combo Tables",
+      "notes": "6f Reversal safe jump routing when close to the corner, can alternatively end in 236MP for medals"
+    },
+    {
+      "combo": "214HK, 5MP > DR~2MP, 4HP > 214KK, 5MP > DR~4HP, 5MP > 236LK > 236236P",
+      "section": "Combo Tables",
+      "notes": "Max damage punish route (CA listed, requires 5 drive)"
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

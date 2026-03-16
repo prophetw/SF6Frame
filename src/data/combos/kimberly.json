@@ -1,0 +1,342 @@
+{
+  "characterId": "kimberly",
+  "combos": [
+    {
+      "combo": "2LP, 2LP, 5LP~MP~HP~HK",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "damage": "1319",
+      "difficulty": "Easy",
+      "notes": "4f starter, requires a point blank start or else the MP will whiff. Can also work with 2LP, 5LP, 5LP starter, but any other light string will have too much pushback."
+    },
+    {
+      "combo": "2LP, 5LP~MP~HP,214MK / 22P Spraycan",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Corner",
+      "damage": "1542(1002)",
+      "difficulty": "Medium",
+      "notes": "In the corner, Kimberly can cut her Bushin Prism Strikes chain short to secure a stronger juggle or a Spraycan setup. Either option is generally superior to her other meterless light conversions in the corner."
+    },
+    {
+      "combo": "2LK, 5LP, 5LK > 214HK/236LP",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "damage": "1287(1071)",
+      "difficulty": "Easy",
+      "notes": "Low starter, and Kimberly's most consistent light conversion. If the opponent blocks, 5LP into 5LK can be interrupted, so either use another 5LP or stop the blockstring early."
+    },
+    {
+      "combo": "2LP, 2LP, 5LP, 5LK > 214HK/236LP",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "damage": "1422(1242)",
+      "difficulty": "Easy",
+      "notes": "A 4-hit light string that can work at point blank. 214HK will whiff on crouching characters (except those with extra-wide hurtboxes)."
+    },
+    {
+      "combo": "2MK, 5LK > 214HK/236LP",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "damage": "1646(1376)",
+      "difficulty": "Easy",
+      "notes": "Low starter with frame advantage on block. Gives time for a counter-hit confirm, but on regular hit allows a light conversion."
+    },
+    {
+      "combo": "2MP, 2MP, 5MP~HP >cl.236K~K / 214HK / 236MP",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "damage": "2269(2386)(2332)",
+      "difficulty": "Easy",
+      "notes": "Various ways to end a meterless 2MP hitconfirm starter. Close 236K~K gives the best corner carry and oki (including DR into meaty low/overhead), 214HK gives better damage at the cost of midscreen oki, and 236MP is a decent compromise of damage and oki. Note that the medium string is interruptible on block without Drive Rush or Burnout enhancements."
+    },
+    {
+      "combo": "2MP, 2MP, 5MP~HP > cl.236K,236LP > SA3 / SA1",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Corner",
+      "damage": "4359(3054/2854)",
+      "superMeter": "3(1)",
+      "difficulty": "Medium",
+      "notes": "Juggling into Arc Step without a divekick follow-up allows a corner juggle into 236LP or SA1, boosting the damage from a common hitconfirm route. Starting with the Target Combo is required; if you perform Arc Step on a grounded opponent, they are not in a juggle state and must be comboed with the divekick or reset with the command throw."
+    },
+    {
+      "combo": "2MP, 2MP, 5MP~HP > 236K~MK,214MK / 22P Spraycan",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Corner",
+      "damage": "2656(2116)",
+      "difficulty": "Medium",
+      "notes": "Ending with the Run~Slide in the corner gives Kimberly the option to juggle 214MK for good meterless damage, or sacrifice some damage for a meaty Spraycan setup. Whether you're looking for damage or oki, this is generally the best meterless corner option."
+    },
+    {
+      "combo": "2MP, 2MP, 5MP~HP > cl.236KK~K (wallsplat) ... ... 6HK~9, j.HP (safe jump) ... 6HK~9, j.HK (air reset) ... 236K~LK, 236LP",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Corner",
+      "damage": "2638(2764)",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "The wall splat works starting from about round start position due to the corner carry on OD Arc Step. Both the j.HP and j.HK enders give the same damage with strong mixup/pressure options afterward, and the 236K~LK juggle leads to high damage with the potential for an SA3 cancel as well. Note that the juggle state is more restrictive than other combo routes into 6HK, so a sequence like 6HK~9, j.MP will not connect."
+    },
+    {
+      "combo": "5HK, 5MP~HP >cl.236K~K / 214HK / 236MP",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "damage": "2151(2277)(2214)",
+      "difficulty": "Easy",
+      "notes": "Essentially the same as the standard 2MP combo route. While 5HK is slower and has more limited range against crouchers, it is +2 on block for enhanced pressure. Note that without Drive Rush momentum, 5HK cannot be followed up with a full 2MP, 5MP sequence (even with 214P Teleport momentum)."
+    },
+    {
+      "combo": "4HK, 2LP > 214HK/236LP",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "damage": "1682(1448)",
+      "difficulty": "Medium",
+      "notes": "Overhead starter that links naturally without Drive Rush or Counter-hit. Kimberly must be close to the opponent for 2LP to reach."
+    },
+    {
+      "combo": "3MK, 2LP > 214HK/236LP",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "damage": "1556(1286)",
+      "difficulty": "Hard",
+      "notes": "Very specific spacing from the slide's max range. Not worth the risk of canceling 2LP unless you're 100% confident in the spacing."
+    },
+    {
+      "combo": "j.2MP, 2LP, 2LP > 214HK/236LP",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "damage": "1845(1593)",
+      "difficulty": "Medium",
+      "notes": "Elbow Drop always allows a light conversion on hit; if it hits at farther ranges, it may require omitting the second 2LP. Can also route into the 5LP~MP~HP~HK Target Combo, though in some rare cases the Elbow Drop may be only +4 on tall characters, preventing the 5LP link. If the opponent crouches or you notice the opponent whiffed an attack, follow with a Medium combo starter instead."
+    },
+    {
+      "combo": "CH 2LP/5LP, 2MP, 5MP~HP ...",
+      "section": "Links and Starters / Counter-hit",
+      "position": "Anywhere",
+      "damage": "1318~(1008~)",
+      "difficulty": "Easy",
+      "notes": "Linking from a CH Light into a Medium allows stronger combo enders. If the CH occurs during a chained light blockstring (e.g. 2LP, CH 2LP), omit the 2MP and skip straight to 5MP."
+    },
+    {
+      "combo": "CH 2MP, 5HP > 236HP ...",
+      "section": "Links and Starters / Counter-hit",
+      "position": "Anywhere",
+      "damage": "1662~",
+      "difficulty": "Easy",
+      "notes": "Good meterless CH starter from closer ranges."
+    },
+    {
+      "combo": "CH 2MK, 5MP~HP ...",
+      "section": "Links and Starters / Counter-hit",
+      "position": "Anywhere",
+      "damage": "1377~",
+      "difficulty": "Medium",
+      "notes": "Useful after meaty 2MK if the opponent wakes up with a button, but doesn't work from outside close range."
+    },
+    {
+      "combo": "CH 2MK, 2MK, 5LK > 214HK/236LP",
+      "section": "Links and Starters / Counter-hit",
+      "position": "Anywhere",
+      "damage": "2069~(1835~)",
+      "difficulty": "Medium",
+      "notes": "Close range start only. 214HK is better for damage/knockdown but whiffs on most crouching opponents."
+    },
+    {
+      "combo": "CH 5HK, 5HP > 236HP ...",
+      "section": "Links and Starters / Counter-hit",
+      "position": "Anywhere",
+      "damage": "1818~",
+      "difficulty": "Easy",
+      "notes": "5HK is a bit slow for normal frame trap usage, but can be effective against opponents who delay throw tech. The forward movement ensures 5HP will reach at nearly any range."
+    },
+    {
+      "combo": "CH 4HK, 5MP~HP ...",
+      "section": "Links and Starters / Counter-hit",
+      "position": "Anywhere",
+      "damage": "1503~",
+      "difficulty": "Medium",
+      "notes": "At farther ranges, nothing will link even after CH 4HK. The overhead is too slow for practical use in blockstrings, so this is primarily for meaty pressure."
+    },
+    {
+      "combo": "CH 6HK~Forward/Neutral Hop, j.LK, 5LP ...",
+      "section": "Links and Starters / Counter-hit",
+      "position": "Anywhere",
+      "damage": "1269~(1899~)",
+      "difficulty": "Medium",
+      "notes": "If the opponent is late when trying to interrupt 6HK, Kimberly can choose which side to land on before coming down with a quick light combo. If the opponent is crouching, the j.LK becomes +6, allowing a 2MP, 2MP, 5MP~HP link."
+    },
+    {
+      "combo": "PC 5LK > 236MP",
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "damage": "1188",
+      "difficulty": "Easy",
+      "notes": "Useful cancel route for max range meterless light punishes. Useful if you're not confident that your other normals can reach."
+    },
+    {
+      "combo": "PC 2LP, 2HP/5MK ...",
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "damage": "900~(756~)",
+      "difficulty": "Easy",
+      "notes": "Important links after a 4f punish. 2HP is preferred for its high damage and better meterless follow-up options, but the range is very short. 5MK is much more consistent to make up for its reduced damage potential."
+    },
+    {
+      "combo": "PC 5LP, 5HP > 236HP ...",
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "damage": "1206~",
+      "difficulty": "Easy",
+      "notes": "5f punish starter that works from farther out. In some rare cases, 5HP may not reach, so 5MK can be substituted for a weaker but consistent ender."
+    },
+    {
+      "combo": "PC 5MP/5MK > 236HP ...",
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "damage": "1188~(1107~)",
+      "difficulty": "Easy",
+      "notes": "Meterless launch starter on a 6f punish (5MP) or ranged 8f punish (5MK). Note that 5MK applies extra damage scaling as a combo starter. On a closer range 6f punish, use a more powerful 2MP, 5HP route instead (see Counter-hit section)."
+    },
+    {
+      "combo": "PC 5HP > 214P Teleport, 5HK, 5MP~HP ...",
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "damage": "2070~",
+      "difficulty": "Medium",
+      "notes": "Teleport is the easiest way to get point blank after a 5HP Punish Counter stagger, but 236K~P (Run~Stop) also works. For a meterless launch, can instead link to 5HP > 236HP."
+    },
+    {
+      "combo": "PC 2HP > 236K~P, 2MP, 2MP, 5MP~HP ...",
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "damage": "2358~",
+      "difficulty": "Medium",
+      "notes": "Limited usefulness due to the short range of 2HP, but if the opponent is -8 at close range this is a good meterless starter."
+    },
+    {
+      "combo": "PC 3MK Slide, 5MP~HP ...",
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "damage": "1269~",
+      "difficulty": "Medium",
+      "notes": "Consistent link after a well-spaced slide under the opponent's projectile, which can be up to +10 on hit."
+    },
+    {
+      "combo": "PC 6HK~Forward/Neutral Hop, j.MK, 2HP ...",
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "damage": "1800~",
+      "difficulty": "Medium",
+      "notes": "After 6HK crushes a low poke or throw attempt, Kimberly can choose which side to land on before continuing with a strong jump-in combo. Without the Hop cancel, she is only +5 and can only link into light normals."
+    },
+    {
+      "combo": "22MP (Spraycan), PC 2HP > 236MP (explosion),j.236PP, 6HK~j.MP, 236MP (1st hit) > SA3",
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "damage": "5375",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Hard",
+      "notes": "Punish against some extremely unsafe DPs or Supers (or a Stun combo), requiring Kimberly to start point blank so that 2HP connects immediately after throwing the spraycan. 236LP can also be used for slightly more damage, but midscreen it must be juggled high/early or the SA3 will whiff. In the corner, any strength spraycan and 236LP can be used."
+    },
+    {
+      "combo": "DI (Wallsplat), 2HP > 236K~LK, instant j.236P",
+      "section": "Drive Impact / Normal Hit",
+      "position": "Corner",
+      "damage": "2790(2217)",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Works on Hit/Block. Good damage/oki with no extra meter cost. Can replace j.236P with Spray Can setup. () refers to damage from blocked DI wall splat."
+    },
+    {
+      "combo": "DI (Wallsplat), 2HP > 236K~LK, instant j.236PP ...... 6HK~j.HP/j.HK... 236K~LK, 236LP > SA3",
+      "section": "Drive Impact / Normal Hit",
+      "position": "Corner",
+      "damage": "2943(2469)5069(4628)",
+      "superMeter": "0~3",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Works on Hit/Block. j.HP sets up safe jump, j.HK causes air reset, and SA3 route deals over 50% damage. Can also go for a Spraycan setup after 236K~LK, doing slightly less damage than the j.HP/j.HK route. () refers to damage from blocked DI wall splat."
+    },
+    {
+      "combo": "DI (Wallsplat), 2HP > 236K~LK, 236LP > SA3",
+      "section": "Drive Impact / Normal Hit",
+      "position": "Corner",
+      "damage": "4412(3814)",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Works on Hit/Block. Good way to cash out damage without spending extra Drive gauge. () refers to damage from blocked DI wall splat."
+    },
+    {
+      "combo": "PC DI (Crumple), 2HP > 236HP, DR~5LP~MP~2HP~HK, 236LP",
+      "section": "Drive Impact / Normal Hit",
+      "position": "Anywhere",
+      "damage": "2627",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "Good midscreen damage and corner carry."
+    },
+    {
+      "combo": "PC DI (Crumple), 5HK, 5MP~HP > 236K~MK, (214MK)",
+      "section": "Drive Impact / Normal Hit",
+      "position": "Anywhere",
+      "damage": "2322(2754)",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Good corner carry with no extra Drive cost. If it reaches the corner, can follow with Spray Can setup or 214MK juggle after slide. () refers to damage with corner 214MK."
+    },
+    {
+      "combo": "PC DI (Crumple), 2HP > 236HP, j.MP > j.214KK ... 22P Spraycan / Air SA2 / SA3",
+      "section": "Drive Impact / Normal Hit",
+      "position": "*Anywhere",
+      "damage": "2763(3803)(*4763)",
+      "superMeter": "0~3",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Works anywhere, but particularly useful for corner spray can setups without sacrificing damage. SA2 adds some nice damage to secure a round. If you intend to combo into a corner SA3, the earlier 236K~LK route does nearly identical damage with no extra Drive cost; only use this version if you need the extra corner carry or if it's going to win the round."
+    },
+    {
+      "combo": "PC DI (Crumple), 5LP~MP~2HP~2HK",
+      "section": "Drive Impact / Normal Hit",
+      "position": "Anywhere",
+      "damage": "2055",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "A simple side switch after countering the opponents DI while cornered."
+    },
+    {
+      "combo": "PC DI (Crumple), nj.HK, DR~2HP > 236K~P ... ... 214HK / j.236P",
+      "section": "Drive Impact / Normal Hit",
+      "position": "Anywhere",
+      "damage": "2387(2526)",
+      "driveMeter": "2",
+      "difficulty": "Hard",
+      "notes": "The nj.HK puts the crumpled opponent into a juggle state, allowing DR~2HP to pick up the juggle. By canceling into Run~Stop, Kimberly switches sides, and can pick up some extra damage with an instant TK Nue Twister or an easier 214HK. This is an important combo to know when countering the opponent's DI with your back to the wall, as it gives more damage than a Back Throw or Bushin Hellchain side switch."
+    },
+    {
+      "combo": "2LK, 2LP > 236LP > SA3",
+      "section": "Links and Starters",
+      "notes": "-"
+    },
+    {
+      "combo": "5HK, 5MP~HP > Close 236KK~K (Wallsplat), 6HK~j.214K",
+      "section": "Links and Starters",
+      "notes": "Must be close enough to corner for OD Arc Step to Wallsplat"
+    },
+    {
+      "combo": "5HK, 5MP~HP > SA1",
+      "section": "Links and Starters",
+      "notes": "-"
+    },
+    {
+      "combo": "5HP > 236HP, j.MP > j.214K",
+      "section": "Links and Starters",
+      "notes": "Single-hit confirm; won't combo if final frame of 5HP is canceled"
+    },
+    {
+      "combo": "4HK, 2LP > 236LP > SA3",
+      "section": "Links and Starters",
+      "notes": "-"
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

@@ -1,0 +1,620 @@
+{
+  "characterId": "jamie",
+  "combos": [
+    {
+      "combo": "2LP , 5LK~LK > 623HK",
+      "section": "Confirms / Light Confirms",
+      "position": "Anywhere",
+      "damage": "1566",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Useful for beating out block strings with big gaps. +39 KD, use to get a drink in."
+    },
+    {
+      "combo": "2LP , 5LK~LK > 623LK",
+      "section": "Confirms / Light Confirms",
+      "position": "Anywhere",
+      "damage": "1314",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "A 5LK might need to be removed based on distance. +42 KD safe jump in the corner, or +4 anywhere after 2 dashes."
+    },
+    {
+      "combo": "2LP , 2LK , 5LK > 623LK",
+      "section": "Confirms / Light Confirms",
+      "position": "Anywhere",
+      "damage": "1233",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "The light portion is useful as a block string due to it pushing further than other light strings."
+    },
+    {
+      "combo": "2LP , 5LP~LK~MP > 623LK",
+      "section": "Confirms / Light Confirms"
+    },
+    {
+      "combo": "5LK , 2LP , 5LP~LK~MP > 623LK",
+      "section": "Confirms / Light Confirms"
+    },
+    {
+      "combo": "5MP , 5LK > 236LP~LK~LK",
+      "section": "Confirms / Medium Confirms"
+    },
+    {
+      "combo": "5MP , 5LK > 623MK",
+      "section": "Confirms / Medium Confirms"
+    },
+    {
+      "combo": "2MP > 236HP~HK~HK",
+      "section": "Confirms / Medium Confirms"
+    },
+    {
+      "combo": "5MP , 5LP~LK~MP > 623LK",
+      "section": "Confirms / Medium Confirms"
+    },
+    {
+      "combo": "5MP , 5LP~LK~MP > 236MP~MK~MK",
+      "section": "Confirms / Medium Confirms"
+    },
+    {
+      "combo": "5MP , 5LP~LK~MP > 236LK",
+      "section": "Confirms / Medium Confirms"
+    },
+    {
+      "combo": "2HP > 214HP",
+      "section": "Confirms / Heavy Confirms"
+    },
+    {
+      "combo": "2HP > 236HP~HK~HK",
+      "section": "Confirms / Heavy Confirms"
+    },
+    {
+      "combo": "2HP > 236HK",
+      "section": "Confirms / Heavy Confirms"
+    },
+    {
+      "combo": "2HP > 214HP~6HP",
+      "section": "Confirms / Heavy Confirms"
+    },
+    {
+      "combo": "2LP, 2HP > 623HK",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "2LP, 2HP > 236HP~K~K",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "2LP, 2MK > 236MP~P~P",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "2LP, 2MK > 236MP~K~K",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5HP, 5LK~LK > 623HK",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5HP, 5LK~LK > 236LP~K~K",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5LK, 2MK > 236MP~K~K",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "2MP, 2MP > 236HP~K~K",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "2MP, 2MK > 236MP~K~K",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5MP, 2HP > 623HK",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5MP, 2HP > 236HP~K~K",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5MP, 2MK > 236MP~K~K",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5HP, 5LK > 623HK",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5HP, 5LK > 236LP~K~K",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5HK, Dash, 2HP > 623HK",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5HK, Dash, 5MK > 214HP",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5HK, Dash, 5MK > 214PP",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5HK, Dash, 2HP > 623LK",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5HK, DR~2KK > j.HK, 5HP, 2HK-K-P",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "5HK, Dash, 2HP > 214PP, 2HK-K-P",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "6HK, 2MP > 236HP~K~K",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "6HK, 2MK > 236MP~K~K",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "6HK, 2MP > 236236K",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "6HK, 2MP > 236236K[2]",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "DR~5HP, 2HP > 236236P, DR~2KK > dl.j.HK, j.MP > j.214HK",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "DR~5HP, 2HP > 214PP, 5HP > DR~2HP > 214PP, 623HK",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "DR~5HP, 2HP > 236236P, DR~2HP, 623HK, 623KK",
+      "section": "Punish Counter / Light Confirms"
+    },
+    {
+      "combo": "2KK, 2HK~K~P",
+      "section": "2KK Anti-Air / Light Confirms"
+    },
+    {
+      "combo": "2KK > dl.j.MP > j.214HK",
+      "section": "2KK Anti-Air / Light Confirms"
+    },
+    {
+      "combo": "2KK > dl.j.MP > j.214KK, dl.2HK~K~P",
+      "section": "2KK Anti-Air / Light Confirms"
+    },
+    {
+      "combo": "2KK > dl.j.MP > j.214KK, 236LK",
+      "section": "2KK Anti-Air / Light Confirms"
+    },
+    {
+      "combo": "63124K 5MP, 5LP~5LK~5MP > 236LK",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214K 2MP > DR~5MP, 2HP>236HK",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214K 2MP > DR~5MP, 2HP > DR~5MP, 2HP > 236HK",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214K 2MP > DR~5MP, 2HP > 214PP, DR~5LK > 236HK",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214K > 236236K",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214K 5MP, 5LP~5LK~5MP > DR~5HP, 5LK > 2LP > 5LP~5LK~5MP > 236236K",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214K 2MP > DR~5MP, 2HP > DR~5MP, 2HP > 236236K",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214K 2MP > DR~5MP, 2HP > 236HK > 236236P, DR~2HP > 623HK, 623KK",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214KK 2HP, 236HK",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214KK DR~2KK > j.HK, 5HP, 2HK-K-P",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214KK 2HP > DR~5MP, 2HP > 236HK",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214KK 2HP > DR~5MP, 2HP > DR~5MP, 2HP > 236HK",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214KK 2HP > 214PP, 5HP > DR~2HP > 236HK",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214KK 2HP > 214PP, 236236K",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214KK <Ender>",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214KK 6HK~4HK~P > 214MP~6P > (CA)236236P",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "63214KK 2HP > 214HP~6P > (CA)236236P",
+      "section": "Command Grab / Light Confirms"
+    },
+    {
+      "combo": "DI DR~2KK > j.HK, 5HP, 2HK-K-P",
+      "section": "Drive Impact / Light Confirms"
+    },
+    {
+      "combo": "DI 2HP > 214PP, 2HK-K-P",
+      "section": "Drive Impact / Light Confirms"
+    },
+    {
+      "combo": "DI 2HP > 214PP, 5HP > DR~2HP > 214PP, 623HK",
+      "section": "Drive Impact / Light Confirms"
+    },
+    {
+      "combo": "DI 5LK, 5HP, 2HK-K-P",
+      "section": "Drive Impact / Light Confirms"
+    },
+    {
+      "combo": "DI dl.6HK~4HK~P > 214PP , 2HK~HK~P",
+      "section": "Drive Impact / Light Confirms"
+    },
+    {
+      "combo": "22[P](2), 2HP > 214PP, 2HK-K-P",
+      "section": "Stun / Light Confirms"
+    },
+    {
+      "combo": "22[P](2), 2HP > 214PP, 5HP > DR~2HP > 214PP, 623HK",
+      "section": "Stun / Light Confirms"
+    },
+    {
+      "combo": "22[P](2), 2HP > 214PP, 236236K",
+      "section": "Stun / Light Confirms"
+    },
+    {
+      "combo": "22[P](2), 2HP > 236236P, DR, 623HK, 623KK",
+      "section": "Stun / Light Confirms"
+    },
+    {
+      "combo": "2HP > 214214P, 2HP > 214HP ~ 6HP",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3420",
+      "superMeter": "2",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Easy and effective."
+    },
+    {
+      "combo": "2HP > 214214P, 6HK~4HK~P > 214HP ~ 6HP",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3567",
+      "superMeter": "2",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Optimal meterless."
+    },
+    {
+      "combo": "[PC] DR~5HP, 2HP > 214214P, 2HP > 214HP~6HP",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3981",
+      "superMeter": "2",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Requires a Punish Counter and Drive Rush, leaving this more as a hard punish."
+    },
+    {
+      "combo": "2HP > 236PP > 214214P, 2HP > 214HP ~ 6HP",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3414",
+      "superMeter": "2",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "The most economical hit-confirmable and safe on block route that also keeps them grounded."
+    },
+    {
+      "combo": "2HP > 214PP > 214214P, DR~2HP > 214HP~6HP",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3660",
+      "superMeter": "2",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Easy and optimal go-to that works anywhere."
+    },
+    {
+      "combo": "2HP > 214214P, 2HP > DR~5MP, 2HP > 214HP~6HP",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3771",
+      "superMeter": "2",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Not hit-confirmable before the super, but nets more damage."
+    },
+    {
+      "combo": "2HP > 214PP > 214214P, 214PP~6P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3454",
+      "superMeter": "2",
+      "driveMeter": "4",
+      "difficulty": "Easy",
+      "notes": "Suboptimal but works anywhere with very easy execution."
+    },
+    {
+      "combo": "2HP > 214214P, 2HP > DR~6HK~4HK~P > 214PP~6P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3755",
+      "superMeter": "2",
+      "driveMeter": "5",
+      "difficulty": "Hard",
+      "notes": "Difficult and expensive route, but works from anywhere. Only gains ~100 extra damage over similar 3 bar routes."
+    },
+    {
+      "combo": "2HP > 214214P, 2HP > DR~2HP > DR~2HP > 214HP~6P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3984",
+      "superMeter": "2",
+      "driveMeter": "6",
+      "difficulty": "Easy",
+      "notes": "For those that do not want to worry about links and still do good damage."
+    },
+    {
+      "combo": "2HP > 214214P, 2HP > DR~5MP, 2HP > DR~5MP, 2HP > 214HP~6P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "4107",
+      "superMeter": "2",
+      "driveMeter": "6",
+      "difficulty": "Medium",
+      "notes": "An extension of the 3 bar combo."
+    },
+    {
+      "combo": "2HP > 214214P, 2HP > DR~6HK~4HK~P > DR~2HP > 214HP~6P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3971",
+      "superMeter": "2",
+      "driveMeter": "6",
+      "difficulty": "Hard",
+      "notes": "Difficult, but optimized scaling for damage. (obsolete after season 2)"
+    },
+    {
+      "combo": "j.214KK, 214PP > 214214P, DR~2HP > 214HP~6P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3186",
+      "superMeter": "2",
+      "driveMeter": "4",
+      "difficulty": "Medium",
+      "notes": "Unique airborne route to combo into SA2. Huge gap if Luminous Dive Kick is blocked."
+    },
+    {
+      "combo": "j.214KK, 214PP > 214214P, DR~5HK > DR~dl.2HP > 214HP~6P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3412",
+      "superMeter": "2",
+      "driveMeter": "6",
+      "difficulty": "Hard",
+      "notes": "Requires manual timing on the 2HP, but best damage from airborne starter."
+    },
+    {
+      "combo": "2HP > 236KK > 214214P, 2HP > 214HP ~ 6HP",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "4359",
+      "superMeter": "2",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "OD Bakkai unlocks huge damage and keeps opponent grounded, allowing for high-damage and economical enders."
+    },
+    {
+      "combo": "2HP > 236KK > 214214P, 2HP > DR~5MP, 2HP > DR~5MP, 2HP > 214HP~6P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "4809",
+      "superMeter": "2",
+      "driveMeter": "6",
+      "difficulty": "Medium",
+      "notes": "An extension of the 3 bar combo."
+    },
+    {
+      "combo": "DR~6MK, 5HP > DR~5MP, 2HP > 236KK > 214214PP, 2HP > 214HP~P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3426",
+      "superMeter": "2",
+      "driveMeter": "5",
+      "difficulty": "Hard",
+      "notes": "High damage from an overhead, although difficult and costly. Useful to close out a round where you don't want to spend SA3."
+    },
+    {
+      "combo": "DR~6MK, 5HP > DR~5MP, 2HP > 236KK > 214214PP, 2HP > 214PP, 236236K",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3817",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "Hard",
+      "notes": "Complete meter dump extension of previous overhead for an additional ~400 damage"
+    },
+    {
+      "combo": "[PC] DR~5HP, 2HP > 236KK > 214214P, 2HP > DR~5MP, 2HP > DR~5MP, 2HP > 214HP~6P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "5079",
+      "superMeter": "2",
+      "driveMeter": "5",
+      "difficulty": "Hard",
+      "notes": "Over 5000 damage on a blocked reversals and anything -16 or worse."
+    },
+    {
+      "combo": "[CH] 4HP~4HP > 214214P, 2HP > 214HP~P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3837",
+      "superMeter": "2",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Hit-confirmable for very good meterless damage."
+    },
+    {
+      "combo": "[CH] 4HP~4HP > 214214P, 2HP > DR~5MP, 2HP > 214HP~P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "4086",
+      "superMeter": "2",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "An extension of the meterless combo."
+    },
+    {
+      "combo": "6HK~4HK~P > DR~2HP > 214214P, 5HK > 214HP~P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "3843",
+      "superMeter": "2",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Less damage than other 3 bar options, but doing Drive Rush Cancel off of the target combo allows gapless pressure on block."
+    },
+    {
+      "combo": "6HK~4HK~P > 214PP > 214214P, DR > 2HP > 214HP~P",
+      "section": "Super Art 2 Extensions / Light Confirms",
+      "position": "Anywhere",
+      "damage": "4161",
+      "superMeter": "2",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Better damage and better use for a hit confirm than other options."
+    },
+    {
+      "combo": "... > 236236P, DR~2HP > 623HK, 623KK",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2HP > 214LP, 5HP, 623LK",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2HP > 214LP, 5HP > 623LK",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2HP > 214PP, DR~2HP > 623LK",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2HP > 214LP, 5HP > 22P",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2HP > 214MP, 5HP > 22P",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2HP > 214LP, 2HK-K-P",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2KK > j.HK, 2HK-K-P",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2KK > j.HK, 5HK, 2HK-K-P",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2KK > j.HK, DRP~236LK",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, 2HK-K-P",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, 214HP",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2HP, 5LK > DI",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2HP, 2LP > DI",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "5HK, Dash, 2HP > 236236P, DR~5MP, 5MK, 63214K",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2KK > j.HK, j.MP > j.214KK, 623HK",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2KK > j.HK, j.MP > j.214KK, 236LK",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, 236MK",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "... > 236236P, DR~2KK > j.HK, j.MP > j.214KK, 214LP~6LP",
+      "section": "Super Art 3 Extensions / Light Confirms"
+    },
+    {
+      "combo": "Drinks",
+      "section": "Confirms",
+      "notes": "Combo",
+      "starter": "Drinks"
+    },
+    {
+      "combo": "5LK~2LP > 236LP",
+      "section": "Confirms",
+      "notes": "Easy confirm. Useful for building drinks when you are at Drink Level 0. Also useful at higher drinks, but sacrifices a lot of damage and oki. Only light version works off of light confirms.",
+      "starter": "Drinks"
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

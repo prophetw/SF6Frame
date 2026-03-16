@@ -1,0 +1,120 @@
+{
+  "characterId": "rashid",
+  "combos": [
+    {
+      "combo": "5MP/2MP, 5LP/5LK",
+      "section": "Links and Starters",
+      "notes": "Links on hit and frame traps on block. Less rewarding from 5MP but easier to confirm than the TC."
+    },
+    {
+      "combo": "5MP~HK",
+      "section": "Links and Starters",
+      "notes": "Simple and straight-forward starter for a lot of what Rashid wants to do. Extends very easily with OD Arabian Cyclone midscreen and partial charge Whirlwind Shot in the corner."
+    },
+    {
+      "combo": "5MK, 5MP",
+      "section": "Links and Starters",
+      "notes": "Relatively standard link, usually used from a jump-in combo."
+    },
+    {
+      "combo": "CH 5LP/2LP, 5MP",
+      "section": "Links and Starters",
+      "notes": "Hit-confirmable link for more damage."
+    },
+    {
+      "combo": "CH 2LP/5MP, 2MK",
+      "section": "Links and Starters",
+      "notes": "Very consistent thanks to 2MK's great reach."
+    },
+    {
+      "combo": "CH 236LP, 5LK",
+      "section": "Links and Starters",
+      "notes": "Good to know, as 236LP hits three times and can blast through Drive Impact's armor."
+    },
+    {
+      "combo": "PC 5LP, 5MK, 5MP",
+      "section": "Links and Starters",
+      "notes": "Works at point-blank range."
+    },
+    {
+      "combo": "PC 5LP, 5MP",
+      "section": "Links and Starters",
+      "notes": "Works from slightly farther out, still retains good routing options."
+    },
+    {
+      "combo": "PC 5LP, 2MK",
+      "section": "Links and Starters",
+      "notes": "Longest reaching punish from 5LP."
+    },
+    {
+      "combo": "PC 2LP, 5HP",
+      "section": "Links and Starters",
+      "notes": "2LP is 1 frame more plus on hit than 5LP which allows this link to work."
+    },
+    {
+      "combo": "PC 5MP, 5MP~HK",
+      "section": "Links and Starters",
+      "notes": "Route into TC from 5MP."
+    },
+    {
+      "combo": "PC 5MP/5MK, 5HP",
+      "section": "Links and Starters",
+      "notes": "Much more consistent in terms of the spacings it works at."
+    },
+    {
+      "combo": "PC 2MK, 214MK",
+      "section": "Links and Starters",
+      "notes": "It's not often that an ender is included here, but this is unique to punish counter."
+    },
+    {
+      "combo": "PC 5MK, 5HP",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "PC 5HP, 214HK",
+      "section": "Links and Starters",
+      "notes": "Rashid needs extra hitstun in order to combo into HK Eagle Spike from 5HP. Thankfully, 5HP is quite fast and works well as a whiff punisher."
+    },
+    {
+      "combo": "PC 2HP, 5HP",
+      "section": "Links and Starters",
+      "notes": "2HP is Rashid's highest damage linking starter, but the link doesn't work from all ranges. It's difficult to convert from neutral but it's fantastic as a punish for anything -12 or worse."
+    },
+    {
+      "combo": "PC 214MP, 5MK, 5MP",
+      "section": "Links and Starters",
+      "notes": "214MP can be used as a punish starter against things like OD reversals or supers."
+    },
+    {
+      "combo": "DR 6HP, 5MP",
+      "section": "Links and Starters",
+      "notes": "Basic overhead confirm. Rashid has a lot of options from this starter thanks to the additional momentum from Drive Rush."
+    },
+    {
+      "combo": "DR 2LK, 2MK",
+      "section": "Links and Starters",
+      "notes": "Easily hit-confirmable double low string."
+    },
+    {
+      "combo": "DR 5MP, 5MP",
+      "section": "Links and Starters",
+      "notes": "5HP also links from here, but this is much better for pressure and is also an easy confirm."
+    },
+    {
+      "combo": "5LP/5LK/2LP > DRC 5LP, 5MK, 5MP",
+      "section": "Links and Starters",
+      "notes": "Reliable route to secure either the 5MP TC or an Eagle Spike knockdown."
+    },
+    {
+      "combo": "5MP/2MP/2MK > DRC 5MK, 5MP/5HP",
+      "section": "Links and Starters",
+      "notes": "Deals more damage by skipping a light normal, on top of having better scaling overall."
+    },
+    {
+      "combo": "5HP > DRC 2HP, 5HP",
+      "section": "Links and Starters",
+      "notes": "Rashid's highest damage DRC extension, but usually limited to DP punishes."
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

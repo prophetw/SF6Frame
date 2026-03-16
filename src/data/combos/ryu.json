@@ -1,0 +1,671 @@
+{
+  "characterId": "ryu",
+  "combos": [
+    {
+      "combo": "2LK ~ 2LP ~ 5LP > 214LK/623HP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "2LK ~ 2LP ~ 2LP > 214MK/236LK",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "2LK ~ 2LP ~ 5LP > 214KK, 623HP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 2LP/5LP, 5LK > 236LK",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 2LP/5LP, 2MP/5MP > 236MK/(236KK, 4HK > 623HP)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 2LP/5LP, 2MP > Denjin 214P, 214MK/236MK/623HP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 5LP, 2MK > 236MK/623HP/(236KK, 4HK > 623HP)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 5LK > 214MK/(236KK, 4HK > 623HP)/(Denjin 214PP, dash, 2HP > 623HP)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "2MK > 214MK/236MK/(236KK, 6HK > 214K)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "2MK > 236LP/236MP/236HP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "5MP, 2MP > 214MK/236MK/623HP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "5MP, 4HP > 236HK/623HP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 5MP, 2HP > 214MK/236MK/(236KK, 4HK > 623HP)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 5MP, 2HK, dash, meaty 5HP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 5MP, 5HP ~> HK, DENJIN CHARGE",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 5MP, 5HP > ( 623HP / 236KK, 4HK > 623HP )",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "5HK, 2MK > 214MK/236MK/623HP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "6HK > 214K/214KK",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "6HP, 2MP > 214MK/623HP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "6HP, 2MP, 5LK > 214MK/236LK",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "6HP, 2MP > 236KK, 4HK > 623HP/236LK/236MK",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 6HP, 4HP > 236HK, (623MP)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 5HP, 5LK > ( 236LK / 214LK / 214MK )",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 236HK, 6HK > (214K/214KK, 236236P/236236K)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 5HK, dash, 2HP > 623HP/(236KK, 623HP)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 5HK, 4HP > 236HK, 623MP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 6HK, 5LK > 236LK / (214KK, 623HP)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 5HP/2HP/4HP > 214HP, 214MK/236MKPC 5HP/2HP/4HP > 214HP, PDR 5HP > 214LP, 2HKPC 5HP/2HP/4HP > 214HP, 214LP, 623LPPC 5HP/2HP/4HP > 214HP, PDR 5HP > 214LP, 623HP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC DI/5HK, delay, 5HP > 236KK, dash forward 623LPPC 5HP/2HP/4HP > 214HP, PDR 2HP > 236KK, dash forward 623LPPC 5HP/2HP/4HP > 214HP, PDR 5MP > 214HK",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "236PP, 236236P",
+      "section": "SUPER ART COMBO ROUTES",
+      "superMeter": "236PP, 236236P"
+    },
+    {
+      "combo": "214KK, 236236P",
+      "section": "SUPER ART COMBO ROUTES",
+      "superMeter": "214KK, 236236P"
+    },
+    {
+      "combo": "( 214HP OR Denjin 214P OR Counter-Hit 214LP/214MP ), 236236P",
+      "section": "SUPER ART COMBO ROUTES",
+      "superMeter": "( 214HP OR Denjin 214P OR Counter-Hit 214LP/214MP ), 236236P"
+    },
+    {
+      "combo": "PC 236HK > 236236P",
+      "section": "SUPER ART COMBO ROUTES",
+      "superMeter": "PC 236HK > 236236P"
+    },
+    {
+      "combo": "Any cancelable Heavy > DRC 5HK, 5HK, 236236P",
+      "section": "SUPER ART COMBO ROUTES",
+      "superMeter": "Any cancelable Heavy > DRC 5HK, 5HK, 236236P"
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > DENJIN 214PP > 214214P",
+      "section": "SUPER ART COMBO ROUTES",
+      "superMeter": "Any Medium/Heavy Starter > DENJIN 214PP > 214214P"
+    },
+    {
+      "combo": "Starter > 236KK > 214214P",
+      "section": "SUPER ART COMBO ROUTES",
+      "superMeter": "Starter > 236KK > 214214P"
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > Denjin 214PP > 214214P, PDR, 2HP > 623HP",
+      "section": "SUPER ART COMBO ROUTES",
+      "superMeter": "Any Medium/Heavy Starter > Denjin 214PP > 214214P, PDR, 2HP > 623HP"
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > 236KK, HP Shoryuken > 236236K",
+      "section": "SUPER ART COMBO ROUTES",
+      "superMeter": "Any Medium/Heavy Starter > 236KK, HP Shoryuken > 236236K"
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > DRC, 5HP, 4HP > 236HK > 236236K",
+      "section": "SUPER ART COMBO ROUTES",
+      "superMeter": "Any Medium/Heavy Starter > DRC, 5HP, 4HP > 236HK > 236236K"
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > DRC, 5HP, 4HP > 236HK, 623MP, 236236K",
+      "section": "SUPER ART COMBO ROUTES",
+      "superMeter": "Any Medium/Heavy Starter > DRC, 5HP, 4HP > 236HK, 623MP, 236236K"
+    },
+    {
+      "combo": "jHP/jHK, 5HP > DRC, 5HK, 5HP > DRC, 5HP, 4HP > 236HK, 623MP, 236236K",
+      "section": "SUPER ART COMBO ROUTES",
+      "superMeter": "jHP/jHK, 5HP > DRC, 5HK, 5HP > DRC, 5HP, 4HP > 236HK, 623MP, 236236K"
+    },
+    {
+      "combo": "PDR, 6MP, 5MP > 214MK/236MK/623HP",
+      "section": "DRIVE RUSH COMBOS",
+      "driveMeter": "PDR, 6MP, 5MP > 214MK/236MK/623HP"
+    },
+    {
+      "combo": "PDR, 2MK, 5LK > 214MK/236LK",
+      "section": "DRIVE RUSH COMBOS",
+      "driveMeter": "PDR, 2MK, 5LK > 214MK/236LK"
+    },
+    {
+      "combo": "Any Medium starter > 236KK, PDR, 5MP, 6HK > 214K, safe jump",
+      "section": "DRIVE RUSH COMBOS",
+      "driveMeter": "Any Medium starter > 236KK, PDR, 5MP, 6HK > 214K, safe jump"
+    },
+    {
+      "combo": "Starter > 214KK, PDR, 5MP/2MP > 214MP, 623HP",
+      "section": "DRIVE RUSH COMBOS",
+      "driveMeter": "Starter > 214KK, PDR, 5MP/2MP > 214MP, 623HP"
+    },
+    {
+      "combo": "Any Light Starter > DRC, 5LP, 4HP > 236HK/623HP/(236HK, 623MP)",
+      "section": "DRIVE RUSH COMBOS",
+      "driveMeter": "Any Light Starter > DRC, 5LP, 4HP > 236HK/623HP/(236HK, 623MP)"
+    },
+    {
+      "combo": "Any Medium/Heavy Starter > DRC, 5HP, 4HP > 236HK/623HP",
+      "section": "DRIVE RUSH COMBOS",
+      "driveMeter": "Any Medium/Heavy Starter > DRC, 5HP, 4HP > 236HK/623HP"
+    },
+    {
+      "combo": "PC (DI or 5HK), 5HP > DRC, 5HK > 5HP > DRC, 5HK > 5HP > 623HP > 236236K",
+      "section": "DRIVE RUSH COMBOS",
+      "driveMeter": "PC (DI or 5HK), 5HP > DRC, 5HK > 5HP > DRC, 5HK > 5HP > 623HP > 236236K"
+    },
+    {
+      "combo": "PC (DI or 5HK), 5HP > DRC, 5HK, 5HP > DRC, 5HP, 4HP > 236HK, 623MP > 236236K",
+      "section": "DRIVE RUSH COMBOS",
+      "driveMeter": "PC (DI or 5HK), 5HP > DRC, 5HK, 5HP > DRC, 5HP, 4HP > 236HK, 623MP > 236236K"
+    },
+    {
+      "combo": "Any Starter > 214KK, PDR, 2MP, DRC, 2HP, 236HK, 623HP > 236236K",
+      "section": "DRIVE RUSH COMBOS",
+      "driveMeter": "Any Starter > 214KK, PDR, 2MP, DRC, 2HP, 236HK, 623HP > 236236K"
+    },
+    {
+      "combo": "PC Drive Impact, 5HK, 2MK > 623HP/(Denjin 214P, PDR, 5HP > 214LP, 2HK)",
+      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "driveMeter": "PC Drive Impact, 5HK, 2MK > 623HP/(Denjin 214P, PDR, 5HP > 214LP, 2HK)"
+    },
+    {
+      "combo": "PC Drive Impact, 6HP, 2MP, 5LK > 236LK",
+      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "driveMeter": "PC Drive Impact, 6HP, 2MP, 5LK > 236LK"
+    },
+    {
+      "combo": "PC Drive Impact, dash, 2HP > 214MP, 623HP",
+      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "driveMeter": "PC Drive Impact, dash, 2HP > 214MP, 623HP"
+    },
+    {
+      "combo": "PC Drive Impact, 6HP, 2MP > Denjin 214P, 214LP, 623LP",
+      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "driveMeter": "PC Drive Impact, 6HP, 2MP > Denjin 214P, 214LP, 623LP"
+    },
+    {
+      "combo": "PC Drive Impact, neutral jump, 8HP, 6HK > 214KK, (623P/236236P/236236K)",
+      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "driveMeter": "PC Drive Impact, neutral jump, 8HP, 6HK > 214KK, (623P/236236P/236236K)"
+    },
+    {
+      "combo": "PC Drive Impact, 5HK, 2MK > Denjin 214PP, 5HP > 623HP",
+      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "driveMeter": "PC Drive Impact, 5HK, 2MK > Denjin 214PP, 5HP > 623HP"
+    },
+    {
+      "combo": "PC Drive Impact, 5HK, 2MK > Denjin 214PP, dash, 2HP > 214LP, 623HP",
+      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "driveMeter": "PC Drive Impact, 5HK, 2MK > Denjin 214PP, dash, 2HP > 214LP, 623HP"
+    },
+    {
+      "combo": "Wall Splat, 5HP > 214MP, 623HP",
+      "section": "DRIVE IMPACT AND STUN COMBOS"
+    },
+    {
+      "combo": "Wall Splat, 5HP > Denjin 214P, j.MP (2nd hit) > ( 214K/214KK, Super 1 or 3 )",
+      "section": "DRIVE IMPACT AND STUN COMBOS"
+    },
+    {
+      "combo": "Wall Splat, 5HP > Denjin 214P, PDR, 4HP > 236MK, 623MP",
+      "section": "DRIVE IMPACT AND STUN COMBOS"
+    },
+    {
+      "combo": "Denjin Charge (DC), j.HP, 4HP > 236HK, 623MP",
+      "section": "DRIVE IMPACT AND STUN COMBOS"
+    },
+    {
+      "combo": "DC, j.HP, 5HP > Denjin 214PP, dash/walk, 5HP > 214MP, 623HP > SA3",
+      "section": "DRIVE IMPACT AND STUN COMBOS"
+    },
+    {
+      "combo": "DC, j.HK, 5HK, 2MK > 214KK, PDR, 5MP > Denjin 214P, j.MP (2nd hit) > 214KK, SA1 or 3",
+      "section": "DRIVE IMPACT AND STUN COMBOS"
+    },
+    {
+      "combo": "DC, j.HK, 5HP > Denjin 214PP, 5HP > DRC, 5HK, 5HP > DRC, 5HP, 4HP > 236HK, 623MP > SA3",
+      "section": "DRIVE IMPACT AND STUN COMBOS"
+    },
+    {
+      "combo": "DC, Full Charge 214214P, PDR, 2HP > DRC, 2HP > 236MK, 623HP/236236P",
+      "section": "DRIVE IMPACT AND STUN COMBOS"
+    },
+    {
+      "combo": "PC 214PP, 4HP ( > DRC, 5HK, 5HP)x2 > 623HP > 236236K",
+      "section": "MAX DAMAGE PUNISHES",
+      "position": "Anywhere",
+      "damage": "6475/6725(CA)",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Hard",
+      "notes": "As of the 12/02/2024 balance update, the non-Denjin version of OD Hashogeki was buffed to 1100 base damage. This makes it Ryu's highest damage midscreen Punish Counter starter (the highest overall is HK Donkey Kick). This is the best damage Ryu can get off a deep Punish Counter midscreen without Denjin Charge or microwalks to extend the old-brown-shoes [5HK, 5HP, DRC] loop."
+    },
+    {
+      "combo": "PC 214PP, 4HP > 214KK, PDR, 2MP, DRC, 2HP, 236HK, 623HP > 236236K",
+      "section": "MAX DAMAGE PUNISHES",
+      "position": "Corner",
+      "damage": "6704/6954(CA)",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Hard",
+      "notes": "A corner variant of the above concept, utilising the max damage sequence following OD Tatsumaki in the corner."
+    },
+    {
+      "combo": "PC 5HK, 5HP > Denjin 214PP, 5HP ( > DRC, 5HK, 5HP)x2, 623HP > 236236K",
+      "section": "MAX DAMAGE PUNISHES",
+      "position": "Anywhere",
+      "damage": "6619/6869(CA)",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Medium",
+      "notes": "At midscreen with Denjin Charge available, Ryu can revert to a simplified Punish Counter route starting with 5HK and still cash out for more than without Denjin Charge. Be aware of unique recovery states where the opponent may be crouching, as this will cause 5HK to whiff."
+    },
+    {
+      "combo": "PC 5HK, 5HP > Denjin 214PP, 5HP > 214KK, PDR, 2MP > DRC, 2HP > 236HK, 623HP > 236236K",
+      "section": "MAX DAMAGE PUNISHES",
+      "position": "Corner",
+      "damage": "6767/7017(CA)",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Hard",
+      "notes": "This is Ryu's max damage full resource dump from a PC 5HK in the corner when Denjin Charge is available. With CA it breaks 7k damage."
+    },
+    {
+      "combo": "PC 5HK, 5HP > Denjin 214PP > 214214P, PDR, 2HP > DRC, 2HP > 236MK, 623HP/236236P",
+      "section": "MAX DAMAGE PUNISHES",
+      "position": "Corner",
+      "damage": "6156/6406",
+      "superMeter": "2/3",
+      "driveMeter": "x6",
+      "difficulty": "Hard",
+      "notes": "Though it doesn't do quite as much as the level 3 punish, this route packs quite the punch for a level 2 route. Use this as a more meter effecient way to close out rounds with the choice of spending bar on Shinku Hadoken at the end. Please do note that if you do have full drive at the start of this combo, a short manually-timed delay after Shin Hashogeki will allow Ryu to build back a slight amount of Drive avoiding burnout entirely."
+    },
+    {
+      "combo": "PC 236HK, Denjin 214HP, PDR, 4HP > DRC, 2HP > DRC, dl. 2HP > 236HK, 623HP > 236236K",
+      "section": "MAX DAMAGE PUNISHES",
+      "position": "Corner",
+      "damage": "6806/7056(CA)",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Hard",
+      "notes": "Punish Counter 236HK in the corner. Has a delay before the final 2HP in order for it to hit during its cancelable frames. For easier execution, use 236MK instead at the end."
+    },
+    {
+      "combo": "PC 5HK, 5HP, DRC, 5HK, dl. 5HP ( > DRC, 5HK, 5HP)x2, 623HP > 236236K",
+      "section": "MAX DAMAGE PUNISHES",
+      "position": "Anywhere",
+      "damage": "6503/6753(CA)",
+      "superMeter": "3",
+      "driveMeter": "x7",
+      "difficulty": "Very Hard",
+      "notes": "The infamous \"microwalk\" combo. It is very hard to perform consistently and is Ryu's true highest damage option midscreen without Denjin Charge. Before the damage buff to non-Denjin OD Hashogeki this was the strongest by a wider margin, but it is now only 28 damage stronger and arguably never worth it for any reason other than style. You can use 2HP for an extra frame of leniency when microwalking, or 2MP for the largest window (it will do less damage than the 5HP/2HP route, but will still do more damage than the standard, non-microwalk version)."
+    },
+    {
+      "combo": "PC 236HK, Denjin 214214P (hold 1), PDR~2HP > DRC, dl.5MP, PDR~4HP > DRC~2HP > 236HK, 236236P",
+      "section": "MAX DAMAGE PUNISHES",
+      "position": "Corner",
+      "damage": "7171",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Very Hard",
+      "notes": "Max damage off a Punish Counter 236HK in the corner. PC 236HK causes tumble allowing a link into Denjin 214214P, which causes tumble again when charged once, allowing a conversion into a full juggle. After the 5MP you must perform a raw parry drive rush to preserve enough meter for another drive rush cancel. The PC 236HK starter limits this combo's usage outside of large pusishes.",
+      "videoUrl": "https://www.youtube.com/watch?v=LnpRnKnLtTg"
+    },
+    {
+      "combo": "PC 236HK, Denjin 214214P (hold 1), PDR~2HP > DRC, dl.2HP > DRC~2HP > 236HK, 236236P",
+      "section": "MAX DAMAGE PUNISHES",
+      "position": "Corner",
+      "damage": "7118",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Hard",
+      "notes": "Easier version of above combo sacrificing less than 60 damage to forgo the raw PDR during the juggle.",
+      "videoUrl": "https://www.youtube.com/watch?v=5FgFN_zNdm4"
+    },
+    {
+      "combo": "HP/DC Hasho, ( 214MK/236MK/PDR, 5HP > 214LP, 2HK )",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "HP/DC Hasho, PDR, ( 4HK > 214MK, forward dash / 5LP, 6HK > 214K, safe jump )",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "CH LP/MP Hasho, ( PDR, 2MP > 214MK OR 236MK/236236P )",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "HP/DC Hasho, PDR, 5HP > DRC, 4HP > 236HK ( > 236236K )",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "CH LP/MP Hasho, ( PDR, 2MP > DRC, 5HP > 236HK ( > 236236K )",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "HP/DC Hasho, 214LP, 623LP ( > 236236K )",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "HP/DC Hasho, PDR, 5HP > 214MP, 623HP ( > 236236K )",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "CH LP/MP Hasho, ( PDR, 2MP > DRC, dl.5HP > 214MP, 623HP ( > 236236K )",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "CH LP/MP Hasho, PDR, 2MP > Denjin 214HP, PDR , 5HP > DRC, 5HP > DRC, dl.5HP > 236HK, 623HP > 236236K",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "rising j.MP, 2nd Hit => 214K/214KK (corner only, 623HP/236236P/236236K)",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "mid-jump, j.MP => 623HP/236236K",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "exiting peak of jump, j.MP => forward jump j.MP (2nd hit) > 214K/214KK/236LK > SA3",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "exiting peak of jump, j.MP => forward jump j.MP > 214K/214KK, 236236P/236236K/214LP, 623LP > 236236K",
+      "section": "ADVANCED/NICHE COMBOS"
+    },
+    {
+      "combo": "2L ~ 2L ~ 5L > 623H/6S",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "2L ~ 2L ~ 2L > 4S/(A[4S], 623H)",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "5L ~ 5L ~ 2L > 4S",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "A[L ~ L]",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "(A[L] / 5L ~ 2L) > 214L ( > 236236H )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "CH 5L, ( A[L ~ L] / A[L] > 4S )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "CH 5L, A[M] > ( 2S / A[2S], 4H > 623H / A[2S], 6H > 214X )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "CH 214L, PDR A[ M ] > 623H CH 214L, PDR A[ M ] > 4S CH 214L, PDR 5M > 214M, 623H ( > 236236H)!TRADE! CH 214L, PDR 5H > 623H!TRADE! CH 214L, PDR 5H > 214M, 623H ( > 236236H)",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "PC 5L, 2M > (4S / 623H / A[2S], 4H > 623H )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "PC A[L] > ( 2S / (A[2S], 4H > 623H / Denjin 214XX, dash, 2H > 623H )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "2M > ( 4S / 2S / A[2S] > 4H > 623H )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "2M > ( 236L / 236M / 236HP / 236PP )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "5M, A[ M ] > ( 4S / 2S / 623H / A[ 2S ], 4H > 623H )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "A[ M ~ M ~ M ], ( w/ Denjin charge, corner-only) 6H > 214X",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "A[ M ], ( A[ L ~ L ] / A[ L ] > 4S )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "CH 5M, 2H > ( 4S / 2S / A[2S] > 4H > 623H )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "PC 5M, 5H ~ H ~ 2X",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "PC 5M, 5H > ( 623H / A[ 2S ], 4H > 623H )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "A[ H ~ H ~ H ~ H ]",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "A[ H ], A[ M ], ( A[ L ~ L ] / A[ L ] > 4S )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "A[ H ], A[ M ] > A[ 2S ], 4H > 623HA[ H ], A[ M ] > Denjin 214H, ( 4S / 2S )A[ H ], A[ M ] > Denjin 214XX, dash, 2H > 623H",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "6H > 214X",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "CH 5H, ( A[ L ~ L ] / A[ L ] > 4S )CH 5H, A[ L ] > A[ 4S ], 623H / 236236L",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "PC 5H, 2M > ( 4S / 2S )PC 5H, 2M > A[ 4S ], 623H )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "PC 5H/2H > 214H, ( 4S / 2S )PC 5H/2H > 214H, 214L, 623L",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "PC 5H/2H > 214H, PDR 5H/4H > 623H ( > 236236h )PC 5H/2H > 214H, PDR [ 5H ~ H ] > Denjin ChargePC 5H/2H > 214H, PDR 5H > 4SPC 5H/2H > 214H, PDR 2H > DRC 6H > 214X, safe jump in cornerPC 5H/2H > 214H, PDR 5H > 214M, 623H ( > 236236H )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "PC 6H, ( A[ L ~ L ] / A[ L ] > 4S )PC 6H, A[ L ] > A[ 4S ], 623H / 236236L",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "PDR 6M, 5M/A[M] > 4S/2S/623H",
+      "section": "MODERN CONTROLS COMBOS",
+      "driveMeter": "PDR 6M, 5M/A[M] > 4S/2S/623H"
+    },
+    {
+      "combo": "PDR 2M, A[ L ~ L ] / A[ L ] > 4S",
+      "section": "MODERN CONTROLS COMBOS",
+      "driveMeter": "PDR 2M, A[ L ~ L ] / A[ L ] > 4S"
+    },
+    {
+      "combo": "Any Medium starter > A[ 2S ], PDR 5M, 6H > 214X, safe jump",
+      "section": "MODERN CONTROLS COMBOS",
+      "driveMeter": "Any Medium starter > A[ 2S ], PDR 5M, 6H > 214X, safe jump"
+    },
+    {
+      "combo": "Starter > A[ 4S ], PDR 5M, 214M, 623H",
+      "section": "MODERN CONTROLS COMBOS",
+      "driveMeter": "Starter > A[ 4S ], PDR 5M, 214M, 623H"
+    },
+    {
+      "combo": "Any Light starter > DRC 5L, 5M, ( A[ L ~ L ] )/( A[ M ] > 623H )",
+      "section": "MODERN CONTROLS COMBOS",
+      "driveMeter": "Any Light starter > DRC 5L, 5M, ( A[ L ~ L ] )/( A[ M ] > 623H )"
+    },
+    {
+      "combo": "Any Medium/Heavy starter > DRC 5H, ( 5M/A[ M ] > 623H ) / ( 5M, A[ L ~ L ] )",
+      "section": "MODERN CONTROLS COMBOS",
+      "driveMeter": "Any Medium/Heavy starter > DRC 5H, ( 5M/A[ M ] > 623H ) / ( 5M, A[ L ~ L ] )"
+    },
+    {
+      "combo": "PC ( DI / A[ H ] ) > ( DRC 5H, 5M )x2 > 623H > 236236H",
+      "section": "MODERN CONTROLS COMBOS",
+      "driveMeter": "PC ( DI / A[ H ] ) > ( DRC 5H, 5M )x2 > 623H > 236236H"
+    },
+    {
+      "combo": "Any starter > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H",
+      "section": "MODERN CONTROLS COMBOS",
+      "driveMeter": "Any starter > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H"
+    },
+    {
+      "combo": "A[ H ], A[ M ] > 623HA[ H ], A[ M ] > A[ 2S ], 4H > 623HA[ H ], A[ M ] > A[ 2S ], 4H > 236236LA[ H ], A[ M ] > A[ 2S ] > 214124M, hold, then release, ( 236236L )A[ H ], A[ M ] > A[ 2S ], 4H > 623H > 236236H",
+      "section": "MODERN CONTROLS COMBOS",
+      "driveMeter": "A[ H ], A[ M ] > 623HA[ H ], A[ M ] > A[ 2S ], 4H > 623HA[ H ], A[ M ] > A[ 2S ], 4H > 236236LA[ H ], A[ M ] > A[ 2S ] > 214124M, hold, then release, ( 236236L )A[ H ], A[ M ] > A[ 2S ], 4H > 623H > 236236H"
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214H, PDR 5H > 4SA[ H ], A[ M ] > Denjin 214XX, dash, 2H > 623HA[ H ], A[ M ] > Denjin 214H, PDR 5H > 214L, 236236LA[ H ], A[ M ] > Denjin 214XX > 214124M, hold, then release, ( 236236L )A[ H ], A[ M ] > Denjin 214H, PDR 5H > 2S > 236236H",
+      "section": "MODERN CONTROLS COMBOS",
+      "driveMeter": "A[ H ], A[ M ] > Denjin 214H, PDR 5H > 4SA[ H ], A[ M ] > Denjin 214XX, dash, 2H > 623HA[ H ], A[ M ] > Denjin 214H, PDR 5H > 214L, 236236LA[ H ], A[ M ] > Denjin 214XX > 214124M, hold, then release, ( 236236L )A[ H ], A[ M ] > Denjin 214H, PDR 5H > 2S > 236236H"
+    },
+    {
+      "combo": "dash, 2H > 214M, 623HA[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > 214M, 623HA[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > 214M, 236236LA[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H",
+      "section": "MODERN CONTROLS COMBOS",
+      "driveMeter": "dash, 2H > 214M, 623HA[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > 214M, 623HA[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > 214M, 236236LA[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H"
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214H, 214L, 623LA[ H ], A[ M ] > Denjin 214XX, dash, 2H > 214L, 623HA[ H ], A[ M ] > Denjin 214XX, 214H, PDR A[ M ] > 214M, 236236LA[ H ], A[ M ] > Denjin 214XX > 214214M, hold, then release, PDR 2H > 214L, ( 623H / 236236L )A[ H ], A[ M ] > Denjin 214XX, 5H > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H",
+      "section": "MODERN CONTROLS COMBOS",
+      "driveMeter": "A[ H ], A[ M ] > Denjin 214H, 214L, 623LA[ H ], A[ M ] > Denjin 214XX, dash, 2H > 214L, 623HA[ H ], A[ M ] > Denjin 214XX, 214H, PDR A[ M ] > 214M, 236236LA[ H ], A[ M ] > Denjin 214XX > 214214M, hold, then release, PDR 2H > 214L, ( 623H / 236236L )A[ H ], A[ M ] > Denjin 214XX, 5H > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H"
+    },
+    {
+      "combo": "Wall Splat, 5H > 214M, 623H",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "Denjin Charge (DC), j.H, 5H > Denjin 214H, 214L, 623L",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "DC, j.H, 5H > Denjin 214XX, walk/dash forward 2H > 214M, 623H ( > 236236H )",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "DC, 214214M full charge, PDR 2H > DRC 2H > 2S, 623H/236236L",
+      "section": "MODERN CONTROLS COMBOS"
+    },
+    {
+      "combo": "PC 214XX, 5M > ( DRC 5H, 5M )x2 > 623H > 236236H",
+      "section": "MODERN CONTROLS COMBOS",
+      "damage": "PC 214XX, 5M > ( DRC 5H, 5M )x2 > 623H > 236236H"
+    },
+    {
+      "combo": "PC 214XX, 5M > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H",
+      "section": "MODERN CONTROLS COMBOS",
+      "damage": "PC 214XX, 5M > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H"
+    },
+    {
+      "combo": "PC A[ H ], 5H > !DENJIN! 214XX, 5H > ( DRC 5H, 5M )x2 > 623H > 236236H",
+      "section": "MODERN CONTROLS COMBOS",
+      "damage": "PC A[ H ], 5H > !DENJIN! 214XX, 5H > ( DRC 5H, 5M )x2 > 623H > 236236H"
+    },
+    {
+      "combo": "PC A[ H ], 5H > !DENJIN! 214XX, 5H > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H",
+      "section": "MODERN CONTROLS COMBOS",
+      "damage": "PC A[ H ], 5H > !DENJIN! 214XX, 5H > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H"
+    },
+    {
+      "combo": "PC A[ H ], 5H > !DENJIN! 214XX > 214214M partial hold, PDR 2H > DRC 2H > 2S, 236236L",
+      "section": "MODERN CONTROLS COMBOS",
+      "damage": "PC A[ H ], 5H > !DENJIN! 214XX > 214214M partial hold, PDR 2H > DRC 2H > 2S, 236236L"
+    },
+    {
+      "combo": "Trade Setup",
+      "section": "ADVANCED/NICHE COMBOS",
+      "notes": "Position",
+      "starter": "Trade Setup"
+    },
+    {
+      "combo": "5LP > CH 214LP !TRADE!",
+      "section": "ADVANCED/NICHE COMBOS",
+      "notes": "A built-in frametrap from Ryu's LP Hashogeki. At -3 on block, this is not abuseable, but then again it isn't punishable either. The trade is only possible because of the shorter hitstun on Ryu's 5LP compared to his 2LP, the latter being a more true frametrap. The bonus of this trade is that it allows more damaging links following the launch, as CH LP Hashogeki is usually limited to juggles with specials, Super Art 1 or PDR into a Medium Punch due to its long recovery. The differences in hitstun caused by the opposing character's traded 4-frame normal do not make much difference here, as PDR, 5HP is a reliable link and is always the best and most versatile metered option, comboing into either HP Shoryuken or HK Donkey Kick. For extra damage in the corner, PDR, 5HP > MP Hashogeki, HP Shoryuken provides excellent damage for one Drive bar, and can cancel into Super Art 3.",
+      "starter": "Trade Setup"
+    },
+    {
+      "combo": "Forward throw, PDR, CH 5HP !TRADE!",
+      "section": "ADVANCED/NICHE COMBOS",
+      "notes": "Potentially one of the strongest trade setups in the right matchups. The link from PDR CH 5HP to 5HP after the trade does 1760 damage by itself, and can be canceled into anything from a meterless ender (e.g. MK Donkey Kick) all the way up to a Drive Rush Cancel meter dump. Vs Dee Jay, whose only 4-frame normal has low hitstun, Ryu can even reliably link 6HK > OD Tatsumaki. The tricksiest part of this setup is that the Parry Drive Rush can be feinted with 5LP to bait slow reversals: at -7, this will lose to wakeup normals, wakeup grabs and will still be hit by most characters' true reversals, but will call out any reversal from AKI (OD Serpent Slide can be grabbed after the feint), Ed, JP, Kimberly and Marisa (note, it will just about be tagged by Honda's SA1, Dhalsim's SA2 and will be caught by Gief's, Lily's and Manon's SA3).",
+      "starter": "Trade Setup"
+    },
+    {
+      "combo": "Something +1/+2/+3 on block, CH 623LP/623MP/623HP (use the respective version for the block advantage) !TRADE!",
+      "section": "ADVANCED/NICHE COMBOS",
+      "notes": "It isn't the most useful trade but it is fun when it happens. Due to Shoryuken not going airborne until it's later frames, this trade will keep Ryu grounded and allow for a followup combo. The numbers here are adjusted to be against a reversal jab. Light Shoryuken's trade doesn't lead to much besides a Medium Tatsu or Shinku Hadoken midscreen or a 623HP in the corner. On the other hand, Heavy Shoryuken and Medium Shoryken both let you jump for a full j.MP late hit Air Tatsu to Heavy Shoryuken in the corner (with the obvious cancel to Shin Shoryuken). Flex your reads and make friends laugh (or cry).",
+      "starter": "Trade Setup"
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

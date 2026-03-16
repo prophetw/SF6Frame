@@ -53,7 +53,27 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 }
 
 function cleanText(text: string): string {
-    return text.replace(/\s+/g, ' ').trim();
+    return text
+        .replace(/\.mw-parser-output\s+\.text-color--\d+\{[^}]+\}/g, ' ')
+        .replace(/\[\s*edit\s*\]/gi, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function cleanOptionalField(text: string | undefined, kind: 'generic' | 'damage' | 'meter' | 'difficulty'): string | undefined {
+    if (!text) return undefined;
+    const cleaned = cleanText(text);
+    if (!cleaned) return undefined;
+
+    const lowered = cleaned.toLowerCase();
+    if (lowered === '-' || lowered === 'n/a' || lowered === 'na') return undefined;
+
+    if ((kind === 'damage' || kind === 'meter' || kind === 'difficulty')
+        && /^(do|don't|dont|wip)$/i.test(cleaned)) {
+        return undefined;
+    }
+
+    return cleaned;
 }
 
 async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Promise<ComboData | null> {
@@ -127,6 +147,61 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
                    || document.querySelector('#mw-content-text');
     if (!contentEl) return { combos: [], comboTheory: '' };
 
+    function sanitizeClone(el) {
+        const clone = el.cloneNode(true);
+        clone.querySelectorAll('style, script, link[rel="mw-deduplicated-inline-style"], .mw-editsection, sup.reference').forEach(node => node.remove());
+        clone.querySelectorAll('br').forEach(br => br.replaceWith('\\n'));
+        return clone;
+    }
+
+    function extractLines(el) {
+        if (!el) return [];
+        const clone = sanitizeClone(el);
+
+        const listItems = Array.from(clone.querySelectorAll('li'));
+        if (listItems.length > 0) {
+            const firstList = clone.querySelector('ul, ol');
+            const prefixContainer = document.createElement('div');
+            if (firstList) {
+                for (const node of Array.from(clone.childNodes)) {
+                    if (node === firstList) break;
+                    prefixContainer.appendChild(node.cloneNode(true));
+                }
+            }
+
+            const prefix = (prefixContainer.textContent || '')
+                .replace(/\\u00a0/g, ' ')
+                .replace(/\\s+/g, ' ')
+                .replace(/[,:;\\/-]+\\s*$/g, '')
+                .trim();
+
+            const lines = listItems
+                .map(item => (item.textContent || '').replace(/\\u00a0/g, ' ').replace(/\\s+/g, ' ').trim())
+                .filter(Boolean);
+
+            if (lines.length > 0) {
+                return lines.map(line => prefix ? (prefix + ' ' + line).trim() : line);
+            }
+        }
+
+        return (clone.textContent || '')
+            .replace(/\\u00a0/g, ' ')
+            .split(/\\n+/)
+            .map(part => part.replace(/\\s+/g, ' ').trim())
+            .filter(Boolean);
+    }
+
+    function extractText(el) {
+        return extractLines(el).join(' ');
+    }
+
+    function pickValue(lines, index, totalCombos) {
+        if (!lines || lines.length === 0) return undefined;
+        if (lines.length === 1) return lines[0];
+        if (totalCombos > 1 && lines.length === totalCombos) return lines[index];
+        return lines.join(' / ');
+    }
+
     // Helper: find section heading for an element
     function findParentHeadings(el) {
         const result = { h2: '', h3: '', h4: '' };
@@ -138,11 +213,11 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
             while (prev) {
                 const headingEl = prev.querySelector && prev.querySelector('h2, h3, h4');
                 const tag = headingEl ? headingEl.tagName.toLowerCase() : prev.tagName?.toLowerCase();
-                const text = headingEl ? headingEl.textContent : prev.textContent;
+                const text = headingEl ? extractText(headingEl) : extractText(prev);
                 
-                if (tag === 'h2' && !result.h2) result.h2 = (text || '').replace(/\\[edit\\]/g, '').trim();
-                if (tag === 'h3' && !result.h3) result.h3 = (text || '').replace(/\\[edit\\]/g, '').trim();
-                if (tag === 'h4' && !result.h4) result.h4 = (text || '').replace(/\\[edit\\]/g, '').trim();
+                if (tag === 'h2' && !result.h2) result.h2 = text.trim();
+                if (tag === 'h3' && !result.h3) result.h3 = text.trim();
+                if (tag === 'h4' && !result.h4) result.h4 = text.trim();
                 
                 // Also check if prev contains a heading div (citizen theme)
                 const headingDiv = prev.querySelector && prev.querySelector('.mw-heading');
@@ -150,7 +225,7 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
                     const hEl = headingDiv.querySelector('h2, h3, h4');
                     if (hEl) {
                         const hTag = hEl.tagName.toLowerCase();
-                        const hText = (hEl.textContent || '').replace(/\\[edit\\]/g, '').trim();
+                        const hText = extractText(hEl).trim();
                         if (hTag === 'h2' && !result.h2) result.h2 = hText;
                         if (hTag === 'h3' && !result.h3) result.h3 = hText;
                         if (hTag === 'h4' && !result.h4) result.h4 = hText;
@@ -176,7 +251,7 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
         const headerRow = table.querySelector('tr:first-child');
         if (!headerRow) continue;
         const headers = Array.from(headerRow.querySelectorAll('th, td')).map(
-            el => (el.textContent || '').trim().toLowerCase()
+            el => extractText(el).trim().toLowerCase()
         );
         
         const idx = {
@@ -198,31 +273,46 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
             const cells = rows[r].querySelectorAll('td');
             if (cells.length === 0) continue;
             
-            const getCell = (index) => {
-                if (index === -1 || index >= cells.length) return undefined;
-                return (cells[index].textContent || '').replace(/\\n/g, ' ').trim() || undefined;
+            const getCellLines = (index) => {
+                if (index === -1 || index >= cells.length) return [];
+                return extractLines(cells[index]);
             };
             
-            const getVideoLink = (index) => {
+            const getVideoLinks = (index) => {
                 if (index === -1 || index >= cells.length) return undefined;
-                const link = cells[index].querySelector('a[href]');
-                return link ? link.getAttribute('href') : undefined;
+                const links = Array.from(cells[index].querySelectorAll('a[href]'))
+                    .map(link => link.getAttribute('href'))
+                    .filter(Boolean);
+                return links.length > 0 ? links : undefined;
             };
             
-            const comboText = getCell(idx.combo);
-            if (!comboText) continue;
-            
-            combos.push({
-                combo: comboText,
-                position: getCell(idx.position),
-                damage: getCell(idx.damage),
-                superMeter: getCell(idx.super),
-                driveMeter: getCell(idx.drive),
-                difficulty: getCell(idx.difficulty),
-                notes: getCell(idx.notes),
-                videoUrl: getVideoLink(idx.video),
-                section: subsection ? section + ' / ' + subsection : section,
-            });
+            const comboLines = getCellLines(idx.combo);
+            if (comboLines.length === 0) continue;
+
+            const positionLines = getCellLines(idx.position);
+            const damageLines = getCellLines(idx.damage);
+            const superLines = getCellLines(idx.super);
+            const driveLines = getCellLines(idx.drive);
+            const difficultyLines = getCellLines(idx.difficulty);
+            const notesLines = getCellLines(idx.notes);
+            const videoLinks = getVideoLinks(idx.video);
+            const comboCount = comboLines.length;
+
+            for (let lineIndex = 0; lineIndex < comboCount; lineIndex++) {
+                combos.push({
+                    combo: comboLines[lineIndex],
+                    position: pickValue(positionLines, lineIndex, comboCount),
+                    damage: pickValue(damageLines, lineIndex, comboCount),
+                    superMeter: pickValue(superLines, lineIndex, comboCount),
+                    driveMeter: pickValue(driveLines, lineIndex, comboCount),
+                    difficulty: pickValue(difficultyLines, lineIndex, comboCount),
+                    notes: pickValue(notesLines, lineIndex, comboCount),
+                    videoUrl: videoLinks
+                        ? (videoLinks.length === comboCount ? videoLinks[lineIndex] : videoLinks[0])
+                        : undefined,
+                    section: subsection ? section + ' / ' + subsection : section,
+                });
+            }
         }
     }
 
@@ -237,77 +327,101 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
         // Skip non-combo tables (stats tables, notation guides, etc.)
         const firstHeader = table.querySelector('tr:first-child th, tr:first-child td');
         if (!firstHeader) continue;
-        const headerText = (firstHeader.textContent || '').trim().toLowerCase();
+        const headerText = extractText(firstHeader).trim().toLowerCase();
         if (headerText.includes('health') || headerText.includes('notation') || headerText.includes('meaning')) continue;
         
         // Parse headers
         const headerCells = Array.from(table.querySelectorAll('tr:first-child th, tr:first-child td'));
-        const headers = headerCells.map(el => (el.textContent || '').trim().toLowerCase());
+        const headers = headerCells.map(el => extractText(el).trim().toLowerCase());
+        const hasComboHeader = headers.some(h => h.includes('combo') || h.includes('route'));
+        if (!hasComboHeader) continue;
         
-        const comboIdx = headers.findIndex(h => h.includes('combo') || h.includes('route'));
-        const notesIdx = headers.findIndex(h => h.includes('notes') || h.includes('note'));
+        const idx = {
+            combo: headers.findIndex(h => h.includes('combo') || h.includes('route')),
+            position: headers.findIndex(h => h.includes('position') || h.includes('location') || h.includes('pos')),
+            damage: headers.findIndex(h => h.includes('damage') || h.includes('dmg')),
+            drive: headers.findIndex(h => h === 'd' || h.includes('drive')),
+            super: headers.findIndex(h => h === 's' || h.includes('super') || h.includes('sa')),
+            difficulty: headers.findIndex(h => h.includes('difficulty') || h.includes('diff')),
+            notes: headers.findIndex(h => h.includes('notes') || h.includes('note')),
+            video: headers.findIndex(h => h.includes('video') || h.includes('vid')),
+        };
+        if (idx.combo === -1) continue;
         
         // For "Combo Lists" style: first row after header IS the starter
         // Structure: first data row has Combo and Notes as a "starter" + description
         // Subsequent rows are combo variants
         const rows = table.querySelectorAll('tr');
         let starter = '';
+        let starterNote = '';
         
         // Check if this looks like a combo list table
         // The first "data" row often serves as the starter/category
-        for (let r = 0; r < rows.length; r++) {
+        for (let r = 1; r < rows.length; r++) {
             const cells = rows[r].querySelectorAll('td');
             const thCells = rows[r].querySelectorAll('th');
             
-            if (cells.length === 0 && thCells.length >= 2) {
-                // This is a header row in "Combo Lists" format
-                // The first th after "Combo"/"Notes" headers gives the starter
-                // Actually in the data: first th row has [Combo, Notes], 
-                // then next th row has [starter combo, description] 
-                // Hmm, let me handle both patterns
-                const firstTh = (thCells[0].textContent || '').trim();
-                const secondTh = thCells.length > 1 ? (thCells[1].textContent || '').trim() : '';
-                
-                if (firstTh.toLowerCase() === 'combo' || firstTh.toLowerCase() === 'notes') {
-                    continue; // Skip actual header row
-                }
-                
-                // This is a starter row (th cells contain starter info)
-                starter = firstTh;
-                if (starter && secondTh) {
-                    combos.push({
-                        combo: starter,
-                        notes: secondTh,
-                        section: section,
-                        starter: starter,
-                    });
-                }
+            if (cells.length === 0 && thCells.length >= 1) {
+                const firstTh = extractText(thCells[0]).trim();
+                const secondTh = thCells.length > 1 ? extractText(thCells[1]).trim() : '';
+                starter = firstTh || starter;
+                starterNote = secondTh;
                 continue;
             }
             
             if (cells.length === 0) continue;
             
-            const getCell = (index) => {
-                if (index === -1 || index >= cells.length) return undefined;
-                return (cells[index].textContent || '').replace(/\\n/g, ' ').trim() || undefined;
+            const getCellLines = (index) => {
+                if (index === -1 || index >= cells.length) return [];
+                return extractLines(cells[index]);
             };
             
-            const comboText = getCell(comboIdx !== -1 ? comboIdx : 0);
-            if (!comboText) continue;
-            
-            combos.push({
-                combo: comboText,
-                notes: getCell(notesIdx !== -1 ? notesIdx : 1),
-                section: section,
-                starter: starter || undefined,
-            });
+            const getVideoLinks = (index) => {
+                if (index === -1 || index >= cells.length) return undefined;
+                const links = Array.from(cells[index].querySelectorAll('a[href]'))
+                    .map(link => link.getAttribute('href'))
+                    .filter(Boolean);
+                return links.length > 0 ? links : undefined;
+            };
+
+            const comboLines = getCellLines(idx.combo);
+            if (comboLines.length === 0) continue;
+
+            const positionLines = getCellLines(idx.position);
+            const damageLines = getCellLines(idx.damage);
+            const driveLines = getCellLines(idx.drive);
+            const superLines = getCellLines(idx.super);
+            const difficultyLines = getCellLines(idx.difficulty);
+            const noteLines = getCellLines(idx.notes);
+            const videoLinks = getVideoLinks(idx.video);
+            const comboCount = comboLines.length;
+
+            for (let lineIndex = 0; lineIndex < comboCount; lineIndex++) {
+                const rowNote = pickValue(noteLines, lineIndex, comboCount);
+                const notes = [starterNote, rowNote].filter(Boolean).join(' ').trim() || undefined;
+
+                combos.push({
+                    combo: comboLines[lineIndex],
+                    position: pickValue(positionLines, lineIndex, comboCount),
+                    damage: pickValue(damageLines, lineIndex, comboCount),
+                    superMeter: pickValue(superLines, lineIndex, comboCount),
+                    driveMeter: pickValue(driveLines, lineIndex, comboCount),
+                    difficulty: pickValue(difficultyLines, lineIndex, comboCount),
+                    notes,
+                    videoUrl: videoLinks
+                        ? (videoLinks.length === comboCount ? videoLinks[lineIndex] : videoLinks[0])
+                        : undefined,
+                    section: section,
+                    starter: starter || undefined,
+                });
+            }
         }
     }
 
     // 3. Extract Combo Theory section content
     let comboTheory = '';
     const theoryHeading = Array.from(document.querySelectorAll('h2, .mw-heading h2')).find(
-        h => (h.textContent || '').toLowerCase().includes('combo theory')
+        h => extractText(h).toLowerCase().includes('combo theory')
     );
     if (theoryHeading) {
         const section = theoryHeading.closest('.citizen-section') || theoryHeading.closest('section');
@@ -323,12 +437,12 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
             while (el) {
                 if (el.tagName === 'H2' || el.querySelector && el.querySelector('h2')) break;
                 if (el.tagName === 'P' || el.tagName === 'UL' || el.tagName === 'OL') {
-                    textParts.push((el.textContent || '').trim());
+                    textParts.push(extractText(el).trim());
                 }
                 // Also check for heading divs
                 const subHeading = el.querySelector && el.querySelector('h3, h4');
                 if (subHeading) {
-                    textParts.push('\\n### ' + (subHeading.textContent || '').trim());
+                    textParts.push('\\n### ' + extractText(subHeading).trim());
                 }
                 el = el.nextElementSibling;
             }
@@ -357,21 +471,28 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
                 combo: cleanText(c.combo),
                 section: cleanText(c.section || 'Combos'),
             };
-            if (c.position) combo.position = cleanText(c.position);
-            if (c.damage) combo.damage = cleanText(c.damage);
-            if (c.superMeter && c.superMeter !== '-') combo.superMeter = cleanText(c.superMeter);
-            if (c.driveMeter && c.driveMeter !== '-') combo.driveMeter = cleanText(c.driveMeter);
-            if (c.difficulty) combo.difficulty = cleanText(c.difficulty);
-            if (c.notes) combo.notes = cleanText(c.notes);
+            const position = cleanOptionalField(c.position, 'generic');
+            const damage = cleanOptionalField(c.damage, 'damage');
+            const superMeter = cleanOptionalField(c.superMeter, 'meter');
+            const driveMeter = cleanOptionalField(c.driveMeter, 'meter');
+            const difficulty = cleanOptionalField(c.difficulty, 'difficulty');
+            const notes = cleanOptionalField(c.notes, 'generic');
+            if (position) combo.position = position;
+            if (damage) combo.damage = damage;
+            if (superMeter) combo.superMeter = superMeter;
+            if (driveMeter) combo.driveMeter = driveMeter;
+            if (difficulty) combo.difficulty = difficulty;
+            if (notes) combo.notes = notes;
             if (c.videoUrl) combo.videoUrl = c.videoUrl;
-            if (c.starter) combo.starter = cleanText(c.starter);
+            const starter = cleanOptionalField(c.starter, 'generic');
+            if (starter) combo.starter = starter;
             return combo;
         }).filter((c: Combo) => c.combo.length > 0);
 
         // Remove duplicates
         const seen = new Set<string>();
         const dedupedCombos = cleanedCombos.filter(c => {
-            const key = c.combo + '||' + c.section;
+            const key = c.combo + '||' + c.section + '||' + (c.starter || '');
             if (seen.has(key)) return false;
             seen.add(key);
             return true;

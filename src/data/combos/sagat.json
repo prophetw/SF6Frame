@@ -1,0 +1,266 @@
+{
+  "characterId": "sagat",
+  "combos": [
+    {
+      "combo": "2LP ~ 2LP > 236LK",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "5LP ~ 5LP > 214LK~(6LK/6MK)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "2LK ~ 5LP ~ 5LP > 623MP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "LP > DRC~2LP, 4HP > 236HK*, 623LP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 2LP, 5MP, 5LP > 623MP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 2LP, 2MP > 236HK",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 2LP, 2MP > 623HP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 6LK, 5LP > 623MP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 2LP, 2MP > 214MK~6MK, 623LP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC LP, 2MP > 236HK/623HP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC LP, 4HP > 236HK*, 623LP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 5LK > 623HP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 5LK > DRC~5MP, 4HP > 236HK*, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "2MP > 623HP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "5MP, 5MP, 5LP > 623MP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "5MP, 5LP > 236LK",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "5MP, 5LP > 214LK~6MK, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "2MP > 214MK~6MK, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "2MP > 236MPHP, 6HK, 623MP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "2MP > 236KK, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 5MP, 4HP > 236HK*, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 5MP, 4HP > 236MP, DR~2MP~HP > 623HP/236MK",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 5MP, 2MP > 623HP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 2MK, 5MP, 5LP > 623MP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 2MP, 5MP, 2LP > 623MP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 6MP/5MK, 5LP > 623MP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 6MP/5MK, 2MP > 623HP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 2MK, 4HP > 236HK*, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 2MP, 4HP > 236HK*, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 6MP/5MK, 2MP > 214MK~6MK, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 5MP, 5HK (1) > 214HK~6HK, 4HP > 623[HP]",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 5MP, 5HK (1) > 214HK~6HK, delay 4HP > 236HK*, 623MP > SA3",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "2HP > 623HP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "2HP > 236KK, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "4HP > 236HK*, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "4HP > 236MP, DR~delay 4HP > 236HK*, 623MP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "6HK, 2MP > 623HP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "6HK, 2MP > 214MK~6MK, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "6HK, 2MP > 236KK, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "6HK, 2MP > 236MPHP, 6HK, 623MP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 6HK, 4HP > 236HK*, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 6HK, 2MP > 623HP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "CH 6HK, 2MP~HK > SA1",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 2HP > 214HK~6HK, 623HP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 2HP > 214HK~6HK, DR~5HK (2) > 623HP",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 2HP > 214HK~6HK, 4HP > 623[HP]",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 2HP > 214HK~6HK, delay 4HP > 236HK*, 623MP > SA3",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 4HP > 623[HP]",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 6HK, 4HP > 236HK*, 623LP ( > SA3)",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC 6HK, 5HK (1) > 214HK~6HK, 4HP > 623[HP]",
+      "section": "BASIC COMBOS"
+    },
+    {
+      "combo": "PC DI, Dash, 4HP > 623[HP] ( > SA3)",
+      "section": "DRIVE IMPACT",
+      "driveMeter": "PC DI, Dash, 4HP > 623[HP] ( > SA3)"
+    },
+    {
+      "combo": "PC DI, Dash, 4HP > 236HK*, 623MP ( > SA3)",
+      "section": "DRIVE IMPACT",
+      "driveMeter": "PC DI, Dash, 4HP > 236HK*, 623MP ( > SA3)"
+    },
+    {
+      "combo": "PC DI, Dash, 214MK~6HK, DR~5HK (2) > 623HP",
+      "section": "DRIVE IMPACT",
+      "driveMeter": "PC DI, Dash, 214MK~6HK, DR~5HK (2) > 623HP"
+    },
+    {
+      "combo": "PC DI, Dash, DR~4HP > 214HK~6HK, DR~4HP > 214HK~6HK, 6HK, 623HP",
+      "section": "DRIVE IMPACT",
+      "driveMeter": "PC DI, Dash, DR~4HP > 214HK~6HK, DR~4HP > 214HK~6HK, 6HK, 623HP"
+    },
+    {
+      "combo": "PC DI, j.HK, DR~5HK (2) > 236KK, 623MP > SA3",
+      "section": "DRIVE IMPACT",
+      "driveMeter": "PC DI, j.HK, DR~5HK (2) > 236KK, 623MP > SA3"
+    },
+    {
+      "combo": "DI Wall Splat, delay 4HP > 236HK*, 623MP ( > SA3)",
+      "section": "DRIVE IMPACT"
+    },
+    {
+      "combo": "DI Wall Splat, 4HP > 623[HP]",
+      "section": "DRIVE IMPACT"
+    },
+    {
+      "combo": "DI Wall Splat, 2HP > 236MPHP, 6HK, SA1",
+      "section": "DRIVE IMPACT"
+    },
+    {
+      "combo": "DI Wall Splat, 2HP > 236MPHP, PDR~5HK > 236MPHP x2, 6HK, SA1",
+      "section": "DRIVE IMPACT"
+    },
+    {
+      "combo": "DI Wall Splat, 2HP > 236MPHP x2, 236KK, 623LP > SA3",
+      "section": "DRIVE IMPACT"
+    },
+    {
+      "combo": "j.HK, 5HK (2) > DRC~6HK, 5HK (2) > DRC~6HK, 5HK (1) > 214K~6HK, delay 4HP > 236HK*, 623MP > SA3",
+      "section": "DRIVE IMPACT"
+    },
+    {
+      "combo": "PC 6HK, 5HK (2) > DRC~4HP > 236MP, DR~delay 4HP > 236HK*, 623MP > SA3",
+      "section": "MAX DAMAGE PUNISHES",
+      "position": "Anywhere",
+      "damage": "6277",
+      "superMeter": "3",
+      "driveMeter": "4",
+      "difficulty": "Hard",
+      "notes": "2nd 4HP needs to be delayed by 1-2 frames. * requires Sweet Spot connect",
+      "videoUrl": "https://www.youtube.com/watch?v=XLFHl2UbuPs"
+    }
+  ],
+  "lastUpdated": "2026-03-16"
+}

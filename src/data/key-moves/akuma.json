@@ -1,0 +1,43 @@
+{
+  "characterId": "akuma",
+  "source": "manual",
+  "notes": "豪鬼的核心招式以中距离确认、强制起身和高回报对空为核心，下面这些按钮最值得先练熟。",
+  "lastUpdated": "2026-03-16",
+  "keyMoves": [
+    {
+      "role": "压制起点",
+      "moveInput": "5MP",
+      "moveName": "Stand MP",
+      "reason": "6F 发生、防御 +1，可衔接 Target Combo 和必杀，是站压与命中确认的主轴。",
+      "tags": ["优势帧", "确认"]
+    },
+    {
+      "role": "低位牵制",
+      "moveInput": "2MK",
+      "moveName": "Crouch MK",
+      "reason": "地面中距离最常用的低姿试探按钮，既能摸奖也方便衔接 Drive Rush 压进。",
+      "tags": ["牵制", "低打点"]
+    },
+    {
+      "role": "差合重击",
+      "moveInput": "5HP",
+      "moveName": "Stand HP",
+      "reason": "取消能力强，命中后能稳定转波掌或高伤路线，是地面差合和 Punish Counter 的主力起手。",
+      "tags": ["差合", "高回报"]
+    },
+    {
+      "role": "主力对空",
+      "moveInput": "623HP",
+      "moveName": "Heavy Gou Shoryu",
+      "reason": "无资源对空收益高，拦截跳入后还能争取位置或后续终结，是豪鬼最重要的防空答案之一。",
+      "tags": ["对空", "必杀"]
+    },
+    {
+      "role": "连段终结",
+      "moveInput": "214HK",
+      "moveName": "Heavy Tatsumaki Zankukyaku",
+      "reason": "兼顾角落推进和起身优势，许多基础确认与 Drive Rush 路线都会以它收尾。",
+      "tags": ["终结", "角落"]
+    }
+  ]
+}

@@ -1,106 +1,140 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { SF6_CHARACTERS, type FrameData, type MoveCategory } from '../types';
+import ComboList from '../components/ComboList.vue';
+import KeyMovePanel from '../components/KeyMovePanel.vue';
 import MoveTable from '../components/MoveTable.vue';
-import { calculateMoveStats } from '../utils/gapCalculator';
-import { calculateMoveTotalFrames } from '../utils/frameTotals';
 import { getMoveDisplayName } from '../i18n';
+import { buildKeyMoveData } from '../utils/keyMoves';
+import { calculateMoveTotalFrames } from '../utils/frameTotals';
+import { calculateMoveStats } from '../utils/gapCalculator';
+import {
+  SF6_CHARACTERS,
+  type ComboData,
+  type FrameData,
+  type KeyMoveData,
+  type MoveCategory,
+} from '../types';
 
 const route = useRoute();
 const router = useRouter();
 
+type JsonModuleMap = Record<string, () => Promise<unknown>>;
+
+const frameModules = import.meta.glob('../data/characters/*.json');
+const comboModules = import.meta.glob('../data/combos/*.json');
+const keyMoveModules = import.meta.glob('../data/key-moves/*.json');
+
 const frameData = ref<FrameData | null>(null);
+const comboData = ref<ComboData | null>(null);
+const manualKeyMoveData = ref<KeyMoveData | null>(null);
 const loading = ref(true);
 const error = ref<string | null>(null);
 const searchQuery = ref('');
 const selectedCategory = ref<MoveCategory | 'all'>('all');
-
-const character = computed(() => {
-  const id = route.params.id as string;
-  return SF6_CHARACTERS.find(c => c.id === id);
-});
-
 const startupFilter = ref<number | ''>('');
 const sortKey = ref<string>('startup');
 const sortOrder = ref<'asc' | 'desc'>('asc');
 
-// Helper to parse frame values for sorting/filtering
+const character = computed(() => {
+  const id = route.params.id as string;
+  return SF6_CHARACTERS.find(candidate => candidate.id === id);
+});
+
+const resolvedKeyMoveData = computed(() => {
+  if (!frameData.value) return null;
+  return buildKeyMoveData(frameData.value, manualKeyMoveData.value);
+});
+
+const overviewStats = computed(() => {
+  if (!frameData.value) return [];
+
+  return [
+    {
+      label: '已收录招式',
+      value: String(frameData.value.moves.length),
+    },
+    {
+      label: '核心招式',
+      value: String(resolvedKeyMoveData.value?.keyMoves.length ?? 0),
+    },
+    {
+      label: '常用连段',
+      value: String(comboData.value?.combos.length ?? 0),
+    },
+  ];
+});
+
 function parseFrameValue(val: string | number | undefined): number {
   if (val === undefined || val === null || val === '-') return -999;
   if (typeof val === 'number') return val;
-  // Handle "12+3" or "10~15"
   const match = String(val).match(/-?\d+/);
-  return match ? parseInt(match[0]) : -999;
+  return match ? parseInt(match[0], 10) : -999;
 }
 
 const filteredMoves = computed(() => {
   if (!frameData.value) return [];
-  
+
   let moves = [...frameData.value.moves];
-  
-  // Filter by category
+
   if (selectedCategory.value !== 'all') {
-    moves = moves.filter(m => m.category === selectedCategory.value);
+    moves = moves.filter(move => move.category === selectedCategory.value);
   }
-  
-  // Filter by search
+
   if (searchQuery.value) {
     const queryRaw = searchQuery.value.trim();
     const queryLower = queryRaw.toLowerCase();
-    moves = moves.filter(m => 
-      m.name.toLowerCase().includes(queryLower) ||
-      (m.nameZh && m.nameZh.includes(queryRaw)) ||
-      m.input.toLowerCase().includes(queryLower)
+    moves = moves.filter(move =>
+      move.name.toLowerCase().includes(queryLower)
+      || (move.nameZh && move.nameZh.includes(queryRaw))
+      || move.input.toLowerCase().includes(queryLower),
     );
   }
 
-  // Filter by startup (max)
   if (startupFilter.value !== '') {
-    moves = moves.filter(m => {
-      const s = parseFrameValue(m.startup);
-      return s > 0 && s <= (startupFilter.value as number);
+    moves = moves.filter(move => {
+      const startup = parseFrameValue(move.startup);
+      return startup > 0 && startup <= (startupFilter.value as number);
     });
   }
-  
-  // Sorting
+
   if (sortKey.value) {
     moves.sort((a, b) => {
-      let valA: number | string = -999;
-      let valB: number | string = -999;
+      let valueA: number | string = -999;
+      let valueB: number | string = -999;
 
       if (sortKey.value === 'hitstun') {
-         valA = calculateMoveStats(a).hitstun;
-         valB = calculateMoveStats(b).hitstun;
+        valueA = calculateMoveStats(a).hitstun;
+        valueB = calculateMoveStats(b).hitstun;
       } else if (sortKey.value === 'blockstun') {
-         valA = calculateMoveStats(a).blockstun;
-         valB = calculateMoveStats(b).blockstun;
+        valueA = calculateMoveStats(a).blockstun;
+        valueB = calculateMoveStats(b).blockstun;
       } else if (sortKey.value === 'total') {
-         const totalA = calculateMoveTotalFrames(a);
-         const totalB = calculateMoveTotalFrames(b);
-         valA = totalA === null ? -999 : totalA;
-         valB = totalB === null ? -999 : totalB;
+        valueA = calculateMoveTotalFrames(a) ?? -999;
+        valueB = calculateMoveTotalFrames(b) ?? -999;
       } else {
-         valA = parseFrameValue((a as any)[sortKey.value]);
-         valB = parseFrameValue((b as any)[sortKey.value]);
+        valueA = parseFrameValue((a as Record<string, unknown>)[sortKey.value] as string | number | undefined);
+        valueB = parseFrameValue((b as Record<string, unknown>)[sortKey.value] as string | number | undefined);
       }
-      
-      // Special handling for string fields like name/input if needed, but primary use is frames
+
       if (sortKey.value === 'name' || sortKey.value === 'input') {
-        valA = sortKey.value === 'name' ? getMoveDisplayName(a) : ((a as any)[sortKey.value] || '');
-        valB = sortKey.value === 'name' ? getMoveDisplayName(b) : ((b as any)[sortKey.value] || '');
-        return sortOrder.value === 'asc' 
-          ? String(valA).localeCompare(String(valB)) 
-          : String(valB).localeCompare(String(valA));
+        valueA = sortKey.value === 'name' ? getMoveDisplayName(a) : a.input;
+        valueB = sortKey.value === 'name' ? getMoveDisplayName(b) : b.input;
+
+        return sortOrder.value === 'asc'
+          ? String(valueA).localeCompare(String(valueB))
+          : String(valueB).localeCompare(String(valueA));
       }
 
-      if (valA === -999 && valB !== -999) return 1; // pushing undefined to bottom
-      if (valB === -999 && valA !== -999) return -1;
+      if (valueA === -999 && valueB !== -999) return 1;
+      if (valueB === -999 && valueA !== -999) return -1;
 
-      return sortOrder.value === 'asc' ? (valA as number) - (valB as number) : (valB as number) - (valA as number);
+      return sortOrder.value === 'asc'
+        ? (valueA as number) - (valueB as number)
+        : (valueB as number) - (valueA as number);
     });
   }
-  
+
   return moves;
 });
 
@@ -113,7 +147,6 @@ function handleSort(key: string) {
   }
 }
 
-
 const categories: { value: MoveCategory | 'all'; label: string }[] = [
   { value: 'all', label: '全部' },
   { value: 'normal', label: '通常技' },
@@ -123,48 +156,71 @@ const categories: { value: MoveCategory | 'all'; label: string }[] = [
   { value: 'throw', label: '投技' },
 ];
 
-async function loadFrameData() {
+async function loadJson<T>(modules: JsonModuleMap, path: string): Promise<T | null> {
+  const loader = modules[path];
+  if (!loader) return null;
+
+  const module = await loader() as { default: T };
+  return module.default;
+}
+
+async function loadCharacterData() {
   const id = route.params.id as string;
   loading.value = true;
   error.value = null;
-  
+
   try {
-    // Try to load from local JSON
-    const module = await import(`../data/characters/${id}.json`);
-    frameData.value = module.default as FrameData;
-  } catch (e) {
-    // If not found, show placeholder
-    error.value = `暂无 ${character.value?.name || id} 的帧数据，请先运行抓取脚本`;
+    const nextFrameData = await loadJson<FrameData>(frameModules, `../data/characters/${id}.json`);
+    if (!nextFrameData) {
+      throw new Error(`暂无 ${character.value?.name || id} 的帧数据，请先运行抓取脚本`);
+    }
+
+    frameData.value = nextFrameData;
+    comboData.value = await loadJson<ComboData>(comboModules, `../data/combos/${id}.json`);
+    manualKeyMoveData.value = await loadJson<KeyMoveData>(keyMoveModules, `../data/key-moves/${id}.json`);
+  } catch (err) {
+    error.value = err instanceof Error
+      ? err.message
+      : `暂无 ${character.value?.name || id} 的帧数据，请先运行抓取脚本`;
     frameData.value = null;
+    comboData.value = null;
+    manualKeyMoveData.value = null;
   } finally {
     loading.value = false;
   }
 }
 
-onMounted(() => {
-  if (!character.value) {
-    router.push('/');
-    return;
-  }
-  loadFrameData();
-});
+watch(
+  () => route.params.id,
+  async () => {
+    if (!character.value) {
+      router.push('/');
+      return;
+    }
+
+    await loadCharacterData();
+  },
+  { immediate: true },
+);
 </script>
 
 <template>
   <div class="character-view container">
-    <!-- Back Button & Header -->
     <div class="view-header">
       <RouterLink to="/" class="back-btn">
         ← 返回
       </RouterLink>
-      
-      <div class="character-info" v-if="character">
-        <h1 class="character-name">{{ character.name }}</h1>
-        <span class="character-name-jp" v-if="character.nameJp">{{ character.nameJp }}</span>
-        <a 
-          v-if="character.wikiUrl" 
-          :href="character.wikiUrl" 
-          target="_blank" 
+
+      <div v-if="character" class="character-info">
+        <div>
+          <h1 class="character-name">{{ character.name }}</h1>
+          <span v-if="character.nameJp" class="character-name-jp">{{ character.nameJp }}</span>
+        </div>
+
+        <a
+          v-if="character.wikiUrl"
+          :href="character.wikiUrl"
+          target="_blank"
           rel="noopener noreferrer"
           class="wiki-link"
           title="SuperCombo Wiki"
@@ -173,84 +229,131 @@ onMounted(() => {
         </a>
       </div>
     </div>
-    
-    <!-- Loading State -->
+
     <div v-if="loading" class="loading-state">
       <div class="loading-spinner"></div>
-      <p>加载帧数据中...</p>
+      <p>加载角色数据中...</p>
     </div>
-    
-    <!-- Error State -->
+
     <div v-else-if="error" class="error-state">
       <span class="error-icon">📊</span>
       <p>{{ error }}</p>
       <code class="script-hint">pnpm tsx scripts/scraper.ts {{ route.params.id }}</code>
     </div>
-    
-    <!-- Frame Data Content -->
+
     <div v-else-if="frameData" class="frame-content">
-      <!-- Filters -->
-      <div class="filters">
-        <div class="filters-row">
-          <input
-            v-model="searchQuery"
-            type="text"
-            placeholder="搜索招式..."
-            class="search-input"
-          />
-          <div class="filter-item">
-            <span class="filter-label">发生 &le;</span>
-            <input 
-              type="number" 
-              v-model.number="startupFilter" 
-              class="small-input" 
-              placeholder="F" 
-              min="1"
+      <section class="overview-band">
+        <div class="overview-copy">
+          <p class="section-kicker">Character Snapshot</p>
+          <h2 class="overview-title">实战速览</h2>
+          <p class="overview-desc">
+            先看核心招式和常用连段，再往下查完整帧表和具体数值。
+          </p>
+        </div>
+
+        <div class="overview-grid">
+          <article
+            v-for="stat in overviewStats"
+            :key="stat.label"
+            class="overview-card"
+          >
+            <span class="overview-label">{{ stat.label }}</span>
+            <strong class="overview-value">{{ stat.value }}</strong>
+          </article>
+        </div>
+      </section>
+
+      <KeyMovePanel
+        v-if="resolvedKeyMoveData"
+        :frame-data="frameData"
+        :data="resolvedKeyMoveData"
+      />
+
+      <ComboList
+        :character-id="character?.id ?? String(route.params.id)"
+        :data="comboData"
+      />
+
+      <section class="section-panel frame-section">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Frame Data</p>
+            <h2 class="section-title">完整帧表</h2>
+          </div>
+          <p class="section-desc">
+            支持按发生、类别、优势和关键字快速筛选。
+          </p>
+        </div>
+
+        <div class="filters">
+          <div class="filters-row">
+            <input
+              v-model="searchQuery"
+              type="text"
+              placeholder="搜索招式..."
+              class="search-input"
             />
+
+            <div class="filter-item">
+              <span class="filter-label">发生 ≤</span>
+              <input
+                v-model.number="startupFilter"
+                type="number"
+                class="small-input"
+                placeholder="F"
+                min="1"
+              />
+            </div>
+          </div>
+
+          <div class="category-filters">
+            <button
+              v-for="cat in categories"
+              :key="cat.value"
+              :class="['filter-btn', { active: selectedCategory === cat.value }]"
+              @click="selectedCategory = cat.value"
+            >
+              {{ cat.label }}
+            </button>
           </div>
         </div>
-        
-        <div class="category-filters">
-          <button
-            v-for="cat in categories"
-            :key="cat.value"
-            :class="['filter-btn', { active: selectedCategory === cat.value }]"
-            @click="selectedCategory = cat.value"
-          >
-            {{ cat.label }}
-          </button>
-        </div>
-      </div>
-      
-      <!-- Move Table -->
-      <MoveTable 
-        :moves="filteredMoves" 
-        :stats="frameData.stats" 
-        :sort-key="sortKey"
-        :sort-order="sortOrder"
-        @update:sort="handleSort"
-      />
-      
-      <!-- Last Updated -->
-      <p class="last-updated" v-if="frameData.lastUpdated">
-        最后更新: {{ frameData.lastUpdated }}
-      </p>
+
+        <MoveTable
+          :moves="filteredMoves"
+          :stats="frameData.stats"
+          :sort-key="sortKey"
+          :sort-order="sortOrder"
+          @update:sort="handleSort"
+        />
+
+        <p v-if="frameData.lastUpdated" class="last-updated">
+          帧数数据更新于 {{ frameData.lastUpdated }}
+        </p>
+      </section>
     </div>
   </div>
 </template>
 
 <style scoped>
+.character-view {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
 .view-header {
-  margin-bottom: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
 .back-btn {
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
+  width: fit-content;
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
-  margin-bottom: var(--space-md);
   transition: color var(--transition-fast);
 }
 
@@ -260,8 +363,16 @@ onMounted(() => {
 
 .character-info {
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
+  justify-content: space-between;
   gap: var(--space-md);
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at top right, rgba(255, 107, 53, 0.18), transparent 30%),
+    linear-gradient(135deg, rgba(255, 107, 53, 0.06), transparent 55%),
+    var(--color-bg-card);
 }
 
 .character-name {
@@ -273,6 +384,8 @@ onMounted(() => {
 }
 
 .character-name-jp {
+  display: inline-block;
+  margin-top: 6px;
   color: var(--color-text-muted);
   font-size: var(--font-size-lg);
 }
@@ -281,15 +394,14 @@ onMounted(() => {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-left: var(--space-sm);
-  padding: 4px 10px;
-  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-full, 999px);
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all var(--transition-fast);
 }
 
 .wiki-link:hover {
@@ -299,11 +411,6 @@ onMounted(() => {
   transform: translateY(-1px);
 }
 
-.wiki-link .icon {
-  font-size: 1.1em;
-}
-
-/* Loading & Error States */
 .loading-state,
 .error-state {
   text-align: center;
@@ -322,7 +429,9 @@ onMounted(() => {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .error-icon {
@@ -332,7 +441,7 @@ onMounted(() => {
 }
 
 .script-hint {
-  display: block;
+  display: inline-block;
   margin-top: var(--space-md);
   background: var(--color-bg-tertiary);
   padding: var(--space-sm) var(--space-md);
@@ -341,12 +450,92 @@ onMounted(() => {
   font-size: var(--font-size-sm);
 }
 
-/* Filters */
+.frame-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.overview-band,
+.section-panel {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+}
+
+.overview-band {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.2fr) minmax(0, 1.8fr);
+  gap: var(--space-lg);
+  align-items: stretch;
+}
+
+.section-kicker {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.overview-title,
+.section-title {
+  margin-top: 2px;
+}
+
+.overview-desc,
+.section-desc {
+  margin-top: var(--space-sm);
+  color: var(--color-text-secondary);
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.overview-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  min-height: 120px;
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(0, 212, 255, 0.08), transparent 100%),
+    var(--color-bg-secondary);
+  border: 1px solid rgba(0, 212, 255, 0.08);
+}
+
+.overview-label {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.overview-value {
+  font-size: 2.2rem;
+  color: var(--color-text-primary);
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.frame-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
 .filters {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
-  margin-bottom: var(--space-lg);
 }
 
 .filters-row {
@@ -359,7 +548,6 @@ onMounted(() => {
 .search-input {
   flex: 1;
   min-width: 200px;
-  max-width: 300px;
 }
 
 .filter-item {
@@ -393,7 +581,6 @@ onMounted(() => {
   border-color: var(--color-accent);
 }
 
-
 .category-filters {
   display: flex;
   flex-wrap: wrap;
@@ -423,29 +610,35 @@ onMounted(() => {
 }
 
 .last-updated {
-  margin-top: var(--space-lg);
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
   text-align: right;
 }
 
-/* Mobile */
-@media (max-width: 640px) {
-  .character-info {
-    flex-direction: column;
-    gap: var(--space-xs);
+@media (max-width: 900px) {
+  .overview-band {
+    grid-template-columns: 1fr;
   }
-  
+}
+
+@media (max-width: 640px) {
+  .character-info,
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .character-name {
     font-size: var(--font-size-2xl);
   }
-  
-  .filters {
-    gap: var(--space-sm);
+
+  .overview-band,
+  .section-panel {
+    padding: var(--space-lg);
   }
-  
-  .search-input {
-    max-width: none;
+
+  .overview-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>

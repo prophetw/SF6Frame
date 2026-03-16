@@ -1,0 +1,231 @@
+{
+  "characterId": "aki",
+  "combos": [
+    {
+      "combo": "5LP~LP",
+      "section": "Links & Chains",
+      "notes": "General-purpose close-range TC. Slightly slower than 2LP, but frame traps between hits and is safe on block."
+    },
+    {
+      "combo": "2LK/2LP > 2LP > 2LP",
+      "section": "Links & Chains",
+      "notes": "Third 2LP may whiff if A.K.I. starts further away."
+    },
+    {
+      "combo": "2LP, 5LK",
+      "section": "Links & Chains",
+      "notes": "Very important link for her combos that allows A.K.I. to cancel into 236MP or 236HP at further ranges."
+    },
+    {
+      "combo": "5MK, 5MP",
+      "section": "Links & Chains",
+      "notes": "AKI's main medium starter link. 5MP will whiff at further ranges."
+    },
+    {
+      "combo": "2MK/5HK, 2LP/5LK",
+      "section": "Links & Chains",
+      "notes": "Has uses for oki situations, but rarely used otherwise."
+    },
+    {
+      "combo": "CH 2LP/5LP, 5MP",
+      "section": "Links & Chains",
+      "notes": "Adds some damage, and 5MP reaches where another 2LP might have whiffed."
+    },
+    {
+      "combo": "CH 2MP/5MP, 2PP~K, 2LP > 2LP > 236HP",
+      "section": "Links & Chains",
+      "notes": "Confirms MP into BNB."
+    },
+    {
+      "combo": "CH 2MP/5MP, 2LP > 2LP",
+      "section": "Links & Chains",
+      "notes": "Easier to hit confirm, and leaves less gap on block than previous route."
+    },
+    {
+      "combo": "CH 5MK, 2MP",
+      "section": "Links & Chains",
+      "notes": "Converts CH 5MK into a special move or a Drive Rush for a knockdown."
+    },
+    {
+      "combo": "CH 2MK/5HK, 5MP",
+      "section": "Links & Chains",
+      "notes": "Less useful than it may seem due to 5MP's short reach, but important nonetheless."
+    },
+    {
+      "combo": "CH 6HP, 5LK",
+      "section": "Links & Chains",
+      "notes": "Converting a counter-hit poke into some damage. 5LK may not reach at further ranges."
+    },
+    {
+      "combo": "PC 2MK, 2MP",
+      "section": "Links & Chains",
+      "notes": "Converting a whiff punish hit into damage and possible knockdown."
+    },
+    {
+      "combo": "PC 5MK, 2HP",
+      "section": "Links & Chains",
+      "notes": "Converting a whiff punish hit into damage and knockdown."
+    },
+    {
+      "combo": "DR 2LK/2MK, 5MP",
+      "section": "Links & Chains",
+      "notes": "Drive rush low starter. 2LK is faster, but 2MK reaches further. 5MP may whiff at further ranges."
+    },
+    {
+      "combo": "DR 5MK, 5HK",
+      "section": "Links & Chains",
+      "notes": "Drive rush starter that goes into BnB."
+    },
+    {
+      "combo": "DR 5MK, 5MK, 5MP",
+      "section": "Links & Chains",
+      "notes": "Higher damage route from 5MK, but doesn't go into BnB without another DRC."
+    },
+    {
+      "combo": "DR 6HK, 5MP/2MP",
+      "section": "Links & Chains",
+      "notes": "Drive rush starter with decent range and a lot of + frames on block."
+    },
+    {
+      "combo": "DR 2LP/5LP/5LK, 5MP/2MP",
+      "section": "Links & Chains",
+      "notes": "Drive rush light starter for some extra damage."
+    },
+    {
+      "combo": "2LP > 2LP > (2LP, 5LK >) 236HP",
+      "section": "Main Combos",
+      "notes": "4f starter. 4-hit light confirm, where 2LP can potentially chain into itself three times before linking into 5LK depending on the A.K.I.'s distance from the opponent."
+    },
+    {
+      "combo": "5LP~LP > 236HP",
+      "section": "Main Combos",
+      "notes": "5f starter. Target combo into a knockdown."
+    },
+    {
+      "combo": "2LK > 2LP > 2LP > 236HP",
+      "section": "Main Combos",
+      "notes": "5f low starter into a knockdown."
+    },
+    {
+      "combo": "CH 2LP/5LP/5LK, 5MP > 236MP/236HP",
+      "section": "Main Combos",
+      "notes": "Counter-hit light starter. 5MP can hit at ranges where another 2LP could have whiffed."
+    },
+    {
+      "combo": "5MK, 5MP > 236HP",
+      "section": "Main Combos",
+      "notes": "Decent range starter, though 5MP can easily whiff at further ranges."
+    },
+    {
+      "combo": "5MP/2MP > 214LP~6P",
+      "section": "Main Combos",
+      "notes": "Frame traps for each of the hits, and combos on hit. Good tool for making opponents respect A.K.I.'s 5MP. The fireball follow-up leaves A.K.I. -16 on block, so be careful when using it."
+    },
+    {
+      "combo": "2MP/5MP > DRC 5MK, 5HK > 2PP~K, 2LP > 2LP > 236HP",
+      "section": "Main Combos",
+      "notes": "5MP: 6f starter with an okay range. 2MP: 8f starter with a better range. Drive gauge used to extend combo into a knockdown."
+    },
+    {
+      "combo": "2MP > 236PP, 2LP > 2LP > 2LP > 236HP!",
+      "section": "Main Combos",
+      "notes": "Routing into OD Serpent Lash and Toxic Blossom. Only works from 2MP or 5HK. 236HP! extensions can be found here."
+    },
+    {
+      "combo": "CH 5MP, 2LP > 2LP > 236HP",
+      "section": "Main Combos",
+      "notes": "6f counter-hit starter into a knockdown. Plenty of time to hit confirm."
+    },
+    {
+      "combo": "CH 2MP/5MP > 2PP~K, 2LP > 2LP > 236HP",
+      "section": "Main Combos",
+      "notes": "5MP: another 6f counter-hit starter. Less time to hit confirm and is less safe. Best used as a sure punish after a blockstring."
+    },
+    {
+      "combo": "PC 2MK, 2MP > 236HP",
+      "section": "Main Combos",
+      "notes": "Whiff punish into a H lash knockdown. Connects well at further ranges."
+    },
+    {
+      "combo": "PC 5MK, 2HP",
+      "section": "Main Combos",
+      "notes": "Convert whiff punish with 5MK into a knockdown."
+    },
+    {
+      "combo": "5HK > 2PP~K, 2LP > 2LP > 236HP",
+      "section": "Main Combos",
+      "notes": "A.K.I.'s BnB."
+    },
+    {
+      "combo": "5HK > 214LP~6P",
+      "section": "Main Combos",
+      "notes": "Similar to her 5MP route above."
+    },
+    {
+      "combo": "CH 6HP, 5LK > 236LP",
+      "section": "Main Combos",
+      "notes": "Far range counter-hit combo. Only 236LP works at far ranges."
+    },
+    {
+      "combo": "CH 6HK, 5MP > 236HP",
+      "section": "Main Combos"
+    },
+    {
+      "combo": "PDR 5MK, 5HK > 2PP~K, 2LP > 2LP > 236HP",
+      "section": "Main Combos",
+      "notes": "Drive rush 5MK into BnB."
+    },
+    {
+      "combo": "PDR 2MK/5MK, 5MP > 236HP",
+      "section": "Main Combos",
+      "notes": "5MK: 7f low starter that has a decent range. 2MK: 5f low starter with a slightly worse range. 5MP will whiff at further ranges."
+    },
+    {
+      "combo": "PDR 3MP, 5MP > 236HP",
+      "section": "Main Combos",
+      "notes": "24f overhead option. Decent mix option."
+    },
+    {
+      "combo": "PDR 6HK, 5MP > 236HP",
+      "section": "Main Combos",
+      "notes": "A bit slow, but a good approach option. Very plus on block, and plenty of time to confirm."
+    },
+    {
+      "combo": "CH PDR 6HK, 5HK > 2PP~K, 2LP > 2LP > 236HP",
+      "section": "Main Combos",
+      "notes": "Counter-hit route, leads to more damage and corner carry."
+    },
+    {
+      "combo": "...236HP!, PDR 2MP > 236HP",
+      "section": "Main Combos",
+      "notes": "Her go-to option, as it opens her up to the same setups after a regular 236HP (e.g. safe jumps)."
+    },
+    {
+      "combo": "...236HP!, dl 236LP",
+      "section": "Main Combos",
+      "notes": "Meterless option for when her drive gauge is low. It builds enough space to safely throw out a projectile. Doesn't work at max range 236HP!"
+    },
+    {
+      "combo": "... > 236HP!, PDR 5MP > 2PP~K, 236LP",
+      "section": "Main Combos",
+      "notes": "For a mix of extra damage and corner carry at the cost of stricter spacing (doesn't work at max range 236HP!)"
+    },
+    {
+      "combo": "...236HP!, PDR 5HK > 236MP",
+      "section": "Main Combos",
+      "notes": "Better damage and better corner carry, but loses access to her usual 236HP setup."
+    },
+    {
+      "combo": "... > 236HP!, PDR 5HK > DRC 5HK > 22P~P",
+      "section": "Main Combos",
+      "notes": "For expensive corner carry (only works at max range 236HP!)"
+    },
+    {
+      "combo": "...236HP!, PDR 2MP/5MP > 2PP~K, PDR 2MP/5MP > 214MP/Super",
+      "section": "Main Combos",
+      "notes": "Corner carry route. Can end with super to squeez out some extra damage. Good option for closing out rounds."
+    }
+  ],
+  "comboTheory": "### Picking an Ender",
+  "lastUpdated": "2026-03-16"
+}

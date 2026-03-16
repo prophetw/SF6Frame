@@ -1,0 +1,195 @@
+{
+  "characterId": "dee-jay",
+  "combos": [
+    {
+      "combo": "5LP~2LP~2LP>236MK",
+      "section": "Day 1 Combos",
+      "notes": "A simple light confirm. Sobat (236MK) gives meaty pressure afterwards, but is punishable on block if not spaced correctly."
+    },
+    {
+      "combo": "5LP~2LP~2LP>[2]8HK",
+      "section": "Day 1 Combos",
+      "notes": "Jackknife Maximum ([2]8HK), a.k.a \"Up Kicks\", whiffs on crouching opponents and is extremely unsafe if blocked; hit confirming required."
+    },
+    {
+      "combo": "j.2K,2LK~2LP>236MK",
+      "section": "Day 1 Combos",
+      "notes": "Simple combo starting with j.2LK jump-in"
+    },
+    {
+      "combo": "5MP~5HP~5HK",
+      "section": "Day 1 Combos",
+      "notes": "Target Combo starting with Dee Jay's 5MP. The last hit can be canceled into level 1 Super."
+    },
+    {
+      "combo": "5MP, 5LK>236MK/236HK",
+      "section": "Day 1 Combos",
+      "notes": "MK Sobat gives knockdown while HK Sobat does more damage, is +2 on hit, and leaves both players standing in throw range."
+    },
+    {
+      "combo": "5MK,2MP>236HK",
+      "section": "Day 1 Combos"
+    },
+    {
+      "combo": "j.HP, 2HP, 2MP>[2]8HK/214LP",
+      "section": "Day 1 Combos",
+      "notes": "Basic jump-in combo. 2HP forces Stand on hit, ensuring HK Up Kicks combos."
+    },
+    {
+      "combo": "j.HP, 2HP, 2MP>[2]8MK, [2]8HK",
+      "section": "Day 1 Combos",
+      "notes": "Corner version only. MK Up Kicks allows HK Up Kicks to juggle afterwards."
+    },
+    {
+      "combo": "Drive Impact, dl.5HP>214HP",
+      "section": "Day 1 Combos",
+      "notes": "Make sure you're close enough to cancel the early active frames of 5HP."
+    },
+    {
+      "combo": "Normal",
+      "section": "Combo Theory",
+      "notes": "Tendency To Whiff",
+      "starter": "Normal"
+    },
+    {
+      "combo": "5LP",
+      "section": "Combo Theory",
+      "notes": "You need to be in your opponent's face - chaining two 5LPs is enough to push you out of range.",
+      "starter": "Normal"
+    },
+    {
+      "combo": "2LP",
+      "section": "Combo Theory",
+      "notes": "You need to be in your opponent's face - chaining two 2LPs is enough to push you out of range.",
+      "starter": "Normal"
+    },
+    {
+      "combo": "5LK",
+      "section": "Combo Theory",
+      "notes": "Fairly reliable, but can whiff when 5LK connects at its farther ranges.",
+      "starter": "Normal"
+    },
+    {
+      "combo": "2MP",
+      "section": "Combo Theory",
+      "notes": "Reliably combos into OD Jus Cool. Can still whiff when 2MP connects at tip ranges.",
+      "starter": "Normal"
+    },
+    {
+      "combo": "4HK",
+      "section": "Combo Theory",
+      "notes": "Very reliable.",
+      "starter": "Normal"
+    },
+    {
+      "combo": "5HP (early hit)",
+      "section": "Combo Theory",
+      "notes": "Up close OD Jus Cool will never whiff, but 5HP is a very useful for whiff punishing which creates opportunities for Just Cool to drop.",
+      "starter": "Normal"
+    },
+    {
+      "combo": "2LK/5LP~2LP>236MK/[2]8HK",
+      "section": "Links and Starters",
+      "notes": "Standard Light BNB route. Sobat (236MK) gives meaty pressure afterwards, but is punishable on block if not spaced correctly. Jackknife Maximum ([2]8HK), a.k.a \"Up Kicks\", is more damaging but whiffs on crouching opponents and is extremely unsafe if blocked; Hit confirming required."
+    },
+    {
+      "combo": "2LP~2LP~2LP>236236K",
+      "section": "Links and Starters",
+      "notes": "An easy light confirm into level 1 Super."
+    },
+    {
+      "combo": "2LK/5LP~2LP>236MK>214214P",
+      "section": "Links and Starters",
+      "notes": "light confirm into level 3 Super."
+    },
+    {
+      "combo": "5MP~5LK>236MK/236HK",
+      "section": "Links and Starters",
+      "notes": "236MK gives knockdown while 236HK does more damage, is +2 on hit, and leaves both players standing in throw range."
+    },
+    {
+      "combo": "5MP~2LP>[2]8HK",
+      "section": "Links and Starters",
+      "notes": "Don't forget that Jackknife Maximum ([2]8K) whiffs on crouching opponents."
+    },
+    {
+      "combo": "5MK~2MP>[2]8HK",
+      "section": "Links and Starters",
+      "notes": "2MP comfortably links off of 5MK."
+    },
+    {
+      "combo": "5MK~2MP>214KK~HK~236HK",
+      "section": "Links and Starters",
+      "notes": "Good wall carry for a little meter investment."
+    },
+    {
+      "combo": "2MP>[4]6PP~5LK>236MK/236HK",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "5MP~5HP~5HK>236236K",
+      "section": "Links and Starters",
+      "notes": "A simple Target Combo into level 1 Super."
+    },
+    {
+      "combo": "6MK~2LP/5LK>236MK",
+      "section": "Links and Starters",
+      "notes": "A simple confirm off of 6MK. If you're worried about 2LP linking you can opt for 5K which also gives the option to end in HK Sobat instead."
+    },
+    {
+      "combo": "6MK~2LP>214KK~HK,236HK",
+      "section": "Links and Starters",
+      "notes": "Another confirm off of 6MK. OD Jus Cool (214KK) will whiff if you're too far away even if the 2LP combos. Make sure to space properly."
+    },
+    {
+      "combo": "6MK~2MP>214LP",
+      "section": "Links and Starters",
+      "notes": "Meterless confirm off of Dee Jay's 6MK. Does not work on crouching opponents."
+    },
+    {
+      "combo": "2MP>214KK~HK,[4]6PP,214K~HK,236MK/236HK/214214P",
+      "section": "Links and Starters",
+      "notes": "High damage corner combo. 214MK can be canceled into level 3 Super."
+    },
+    {
+      "combo": "2MP>214KK~HK,DR~4HK(2)>214K~HK,[4]6PP,214K~HK,236MK/236HK/214214P",
+      "section": "Links and Starters",
+      "notes": "Same combo as the one above but with another 214K~HK added before the [4]6PP for even more damage."
+    },
+    {
+      "combo": "5HP (early hit)>236MK/236HK/214MP",
+      "section": "Links and Starters",
+      "notes": "5HP is only cancelable during its initial active frames."
+    },
+    {
+      "combo": "5HP (late hit),5LK>236MK/236HK",
+      "section": "Links and Starters",
+      "notes": "5HP links into 5LP/2LP/5LK link after it connects towards the end of its active frames."
+    },
+    {
+      "combo": "2HP,2MP>236MK/236HK/214LP/[2]8HK",
+      "section": "Links and Starters",
+      "notes": "5HP links into 2MP."
+    },
+    {
+      "combo": "2HP,2MP>[2]8MK,236HK",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "2HP,2MP>[4]6PP~5LK>236MK/236HK",
+      "section": "Links and Starters"
+    },
+    {
+      "combo": "2HP,2MP>214KK~HK,[4]6PP,214K~HK,236MK/236HK/214214P",
+      "section": "Links and Starters",
+      "notes": "High damage corner combo. 214MK can be canceled into level 3 Super."
+    },
+    {
+      "combo": "2HP,2MP>214KK~HK,DR~4HK(2)>214K~HK,[4]6PP,214K~HK,236MK/236HK/214214P",
+      "section": "Links and Starters",
+      "notes": "Same combo as the one above but with another 214K~HK added before the [4]6PP for even more damage."
+    }
+  ],
+  "comboTheory": "### Extending Combos",
+  "lastUpdated": "2026-03-16"
+}
