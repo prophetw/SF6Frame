@@ -432,7 +432,8 @@
         "sourceName": "Sliding Kick",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "滑踢"
     },
     {
       "name": "Jump LP",
@@ -651,7 +652,8 @@
         "sourceName": "Power Drive",
         "sourceInput": "5MP~HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "力量驱动"
     },
     {
       "name": "Power Shoot",
@@ -688,7 +690,8 @@
         "sourceName": "Power Shoot",
         "sourceInput": "5MP~HK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "力量射击"
     },
     {
       "name": "Power Dunk",
@@ -720,7 +723,8 @@
         "sourceName": "Power Dunk",
         "sourceInput": "5MP~HK~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "力量灌篮"
     },
     {
       "name": "Power Dunk (Just Frame)",
@@ -752,7 +756,8 @@
         "sourceName": "Power Dunk (Just Frame)",
         "sourceInput": "5MP~HK~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "力量灌篮 (精确)"
     },
     {
       "name": "Passing Sway",
@@ -786,7 +791,8 @@
         "sourceName": "Passing Sway",
         "sourceInput": "5MP~MK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "交错闪避"
     },
     {
       "name": "Jump Lariat",
@@ -816,7 +822,8 @@
         "sourceName": "Jumping Lariat",
         "sourceInput": "5MP~MK~MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃套索"
     },
     {
       "name": "Jump Knee",
@@ -846,7 +853,8 @@
         "sourceName": "Jumping Knee",
         "sourceInput": "5MP~MK~MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃膝击"
     },
     {
       "name": "Fire Kick",
@@ -884,7 +892,8 @@
         "sourceName": "Fire Kick",
         "sourceInput": "2MK~2HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "火焰踢"
     },
     {
       "name": "Grasping Upper",
@@ -916,7 +925,8 @@
         "sourceName": "Grasping Upper",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "抓握上勾拳"
     },
     {
       "name": "Back Spin Kick",
@@ -1089,7 +1099,8 @@
         "sourceName": "Neutral Taunt (Burnout)",
         "sourceInput": "5PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "原地挑衅 (枯竭)"
     },
     {
       "name": "Hammer Punch",
@@ -1119,7 +1130,8 @@
         "sourceName": "Hammer Punch",
         "sourceInput": "6HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "战锤拳"
     },
     {
       "name": "Back Knuckle (Block)",
@@ -1275,7 +1287,8 @@
         "sourceName": "Buster Throw",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "破坏投"
     },
     {
       "name": "Power Wave",
@@ -1305,7 +1318,8 @@
         "sourceName": "Power Wave",
         "sourceInput": "236LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "能量波"
     },
     {
       "name": "Power Wave",
@@ -1335,7 +1349,8 @@
         "sourceName": "Power Wave",
         "sourceInput": "236MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "能量波"
     },
     {
       "name": "Power Wave",
@@ -1366,7 +1381,8 @@
         "sourceName": "Power Wave",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "能量波"
     },
     {
       "name": "Round Wave",
@@ -1399,7 +1415,8 @@
         "sourceName": "Round Wave",
         "sourceInput": "236HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "圆切波"
     },
     {
       "name": "Quick Burn",
@@ -1433,7 +1450,8 @@
         "sourceName": "Quick Burn",
         "sourceInput": "214LP",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "快速燃烧"
     },
     {
       "name": "Quick Burn",
@@ -1471,7 +1489,8 @@
         "sourceName": "Quick Burn",
         "sourceInput": "214LPMP or 214LPHP",
         "cancelText": "SA2 SA3 (2nd)"
-      }
+      },
+      "nameZh": "快速燃烧"
     },
     {
       "name": "Burning Knuckle",
@@ -1507,7 +1526,8 @@
         "sourceName": "Burning Knuckle",
         "sourceInput": "214MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "燃烧指节"
     },
     {
       "name": "Burning Knuckle",
@@ -1543,7 +1563,8 @@
         "sourceName": "Burning Knuckle",
         "sourceInput": "214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "燃烧指节"
     },
     {
       "name": "Burning Knuckle",
@@ -1580,7 +1601,8 @@
         "sourceName": "Burning Knuckle",
         "sourceInput": "214MPHP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "燃烧指节"
     },
     {
       "name": "Rising Tackle",
@@ -1616,7 +1638,8 @@
         "sourceName": "Rising Tackle",
         "sourceInput": "623LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "升龙冲顶"
     },
     {
       "name": "Rising Tackle",
@@ -1652,7 +1675,8 @@
         "sourceName": "Rising Tackle",
         "sourceInput": "623MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "升龙冲顶"
     },
     {
       "name": "Rising Tackle",
@@ -1688,7 +1712,8 @@
         "sourceName": "Rising Tackle",
         "sourceInput": "623HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "升龙冲顶"
     },
     {
       "name": "Rising Tackle",
@@ -1721,7 +1746,8 @@
         "sourceName": "Rising Tackle",
         "sourceInput": "623PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "升龙冲顶"
     },
     {
       "name": "Power Charge",
@@ -1754,7 +1780,8 @@
         "sourceName": "Power Charge",
         "sourceInput": "236LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "力量冲锋"
     },
     {
       "name": "Power Charge",
@@ -1790,7 +1817,8 @@
         "sourceName": "Power Charge",
         "sourceInput": "236MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "力量冲锋"
     },
     {
       "name": "Power Charge",
@@ -1827,7 +1855,8 @@
         "sourceName": "Power Charge",
         "sourceInput": "236HK",
         "cancelText": "Sp* SA3"
-      }
+      },
+      "nameZh": "力量冲锋"
     },
     {
       "name": "Power Charge",
@@ -1864,7 +1893,8 @@
         "sourceName": "Power Charge",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "力量冲锋"
     },
     {
       "name": "Crack Shoot",
@@ -1894,7 +1924,8 @@
         "sourceName": "Crack Shoot",
         "sourceInput": "214LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "碎裂射击"
     },
     {
       "name": "Crack Shoot",
@@ -1924,7 +1955,8 @@
         "sourceName": "Crack Shoot",
         "sourceInput": "214MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "碎裂射击"
     },
     {
       "name": "Crack Shoot",
@@ -1957,7 +1989,8 @@
         "sourceName": "Crack Shoot",
         "sourceInput": "214HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "碎裂射击"
     },
     {
       "name": "Crack Shoot",
@@ -1990,7 +2023,8 @@
         "sourceName": "Crack Shoot",
         "sourceInput": "214KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "碎裂射击"
     },
     {
       "name": "Buster Wolf",
@@ -2023,7 +2057,8 @@
         "sourceName": "Buster Wolf",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "破坏之狼"
     },
     {
       "name": "Power Geyser",
@@ -2056,7 +2091,8 @@
         "sourceName": "Power Geyser",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "力量喷泉"
     },
     {
       "name": "Twin Geyser",
@@ -2088,7 +2124,8 @@
         "sourceName": "Twin Geyser",
         "sourceInput": "214214P~PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "双重喷泉"
     },
     {
       "name": "Triple Geyser",
@@ -2120,7 +2157,8 @@
         "sourceName": "Triple Geyser",
         "sourceInput": "214214P~PP~PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "三重喷泉"
     },
     {
       "name": "Rising Fang",
@@ -2153,7 +2191,8 @@
         "sourceName": "Rising Fang",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "升龙之牙"
     },
     {
       "name": "Rising Fang (CA)",
@@ -2186,7 +2225,8 @@
         "sourceName": "Rising Fang (CA)",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "升龙之牙 (CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

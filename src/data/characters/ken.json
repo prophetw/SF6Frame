@@ -435,7 +435,8 @@
         "sourceName": "Low Spinning Sweep",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "下段回旋扫腿"
     },
     {
       "name": "Jump LP",
@@ -694,7 +695,8 @@
         "sourceName": "Chin Buster",
         "sourceInput": "5MP~HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "下颚碎"
     },
     {
       "name": "Triple Flash Kicks 1",
@@ -731,7 +733,8 @@
         "sourceName": "Triple Flash Kicks 1",
         "sourceInput": "5MK~MK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "三连闪电踢1"
     },
     {
       "name": "Triple Flash Kicks 2",
@@ -764,7 +767,8 @@
         "sourceName": "Triple Flash Kicks 2",
         "sourceInput": "5MK~MK~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "三连闪电踢2"
     },
     {
       "name": "Knee Strikes",
@@ -796,7 +800,8 @@
         "sourceName": "Knee Strikes",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "掴膝蹴"
     },
     {
       "name": "Flame Strike",
@@ -941,7 +946,8 @@
         "sourceName": "Quick Dash",
         "sourceInput": "KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "奋迅脚"
     },
     {
       "name": "Emergency Stop",
@@ -968,7 +974,8 @@
         "sourceName": "Emergency Stop",
         "sourceInput": "KK~LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "急停"
     },
     {
       "name": "Thunder Kick",
@@ -1002,7 +1009,8 @@
         "sourceName": "Thunder Kick",
         "sourceInput": "KK~MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "紫电踵"
     },
     {
       "name": "Forward Step Kick",
@@ -1036,7 +1044,8 @@
         "sourceName": "Forward Step Kick",
         "sourceInput": "KK~HK",
         "cancelText": "SA"
-      }
+      },
+      "nameZh": "踏步前踢"
     },
     {
       "name": "Neutral Taunt",
@@ -1096,7 +1105,8 @@
         "sourceName": "Hell Wheel",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "地狱车"
     },
     {
       "name": "Lightning Crack (Block)",
@@ -1719,7 +1729,8 @@
         "sourceName": "Dragonlash Kick",
         "sourceInput": "623LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "龙尾脚"
     },
     {
       "name": "Dragonlash Kick",
@@ -1749,7 +1760,8 @@
         "sourceName": "Dragonlash Kick",
         "sourceInput": "623MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "龙尾脚"
     },
     {
       "name": "Dragonlash Kick",
@@ -1779,7 +1791,8 @@
         "sourceName": "Dragonlash Kick",
         "sourceInput": "623HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "龙尾脚"
     },
     {
       "name": "Dragonlash Kick",
@@ -1809,7 +1822,8 @@
         "sourceName": "Dragonlash Kick",
         "sourceInput": "623KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "龙尾脚"
     },
     {
       "name": "Jinrai Kick",
@@ -1842,7 +1856,8 @@
         "sourceName": "Jinrai Kick",
         "sourceInput": "236LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "迅雷脚"
     },
     {
       "name": "Jinrai Kick",
@@ -1875,7 +1890,8 @@
         "sourceName": "Jinrai Kick",
         "sourceInput": "236MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "迅雷脚"
     },
     {
       "name": "Jinrai Kick",
@@ -1911,7 +1927,8 @@
         "sourceName": "Jinrai Kick",
         "sourceInput": "236HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "迅雷脚"
     },
     {
       "name": "Jinrai Kick",
@@ -1945,7 +1962,8 @@
         "sourceName": "Jinrai Kick",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "迅雷脚"
     },
     {
       "name": "Kazekama Shin Kick",
@@ -1978,7 +1996,8 @@
         "sourceName": "Kazekama Shin Kick",
         "sourceInput": "236K~6LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "风镰胫击"
     },
     {
       "name": "Kazekama Shin Kick",
@@ -2012,7 +2031,8 @@
         "sourceName": "Kazekama Shin Kick",
         "sourceInput": "236KK~6LK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "风镰胫击"
     },
     {
       "name": "Gorai Axe Kick",
@@ -2045,7 +2065,8 @@
         "sourceName": "Gorai Axe Kick",
         "sourceInput": "236K~6MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "轰雷斧脚"
     },
     {
       "name": "Gorai Axe Kick",
@@ -2079,7 +2100,8 @@
         "sourceName": "Gorai Axe Kick",
         "sourceInput": "236KK~6MK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "轰雷斧脚"
     },
     {
       "name": "Senka Snap Kick",
@@ -2115,7 +2137,8 @@
         "sourceName": "Senka Snap Kick",
         "sourceInput": "236K~6HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "闪火截击"
     },
     {
       "name": "Senka Snap Kick",
@@ -2152,7 +2175,8 @@
         "sourceName": "Senka Snap Kick",
         "sourceInput": "236KK~6HK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "闪火截击"
     },
     {
       "name": "Kasai Thrust Kick (LK)",
@@ -2189,7 +2213,8 @@
         "sourceName": "Kasai Thrust Kick (LK)",
         "sourceInput": "236KK~6LK~6K",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "火碎突踢 (轻脚)"
     },
     {
       "name": "Kasai Thrust Kick (MK)",
@@ -2226,7 +2251,8 @@
         "sourceName": "Kasai Thrust Kick (MK)",
         "sourceInput": "236KK~6MK~6K",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "火碎突踢 (中脚)"
     },
     {
       "name": "Kasai Thrust Kick (HK)",
@@ -2263,7 +2289,8 @@
         "sourceName": "Kasai Thrust Kick (HK)",
         "sourceInput": "236KK~6HK~6K",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "火碎突踢 (重脚)"
     },
     {
       "name": "Run~Shoryuken",
@@ -2299,7 +2326,8 @@
         "sourceName": "Run~Shoryuken",
         "sourceInput": "KK~623P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "奋迅~升龙拳"
     },
     {
       "name": "Run~Tatsumaki Senpukyaku",
@@ -2332,7 +2360,8 @@
         "sourceName": "Run~Tatsumaki Senpukyaku",
         "sourceInput": "KK~214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "奋迅~龙卷旋风脚"
     },
     {
       "name": "Run~Dragonlash Kick",
@@ -2362,7 +2391,8 @@
         "sourceName": "Run~Dragonlash Kick",
         "sourceInput": "KK~623K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "奋迅~龙尾脚"
     },
     {
       "name": "Dragonlash Flame",
@@ -2395,7 +2425,8 @@
         "sourceName": "Dragonlash Flame",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "真龙尾脚"
     },
     {
       "name": "Shippu Jinrai-kyaku",
@@ -2428,7 +2459,8 @@
         "sourceName": "Shippu Jinrai-kyaku",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "疾风迅雷脚"
     },
     {
       "name": "Shinryu Reppa",
@@ -2461,7 +2493,8 @@
         "sourceName": "Shinryu Reppa",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "神龙裂破"
     },
     {
       "name": "Shinryu Reppa (CA)",
@@ -2494,7 +2527,8 @@
         "sourceName": "Shinryu Reppa (CA)",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "神龙裂破 (CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

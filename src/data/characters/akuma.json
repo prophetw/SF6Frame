@@ -437,7 +437,8 @@
         "sourceName": "Low Cutter",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "下段切割"
     },
     {
       "name": "Jump LP",
@@ -655,7 +656,8 @@
         "sourceName": "Tenmaku Blade Kick",
         "sourceInput": "j.2MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "天幕刃脚"
     },
     {
       "name": "Viscera Piercer",
@@ -690,7 +692,8 @@
         "sourceName": "Viscera Piercer",
         "sourceInput": "5MP~MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "穿脏击"
     },
     {
       "name": "Bone Crusher Axe Kick",
@@ -720,7 +723,8 @@
         "sourceName": "Bone Crusher Axe Kick",
         "sourceInput": "5MK~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "碎骨斧脚"
     },
     {
       "name": "Goshoha",
@@ -752,7 +756,8 @@
         "sourceName": "Goshoha",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "轰冲破"
     },
     {
       "name": "Oni Goroshi",
@@ -959,7 +964,8 @@
         "sourceName": "Kongou-Kokuretsuzan",
         "sourceInput": "22PPP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "金刚国裂斩"
     },
     {
       "name": "Skull Splitter",
@@ -989,7 +995,8 @@
         "sourceName": "Skull Splitter",
         "sourceInput": "6MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "头骸割"
     },
     {
       "name": "Resso Snap Kick",
@@ -1019,7 +1026,8 @@
         "sourceName": "Resso Snap Kick",
         "sourceInput": "6MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "热爪跃击"
     },
     {
       "name": "Kikoku",
@@ -1053,7 +1061,8 @@
         "sourceName": "Kikoku",
         "sourceInput": "6HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "鬼哭"
     },
     {
       "name": "Rago High Kick",
@@ -1091,7 +1100,8 @@
         "sourceName": "Rago High Kick",
         "sourceInput": "4HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "罗睺上段踢"
     },
     {
       "name": "Kikoku Combination 1",
@@ -1128,7 +1138,8 @@
         "sourceName": "Kikoku Combination 1",
         "sourceInput": "6HP~6HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "鬼哭连击1"
     },
     {
       "name": "Kikoku Combination 2",
@@ -1161,7 +1172,8 @@
         "sourceName": "Kikoku Combination 2",
         "sourceInput": "6HP~6HP~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "鬼哭连击2"
     },
     {
       "name": "Shuretto",
@@ -1193,7 +1205,8 @@
         "sourceName": "Shuretto",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "修罗夺"
     },
     {
       "name": "Souha Double Palm (Block)",
@@ -1292,7 +1305,8 @@
         "sourceName": "Ashura Senku (Forward)",
         "sourceInput": "6KKK",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "阿修罗闪空(前)"
     },
     {
       "name": "Ashura Senku (Backward)",
@@ -1319,7 +1333,8 @@
         "sourceName": "Ashura Senku (Backward)",
         "sourceInput": "4KKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "阿修罗闪空(后)"
     },
     {
       "name": "Shun Goku Satsu (CA)",
@@ -1351,7 +1366,8 @@
         "sourceName": "Shun Goku Satsu (CA)",
         "sourceInput": "LP~LP~6LK~HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瞬狱杀 (CA)"
     },
     {
       "name": "Forward Taunt",
@@ -1467,7 +1483,8 @@
         "sourceName": "Oboro Throw",
         "sourceInput": "6KKK~LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "胧投"
     },
     {
       "name": "Gou Hadoken",
@@ -1497,7 +1514,8 @@
         "sourceName": "Gou Hadoken",
         "sourceInput": "236LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "豪波动拳"
     },
     {
       "name": "Gou Hadoken",
@@ -1527,7 +1545,8 @@
         "sourceName": "Gou Hadoken",
         "sourceInput": "236MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "豪波动拳"
     },
     {
       "name": "Gou Hadoken",
@@ -1557,7 +1576,8 @@
         "sourceName": "Gou Hadoken",
         "sourceInput": "236HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "豪波动拳"
     },
     {
       "name": "Gou Hadoken",
@@ -1592,7 +1612,8 @@
         "sourceName": "Gou Hadoken",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "豪波动拳"
     },
     {
       "name": "Gou Hadoken Lv.2",
@@ -1626,7 +1647,8 @@
         "sourceName": "Gou Hadoken Lv.2",
         "sourceInput": "236{P}",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "豪波动拳Lv.2"
     },
     {
       "name": "Gou Hadoken Lv.3",
@@ -1660,7 +1682,8 @@
         "sourceName": "Gou Hadoken Lv.3",
         "sourceInput": "236",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "豪波动拳Lv.3"
     },
     {
       "name": "OD Gou Hadoken Lv.2",
@@ -1695,7 +1718,8 @@
         "sourceName": "OD Gou Hadoken Lv.2",
         "sourceInput": "236",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "OD豪波动拳Lv.2"
     },
     {
       "name": "Zanku Hadoken",
@@ -1722,7 +1746,8 @@
         "sourceName": "Zanku Hadoken",
         "sourceInput": "j.236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斩空波动拳"
     },
     {
       "name": "Zanku Hadoken",
@@ -1753,7 +1778,8 @@
         "sourceName": "Zanku Hadoken",
         "sourceInput": "j.236PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斩空波动拳"
     },
     {
       "name": "Gou Shoryuken",
@@ -1789,7 +1815,8 @@
         "sourceName": "Gou Shoryuken",
         "sourceInput": "623LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "豪升龙拳"
     },
     {
       "name": "Gou Shoryuken",
@@ -1825,7 +1852,8 @@
         "sourceName": "Gou Shoryuken",
         "sourceInput": "623MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "豪升龙拳"
     },
     {
       "name": "Gou Shoryuken",
@@ -1861,7 +1889,8 @@
         "sourceName": "Gou Shoryuken",
         "sourceInput": "623HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "豪升龙拳"
     },
     {
       "name": "Gou Shoryuken",
@@ -1894,7 +1923,8 @@
         "sourceName": "Gou Shoryuken",
         "sourceInput": "623PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "豪升龙拳"
     },
     {
       "name": "Tatsumaki Zanku-Kyaku",
@@ -1927,7 +1957,8 @@
         "sourceName": "Tatsumaki Zanku-Kyaku",
         "sourceInput": "214LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "龙卷斩空脚"
     },
     {
       "name": "Tatsumaki Zanku-Kyaku",
@@ -1960,7 +1991,8 @@
         "sourceName": "Tatsumaki Zanku-Kyaku",
         "sourceInput": "214MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "龙卷斩空脚"
     },
     {
       "name": "Tatsumaki Zanku-Kyaku",
@@ -1993,7 +2025,8 @@
         "sourceName": "Tatsumaki Zanku-Kyaku",
         "sourceInput": "214HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "龙卷斩空脚"
     },
     {
       "name": "Tatsumaki Zanku-Kyaku",
@@ -2026,7 +2059,8 @@
         "sourceName": "Tatsumaki Zanku-Kyaku",
         "sourceInput": "214KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "龙卷斩空脚"
     },
     {
       "name": "Aerial Tatsumaki Zanku-Kyaku",
@@ -2058,7 +2092,8 @@
         "sourceName": "Aerial Tatsumaki Zanku-Kyaku",
         "sourceInput": "j.214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中龙卷斩空脚"
     },
     {
       "name": "Aerial Tatsumaki Zanku-Kyaku",
@@ -2090,7 +2125,8 @@
         "sourceName": "Aerial Tatsumaki Zanku-Kyaku",
         "sourceInput": "j.214KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中龙卷斩空脚"
     },
     {
       "name": "Adamant Flame",
@@ -2123,7 +2159,8 @@
         "sourceName": "Adamant Flame",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "百鬼袭"
     },
     {
       "name": "Adamant Flame",
@@ -2156,7 +2193,8 @@
         "sourceName": "Adamant Flame",
         "sourceInput": "214MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "百鬼袭"
     },
     {
       "name": "Adamant Flame",
@@ -2189,7 +2227,8 @@
         "sourceName": "Adamant Flame",
         "sourceInput": "214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "百鬼袭"
     },
     {
       "name": "Adamant Flame",
@@ -2223,7 +2262,8 @@
         "sourceName": "Adamant Flame",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "百鬼袭"
     },
     {
       "name": "Adamant Flame Follow-Up",
@@ -2256,7 +2296,8 @@
         "sourceName": "Adamant Flame Follow-Up",
         "sourceInput": "214LP~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "百鬼袭追击"
     },
     {
       "name": "Adamant Flame Follow-Up",
@@ -2292,7 +2333,8 @@
         "sourceName": "Adamant Flame Follow-Up",
         "sourceInput": "214MP~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "百鬼袭追击"
     },
     {
       "name": "Adamant Flame Follow-Up",
@@ -2328,7 +2370,8 @@
         "sourceName": "Adamant Flame Follow-Up",
         "sourceInput": "214HP~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "百鬼袭追击"
     },
     {
       "name": "Adamant Flame Follow-Up",
@@ -2371,7 +2414,8 @@
         "sourceName": "Adamant Flame Follow-Up",
         "sourceInput": "214PP~6P",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "百鬼袭追击"
     },
     {
       "name": "Demon Raid",
@@ -2398,7 +2442,8 @@
         "sourceName": "Demon Raid",
         "sourceInput": "236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "恶魔突袭"
     },
     {
       "name": "Demon Raid",
@@ -2425,7 +2470,8 @@
         "sourceName": "Demon Raid",
         "sourceInput": "236KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "恶魔突袭"
     },
     {
       "name": "Demon Low Slash",
@@ -2458,7 +2504,8 @@
         "sourceName": "Demon Low Slash",
         "sourceInput": "236K~No Input",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "百鬼豪斩"
     },
     {
       "name": "Demon Low Slash",
@@ -2491,7 +2538,8 @@
         "sourceName": "Demon Low Slash",
         "sourceInput": "236KK~No Input",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "百鬼豪斩"
     },
     {
       "name": "Demon Guillotine",
@@ -2522,7 +2570,8 @@
         "sourceName": "Demon Guillotine",
         "sourceInput": "236K~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "百鬼豪碎"
     },
     {
       "name": "Demon Guillotine",
@@ -2553,7 +2602,8 @@
         "sourceName": "Demon Guillotine",
         "sourceInput": "236KK~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "百鬼豪碎"
     },
     {
       "name": "Demon Blade Kick",
@@ -2580,7 +2630,8 @@
         "sourceName": "Demon Blade Kick",
         "sourceInput": "236K~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "百鬼豪刃"
     },
     {
       "name": "Demon Blade Kick",
@@ -2607,7 +2658,8 @@
         "sourceName": "Demon Blade Kick",
         "sourceInput": "236KK~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "百鬼豪刃"
     },
     {
       "name": "Demon Swoop",
@@ -2634,7 +2686,8 @@
         "sourceName": "Demon Swoop",
         "sourceInput": "236K~",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "百鬼豪坠"
     },
     {
       "name": "Demon Swoop",
@@ -2661,7 +2714,8 @@
         "sourceName": "Demon Swoop",
         "sourceInput": "236KK~",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "百鬼豪坠"
     },
     {
       "name": "Demon Gou Zanku",
@@ -2692,7 +2746,8 @@
         "sourceName": "Demon Gou Zanku",
         "sourceInput": "236KK~j.236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "百鬼豪斩空"
     },
     {
       "name": "Demon Gou Rasen",
@@ -2724,7 +2779,8 @@
         "sourceName": "Demon Gou Rasen",
         "sourceInput": "236KK~j.214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "百鬼豪螺旋"
     },
     {
       "name": "Messatsu Gohado",
@@ -2755,7 +2811,8 @@
         "sourceName": "Messatsu Gohado",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "灭杀豪波动"
     },
     {
       "name": "Tenma Gozanku",
@@ -2786,7 +2843,8 @@
         "sourceName": "Tenma Gozanku",
         "sourceInput": "j.236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "天魔豪斩空"
     },
     {
       "name": "Empyrean’s End",
@@ -2819,7 +2877,8 @@
         "sourceName": "Empyrean’s End",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "崩天劫火"
     },
     {
       "name": "Sip of Calamity",
@@ -2852,7 +2911,8 @@
         "sourceName": "Sip of Calamity",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "祸坏"
     },
     {
       "name": "Sip of Calamity (CA)",
@@ -2885,7 +2945,8 @@
         "sourceName": "Sip of Calamity (CA)",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "祸坏(CA)"
     },
     {
       "name": "Double Zanku Hadoken",
@@ -2912,7 +2973,8 @@
         "sourceName": "Double Zanku Hadoken",
         "sourceInput": "j.214PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "双重斩空波动拳"
     },
     {
       "name": "Misogi",
@@ -2945,7 +3007,8 @@
         "sourceName": "Misogi",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "禊"
     }
   ],
   "lastUpdated": "2026-03-03"

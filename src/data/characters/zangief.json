@@ -146,7 +146,8 @@
         "sourceName": "Standing Heavy Punch (hold)",
         "sourceInput": "5",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立重拳 (蓄力)"
     },
     {
       "name": "Stand LK",
@@ -450,7 +451,8 @@
         "sourceName": "Big Stampede",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "大踩踏"
     },
     {
       "name": "Jump LP",
@@ -665,7 +667,8 @@
         "sourceName": "Jumping Heavy Kick (hold)",
         "sourceInput": "j.",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重脚 (蓄力)"
     },
     {
       "name": "Hellstab",
@@ -700,7 +703,8 @@
         "sourceName": "Hellstab",
         "sourceInput": "3MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "地狱刺"
     },
     {
       "name": "Smetana Dropkick",
@@ -733,7 +737,8 @@
         "sourceName": "Smetana Dropkick",
         "sourceInput": "3HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "酸奶油飞踢"
     },
     {
       "name": "Power Stomp 1",
@@ -767,7 +772,8 @@
         "sourceName": "Power Stomp 1",
         "sourceInput": "22MK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "强力践踏1"
     },
     {
       "name": "Flying Body Press",
@@ -797,7 +803,8 @@
         "sourceName": "Flying Body Press",
         "sourceInput": "j.2HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞身跃击"
     },
     {
       "name": "Flying Headbutt",
@@ -831,7 +838,8 @@
         "sourceName": "Flying Headbutt",
         "sourceInput": "j.8HP",
         "cancelText": "Sp"
-      }
+      },
+      "nameZh": "飞跃头锤"
     },
     {
       "name": "Machine Gun Chops 1",
@@ -865,7 +873,8 @@
         "sourceName": "Machine Gun Chops 1",
         "sourceInput": "5MP~MP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "机关枪连劈1"
     },
     {
       "name": "Machine Gun Chops 2",
@@ -898,7 +907,8 @@
         "sourceName": "Machine Gun Chops 2",
         "sourceInput": "5MP~MP~MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "机关枪连劈2"
     },
     {
       "name": "Power Stomps 2",
@@ -934,7 +944,8 @@
         "sourceName": "Power Stomps 2",
         "sourceInput": "22MK~MK",
         "cancelText": "Sp SA TC"
-      }
+      },
+      "nameZh": "强力践踏2"
     },
     {
       "name": "Power Stomps 3",
@@ -969,7 +980,8 @@
         "sourceName": "Power Stomps 3",
         "sourceInput": "22MK~MK~MK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "强力践踏3"
     },
     {
       "name": "Bodyslam",
@@ -1001,7 +1013,8 @@
         "sourceName": "Bodyslam",
         "sourceInput": "5LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "身体猛击"
     },
     {
       "name": "Brain Buster",
@@ -1033,7 +1046,8 @@
         "sourceName": "Brain Buster",
         "sourceInput": "2LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "碎脑摔"
     },
     {
       "name": "Spinebuster",
@@ -1065,7 +1079,8 @@
         "sourceName": "Spinebuster",
         "sourceInput": "3LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "破脊摔"
     },
     {
       "name": "Russian Drop",
@@ -1097,7 +1112,8 @@
         "sourceName": "Russian Drop",
         "sourceInput": "1LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "俄罗斯下落摔"
     },
     {
       "name": "Double Russian Chop",
@@ -1252,7 +1268,8 @@
         "sourceName": "Double Lariat",
         "sourceInput": "PP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "双截拳"
     },
     {
       "name": "Double Lariat",
@@ -1291,7 +1308,8 @@
         "sourceName": "Double Lariat",
         "sourceInput": "PPP",
         "cancelText": "SA2 SA3 (1st)"
-      }
+      },
+      "nameZh": "双截拳"
     },
     {
       "name": "Tundra Storm",
@@ -1323,7 +1341,8 @@
         "sourceName": "Tundra Storm",
         "sourceInput": "22HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "冻原风暴"
     },
     {
       "name": "Neutral Taunt",
@@ -1409,7 +1428,8 @@
         "sourceName": "Knee Hammer",
         "sourceInput": "6MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "膝盖冲撞"
     },
     {
       "name": "Headbutt",
@@ -1444,7 +1464,8 @@
         "sourceName": "Headbutt",
         "sourceInput": "6HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "头锤"
     },
     {
       "name": "Cyclone Wheel Kick",
@@ -1477,7 +1498,8 @@
         "sourceName": "Cyclone Wheel Kick",
         "sourceInput": "6HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "旋风轮踢"
     },
     {
       "name": "German Suplex",
@@ -1509,7 +1531,8 @@
         "sourceName": "German Suplex",
         "sourceInput": "6LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "德式背摔"
     },
     {
       "name": "Capture Suplex",
@@ -1541,7 +1564,8 @@
         "sourceName": "Capture Suplex",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "捕获背摔"
     },
     {
       "name": "Reverse Russian Kick (Block)",
@@ -1641,7 +1665,8 @@
         "sourceName": "Screw Piledriver",
         "sourceInput": "360+LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "螺旋打桩机"
     },
     {
       "name": "Screw Piledriver",
@@ -1673,7 +1698,8 @@
         "sourceName": "Screw Piledriver",
         "sourceInput": "360+MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "螺旋打桩机"
     },
     {
       "name": "Screw Piledriver",
@@ -1705,7 +1731,8 @@
         "sourceName": "Screw Piledriver",
         "sourceInput": "360+HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "螺旋打桩机"
     },
     {
       "name": "Screw Piledriver",
@@ -1737,7 +1764,8 @@
         "sourceName": "Screw Piledriver",
         "sourceInput": "360+PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "螺旋打桩机"
     },
     {
       "name": "Borscht Dynamite",
@@ -1769,7 +1797,8 @@
         "sourceName": "Borscht Dynamite",
         "sourceInput": "j.360+K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "罗宋汤炸药"
     },
     {
       "name": "Borscht Dynamite",
@@ -1801,7 +1830,8 @@
         "sourceName": "Borscht Dynamite",
         "sourceInput": "j.360+KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "罗宋汤炸药"
     },
     {
       "name": "Bolshoi Storm Buster",
@@ -1833,7 +1863,8 @@
         "sourceName": "Bolshoi Storm Buster",
         "sourceInput": "720+P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "莫斯科风暴破坏者"
     },
     {
       "name": "Bolshoi Storm Buster (CA)",
@@ -1865,7 +1896,8 @@
         "sourceName": "Bolshoi Storm Buster (CA)",
         "sourceInput": "720+P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "莫斯科风暴破坏者 (CA)"
     },
     {
       "name": "Forward Taunt",
@@ -1953,7 +1985,8 @@
         "sourceName": "Russian Suplex",
         "sourceInput": "63214K (Close)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "俄罗斯背摔"
     },
     {
       "name": "Russian Suplex",
@@ -1985,7 +2018,8 @@
         "sourceName": "Russian Suplex",
         "sourceInput": "63214KK (Close)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "俄罗斯背摔"
     },
     {
       "name": "Siberian Express",
@@ -2017,7 +2051,8 @@
         "sourceName": "Siberian Express",
         "sourceInput": "63214K (Mid)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "西伯利亚特快"
     },
     {
       "name": "Siberian Express",
@@ -2049,7 +2084,8 @@
         "sourceName": "Siberian Express",
         "sourceInput": "63214KK (Mid)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "西伯利亚特快"
     },
     {
       "name": "Siberian Express",
@@ -2081,7 +2117,8 @@
         "sourceName": "Siberian Express",
         "sourceInput": "63214K (Far)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "西伯利亚特快"
     },
     {
       "name": "Siberian Express",
@@ -2113,7 +2150,8 @@
         "sourceName": "Siberian Express",
         "sourceInput": "63214KK (Far)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "西伯利亚特快"
     },
     {
       "name": "Aerial Russian Slam",
@@ -2145,7 +2183,8 @@
         "sourceName": "Aerial Russian Slam",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中俄罗斯猛击"
     },
     {
       "name": "Cyclone Lariat",
@@ -2178,7 +2217,8 @@
         "sourceName": "Cyclone Lariat",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "旋风套索"
     },
     {
       "name": "Cyclone Lariat (hold P)",
@@ -2211,7 +2251,8 @@
         "sourceName": "Cyclone Lariat (hold P)",
         "sourceInput": "236236",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "旋风套索 (蓄力)"
     }
   ],
   "lastUpdated": "2026-02-06"

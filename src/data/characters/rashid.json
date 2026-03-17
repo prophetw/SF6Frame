@@ -430,7 +430,8 @@
         "sourceName": "Cyclone Slicer",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "气旋切割"
     },
     {
       "name": "Jump LP",
@@ -647,7 +648,8 @@
         "sourceName": "Wall Jump",
         "sourceInput": "9 (against wall)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "三角跳"
     },
     {
       "name": "Blitz Strike",
@@ -681,7 +683,8 @@
         "sourceName": "Blitz Strike",
         "sourceInput": "j.2HP",
         "cancelText": "Sp"
-      }
+      },
+      "nameZh": "闪电打击"
     },
     {
       "name": "Aerial Shot",
@@ -711,7 +714,8 @@
         "sourceName": "Aerial Shot",
         "sourceInput": "j.8HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中射击"
     },
     {
       "name": "Run",
@@ -738,7 +742,8 @@
         "sourceName": "Run",
         "sourceInput": "6",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "奔跑"
     },
     {
       "name": "Rising Kick",
@@ -776,7 +781,8 @@
         "sourceName": "Rising Kick",
         "sourceInput": "5MP~HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "升龙踢"
     },
     {
       "name": "Riding Glider",
@@ -808,7 +814,8 @@
         "sourceName": "Riding Glider",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "骑乘滑翔"
     },
     {
       "name": "Desert Slider",
@@ -840,7 +847,8 @@
         "sourceName": "Desert Slider",
         "sourceInput": "j.LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "沙漠滑铲"
     },
     {
       "name": "Eagle Edge",
@@ -1022,7 +1030,8 @@
         "sourceName": "Flapping Spin",
         "sourceInput": "6MP",
         "cancelText": "Sp SA (1st)"
-      }
+      },
+      "nameZh": "扑翼旋转"
     },
     {
       "name": "Beak Assault",
@@ -1052,7 +1061,8 @@
         "sourceName": "Beak Assault",
         "sourceInput": "6HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "喙击"
     },
     {
       "name": "Crescent Kick",
@@ -1082,7 +1092,8 @@
         "sourceName": "Crescent Kick",
         "sourceInput": "6HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "新月踢"
     },
     {
       "name": "Backup",
@@ -1119,7 +1130,8 @@
         "sourceName": "Backup",
         "sourceInput": "6~6P",
         "cancelText": "SA (2nd, hit only)"
-      }
+      },
+      "nameZh": "后撤"
     },
     {
       "name": "Tempest Moon",
@@ -1154,7 +1166,8 @@
         "sourceName": "Tempest Moon",
         "sourceInput": "6~6K",
         "cancelText": "SA (2nd)"
-      }
+      },
+      "nameZh": "风暴之月"
     },
     {
       "name": "Tempest Moon (Air Current)",
@@ -1187,7 +1200,8 @@
         "sourceName": "Tempest Moon (Air Current)",
         "sourceInput": "6~6K (Air Current)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "风暴之月(气流)"
     },
     {
       "name": "Side Flip",
@@ -1214,7 +1228,8 @@
         "sourceName": "Side Flip",
         "sourceInput": "6KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "侧翻空"
     },
     {
       "name": "Front Flip",
@@ -1241,7 +1256,8 @@
         "sourceName": "Front Flip",
         "sourceInput": "6KK~KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前翻空"
     },
     {
       "name": "Sunset Drop",
@@ -1273,7 +1289,8 @@
         "sourceName": "Sunset Drop",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "日落翻摔"
     },
     {
       "name": "Eagle Slash (Block)",
@@ -1431,7 +1448,8 @@
         "sourceName": "Spinning Mixer",
         "sourceInput": "236LP",
         "cancelText": "SA3 (1st)"
-      }
+      },
+      "nameZh": "旋转搅拌机"
     },
     {
       "name": "Spinning Mixer",
@@ -1470,7 +1488,8 @@
         "sourceName": "Spinning Mixer",
         "sourceInput": "236MP",
         "cancelText": "SA3, (Sp/SA land)"
-      }
+      },
+      "nameZh": "旋转搅拌机"
     },
     {
       "name": "Spinning Mixer",
@@ -1503,7 +1522,8 @@
         "sourceName": "Spinning Mixer",
         "sourceInput": "236HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "旋转搅拌机"
     },
     {
       "name": "Spinning Mixer",
@@ -1536,7 +1556,8 @@
         "sourceName": "Spinning Mixer",
         "sourceInput": "236PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "旋转搅拌机"
     },
     {
       "name": "Spinning Mixer",
@@ -1570,7 +1591,8 @@
         "sourceName": "Spinning Mixer",
         "sourceInput": "236LP (Air Current)",
         "cancelText": "SA3 (1st)"
-      }
+      },
+      "nameZh": "旋转搅拌机"
     },
     {
       "name": "Spinning Mixer",
@@ -1606,7 +1628,8 @@
         "sourceName": "Spinning Mixer",
         "sourceInput": "236MP (Air Current)",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "旋转搅拌机"
     },
     {
       "name": "Spinning Mixer",
@@ -1639,7 +1662,8 @@
         "sourceName": "Spinning Mixer",
         "sourceInput": "236HP (Air Current)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "旋转搅拌机"
     },
     {
       "name": "Spinning Mixer",
@@ -1676,7 +1700,8 @@
         "sourceName": "Spinning Mixer",
         "sourceInput": "236PP (Air Current)",
         "cancelText": "Sp* (air)"
-      }
+      },
+      "nameZh": "旋转搅拌机"
     },
     {
       "name": "Eagle Spike",
@@ -1713,7 +1738,8 @@
         "sourceName": "Eagle Spike",
         "sourceInput": "214LK",
         "cancelText": "SA3 (hit)"
-      }
+      },
+      "nameZh": "飞鹰突刺"
     },
     {
       "name": "Eagle Spike",
@@ -1746,7 +1772,8 @@
         "sourceName": "Eagle Spike",
         "sourceInput": "214MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞鹰突刺"
     },
     {
       "name": "Eagle Spike",
@@ -1779,7 +1806,8 @@
         "sourceName": "Eagle Spike",
         "sourceInput": "214HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞鹰突刺"
     },
     {
       "name": "Eagle Spike",
@@ -1812,7 +1840,8 @@
         "sourceName": "Eagle Spike",
         "sourceInput": "214KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞鹰突刺"
     },
     {
       "name": "Eagle Spike (Air Current)",
@@ -1849,7 +1878,8 @@
         "sourceName": "Eagle Spike (Air Current)",
         "sourceInput": "214LK (Air Current)",
         "cancelText": "SA3 (hit)"
-      }
+      },
+      "nameZh": "飞鹰突刺(气流)"
     },
     {
       "name": "Eagle Spike (Air Current)",
@@ -1882,7 +1912,8 @@
         "sourceName": "Eagle Spike (Air Current)",
         "sourceInput": "214MK (Air Current)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞鹰突刺(气流)"
     },
     {
       "name": "Eagle Spike (Air Current)",
@@ -1915,7 +1946,8 @@
         "sourceName": "Eagle Spike (Air Current)",
         "sourceInput": "214HK (Air Current)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞鹰突刺(气流)"
     },
     {
       "name": "Eagle Spike (Air Current)",
@@ -1948,7 +1980,8 @@
         "sourceName": "Eagle Spike (Air Current)",
         "sourceInput": "214KK (Air Current)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞鹰突刺(气流)"
     },
     {
       "name": "Whirlwind Shot",
@@ -1978,7 +2011,8 @@
         "sourceName": "Whirlwind Shot",
         "sourceInput": "236K",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "旋风射击"
     },
     {
       "name": "Whirlwind Shot (Partial Hold)",
@@ -2008,7 +2042,8 @@
         "sourceName": "Whirlwind Shot (Partial Hold)",
         "sourceInput": "236{K}",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "旋风射击(部分蓄力)"
     },
     {
       "name": "Whirlwind Shot (Hold)",
@@ -2038,7 +2073,8 @@
         "sourceName": "Whirlwind Shot (Hold)",
         "sourceInput": "236",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "旋风射击(完全蓄力)"
     },
     {
       "name": "Whirlwind Shot",
@@ -2073,7 +2109,8 @@
         "sourceName": "Whirlwind Shot",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "旋风射击"
     },
     {
       "name": "Arabian Cyclone",
@@ -2106,7 +2143,8 @@
         "sourceName": "Arabian Cyclone",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "阿拉伯气旋"
     },
     {
       "name": "Arabian Cyclone",
@@ -2139,7 +2177,8 @@
         "sourceName": "Arabian Cyclone",
         "sourceInput": "214MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "阿拉伯气旋"
     },
     {
       "name": "Arabian Cyclone",
@@ -2175,7 +2214,8 @@
         "sourceName": "Arabian Cyclone",
         "sourceInput": "214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "阿拉伯气旋"
     },
     {
       "name": "Arabian Cyclone",
@@ -2212,7 +2252,8 @@
         "sourceName": "Arabian Cyclone",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "阿拉伯气旋"
     },
     {
       "name": "Wing Stroke",
@@ -2239,7 +2280,8 @@
         "sourceName": "Wing Stroke",
         "sourceInput": "214P~4K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "翼展拍击"
     },
     {
       "name": "Rolling Assault",
@@ -2266,7 +2308,8 @@
         "sourceName": "Rolling Assault",
         "sourceInput": "214P~6K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "滚动突击"
     },
     {
       "name": "Nail Assault",
@@ -2302,7 +2345,8 @@
         "sourceName": "Nail Assault",
         "sourceInput": "214P~6K~K",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "钉刺突击"
     },
     {
       "name": "Arabian Skyhigh",
@@ -2335,7 +2379,8 @@
         "sourceName": "Arabian Skyhigh",
         "sourceInput": "j.214LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "阿拉伯冲霄"
     },
     {
       "name": "Arabian Skyhigh",
@@ -2368,7 +2413,8 @@
         "sourceName": "Arabian Skyhigh",
         "sourceInput": "j.214MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "阿拉伯冲霄"
     },
     {
       "name": "Arabian Skyhigh",
@@ -2401,7 +2447,8 @@
         "sourceName": "Arabian Skyhigh",
         "sourceInput": "j.214HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "阿拉伯冲霄"
     },
     {
       "name": "Arabian Skyhigh",
@@ -2434,7 +2481,8 @@
         "sourceName": "Arabian Skyhigh",
         "sourceInput": "j.214KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "阿拉伯冲霄"
     },
     {
       "name": "Ysaar",
@@ -2465,7 +2513,8 @@
         "sourceName": "Ysaar",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "伊萨"
     },
     {
       "name": "Altair",
@@ -2498,7 +2547,8 @@
         "sourceName": "Altair",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "阿泰尔"
     },
     {
       "name": "Altair (CA)",
@@ -2531,7 +2581,8 @@
         "sourceName": "Altair (CA)",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "阿泰尔 (CA)"
     },
     {
       "name": "Super Rashid Kick",
@@ -2564,7 +2615,8 @@
         "sourceName": "Super Rashid Kick",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "超级拉希德踢"
     }
   ],
   "lastUpdated": "2026-02-06"

@@ -434,7 +434,8 @@
         "sourceName": "Root Breaker",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "碎根击"
     },
     {
       "name": "Jump LP",
@@ -661,7 +662,8 @@
         "sourceName": "Slide",
         "sourceInput": "3HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "滑铲"
     },
     {
       "name": "Starling Beak",
@@ -694,7 +696,8 @@
         "sourceName": "Starling Beak",
         "sourceInput": "5MP~MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "星椋鸟之喙"
     },
     {
       "name": "Turning Tail",
@@ -727,7 +730,8 @@
         "sourceName": "Turning Tail",
         "sourceInput": "5HP~HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "扫尾"
     },
     {
       "name": "Hind Kick",
@@ -765,7 +769,8 @@
         "sourceName": "Hind Kick",
         "sourceInput": "5MK~HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "后踢"
     },
     {
       "name": "Fluttering Lark",
@@ -798,7 +803,8 @@
         "sourceName": "Fluttering Lark",
         "sourceInput": "2MK~HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "飞舞云雀"
     },
     {
       "name": "Soaring Raid",
@@ -828,7 +834,8 @@
         "sourceName": "Soaring Raid",
         "sourceInput": "j.LP~j.MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "展翅突袭"
     },
     {
       "name": "Raptor Range",
@@ -860,7 +867,8 @@
         "sourceName": "Raptor Range",
         "sourceInput": "j.MP~j.HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "猛禽范畴"
     },
     {
       "name": "Leg Tackle",
@@ -892,7 +900,8 @@
         "sourceName": "Leg Tackle",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "腿部擒抱"
     },
     {
       "name": "Giraffe Neck",
@@ -1106,7 +1115,8 @@
         "sourceName": "Trunk Slap 1",
         "sourceInput": "6HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "象鼻拍击1"
     },
     {
       "name": "Handstand Whip 1",
@@ -1140,7 +1150,8 @@
         "sourceName": "Handstand Whip 1",
         "sourceInput": "6MK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "倒立鞭1"
     },
     {
       "name": "Round Arch",
@@ -1170,7 +1181,8 @@
         "sourceName": "Round Arch",
         "sourceInput": "4HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "圆弧击"
     },
     {
       "name": "Trunk Slap 2",
@@ -1204,7 +1216,8 @@
         "sourceName": "Trunk Slap 2",
         "sourceInput": "6HP~HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "象鼻拍击2"
     },
     {
       "name": "Trunk Slap 3",
@@ -1237,7 +1250,8 @@
         "sourceName": "Trunk Slap 3",
         "sourceInput": "6HP~HP~HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "象鼻拍击3"
     },
     {
       "name": "Handstand Whip 2",
@@ -1270,7 +1284,8 @@
         "sourceName": "Handstand Whip 2",
         "sourceInput": "6MK~MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "倒立鞭2"
     },
     {
       "name": "Boar Charge (Block)",
@@ -1421,7 +1436,8 @@
         "sourceName": "Back Taunt ~ Forward Walk",
         "sourceInput": "4PPPKKK~6",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后挑衅 ~ 前走"
     },
     {
       "name": "Back Taunt ~ Back Walk",
@@ -1448,7 +1464,8 @@
         "sourceName": "Back Taunt ~ Back Walk",
         "sourceInput": "4PPPKKK~4",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后挑衅 ~ 后退"
     },
     {
       "name": "Leg Lift Throw",
@@ -1480,7 +1497,8 @@
         "sourceName": "Leg Lift Throw",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "抬腿投"
     },
     {
       "name": "Rhino Horn",
@@ -1516,7 +1534,8 @@
         "sourceName": "Rhino Horn",
         "sourceInput": "236LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "犀牛角"
     },
     {
       "name": "Rhino Horn",
@@ -1552,7 +1571,8 @@
         "sourceName": "Rhino Horn",
         "sourceInput": "236MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "犀牛角"
     },
     {
       "name": "Rhino Horn",
@@ -1588,7 +1608,8 @@
         "sourceName": "Rhino Horn",
         "sourceInput": "236HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "犀牛角"
     },
     {
       "name": "Rhino Horn",
@@ -1625,7 +1646,8 @@
         "sourceName": "Rhino Horn",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "犀牛角"
     },
     {
       "name": "Scratch Wheel",
@@ -1658,7 +1680,8 @@
         "sourceName": "Scratch Wheel",
         "sourceInput": "623LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "抓挠轮"
     },
     {
       "name": "Scratch Wheel",
@@ -1691,7 +1714,8 @@
         "sourceName": "Scratch Wheel",
         "sourceInput": "623MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "抓挠轮"
     },
     {
       "name": "Scratch Wheel",
@@ -1724,7 +1748,8 @@
         "sourceName": "Scratch Wheel",
         "sourceInput": "623HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "抓挠轮"
     },
     {
       "name": "Scratch Wheel",
@@ -1757,7 +1782,8 @@
         "sourceName": "Scratch Wheel",
         "sourceInput": "623KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "抓挠轮"
     },
     {
       "name": "Lynx Song",
@@ -1784,7 +1810,8 @@
         "sourceName": "Lynx Song",
         "sourceInput": "236LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "山猫之歌"
     },
     {
       "name": "Lynx Song",
@@ -1811,7 +1838,8 @@
         "sourceName": "Lynx Song",
         "sourceInput": "236MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "山猫之歌"
     },
     {
       "name": "Lynx Song",
@@ -1838,7 +1866,8 @@
         "sourceName": "Lynx Song",
         "sourceInput": "236HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "山猫之歌"
     },
     {
       "name": "Lynx Song",
@@ -1865,7 +1894,8 @@
         "sourceName": "Lynx Song",
         "sourceInput": "236PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "山猫之歌"
     },
     {
       "name": "Lynx Whirl",
@@ -1892,7 +1922,8 @@
         "sourceName": "Lynx Whirl",
         "sourceInput": "236P~6LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "山猫回旋"
     },
     {
       "name": "Lynx Whirl",
@@ -1919,7 +1950,8 @@
         "sourceName": "Lynx Whirl",
         "sourceInput": "236P~6MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "山猫回旋"
     },
     {
       "name": "Lynx Whirl",
@@ -1946,7 +1978,8 @@
         "sourceName": "Lynx Whirl",
         "sourceInput": "236P~6HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "山猫回旋"
     },
     {
       "name": "Lynx Whirl",
@@ -1973,7 +2006,8 @@
         "sourceName": "Lynx Whirl",
         "sourceInput": "236PP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "山猫回旋"
     },
     {
       "name": "Leopard Snap",
@@ -2009,7 +2043,8 @@
         "sourceName": "Leopard Snap",
         "sourceInput": "236P~6LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "猎豹突袭"
     },
     {
       "name": "Leopard Snap",
@@ -2045,7 +2080,8 @@
         "sourceName": "Leopard Snap",
         "sourceInput": "236PP~6LK or 236P~6P~6LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "猎豹突袭"
     },
     {
       "name": "Harvest Circle",
@@ -2078,7 +2114,8 @@
         "sourceName": "Harvest Circle",
         "sourceInput": "236P~6MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "丰收之环"
     },
     {
       "name": "Harvest Circle",
@@ -2111,7 +2148,8 @@
         "sourceName": "Harvest Circle",
         "sourceInput": "236PP~6MK or 236P~6P~6MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "丰收之环"
     },
     {
       "name": "Mallet Smash",
@@ -2141,7 +2179,8 @@
         "sourceName": "Mallet Smash",
         "sourceInput": "236P~6HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "木槌粉碎"
     },
     {
       "name": "Mallet Smash",
@@ -2171,7 +2210,8 @@
         "sourceName": "Mallet Smash",
         "sourceInput": "236PP~6HK or 236P~6P~6HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "木槌粉碎"
     },
     {
       "name": "Spinning Scythe",
@@ -2207,7 +2247,8 @@
         "sourceName": "Spinning Scythe",
         "sourceInput": "214LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "回旋镰刀"
     },
     {
       "name": "Spinning Scythe",
@@ -2243,7 +2284,8 @@
         "sourceName": "Spinning Scythe",
         "sourceInput": "214MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "回旋镰刀"
     },
     {
       "name": "Spinning Scythe",
@@ -2279,7 +2321,8 @@
         "sourceName": "Spinning Scythe",
         "sourceInput": "214HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "回旋镰刀"
     },
     {
       "name": "Spinning Scythe",
@@ -2316,7 +2359,8 @@
         "sourceName": "Spinning Scythe",
         "sourceInput": "214KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "回旋镰刀"
     },
     {
       "name": "Moon Glider",
@@ -2349,7 +2393,8 @@
         "sourceName": "Moon Glider",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "月亮滑翔者"
     },
     {
       "name": "Moon Glider",
@@ -2382,7 +2427,8 @@
         "sourceName": "Moon Glider",
         "sourceInput": "214MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "月亮滑翔者"
     },
     {
       "name": "Moon Glider",
@@ -2415,7 +2461,8 @@
         "sourceName": "Moon Glider",
         "sourceInput": "214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "月亮滑翔者"
     },
     {
       "name": "Moon Glider",
@@ -2449,7 +2496,8 @@
         "sourceName": "Moon Glider",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "月亮滑翔者"
     },
     {
       "name": "Moon Glider Follow-up",
@@ -2485,7 +2533,8 @@
         "sourceName": "Moon Glider Follow-up",
         "sourceInput": "214P~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "月亮滑翔追击"
     },
     {
       "name": "Moon Glider Follow-up",
@@ -2522,7 +2571,8 @@
         "sourceName": "Moon Glider Follow-up",
         "sourceInput": "214PP~6P",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "月亮滑翔追击"
     },
     {
       "name": "Meteor Volley",
@@ -2555,7 +2605,8 @@
         "sourceName": "Meteor Volley",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "流星截击"
     },
     {
       "name": "Revival Dance",
@@ -2588,7 +2639,8 @@
         "sourceName": "Revival Dance",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "复活之舞"
     },
     {
       "name": "Revival Dance (Healing)",
@@ -2621,7 +2673,8 @@
         "sourceName": "Revival Dance (Healing)",
         "sourceInput": "236236P~",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "复活之舞(治疗)"
     },
     {
       "name": "Song of the Grasslands",
@@ -2654,7 +2707,8 @@
         "sourceName": "Song of the Grasslands",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "草原之歌"
     },
     {
       "name": "Song of the Grasslands (CA)",
@@ -2687,7 +2741,8 @@
         "sourceName": "Song of the Grasslands (CA)",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "草原之歌(CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

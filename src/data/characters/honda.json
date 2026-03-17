@@ -426,7 +426,8 @@
         "sourceName": "Dohyo Sweep",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "土表扫"
     },
     {
       "name": "Jump LP",
@@ -677,7 +678,8 @@
         "sourceName": "Power Stomp",
         "sourceInput": "3HK",
         "cancelText": "kara"
-      }
+      },
+      "nameZh": "强力践踏"
     },
     {
       "name": "Flying Sumo Press",
@@ -707,7 +709,8 @@
         "sourceName": "Flying Sumo Press",
         "sourceInput": "j.2MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞天相扑压"
     },
     {
       "name": "Double Slaps",
@@ -745,7 +748,8 @@
         "sourceName": "Double Slaps",
         "sourceInput": "5LP~MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "双重拍击"
     },
     {
       "name": "Toko Shizume",
@@ -779,7 +783,8 @@
         "sourceName": "Toko Shizume",
         "sourceInput": "5MP~3HK",
         "cancelText": "kara"
-      }
+      },
+      "nameZh": "床镇"
     },
     {
       "name": "Saba Ori",
@@ -811,7 +816,8 @@
         "sourceName": "Saba Ori",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "折鲭摔"
     },
     {
       "name": "Sumo Crunch",
@@ -956,7 +962,8 @@
         "sourceName": "Sumo Spirit",
         "sourceInput": "22K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "相扑之魂"
     },
     {
       "name": "Sumo Smash",
@@ -989,7 +996,8 @@
         "sourceName": "Sumo Smash",
         "sourceInput": "8LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "相扑粉碎"
     },
     {
       "name": "Sumo Smash",
@@ -1022,7 +1030,8 @@
         "sourceName": "Sumo Smash",
         "sourceInput": "8MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "相扑粉碎"
     },
     {
       "name": "Sumo Smash",
@@ -1055,7 +1064,8 @@
         "sourceName": "Sumo Smash",
         "sourceInput": "8HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "相扑粉碎"
     },
     {
       "name": "Sumo Smash",
@@ -1088,7 +1098,8 @@
         "sourceName": "Sumo Smash",
         "sourceInput": "8KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "相扑粉碎"
     },
     {
       "name": "Neko Damashi",
@@ -1123,7 +1134,8 @@
         "sourceName": "Neko Damashi",
         "sourceInput": "22P",
         "cancelText": "Sp* SA3"
-      }
+      },
+      "nameZh": "猫骗"
     },
     {
       "name": "Neutral Taunt",
@@ -1181,7 +1193,8 @@
         "sourceName": "Harai Kick",
         "sourceInput": "6HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "扫拂踢"
     },
     {
       "name": "Raiden-Ho (Block)",
@@ -1286,7 +1299,8 @@
         "sourceName": "Sumo Headbutt",
         "sourceInput": "6LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "相扑头锤"
     },
     {
       "name": "Sumo Headbutt",
@@ -1323,7 +1337,8 @@
         "sourceName": "Sumo Headbutt",
         "sourceInput": "6MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "相扑头锤"
     },
     {
       "name": "Sumo Headbutt",
@@ -1360,7 +1375,8 @@
         "sourceName": "Sumo Headbutt",
         "sourceInput": "6HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "相扑头锤"
     },
     {
       "name": "Sumo Headbutt",
@@ -1393,7 +1409,8 @@
         "sourceName": "Sumo Headbutt",
         "sourceInput": "6PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "相扑头锤"
     },
     {
       "name": "Ultimate Killer Head Ram",
@@ -1426,7 +1443,8 @@
         "sourceName": "Ultimate Killer Head Ram",
         "sourceInput": "646K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "终极杀手头锤"
     },
     {
       "name": "Forward Taunt",
@@ -1514,7 +1532,8 @@
         "sourceName": "Tawara Throw",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "米袋投"
     },
     {
       "name": "Oicho Throw",
@@ -1546,7 +1565,8 @@
         "sourceName": "Oicho Throw",
         "sourceInput": "63214LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "大银杏投"
     },
     {
       "name": "Oicho Throw",
@@ -1578,7 +1598,8 @@
         "sourceName": "Oicho Throw",
         "sourceInput": "63214MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "大银杏投"
     },
     {
       "name": "Oicho Throw",
@@ -1610,7 +1631,8 @@
         "sourceName": "Oicho Throw",
         "sourceInput": "63214HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "大银杏投"
     },
     {
       "name": "Oicho Throw",
@@ -1642,7 +1664,8 @@
         "sourceName": "Oicho Throw",
         "sourceInput": "63214KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "大银杏投"
     },
     {
       "name": "Hundred Hand Slap",
@@ -1675,7 +1698,8 @@
         "sourceName": "Hundred Hand Slap",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "百裂张手"
     },
     {
       "name": "Hundred Hand Slap",
@@ -1708,7 +1732,8 @@
         "sourceName": "Hundred Hand Slap",
         "sourceInput": "214MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "百裂张手"
     },
     {
       "name": "Hundred Hand Slap",
@@ -1741,7 +1766,8 @@
         "sourceName": "Hundred Hand Slap",
         "sourceInput": "214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "百裂张手"
     },
     {
       "name": "Hundred Hand Slap",
@@ -1775,7 +1801,8 @@
         "sourceName": "Hundred Hand Slap",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "百裂张手"
     },
     {
       "name": "Sumo Dash",
@@ -1802,7 +1829,8 @@
         "sourceName": "Sumo Dash",
         "sourceInput": "236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "相扑冲刺"
     },
     {
       "name": "Sumo Dash",
@@ -1829,7 +1857,8 @@
         "sourceName": "Sumo Dash",
         "sourceInput": "236KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "相扑冲刺"
     },
     {
       "name": "Teppo Triple Slap 1",
@@ -1865,7 +1894,8 @@
         "sourceName": "Teppo Triple Slap 1",
         "sourceInput": "236K~P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "铁炮三连击1"
     },
     {
       "name": "Teppo Triple Slap 1",
@@ -1899,7 +1929,8 @@
         "sourceName": "Teppo Triple Slap 1",
         "sourceInput": "236KK~P",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "铁炮三连击1"
     },
     {
       "name": "Teppo Triple Slap 2",
@@ -1932,7 +1963,8 @@
         "sourceName": "Teppo Triple Slap 2",
         "sourceInput": "236K~P~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "铁炮三连击2"
     },
     {
       "name": "Teppo Triple Slap 2",
@@ -1965,7 +1997,8 @@
         "sourceName": "Teppo Triple Slap 2",
         "sourceInput": "236KK~P~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "铁炮三连击2"
     },
     {
       "name": "Taiho Cannon Lift",
@@ -2001,7 +2034,8 @@
         "sourceName": "Taiho Cannon Lift",
         "sourceInput": "236K~2P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "大炮举"
     },
     {
       "name": "Taiho Cannon Lift",
@@ -2038,7 +2072,8 @@
         "sourceName": "Taiho Cannon Lift",
         "sourceInput": "236KK~2P",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "大炮举"
     },
     {
       "name": "Show of Force",
@@ -2071,7 +2106,8 @@
         "sourceName": "Show of Force",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "展示力量"
     },
     {
       "name": "The Final Bout",
@@ -2104,7 +2140,8 @@
         "sourceName": "The Final Bout",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "最终决战"
     },
     {
       "name": "The Final Bout (CA)",
@@ -2137,7 +2174,8 @@
         "sourceName": "The Final Bout (CA)",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "最终决战(CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

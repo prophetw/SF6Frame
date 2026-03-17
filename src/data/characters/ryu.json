@@ -432,7 +432,8 @@
         "sourceName": "Low Spinning Sweep",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "下段回旋扫腿"
     },
     {
       "name": "Jump LP",
@@ -655,7 +656,8 @@
         "sourceName": "High Double Strike",
         "sourceInput": "5HP~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "上段二连击"
     },
     {
       "name": "Fuwa Double Strike",
@@ -689,7 +691,8 @@
         "sourceName": "Fuwa Double Strike",
         "sourceInput": "5MP~LK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "不破二连击"
     },
     {
       "name": "Fuwa Triple Strike",
@@ -722,7 +725,8 @@
         "sourceName": "Fuwa Triple Strike",
         "sourceInput": "5MP~LK~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "不破三连击"
     },
     {
       "name": "Shingeki",
@@ -954,7 +958,8 @@
         "sourceName": "Collarbone Breaker",
         "sourceInput": "6MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "锁骨割"
     },
     {
       "name": "Solar Plexus Strike",
@@ -984,7 +989,8 @@
         "sourceName": "Solar Plexus Strike",
         "sourceInput": "6HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "鸠尾碎"
     },
     {
       "name": "Short Uppercut",
@@ -1019,7 +1025,8 @@
         "sourceName": "Short Uppercut",
         "sourceInput": "4HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "短勾拳"
     },
     {
       "name": "Axe Kick",
@@ -1054,7 +1061,8 @@
         "sourceName": "Axe Kick",
         "sourceInput": "4HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "波刃脚"
     },
     {
       "name": "Whirlwind Kick",
@@ -1088,7 +1096,8 @@
         "sourceName": "Whirlwind Kick",
         "sourceInput": "6HK",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "旋风脚"
     },
     {
       "name": "Chest Strike (Block)",
@@ -1244,7 +1253,8 @@
         "sourceName": "Shoulder Throw",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "背负投"
     },
     {
       "name": "Somersault Throw",
@@ -1276,7 +1286,8 @@
         "sourceName": "Somersault Throw",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "巴投"
     },
     {
       "name": "Aerial Tatsumaki Senpu-kyaku",
@@ -1929,7 +1940,8 @@
         "sourceName": "High Blade Kick",
         "sourceInput": "236LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "上段波刃脚"
     },
     {
       "name": "High Blade Kick",
@@ -1965,7 +1977,8 @@
         "sourceName": "High Blade Kick",
         "sourceInput": "236MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "上段波刃脚"
     },
     {
       "name": "High Blade Kick",
@@ -2001,7 +2014,8 @@
         "sourceName": "High Blade Kick",
         "sourceInput": "236HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "上段波刃脚"
     },
     {
       "name": "High Blade Kick",
@@ -2034,7 +2048,8 @@
         "sourceName": "High Blade Kick",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "上段波刃脚"
     },
     {
       "name": "Hashogeki",

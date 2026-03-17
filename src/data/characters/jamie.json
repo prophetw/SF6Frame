@@ -45,7 +45,8 @@
         "sourceName": "Stand LP (DL0)",
         "sourceInput": "5LP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "站立轻拳 (dl0)"
     },
     {
       "name": "Stand LP (DL2)",
@@ -81,7 +82,8 @@
         "sourceName": "Stand LP (DL2)",
         "sourceInput": "5LP",
         "cancelText": "Sp SA TC"
-      }
+      },
+      "nameZh": "站立轻拳 (dl2)"
     },
     {
       "name": "Stand MP (DL2)",
@@ -111,7 +113,8 @@
         "sourceName": "Stand MP (DL2)",
         "sourceInput": "5MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立中拳 (dl2)"
     },
     {
       "name": "Stand HP (DL2)",
@@ -147,7 +150,8 @@
         "sourceName": "Stand HP (DL2)",
         "sourceInput": "5HP",
         "cancelText": "Sp SA (2nd)"
-      }
+      },
+      "nameZh": "站立重拳 (dl2)"
     },
     {
       "name": "Stand LK (DL2)",
@@ -183,7 +187,8 @@
         "sourceName": "Stand LK (DL2)",
         "sourceInput": "5LK",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "站立轻脚 (dl2)"
     },
     {
       "name": "Stand MK (DL2)",
@@ -218,7 +223,8 @@
         "sourceName": "Stand MK (DL2)",
         "sourceInput": "5MK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "站立中脚 (dl2)"
     },
     {
       "name": "Stand HK (DL2)",
@@ -253,7 +259,8 @@
         "sourceName": "Stand HK (DL2)",
         "sourceInput": "5HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "站立重脚 (dl2)"
     },
     {
       "name": "Crouch LP (DL2)",
@@ -289,7 +296,8 @@
         "sourceName": "Crouch LP (DL2)",
         "sourceInput": "2LP",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "蹲下轻拳 (dl2)"
     },
     {
       "name": "Crouch MP (DL2)",
@@ -324,7 +332,8 @@
         "sourceName": "Crouch MP (DL2)",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "蹲下中拳 (dl2)"
     },
     {
       "name": "Crouch HP (DL2)",
@@ -359,7 +368,8 @@
         "sourceName": "Crouch HP (DL2)",
         "sourceInput": "2HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "蹲下重拳 (dl2)"
     },
     {
       "name": "Crouch LK (DL2)",
@@ -393,7 +403,8 @@
         "sourceName": "Crouch LK (DL2)",
         "sourceInput": "2LK",
         "cancelText": "Chn"
-      }
+      },
+      "nameZh": "蹲下轻脚 (dl2)"
     },
     {
       "name": "Crouch MK (DL2)",
@@ -428,7 +439,8 @@
         "sourceName": "Crouch MK (DL2)",
         "sourceInput": "2MK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "蹲下中脚 (dl2)"
     },
     {
       "name": "Crouch HK (DL2)",
@@ -465,7 +477,8 @@
         "sourceName": "Crouch HK (DL2)",
         "sourceInput": "2HK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "蹲重脚(饮酒等级2)"
     },
     {
       "name": "Jump LP (DL2)",
@@ -495,7 +508,8 @@
         "sourceName": "Jump LP (DL2)",
         "sourceInput": "j.LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻拳 (dl2)"
     },
     {
       "name": "Jump MP (DL2)",
@@ -529,7 +543,8 @@
         "sourceName": "Jump MP (DL2)",
         "sourceInput": "j.MP",
         "cancelText": "Sp"
-      }
+      },
+      "nameZh": "跳跃中拳 (dl2)"
     },
     {
       "name": "Jump HP (DL2)",
@@ -559,7 +574,8 @@
         "sourceName": "Jump HP (DL2)",
         "sourceInput": "j.HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重拳 (dl2)"
     },
     {
       "name": "Jump LK (DL2)",
@@ -589,7 +605,8 @@
         "sourceName": "Jump LK (DL2)",
         "sourceInput": "j.LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻脚 (dl2)"
     },
     {
       "name": "Jump MK (DL2)",
@@ -619,7 +636,8 @@
         "sourceName": "Jump MK (DL2)",
         "sourceInput": "j.MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃中脚 (dl2)"
     },
     {
       "name": "Jump HK (DL2)",
@@ -649,7 +667,8 @@
         "sourceName": "Jump HK (DL2)",
         "sourceInput": "j.HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重脚 (dl2)"
     },
     {
       "name": "Tensei Kick (DL2)",
@@ -686,7 +705,8 @@
         "sourceName": "Tensei Kick (DL2)",
         "sourceInput": "2KK",
         "cancelText": "Jmp"
-      }
+      },
+      "nameZh": "天星踢(饮酒等级2)"
     },
     {
       "name": "Phantom Sway (DL2)",
@@ -723,7 +743,8 @@
         "sourceName": "Phantom Sway (DL2)",
         "sourceInput": "2HK~HK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "幻影摇摆(饮酒等级2)"
     },
     {
       "name": "Phantom Sway + Drink (DL2)",
@@ -754,7 +775,8 @@
         "sourceName": "Phantom Sway + Drink (DL2)",
         "sourceInput": "2HK~HK~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "幻影摇摆+饮酒(饮酒等级2)"
     },
     {
       "name": "Bitter Strikes 1 (DL2)",
@@ -788,7 +810,8 @@
         "sourceName": "Bitter Strikes 1 (DL2)",
         "sourceInput": "5LP~LK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "苦烈击1(饮酒等级2)"
     },
     {
       "name": "Bitter Strikes 2 (DL2)",
@@ -823,7 +846,8 @@
         "sourceName": "Bitter Strikes 2 (DL2)",
         "sourceInput": "5LP~LK~MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "苦烈击2(饮酒等级2)"
     },
     {
       "name": "Back Shaver (DL2)",
@@ -855,7 +879,8 @@
         "sourceName": "Back Shaver (DL2)",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "剃背(饮酒等级2)"
     },
     {
       "name": "Back Shaver + Drink (DL2)",
@@ -887,7 +912,8 @@
         "sourceName": "Back Shaver + Drink (DL2)",
         "sourceInput": "LPLK (hold)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "剃背+饮酒(饮酒等级2)"
     },
     {
       "name": "Vainglory Strike (DL2)",
@@ -1032,7 +1058,8 @@
         "sourceName": "The Devil Inside",
         "sourceInput": "22P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "魔鬼在内"
     },
     {
       "name": "The Devil Inside (2 drinks)",
@@ -1059,7 +1086,8 @@
         "sourceName": "The Devil Inside (2 drinks)",
         "sourceInput": "22P (hold)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "魔鬼在内(2次饮酒)"
     },
     {
       "name": "The Devil Inside (3 drinks)",
@@ -1086,7 +1114,8 @@
         "sourceName": "The Devil Inside (3 drinks)",
         "sourceInput": "22P (hold)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "魔鬼在内(3次饮酒)"
     },
     {
       "name": "The Devil Inside (4 drinks)",
@@ -1113,7 +1142,8 @@
         "sourceName": "The Devil Inside (4 drinks)",
         "sourceInput": "22P (hold)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "魔鬼在内(4次饮酒)"
     },
     {
       "name": "The Devil Inside (DL4 activation)",
@@ -1140,7 +1170,8 @@
         "sourceName": "The Devil Inside (DL4 activation)",
         "sourceInput": "22P (activation)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "魔鬼在内(饮酒等级4激活)"
     },
     {
       "name": "Neutral Taunt (DL0-DL3)",
@@ -1167,7 +1198,8 @@
         "sourceName": "Neutral Taunt (DL0-DL3)",
         "sourceInput": "5PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "原地挑衅(饮酒等级0-3)"
     },
     {
       "name": "Neutral Taunt (DL4)",
@@ -1194,7 +1226,8 @@
         "sourceName": "Neutral Taunt (DL4)",
         "sourceInput": "5PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "原地挑衅(饮酒等级4)"
     },
     {
       "name": "Back Taunt",
@@ -1252,7 +1285,8 @@
         "sourceName": "Falling Star Kick (DL0)",
         "sourceInput": "6MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "流星踢(饮酒等级0)"
     },
     {
       "name": "Falling Star Kick (DL2)",
@@ -1286,7 +1320,8 @@
         "sourceName": "Falling Star Kick (DL2)",
         "sourceInput": "6MK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "流星踢(饮酒等级2)"
     },
     {
       "name": "Hermit's Elbow (DL2)",
@@ -1320,7 +1355,8 @@
         "sourceName": "Hermit's Elbow (DL2)",
         "sourceInput": "4HP",
         "cancelText": "SA"
-      }
+      },
+      "nameZh": "隐士肘(饮酒等级2)"
     },
     {
       "name": "Hermit's Elbow (DL3)",
@@ -1355,7 +1391,8 @@
         "sourceName": "Hermit's Elbow (DL3)",
         "sourceInput": "4HP",
         "cancelText": "SA TC"
-      }
+      },
+      "nameZh": "隐士肘(饮酒等级3)"
     },
     {
       "name": "Senei Kick (DL2)",
@@ -1389,7 +1426,8 @@
         "sourceName": "Senei Kick (DL2)",
         "sourceInput": "6HK",
         "cancelText": "SA"
-      }
+      },
+      "nameZh": "旋影踢(饮酒等级2)"
     },
     {
       "name": "Senei Kick (DL4)",
@@ -1424,7 +1462,8 @@
         "sourceName": "Senei Kick (DL4)",
         "sourceInput": "6HK",
         "cancelText": "SA TC"
-      }
+      },
+      "nameZh": "旋影踢(饮酒等级4)"
     },
     {
       "name": "Full Moon Kick (DL2)",
@@ -1461,7 +1500,8 @@
         "sourceName": "Full Moon Kick (DL2)",
         "sourceInput": "6MK~MK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "满月踢(饮酒等级2)"
     },
     {
       "name": "Full Moon Kick + Drink (DL2)",
@@ -1492,7 +1532,8 @@
         "sourceName": "Full Moon Kick + Drink (DL2)",
         "sourceInput": "6MK~MK~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "满月踢+饮酒(饮酒等级2)"
     },
     {
       "name": "Intoxicated Assault 1 (DL3)",
@@ -1527,7 +1568,8 @@
         "sourceName": "Intoxicated Assault 1 (DL3)",
         "sourceInput": "4HP~HP",
         "cancelText": "SA TC"
-      }
+      },
+      "nameZh": "醉酒突击1(饮酒等级3)"
     },
     {
       "name": "Intoxicated Assault 2 (DL3)",
@@ -1560,7 +1602,8 @@
         "sourceName": "Intoxicated Assault 2 (DL3)",
         "sourceInput": "4HP~HP~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "醉酒突击2(饮酒等级3)"
     },
     {
       "name": "Ransui Haze (DL4)",
@@ -1591,7 +1634,8 @@
         "sourceName": "Ransui Haze (DL4)",
         "sourceInput": "6HK~4HK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "乱醉迷雾(饮酒等级4)"
     },
     {
       "name": "Ransui Haze Headbutt (DL4)",
@@ -1629,7 +1673,8 @@
         "sourceName": "Ransui Haze Headbutt (DL4)",
         "sourceInput": "6HK~4HK~P (close)",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "乱醉迷雾头锤(饮酒等级4)"
     },
     {
       "name": "Ransui Haze Triple Fist (DL4)",
@@ -1667,7 +1712,8 @@
         "sourceName": "Ransui Haze Triple Fist (DL4)",
         "sourceInput": "6HK~4HK~P (mid)",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "乱醉迷雾三连拳(饮酒等级4)"
     },
     {
       "name": "Ransui Haze Drink (DL4)",
@@ -1694,7 +1740,8 @@
         "sourceName": "Ransui Haze Drink (DL4)",
         "sourceInput": "6HK~4HK~P (far)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "乱醉迷雾饮酒(饮酒等级4)"
     },
     {
       "name": "Wheel Punch (DL2)",
@@ -1726,7 +1773,8 @@
         "sourceName": "Wheel Punch (DL2)",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "车轮拳(饮酒等级2)"
     },
     {
       "name": "Leg Sweep (Block)",
@@ -1821,7 +1869,8 @@
         "sourceName": "Forward Taunt (DL0)",
         "sourceInput": "6PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前挑衅(饮酒等级0)"
     },
     {
       "name": "Forward Taunt (DL1)",
@@ -1848,7 +1897,8 @@
         "sourceName": "Forward Taunt (DL1)",
         "sourceInput": "6PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前挑衅(饮酒等级1)"
     },
     {
       "name": "Forward Taunt (DL2)",
@@ -1875,7 +1925,8 @@
         "sourceName": "Forward Taunt (DL2)",
         "sourceInput": "6PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前挑衅(饮酒等级2)"
     },
     {
       "name": "Forward Taunt (DL3)",
@@ -1902,7 +1953,8 @@
         "sourceName": "Forward Taunt (DL3)",
         "sourceInput": "6PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前挑衅(饮酒等级3)"
     },
     {
       "name": "Forward Taunt (DL4)",
@@ -1929,7 +1981,8 @@
         "sourceName": "Forward Taunt (DL4)",
         "sourceInput": "6PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前挑衅(饮酒等级4)"
     },
     {
       "name": "LP Freeflow Strikes 1 (DL2)",
@@ -1962,7 +2015,8 @@
         "sourceName": "LP Freeflow Strikes 1 (DL2)",
         "sourceInput": "236LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "轻自由流打1(饮酒等级2)"
     },
     {
       "name": "MP Freeflow Strikes 1 (DL2)",
@@ -1995,7 +2049,8 @@
         "sourceName": "MP Freeflow Strikes 1 (DL2)",
         "sourceInput": "236MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "中自由流打1(饮酒等级2)"
     },
     {
       "name": "HP Freeflow Strikes 1 (DL2)",
@@ -2028,7 +2083,8 @@
         "sourceName": "HP Freeflow Strikes 1 (DL2)",
         "sourceInput": "236HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "重自由流打1(饮酒等级2)"
     },
     {
       "name": "OD Freeflow Strikes 1 (DL2)",
@@ -2062,7 +2118,8 @@
         "sourceName": "OD Freeflow Strikes 1 (DL2)",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "OD自由流打1(饮酒等级2)"
     },
     {
       "name": "LP Freeflow Strikes 1 (DL4)",
@@ -2095,7 +2152,8 @@
         "sourceName": "LP Freeflow Strikes 1 (DL4)",
         "sourceInput": "236LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "轻自由流打1(饮酒等级4)"
     },
     {
       "name": "MP Freeflow Strikes 1 (DL4)",
@@ -2128,7 +2186,8 @@
         "sourceName": "MP Freeflow Strikes 1 (DL4)",
         "sourceInput": "236MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "中自由流打1(饮酒等级4)"
     },
     {
       "name": "HP Freeflow Strikes 1 (DL4)",
@@ -2161,7 +2220,8 @@
         "sourceName": "HP Freeflow Strikes 1 (DL4)",
         "sourceInput": "236HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "重自由流打1(饮酒等级4)"
     },
     {
       "name": "OD Freeflow Strikes 1 (DL4)",
@@ -2195,7 +2255,8 @@
         "sourceName": "OD Freeflow Strikes 1 (DL4)",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "OD自由流打1(饮酒等级4)"
     },
     {
       "name": "LP Freeflow Strikes Punch 1 (DL2)",
@@ -2225,7 +2286,8 @@
         "sourceName": "LP Freeflow Strikes Punch 1 (DL2)",
         "sourceInput": "236LP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "轻自由流打拳1(饮酒等级2)"
     },
     {
       "name": "MP Freeflow Strikes Punch 1 (DL2)",
@@ -2255,7 +2317,8 @@
         "sourceName": "MP Freeflow Strikes Punch 1 (DL2)",
         "sourceInput": "236MP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "中自由流打拳1(饮酒等级2)"
     },
     {
       "name": "HP Freeflow Strikes Punch 1 (DL2)",
@@ -2285,7 +2348,8 @@
         "sourceName": "HP Freeflow Strikes Punch 1 (DL2)",
         "sourceInput": "236HP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "重自由流打拳1(饮酒等级2)"
     },
     {
       "name": "OD Freeflow Strikes Punch 1 (DL2)",
@@ -2315,7 +2379,8 @@
         "sourceName": "OD Freeflow Strikes Punch 1 (DL2)",
         "sourceInput": "236PP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "OD自由流打拳1(饮酒等级2)"
     },
     {
       "name": "LP Freeflow Strikes Punch 1 (DL4)",
@@ -2345,7 +2410,8 @@
         "sourceName": "LP Freeflow Strikes Punch 1 (DL4)",
         "sourceInput": "236LP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "轻自由流打拳1(饮酒等级4)"
     },
     {
       "name": "MP Freeflow Strikes Punch 1 (DL4)",
@@ -2375,7 +2441,8 @@
         "sourceName": "MP Freeflow Strikes Punch 1 (DL4)",
         "sourceInput": "236MP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "中自由流打拳1(饮酒等级4)"
     },
     {
       "name": "HP Freeflow Strikes Punch 1 (DL4)",
@@ -2405,7 +2472,8 @@
         "sourceName": "HP Freeflow Strikes Punch 1 (DL4)",
         "sourceInput": "236HP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "重自由流打拳1(饮酒等级4)"
     },
     {
       "name": "OD Freeflow Strikes Punch 1 (DL4)",
@@ -2435,7 +2503,8 @@
         "sourceName": "OD Freeflow Strikes Punch 1 (DL4)",
         "sourceInput": "236PP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "OD自由流打拳1(饮酒等级4)"
     },
     {
       "name": "LP Freeflow Strikes Punch 2 (DL2)",
@@ -2471,7 +2540,8 @@
         "sourceName": "LP Freeflow Strikes Punch 2 (DL2)",
         "sourceInput": "236LP~6P~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "轻自由流打拳2(饮酒等级2)"
     },
     {
       "name": "MP Freeflow Strikes Punch 2 (DL2)",
@@ -2507,7 +2577,8 @@
         "sourceName": "MP Freeflow Strikes Punch 2 (DL2)",
         "sourceInput": "236MP~6P~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "中自由流打拳2(饮酒等级2)"
     },
     {
       "name": "HP Freeflow Strikes Punch 2 (DL2)",
@@ -2543,7 +2614,8 @@
         "sourceName": "HP Freeflow Strikes Punch 2 (DL2)",
         "sourceInput": "236HP~6P~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "重自由流打拳2(饮酒等级2)"
     },
     {
       "name": "OD Freeflow Strikes Punch 2 (DL2)",
@@ -2580,7 +2652,8 @@
         "sourceName": "OD Freeflow Strikes Punch 2 (DL2)",
         "sourceInput": "236PP~6P~6P",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "OD自由流打拳2(饮酒等级2)"
     },
     {
       "name": "LP Freeflow Strikes Punch 2 (DL4)",
@@ -2616,7 +2689,8 @@
         "sourceName": "LP Freeflow Strikes Punch 2 (DL4)",
         "sourceInput": "236LP~6P~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "轻自由流打拳2(饮酒等级4)"
     },
     {
       "name": "MP Freeflow Strikes Punch 2 (DL4)",
@@ -2652,7 +2726,8 @@
         "sourceName": "MP Freeflow Strikes Punch 2 (DL4)",
         "sourceInput": "236MP~6P~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "中自由流打拳2(饮酒等级4)"
     },
     {
       "name": "HP Freeflow Strikes Punch 2 (DL4)",
@@ -2688,7 +2763,8 @@
         "sourceName": "HP Freeflow Strikes Punch 2 (DL4)",
         "sourceInput": "236HP~6P~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "重自由流打拳2(饮酒等级4)"
     },
     {
       "name": "OD Freeflow Strikes Punch 2 (DL4)",
@@ -2725,7 +2801,8 @@
         "sourceName": "OD Freeflow Strikes Punch 2 (DL4)",
         "sourceInput": "236PP~6P~6P",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "OD自由流打拳2(饮酒等级4)"
     },
     {
       "name": "LP Freeflow Kicks 1 (DL2)",
@@ -2755,7 +2832,8 @@
         "sourceName": "LP Freeflow Kicks 1 (DL2)",
         "sourceInput": "236LP~6K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "轻自由流脚1(饮酒等级2)"
     },
     {
       "name": "MP Freeflow Kicks 1 (DL2)",
@@ -2785,7 +2863,8 @@
         "sourceName": "MP Freeflow Kicks 1 (DL2)",
         "sourceInput": "236MP~6K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "中自由流脚1(饮酒等级2)"
     },
     {
       "name": "HP Freeflow Kicks 1 (DL2)",
@@ -2815,7 +2894,8 @@
         "sourceName": "HP Freeflow Kicks 1 (DL2)",
         "sourceInput": "236HP~6K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "重自由流脚1(饮酒等级2)"
     },
     {
       "name": "OD Freeflow Kicks 1 (DL2)",
@@ -2845,7 +2925,8 @@
         "sourceName": "OD Freeflow Kicks 1 (DL2)",
         "sourceInput": "236PP~6K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "OD自由流脚1(饮酒等级2)"
     },
     {
       "name": "LP Freeflow Kicks 2 (DL2)",
@@ -2877,7 +2958,8 @@
         "sourceName": "LP Freeflow Kicks 2 (DL2)",
         "sourceInput": "236LP~6K~6K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "轻自由流脚2(饮酒等级2)"
     },
     {
       "name": "MP Freeflow Kicks 2 (DL2)",
@@ -2909,7 +2991,8 @@
         "sourceName": "MP Freeflow Kicks 2 (DL2)",
         "sourceInput": "236MP~6K~6K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "中自由流脚2(饮酒等级2)"
     },
     {
       "name": "HP Freeflow Kicks 2 (DL2)",
@@ -2941,7 +3024,8 @@
         "sourceName": "HP Freeflow Kicks 2 (DL2)",
         "sourceInput": "236HP~6K~6K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "重自由流脚2(饮酒等级2)"
     },
     {
       "name": "OD Freeflow Kicks 2 (DL2)",
@@ -2973,7 +3057,8 @@
         "sourceName": "OD Freeflow Kicks 2 (DL2)",
         "sourceInput": "236PP~6K~6K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "OD自由流脚2(饮酒等级2)"
     },
     {
       "name": "Swagger Step (DL2)",
@@ -3009,7 +3094,8 @@
         "sourceName": "Swagger Step (DL2)",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "大摇大摆步 (dl2)"
     },
     {
       "name": "Swagger Step (DL2)",
@@ -3045,7 +3131,8 @@
         "sourceName": "Swagger Step (DL2)",
         "sourceInput": "214MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "大摇大摆步 (dl2)"
     },
     {
       "name": "Swagger Step (DL2)",
@@ -3081,7 +3168,8 @@
         "sourceName": "Swagger Step (DL2)",
         "sourceInput": "214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "大摇大摆步 (dl2)"
     },
     {
       "name": "Swagger Step (DL2)",
@@ -3118,7 +3206,8 @@
         "sourceName": "Swagger Step (DL2)",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "大摇大摆步 (dl2)"
     },
     {
       "name": "Swagger Hermit Punch (DL4)",
@@ -3154,7 +3243,8 @@
         "sourceName": "Swagger Hermit Punch (DL4)",
         "sourceInput": "214P~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "大摇大摆隐士拳(饮酒等级4)"
     },
     {
       "name": "Swagger Hermit Punch (DL4)",
@@ -3191,7 +3281,8 @@
         "sourceName": "Swagger Hermit Punch (DL4)",
         "sourceInput": "214PP~6P",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "大摇大摆隐士拳(饮酒等级4)"
     },
     {
       "name": "Arrow Kick (DL2)",
@@ -3224,7 +3315,8 @@
         "sourceName": "Arrow Kick (DL2)",
         "sourceInput": "623LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "弓箭踢(饮酒等级2)"
     },
     {
       "name": "Arrow Kick (DL2)",
@@ -3257,7 +3349,8 @@
         "sourceName": "Arrow Kick (DL2)",
         "sourceInput": "623MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "弓箭踢(饮酒等级2)"
     },
     {
       "name": "Arrow Kick (DL2)",
@@ -3290,7 +3383,8 @@
         "sourceName": "Arrow Kick (DL2)",
         "sourceInput": "623HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "弓箭踢(饮酒等级2)"
     },
     {
       "name": "Arrow Kick (DL2)",
@@ -3323,7 +3417,8 @@
         "sourceName": "Arrow Kick (DL2)",
         "sourceInput": "623KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "弓箭踢(饮酒等级2)"
     },
     {
       "name": "Luminous Dive Kick (DL2)",
@@ -3356,7 +3451,8 @@
         "sourceName": "Luminous Dive Kick (DL2)",
         "sourceInput": "j.214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "夜光俯冲踢 (dl2)"
     },
     {
       "name": "Luminous Dive Kick (DL2)",
@@ -3389,7 +3485,8 @@
         "sourceName": "Luminous Dive Kick (DL2)",
         "sourceInput": "j.214KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "夜光俯冲踢 (dl2)"
     },
     {
       "name": "Bakkai (DL2)",
@@ -3425,7 +3522,8 @@
         "sourceName": "Bakkai (DL2)",
         "sourceInput": "236LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "爆海(饮酒等级2)"
     },
     {
       "name": "Bakkai (DL2)",
@@ -3461,7 +3559,8 @@
         "sourceName": "Bakkai (DL2)",
         "sourceInput": "236MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "爆海(饮酒等级2)"
     },
     {
       "name": "Bakkai (DL2)",
@@ -3497,7 +3596,8 @@
         "sourceName": "Bakkai (DL2)",
         "sourceInput": "236HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "爆海(饮酒等级2)"
     },
     {
       "name": "Bakkai (DL2)",
@@ -3534,7 +3634,8 @@
         "sourceName": "Bakkai (DL2)",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "爆海(饮酒等级2)"
     },
     {
       "name": "Tenshin (DL3)",
@@ -3563,7 +3664,8 @@
         "sourceName": "Tenshin (DL3)",
         "sourceInput": "63214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "转身(dl3)"
     },
     {
       "name": "Tenshin (DL3)",
@@ -3595,7 +3697,8 @@
         "sourceName": "Tenshin (DL3)",
         "sourceInput": "63214KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "转身(dl3)"
     },
     {
       "name": "Breakin'",
@@ -3628,7 +3731,8 @@
         "sourceName": "Breakin'",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "绝招舞"
     },
     {
       "name": "Breakin' ~ Drink",
@@ -3660,7 +3764,8 @@
         "sourceName": "Breakin' ~ Drink",
         "sourceInput": "236236K~",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "绝招舞 ~ 饮酒"
     },
     {
       "name": "The Devil's Song (DL0-DL4)",
@@ -3687,7 +3792,8 @@
         "sourceName": "The Devil's Song (DL0-DL4)",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "魔鬼之曲"
     },
     {
       "name": "Getsuga Saiho (DL2)",
@@ -3720,7 +3826,8 @@
         "sourceName": "Getsuga Saiho (DL2)",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "月牙查步(饮酒等级2)"
     },
     {
       "name": "Getsuga Saiho (CA) (DL2)",
@@ -3753,7 +3860,8 @@
         "sourceName": "Getsuga Saiho (CA) (DL2)",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "月牙查步(CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

@@ -853,7 +853,8 @@
         "sourceName": "Slash Kick",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斩击踢"
     },
     {
       "name": "Slash Kick",
@@ -891,7 +892,8 @@
         "sourceName": "Slash Kick",
         "sourceInput": "2HK (FSE Chain)",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "斩击踢"
     },
     {
       "name": "Jump LP",
@@ -1393,7 +1395,8 @@
         "sourceName": "Zanka-sen",
         "sourceInput": "j.LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斩空闪"
     },
     {
       "name": "Sekkan Kick",
@@ -1574,7 +1577,8 @@
         "sourceName": "Kyosesho",
         "sourceInput": "6MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "去势冲"
     },
     {
       "name": "Kyosesho",
@@ -1610,7 +1614,8 @@
         "sourceName": "Kyosesho",
         "sourceInput": "6MP (FSE Chain)",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "去势冲"
     },
     {
       "name": "Senkai Kick",
@@ -1640,7 +1645,8 @@
         "sourceName": "Senkai Kick",
         "sourceInput": "6MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "旋回脚"
     },
     {
       "name": "Senkai Kick",
@@ -1678,7 +1684,8 @@
         "sourceName": "Senkai Kick",
         "sourceInput": "6MK (FSE Chain)",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "旋回脚"
     },
     {
       "name": "Renko Kicks",
@@ -1713,7 +1720,8 @@
         "sourceName": "Renko Kicks",
         "sourceInput": "6HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "连咬脚"
     },
     {
       "name": "Renko Kicks",
@@ -1752,7 +1760,8 @@
         "sourceName": "Renko Kicks",
         "sourceInput": "6HP (FSE Chain)",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "连咬脚"
     },
     {
       "name": "Korenzan",
@@ -1787,7 +1796,8 @@
         "sourceName": "Korenzan",
         "sourceInput": "4HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "孤镰斩"
     },
     {
       "name": "Korenzan",
@@ -1826,7 +1836,8 @@
         "sourceName": "Korenzan",
         "sourceInput": "4HK (FSE Chain)",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "孤镰斩"
     },
     {
       "name": "Death Crest 1",
@@ -1863,7 +1874,8 @@
         "sourceName": "Death Crest 1",
         "sourceInput": "5MP~4HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "死纹击一"
     },
     {
       "name": "Death Crest 2",
@@ -1901,7 +1913,8 @@
         "sourceName": "Death Crest 2",
         "sourceInput": "5MP~4HP~HP",
         "cancelText": "SA (hit)"
-      }
+      },
+      "nameZh": "死纹击二"
     },
     {
       "name": "Kaita Raid (Block)",
@@ -2057,7 +2070,8 @@
         "sourceName": "Spider Fang Throw",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蜘蛛牙投"
     },
     {
       "name": "Shadow Kick Throw",
@@ -2089,7 +2103,8 @@
         "sourceName": "Shadow Kick Throw",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "影蹴投"
     },
     {
       "name": "Fuhajin",
@@ -2125,7 +2140,8 @@
         "sourceName": "Fuhajin",
         "sourceInput": "214LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "风破刃"
     },
     {
       "name": "Fuhajin",
@@ -2161,7 +2177,8 @@
         "sourceName": "Fuhajin",
         "sourceInput": "214MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "风破刃"
     },
     {
       "name": "Fuhajin",
@@ -2197,7 +2214,8 @@
         "sourceName": "Fuhajin",
         "sourceInput": "214HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "风破刃"
     },
     {
       "name": "Fuhajin",
@@ -2234,7 +2252,8 @@
         "sourceName": "Fuhajin",
         "sourceInput": "214KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "风破刃"
     },
     {
       "name": "Saihasho",
@@ -2267,7 +2286,8 @@
         "sourceName": "Saihasho",
         "sourceInput": "236LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "岁破冲"
     },
     {
       "name": "Saihasho",
@@ -2297,7 +2317,8 @@
         "sourceName": "Saihasho",
         "sourceInput": "236LK (1 Stock)",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "岁破冲"
     },
     {
       "name": "Saihasho",
@@ -2332,7 +2353,8 @@
         "sourceName": "Saihasho",
         "sourceInput": "236LKMK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "岁破冲"
     },
     {
       "name": "Ankensatsu",
@@ -2368,7 +2390,8 @@
         "sourceName": "Ankensatsu",
         "sourceInput": "236MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "暗剑杀"
     },
     {
       "name": "Ankensatsu",
@@ -2404,7 +2427,8 @@
         "sourceName": "Ankensatsu",
         "sourceInput": "236MK (1 Stock)",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "暗剑杀"
     },
     {
       "name": "Ankensatsu",
@@ -2441,7 +2465,8 @@
         "sourceName": "Ankensatsu",
         "sourceInput": "236LKHK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "暗剑杀"
     },
     {
       "name": "Go Ohsatsu",
@@ -2477,7 +2502,8 @@
         "sourceName": "Go Ohsatsu",
         "sourceInput": "236HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "轰雷杀"
     },
     {
       "name": "Go Ohsatsu (1 Stock)",
@@ -2513,7 +2539,8 @@
         "sourceName": "Go Ohsatsu (1 Stock)",
         "sourceInput": "236HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "轰雷杀(1风破)"
     },
     {
       "name": "Go Ohsatsu",
@@ -2550,7 +2577,8 @@
         "sourceName": "Go Ohsatsu",
         "sourceInput": "236MKHK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "轰雷杀"
     },
     {
       "name": "Tensenrin",
@@ -2586,7 +2614,8 @@
         "sourceName": "Tensenrin",
         "sourceInput": "623LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "天穿轮"
     },
     {
       "name": "Tensenrin",
@@ -2619,7 +2648,8 @@
         "sourceName": "Tensenrin",
         "sourceInput": "623MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "天穿轮"
     },
     {
       "name": "Tensenrin",
@@ -2652,7 +2682,8 @@
         "sourceName": "Tensenrin",
         "sourceInput": "623HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "天穿轮"
     },
     {
       "name": "Tensenrin",
@@ -2685,7 +2716,8 @@
         "sourceName": "Tensenrin",
         "sourceInput": "623PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "天穿轮"
     },
     {
       "name": "Shiku-sen",
@@ -2716,7 +2748,8 @@
         "sourceName": "Shiku-sen",
         "sourceInput": "j.214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "疾空闪"
     },
     {
       "name": "OD Shiku-sen",
@@ -2747,7 +2780,8 @@
         "sourceName": "OD Shiku-sen",
         "sourceInput": "j.214KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "OD疾空闪"
     },
     {
       "name": "Shiren-sen",
@@ -2779,7 +2813,8 @@
         "sourceName": "Shiren-sen",
         "sourceInput": "j.214K~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "死连闪"
     },
     {
       "name": "OD Shiren-sen",
@@ -2811,7 +2846,8 @@
         "sourceName": "OD Shiren-sen",
         "sourceInput": "j.214KK~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "OD死连闪"
     },
     {
       "name": "Sakkai Fuhazan",
@@ -2842,7 +2878,8 @@
         "sourceName": "Sakkai Fuhazan",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "杀界风破斩"
     },
     {
       "name": "Sakkai Fuhazan (hold)",
@@ -2873,7 +2910,8 @@
         "sourceName": "Sakkai Fuhazan (hold)",
         "sourceInput": "236236",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "杀界风破斩(蓄力)"
     },
     {
       "name": "Feng Shui Engine",
@@ -2900,7 +2938,8 @@
         "sourceName": "Feng Shui Engine",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "风水引擎"
     },
     {
       "name": "Feng Shui Engine (hold)",
@@ -2930,7 +2969,8 @@
         "sourceName": "Feng Shui Engine (hold)",
         "sourceInput": "214214",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "风水引擎(蓄力)"
     },
     {
       "name": "Kaisen Dankai Raku",
@@ -2963,7 +3003,8 @@
         "sourceName": "Kaisen Dankai Raku",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "回旋断界落"
     },
     {
       "name": "Kaisen Dankai Raku (CA)",
@@ -2996,7 +3037,8 @@
         "sourceName": "Kaisen Dankai Raku (CA)",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "回旋断界落 (CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

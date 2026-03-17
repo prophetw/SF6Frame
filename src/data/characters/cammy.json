@@ -421,7 +421,8 @@
         "sourceName": "Grounded Sweep",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "地面扫腿"
     },
     {
       "name": "Jump LP",
@@ -650,7 +651,8 @@
         "sourceName": "Swing Combination",
         "sourceInput": "5HP~HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "摇摆连击"
     },
     {
       "name": "Rough Landing",
@@ -682,7 +684,8 @@
         "sourceName": "Rough Landing",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "粗暴着陆"
     },
     {
       "name": "Leg Scissors Choke",
@@ -714,7 +717,8 @@
         "sourceName": "Leg Scissors Choke",
         "sourceInput": "j.LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "剪刀脚绞杀"
     },
     {
       "name": "Spin Raider",
@@ -896,7 +900,8 @@
         "sourceName": "Lift Uppercut",
         "sourceInput": "4MP",
         "cancelText": "Sp SA TC"
-      }
+      },
+      "nameZh": "升提勾拳"
     },
     {
       "name": "Assault Blade",
@@ -935,7 +940,8 @@
         "sourceName": "Assault Blade",
         "sourceInput": "4HK",
         "cancelText": "Sp SA Jmp"
-      }
+      },
+      "nameZh": "突击刃"
     },
     {
       "name": "Delayed Ripper",
@@ -973,7 +979,8 @@
         "sourceName": "Delayed Ripper",
         "sourceInput": "6HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "延迟起子"
     },
     {
       "name": "Lift Combination",
@@ -1012,7 +1019,8 @@
         "sourceName": "Lift Combination",
         "sourceInput": "4MP~HK",
         "cancelText": "Sp SA Jmp"
-      }
+      },
+      "nameZh": "升提连击"
     },
     {
       "name": "Countersnipe (Block)",
@@ -1168,7 +1176,8 @@
         "sourceName": "Delta Throw",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "三角抛投"
     },
     {
       "name": "Spiral Arrow",
@@ -1565,7 +1574,8 @@
         "sourceName": "Quick Spin Knuckle",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "快速旋转指节"
     },
     {
       "name": "Quick Spin Knuckle",
@@ -1598,7 +1608,8 @@
         "sourceName": "Quick Spin Knuckle",
         "sourceInput": "214MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "快速旋转指节"
     },
     {
       "name": "Quick Spin Knuckle",
@@ -1631,7 +1642,8 @@
         "sourceName": "Quick Spin Knuckle",
         "sourceInput": "214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "快速旋转指节"
     },
     {
       "name": "Quick Spin Knuckle",
@@ -1665,7 +1677,8 @@
         "sourceName": "Quick Spin Knuckle",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "快速旋转指节"
     },
     {
       "name": "Cannon Strike",
@@ -1695,7 +1708,8 @@
         "sourceName": "Cannon Strike",
         "sourceInput": "j.214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "加农突击"
     },
     {
       "name": "Cannon Strike",
@@ -1728,7 +1742,8 @@
         "sourceName": "Cannon Strike",
         "sourceInput": "j.214KK",
         "cancelText": "SA2"
-      }
+      },
+      "nameZh": "加农突击"
     },
     {
       "name": "Hooligan Combination",
@@ -1755,7 +1770,8 @@
         "sourceName": "Hooligan Combination",
         "sourceInput": "236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "流氓连击"
     },
     {
       "name": "Hooligan Combination",
@@ -1782,7 +1798,8 @@
         "sourceName": "Hooligan Combination",
         "sourceInput": "236",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "流氓连击"
     },
     {
       "name": "Hooligan Combination",
@@ -1809,7 +1826,8 @@
         "sourceName": "Hooligan Combination",
         "sourceInput": "236PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "流氓连击"
     },
     {
       "name": "Razor's Edge Slicer",
@@ -1845,7 +1863,8 @@
         "sourceName": "Razor's Edge Slicer",
         "sourceInput": "236P~No Input",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "剃刀边缘切割者"
     },
     {
       "name": "Razor's Edge Slicer",
@@ -1881,7 +1900,8 @@
         "sourceName": "Razor's Edge Slicer",
         "sourceInput": "236~No Input",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "剃刀边缘切割者"
     },
     {
       "name": "Razor's Edge Slicer",
@@ -1918,7 +1938,8 @@
         "sourceName": "Razor's Edge Slicer",
         "sourceInput": "236PP~No Input",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "剃刀边缘切割者"
     },
     {
       "name": "Hooligan Cannon Strike",
@@ -1945,7 +1966,8 @@
         "sourceName": "Hooligan Cannon Strike",
         "sourceInput": "236P~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "流氓加农突击"
     },
     {
       "name": "Hooligan Cannon Strike",
@@ -1972,7 +1994,8 @@
         "sourceName": "Hooligan Cannon Strike",
         "sourceInput": "236~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "流氓加农突击"
     },
     {
       "name": "Hooligan Cannon Strike",
@@ -2002,7 +2025,8 @@
         "sourceName": "Hooligan Cannon Strike",
         "sourceInput": "236PP~K",
         "cancelText": "SA2"
-      }
+      },
+      "nameZh": "流氓加农突击"
     },
     {
       "name": "Reverse Edge",
@@ -2032,7 +2056,8 @@
         "sourceName": "Reverse Edge",
         "sourceInput": "236P~2K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "反向边缘"
     },
     {
       "name": "Reverse Edge",
@@ -2062,7 +2087,8 @@
         "sourceName": "Reverse Edge",
         "sourceInput": "236~2K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "反向边缘"
     },
     {
       "name": "Reverse Edge",
@@ -2095,7 +2121,8 @@
         "sourceName": "Reverse Edge",
         "sourceInput": "236PP~2K",
         "cancelText": "SA2"
-      }
+      },
+      "nameZh": "反向边缘"
     },
     {
       "name": "Fatal Leg Twister",
@@ -2127,7 +2154,8 @@
         "sourceName": "Fatal Leg Twister",
         "sourceInput": "236P~LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "致命腿部扭曲"
     },
     {
       "name": "Fatal Leg Twister",
@@ -2159,7 +2187,8 @@
         "sourceName": "Fatal Leg Twister",
         "sourceInput": "236~LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "致命腿部扭曲"
     },
     {
       "name": "Fatal Leg Twister",
@@ -2191,7 +2220,8 @@
         "sourceName": "Fatal Leg Twister",
         "sourceInput": "236PP~LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "致命腿部扭曲"
     },
     {
       "name": "Silent Step",
@@ -2218,7 +2248,8 @@
         "sourceName": "Silent Step",
         "sourceInput": "236P~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "无声步"
     },
     {
       "name": "Silent Step",
@@ -2245,7 +2276,8 @@
         "sourceName": "Silent Step",
         "sourceInput": "236~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "无声步"
     },
     {
       "name": "Silent Step",
@@ -2272,7 +2304,8 @@
         "sourceName": "Silent Step",
         "sourceInput": "236PP~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "无声步"
     },
     {
       "name": "Spin Drive Smasher",
@@ -2305,7 +2338,8 @@
         "sourceName": "Spin Drive Smasher",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "旋转驱动粉碎"
     },
     {
       "name": "Killer Bee Spin",
@@ -2338,7 +2372,8 @@
         "sourceName": "Killer Bee Spin",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "杀人蜂旋转"
     },
     {
       "name": "Aerial Killer Bee Spin",
@@ -2369,7 +2404,8 @@
         "sourceName": "Aerial Killer Bee Spin",
         "sourceInput": "j.214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中杀人蜂旋转"
     },
     {
       "name": "Delta Red Assault",
@@ -2402,7 +2438,8 @@
         "sourceName": "Delta Red Assault",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "红色三角突击"
     },
     {
       "name": "Delta Red Assault (CA)",
@@ -2435,7 +2472,8 @@
         "sourceName": "Delta Red Assault (CA)",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "红色三角突击(CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

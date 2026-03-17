@@ -431,7 +431,8 @@
         "sourceName": "Trench Breaker",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "战壕破坏者"
     },
     {
       "name": "Jump LP",
@@ -655,7 +656,8 @@
         "sourceName": "Triple Impact",
         "sourceInput": "5LP~MP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "三重冲击"
     },
     {
       "name": "Triple Impact 2",
@@ -693,7 +695,8 @@
         "sourceName": "Triple Impact 2",
         "sourceInput": "5LP~MP~HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "三重冲击2"
     },
     {
       "name": "Snapback Combo",
@@ -727,7 +730,8 @@
         "sourceName": "Snapback Combo",
         "sourceInput": "5MP~MP",
         "cancelText": "SA"
-      }
+      },
+      "nameZh": "回弹连击"
     },
     {
       "name": "Snapback Combo 2",
@@ -761,7 +765,8 @@
         "sourceName": "Snapback Combo 2",
         "sourceInput": "5MP~MP~MP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "回弹连击2"
     },
     {
       "name": "Snapback Combo 3",
@@ -794,7 +799,8 @@
         "sourceName": "Snapback Combo 3",
         "sourceInput": "5MP~MP~MP~MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "回弹连击3"
     },
     {
       "name": "Nose Breaker",
@@ -824,7 +830,8 @@
         "sourceName": "Nose Breaker",
         "sourceInput": "2MK~2HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "碎鼻拳"
     },
     {
       "name": "Sweeper",
@@ -856,7 +863,8 @@
         "sourceName": "Sweeper",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "扫荡腿"
     },
     {
       "name": "Muzzle Flash",
@@ -1032,7 +1040,8 @@
         "sourceName": "Rawhide",
         "sourceInput": "6MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "生皮鞭"
     },
     {
       "name": "Suppressor",
@@ -1067,7 +1076,8 @@
         "sourceName": "Suppressor",
         "sourceInput": "4HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "压制者"
     },
     {
       "name": "Outlaw Kick",
@@ -1097,7 +1107,8 @@
         "sourceName": "Outlaw Kick",
         "sourceInput": "4HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "亡命踢"
     },
     {
       "name": "Brutal Spike",
@@ -1131,7 +1142,8 @@
         "sourceName": "Brutal Spike",
         "sourceInput": "6HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "残暴钉刺"
     },
     {
       "name": "Double Impact",
@@ -1169,7 +1181,8 @@
         "sourceName": "Double Impact",
         "sourceInput": "6HP~HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "双重冲击"
     },
     {
       "name": "Scrapper",
@@ -1201,7 +1214,8 @@
         "sourceName": "Scrapper",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "乱斗者"
     },
     {
       "name": "Battering Ram (Block)",
@@ -1355,7 +1369,8 @@
         "sourceName": "Sand Blast",
         "sourceInput": "236LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "喷沙"
     },
     {
       "name": "Sand Blast",
@@ -1385,7 +1400,8 @@
         "sourceName": "Sand Blast",
         "sourceInput": "236MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "喷沙"
     },
     {
       "name": "Sand Blast",
@@ -1415,7 +1431,8 @@
         "sourceName": "Sand Blast",
         "sourceInput": "236HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "喷沙"
     },
     {
       "name": "Sand Blast",
@@ -1450,7 +1467,8 @@
         "sourceName": "Sand Blast",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "喷沙"
     },
     {
       "name": "Fatal Shot",
@@ -1481,7 +1499,8 @@
         "sourceName": "Fatal Shot",
         "sourceInput": "236PP~PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "致命射击"
     },
     {
       "name": "Rising Uppercut",
@@ -1517,7 +1536,8 @@
         "sourceName": "Rising Uppercut",
         "sourceInput": "623LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "升龙拳"
     },
     {
       "name": "Rising Uppercut",
@@ -1553,7 +1573,8 @@
         "sourceName": "Rising Uppercut",
         "sourceInput": "623MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "升龙拳"
     },
     {
       "name": "Rising Uppercut",
@@ -1589,7 +1610,8 @@
         "sourceName": "Rising Uppercut",
         "sourceInput": "623HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "升龙拳"
     },
     {
       "name": "Rising Uppercut",
@@ -1622,7 +1644,8 @@
         "sourceName": "Rising Uppercut",
         "sourceInput": "623PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "升龙拳"
     },
     {
       "name": "Slam Dunk",
@@ -1654,7 +1677,8 @@
         "sourceName": "Slam Dunk",
         "sourceInput": "623PP~PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "灌篮撞"
     },
     {
       "name": "LP Flash Knuckle",
@@ -1690,7 +1714,8 @@
         "sourceName": "LP Flash Knuckle",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "轻闪光指节"
     },
     {
       "name": "LP Flash Knuckle (hold)",
@@ -1726,7 +1751,8 @@
         "sourceName": "LP Flash Knuckle (hold)",
         "sourceInput": "214",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "轻闪光指节 (蓄力)"
     },
     {
       "name": "LP Flash Knuckle (perfect)",
@@ -1762,7 +1788,8 @@
         "sourceName": "LP Flash Knuckle (perfect)",
         "sourceInput": "pf.214",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "轻闪光指节 (完美)"
     },
     {
       "name": "MP Flash Knuckle",
@@ -1795,7 +1822,8 @@
         "sourceName": "MP Flash Knuckle",
         "sourceInput": "214MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "中闪光指节"
     },
     {
       "name": "MP Flash Knuckle (hold)",
@@ -1831,7 +1859,8 @@
         "sourceName": "MP Flash Knuckle (hold)",
         "sourceInput": "214",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "中闪光指节 (蓄力)"
     },
     {
       "name": "MP Flash Knuckle (perfect)",
@@ -1867,7 +1896,8 @@
         "sourceName": "MP Flash Knuckle (perfect)",
         "sourceInput": "pf.214",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "中闪光指节 (完美)"
     },
     {
       "name": "HP Flash Knuckle",
@@ -1903,7 +1933,8 @@
         "sourceName": "HP Flash Knuckle",
         "sourceInput": "214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "重闪光指节"
     },
     {
       "name": "HP Flash Knuckle (hold)",
@@ -1939,7 +1970,8 @@
         "sourceName": "HP Flash Knuckle (hold)",
         "sourceInput": "214",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "重闪光指节 (蓄力)"
     },
     {
       "name": "HP Flash Knuckle (perfect)",
@@ -1975,7 +2007,8 @@
         "sourceName": "HP Flash Knuckle (perfect)",
         "sourceInput": "pf.214",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "重闪光指节 (完美)"
     },
     {
       "name": "OD Flash Knuckle",
@@ -2012,7 +2045,8 @@
         "sourceName": "OD Flash Knuckle",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "OD闪光指节"
     },
     {
       "name": "DDT",
@@ -2043,7 +2077,8 @@
         "sourceName": "DDT",
         "sourceInput": "214PP~PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "DDT"
     },
     {
       "name": "Aerial Flash Knuckle",
@@ -2076,7 +2111,8 @@
         "sourceName": "Aerial Flash Knuckle",
         "sourceInput": "j.214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中闪光指节"
     },
     {
       "name": "Aerial Flash Knuckle (hold)",
@@ -2109,7 +2145,8 @@
         "sourceName": "Aerial Flash Knuckle (hold)",
         "sourceInput": "j.214",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中闪光指节 (蓄力)"
     },
     {
       "name": "Aerial Flash Knuckle",
@@ -2142,7 +2179,8 @@
         "sourceName": "Aerial Flash Knuckle",
         "sourceInput": "j.214PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中闪光指节"
     },
     {
       "name": "Avenger",
@@ -2169,7 +2207,8 @@
         "sourceName": "Avenger",
         "sourceInput": "236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "复仇者"
     },
     {
       "name": "Avenger",
@@ -2196,7 +2235,8 @@
         "sourceName": "Avenger",
         "sourceInput": "236KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "复仇者"
     },
     {
       "name": "No Chaser",
@@ -2232,7 +2272,8 @@
         "sourceName": "No Chaser",
         "sourceInput": "236K~P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "直饮"
     },
     {
       "name": "No Chaser",
@@ -2269,7 +2310,8 @@
         "sourceName": "No Chaser",
         "sourceInput": "236KK~P",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "直饮"
     },
     {
       "name": "Impaler",
@@ -2302,7 +2344,8 @@
         "sourceName": "Impaler",
         "sourceInput": "236K~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "穿刺者"
     },
     {
       "name": "Impaler",
@@ -2335,7 +2378,8 @@
         "sourceName": "Impaler",
         "sourceInput": "236KK~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "穿刺者"
     },
     {
       "name": "Vulcan Blast",
@@ -2368,7 +2412,8 @@
         "sourceName": "Vulcan Blast",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "火神爆破"
     },
     {
       "name": "Eraser",
@@ -2401,7 +2446,8 @@
         "sourceName": "Eraser",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "橡皮擦"
     },
     {
       "name": "Pale Rider",
@@ -2434,7 +2480,8 @@
         "sourceName": "Pale Rider",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "苍白骑士"
     },
     {
       "name": "Pale Rider (CA)",
@@ -2467,7 +2514,8 @@
         "sourceName": "Pale Rider (CA)",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "苍白骑士 (CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

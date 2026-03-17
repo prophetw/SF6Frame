@@ -684,7 +684,8 @@
         "sourceName": "Amazon River Run",
         "sourceInput": "3HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "亚马逊河流冲刺"
     },
     {
       "name": "Wild Fang",
@@ -716,7 +717,8 @@
         "sourceName": "Wild Fang",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "野性之牙"
     },
     {
       "name": "Wild Bites",
@@ -748,7 +750,8 @@
         "sourceName": "Wild Bites",
         "sourceInput": "j.LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "野性连咬"
     },
     {
       "name": "Wild Scratch",
@@ -893,7 +896,8 @@
         "sourceName": "Coward Crouch",
         "sourceInput": "2PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "胆怯蹲下"
     },
     {
       "name": "Wild Lift",
@@ -926,7 +930,8 @@
         "sourceName": "Wild Lift",
         "sourceInput": "2PP~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "野性升空"
     },
     {
       "name": "Raid Jump",
@@ -953,7 +958,8 @@
         "sourceName": "Raid Jump",
         "sourceInput": "2PP~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "突袭跳跃"
     },
     {
       "name": "Vertical Rolling Attack",
@@ -986,7 +992,8 @@
         "sourceName": "Vertical Rolling Attack",
         "sourceInput": "8LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "垂直回旋攻击"
     },
     {
       "name": "Vertical Rolling Attack",
@@ -1019,7 +1026,8 @@
         "sourceName": "Vertical Rolling Attack",
         "sourceInput": "8MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "垂直回旋攻击"
     },
     {
       "name": "Vertical Rolling Attack",
@@ -1052,7 +1060,8 @@
         "sourceName": "Vertical Rolling Attack",
         "sourceInput": "8HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "垂直回旋攻击"
     },
     {
       "name": "Vertical Rolling Attack",
@@ -1085,7 +1094,8 @@
         "sourceName": "Vertical Rolling Attack",
         "sourceInput": "8KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "垂直回旋攻击"
     },
     {
       "name": "Vertical Rolling Attack (SA2)",
@@ -1123,7 +1133,8 @@
         "sourceName": "Vertical Rolling Attack (SA2)",
         "sourceInput": "8LK",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "垂直回旋攻击(SA2)"
     },
     {
       "name": "Vertical Rolling Attack (SA2)",
@@ -1161,7 +1172,8 @@
         "sourceName": "Vertical Rolling Attack (SA2)",
         "sourceInput": "8MK",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "垂直回旋攻击(SA2)"
     },
     {
       "name": "Vertical Rolling Attack (SA2)",
@@ -1199,7 +1211,8 @@
         "sourceName": "Vertical Rolling Attack (SA2)",
         "sourceInput": "8HK",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "垂直回旋攻击(SA2)"
     },
     {
       "name": "Vertical Rolling Attack (SA2)",
@@ -1238,7 +1251,8 @@
         "sourceName": "Vertical Rolling Attack (SA2)",
         "sourceInput": "8KK",
         "cancelText": "Sp* (oH)"
-      }
+      },
+      "nameZh": "垂直回旋攻击(SA2)"
     },
     {
       "name": "Blanka-chan Bomb",
@@ -1265,7 +1279,8 @@
         "sourceName": "Blanka-chan Bomb",
         "sourceInput": "22P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "布兰卡小兵炸弹"
     },
     {
       "name": "Neutral Taunt",
@@ -1323,7 +1338,8 @@
         "sourceName": "Rock Crusher",
         "sourceInput": "6MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "碎岩击"
     },
     {
       "name": "Double Knee Bombs",
@@ -1353,7 +1369,8 @@
         "sourceName": "Double Knee Bombs",
         "sourceInput": "6MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "双重膝爆"
     },
     {
       "name": "Wild Edge",
@@ -1388,7 +1405,8 @@
         "sourceName": "Wild Edge",
         "sourceInput": "4MK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "野性边缘"
     },
     {
       "name": "Wild Nail",
@@ -1425,7 +1443,8 @@
         "sourceName": "Wild Nail",
         "sourceInput": "6HP",
         "cancelText": "2PP*"
-      }
+      },
+      "nameZh": "野性之爪"
     },
     {
       "name": "Jungle Flip",
@@ -1457,7 +1476,8 @@
         "sourceName": "Jungle Flip",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "丛林空翻"
     },
     {
       "name": "Quick Rolling Attack (Block)",
@@ -1552,7 +1572,8 @@
         "sourceName": "Surprise Forward Hop",
         "sourceInput": "6KKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "惊吓前跳"
     },
     {
       "name": "Surprise Back Hop",
@@ -1579,7 +1600,8 @@
         "sourceName": "Surprise Back Hop",
         "sourceInput": "4KKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "惊吓后跳"
     },
     {
       "name": "Rolling Attack",
@@ -1616,7 +1638,8 @@
         "sourceName": "Rolling Attack",
         "sourceInput": "6LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "回旋攻击"
     },
     {
       "name": "Rolling Attack",
@@ -1653,7 +1676,8 @@
         "sourceName": "Rolling Attack",
         "sourceInput": "6MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "回旋攻击"
     },
     {
       "name": "Rolling Attack",
@@ -1690,7 +1714,8 @@
         "sourceName": "Rolling Attack",
         "sourceInput": "6HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "回旋攻击"
     },
     {
       "name": "Rolling Attack",
@@ -1728,7 +1753,8 @@
         "sourceName": "Rolling Attack",
         "sourceInput": "6PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "回旋攻击"
     },
     {
       "name": "Rolling Attack (SA2)",
@@ -1766,7 +1792,8 @@
         "sourceName": "Rolling Attack (SA2)",
         "sourceInput": "6LP",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "回旋攻击(SA2)"
     },
     {
       "name": "Rolling Attack (SA2)",
@@ -1804,7 +1831,8 @@
         "sourceName": "Rolling Attack (SA2)",
         "sourceInput": "6MP",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "回旋攻击(SA2)"
     },
     {
       "name": "Rolling Attack (SA2)",
@@ -1842,7 +1870,8 @@
         "sourceName": "Rolling Attack (SA2)",
         "sourceInput": "6HP",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "回旋攻击(SA2)"
     },
     {
       "name": "Rolling Attack (SA2)",
@@ -1880,7 +1909,8 @@
         "sourceName": "Rolling Attack (SA2)",
         "sourceInput": "6PP",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "回旋攻击(SA2)"
     },
     {
       "name": "Aerial Rolling Attack",
@@ -1911,7 +1941,8 @@
         "sourceName": "Aerial Rolling Attack",
         "sourceInput": "j.6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中回旋攻击"
     },
     {
       "name": "Aerial Rolling Attack",
@@ -1942,7 +1973,8 @@
         "sourceName": "Aerial Rolling Attack",
         "sourceInput": "j.6PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中回旋攻击"
     },
     {
       "name": "Aerial Rolling Attack (SA2)",
@@ -1978,7 +2010,8 @@
         "sourceName": "Aerial Rolling Attack (SA2)",
         "sourceInput": "j.6P",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "空中回旋攻击(SA2)"
     },
     {
       "name": "Aerial Rolling Attack (SA2)",
@@ -2014,7 +2047,8 @@
         "sourceName": "Aerial Rolling Attack (SA2)",
         "sourceInput": "j.6PP",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "空中回旋攻击(SA2)"
     },
     {
       "name": "Forward Taunt",
@@ -2106,7 +2140,8 @@
         "sourceName": "Electric Thunder",
         "sourceInput": "214P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "雷电放射"
     },
     {
       "name": "Electric Thunder",
@@ -2143,7 +2178,8 @@
         "sourceName": "Electric Thunder",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "雷电放射"
     },
     {
       "name": "Backstep Rolling Attack",
@@ -2173,7 +2209,8 @@
         "sourceName": "Backstep Rolling Attack",
         "sourceInput": "63214LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后撤回旋攻击"
     },
     {
       "name": "Backstep Rolling Attack",
@@ -2203,7 +2240,8 @@
         "sourceName": "Backstep Rolling Attack",
         "sourceInput": "63214MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后撤回旋攻击"
     },
     {
       "name": "Backstep Rolling Attack",
@@ -2233,7 +2271,8 @@
         "sourceName": "Backstep Rolling Attack",
         "sourceInput": "63214HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "后撤回旋攻击"
     },
     {
       "name": "Backstep Rolling Attack",
@@ -2271,7 +2310,8 @@
         "sourceName": "Backstep Rolling Attack",
         "sourceInput": "63214KK",
         "cancelText": "SA2 SA3 (1st)"
-      }
+      },
+      "nameZh": "后撤回旋攻击"
     },
     {
       "name": "Backstep Rolling Attack (SA2)",
@@ -2305,7 +2345,8 @@
         "sourceName": "Backstep Rolling Attack (SA2)",
         "sourceInput": "63214LK",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "后撤回旋攻击(SA2)"
     },
     {
       "name": "Backstep Rolling Attack (SA2)",
@@ -2339,7 +2380,8 @@
         "sourceName": "Backstep Rolling Attack (SA2)",
         "sourceInput": "63214MK",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "后撤回旋攻击(SA2)"
     },
     {
       "name": "Backstep Rolling Attack (SA2)",
@@ -2373,7 +2415,8 @@
         "sourceName": "Backstep Rolling Attack (SA2)",
         "sourceInput": "63214HK",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "后撤回旋攻击(SA2)"
     },
     {
       "name": "Backstep Rolling Attack (SA2)",
@@ -2410,7 +2453,8 @@
         "sourceName": "Backstep Rolling Attack (SA2)",
         "sourceInput": "63214KK",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "后撤回旋攻击(SA2)"
     },
     {
       "name": "Wild Hunt",
@@ -2442,7 +2486,8 @@
         "sourceName": "Wild Hunt",
         "sourceInput": "236LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "野性狩猎"
     },
     {
       "name": "Wild Hunt",
@@ -2474,7 +2519,8 @@
         "sourceName": "Wild Hunt",
         "sourceInput": "236MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "野性狩猎"
     },
     {
       "name": "Wild Hunt",
@@ -2506,7 +2552,8 @@
         "sourceName": "Wild Hunt",
         "sourceInput": "236HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "野性狩猎"
     },
     {
       "name": "Wild Hunt",
@@ -2538,7 +2585,8 @@
         "sourceName": "Wild Hunt",
         "sourceInput": "236KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "野性狩猎"
     },
     {
       "name": "Blanka-chan Bomb (Charge)",
@@ -2569,7 +2617,8 @@
         "sourceName": "Blanka-chan Bomb (Charge)",
         "sourceInput": "22P~214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "布兰卡小兵炸弹(充电)"
     },
     {
       "name": "Blanka-chan Bomb (OD Charge)",
@@ -2600,7 +2649,8 @@
         "sourceName": "Blanka-chan Bomb (OD Charge)",
         "sourceInput": "22P~214PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "布兰卡小兵炸弹(OD充电)"
     },
     {
       "name": "Blanka-chan Bomb (SA1 Charge)",
@@ -2632,7 +2682,8 @@
         "sourceName": "Blanka-chan Bomb (SA1 Charge)",
         "sourceInput": "22P~236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "布兰卡小兵炸弹(SA1充电)"
     },
     {
       "name": "Shout of Earth",
@@ -2665,7 +2716,8 @@
         "sourceName": "Shout of Earth",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "大地之吼"
     },
     {
       "name": "Lightning Beast",
@@ -2692,7 +2744,8 @@
         "sourceName": "Lightning Beast",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "闪电野兽"
     },
     {
       "name": "Ground Shave Cannonball",
@@ -2725,7 +2778,8 @@
         "sourceName": "Ground Shave Cannonball",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "贴地加农炮"
     },
     {
       "name": "Ground Shave Cannonball (CA)",
@@ -2758,7 +2812,8 @@
         "sourceName": "Ground Shave Cannonball (CA)",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "贴地加农炮(CA)"
     },
     {
       "name": "Rolling Cannon",
@@ -2793,7 +2848,8 @@
         "sourceName": "Rolling Cannon",
         "sourceInput": "Any Direction + P (during SA2)",
         "cancelText": "Sp*"
-      }
+      },
+      "nameZh": "回旋加农炮"
     }
   ],
   "lastUpdated": "2026-02-06"

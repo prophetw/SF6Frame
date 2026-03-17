@@ -454,7 +454,8 @@
         "sourceName": "Gen Assassin Kick",
         "sourceInput": "2HK",
         "cancelText": "SS"
-      }
+      },
+      "nameZh": "元流暗杀蹴"
     },
     {
       "name": "Jump LP",
@@ -707,7 +708,8 @@
         "sourceName": "Wall Jump",
         "sourceInput": "9 (against wall)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "三角跳"
     },
     {
       "name": "Water Lotus Fist",
@@ -741,7 +743,8 @@
         "sourceName": "Water Lotus Fist",
         "sourceInput": "3HP",
         "cancelText": "SS"
-      }
+      },
+      "nameZh": "水莲拳"
     },
     {
       "name": "Falling Crane",
@@ -771,7 +774,8 @@
         "sourceName": "Falling Crane",
         "sourceInput": "3HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "落鹤集"
     },
     {
       "name": "Yoso Kick",
@@ -805,7 +809,8 @@
         "sourceName": "Yoso Kick",
         "sourceInput": "j.2MK",
         "cancelText": "TC Sp SA"
-      }
+      },
+      "nameZh": "鹰爪脚"
     },
     {
       "name": "Soaring Eagle Punches",
@@ -833,7 +838,8 @@
         "sourceName": "Soaring Eagle Punches",
         "sourceInput": "j.HP~j.HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞鹰双拳"
     },
     {
       "name": "Yoso Kick 2",
@@ -867,7 +873,8 @@
         "sourceName": "Yoso Kick 2",
         "sourceInput": "j.2MK~j.2MK",
         "cancelText": "TC Sp SA"
-      }
+      },
+      "nameZh": "鹰爪脚2"
     },
     {
       "name": "Yoso Kick 3",
@@ -900,7 +907,8 @@
         "sourceName": "Yoso Kick 3",
         "sourceInput": "j.2MK~j.2MK~j.2MK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "鹰爪脚3"
     },
     {
       "name": "Koshuto",
@@ -932,7 +940,8 @@
         "sourceName": "Koshuto",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "虎袭倒"
     },
     {
       "name": "Ryuseiraku",
@@ -964,7 +973,8 @@
         "sourceName": "Ryuseiraku",
         "sourceInput": "j.LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "流星落"
     },
     {
       "name": "Hosen Kick",
@@ -1251,7 +1261,8 @@
         "sourceName": "Tensho Kicks",
         "sourceInput": "22LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "天升脚"
     },
     {
       "name": "Tensho Kicks",
@@ -1284,7 +1295,8 @@
         "sourceName": "Tensho Kicks",
         "sourceInput": "22MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "天升脚"
     },
     {
       "name": "Tensho Kicks",
@@ -1317,7 +1329,8 @@
         "sourceName": "Tensho Kicks",
         "sourceInput": "22HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "天升脚"
     },
     {
       "name": "Tensho Kicks",
@@ -1350,7 +1363,8 @@
         "sourceName": "Tensho Kicks",
         "sourceInput": "22KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "天升脚"
     },
     {
       "name": "Neutral Taunt",
@@ -1417,7 +1431,8 @@
         "sourceName": "Swift Thrust",
         "sourceInput": "4/6MP",
         "cancelText": "SS Sp SA"
-      }
+      },
+      "nameZh": "前突刺"
     },
     {
       "name": "Hakkei",
@@ -1453,7 +1468,8 @@
         "sourceName": "Hakkei",
         "sourceInput": "4HP",
         "cancelText": "SS Sp SA"
-      }
+      },
+      "nameZh": "发劲"
     },
     {
       "name": "Yokusen Kick",
@@ -1487,7 +1503,8 @@
         "sourceName": "Yokusen Kick",
         "sourceInput": "6HK",
         "cancelText": "SS"
-      }
+      },
+      "nameZh": "翼旋脚"
     },
     {
       "name": "Taiji Fan",
@@ -1519,7 +1536,8 @@
         "sourceName": "Taiji Fan",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "太极扇"
     },
     {
       "name": "Hoyoku Kick (Block)",
@@ -1799,7 +1817,8 @@
         "sourceName": "Serenity Stream",
         "sourceInput": "214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "行云流水"
     },
     {
       "name": "Serenity Stream Exit",
@@ -1826,7 +1845,8 @@
         "sourceName": "Serenity Stream Exit",
         "sourceInput": "214P~214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "行云流水(解除)"
     },
     {
       "name": "Orchid Palm",
@@ -1860,7 +1880,8 @@
         "sourceName": "Orchid Palm",
         "sourceInput": "214P~LP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "兰花掌"
     },
     {
       "name": "Snake Strike",
@@ -1893,7 +1914,8 @@
         "sourceName": "Snake Strike",
         "sourceInput": "214P~MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蛇击"
     },
     {
       "name": "Lotus Fist",
@@ -1927,7 +1949,8 @@
         "sourceName": "Lotus Fist",
         "sourceInput": "214P~HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "莲花拳"
     },
     {
       "name": "Forward Strike",
@@ -1961,7 +1984,8 @@
         "sourceName": "Forward Strike",
         "sourceInput": "214P~LK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "前发劲"
     },
     {
       "name": "Senpu Kick",
@@ -1995,7 +2019,8 @@
         "sourceName": "Senpu Kick",
         "sourceInput": "214P~MK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "旋风脚"
     },
     {
       "name": "Tenku Kick",
@@ -2031,7 +2056,8 @@
         "sourceName": "Tenku Kick",
         "sourceInput": "214P~HK",
         "cancelText": "Jmp"
-      }
+      },
+      "nameZh": "天空脚"
     },
     {
       "name": "Hundred Lightning Kicks",
@@ -2065,7 +2091,8 @@
         "sourceName": "Hundred Lightning Kicks",
         "sourceInput": "236LK",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "百裂脚"
     },
     {
       "name": "Hundred Lightning Kicks",
@@ -2099,7 +2126,8 @@
         "sourceName": "Hundred Lightning Kicks",
         "sourceInput": "236MK",
         "cancelText": "SA3 (3rd)"
-      }
+      },
+      "nameZh": "百裂脚"
     },
     {
       "name": "Hundred Lightning Kicks",
@@ -2136,7 +2164,8 @@
         "sourceName": "Hundred Lightning Kicks",
         "sourceInput": "236HK",
         "cancelText": "SA3 (4th)"
-      }
+      },
+      "nameZh": "百裂脚"
     },
     {
       "name": "Hundred Lightning Kicks",
@@ -2171,7 +2200,8 @@
         "sourceName": "Hundred Lightning Kicks",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3 (5th)"
-      }
+      },
+      "nameZh": "百裂脚"
     },
     {
       "name": "Lightning Kick Barrage",
@@ -2235,7 +2265,8 @@
         "sourceName": "Aerial Hundred Lightning Kicks",
         "sourceInput": "j.236LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中百裂脚"
     },
     {
       "name": "Aerial Hundred Lightning Kicks",
@@ -2265,7 +2296,8 @@
         "sourceName": "Aerial Hundred Lightning Kicks",
         "sourceInput": "j.236MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中百裂脚"
     },
     {
       "name": "Aerial Hundred Lightning Kicks",
@@ -2295,7 +2327,8 @@
         "sourceName": "Aerial Hundred Lightning Kicks",
         "sourceInput": "j.236HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中百裂脚"
     },
     {
       "name": "Aerial Hundred Lightning Kicks",
@@ -2328,7 +2361,8 @@
         "sourceName": "Aerial Hundred Lightning Kicks",
         "sourceInput": "j.236KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中百裂脚"
     },
     {
       "name": "Hazanshu",
@@ -2361,7 +2395,8 @@
         "sourceName": "Hazanshu",
         "sourceInput": "214LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "霸山蹴"
     },
     {
       "name": "Hazanshu",
@@ -2394,7 +2429,8 @@
         "sourceName": "Hazanshu",
         "sourceInput": "214MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "霸山蹴"
     },
     {
       "name": "Hazanshu",
@@ -2427,7 +2463,8 @@
         "sourceName": "Hazanshu",
         "sourceInput": "214HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "霸山蹴"
     },
     {
       "name": "Hazanshu",
@@ -2464,7 +2501,8 @@
         "sourceName": "Hazanshu",
         "sourceInput": "214KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "霸山蹴"
     },
     {
       "name": "Kikosho",
@@ -2497,7 +2535,8 @@
         "sourceName": "Kikosho",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "气功掌"
     },
     {
       "name": "Aerial Kikosho",
@@ -2530,7 +2569,8 @@
         "sourceName": "Aerial Kikosho",
         "sourceInput": "j.236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中气功掌"
     },
     {
       "name": "Hoyoku-sen",
@@ -2566,7 +2606,8 @@
         "sourceName": "Hoyoku-sen",
         "sourceInput": "236236K",
         "cancelText": "Jmp"
-      }
+      },
+      "nameZh": "凤翼扇"
     },
     {
       "name": "Soten Ranka",
@@ -2599,7 +2640,8 @@
         "sourceName": "Soten Ranka",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "苍天兰华"
     },
     {
       "name": "Soten Ranka (CA)",
@@ -2632,7 +2674,8 @@
         "sourceName": "Soten Ranka (CA)",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "苍天兰华(CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

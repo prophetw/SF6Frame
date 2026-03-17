@@ -430,7 +430,8 @@
         "sourceName": "Shadow Sweep",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "暗影横扫"
     },
     {
       "name": "Jump LP",
@@ -653,7 +654,8 @@
         "sourceName": "Hover Kick",
         "sourceInput": "3HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "悬浮踢"
     },
     {
       "name": "Shadow Spear",
@@ -683,7 +685,8 @@
         "sourceName": "Shadow Spear",
         "sourceInput": "5MP~2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "暗影长枪"
     },
     {
       "name": "Hell Attack",
@@ -711,7 +714,8 @@
         "sourceName": "Hell Attack",
         "sourceInput": "j.MP~j.MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "地狱攻击"
     },
     {
       "name": "Hell Twist",
@@ -860,7 +864,8 @@
         "sourceName": "Psycho Mine (Detonation)",
         "sourceInput": "-",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "精神地雷 (引爆)"
     },
     {
       "name": "Shadow Rise",
@@ -887,7 +892,8 @@
         "sourceName": "Shadow Rise",
         "sourceInput": "8K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "暗影升起"
     },
     {
       "name": "Shadow Rise",
@@ -914,7 +920,8 @@
         "sourceName": "Shadow Rise",
         "sourceInput": "8KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "暗影升起"
     },
     {
       "name": "Devil Reverse",
@@ -945,7 +952,8 @@
         "sourceName": "Devil Reverse",
         "sourceInput": "8K~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "恶魔反转"
     },
     {
       "name": "Devil Reverse",
@@ -976,7 +984,8 @@
         "sourceName": "Devil Reverse",
         "sourceInput": "8KK~P or 8K~PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "恶魔反转"
     },
     {
       "name": "Devil Reverse (Mine)",
@@ -1007,7 +1016,8 @@
         "sourceName": "Devil Reverse (Mine)",
         "sourceInput": "8K~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "恶魔反转 (地雷)"
     },
     {
       "name": "Devil Reverse (Mine)",
@@ -1038,7 +1048,8 @@
         "sourceName": "Devil Reverse (Mine)",
         "sourceInput": "8KK~P or 8K~PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "恶魔反转 (地雷)"
     },
     {
       "name": "Head Press",
@@ -1065,7 +1076,8 @@
         "sourceName": "Head Press",
         "sourceInput": "8K~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "头部重压"
     },
     {
       "name": "Head Press",
@@ -1096,7 +1108,8 @@
         "sourceName": "Head Press",
         "sourceInput": "8KK~K or 8K~KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "头部重压"
     },
     {
       "name": "Somersault Skull Diver",
@@ -1126,7 +1139,8 @@
         "sourceName": "Somersault Skull Diver",
         "sourceInput": "8K~K~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空翻骷髅俯冲"
     },
     {
       "name": "Neutral Taunt",
@@ -1181,7 +1195,8 @@
         "sourceName": "Neutral Taunt (Up)",
         "sourceInput": "5PPPKKK~8",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "原地挑衅 (上)"
     },
     {
       "name": "Neutral Taunt (Down)",
@@ -1208,7 +1223,8 @@
         "sourceName": "Neutral Taunt (Down)",
         "sourceInput": "5PPPKKK~2",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "原地挑衅 (下)"
     },
     {
       "name": "Psycho Hammer",
@@ -1238,7 +1254,8 @@
         "sourceName": "Psycho Hammer",
         "sourceInput": "6HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "精神战锤"
     },
     {
       "name": "Evil Knee",
@@ -1273,7 +1290,8 @@
         "sourceName": "Evil Knee",
         "sourceInput": "4HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "邪恶膝击"
     },
     {
       "name": "Shadow Hammer",
@@ -1303,7 +1321,8 @@
         "sourceName": "Shadow Hammer",
         "sourceInput": "5MP~6HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "暗影战锤"
     },
     {
       "name": "Death Tower",
@@ -1335,7 +1354,8 @@
         "sourceName": "Death Tower",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "死亡之塔"
     },
     {
       "name": "Hell Drive (Block)",
@@ -1440,7 +1460,8 @@
         "sourceName": "Psycho Crusher Attack",
         "sourceInput": "6LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神粉碎击"
     },
     {
       "name": "Psycho Crusher Attack",
@@ -1477,7 +1498,8 @@
         "sourceName": "Psycho Crusher Attack",
         "sourceInput": "6MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神粉碎击"
     },
     {
       "name": "Psycho Crusher Attack",
@@ -1514,7 +1536,8 @@
         "sourceName": "Psycho Crusher Attack",
         "sourceInput": "6HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神粉碎击"
     },
     {
       "name": "Psycho Crusher Attack",
@@ -1552,7 +1575,8 @@
         "sourceName": "Psycho Crusher Attack",
         "sourceInput": "6PP",
         "cancelText": "SA2* SA3"
-      }
+      },
+      "nameZh": "精神粉碎击"
     },
     {
       "name": "Psycho Crusher (Mine)",
@@ -1589,7 +1613,8 @@
         "sourceName": "Psycho Crusher (Mine)",
         "sourceInput": "6LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神粉碎 (地雷)"
     },
     {
       "name": "Psycho Crusher (Mine)",
@@ -1626,7 +1651,8 @@
         "sourceName": "Psycho Crusher (Mine)",
         "sourceInput": "6MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神粉碎 (地雷)"
     },
     {
       "name": "Psycho Crusher (Mine)",
@@ -1663,7 +1689,8 @@
         "sourceName": "Psycho Crusher (Mine)",
         "sourceInput": "6HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神粉碎 (地雷)"
     },
     {
       "name": "Psycho Crusher (Mine)",
@@ -1696,7 +1723,8 @@
         "sourceName": "Psycho Crusher (Mine)",
         "sourceInput": "6PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "精神粉碎 (地雷)"
     },
     {
       "name": "Forward Taunt",
@@ -1756,7 +1784,8 @@
         "sourceName": "Forward Taunt (Mine)",
         "sourceInput": "6PPPKKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "前挑衅 (地雷)"
     },
     {
       "name": "Back Taunt",
@@ -1816,7 +1845,8 @@
         "sourceName": "Bison Warp",
         "sourceInput": "6 or 4 + PPP/KKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "维加传送"
     },
     {
       "name": "Deadly Throw",
@@ -1848,7 +1878,8 @@
         "sourceName": "Deadly Throw",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "致命投"
     },
     {
       "name": "Double Knee Press",
@@ -1882,7 +1913,8 @@
         "sourceName": "Double Knee Press",
         "sourceInput": "236LK",
         "cancelText": "SA3 (1st)"
-      }
+      },
+      "nameZh": "双膝压"
     },
     {
       "name": "Double Knee Press",
@@ -1916,7 +1948,8 @@
         "sourceName": "Double Knee Press",
         "sourceInput": "236MK",
         "cancelText": "SA3 (1st)"
-      }
+      },
+      "nameZh": "双膝压"
     },
     {
       "name": "Double Knee Press",
@@ -1950,7 +1983,8 @@
         "sourceName": "Double Knee Press",
         "sourceInput": "236HK",
         "cancelText": "SA3 (1st)"
-      }
+      },
+      "nameZh": "双膝压"
     },
     {
       "name": "Double Knee Press",
@@ -1988,7 +2022,8 @@
         "sourceName": "Double Knee Press",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3 (2nd)"
-      }
+      },
+      "nameZh": "双膝压"
     },
     {
       "name": "Backfist Combo",
@@ -2025,7 +2060,8 @@
         "sourceName": "Backfist Combo",
         "sourceInput": "214LP",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "里拳连打"
     },
     {
       "name": "Backfist Combo",
@@ -2062,7 +2098,8 @@
         "sourceName": "Backfist Combo",
         "sourceInput": "214MP",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "里拳连打"
     },
     {
       "name": "Backfist Combo",
@@ -2099,7 +2136,8 @@
         "sourceName": "Backfist Combo",
         "sourceInput": "214HP",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "里拳连打"
     },
     {
       "name": "Backfist Combo",
@@ -2137,7 +2175,8 @@
         "sourceName": "Backfist Combo",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3 (3rd)"
-      }
+      },
+      "nameZh": "里拳连打"
     },
     {
       "name": "Backfist Combo (Mine)",
@@ -2174,7 +2213,8 @@
         "sourceName": "Backfist Combo (Mine)",
         "sourceInput": "214LP",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "里拳连打 (地雷)"
     },
     {
       "name": "Backfist Combo (Mine)",
@@ -2211,7 +2251,8 @@
         "sourceName": "Backfist Combo (Mine)",
         "sourceInput": "214MP",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "里拳连打 (地雷)"
     },
     {
       "name": "Backfist Combo (Mine)",
@@ -2248,7 +2289,8 @@
         "sourceName": "Backfist Combo (Mine)",
         "sourceInput": "214HP",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "里拳连打 (地雷)"
     },
     {
       "name": "Backfist Combo (Mine)",
@@ -2286,7 +2328,8 @@
         "sourceName": "Backfist Combo (Mine)",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3 (4th)"
-      }
+      },
+      "nameZh": "里拳连打 (地雷)"
     },
     {
       "name": "Knee Press Nightmare",
@@ -2319,7 +2362,8 @@
         "sourceName": "Knee Press Nightmare",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "膝压梦魇"
     },
     {
       "name": "Psycho Punisher",
@@ -2352,7 +2396,8 @@
         "sourceName": "Psycho Punisher",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "精神惩戒"
     },
     {
       "name": "Unlimited Psycho Crusher",
@@ -2385,7 +2430,8 @@
         "sourceName": "Unlimited Psycho Crusher",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "无限精神粉碎"
     },
     {
       "name": "Unlimited Psycho Crusher (CA)",
@@ -2418,7 +2464,8 @@
         "sourceName": "Unlimited Psycho Crusher (CA)",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "无限精神粉碎 (CA)"
     },
     {
       "name": "Psycho Burst",
@@ -2451,7 +2498,8 @@
         "sourceName": "Psycho Burst",
         "sourceInput": "623PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "精神爆发"
     },
     {
       "name": "Final Psycho Crusher",
@@ -2484,7 +2532,8 @@
         "sourceName": "Final Psycho Crusher",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "终极精神粉碎"
     }
   ],
   "lastUpdated": "2026-02-06"

@@ -434,7 +434,8 @@
         "sourceName": "Dragon Sweep",
         "sourceInput": "2HK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "龙扫"
     },
     {
       "name": "Jump LP",
@@ -655,7 +656,8 @@
         "sourceName": "Guile High Kick",
         "sourceInput": "3HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "古烈高踢"
     },
     {
       "name": "Double Shot",
@@ -693,7 +695,8 @@
         "sourceName": "Double Shot",
         "sourceInput": "2MP~2MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "双重射击"
     },
     {
       "name": "Phantom Cutter",
@@ -731,7 +734,8 @@
         "sourceName": "Phantom Cutter",
         "sourceInput": "2HK~3HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "幽灵切割手"
     },
     {
       "name": "Dragon Suplex",
@@ -763,7 +767,8 @@
         "sourceName": "Dragon Suplex",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞龙背摔"
     },
     {
       "name": "Flying Mare",
@@ -795,7 +800,8 @@
         "sourceName": "Flying Mare",
         "sourceInput": "j.LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞马摔"
     },
     {
       "name": "Blitz Combination",
@@ -1088,7 +1094,8 @@
         "sourceName": "Sonic Break",
         "sourceInput": "PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "音速突破"
     },
     {
       "name": "Neutral Taunt",
@@ -1174,7 +1181,8 @@
         "sourceName": "Full Bullet Magnum",
         "sourceInput": "6MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "全弹连击"
     },
     {
       "name": "Spinning Back Knuckle",
@@ -1204,7 +1212,8 @@
         "sourceName": "Spinning Back Knuckle",
         "sourceInput": "6HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "回旋里拳"
     },
     {
       "name": "Burning Straight",
@@ -1239,7 +1248,8 @@
         "sourceName": "Burning Straight",
         "sourceInput": "4HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "燃烧直拳"
     },
     {
       "name": "Knee Bazooka",
@@ -1269,7 +1279,8 @@
         "sourceName": "Knee Bazooka",
         "sourceInput": "4LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "膝击火箭"
     },
     {
       "name": "Rolling Sobat",
@@ -1299,7 +1310,8 @@
         "sourceName": "Rolling Sobat",
         "sourceInput": "4MK or 6MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "翻滚踢"
     },
     {
       "name": "Reverse Spin Kick",
@@ -1329,7 +1341,8 @@
         "sourceName": "Reverse Spin Kick",
         "sourceInput": "6HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "反转旋风脚"
     },
     {
       "name": "Recoil Cannon",
@@ -1368,7 +1381,8 @@
         "sourceName": "Recoil Cannon",
         "sourceInput": "5MP~4HP",
         "cancelText": "Sp SA kara"
-      }
+      },
+      "nameZh": "后座加农炮"
     },
     {
       "name": "Drake Fang",
@@ -1398,7 +1412,8 @@
         "sourceName": "Drake Fang",
         "sourceInput": "2MK~6MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "德雷克之牙"
     },
     {
       "name": "Flying Buster Drop",
@@ -1430,7 +1445,8 @@
         "sourceName": "Flying Buster Drop",
         "sourceInput": "j.4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞身破坏落"
     },
     {
       "name": "Strike Eagle (Block)",
@@ -1664,7 +1680,8 @@
         "sourceName": "Sonic Hurricane",
         "sourceInput": "646P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "音速飓风"
     },
     {
       "name": "Sonic Hurricane",
@@ -1697,7 +1714,8 @@
         "sourceName": "Sonic Hurricane",
         "sourceInput": "646HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "音速飓风"
     },
     {
       "name": "Sonic Break (follow-up)",
@@ -1724,7 +1742,8 @@
         "sourceName": "Sonic Break (follow-up)",
         "sourceInput": "6P~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "音速突破(追击)"
     },
     {
       "name": "OD Sonic Break (follow-up)",
@@ -1755,7 +1774,8 @@
         "sourceName": "OD Sonic Break (follow-up)",
         "sourceInput": "6PP~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "OD音速突破(追击)"
     },
     {
       "name": "Crossfire Somersault",
@@ -1788,7 +1808,8 @@
         "sourceName": "Crossfire Somersault",
         "sourceInput": "646K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "交叉火力斩空腿"
     },
     {
       "name": "Crossfire Somersault (CA)",
@@ -1821,7 +1842,8 @@
         "sourceName": "Crossfire Somersault (CA)",
         "sourceInput": "646K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "交叉火力斩空腿(CA)"
     },
     {
       "name": "Forward Taunt",
@@ -1909,7 +1931,8 @@
         "sourceName": "Judo Throw",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "柔道投"
     },
     {
       "name": "Sonic Blade",
@@ -1939,7 +1962,8 @@
         "sourceName": "Sonic Blade",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "音速之刃"
     },
     {
       "name": "Sonic Blade",
@@ -1969,7 +1993,8 @@
         "sourceName": "Sonic Blade",
         "sourceInput": "214MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "音速之刃"
     },
     {
       "name": "Sonic Blade",
@@ -1999,7 +2024,8 @@
         "sourceName": "Sonic Blade",
         "sourceInput": "214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "音速之刃"
     },
     {
       "name": "Sonic Cross",
@@ -2034,7 +2060,8 @@
         "sourceName": "Sonic Cross",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "音速十字"
     },
     {
       "name": "Sonic Cross",
@@ -2068,7 +2095,8 @@
         "sourceName": "Sonic Cross",
         "sourceInput": "214P ~ 6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "音速十字"
     },
     {
       "name": "Sonic Cross",
@@ -2103,7 +2131,8 @@
         "sourceName": "Sonic Cross",
         "sourceInput": "214P ~ 6PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "音速十字"
     },
     {
       "name": "Sonic Cross",
@@ -2138,7 +2167,8 @@
         "sourceName": "Sonic Cross",
         "sourceInput": "214PP ~ 6P",
         "cancelText": "SA2* SA3"
-      }
+      },
+      "nameZh": "音速十字"
     },
     {
       "name": "Sonic Cross",
@@ -2173,7 +2203,8 @@
         "sourceName": "Sonic Cross",
         "sourceInput": "214PP ~ 6PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "音速十字"
     },
     {
       "name": "Solid Puncher",
@@ -2201,7 +2232,8 @@
         "sourceName": "Solid Puncher",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "坚固打击者"
     }
   ],
   "lastUpdated": "2026-02-06"

@@ -441,7 +441,8 @@
         "sourceName": "Viper Kick",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "毒蛇踢"
     },
     {
       "name": "Jump LP",
@@ -698,7 +699,8 @@
         "sourceName": "High Impulse",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "高阶脉冲"
     },
     {
       "name": "Viper Cannon",
@@ -849,7 +851,8 @@
         "sourceName": "High Jump",
         "sourceInput": "2~8",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "高跳"
     },
     {
       "name": "Neutral Taunt",
@@ -907,7 +910,8 @@
         "sourceName": "Viper Elbow",
         "sourceInput": "6MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "毒蛇肘"
     },
     {
       "name": "Double Kick",
@@ -937,7 +941,8 @@
         "sourceName": "Double Kick",
         "sourceInput": "6HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "双重踢"
     },
     {
       "name": "Thunder Cradle",
@@ -969,7 +974,8 @@
         "sourceName": "Thunder Cradle",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "雷霆摇篮"
     },
     {
       "name": "Counter Spark (Block)",
@@ -1127,7 +1133,8 @@
         "sourceName": "Thunder Dash",
         "sourceInput": "214LP",
         "cancelText": "SA3 Feint"
-      }
+      },
+      "nameZh": "雷霆冲刺"
     },
     {
       "name": "Thunder Dash",
@@ -1161,7 +1168,8 @@
         "sourceName": "Thunder Dash",
         "sourceInput": "214MP",
         "cancelText": "SA3 Feint"
-      }
+      },
+      "nameZh": "雷霆冲刺"
     },
     {
       "name": "Thunder Dash",
@@ -1197,7 +1205,8 @@
         "sourceName": "Thunder Dash",
         "sourceInput": "214HP",
         "cancelText": "Feint"
-      }
+      },
+      "nameZh": "雷霆冲刺"
     },
     {
       "name": "Thunder Dash",
@@ -1234,7 +1243,8 @@
         "sourceName": "Thunder Dash",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "雷霆冲刺"
     },
     {
       "name": "Tracer Combination",
@@ -1270,7 +1280,8 @@
         "sourceName": "Tracer Combination",
         "sourceInput": "214LP~6PP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "追踪者连击"
     },
     {
       "name": "Tracer Combination",
@@ -1306,7 +1317,8 @@
         "sourceName": "Tracer Combination",
         "sourceInput": "214MP~6PP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "追踪者连击"
     },
     {
       "name": "Tracer Combination",
@@ -1338,7 +1350,8 @@
         "sourceName": "Tracer Combination",
         "sourceInput": "214HP~6PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "追踪者连击"
     },
     {
       "name": "Thunder Dash Feint",
@@ -1365,7 +1378,8 @@
         "sourceName": "Thunder Dash Feint",
         "sourceInput": "214P~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "雷霆冲刺佯攻"
     },
     {
       "name": "Burning Kick",
@@ -1398,7 +1412,8 @@
         "sourceName": "Burning Kick",
         "sourceInput": "236LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "燃烧踢"
     },
     {
       "name": "Burning Kick",
@@ -1431,7 +1446,8 @@
         "sourceName": "Burning Kick",
         "sourceInput": "236MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "燃烧踢"
     },
     {
       "name": "Burning Kick",
@@ -1464,7 +1480,8 @@
         "sourceName": "Burning Kick",
         "sourceInput": "236HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "燃烧踢"
     },
     {
       "name": "Burning Kick",
@@ -1501,7 +1518,8 @@
         "sourceName": "Burning Kick",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "燃烧踢"
     },
     {
       "name": "Knuckled Pursuit",
@@ -1534,7 +1552,8 @@
         "sourceName": "Knuckled Pursuit",
         "sourceInput": "236K~PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "指节追击"
     },
     {
       "name": "Double Burn",
@@ -1567,7 +1586,8 @@
         "sourceName": "Double Burn",
         "sourceInput": "236K~KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "双重燃烧"
     },
     {
       "name": "Aerial Burning Kick",
@@ -1600,7 +1620,8 @@
         "sourceName": "Aerial Burning Kick",
         "sourceInput": "j.236LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中燃烧踢"
     },
     {
       "name": "Aerial Burning Kick",
@@ -1633,7 +1654,8 @@
         "sourceName": "Aerial Burning Kick",
         "sourceInput": "j.236MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中燃烧踢"
     },
     {
       "name": "Aerial Burning Kick",
@@ -1666,7 +1688,8 @@
         "sourceName": "Aerial Burning Kick",
         "sourceInput": "j.236HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中燃烧踢"
     },
     {
       "name": "Aerial Burning Kick",
@@ -1699,7 +1722,8 @@
         "sourceName": "Aerial Burning Kick",
         "sourceInput": "j.236KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中燃烧踢"
     },
     {
       "name": "Seismic Hammer",
@@ -1737,7 +1761,8 @@
         "sourceName": "Seismic Hammer",
         "sourceInput": "623P",
         "cancelText": "SA3 HJ Feint"
-      }
+      },
+      "nameZh": "地震战锤"
     },
     {
       "name": "Seismic Hammer",
@@ -1776,7 +1801,8 @@
         "sourceName": "Seismic Hammer",
         "sourceInput": "623PP",
         "cancelText": "SA2 SA3 HJ Feint"
-      }
+      },
+      "nameZh": "地震战锤"
     },
     {
       "name": "Seismic Hammer Feint",
@@ -1803,7 +1829,8 @@
         "sourceName": "Seismic Hammer Feint",
         "sourceInput": "623P~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "地震战锤佯攻"
     },
     {
       "name": "Focus Force (Lv.1)",
@@ -1839,7 +1866,8 @@
         "sourceName": "Focus Force (Lv.1)",
         "sourceInput": "214K",
         "cancelText": "Dash"
-      }
+      },
+      "nameZh": "专注之力(Lv.1)"
     },
     {
       "name": "Focus Force (Lv.1)",
@@ -1875,7 +1903,8 @@
         "sourceName": "Focus Force (Lv.1)",
         "sourceInput": "214KK",
         "cancelText": "Dash"
-      }
+      },
+      "nameZh": "专注之力(Lv.1)"
     },
     {
       "name": "Focus Force (Lv.2)",
@@ -1911,7 +1940,8 @@
         "sourceName": "Focus Force (Lv.2)",
         "sourceInput": "214{K}",
         "cancelText": "Dash"
-      }
+      },
+      "nameZh": "专注之力(Lv.2)"
     },
     {
       "name": "Focus Force (Lv.2)",
@@ -1947,7 +1977,8 @@
         "sourceName": "Focus Force (Lv.2)",
         "sourceInput": "214{KK}",
         "cancelText": "Dash"
-      }
+      },
+      "nameZh": "专注之力(Lv.2)"
     },
     {
       "name": "Focus Force (Lv.3)",
@@ -1983,7 +2014,8 @@
         "sourceName": "Focus Force (Lv.3)",
         "sourceInput": "214",
         "cancelText": "Dash"
-      }
+      },
+      "nameZh": "专注之力(Lv.3)"
     },
     {
       "name": "Limit Decoupler",
@@ -2016,7 +2048,8 @@
         "sourceName": "Limit Decoupler",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "解除限制"
     },
     {
       "name": "Mission Complete",
@@ -2049,7 +2082,8 @@
         "sourceName": "Mission Complete",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "任务完成"
     },
     {
       "name": "Hard Luck Rejector",
@@ -2082,7 +2116,8 @@
         "sourceName": "Hard Luck Rejector",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "厄运拒绝者"
     },
     {
       "name": "Hard Luck Rejector (CA)",
@@ -2115,7 +2150,8 @@
         "sourceName": "Hard Luck Rejector (CA)",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "厄运拒绝者(CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

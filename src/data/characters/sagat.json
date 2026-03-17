@@ -47,7 +47,8 @@
         "sourceName": "Stand LP",
         "sourceInput": "5LP",
         "cancelText": "Chn, Sp, SA"
-      }
+      },
+      "nameZh": "站立轻拳"
     },
     {
       "name": "Stand MP",
@@ -78,7 +79,8 @@
         "sourceName": "Stand MP",
         "sourceInput": "5MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "站立中拳"
     },
     {
       "name": "Stand HP",
@@ -113,7 +115,8 @@
         "sourceName": "Stand HP",
         "sourceInput": "5HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "站立重拳"
     },
     {
       "name": "Stand LK",
@@ -149,7 +152,8 @@
         "sourceName": "Stand LK",
         "sourceInput": "5LK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "站立轻脚"
     },
     {
       "name": "Stand MK",
@@ -184,7 +188,8 @@
         "sourceName": "Stand MK",
         "sourceInput": "5MK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "站立中脚"
     },
     {
       "name": "Stand HK",
@@ -220,7 +225,8 @@
         "sourceName": "Stand HK",
         "sourceInput": "5HK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "站立重脚"
     },
     {
       "name": "Crouch LP",
@@ -257,7 +263,8 @@
         "sourceName": "Crouch LP",
         "sourceInput": "2LP",
         "cancelText": "Chn Sp SA"
-      }
+      },
+      "nameZh": "蹲下轻拳"
     },
     {
       "name": "Crouch MP",
@@ -294,7 +301,8 @@
         "sourceName": "Crouch MP",
         "sourceInput": "2MP",
         "cancelText": "Sp SA TC"
-      }
+      },
+      "nameZh": "蹲下中拳"
     },
     {
       "name": "Crouch HP",
@@ -330,7 +338,8 @@
         "sourceName": "Crouch HP",
         "sourceInput": "2HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "蹲下重拳"
     },
     {
       "name": "Crouch LK",
@@ -365,7 +374,8 @@
         "sourceName": "Crouch LK",
         "sourceInput": "2LK",
         "cancelText": "Chn"
-      }
+      },
+      "nameZh": "蹲下轻脚"
     },
     {
       "name": "Crouch MK",
@@ -396,7 +406,8 @@
         "sourceName": "Crouch MK",
         "sourceInput": "2MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蹲下中脚"
     },
     {
       "name": "Tiger Kick",
@@ -430,7 +441,8 @@
         "sourceName": "Tiger Kick",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "泰格踢"
     },
     {
       "name": "Jump LP",
@@ -461,7 +473,8 @@
         "sourceName": "Jump LP",
         "sourceInput": "j.LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻拳"
     },
     {
       "name": "Jump MP",
@@ -492,7 +505,8 @@
         "sourceName": "Jump MP",
         "sourceInput": "j.MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃中拳"
     },
     {
       "name": "Jump HP",
@@ -523,7 +537,8 @@
         "sourceName": "Jump HP",
         "sourceInput": "j.HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重拳"
     },
     {
       "name": "Jump LK",
@@ -554,7 +569,8 @@
         "sourceName": "Jump LK",
         "sourceInput": "j.LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃轻脚"
     },
     {
       "name": "Jump MK",
@@ -585,7 +601,8 @@
         "sourceName": "Jump MK",
         "sourceInput": "j.MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃中脚"
     },
     {
       "name": "Jump HK",
@@ -616,7 +633,8 @@
         "sourceName": "Jump HK",
         "sourceInput": "j.HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "跳跃重脚"
     },
     {
       "name": "Tiger Heavy Elbow",
@@ -647,7 +665,8 @@
         "sourceName": "Tiger Heavy Elbow",
         "sourceInput": "6MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "猛虎重肘"
     },
     {
       "name": "Tiger Monolith",
@@ -686,7 +705,8 @@
         "sourceName": "Tiger Monolith",
         "sourceInput": "4HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "猛虎碑基"
     },
     {
       "name": "Step Low Kick",
@@ -717,7 +737,8 @@
         "sourceName": "Step Low Kick",
         "sourceInput": "6LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "踏步下段踢"
     },
     {
       "name": "Step High Kick",
@@ -748,7 +769,8 @@
         "sourceName": "Step High Kick",
         "sourceInput": "6HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "踏步上段踢"
     },
     {
       "name": "Step Middle Kick",
@@ -782,7 +804,8 @@
         "sourceName": "Step Middle Kick",
         "sourceInput": "5MK~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "踏步中段踢"
     },
     {
       "name": "Tiger Sting",
@@ -816,7 +839,8 @@
         "sourceName": "Tiger Sting",
         "sourceInput": "5HP~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "猛虎刺刺"
     },
     {
       "name": "Tiger Slash",
@@ -852,7 +876,8 @@
         "sourceName": "Tiger Slash",
         "sourceInput": "2MP~HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "猛虎斩"
     },
     {
       "name": "Tiger Rise",
@@ -890,7 +915,8 @@
         "sourceName": "Tiger Rise",
         "sourceInput": "2MP~HK",
         "cancelText": "SA"
-      }
+      },
+      "nameZh": "猛虎升"
     },
     {
       "name": "Tiger Hang",
@@ -923,7 +949,8 @@
         "sourceName": "Tiger Hang",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "猛虎挂"
     },
     {
       "name": "Tiger Carry",
@@ -956,7 +983,8 @@
         "sourceName": "Tiger Carry",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "猛虎抱"
     },
     {
       "name": "Tiger Punishment",
@@ -989,7 +1017,8 @@
         "sourceName": "Tiger Punishment",
         "sourceInput": "HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "猛虎惩戒"
     },
     {
       "name": "Tiger Twin Babel (Block)",
@@ -1023,7 +1052,8 @@
         "sourceName": "Tiger Twin Babel (Block)",
         "sourceInput": "6HPHK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "猛虎双巴别塔(格挡)"
     },
     {
       "name": "Drive Parry",
@@ -1052,7 +1082,8 @@
         "sourceName": "Drive Parry",
         "sourceInput": "MPMK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气招架"
     },
     {
       "name": "Parry Drive Rush",
@@ -1080,7 +1111,8 @@
         "sourceName": "Parry Drive Rush",
         "sourceInput": "MPMK~66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "招架斗气冲锋"
     },
     {
       "name": "Drive Rush Cancel",
@@ -1108,7 +1140,8 @@
         "sourceName": "Drive Rush Cancel",
         "sourceInput": "MPMK or 66",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "斗气冲锋取消"
     },
     {
       "name": "Low Tiger Shot",
@@ -1139,7 +1172,8 @@
         "sourceName": "Low Tiger Shot",
         "sourceInput": "236LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "下段猛虎射"
     },
     {
       "name": "Low Tiger Shot",
@@ -1175,7 +1209,8 @@
         "sourceName": "Low Tiger Shot",
         "sourceInput": "236LPMP or 236LPHP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "下段猛虎射"
     },
     {
       "name": "High Tiger Shot",
@@ -1206,7 +1241,8 @@
         "sourceName": "High Tiger Shot",
         "sourceInput": "236MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "上段猛虎射"
     },
     {
       "name": "High Tiger Shot",
@@ -1237,7 +1273,8 @@
         "sourceName": "High Tiger Shot",
         "sourceInput": "236HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "上段猛虎射"
     },
     {
       "name": "High Tiger Shot",
@@ -1273,7 +1310,8 @@
         "sourceName": "High Tiger Shot",
         "sourceInput": "236MPHP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "上段猛虎射"
     },
     {
       "name": "Tiger Uppercut",
@@ -1310,7 +1348,8 @@
         "sourceName": "Tiger Uppercut",
         "sourceInput": "623LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "猛虎升龙拳"
     },
     {
       "name": "Tiger Uppercut",
@@ -1347,7 +1386,8 @@
         "sourceName": "Tiger Uppercut",
         "sourceInput": "623MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "猛虎升龙拳"
     },
     {
       "name": "Tiger Uppercut",
@@ -1384,7 +1424,8 @@
         "sourceName": "Tiger Uppercut",
         "sourceInput": "623HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "猛虎升龙拳"
     },
     {
       "name": "Tiger Uppercut (hold)",
@@ -1421,7 +1462,8 @@
         "sourceName": "Tiger Uppercut (hold)",
         "sourceInput": "623",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "猛虎升龙拳 (蓄力)"
     },
     {
       "name": "Tiger Uppercut",
@@ -1455,7 +1497,8 @@
         "sourceName": "Tiger Uppercut",
         "sourceInput": "623PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "猛虎升龙拳"
     },
     {
       "name": "Tiger Knee Crush",
@@ -1489,7 +1532,8 @@
         "sourceName": "Tiger Knee Crush",
         "sourceInput": "236LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "猛虎碎膝"
     },
     {
       "name": "Tiger Knee Crush",
@@ -1523,7 +1567,8 @@
         "sourceName": "Tiger Knee Crush",
         "sourceInput": "236MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "猛虎碎膝"
     },
     {
       "name": "Tiger Knee Crush",
@@ -1561,7 +1606,8 @@
         "sourceName": "Tiger Knee Crush",
         "sourceInput": "236HK",
         "cancelText": "SA3 (1st)"
-      }
+      },
+      "nameZh": "猛虎碎膝"
     },
     {
       "name": "Tiger Knee Crush",
@@ -1600,7 +1646,8 @@
         "sourceName": "Tiger Knee Crush",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3 (1st)"
-      }
+      },
+      "nameZh": "猛虎碎膝"
     },
     {
       "name": "Tiger Nexus",
@@ -1634,7 +1681,8 @@
         "sourceName": "Tiger Nexus",
         "sourceInput": "214LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "猛虎连接"
     },
     {
       "name": "Tiger Nexus",
@@ -1668,7 +1716,8 @@
         "sourceName": "Tiger Nexus",
         "sourceInput": "214MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "猛虎连接"
     },
     {
       "name": "Tiger Nexus",
@@ -1702,7 +1751,8 @@
         "sourceName": "Tiger Nexus",
         "sourceInput": "214HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "猛虎连接"
     },
     {
       "name": "Tiger Nexus",
@@ -1737,7 +1787,8 @@
         "sourceName": "Tiger Nexus",
         "sourceInput": "214KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "猛虎连接"
     },
     {
       "name": "Mighty Tiger",
@@ -1771,7 +1822,8 @@
         "sourceName": "Mighty Tiger",
         "sourceInput": "214K~6LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "威猛之虎"
     },
     {
       "name": "Mighty Tiger",
@@ -1806,7 +1858,8 @@
         "sourceName": "Mighty Tiger",
         "sourceInput": "214KK~6LK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "威猛之虎"
     },
     {
       "name": "Greedy Tiger",
@@ -1842,7 +1895,8 @@
         "sourceName": "Greedy Tiger",
         "sourceInput": "214K~6MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "贪婪之虎"
     },
     {
       "name": "Greedy Tiger",
@@ -1879,7 +1933,8 @@
         "sourceName": "Greedy Tiger",
         "sourceInput": "214KK~6MK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "贪婪之虎"
     },
     {
       "name": "Nova Tiger",
@@ -1916,7 +1971,8 @@
         "sourceName": "Nova Tiger",
         "sourceInput": "214K~6HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "新星猛虎"
     },
     {
       "name": "Nova Tiger",
@@ -1954,7 +2010,8 @@
         "sourceName": "Nova Tiger",
         "sourceInput": "214KK~6HK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "新星猛虎"
     },
     {
       "name": "Tiger Cannon",
@@ -1986,7 +2043,8 @@
         "sourceName": "Tiger Cannon",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "猛虎炮"
     },
     {
       "name": "Savage Tiger",
@@ -2020,7 +2078,8 @@
         "sourceName": "Savage Tiger",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "狂暴猛虎"
     },
     {
       "name": "Savage Tiger Raid(Damage)",
@@ -2054,7 +2113,8 @@
         "sourceName": "Savage Tiger Raid(Damage)",
         "sourceInput": "214214K~5",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "狂暴猛虎突袭 (伤害)"
     },
     {
       "name": "Savage Tiger Zenith(Launcher)",
@@ -2088,7 +2148,8 @@
         "sourceName": "Savage Tiger Zenith(Launcher)",
         "sourceInput": "214214K~6",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "狂暴猛虎天顶 (挑空)"
     },
     {
       "name": "Savage Tiger Pendulum(Side Switch)",
@@ -2122,7 +2183,8 @@
         "sourceName": "Savage Tiger Pendulum(Side Switch)",
         "sourceInput": "214214K~4",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "狂暴猛虎钟摆 (换边)"
     },
     {
       "name": "Savage Tiger Stomp(Oki)",
@@ -2156,7 +2218,8 @@
         "sourceName": "Savage Tiger Stomp(Oki)",
         "sourceInput": "214214K~2",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "狂暴猛虎践踏 (压制)"
     },
     {
       "name": "Tiger Vanquisher",
@@ -2190,7 +2253,8 @@
         "sourceName": "Tiger Vanquisher",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "猛虎征服者"
     }
   ],
   "lastUpdated": "2026-03-04"

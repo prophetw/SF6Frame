@@ -431,7 +431,8 @@
         "sourceName": "Squall Kick",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飑风踢"
     },
     {
       "name": "Jump LP",
@@ -653,7 +654,8 @@
         "sourceName": "Ridge Thrust",
         "sourceInput": "3HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "山脊突刺"
     },
     {
       "name": "Great Spin",
@@ -683,7 +685,8 @@
         "sourceName": "Great Spin",
         "sourceInput": "j.2HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "大回旋"
     },
     {
       "name": "Double Arrow",
@@ -715,7 +718,8 @@
         "sourceName": "Double Arrow",
         "sourceInput": "j.MP~MP",
         "cancelText": "SA2"
-      }
+      },
+      "nameZh": "双重飞箭"
     },
     {
       "name": "Earth's Rage",
@@ -866,7 +870,8 @@
         "sourceName": "Condor Dive",
         "sourceInput": "j.PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兀鹰俯冲"
     },
     {
       "name": "Condor Dive",
@@ -899,7 +904,8 @@
         "sourceName": "Condor Dive",
         "sourceInput": "j.PPP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兀鹰俯冲"
     },
     {
       "name": "Condor Dive (Windclad)",
@@ -932,7 +938,8 @@
         "sourceName": "Condor Dive (Windclad)",
         "sourceInput": "j.PP (Windclad)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兀鹰俯冲(风缠)"
     },
     {
       "name": "Condor Dive (Windclad)",
@@ -965,7 +972,8 @@
         "sourceName": "Condor Dive (Windclad)",
         "sourceInput": "j.PPP (Windclad)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兀鹰俯冲(风缠)"
     },
     {
       "name": "Neutral Taunt",
@@ -1032,7 +1040,8 @@
         "sourceName": "Desert Storm 1",
         "sourceInput": "6HP",
         "cancelText": "TC Sp SA"
-      }
+      },
+      "nameZh": "沙漠风暴1"
     },
     {
       "name": "Horn Breaker",
@@ -1067,7 +1076,8 @@
         "sourceName": "Horn Breaker",
         "sourceInput": "4HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "断角击"
     },
     {
       "name": "Desert Storm 2",
@@ -1101,7 +1111,8 @@
         "sourceName": "Desert Storm 2",
         "sourceInput": "6HP~HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "沙漠风暴2"
     },
     {
       "name": "Desert Storm 3",
@@ -1134,7 +1145,8 @@
         "sourceName": "Desert Storm 3",
         "sourceInput": "6HP~HP~HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "沙漠风暴3"
     },
     {
       "name": "Falling Cliff",
@@ -1166,7 +1178,8 @@
         "sourceName": "Falling Cliff",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "落崖击"
     },
     {
       "name": "Cross Hammer (Block)",
@@ -1266,7 +1279,8 @@
         "sourceName": "Mexican Typhoon",
         "sourceInput": "360+LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "墨西哥台风"
     },
     {
       "name": "Mexican Typhoon",
@@ -1298,7 +1312,8 @@
         "sourceName": "Mexican Typhoon",
         "sourceInput": "360+MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "墨西哥台风"
     },
     {
       "name": "Mexican Typhoon",
@@ -1330,7 +1345,8 @@
         "sourceName": "Mexican Typhoon",
         "sourceInput": "360+HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "墨西哥台风"
     },
     {
       "name": "Mexican Typhoon",
@@ -1362,7 +1378,8 @@
         "sourceName": "Mexican Typhoon",
         "sourceInput": "360+PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "墨西哥台风"
     },
     {
       "name": "Forward Taunt",
@@ -1450,7 +1467,8 @@
         "sourceName": "Canyon Throw",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "峡谷投"
     },
     {
       "name": "Condor Wind (stock)",
@@ -1477,7 +1495,8 @@
         "sourceName": "Condor Wind (stock)",
         "sourceInput": "214LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兀鹰之风(存量)"
     },
     {
       "name": "Condor Wind (stock)",
@@ -1504,7 +1523,8 @@
         "sourceName": "Condor Wind (stock)",
         "sourceInput": "214",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兀鹰之风(存量)"
     },
     {
       "name": "Condor Wind (attack)",
@@ -1537,7 +1557,8 @@
         "sourceName": "Condor Wind (attack)",
         "sourceInput": "214MP (HOLD OK)",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "兀鹰之风(攻击)"
     },
     {
       "name": "Condor Wind (attack)",
@@ -1573,7 +1594,8 @@
         "sourceName": "Condor Wind (attack)",
         "sourceInput": "214HP (HOLD OK)",
         "cancelText": "SA3*"
-      }
+      },
+      "nameZh": "兀鹰之风(攻击)"
     },
     {
       "name": "Condor Wind (attack)",
@@ -1610,7 +1632,8 @@
         "sourceName": "Condor Wind (attack)",
         "sourceInput": "214PP (HOLD OK)",
         "cancelText": "SA2 SA3*"
-      }
+      },
+      "nameZh": "兀鹰之风(攻击)"
     },
     {
       "name": "Condor Spire",
@@ -1643,7 +1666,8 @@
         "sourceName": "Condor Spire",
         "sourceInput": "236LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兀鹰螺旋"
     },
     {
       "name": "Condor Spire",
@@ -1676,7 +1700,8 @@
         "sourceName": "Condor Spire",
         "sourceInput": "236MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兀鹰螺旋"
     },
     {
       "name": "Condor Spire",
@@ -1709,7 +1734,8 @@
         "sourceName": "Condor Spire",
         "sourceInput": "236HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兀鹰螺旋"
     },
     {
       "name": "Condor Spire",
@@ -1745,7 +1771,8 @@
         "sourceName": "Condor Spire",
         "sourceInput": "236KK",
         "cancelText": "SA2"
-      }
+      },
+      "nameZh": "兀鹰螺旋"
     },
     {
       "name": "Condor Spire (Windclad)",
@@ -1778,7 +1805,8 @@
         "sourceName": "Condor Spire (Windclad)",
         "sourceInput": "236LK (Windclad)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兀鹰螺旋(风缠)"
     },
     {
       "name": "Condor Spire (Windclad)",
@@ -1811,7 +1839,8 @@
         "sourceName": "Condor Spire (Windclad)",
         "sourceInput": "236MK (Windclad)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兀鹰螺旋(风缠)"
     },
     {
       "name": "Condor Spire (Windclad)",
@@ -1844,7 +1873,8 @@
         "sourceName": "Condor Spire (Windclad)",
         "sourceInput": "236HK (Windclad)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兀鹰螺旋(风缠)"
     },
     {
       "name": "Condor Spire (Windclad)",
@@ -1880,7 +1910,8 @@
         "sourceName": "Condor Spire (Windclad)",
         "sourceInput": "236KK (Windclad)",
         "cancelText": "SA2"
-      }
+      },
+      "nameZh": "兀鹰螺旋(风缠)"
     },
     {
       "name": "Tomahawk Buster",
@@ -1913,7 +1944,8 @@
         "sourceName": "Tomahawk Buster",
         "sourceInput": "623LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "战斧破坏者"
     },
     {
       "name": "Tomahawk Buster",
@@ -1946,7 +1978,8 @@
         "sourceName": "Tomahawk Buster",
         "sourceInput": "623MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "战斧破坏者"
     },
     {
       "name": "Tomahawk Buster",
@@ -1979,7 +2012,8 @@
         "sourceName": "Tomahawk Buster",
         "sourceInput": "623HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "战斧破坏者"
     },
     {
       "name": "Tomahawk Buster",
@@ -2016,7 +2050,8 @@
         "sourceName": "Tomahawk Buster",
         "sourceInput": "623PP",
         "cancelText": "j.PPP (hit)"
-      }
+      },
+      "nameZh": "战斧破坏者"
     },
     {
       "name": "Tomahawk Buster (Windclad)",
@@ -2049,7 +2084,8 @@
         "sourceName": "Tomahawk Buster (Windclad)",
         "sourceInput": "623LP (Windclad)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "战斧破坏者(风缠)"
     },
     {
       "name": "Tomahawk Buster (Windclad)",
@@ -2082,7 +2118,8 @@
         "sourceName": "Tomahawk Buster (Windclad)",
         "sourceInput": "623MP (Windclad)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "战斧破坏者(风缠)"
     },
     {
       "name": "Tomahawk Buster (Windclad)",
@@ -2115,7 +2152,8 @@
         "sourceName": "Tomahawk Buster (Windclad)",
         "sourceInput": "623HP (Windclad)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "战斧破坏者(风缠)"
     },
     {
       "name": "Tomahawk Buster (Windclad)",
@@ -2152,7 +2190,8 @@
         "sourceName": "Tomahawk Buster (Windclad)",
         "sourceInput": "623PP (Windclad)",
         "cancelText": "j.PPP (hit)"
-      }
+      },
+      "nameZh": "战斧破坏者(风缠)"
     },
     {
       "name": "Breezing Hawk",
@@ -2185,7 +2224,8 @@
         "sourceName": "Breezing Hawk",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "微风之鹰"
     },
     {
       "name": "Thunderbird",
@@ -2218,7 +2258,8 @@
         "sourceName": "Thunderbird",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "雷鸟"
     },
     {
       "name": "Soaring Thunderbird",
@@ -2251,7 +2292,8 @@
         "sourceName": "Soaring Thunderbird",
         "sourceInput": "j.236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "翱翔雷鸟"
     },
     {
       "name": "Thunderbird (Windclad)",
@@ -2284,7 +2326,8 @@
         "sourceName": "Thunderbird (Windclad)",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "雷鸟(风缠)"
     },
     {
       "name": "Soaring Thunderbird (Windclad)",
@@ -2317,7 +2360,8 @@
         "sourceName": "Soaring Thunderbird (Windclad)",
         "sourceInput": "j.236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "翱翔雷鸟(风缠)"
     },
     {
       "name": "Raging Typhoon",
@@ -2349,7 +2393,8 @@
         "sourceName": "Raging Typhoon",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "狂怒台风"
     },
     {
       "name": "Raging Typhoon (CA)",
@@ -2381,7 +2426,8 @@
         "sourceName": "Raging Typhoon (CA)",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "狂怒台风(CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

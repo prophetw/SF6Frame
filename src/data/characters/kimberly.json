@@ -432,7 +432,8 @@
         "sourceName": "Water Kick",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "水面蹴"
     },
     {
       "name": "Jump LP",
@@ -653,7 +654,8 @@
         "sourceName": "Water Slicer Slide",
         "sourceInput": "3MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "水面滑行蹴"
     },
     {
       "name": "Elbow Drop",
@@ -680,7 +682,8 @@
         "sourceName": "Elbow Drop",
         "sourceInput": "j.2MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "落肘击"
     },
     {
       "name": "Bushin Prism Strikes 1",
@@ -714,7 +717,8 @@
         "sourceName": "Bushin Prism Strikes 1",
         "sourceInput": "5LP~MP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "武神棱镜连击1"
     },
     {
       "name": "Bushin Prism Strikes 2",
@@ -751,7 +755,8 @@
         "sourceName": "Bushin Prism Strikes 2",
         "sourceInput": "5LP~MP~HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "武神棱镜连击2"
     },
     {
       "name": "Bushin Prism Strikes 3",
@@ -784,7 +789,8 @@
         "sourceName": "Bushin Prism Strikes 3",
         "sourceInput": "5LP~MP~HP~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神棱镜连击3"
     },
     {
       "name": "Bushin Hellchain 1",
@@ -818,7 +824,8 @@
         "sourceName": "Bushin Hellchain 1",
         "sourceInput": "5LP~MP~2HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "武神地狱锁1"
     },
     {
       "name": "Bushin Hellchain 2",
@@ -851,7 +858,8 @@
         "sourceName": "Bushin Hellchain 2",
         "sourceInput": "5LP~MP~2HP~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神地狱锁2"
     },
     {
       "name": "Bushin Tiger Fangs",
@@ -889,7 +897,8 @@
         "sourceName": "Bushin Tiger Fangs",
         "sourceInput": "5MP~HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "武神虎牙"
     },
     {
       "name": "Steadfast Strike",
@@ -1038,7 +1047,8 @@
         "sourceName": "Shuriken Bomb",
         "sourceInput": "22P (1 stock)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "手里剑炸弹"
     },
     {
       "name": "Shuriken Bomb Spread",
@@ -1069,7 +1079,8 @@
         "sourceName": "Shuriken Bomb Spread",
         "sourceInput": "22PP (2 stock)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "手里剑炸弹扩散"
     },
     {
       "name": "Genius at Play",
@@ -1096,7 +1107,8 @@
         "sourceName": "Genius at Play",
         "sourceInput": "22P (refill)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "天才游戏"
     },
     {
       "name": "Genius at Play",
@@ -1123,7 +1135,8 @@
         "sourceName": "Genius at Play",
         "sourceInput": "22PP (refill)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "天才游戏"
     },
     {
       "name": "Neutral Taunt",
@@ -1181,7 +1194,8 @@
         "sourceName": "Windmill Kick",
         "sourceInput": "4HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "风车踢"
     },
     {
       "name": "Hisen Kick",
@@ -1215,7 +1229,8 @@
         "sourceName": "Hisen Kick",
         "sourceInput": "6HK",
         "cancelText": "Jmp"
-      }
+      },
+      "nameZh": "飞旋脚"
     },
     {
       "name": "Step Up (neutral hop)",
@@ -1242,7 +1257,8 @@
         "sourceName": "Step Up (neutral hop)",
         "sourceInput": "6HK~8",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "踏步跳 (原地)"
     },
     {
       "name": "Step Up (forward hop)",
@@ -1269,7 +1285,8 @@
         "sourceName": "Step Up (forward hop)",
         "sourceInput": "6HK~9",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "踏步跳 (前向)"
     },
     {
       "name": "Step Up (backward hop)",
@@ -1296,7 +1313,8 @@
         "sourceName": "Step Up (backward hop)",
         "sourceInput": "6HK~7",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "踏步跳 (后向)"
     },
     {
       "name": "Bell Ringer",
@@ -1328,7 +1346,8 @@
         "sourceName": "Bell Ringer",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "鸣钟击"
     },
     {
       "name": "Shapeless State (Block)",
@@ -1485,7 +1504,8 @@
         "sourceName": "Bushin Hellchain Throw",
         "sourceInput": "5LP~MP~2HP~2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神地狱锁投"
     },
     {
       "name": "Ripcord Throw",
@@ -1517,7 +1537,8 @@
         "sourceName": "Ripcord Throw",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "拉绳投"
     },
     {
       "name": "Bushin Senpukyaku",
@@ -1550,7 +1571,8 @@
         "sourceName": "Bushin Senpukyaku",
         "sourceInput": "214LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神旋风脚"
     },
     {
       "name": "Bushin Senpukyaku",
@@ -1583,7 +1605,8 @@
         "sourceName": "Bushin Senpukyaku",
         "sourceInput": "214MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神旋风脚"
     },
     {
       "name": "Bushin Senpukyaku",
@@ -1616,7 +1639,8 @@
         "sourceName": "Bushin Senpukyaku",
         "sourceInput": "214HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神旋风脚"
     },
     {
       "name": "Bushin Senpukyaku",
@@ -1653,7 +1677,8 @@
         "sourceName": "Bushin Senpukyaku",
         "sourceInput": "214KK",
         "cancelText": "SA2 (4th)"
-      }
+      },
+      "nameZh": "武神旋风脚"
     },
     {
       "name": "Aerial Bushin Senpukyaku",
@@ -1686,7 +1711,8 @@
         "sourceName": "Aerial Bushin Senpukyaku",
         "sourceInput": "j.214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中武神旋风脚"
     },
     {
       "name": "Aerial Bushin Senpukyaku",
@@ -1722,7 +1748,8 @@
         "sourceName": "Aerial Bushin Senpukyaku",
         "sourceInput": "j.214KK",
         "cancelText": "SA2"
-      }
+      },
+      "nameZh": "空中武神旋风脚"
     },
     {
       "name": "Vagabond Edge",
@@ -1758,7 +1785,8 @@
         "sourceName": "Vagabond Edge",
         "sourceInput": "236LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "流浪之刃"
     },
     {
       "name": "Vagabond Edge",
@@ -1795,7 +1823,8 @@
         "sourceName": "Vagabond Edge",
         "sourceInput": "236MP",
         "cancelText": "SA3 (1st)"
-      }
+      },
+      "nameZh": "流浪之刃"
     },
     {
       "name": "Vagabond Edge",
@@ -1833,7 +1862,8 @@
         "sourceName": "Vagabond Edge",
         "sourceInput": "236HP",
         "cancelText": "SA3 (1st) / Jmp"
-      }
+      },
+      "nameZh": "流浪之刃"
     },
     {
       "name": "Vagabond Edge",
@@ -1872,7 +1902,8 @@
         "sourceName": "Vagabond Edge",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3 (1st) / Jmp"
-      }
+      },
+      "nameZh": "流浪之刃"
     },
     {
       "name": "Sprint",
@@ -1899,7 +1930,8 @@
         "sourceName": "Sprint",
         "sourceInput": "236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "冲刺"
     },
     {
       "name": "Sprint",
@@ -1926,7 +1958,8 @@
         "sourceName": "Sprint",
         "sourceInput": "236KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "冲刺"
     },
     {
       "name": "Emergency Stop",
@@ -1953,7 +1986,8 @@
         "sourceName": "Emergency Stop",
         "sourceInput": "236K~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "急停"
     },
     {
       "name": "Emergency Stop",
@@ -1980,7 +2014,8 @@
         "sourceName": "Emergency Stop",
         "sourceInput": "236KK~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "急停"
     },
     {
       "name": "Torso Cleaver",
@@ -2016,7 +2051,8 @@
         "sourceName": "Torso Cleaver",
         "sourceInput": "236K~LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "躯干截击"
     },
     {
       "name": "Torso Cleaver",
@@ -2053,7 +2089,8 @@
         "sourceName": "Torso Cleaver",
         "sourceInput": "236KK~LK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "躯干截击"
     },
     {
       "name": "Shadow Slide",
@@ -2089,7 +2126,8 @@
         "sourceName": "Shadow Slide",
         "sourceInput": "236K~MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "暗影滑铲"
     },
     {
       "name": "Shadow Slide",
@@ -2127,7 +2165,8 @@
         "sourceName": "Shadow Slide",
         "sourceInput": "236KK~MK",
         "cancelText": "SA2 SA3 (1st)"
-      }
+      },
+      "nameZh": "暗影滑铲"
     },
     {
       "name": "Neck Hunter",
@@ -2163,7 +2202,8 @@
         "sourceName": "Neck Hunter",
         "sourceInput": "236K~HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "猎颈踢"
     },
     {
       "name": "Neck Hunter",
@@ -2201,7 +2241,8 @@
         "sourceName": "Neck Hunter",
         "sourceInput": "236KK~HK",
         "cancelText": "SA2 SA3 (2nd)"
-      }
+      },
+      "nameZh": "猎颈踢"
     },
     {
       "name": "Arc Step",
@@ -2231,7 +2272,8 @@
         "sourceName": "Arc Step",
         "sourceInput": "236K (close)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "弧形步"
     },
     {
       "name": "Arc Step",
@@ -2261,7 +2303,8 @@
         "sourceName": "Arc Step",
         "sourceInput": "236KK (close)",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "弧形步"
     },
     {
       "name": "Bushin Hojin Kick",
@@ -2294,7 +2337,8 @@
         "sourceName": "Bushin Hojin Kick",
         "sourceInput": "236K (close)~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神锋刃踢"
     },
     {
       "name": "Bushin Hojin Kick",
@@ -2330,7 +2374,8 @@
         "sourceName": "Bushin Hojin Kick",
         "sourceInput": "236KK (close)~K",
         "cancelText": "SA2"
-      }
+      },
+      "nameZh": "武神锋刃踢"
     },
     {
       "name": "Bushin Izuna Otoshi",
@@ -2362,7 +2407,8 @@
         "sourceName": "Bushin Izuna Otoshi",
         "sourceInput": "236K (close)~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神饭纲落"
     },
     {
       "name": "Bushin Izuna Otoshi",
@@ -2394,7 +2440,8 @@
         "sourceName": "Bushin Izuna Otoshi",
         "sourceInput": "236KK (close)~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神饭纲落"
     },
     {
       "name": "Hidden Variable",
@@ -2422,7 +2469,8 @@
         "sourceName": "Hidden Variable",
         "sourceInput": "214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "潜行变幻"
     },
     {
       "name": "Hidden Variable",
@@ -2450,7 +2498,8 @@
         "sourceName": "Hidden Variable",
         "sourceInput": "214PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "潜行变幻"
     },
     {
       "name": "Nue Twister",
@@ -2482,7 +2531,8 @@
         "sourceName": "Nue Twister",
         "sourceInput": "j.236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "鵺之螺旋"
     },
     {
       "name": "Nue Twister",
@@ -2514,7 +2564,8 @@
         "sourceName": "Nue Twister",
         "sourceInput": "j.236PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "鵺之螺旋"
     },
     {
       "name": "Bushin Beats",
@@ -2547,7 +2598,8 @@
         "sourceName": "Bushin Beats",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神连打"
     },
     {
       "name": "Bushin Thunderous Beats",
@@ -2580,7 +2632,8 @@
         "sourceName": "Bushin Thunderous Beats",
         "sourceInput": "236236",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神雷音连打"
     },
     {
       "name": "Bushin Scramble",
@@ -2611,7 +2664,8 @@
         "sourceName": "Bushin Scramble",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神疾驰"
     },
     {
       "name": "Soaring Bushin Scramble",
@@ -2642,7 +2696,8 @@
         "sourceName": "Soaring Bushin Scramble",
         "sourceInput": "j.214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "翔空武神疾驰"
     },
     {
       "name": "Bushin Ninjastar Cypher",
@@ -2675,7 +2730,8 @@
         "sourceName": "Bushin Ninjastar Cypher",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神手里剑密码"
     },
     {
       "name": "Bushin Ninjastar Cypher (CA)",
@@ -2708,7 +2764,8 @@
         "sourceName": "Bushin Ninjastar Cypher (CA)",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "武神手里剑密码 (CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

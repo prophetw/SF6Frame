@@ -332,7 +332,8 @@
         "sourceName": "Low Hook Punch",
         "sourceInput": "2HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "低位钩拳"
     },
     {
       "name": "Crouch LK",
@@ -664,7 +665,8 @@
         "sourceName": "Psycho Knuckle (Lv.1)",
         "sourceInput": "5",
         "cancelText": "6KK*"
-      }
+      },
+      "nameZh": "精神指节(lv.1)"
     },
     {
       "name": "Psycho Knuckle (Lv.2)",
@@ -701,7 +703,8 @@
         "sourceName": "Psycho Knuckle (Lv.2)",
         "sourceInput": "5",
         "cancelText": "6KK*"
-      }
+      },
+      "nameZh": "精神指节(lv.2)"
     },
     {
       "name": "Flicker Combination 1",
@@ -735,7 +738,8 @@
         "sourceName": "Flicker Combination 1",
         "sourceInput": "5LK~LK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "闪烁连击1"
     },
     {
       "name": "Flicker Combination 2",
@@ -765,7 +769,8 @@
         "sourceName": "Flicker Combination 2",
         "sourceInput": "5LK~LK~LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "闪烁连击2"
     },
     {
       "name": "Body Blow Combination",
@@ -803,7 +808,8 @@
         "sourceName": "Body Blow Combination",
         "sourceInput": "5MP~HP",
         "cancelText": "Sp* SA"
-      }
+      },
+      "nameZh": "击腹连击"
     },
     {
       "name": "Hitman Combination 1",
@@ -837,7 +843,8 @@
         "sourceName": "Hitman Combination 1",
         "sourceInput": "5MK~MK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "杀手连击1"
     },
     {
       "name": "Hitman Combination 2",
@@ -870,7 +877,8 @@
         "sourceName": "Hitman Combination 2",
         "sourceInput": "5MK~MK~HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "杀手连击2"
     },
     {
       "name": "Low Smash Combination",
@@ -907,7 +915,8 @@
         "sourceName": "Low Smash Combination",
         "sourceInput": "2HK~HP",
         "cancelText": "SA"
-      }
+      },
+      "nameZh": "下段粉碎连击"
     },
     {
       "name": "Face Buster",
@@ -939,7 +948,8 @@
         "sourceName": "Face Buster",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "碎面击"
     },
     {
       "name": "Turn Punch",
@@ -1115,7 +1125,8 @@
         "sourceName": "Cobra Punch",
         "sourceInput": "6HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "眼镜蛇拳"
     },
     {
       "name": "Rib Crusher",
@@ -1147,7 +1158,8 @@
         "sourceName": "Rib Crusher",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "碎肋击"
     },
     {
       "name": "Hammer Blow (Block)",
@@ -1246,7 +1258,8 @@
         "sourceName": "Kill Rush (Forward)",
         "sourceInput": "5/6KK",
         "cancelText": "6P*"
-      }
+      },
+      "nameZh": "杀气冲刺(前进)"
     },
     {
       "name": "Kill Rush (Backward)",
@@ -1273,7 +1286,8 @@
         "sourceName": "Kill Rush (Backward)",
         "sourceInput": "4KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "杀气冲刺(后退)"
     },
     {
       "name": "Kill Switch Break",
@@ -1310,7 +1324,8 @@
         "sourceName": "Kill Switch Break",
         "sourceInput": "5/6KK~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "杀手开关·断"
     },
     {
       "name": "Kill Switch Chaser",
@@ -1347,7 +1362,8 @@
         "sourceName": "Kill Switch Chaser",
         "sourceInput": "5/6KK~dl.6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "杀手开关·追"
     },
     {
       "name": "Forward Taunt",
@@ -1437,7 +1453,8 @@
         "sourceName": "Psycho Spark",
         "sourceInput": "236P",
         "cancelText": "6P* SA3"
-      }
+      },
+      "nameZh": "精神火花"
     },
     {
       "name": "Psycho Spark",
@@ -1475,7 +1492,8 @@
         "sourceName": "Psycho Spark",
         "sourceInput": "236PP",
         "cancelText": "6P* SA2 SA3"
-      }
+      },
+      "nameZh": "精神火花"
     },
     {
       "name": "Psycho Shoot",
@@ -1505,7 +1523,8 @@
         "sourceName": "Psycho Shoot",
         "sourceInput": "236P~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神射击"
     },
     {
       "name": "Psycho Shoot",
@@ -1540,7 +1559,8 @@
         "sourceName": "Psycho Shoot",
         "sourceInput": "236PP~6P",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "精神射击"
     },
     {
       "name": "Psycho Uppercut",
@@ -1576,7 +1596,8 @@
         "sourceName": "Psycho Uppercut",
         "sourceInput": "623LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神升龙"
     },
     {
       "name": "Psycho Uppercut",
@@ -1612,7 +1633,8 @@
         "sourceName": "Psycho Uppercut",
         "sourceInput": "623MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神升龙"
     },
     {
       "name": "Psycho Uppercut",
@@ -1648,7 +1670,8 @@
         "sourceName": "Psycho Uppercut",
         "sourceInput": "623HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神升龙"
     },
     {
       "name": "Psycho Uppercut",
@@ -1681,7 +1704,8 @@
         "sourceName": "Psycho Uppercut",
         "sourceInput": "623PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "精神升龙"
     },
     {
       "name": "Psycho Blitz",
@@ -1714,7 +1738,8 @@
         "sourceName": "Psycho Blitz",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神闪击"
     },
     {
       "name": "Psycho Blitz",
@@ -1750,7 +1775,8 @@
         "sourceName": "Psycho Blitz",
         "sourceInput": "214MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神闪击"
     },
     {
       "name": "Psycho Blitz",
@@ -1786,7 +1812,8 @@
         "sourceName": "Psycho Blitz",
         "sourceInput": "214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "精神闪击"
     },
     {
       "name": "Psycho Blitz",
@@ -1823,7 +1850,8 @@
         "sourceName": "Psycho Blitz",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "精神闪击"
     },
     {
       "name": "Psycho Flicker",
@@ -1857,7 +1885,8 @@
         "sourceName": "Psycho Flicker",
         "sourceInput": "236LK",
         "cancelText": "SA3 Sp*"
-      }
+      },
+      "nameZh": "精神闪烁"
     },
     {
       "name": "Psycho Flicker",
@@ -1891,7 +1920,8 @@
         "sourceName": "Psycho Flicker",
         "sourceInput": "236MK",
         "cancelText": "SA3 Sp*"
-      }
+      },
+      "nameZh": "精神闪烁"
     },
     {
       "name": "Psycho Flicker",
@@ -1927,7 +1957,8 @@
         "sourceName": "Psycho Flicker",
         "sourceInput": "236HK",
         "cancelText": "SA3 Sp*"
-      }
+      },
+      "nameZh": "精神闪烁"
     },
     {
       "name": "Psycho Flicker",
@@ -1965,7 +1996,8 @@
         "sourceName": "Psycho Flicker",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3 (1st)"
-      }
+      },
+      "nameZh": "精神闪烁"
     },
     {
       "name": "Psycho Flicker (Hold)",
@@ -2002,7 +2034,8 @@
         "sourceName": "Psycho Flicker (Hold)",
         "sourceInput": "236",
         "cancelText": "SA3 (1st)"
-      }
+      },
+      "nameZh": "精神闪烁(蓄力)"
     },
     {
       "name": "Psycho Storm",
@@ -2035,7 +2068,8 @@
         "sourceName": "Psycho Storm",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "精神风暴"
     },
     {
       "name": "Psycho Cannon",
@@ -2066,7 +2100,8 @@
         "sourceName": "Psycho Cannon",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "精神加农"
     },
     {
       "name": "Psycho Chamber",
@@ -2099,7 +2134,8 @@
         "sourceName": "Psycho Chamber",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "精神密室"
     },
     {
       "name": "Psycho Chamber (CA)",
@@ -2132,7 +2168,8 @@
         "sourceName": "Psycho Chamber (CA)",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "精神密室(CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

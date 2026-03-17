@@ -327,7 +327,8 @@
         "sourceName": "Xiu She",
         "sourceInput": "2HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "修蛇"
     },
     {
       "name": "Crouch LK",
@@ -648,7 +649,8 @@
         "sourceName": "Pu Lao",
         "sourceInput": "3MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蒲牢"
     },
     {
       "name": "Gong Fu",
@@ -678,7 +680,8 @@
         "sourceName": "Gong Fu",
         "sourceInput": "j.2HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蚣蝮"
     },
     {
       "name": "Hun Dun",
@@ -713,7 +716,8 @@
         "sourceName": "Hun Dun",
         "sourceInput": "5LP~LP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "混沌"
     },
     {
       "name": "Qiong Qi",
@@ -746,7 +750,8 @@
         "sourceName": "Qiong Qi",
         "sourceInput": "5HP~HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "穷奇"
     },
     {
       "name": "Whisper",
@@ -778,7 +783,8 @@
         "sourceName": "Whisper",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "低语"
     },
     {
       "name": "Zao Chi",
@@ -923,7 +929,8 @@
         "sourceName": "Sinister Slide",
         "sourceInput": "2PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "阴险滑行"
     },
     {
       "name": "Sinister Slide Exit",
@@ -950,7 +957,8 @@
         "sourceName": "Sinister Slide Exit",
         "sourceInput": "2PP~8",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "阴险滑行(解除)"
     },
     {
       "name": "Venomous Fang",
@@ -983,7 +991,8 @@
         "sourceName": "Venomous Fang",
         "sourceInput": "2PP~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "毒牙"
     },
     {
       "name": "Heel Strike",
@@ -1018,7 +1027,8 @@
         "sourceName": "Heel Strike",
         "sourceInput": "2PP~K",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "脚跟击"
     },
     {
       "name": "Entrapment",
@@ -1050,7 +1060,8 @@
         "sourceName": "Entrapment",
         "sourceInput": "2PP~LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "陷阱"
     },
     {
       "name": "Neutral Taunt",
@@ -1112,7 +1123,8 @@
         "sourceName": "Chi Wen",
         "sourceInput": "6HP",
         "cancelText": "SA"
-      }
+      },
+      "nameZh": "螭吻"
     },
     {
       "name": "Qiu Niu",
@@ -1142,7 +1154,8 @@
         "sourceName": "Qiu Niu",
         "sourceInput": "6HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "囚牛"
     },
     {
       "name": "Gluttony",
@@ -1174,7 +1187,8 @@
         "sourceName": "Gluttony",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "饕餮"
     },
     {
       "name": "Feng Shi (Block)",
@@ -1334,7 +1348,8 @@
         "sourceName": "Nightshade Pulse",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "紫夜影脉冲"
     },
     {
       "name": "Nightshade Pulse",
@@ -1369,7 +1384,8 @@
         "sourceName": "Nightshade Pulse",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "紫夜影脉冲"
     },
     {
       "name": "Nightshade Chaser",
@@ -1402,7 +1418,8 @@
         "sourceName": "Nightshade Chaser",
         "sourceInput": "214LP~6P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "紫夜影追踪者"
     },
     {
       "name": "Nightshade Chaser (Burst)",
@@ -1435,7 +1452,8 @@
         "sourceName": "Nightshade Chaser (Burst)",
         "sourceInput": "214LP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "紫夜影追踪者(爆发)"
     },
     {
       "name": "Nightshade Chaser",
@@ -1472,7 +1490,8 @@
         "sourceName": "Nightshade Chaser",
         "sourceInput": "214PP~6P",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "紫夜影追踪者"
     },
     {
       "name": "Nightshade Chaser (Burst)",
@@ -1509,7 +1528,8 @@
         "sourceName": "Nightshade Chaser (Burst)",
         "sourceInput": "214PP~6P",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "紫夜影追踪者(爆发)"
     },
     {
       "name": "Orchid Spring",
@@ -1536,7 +1556,8 @@
         "sourceName": "Orchid Spring",
         "sourceInput": "214MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "兰泉"
     },
     {
       "name": "Toxic Wreath",
@@ -1572,7 +1593,8 @@
         "sourceName": "Toxic Wreath",
         "sourceInput": "214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "剧毒花环"
     },
     {
       "name": "Serpent Lash",
@@ -1605,7 +1627,8 @@
         "sourceName": "Serpent Lash",
         "sourceInput": "236LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "蛇鞭"
     },
     {
       "name": "Serpent Lash",
@@ -1641,7 +1664,8 @@
         "sourceName": "Serpent Lash",
         "sourceInput": "236MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "蛇鞭"
     },
     {
       "name": "Serpent Lash",
@@ -1677,7 +1701,8 @@
         "sourceName": "Serpent Lash",
         "sourceInput": "236HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "蛇鞭"
     },
     {
       "name": "Serpent Lash",
@@ -1707,7 +1732,8 @@
         "sourceName": "Serpent Lash",
         "sourceInput": "236PP",
         "cancelText": "[TB: SA2 SA3]"
-      }
+      },
+      "nameZh": "蛇鞭"
     },
     {
       "name": "Cruel Fate",
@@ -1743,7 +1769,8 @@
         "sourceName": "Cruel Fate",
         "sourceInput": "214LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "残酷命运"
     },
     {
       "name": "Cruel Fate",
@@ -1779,7 +1806,8 @@
         "sourceName": "Cruel Fate",
         "sourceInput": "214MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "残酷命运"
     },
     {
       "name": "Cruel Fate",
@@ -1815,7 +1843,8 @@
         "sourceName": "Cruel Fate",
         "sourceInput": "214HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "残酷命运"
     },
     {
       "name": "Cruel Fate",
@@ -1852,7 +1881,8 @@
         "sourceName": "Cruel Fate",
         "sourceInput": "214KK",
         "cancelText": "SA2* SA3*"
-      }
+      },
+      "nameZh": "残酷命运"
     },
     {
       "name": "Snake Step",
@@ -1879,7 +1909,8 @@
         "sourceName": "Snake Step",
         "sourceInput": "236LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蛇步"
     },
     {
       "name": "Snake Step",
@@ -1906,7 +1937,8 @@
         "sourceName": "Snake Step",
         "sourceInput": "236MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蛇步"
     },
     {
       "name": "Snake Step",
@@ -1933,7 +1965,8 @@
         "sourceName": "Snake Step",
         "sourceInput": "236HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蛇步"
     },
     {
       "name": "Snake Step",
@@ -1960,7 +1993,8 @@
         "sourceName": "Snake Step",
         "sourceInput": "236KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "蛇步"
     },
     {
       "name": "Deadly Implication",
@@ -1993,7 +2027,8 @@
         "sourceName": "Deadly Implication",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "致命暗示"
     },
     {
       "name": "Tainted Talons",
@@ -2026,7 +2061,8 @@
         "sourceName": "Tainted Talons",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "污染之爪"
     },
     {
       "name": "Claws of Ya Zi",
@@ -2059,7 +2095,8 @@
         "sourceName": "Claws of Ya Zi",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "睚眦之爪"
     }
   ],
   "lastUpdated": "2026-02-06"

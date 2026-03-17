@@ -149,7 +149,8 @@
         "sourceName": "Marisa Style (HP)",
         "sourceInput": "5",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "玛丽莎流(重拳)"
     },
     {
       "name": "Stand LK",
@@ -280,7 +281,8 @@
         "sourceName": "Marisa Style (HK)",
         "sourceInput": "5",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "玛丽莎流(重脚)"
     },
     {
       "name": "Crouch LP",
@@ -424,7 +426,8 @@
         "sourceName": "Crouching Heavy Punch (Hold)",
         "sourceInput": "2",
         "cancelText": "SA"
-      }
+      },
+      "nameZh": "蹲重拳(蓄力)"
     },
     {
       "name": "Crouch LK",
@@ -523,7 +526,8 @@
         "sourceName": "Gaia Bash",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "盖亚猛击"
     },
     {
       "name": "Gaia Bash (Hold)",
@@ -556,7 +560,8 @@
         "sourceName": "Gaia Bash (Hold)",
         "sourceInput": "2",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "盖亚猛击(蓄力)"
     },
     {
       "name": "Jump LP",
@@ -686,7 +691,8 @@
         "sourceName": "Marisa Style (j.HP)",
         "sourceInput": "j.",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "玛丽莎流(跳重拳)"
     },
     {
       "name": "Jump LK",
@@ -812,7 +818,8 @@
         "sourceName": "Marisa Style (j.HK)",
         "sourceInput": "j.",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "玛丽莎流(跳重脚)"
     },
     {
       "name": "Magna Bunker (Hold)",
@@ -847,7 +854,8 @@
         "sourceName": "Magna Bunker (Hold)",
         "sourceInput": "4",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "马格纳掩体(蓄力)"
     },
     {
       "name": "Malleus Breaker 1",
@@ -881,7 +889,8 @@
         "sourceName": "Malleus Breaker 1",
         "sourceInput": "3HP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "重锤粉碎1"
     },
     {
       "name": "Malleus Breaker 1 (Hold)",
@@ -915,7 +924,8 @@
         "sourceName": "Malleus Breaker 1 (Hold)",
         "sourceInput": "3",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "重锤粉碎1(蓄力)"
     },
     {
       "name": "Falx Crusher 1 (Hold)",
@@ -951,7 +961,8 @@
         "sourceName": "Falx Crusher 1 (Hold)",
         "sourceInput": "6",
         "cancelText": "Sp SA TC"
-      }
+      },
+      "nameZh": "镰刀粉碎1(蓄力)"
     },
     {
       "name": "Caelum Arc",
@@ -981,7 +992,8 @@
         "sourceName": "Caelum Arc",
         "sourceInput": "nj.2HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "苍穹之弧"
     },
     {
       "name": "Caelum Arc (Hold)",
@@ -1014,7 +1026,8 @@
         "sourceName": "Caelum Arc (Hold)",
         "sourceInput": "nj.2",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "苍穹之弧(蓄力)"
     },
     {
       "name": "Light Two Hitter",
@@ -1049,7 +1062,8 @@
         "sourceName": "Light Two Hitter",
         "sourceInput": "5LP~LP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "轻二连击"
     },
     {
       "name": "Medium Two Hitter",
@@ -1084,7 +1098,8 @@
         "sourceName": "Medium Two Hitter",
         "sourceInput": "5MP~MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "中二连击"
     },
     {
       "name": "Heavy Two Hitter",
@@ -1117,7 +1132,8 @@
         "sourceName": "Heavy Two Hitter",
         "sourceInput": "5HP~HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "重二连击"
     },
     {
       "name": "Malleus Breaker 2",
@@ -1150,7 +1166,8 @@
         "sourceName": "Malleus Breaker 2",
         "sourceInput": "3HP~3HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "重锤粉碎2"
     },
     {
       "name": "Volare Combo",
@@ -1178,7 +1195,8 @@
         "sourceName": "Volare Combo",
         "sourceInput": "j.MP~MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞翔连击"
     },
     {
       "name": "Mounted Grace",
@@ -1210,7 +1228,8 @@
         "sourceName": "Mounted Grace",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "骑乘优雅"
     },
     {
       "name": "Secutor",
@@ -1390,7 +1409,8 @@
         "sourceName": "Novacule 1",
         "sourceInput": "6MP",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "剃刀1"
     },
     {
       "name": "Magna Bunker",
@@ -1425,7 +1445,8 @@
         "sourceName": "Magna Bunker",
         "sourceInput": "4HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "马格纳掩体"
     },
     {
       "name": "Falx Crusher 1",
@@ -1461,7 +1482,8 @@
         "sourceName": "Falx Crusher 1",
         "sourceInput": "6HK",
         "cancelText": "Sp SA TC"
-      }
+      },
+      "nameZh": "镰刀粉碎1"
     },
     {
       "name": "Novacule Swipe",
@@ -1494,7 +1516,8 @@
         "sourceName": "Novacule Swipe",
         "sourceInput": "6MP~HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "剃刀挥击"
     },
     {
       "name": "Novacule Thrust",
@@ -1531,7 +1554,8 @@
         "sourceName": "Novacule Thrust",
         "sourceInput": "6MP~HK",
         "cancelText": "SA"
-      }
+      },
+      "nameZh": "剃刀突刺"
     },
     {
       "name": "Falx Crusher 2",
@@ -1564,7 +1588,8 @@
         "sourceName": "Falx Crusher 2",
         "sourceInput": "6HK~6HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "镰刀粉碎2"
     },
     {
       "name": "Ponte Milvio",
@@ -1596,7 +1621,8 @@
         "sourceName": "Ponte Milvio",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "米尔维奥桥"
     },
     {
       "name": "Love Tap (Block)",
@@ -1756,7 +1782,8 @@
         "sourceName": "Gladius",
         "sourceInput": "236LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "短剑"
     },
     {
       "name": "Gladius",
@@ -1792,7 +1819,8 @@
         "sourceName": "Gladius",
         "sourceInput": "236MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "短剑"
     },
     {
       "name": "Gladius",
@@ -1828,7 +1856,8 @@
         "sourceName": "Gladius",
         "sourceInput": "236HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "短剑"
     },
     {
       "name": "Gladius",
@@ -1865,7 +1894,8 @@
         "sourceName": "Gladius",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "短剑"
     },
     {
       "name": "Gladius (Hold)",
@@ -1902,7 +1932,8 @@
         "sourceName": "Gladius (Hold)",
         "sourceInput": "236",
         "cancelText": "SA3 (1st)"
-      }
+      },
+      "nameZh": "短剑(蓄力)"
     },
     {
       "name": "Dimachaerus",
@@ -1935,7 +1966,8 @@
         "sourceName": "Dimachaerus",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "双剑击"
     },
     {
       "name": "Dimachaerus",
@@ -1968,7 +2000,8 @@
         "sourceName": "Dimachaerus",
         "sourceInput": "214MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "双剑击"
     },
     {
       "name": "Dimachaerus",
@@ -2004,7 +2037,8 @@
         "sourceName": "Dimachaerus",
         "sourceInput": "214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "双剑击"
     },
     {
       "name": "Dimachaerus",
@@ -2041,7 +2075,8 @@
         "sourceName": "Dimachaerus",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "双剑击"
     },
     {
       "name": "LP Dimachaerus Follow-up",
@@ -2073,7 +2108,8 @@
         "sourceName": "LP Dimachaerus Follow-up",
         "sourceInput": "214LP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "轻双剑击追击"
     },
     {
       "name": "MP Dimachaerus Follow-up",
@@ -2105,7 +2141,8 @@
         "sourceName": "MP Dimachaerus Follow-up",
         "sourceInput": "214MP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "中双剑击追击"
     },
     {
       "name": "HP Dimachaerus Follow-up",
@@ -2137,7 +2174,8 @@
         "sourceName": "HP Dimachaerus Follow-up",
         "sourceInput": "214HP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "重双剑击追击"
     },
     {
       "name": "OD Dimachaerus Follow-up",
@@ -2169,7 +2207,8 @@
         "sourceName": "OD Dimachaerus Follow-up",
         "sourceInput": "214PP~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "OD双剑击追击"
     },
     {
       "name": "Phalanx",
@@ -2202,7 +2241,8 @@
         "sourceName": "Phalanx",
         "sourceInput": "623LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "方阵突击"
     },
     {
       "name": "Phalanx",
@@ -2235,7 +2275,8 @@
         "sourceName": "Phalanx",
         "sourceInput": "623MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "方阵突击"
     },
     {
       "name": "Phalanx",
@@ -2268,7 +2309,8 @@
         "sourceName": "Phalanx",
         "sourceInput": "623HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "方阵突击"
     },
     {
       "name": "Phalanx",
@@ -2301,7 +2343,8 @@
         "sourceName": "Phalanx",
         "sourceInput": "623PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "方阵突击"
     },
     {
       "name": "Quadriga",
@@ -2337,7 +2380,8 @@
         "sourceName": "Quadriga",
         "sourceInput": "236LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "四马战车"
     },
     {
       "name": "Quadriga",
@@ -2373,7 +2417,8 @@
         "sourceName": "Quadriga",
         "sourceInput": "236MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "四马战车"
     },
     {
       "name": "Quadriga",
@@ -2409,7 +2454,8 @@
         "sourceName": "Quadriga",
         "sourceInput": "236HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "四马战车"
     },
     {
       "name": "Quadriga",
@@ -2446,7 +2492,8 @@
         "sourceName": "Quadriga",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "四马战车"
     },
     {
       "name": "Scutum",
@@ -2474,7 +2521,8 @@
         "sourceName": "Scutum",
         "sourceInput": "214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "大盾"
     },
     {
       "name": "Scutum (Counter)",
@@ -2504,7 +2552,8 @@
         "sourceName": "Scutum (Counter)",
         "sourceInput": "214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "大盾(反击)"
     },
     {
       "name": "Scutum",
@@ -2532,7 +2581,8 @@
         "sourceName": "Scutum",
         "sourceInput": "214KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "大盾"
     },
     {
       "name": "Scutum (Counter)",
@@ -2562,7 +2612,8 @@
         "sourceName": "Scutum (Counter)",
         "sourceInput": "214KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "大盾(反击)"
     },
     {
       "name": "Tonitrus 1",
@@ -2595,7 +2646,8 @@
         "sourceName": "Tonitrus 1",
         "sourceInput": "214K~P",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "雷霆1"
     },
     {
       "name": "Tonitrus 2",
@@ -2628,7 +2680,8 @@
         "sourceName": "Tonitrus 2",
         "sourceInput": "214K~P~P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "雷霆2"
     },
     {
       "name": "Procella",
@@ -2661,7 +2714,8 @@
         "sourceName": "Procella",
         "sourceInput": "214K~K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "风暴"
     },
     {
       "name": "Enfold",
@@ -2693,7 +2747,8 @@
         "sourceName": "Enfold",
         "sourceInput": "214K~LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "包裹"
     },
     {
       "name": "Javelin of Marisa",
@@ -2726,7 +2781,8 @@
         "sourceName": "Javelin of Marisa",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "玛丽莎之标枪"
     },
     {
       "name": "Javelin of Marisa",
@@ -2759,7 +2815,8 @@
         "sourceName": "Javelin of Marisa",
         "sourceInput": "236236",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "玛丽莎之标枪"
     },
     {
       "name": "Javelin of Marisa",
@@ -2792,7 +2849,8 @@
         "sourceName": "Javelin of Marisa",
         "sourceInput": "236236 Counter",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "玛丽莎之标枪"
     },
     {
       "name": "Meteorite",
@@ -2825,7 +2883,8 @@
         "sourceName": "Meteorite",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "陨石"
     },
     {
       "name": "Goddess of the Hunt",
@@ -2858,7 +2917,8 @@
         "sourceName": "Goddess of the Hunt",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "狩猎女神"
     },
     {
       "name": "Goddess of the Hunt (CA)",
@@ -2891,7 +2951,8 @@
         "sourceName": "Goddess of the Hunt (CA)",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "狩猎女神(CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

@@ -411,7 +411,8 @@
         "sourceName": "Long Sliding Kick",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "长距离滑踢"
     },
     {
       "name": "Jump LP",
@@ -636,7 +637,8 @@
         "sourceName": "Nirvana Punch",
         "sourceInput": "1HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "涅槃拳"
     },
     {
       "name": "Agile Kick",
@@ -670,7 +672,8 @@
         "sourceName": "Agile Kick",
         "sourceInput": "1LK",
         "cancelText": "Chn"
-      }
+      },
+      "nameZh": "敏捷踢"
     },
     {
       "name": "Thrust Kick",
@@ -705,7 +708,8 @@
         "sourceName": "Thrust Kick",
         "sourceInput": "1MK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "突刺踢"
     },
     {
       "name": "Karma Kick",
@@ -738,7 +742,8 @@
         "sourceName": "Karma Kick",
         "sourceInput": "1HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "因果踢"
     },
     {
       "name": "Yoga Mummy",
@@ -769,7 +774,8 @@
         "sourceName": "Yoga Mummy",
         "sourceInput": "j.2LP",
         "cancelText": "Sp"
-      }
+      },
+      "nameZh": "瑜伽木乃伊"
     },
     {
       "name": "Drill Kick",
@@ -796,7 +802,8 @@
         "sourceName": "Drill Kick",
         "sourceInput": "j.2LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "钻孔踢"
     },
     {
       "name": "Drill Kick",
@@ -823,7 +830,8 @@
         "sourceName": "Drill Kick",
         "sourceInput": "j.2MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "钻孔踢"
     },
     {
       "name": "Drill Kick",
@@ -850,7 +858,8 @@
         "sourceName": "Drill Kick",
         "sourceInput": "j.2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "钻孔踢"
     },
     {
       "name": "Yoga Smash",
@@ -882,7 +891,8 @@
         "sourceName": "Yoga Smash",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽粉碎"
     },
     {
       "name": "Yoga Splash",
@@ -914,7 +924,8 @@
         "sourceName": "Yoga Splash",
         "sourceInput": "2LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽飞溅"
     },
     {
       "name": "Yoga Rise",
@@ -1060,7 +1071,8 @@
         "sourceName": "Yoga Float",
         "sourceInput": "2KK or 3KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽漂浮"
     },
     {
       "name": "Aerial Yoga Float",
@@ -1088,7 +1100,8 @@
         "sourceName": "Aerial Yoga Float",
         "sourceInput": "j.2KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中瑜伽漂浮"
     },
     {
       "name": "Neutral Taunt",
@@ -1151,7 +1164,8 @@
         "sourceName": "Yoga Uppercut",
         "sourceInput": "4MP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "瑜伽升龙"
     },
     {
       "name": "Yoga Lance",
@@ -1186,7 +1200,8 @@
         "sourceName": "Yoga Lance",
         "sourceInput": "4HP",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "瑜伽长枪"
     },
     {
       "name": "Divine Kick",
@@ -1221,7 +1236,8 @@
         "sourceName": "Divine Kick",
         "sourceInput": "4MK",
         "cancelText": "Sp SA"
-      }
+      },
+      "nameZh": "神圣踢"
     },
     {
       "name": "Yoga Mountain",
@@ -1251,7 +1267,8 @@
         "sourceName": "Yoga Mountain",
         "sourceInput": "4HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽大山"
     },
     {
       "name": "Yoga Illusion (Block)",
@@ -1346,7 +1363,8 @@
         "sourceName": "Yoga Teleport",
         "sourceInput": "4 or 6 + PPP/KKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽传送"
     },
     {
       "name": "Aerial Yoga Teleport",
@@ -1373,7 +1391,8 @@
         "sourceName": "Aerial Yoga Teleport",
         "sourceInput": "4 or 6 + j.PPP/j.KKK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中瑜伽传送"
     },
     {
       "name": "Forward Taunt",
@@ -1461,7 +1480,8 @@
         "sourceName": "Yoga Throw",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽投掷"
     },
     {
       "name": "Yoga Fire",
@@ -1491,7 +1511,8 @@
         "sourceName": "Yoga Fire",
         "sourceInput": "236P",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "瑜伽火"
     },
     {
       "name": "Yoga Fire (hold)",
@@ -1525,7 +1546,8 @@
         "sourceName": "Yoga Fire (hold)",
         "sourceInput": "236",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "瑜伽火(蓄力)"
     },
     {
       "name": "Yoga Fire",
@@ -1560,7 +1582,8 @@
         "sourceName": "Yoga Fire",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "瑜伽火"
     },
     {
       "name": "Yoga Arch",
@@ -1590,7 +1613,8 @@
         "sourceName": "Yoga Arch",
         "sourceInput": "236LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "瑜伽雷"
     },
     {
       "name": "Yoga Arch",
@@ -1621,7 +1645,8 @@
         "sourceName": "Yoga Arch",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "瑜伽雷"
     },
     {
       "name": "Yoga Flame",
@@ -1657,7 +1682,8 @@
         "sourceName": "Yoga Flame",
         "sourceInput": "63214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "瑜伽烈焰"
     },
     {
       "name": "Yoga Flame",
@@ -1693,7 +1719,8 @@
         "sourceName": "Yoga Flame",
         "sourceInput": "63214MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "瑜伽烈焰"
     },
     {
       "name": "Yoga Flame",
@@ -1729,7 +1756,8 @@
         "sourceName": "Yoga Flame",
         "sourceInput": "63214HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "瑜伽烈焰"
     },
     {
       "name": "Yoga Flame",
@@ -1766,7 +1794,8 @@
         "sourceName": "Yoga Flame",
         "sourceInput": "63214PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "瑜伽烈焰"
     },
     {
       "name": "Yoga Blast",
@@ -1802,7 +1831,8 @@
         "sourceName": "Yoga Blast",
         "sourceInput": "63214LK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "瑜伽爆炸"
     },
     {
       "name": "Yoga Blast",
@@ -1838,7 +1868,8 @@
         "sourceName": "Yoga Blast",
         "sourceInput": "63214MK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "瑜伽爆炸"
     },
     {
       "name": "Yoga Blast",
@@ -1874,7 +1905,8 @@
         "sourceName": "Yoga Blast",
         "sourceInput": "63214HK",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "瑜伽爆炸"
     },
     {
       "name": "Yoga Blast",
@@ -1911,7 +1943,8 @@
         "sourceName": "Yoga Blast",
         "sourceInput": "63214KK",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "瑜伽爆炸"
     },
     {
       "name": "Yoga Comet",
@@ -1938,7 +1971,8 @@
         "sourceName": "Yoga Comet",
         "sourceInput": "j.63214LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽彗星"
     },
     {
       "name": "Yoga Comet",
@@ -1965,7 +1999,8 @@
         "sourceName": "Yoga Comet",
         "sourceInput": "j.63214PP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽彗星"
     },
     {
       "name": "Yoga Inferno",
@@ -1998,7 +2033,8 @@
         "sourceName": "Yoga Inferno",
         "sourceInput": "236236LP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽地狱火"
     },
     {
       "name": "Yoga Inferno",
@@ -2031,7 +2067,8 @@
         "sourceName": "Yoga Inferno",
         "sourceInput": "236236MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽地狱火"
     },
     {
       "name": "Yoga Inferno",
@@ -2064,7 +2101,8 @@
         "sourceName": "Yoga Inferno",
         "sourceInput": "236236HP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽地狱火"
     },
     {
       "name": "Yoga Sunburst",
@@ -2095,7 +2133,8 @@
         "sourceName": "Yoga Sunburst",
         "sourceInput": "214214K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽日炎"
     },
     {
       "name": "Yoga Sunburst",
@@ -2126,7 +2165,8 @@
         "sourceName": "Yoga Sunburst",
         "sourceInput": "214214{K}",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽日炎"
     },
     {
       "name": "Yoga Sunburst",
@@ -2157,7 +2197,8 @@
         "sourceName": "Yoga Sunburst",
         "sourceInput": "214214",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "瑜伽日炎"
     },
     {
       "name": "Merciless Yoga",
@@ -2190,7 +2231,8 @@
         "sourceName": "Merciless Yoga",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "无情瑜伽"
     },
     {
       "name": "Merciless Yoga (CA)",
@@ -2223,7 +2265,8 @@
         "sourceName": "Merciless Yoga (CA)",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "无情瑜伽(CA)"
     }
   ],
   "lastUpdated": "2026-02-06"

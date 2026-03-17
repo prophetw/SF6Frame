@@ -426,7 +426,8 @@
         "sourceName": "Sori Geri",
         "sourceInput": "2HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "反踢"
     },
     {
       "name": "Jump LP",
@@ -651,7 +652,8 @@
         "sourceName": "Hien Ren Kyaku 1",
         "sourceInput": "5LK~LK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "飞燕连脚1"
     },
     {
       "name": "Hien Ren Kyaku 2",
@@ -686,7 +688,8 @@
         "sourceName": "Hien Ren Kyaku 2",
         "sourceInput": "5LK~LK~LK",
         "cancelText": "Sp* SA2*"
-      }
+      },
+      "nameZh": "飞燕连脚2"
     },
     {
       "name": "Shiranui Gourin",
@@ -718,7 +721,8 @@
         "sourceName": "Shiranui Gourin",
         "sourceInput": "LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "不知火刚临"
     },
     {
       "name": "Yume Zakura",
@@ -750,7 +754,8 @@
         "sourceName": "Yume Zakura",
         "sourceInput": "j.LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "梦樱"
     },
     {
       "name": "Botan Ichige",
@@ -988,7 +993,8 @@
         "sourceName": "Senkotsu Uchi",
         "sourceInput": "6MP",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "扇骨打"
     },
     {
       "name": "Hoshi Kujaku 1",
@@ -1022,7 +1028,8 @@
         "sourceName": "Hoshi Kujaku 1",
         "sourceInput": "4HK",
         "cancelText": "TC"
-      }
+      },
+      "nameZh": "星孔雀1"
     },
     {
       "name": "Hoshi Kujaku 2",
@@ -1055,7 +1062,8 @@
         "sourceName": "Hoshi Kujaku 2",
         "sourceInput": "4HK~HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "星孔雀2"
     },
     {
       "name": "Fuusha Kuzushi",
@@ -1087,7 +1095,8 @@
         "sourceName": "Fuusha Kuzushi",
         "sourceInput": "4LPLK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "风车崩"
     },
     {
       "name": "Yusura Ume (Block)",
@@ -1247,7 +1256,8 @@
         "sourceName": "Kachousen",
         "sourceInput": "236LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "花蝶扇"
     },
     {
       "name": "Kachousen",
@@ -1277,7 +1287,8 @@
         "sourceName": "Kachousen",
         "sourceInput": "236MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "花蝶扇"
     },
     {
       "name": "Kachousen",
@@ -1307,7 +1318,8 @@
         "sourceName": "Kachousen",
         "sourceInput": "236HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "花蝶扇"
     },
     {
       "name": "Kachousen",
@@ -1338,7 +1350,8 @@
         "sourceName": "Kachousen",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "花蝶扇"
     },
     {
       "name": "Kachousen (Flame)",
@@ -1368,7 +1381,8 @@
         "sourceName": "Kachousen (Flame)",
         "sourceInput": "236LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "花蝶扇(炎)"
     },
     {
       "name": "Kachousen (Flame)",
@@ -1398,7 +1412,8 @@
         "sourceName": "Kachousen (Flame)",
         "sourceInput": "236MP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "花蝶扇(炎)"
     },
     {
       "name": "Kachousen (Flame)",
@@ -1428,7 +1443,8 @@
         "sourceName": "Kachousen (Flame)",
         "sourceInput": "236HP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "花蝶扇(炎)"
     },
     {
       "name": "Kachousen (Flame)",
@@ -1459,7 +1475,8 @@
         "sourceName": "Kachousen (Flame)",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
-      }
+      },
+      "nameZh": "花蝶扇(炎)"
     },
     {
       "name": "Kachousen (Hold)",
@@ -1489,7 +1506,8 @@
         "sourceName": "Kachousen (Hold)",
         "sourceInput": "236",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "花蝶扇(蓄力)"
     },
     {
       "name": "Midare Kachousen",
@@ -1520,7 +1538,8 @@
         "sourceName": "Midare Kachousen",
         "sourceInput": "236~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "乱花蝶扇"
     },
     {
       "name": "Kachousen (Flame+Hold)",
@@ -1550,7 +1569,8 @@
         "sourceName": "Kachousen (Flame+Hold)",
         "sourceInput": "236",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "花蝶扇(炎+蓄力)"
     },
     {
       "name": "Midare Kachousen (Flame)",
@@ -1581,7 +1601,8 @@
         "sourceName": "Midare Kachousen (Flame)",
         "sourceInput": "236~6P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "乱花蝶扇(炎)"
     },
     {
       "name": "Ryuuenbu",
@@ -1614,7 +1635,8 @@
         "sourceName": "Ryuuenbu",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "龙炎舞"
     },
     {
       "name": "Ryuuenbu",
@@ -1651,7 +1673,8 @@
         "sourceName": "Ryuuenbu",
         "sourceInput": "214MP",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "龙炎舞"
     },
     {
       "name": "Ryuuenbu",
@@ -1688,7 +1711,8 @@
         "sourceName": "Ryuuenbu",
         "sourceInput": "214HP",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "龙炎舞"
     },
     {
       "name": "Ryuuenbu",
@@ -1726,7 +1750,8 @@
         "sourceName": "Ryuuenbu",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3 (3rd)"
-      }
+      },
+      "nameZh": "龙炎舞"
     },
     {
       "name": "Ryuuenbu (Flame)",
@@ -1762,7 +1787,8 @@
         "sourceName": "Ryuuenbu (Flame)",
         "sourceInput": "214LP",
         "cancelText": "SA3"
-      }
+      },
+      "nameZh": "龙炎舞(炎)"
     },
     {
       "name": "Ryuuenbu (Flame)",
@@ -1799,7 +1825,8 @@
         "sourceName": "Ryuuenbu (Flame)",
         "sourceInput": "214MP",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "龙炎舞(炎)"
     },
     {
       "name": "Ryuuenbu (Flame)",
@@ -1836,7 +1863,8 @@
         "sourceName": "Ryuuenbu (Flame)",
         "sourceInput": "214HP",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "龙炎舞(炎)"
     },
     {
       "name": "Ryuuenbu (Flame)",
@@ -1874,7 +1902,8 @@
         "sourceName": "Ryuuenbu (Flame)",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3 (3rd)"
-      }
+      },
+      "nameZh": "龙炎舞(炎)"
     },
     {
       "name": "Hissatsu Shinobi Bachi",
@@ -1911,7 +1940,8 @@
         "sourceName": "Hissatsu Shinobi Bachi",
         "sourceInput": "236LK",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "必杀忍蜂"
     },
     {
       "name": "Hissatsu Shinobi Bachi",
@@ -1948,7 +1978,8 @@
         "sourceName": "Hissatsu Shinobi Bachi",
         "sourceInput": "236MK",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "必杀忍蜂"
     },
     {
       "name": "Hissatsu Shinobi Bachi",
@@ -1985,7 +2016,8 @@
         "sourceName": "Hissatsu Shinobi Bachi",
         "sourceInput": "236HK",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "必杀忍蜂"
     },
     {
       "name": "Hissatsu Shinobi Bachi",
@@ -2023,7 +2055,8 @@
         "sourceName": "Hissatsu Shinobi Bachi",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3 (2nd)"
-      }
+      },
+      "nameZh": "必杀忍蜂"
     },
     {
       "name": "Hissatsu Shinobi Bachi (Flame)",
@@ -2060,7 +2093,8 @@
         "sourceName": "Hissatsu Shinobi Bachi (Flame)",
         "sourceInput": "236LK",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "必杀忍蜂(炎)"
     },
     {
       "name": "Hissatsu Shinobi Bachi (Flame)",
@@ -2097,7 +2131,8 @@
         "sourceName": "Hissatsu Shinobi Bachi (Flame)",
         "sourceInput": "236MK",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "必杀忍蜂(炎)"
     },
     {
       "name": "Hissatsu Shinobi Bachi (Flame)",
@@ -2134,7 +2169,8 @@
         "sourceName": "Hissatsu Shinobi Bachi (Flame)",
         "sourceInput": "236HK",
         "cancelText": "SA3 (2nd)"
-      }
+      },
+      "nameZh": "必杀忍蜂(炎)"
     },
     {
       "name": "Hissatsu Shinobi Bachi (Flame)",
@@ -2172,7 +2208,8 @@
         "sourceName": "Hissatsu Shinobi Bachi (Flame)",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3 (2nd)"
-      }
+      },
+      "nameZh": "必杀忍蜂(炎)"
     },
     {
       "name": "Hishou Ryuuenjin",
@@ -2205,7 +2242,8 @@
         "sourceName": "Hishou Ryuuenjin",
         "sourceInput": "623LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞翔龙炎阵"
     },
     {
       "name": "Hishou Ryuuenjin",
@@ -2238,7 +2276,8 @@
         "sourceName": "Hishou Ryuuenjin",
         "sourceInput": "623MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞翔龙炎阵"
     },
     {
       "name": "Hishou Ryuuenjin",
@@ -2271,7 +2310,8 @@
         "sourceName": "Hishou Ryuuenjin",
         "sourceInput": "623HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞翔龙炎阵"
     },
     {
       "name": "Hishou Ryuuenjin",
@@ -2304,7 +2344,8 @@
         "sourceName": "Hishou Ryuuenjin",
         "sourceInput": "623KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞翔龙炎阵"
     },
     {
       "name": "Hishou Ryuuenjin (Flame)",
@@ -2337,7 +2378,8 @@
         "sourceName": "Hishou Ryuuenjin (Flame)",
         "sourceInput": "623LK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞翔龙炎阵(炎)"
     },
     {
       "name": "Hishou Ryuuenjin (Flame)",
@@ -2370,7 +2412,8 @@
         "sourceName": "Hishou Ryuuenjin (Flame)",
         "sourceInput": "623MK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞翔龙炎阵(炎)"
     },
     {
       "name": "Hishou Ryuuenjin (Flame)",
@@ -2403,7 +2446,8 @@
         "sourceName": "Hishou Ryuuenjin (Flame)",
         "sourceInput": "623HK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞翔龙炎阵(炎)"
     },
     {
       "name": "Hishou Ryuuenjin (Flame)",
@@ -2436,7 +2480,8 @@
         "sourceName": "Hishou Ryuuenjin (Flame)",
         "sourceInput": "623KK",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "飞翔龙炎阵(炎)"
     },
     {
       "name": "Musasabi no Mai",
@@ -2467,7 +2512,8 @@
         "sourceName": "Musasabi no Mai",
         "sourceInput": "j.214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "鼯鼠之舞"
     },
     {
       "name": "Musasabi no Mai",
@@ -2501,7 +2547,8 @@
         "sourceName": "Musasabi no Mai",
         "sourceInput": "j.214PP",
         "cancelText": "SA2"
-      }
+      },
+      "nameZh": "鼯鼠之舞"
     },
     {
       "name": "Musasabi no Mai (Flame)",
@@ -2532,7 +2579,8 @@
         "sourceName": "Musasabi no Mai (Flame)",
         "sourceInput": "j.214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "鼯鼠之舞(炎)"
     },
     {
       "name": "Musasabi no Mai (Flame)",
@@ -2566,7 +2614,8 @@
         "sourceName": "Musasabi no Mai (Flame)",
         "sourceInput": "j.214PP",
         "cancelText": "SA2"
-      }
+      },
+      "nameZh": "鼯鼠之舞(炎)"
     },
     {
       "name": "Kagerou no Mai",
@@ -2599,7 +2648,8 @@
         "sourceName": "Kagerou no Mai",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "阳炎之舞"
     },
     {
       "name": "Kagerou no Mai (Flame)",
@@ -2632,7 +2682,8 @@
         "sourceName": "Kagerou no Mai (Flame)",
         "sourceInput": "236236P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "阳炎之舞(炎)"
     },
     {
       "name": "Chou Hissatsu Shinobi Bachi",
@@ -2665,7 +2716,8 @@
         "sourceName": "Chou Hissatsu Shinobi Bachi",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "超必杀忍蜂"
     },
     {
       "name": "Air Chou Hissatsu Shinobi Bachi",
@@ -2698,7 +2750,8 @@
         "sourceName": "Air Chou Hissatsu Shinobi Bachi",
         "sourceInput": "j.236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中超必杀忍蜂"
     },
     {
       "name": "Chou Hissatsu Shinobi Bachi (Flame)",
@@ -2731,7 +2784,8 @@
         "sourceName": "Chou Hissatsu Shinobi Bachi (Flame)",
         "sourceInput": "236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "超必杀忍蜂(炎)"
     },
     {
       "name": "Air Chou Hissatsu Shinobi Bachi (Flame)",
@@ -2764,7 +2818,8 @@
         "sourceName": "Air Chou Hissatsu Shinobi Bachi (Flame)",
         "sourceInput": "j.236236K",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "空中超必杀忍蜂(炎)"
     },
     {
       "name": "Shiranui Ryuu: Enbu Ada Zakura",
@@ -2797,7 +2852,8 @@
         "sourceName": "Shiranui Ryuu: Enbu Ada Zakura",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "不知火流：炎舞徒樱"
     },
     {
       "name": "Shiranui Ryuu: Enbu Ada Zakura (CA)",
@@ -2830,7 +2886,8 @@
         "sourceName": "Shiranui Ryuu: Enbu Ada Zakura (CA)",
         "sourceInput": "214214P",
         "cancelText": "-"
-      }
+      },
+      "nameZh": "不知火流：炎舞徒樱(CA)"
     }
   ],
   "lastUpdated": "2026-02-10"
