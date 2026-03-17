@@ -75,19 +75,43 @@
     },
     {
       "combo": "214PP~6P, DR 6HP~6HP~HK",
-      "section": "Combo Theory / Combo Enders"
+      "section": "Combo Theory / Combo Enders",
+      "position": "~32% to 25%",
+      "damage": "2405",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Easy extension"
     },
     {
       "combo": "214PP~6P, DR 5HP>236LP,623HP",
-      "section": "Combo Theory / Combo Enders"
+      "section": "Combo Theory / Combo Enders",
+      "position": "~32% to 25%",
+      "damage": "2719",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Slightly harder extension for more damage."
     },
     {
       "combo": "214PP~6P,4HK>236[HP](lvl.2), 214HK",
-      "section": "Combo Theory / Combo Enders"
+      "section": "Combo Theory / Combo Enders",
+      "position": "Corner",
+      "damage": "3060",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "Simple extension requiring timing with lvl.2 fireball"
     },
     {
       "combo": "214PP~6P,4HK>236[HP](lvl.2), DR 2HP>214MK,623LP>SA3",
-      "section": "Combo Theory / Combo Enders"
+      "section": "Combo Theory / Combo Enders",
+      "position": "Corner",
+      "damage": "5064",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "Hard",
+      "notes": "Difficult extension with lvl.2 fireball into DR that allows for SA3 finisher. Can also replace 236[HP](lvl.2) with 236[PP](lvl.2) for easier charge timing"
     },
     {
       "combo": "2LP/5LP/5LK > DRC~2LP, 2HP",
@@ -263,7 +287,6 @@
       "combo": "PC 5HK,2HP>Ender of choice",
       "section": "Combo Lists / Punish Counter Combos",
       "position": "Anywhere",
-      "damage": "-",
       "difficulty": "Medium",
       "notes": "5HK is your ideal shimmy button"
     },
@@ -306,45 +329,45 @@
     },
     {
       "combo": "PC 2LP, 5HP",
-      "section": "Combo Theory",
+      "section": "Combo Theory / Punish Counter / -4 / -4 Punishes",
       "notes": "Max range Punish Counter starter"
     },
     {
       "combo": "PC 2LP, 2HP",
-      "section": "Combo Theory",
+      "section": "Combo Theory / Punish Counter / -4 / -4 Punishes",
       "notes": "More optimal close range starter"
     },
     {
       "combo": "PC 5LK>214MP~6P/214PP~6P",
-      "section": "Combo Theory",
+      "section": "Combo Theory / Punish Counter / -5 / -5 Punishes",
       "notes": "For 5f punishes that require more reach than 4f jab"
     },
     {
       "combo": "PC 5LK>214MK/214LK,2HK",
-      "section": "Combo Theory",
+      "section": "Combo Theory / Punish Counter / -5 / -5 Punishes",
       "notes": "Can also go into L/M tatsu if the opponent is standing (Ken Jinrai low follow-up)"
     },
     {
       "combo": "PC 2MP, 5HP",
-      "section": "Combo Theory",
+      "section": "Combo Theory / Punish Counter / -6 / -6 Punishes",
       "notes": "Long range starter, but 5HP will whiff at max range"
     },
     {
       "combo": "PC 2MP, 2HP",
-      "section": "Combo Theory",
+      "section": "Combo Theory / Punish Counter / -6 / -6 Punishes",
       "notes": "Close range optimal starter"
     },
     {
       "combo": "PC 2MP, 214HP~6P",
-      "section": "Combo Theory",
+      "section": "Combo Theory / Punish Counter / -6 / -6 Punishes",
       "notes": "Longest range 6f punish"
     },
     {
       "combo": "PC 2MK>214HP~6P",
-      "section": "Combo Theory",
+      "section": "Combo Theory / Punish Counter / -8 / -8 Punishes",
       "notes": "Akuma can cancel into Heavy Adamant Flame on PC. Useful for longer range punishes."
     }
   ],
   "comboTheory": "### Combo Enders",
-  "lastUpdated": "2026-03-16"
+  "lastUpdated": "2026-03-17"
 }

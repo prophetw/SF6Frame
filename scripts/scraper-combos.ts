@@ -204,10 +204,26 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
 
     // Helper: find section heading for an element
     function findParentHeadings(el) {
-        const result = { h2: '', h3: '', h4: '' };
+        const result = { h2: '', h3: '', h4: '', tab: '', caption: '' };
+        
+        const captionEl = el.querySelector('caption');
+        if (captionEl) {
+            result.caption = extractText(captionEl).trim();
+        }
+
         let current = el;
         
         while (current && current !== contentEl) {
+            if (current.classList && current.classList.contains('tabber__panel')) {
+                const labelId = current.getAttribute('aria-labelledby');
+                if (labelId && !result.tab) {
+                    const labelEl = document.getElementById(labelId);
+                    if (labelEl) {
+                        result.tab = extractText(labelEl).trim();
+                    }
+                }
+            }
+
             // Check previous siblings
             let prev = current.previousElementSibling;
             while (prev) {
@@ -244,15 +260,31 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
     
     for (const table of comboTables) {
         const headings = findParentHeadings(table);
-        const section = headings.h2 || 'Combos';
-        const subsection = headings.h3 || '';
+        const sectionParts = [
+            headings.h2 || 'Combos',
+            headings.h3,
+            headings.h4,
+            headings.tab,
+            headings.caption
+        ].filter(Boolean);
+        const section = sectionParts.join(' / ');
+        const subsection = ''; // Retained for compatibility but empty
         
-        // Parse headers
-        const headerRow = table.querySelector('tr:first-child');
-        if (!headerRow) continue;
-        const headers = Array.from(headerRow.querySelectorAll('th, td')).map(
-            el => extractText(el).trim().toLowerCase()
-        );
+        // Parse headers by finding the row that contains 'combo'
+        let headerRowIndex = -1;
+        let headers = [];
+        const rows = table.querySelectorAll('tr');
+        for (let r = 0; r < rows.length; r++) {
+            const cells = Array.from(rows[r].querySelectorAll('th, td'));
+            const cellTexts = cells.map(el => extractText(el).trim().toLowerCase());
+            if (cellTexts.some(text => text.includes('combo') || text.includes('recipe') || text.includes('route'))) {
+                headerRowIndex = r;
+                headers = cellTexts;
+                break;
+            }
+        }
+        
+        if (headerRowIndex === -1) continue;
         
         const idx = {
             combo: headers.findIndex(h => h.includes('combo') || h.includes('recipe') || h.includes('route')),
@@ -265,11 +297,7 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
             video: headers.findIndex(h => h.includes('video') || h.includes('vid')),
         };
         
-        // If combo index not found, try index 0
-        if (idx.combo === -1) idx.combo = 0;
-        
-        const rows = table.querySelectorAll('tr');
-        for (let r = 1; r < rows.length; r++) {
+        for (let r = headerRowIndex + 1; r < rows.length; r++) {
             const cells = rows[r].querySelectorAll('td');
             if (cells.length === 0) continue;
             
@@ -322,19 +350,33 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
     
     for (const table of allTables) {
         const headings = findParentHeadings(table);
-        const section = headings.h2 || 'Combos';
+        const sectionParts = [
+            headings.h2 || 'Combos',
+            headings.h3,
+            headings.h4,
+            headings.tab,
+            headings.caption
+        ].filter(Boolean);
+        const section = sectionParts.join(' / ');
         
-        // Skip non-combo tables (stats tables, notation guides, etc.)
-        const firstHeader = table.querySelector('tr:first-child th, tr:first-child td');
-        if (!firstHeader) continue;
-        const headerText = extractText(firstHeader).trim().toLowerCase();
-        if (headerText.includes('health') || headerText.includes('notation') || headerText.includes('meaning')) continue;
+        // Parse headers by finding the row that contains 'combo'
+        let headerRowIndex = -1;
+        let headers = [];
+        const rows = table.querySelectorAll('tr');
+        for (let r = 0; r < rows.length; r++) {
+            const cells = Array.from(rows[r].querySelectorAll('th, td'));
+            const cellTexts = cells.map(el => extractText(el).trim().toLowerCase());
+            // Fast fail for non-combo tables
+            if (cellTexts.some(text => text.includes('health') || text.includes('notation') || text.includes('meaning'))) break;
+            
+            if (cellTexts.some(text => text.includes('combo') || text.includes('route'))) {
+                headerRowIndex = r;
+                headers = cellTexts;
+                break;
+            }
+        }
         
-        // Parse headers
-        const headerCells = Array.from(table.querySelectorAll('tr:first-child th, tr:first-child td'));
-        const headers = headerCells.map(el => extractText(el).trim().toLowerCase());
-        const hasComboHeader = headers.some(h => h.includes('combo') || h.includes('route'));
-        if (!hasComboHeader) continue;
+        if (headerRowIndex === -1) continue;
         
         const idx = {
             combo: headers.findIndex(h => h.includes('combo') || h.includes('route')),
@@ -351,13 +393,12 @@ async function scrapeCharacterCombos(browser: any, config: CharacterConfig): Pro
         // For "Combo Lists" style: first row after header IS the starter
         // Structure: first data row has Combo and Notes as a "starter" + description
         // Subsequent rows are combo variants
-        const rows = table.querySelectorAll('tr');
         let starter = '';
         let starterNote = '';
         
         // Check if this looks like a combo list table
         // The first "data" row often serves as the starter/category
-        for (let r = 1; r < rows.length; r++) {
+        for (let r = headerRowIndex + 1; r < rows.length; r++) {
             const cells = rows[r].querySelectorAll('td');
             const thCells = rows[r].querySelectorAll('th');
             
