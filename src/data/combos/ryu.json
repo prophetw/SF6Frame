@@ -3,291 +3,510 @@
   "combos": [
     {
       "combo": "2LK ~ 2LP ~ 5LP > 214LK/623HP",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Light Starter",
+      "position": "Anywhere",
+      "damage": "1190/1490",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "Your basic light confirm."
     },
     {
       "combo": "2LK ~ 2LP ~ 2LP > 214MK/236LK",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Light Starter",
+      "position": "Anywhere",
+      "damage": "1250/1310",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "5LP does not combo into MK Tatsu or LK Donkey Kick naturally, but 2LP has slightly greater hitstun and allows this. MK Tatsu is useful if looking for corner carry and oki midscreen, but LK Donkey Kick does more damage and allows for a safe Denjin Charge midscreen: in the corner, this +42 knockdown is a safe jump setup."
     },
     {
       "combo": "2LK ~ 2LP ~ 5LP > 214KK, 623HP",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Light Starter",
+      "position": "Corner",
+      "damage": "1950",
+      "superMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "An OD extension from the same basic Light confirm vs a cornered opponent. OD Tatsu also allows extensions with a linked Parry Drive Rush (see Drive Rush Combos below)."
     },
     {
       "combo": "CH 2LP/5LP, 5LK > 236LK",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Light Starter",
+      "position": "Anywhere",
+      "damage": "1370",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Counter-hit 2LP/5LP links into 5LK, which combos naturally into LK Donkey Kick. This is punishable on block (-11), so must be confirmed from the counter-hit link into 5LK."
     },
     {
       "combo": "CH 2LP/5LP, 2MP/5MP > 236MK/(236KK, 4HK > 623HP)",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Light Starter",
+      "position": "Anywhere/Midscreen",
+      "damage": "1680/2250",
+      "superMeter": "0",
+      "driveMeter": "0/",
+      "difficulty": "Easy",
+      "notes": "Counter-hit 2LP/5LP links into 2MP: also 5MP, but 2MP reaches slightly farther and leads into similarly damaging combos. MK and OD Donkey Kick are just two examples of what can be canceled into from 2MP. The knockback from MK Donkey Kick allows for a Denjin Charge setup: at -12, this setup is punishable by Cammy's Super 3, but only just (use LK Donkey Kick vs Cammy to guarantee a safe Denjin Charge here)."
     },
     {
       "combo": "CH 2LP/5LP, 2MP > Denjin 214P, 214MK/236MK/623HP",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Light Starter",
+      "position": "Anywhere/Corner",
+      "damage": "2000/2120/2240",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "A demonstration of how Denjin Charged Hashogeki can be incorporated into combos starting from Light normals: with a counter-hit 2LP/5LP, it is possible to route into DC Hasho via a linked Medium Punch. All of Ryu's specials can be combo'd after the launch without the aid of Parry Drive Rush (PDR), but (MK Tatsu, MK Donkey Kick and corner-only HP Shoryuken) represent the most useful and damaging options without PDR."
     },
     {
       "combo": "PC 5LP, 2MK > 236MK/623HP/(236KK, 4HK > 623HP)",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Light Starter",
+      "position": "Anywhere/Midscreen",
+      "damage": "1600/1740/2170",
+      "superMeter": "0",
+      "driveMeter": "0/",
+      "difficulty": "Medium",
+      "notes": "Punish Counter allows 2LP/5LP to link into the 8-frame startup 2MK. This is most useful as a punish vs moves that leave the opponent at or slightly farther than close-range at variable frame disadvantage, making heavier punishes unreliable. Two examples of this are Juri's divekick special Shiku-Sen and Blanka's non-OD Aerial Rolling Attack: both of these can be spaced to be safe, but are at most spacings -4 or worse on block, making a punish from 5LP (which has greater range than 2LP) very practical."
     },
     {
       "combo": "PC 5LK > 214MK/(236KK, 4HK > 623HP)/(Denjin 214PP, dash, 2HP > 623HP)",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Light Starter",
+      "position": "Anywhere",
+      "damage": "1160/2030/2400",
+      "superMeter": "0",
+      "driveMeter": "0/",
+      "difficulty": "Medium/Hard",
+      "notes": "Punish Counter allows 5LK to combo into Medium and OD versions of Ryu's specials. This is most useful as a punish vs moves that leave the opponent farther than 2LP/5LP distance from Ryu at -5 or more frame disadvantage. Two examples of this are Jamie's LP/MP Swagger Step (which can be safe if spaced but are both -6) and Chun-Li's OD Hazanshu (which is almost always punishable with 5LK). If the meterless damage isn't impressive enough, the two listed extensions show how Drive and Denjin Charge can beef it up."
     },
     {
       "combo": "2MK > 214MK/236MK/(236KK, 6HK > 214K)",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "1300/1460/2155",
+      "superMeter": "0",
+      "driveMeter": "0/",
+      "difficulty": "Very Easy/Easy",
+      "notes": "Though 2MK combos to almost all versions of your specials on normal hit, MK Donkey Kick and MK Tatsu are the most rewarding to buffer behind a guaranteed hit such as a whiff punish. MK Donkey Kick is punishable but less so than any version of Tatsu and leaves you free to pop a Denjin charge on hit. MK Tatsu has great corner carry. Note that any instance of MK Tatsu from here on out can be swapped with HK Tatsu for slightly more damage and a side swap, and OD Donkey Kick extensions can buff up the damage significantly. Note the different OD Donkey Kick extension: 6HK > Aerial Tatsu gives superior knockdown advantage at the cost of little damage."
     },
     {
       "combo": "2MK > 236LP/236MP/236HP",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "980",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "As of the 12/02/2024 balance update, 2MK had its cancel window moved forward by 2 frames, making Ryu's classic option of \"Low Forward Fireball\" significantly more powerful than it had been. In practice, this means that 2MK > 236HP is always a true blockstring even at max-range, and 2MK > 236LP is DI-safe as the opponent now cannot punish the LP Hadoken cancel with DI (2MK > 236MP appears to be the best of both worlds: it is a true blockstring up until max-range, at which distance it is still DI-safe). Bear in mind that performing 2MK > 236P into a Drive Impact is still a hazard if Super Art 3 is not available to be canceled into, so don't get predictable."
     },
     {
       "combo": "5MP, 2MP > 214MK/236MK/623HP",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "2000/2160/2320",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "This is a consistent combo that works when you aren't right next to the opponent. 5MP has enough frame advantage on hit to link a 2MP afterwards."
     },
     {
       "combo": "5MP, 4HP > 236HK/623HP",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "2440/2520",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "You have to be point blank for the 4HP to link after the 5MP. This is best achieved after a cross-up j.MK, as the cross-up hit will pull the opponent towards Ryu as he lands. 4HP is your ONLY normal that naturally combos into HK Donkey Kick."
     },
     {
       "combo": "CH 5MP, 2HP > 214MK/236MK/(236KK, 4HK > 623HP)",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "2320/2480/3190",
+      "superMeter": "0",
+      "driveMeter": "0/",
+      "difficulty": "Easy",
+      "notes": "On Counter-Hit, 5MP can be linked into 2HP for some high-damage combos. If spaced-out, the 2HP is liable to whiff, so 2MK can be substituted instead to guarantee that all follow-ups connect at the expense of some significant damage."
     },
     {
       "combo": "CH 5MP, 2HK, dash, meaty 5HP",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "1620",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Definitely not the most damage that can be taken from a counter-hit 5MP, but a demonstration of how much frame advantage this gives (+9 on hit) and a hint of how combos ending in 2HK can grant some oki, with a +2 on block meaty 5HP in this instance. See Strategy for more meaty setups/okizeme."
     },
     {
       "combo": "PC 5MP, 5HP ~> HK, DENJIN CHARGE",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "2320",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "As of the 05/22/2024 balance patch, Ryu's High Double Strike target combo (5HP ~> HK) can be canceled into Denjin Charge on hit with a simple Down+Punch input. This is a +7 knockdown and in the corner a meaty 5MP/2MP setup is available here."
     },
     {
       "combo": "PC 5MP, 5HP > ( 623HP / 236KK, 4HK > 623HP )",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "2640/3190",
+      "superMeter": "0",
+      "driveMeter": "0 /",
+      "difficulty": "Very Easy",
+      "notes": "A simple high-damage combo that can be performed off a PC 5MP."
     },
     {
       "combo": "5HK, 2MK > 214MK/236MK/623HP",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Anywhere",
+      "damage": "2200/2360/2520",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "A meterless link from Ryu's 5HK: this is unlikely to be landed in neutral due to 5HK whiffing on crouching characters, but is guaranteed following a Drive Impact crumple (see Drive Impact and Stun Combos)."
     },
     {
       "combo": "6HK > 214K/214KK",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Anywhere",
+      "damage": "1700/2300",
+      "superMeter": "0",
+      "driveMeter": "0/",
+      "difficulty": "Hard",
+      "notes": "This is a viable one-hit confirm, similar to 5HP, with the difference that 6HK goes over lows late into its startup. As of the 12/02/2024 balance patch, this move can now be canceled into non-OD Aerial Tatsu as well as OD Aerial Tatsu, for a meterless cancel option plus decent dash-up oki midscreen."
     },
     {
       "combo": "6HP, 2MP > 214MK/623HP",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Anywhere",
+      "damage": "2200/2520",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "Solar Plexus Strike (6HP) allows a link into 2MP. HP Shoryuken is your highest damage meterless combo ender from this link. MK Tatsu gives you corner carry and oki."
     },
     {
       "combo": "6HP, 2MP, 5LK > 214MK/236LK",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Anywhere",
+      "damage": "2340/2410",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "As 6HP pushes Ryu forward, the link from 2MP into 5LK becomes much more reliable than it might otherwise be. LK Donkey Kick gives you space to pop Denjin and is a safe jump in the corner. The MK Tatsu ender does provide oki, but this oki is worsened midscreen as you can only forward dash and Jab if they Back-Rise."
     },
     {
       "combo": "6HP, 2MP > 236KK, 4HK > 623HP/236LK/236MK",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Midscreen",
+      "damage": "3070/2905/2960",
+      "superMeter": "0/3",
+      "difficulty": "Medium",
+      "notes": "As of the 22/05/2024 balance patch, Ryu can now combo into LK and MK versions of Donkey Kick as well as the standard HP Shoryuken cancel out of 4HK. These new options do less damage but give enough space to stock a Denjin Charge safely vs most characters. Each of these enders is a viable cancel into Super Art 3."
     },
     {
       "combo": "CH 6HP, 4HP > 236HK, (623MP)",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Anywhere/Corner",
+      "damage": "2800/3640",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "If the opponent is counter-hit by Solar Plexus Strike (6HP), the frame advantage on-hit increases to +8, allowing either 2MK or 4HP to link afterwards: naturally, the latter requires a very close connect and the former is more reliable. In the corner, a successful link into 4HP > 236HK allows a juggle with (623MP) for big damage."
     },
     {
       "combo": "CH 5HP, 5LK > ( 236LK / 214LK / 214MK )",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Anywhere",
+      "damage": "2140/1980/2060",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "On Counter-Hit, 5HP has frame advantage of +6, allowing Ryu's far-reaching 5LK to combo into either a LK Donkey Kick, LK Tatsu or MK Tatsu ender. All of these give excellent oki opportunities in the corner, and as 5HP is an excellent meaty attack, opportunities to land this combo should be easy to find in matches."
     },
     {
       "combo": "PC 236HK, 6HK > (214K/214KK, 236236P/236236K)",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Corner",
+      "damage": "3080/4660/5760",
+      "superMeter": "0/1/3",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "A demonstration of how the changes to Ryu's 6HK as of the 12/02/2024 balance update can be integrated into his combos. In this case, 6HK > 214K can juggle the opponent as they are in the rolling animation caused by the PC 236HK. If 214KK is used instead, then Super Art 1 and Super Art 3 can be linked as the opponent is falling."
     },
     {
       "combo": "PC 5HK, dash, 2HP > 623HP/(236KK, 623HP)",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Anywhere/Midscreen",
+      "damage": "3000/3430",
+      "superMeter": "0",
+      "driveMeter": "0/",
+      "difficulty": "Easy",
+      "notes": "An ideal punish starter for a whiffed/blocked DP or a whiffed throw following a shimmy. PC 5HK puts the opponent in a crumple state, similar to PC Drive Impact or Ryu's Denjin Charged OD Hashogeki. The forward dash is not necessary for this combo (and is in fact not wanted for the potential DRC follow-ups, see Drive Rush Combos below, or HP Shoryuken > Super Art 3 cancel routes) but it puts Ryu closer to the opponent for the 2HP connect, and for the purposes of OD Donkey Kick it allows the opponent to fall into a juggleable state during their crumple animation, increasing the height of the opponent's bounce so as to make follow-up juggles more reliable."
     },
     {
       "combo": "PC 5HK, 4HP > 236HK, 623MP",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Corner",
+      "damage": "3760",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Best corner punish you can do without spending resources. 5HK, 4HP link is finicky but consistent at close-range."
     },
     {
       "combo": "PC 6HK, 5LK > 236LK / (214KK, 623HP)",
-      "section": "BASIC COMBOS"
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Anywhere/Corner",
+      "damage": "2140/3040",
+      "superMeter": "0",
+      "driveMeter": "0 /",
+      "difficulty": "Medium",
+      "notes": "As 6HK has low-crush properties after frame 13, it is very possible for it to land as a Punish Counter vs an opponent going for a low attack. In this case, 5LK links from quite far out and cancels reliably into LK Donkey Kick. In the corner this gives a safejump, but OD Tatsu linked into HP Shoryuken can be substituted in for a major damage boost."
     },
     {
-      "combo": "PC 5HP/2HP/4HP > 214HP, 214MK/236MKPC 5HP/2HP/4HP > 214HP, PDR 5HP > 214LP, 2HKPC 5HP/2HP/4HP > 214HP, 214LP, 623LPPC 5HP/2HP/4HP > 214HP, PDR 5HP > 214LP, 623HP",
-      "section": "BASIC COMBOS"
+      "combo": "PC 5HP/2HP/4HP > 214HP, 214MK/236MK",
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Anywhere/Anywhere/Corner/Corner",
+      "damage": "2560/2720",
+      "superMeter": "0",
+      "driveMeter": "0 / 0",
+      "difficulty": "Medium",
+      "notes": "HP Hashogeki does not combo naturally out of any of Ryu's normals, but on Punish Counter it will always combo from his Heavy Punches. A good opportunity to guarantee this Punish Counter starter would be out of a Perfect Parry: 4HP is the fastest at 7-frames startup and can be used to punish Lights on Perfect Parry but is also very short-range; 5HP is much farther reaching and can punish Mediums. Damage is identical, and on Perfect Parry the listed combo damage will be scaled to 1545."
     },
     {
-      "combo": "PC DI/5HK, delay, 5HP > 236KK, dash forward 623LPPC 5HP/2HP/4HP > 214HP, PDR 2HP > 236KK, dash forward 623LPPC 5HP/2HP/4HP > 214HP, PDR 5MP > 214HK",
-      "section": "BASIC COMBOS"
+      "combo": "PC 5HP/2HP/4HP > 214HP, PDR 5HP > 214LP, 2HK",
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Anywhere/Anywhere/Corner/Corner",
+      "damage": "3176",
+      "superMeter": "0",
+      "driveMeter": "0 / 0",
+      "difficulty": "Medium",
+      "notes": "HP Hashogeki does not combo naturally out of any of Ryu's normals, but on Punish Counter it will always combo from his Heavy Punches. A good opportunity to guarantee this Punish Counter starter would be out of a Perfect Parry: 4HP is the fastest at 7-frames startup and can be used to punish Lights on Perfect Parry but is also very short-range; 5HP is much farther reaching and can punish Mediums. Damage is identical, and on Perfect Parry the listed combo damage will be scaled to 1545."
+    },
+    {
+      "combo": "PC 5HP/2HP/4HP > 214HP, 214LP, 623LP",
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Anywhere/Anywhere/Corner/Corner",
+      "damage": "3090",
+      "superMeter": "0",
+      "driveMeter": "0 / 0",
+      "difficulty": "Medium",
+      "notes": "HP Hashogeki does not combo naturally out of any of Ryu's normals, but on Punish Counter it will always combo from his Heavy Punches. A good opportunity to guarantee this Punish Counter starter would be out of a Perfect Parry: 4HP is the fastest at 7-frames startup and can be used to punish Lights on Perfect Parry but is also very short-range; 5HP is much farther reaching and can punish Mediums. Damage is identical, and on Perfect Parry the listed combo damage will be scaled to 1545."
+    },
+    {
+      "combo": "PC 5HP/2HP/4HP > 214HP, PDR 5HP > 214LP, 623HP",
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Anywhere/Anywhere/Corner/Corner",
+      "damage": "3431",
+      "superMeter": "0",
+      "driveMeter": "0 / 0",
+      "difficulty": "Medium",
+      "notes": "HP Hashogeki does not combo naturally out of any of Ryu's normals, but on Punish Counter it will always combo from his Heavy Punches. A good opportunity to guarantee this Punish Counter starter would be out of a Perfect Parry: 4HP is the fastest at 7-frames startup and can be used to punish Lights on Perfect Parry but is also very short-range; 5HP is much farther reaching and can punish Mediums. Damage is identical, and on Perfect Parry the listed combo damage will be scaled to 1545."
+    },
+    {
+      "combo": "PC DI/5HK, delay, 5HP > 236KK, dash forward 623LP",
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Facing Midscreen, back to Corner",
+      "damage": "2765/3235",
+      "superMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Punish Counter Heavies give Ryu multiple routes to sideswap when he has his back to the corner. The best of these involve OD Donkey Kick followed by a dash-under LP Shoryuken as it puts the opponent closest to the corner; a delay is required for the opponent to enter an airborne state during the crumple animation, so that they can be juggled before the OD Donkey Kick connects. Without a PC 5HK/DI crumple, an opponent can be launched from any PC Heavy Punch into HP Hashogeki; these same routes can also be applied to Denjin-charged HP Hashogeki, which can combo naturally from Mediums."
+    },
+    {
+      "combo": "PC 5HP/2HP/4HP > 214HP, PDR 2HP > 236KK, dash forward 623LP",
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Facing Midscreen, back to Corner",
+      "damage": "3282",
+      "superMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Punish Counter Heavies give Ryu multiple routes to sideswap when he has his back to the corner. The best of these involve OD Donkey Kick followed by a dash-under LP Shoryuken as it puts the opponent closest to the corner; a delay is required for the opponent to enter an airborne state during the crumple animation, so that they can be juggled before the OD Donkey Kick connects. Without a PC 5HK/DI crumple, an opponent can be launched from any PC Heavy Punch into HP Hashogeki; these same routes can also be applied to Denjin-charged HP Hashogeki, which can combo naturally from Mediums."
+    },
+    {
+      "combo": "PC 5HP/2HP/4HP > 214HP, PDR 5MP > 214HK",
+      "section": "BASIC COMBOS / Heavy Starter",
+      "position": "Facing Midscreen, back to Corner",
+      "damage": "2876",
+      "superMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Punish Counter Heavies give Ryu multiple routes to sideswap when he has his back to the corner. The best of these involve OD Donkey Kick followed by a dash-under LP Shoryuken as it puts the opponent closest to the corner; a delay is required for the opponent to enter an airborne state during the crumple animation, so that they can be juggled before the OD Donkey Kick connects. Without a PC 5HK/DI crumple, an opponent can be launched from any PC Heavy Punch into HP Hashogeki; these same routes can also be applied to Denjin-charged HP Hashogeki, which can combo naturally from Mediums."
     },
     {
       "combo": "236PP, 236236P",
-      "section": "SUPER ART COMBO ROUTES",
+      "section": "SUPER ART COMBO ROUTES / SA1: Shinkuu/Denjin Hadoken",
       "superMeter": "236PP, 236236P"
     },
     {
       "combo": "214KK, 236236P",
-      "section": "SUPER ART COMBO ROUTES",
+      "section": "SUPER ART COMBO ROUTES / SA1: Shinkuu/Denjin Hadoken",
       "superMeter": "214KK, 236236P"
     },
     {
       "combo": "( 214HP OR Denjin 214P OR Counter-Hit 214LP/214MP ), 236236P",
-      "section": "SUPER ART COMBO ROUTES",
+      "section": "SUPER ART COMBO ROUTES / SA1: Shinkuu/Denjin Hadoken",
       "superMeter": "( 214HP OR Denjin 214P OR Counter-Hit 214LP/214MP ), 236236P"
     },
     {
       "combo": "PC 236HK > 236236P",
-      "section": "SUPER ART COMBO ROUTES",
+      "section": "SUPER ART COMBO ROUTES / SA1: Shinkuu/Denjin Hadoken",
       "superMeter": "PC 236HK > 236236P"
     },
     {
       "combo": "Any cancelable Heavy > DRC 5HK, 5HK, 236236P",
-      "section": "SUPER ART COMBO ROUTES",
+      "section": "SUPER ART COMBO ROUTES / SA1: Shinkuu/Denjin Hadoken",
       "superMeter": "Any cancelable Heavy > DRC 5HK, 5HK, 236236P"
     },
     {
       "combo": "Any Medium/Heavy Starter > DENJIN 214PP > 214214P",
-      "section": "SUPER ART COMBO ROUTES",
+      "section": "SUPER ART COMBO ROUTES / SA2: Shin/Denjin Hashogeki",
       "superMeter": "Any Medium/Heavy Starter > DENJIN 214PP > 214214P"
     },
     {
       "combo": "Starter > 236KK > 214214P",
-      "section": "SUPER ART COMBO ROUTES",
+      "section": "SUPER ART COMBO ROUTES / SA2: Shin/Denjin Hashogeki",
       "superMeter": "Starter > 236KK > 214214P"
     },
     {
       "combo": "Any Medium/Heavy Starter > Denjin 214PP > 214214P, PDR, 2HP > 623HP",
-      "section": "SUPER ART COMBO ROUTES",
+      "section": "SUPER ART COMBO ROUTES / SA2: Shin/Denjin Hashogeki",
       "superMeter": "Any Medium/Heavy Starter > Denjin 214PP > 214214P, PDR, 2HP > 623HP"
     },
     {
       "combo": "Any Medium/Heavy Starter > 236KK, HP Shoryuken > 236236K",
-      "section": "SUPER ART COMBO ROUTES",
+      "section": "SUPER ART COMBO ROUTES / SA3/CA: Shin Shoryuken",
       "superMeter": "Any Medium/Heavy Starter > 236KK, HP Shoryuken > 236236K"
     },
     {
       "combo": "Any Medium/Heavy Starter > DRC, 5HP, 4HP > 236HK > 236236K",
-      "section": "SUPER ART COMBO ROUTES",
+      "section": "SUPER ART COMBO ROUTES / SA3/CA: Shin Shoryuken",
       "superMeter": "Any Medium/Heavy Starter > DRC, 5HP, 4HP > 236HK > 236236K"
     },
     {
       "combo": "Any Medium/Heavy Starter > DRC, 5HP, 4HP > 236HK, 623MP, 236236K",
-      "section": "SUPER ART COMBO ROUTES",
+      "section": "SUPER ART COMBO ROUTES / SA3/CA: Shin Shoryuken",
       "superMeter": "Any Medium/Heavy Starter > DRC, 5HP, 4HP > 236HK, 623MP, 236236K"
     },
     {
       "combo": "jHP/jHK, 5HP > DRC, 5HK, 5HP > DRC, 5HP, 4HP > 236HK, 623MP, 236236K",
-      "section": "SUPER ART COMBO ROUTES",
+      "section": "SUPER ART COMBO ROUTES / SA3/CA: Shin Shoryuken",
       "superMeter": "jHP/jHK, 5HP > DRC, 5HK, 5HP > DRC, 5HP, 4HP > 236HK, 623MP, 236236K"
     },
     {
       "combo": "PDR, 6MP, 5MP > 214MK/236MK/623HP",
-      "section": "DRIVE RUSH COMBOS",
+      "section": "DRIVE RUSH COMBOS / Parry Drive Rush",
       "driveMeter": "PDR, 6MP, 5MP > 214MK/236MK/623HP"
     },
     {
       "combo": "PDR, 2MK, 5LK > 214MK/236LK",
-      "section": "DRIVE RUSH COMBOS",
+      "section": "DRIVE RUSH COMBOS / Parry Drive Rush",
       "driveMeter": "PDR, 2MK, 5LK > 214MK/236LK"
     },
     {
       "combo": "Any Medium starter > 236KK, PDR, 5MP, 6HK > 214K, safe jump",
-      "section": "DRIVE RUSH COMBOS",
+      "section": "DRIVE RUSH COMBOS / Parry Drive Rush",
       "driveMeter": "Any Medium starter > 236KK, PDR, 5MP, 6HK > 214K, safe jump"
     },
     {
       "combo": "Starter > 214KK, PDR, 5MP/2MP > 214MP, 623HP",
-      "section": "DRIVE RUSH COMBOS",
+      "section": "DRIVE RUSH COMBOS / Parry Drive Rush",
       "driveMeter": "Starter > 214KK, PDR, 5MP/2MP > 214MP, 623HP"
     },
     {
       "combo": "Any Light Starter > DRC, 5LP, 4HP > 236HK/623HP/(236HK, 623MP)",
-      "section": "DRIVE RUSH COMBOS",
+      "section": "DRIVE RUSH COMBOS / Drive Rush Cancel",
       "driveMeter": "Any Light Starter > DRC, 5LP, 4HP > 236HK/623HP/(236HK, 623MP)"
     },
     {
       "combo": "Any Medium/Heavy Starter > DRC, 5HP, 4HP > 236HK/623HP",
-      "section": "DRIVE RUSH COMBOS",
+      "section": "DRIVE RUSH COMBOS / Drive Rush Cancel",
       "driveMeter": "Any Medium/Heavy Starter > DRC, 5HP, 4HP > 236HK/623HP"
     },
     {
       "combo": "PC (DI or 5HK), 5HP > DRC, 5HK > 5HP > DRC, 5HK > 5HP > 623HP > 236236K",
-      "section": "DRIVE RUSH COMBOS",
+      "section": "DRIVE RUSH COMBOS / Drive Rush Cancel",
       "driveMeter": "PC (DI or 5HK), 5HP > DRC, 5HK > 5HP > DRC, 5HK > 5HP > 623HP > 236236K"
     },
     {
       "combo": "PC (DI or 5HK), 5HP > DRC, 5HK, 5HP > DRC, 5HP, 4HP > 236HK, 623MP > 236236K",
-      "section": "DRIVE RUSH COMBOS",
+      "section": "DRIVE RUSH COMBOS / Drive Rush Cancel",
       "driveMeter": "PC (DI or 5HK), 5HP > DRC, 5HK, 5HP > DRC, 5HP, 4HP > 236HK, 623MP > 236236K"
     },
     {
       "combo": "Any Starter > 214KK, PDR, 2MP, DRC, 2HP, 236HK, 623HP > 236236K",
-      "section": "DRIVE RUSH COMBOS",
+      "section": "DRIVE RUSH COMBOS / Drive Rush Cancel",
       "driveMeter": "Any Starter > 214KK, PDR, 2MP, DRC, 2HP, 236HK, 623HP > 236236K"
     },
     {
       "combo": "PC Drive Impact, 5HK, 2MK > 623HP/(Denjin 214P, PDR, 5HP > 214LP, 2HK)",
-      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "section": "DRIVE IMPACT AND STUN COMBOS / Drive Impact crumple",
       "driveMeter": "PC Drive Impact, 5HK, 2MK > 623HP/(Denjin 214P, PDR, 5HP > 214LP, 2HK)"
     },
     {
       "combo": "PC Drive Impact, 6HP, 2MP, 5LK > 236LK",
-      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "section": "DRIVE IMPACT AND STUN COMBOS / Drive Impact crumple",
       "driveMeter": "PC Drive Impact, 6HP, 2MP, 5LK > 236LK"
     },
     {
       "combo": "PC Drive Impact, dash, 2HP > 214MP, 623HP",
-      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "section": "DRIVE IMPACT AND STUN COMBOS / Drive Impact crumple",
       "driveMeter": "PC Drive Impact, dash, 2HP > 214MP, 623HP"
     },
     {
       "combo": "PC Drive Impact, 6HP, 2MP > Denjin 214P, 214LP, 623LP",
-      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "section": "DRIVE IMPACT AND STUN COMBOS / Drive Impact crumple",
       "driveMeter": "PC Drive Impact, 6HP, 2MP > Denjin 214P, 214LP, 623LP"
     },
     {
       "combo": "PC Drive Impact, neutral jump, 8HP, 6HK > 214KK, (623P/236236P/236236K)",
-      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "section": "DRIVE IMPACT AND STUN COMBOS / Drive Impact crumple",
       "driveMeter": "PC Drive Impact, neutral jump, 8HP, 6HK > 214KK, (623P/236236P/236236K)"
     },
     {
       "combo": "PC Drive Impact, 5HK, 2MK > Denjin 214PP, 5HP > 623HP",
-      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "section": "DRIVE IMPACT AND STUN COMBOS / Drive Impact crumple",
       "driveMeter": "PC Drive Impact, 5HK, 2MK > Denjin 214PP, 5HP > 623HP"
     },
     {
       "combo": "PC Drive Impact, 5HK, 2MK > Denjin 214PP, dash, 2HP > 214LP, 623HP",
-      "section": "DRIVE IMPACT AND STUN COMBOS",
+      "section": "DRIVE IMPACT AND STUN COMBOS / Drive Impact crumple",
       "driveMeter": "PC Drive Impact, 5HK, 2MK > Denjin 214PP, dash, 2HP > 214LP, 623HP"
     },
     {
       "combo": "Wall Splat, 5HP > 214MP, 623HP",
-      "section": "DRIVE IMPACT AND STUN COMBOS"
+      "section": "DRIVE IMPACT AND STUN COMBOS / Wall Splat"
     },
     {
       "combo": "Wall Splat, 5HP > Denjin 214P, j.MP (2nd hit) > ( 214K/214KK, Super 1 or 3 )",
-      "section": "DRIVE IMPACT AND STUN COMBOS"
+      "section": "DRIVE IMPACT AND STUN COMBOS / Wall Splat"
     },
     {
       "combo": "Wall Splat, 5HP > Denjin 214P, PDR, 4HP > 236MK, 623MP",
-      "section": "DRIVE IMPACT AND STUN COMBOS"
+      "section": "DRIVE IMPACT AND STUN COMBOS / Wall Splat"
     },
     {
       "combo": "Denjin Charge (DC), j.HP, 4HP > 236HK, 623MP",
-      "section": "DRIVE IMPACT AND STUN COMBOS"
+      "section": "DRIVE IMPACT AND STUN COMBOS / Stun"
     },
     {
       "combo": "DC, j.HP, 5HP > Denjin 214PP, dash/walk, 5HP > 214MP, 623HP > SA3",
-      "section": "DRIVE IMPACT AND STUN COMBOS"
+      "section": "DRIVE IMPACT AND STUN COMBOS / Stun"
     },
     {
       "combo": "DC, j.HK, 5HK, 2MK > 214KK, PDR, 5MP > Denjin 214P, j.MP (2nd hit) > 214KK, SA1 or 3",
-      "section": "DRIVE IMPACT AND STUN COMBOS"
+      "section": "DRIVE IMPACT AND STUN COMBOS / Stun"
     },
     {
       "combo": "DC, j.HK, 5HP > Denjin 214PP, 5HP > DRC, 5HK, 5HP > DRC, 5HP, 4HP > 236HK, 623MP > SA3",
-      "section": "DRIVE IMPACT AND STUN COMBOS"
+      "section": "DRIVE IMPACT AND STUN COMBOS / Stun"
     },
     {
       "combo": "DC, Full Charge 214214P, PDR, 2HP > DRC, 2HP > 236MK, 623HP/236236P",
-      "section": "DRIVE IMPACT AND STUN COMBOS"
+      "section": "DRIVE IMPACT AND STUN COMBOS / Stun"
     },
     {
       "combo": "PC 214PP, 4HP ( > DRC, 5HK, 5HP)x2 > 623HP > 236236K",
@@ -320,7 +539,17 @@
       "notes": "At midscreen with Denjin Charge available, Ryu can revert to a simplified Punish Counter route starting with 5HK and still cash out for more than without Denjin Charge. Be aware of unique recovery states where the opponent may be crouching, as this will cause 5HK to whiff."
     },
     {
-      "combo": "PC 5HK, 5HP > Denjin 214PP, 5HP > 214KK, PDR, 2MP > DRC, 2HP > 236HK, 623HP > 236236K",
+      "combo": "PC 5HK, 5HP > Denjin 214PP, 5HP > 214KK, PDR, 2MP > DRC, 2HP > 236HK,",
+      "section": "MAX DAMAGE PUNISHES",
+      "position": "Corner",
+      "damage": "6767/7017(CA)",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Hard",
+      "notes": "This is Ryu's max damage full resource dump from a PC 5HK in the corner when Denjin Charge is available. With CA it breaks 7k damage."
+    },
+    {
+      "combo": "623HP > 236236K",
       "section": "MAX DAMAGE PUNISHES",
       "position": "Corner",
       "damage": "6767/7017(CA)",
@@ -383,289 +612,908 @@
     },
     {
       "combo": "HP/DC Hasho, ( 214MK/236MK/PDR, 5HP > 214LP, 2HK )",
-      "section": "ADVANCED/NICHE COMBOS"
+      "section": "ADVANCED/NICHE COMBOS / Hashogeki Juggles"
     },
     {
       "combo": "HP/DC Hasho, PDR, ( 4HK > 214MK, forward dash / 5LP, 6HK > 214K, safe jump )",
-      "section": "ADVANCED/NICHE COMBOS"
+      "section": "ADVANCED/NICHE COMBOS / Hashogeki Juggles"
     },
     {
       "combo": "CH LP/MP Hasho, ( PDR, 2MP > 214MK OR 236MK/236236P )",
-      "section": "ADVANCED/NICHE COMBOS"
+      "section": "ADVANCED/NICHE COMBOS / Hashogeki Juggles"
     },
     {
       "combo": "HP/DC Hasho, PDR, 5HP > DRC, 4HP > 236HK ( > 236236K )",
-      "section": "ADVANCED/NICHE COMBOS"
+      "section": "ADVANCED/NICHE COMBOS / Hashogeki Juggles"
     },
     {
       "combo": "CH LP/MP Hasho, ( PDR, 2MP > DRC, 5HP > 236HK ( > 236236K )",
-      "section": "ADVANCED/NICHE COMBOS"
+      "section": "ADVANCED/NICHE COMBOS / Hashogeki Juggles"
     },
     {
       "combo": "HP/DC Hasho, 214LP, 623LP ( > 236236K )",
-      "section": "ADVANCED/NICHE COMBOS"
+      "section": "ADVANCED/NICHE COMBOS / Hashogeki Juggles"
     },
     {
       "combo": "HP/DC Hasho, PDR, 5HP > 214MP, 623HP ( > 236236K )",
-      "section": "ADVANCED/NICHE COMBOS"
+      "section": "ADVANCED/NICHE COMBOS / Hashogeki Juggles"
     },
     {
       "combo": "CH LP/MP Hasho, ( PDR, 2MP > DRC, dl.5HP > 214MP, 623HP ( > 236236K )",
-      "section": "ADVANCED/NICHE COMBOS"
+      "section": "ADVANCED/NICHE COMBOS / Hashogeki Juggles"
     },
     {
-      "combo": "CH LP/MP Hasho, PDR, 2MP > Denjin 214HP, PDR , 5HP > DRC, 5HP > DRC, dl.5HP > 236HK, 623HP > 236236K",
-      "section": "ADVANCED/NICHE COMBOS"
+      "combo": "CH LP/MP Hasho, PDR, 2MP > Denjin 214HP,",
+      "section": "ADVANCED/NICHE COMBOS / Hashogeki Juggles"
     },
     {
-      "combo": "rising j.MP, 2nd Hit => 214K/214KK (corner only, 623HP/236236P/236236K)",
-      "section": "ADVANCED/NICHE COMBOS"
+      "combo": "PDR , 5HP > DRC, 5HP > DRC, dl.5HP > 236HK, 623HP > 236236K",
+      "section": "ADVANCED/NICHE COMBOS / Hashogeki Juggles"
     },
     {
-      "combo": "mid-jump, j.MP => 623HP/236236K",
-      "section": "ADVANCED/NICHE COMBOS"
+      "combo": "rising j.MP, 2nd Hit",
+      "section": "ADVANCED/NICHE COMBOS / j.MP Air-To-Air Juggles",
+      "position": "Anywhere/Corner",
+      "damage": "1600 / 2200 /",
+      "superMeter": "0/1/3",
+      "driveMeter": "0/",
+      "difficulty": "Easy/Medium",
+      "notes": "By far the easiest juggle to perform reliably in a match, as it can be scored from a reaction anti-air j.MP. By itself, this does decent anti-air damage, but buffing the ender with OD Aerial Tatsu or extending it in the corner with Super Art 1 provides excellent value for meter."
     },
     {
-      "combo": "exiting peak of jump, j.MP => forward jump j.MP (2nd hit) > 214K/214KK/236LK > SA3",
-      "section": "ADVANCED/NICHE COMBOS"
+      "combo": "=> 214K/214KK (corner only, 623HP/236236P/236236K)",
+      "section": "ADVANCED/NICHE COMBOS / j.MP Air-To-Air Juggles",
+      "position": "Anywhere/Corner",
+      "damage": "(2720 / 3500 / 4800)",
+      "superMeter": "0/1/3",
+      "driveMeter": "0/",
+      "difficulty": "Easy/Medium",
+      "notes": "By far the easiest juggle to perform reliably in a match, as it can be scored from a reaction anti-air j.MP. By itself, this does decent anti-air damage, but buffing the ender with OD Aerial Tatsu or extending it in the corner with Super Art 1 provides excellent value for meter."
     },
     {
-      "combo": "exiting peak of jump, j.MP => forward jump j.MP > 214K/214KK, 236236P/236236K/214LP, 623LP > 236236K",
-      "section": "ADVANCED/NICHE COMBOS"
+      "combo": "mid-jump, j.MP",
+      "section": "ADVANCED/NICHE COMBOS / j.MP Air-To-Air Juggles",
+      "position": "Anywhere",
+      "damage": "2100 / 4700",
+      "superMeter": "0/3",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "A less practical juggle to perform in match as it requires Ryu to be at the peak of his jump height in proximity to the opponent. If you are in this situation, leave the j.MP uncanceled and land, before performing a HP Shoryuken. The 5-frame startup LP Shoryuken is a safer meterless option for when the opponent is too close to the ground, and the 6-frame SA3 is a big damage juggle."
+    },
+    {
+      "combo": "=> 623HP/236236K",
+      "section": "ADVANCED/NICHE COMBOS / j.MP Air-To-Air Juggles",
+      "position": "Anywhere",
+      "damage": "2100 / 4700",
+      "superMeter": "0/3",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "A less practical juggle to perform in match as it requires Ryu to be at the peak of his jump height in proximity to the opponent. If you are in this situation, leave the j.MP uncanceled and land, before performing a HP Shoryuken. The 5-frame startup LP Shoryuken is a safer meterless option for when the opponent is too close to the ground, and the 6-frame SA3 is a big damage juggle."
+    },
+    {
+      "combo": "exiting peak of jump, j.MP",
+      "section": "ADVANCED/NICHE COMBOS / j.MP Air-To-Air Juggles",
+      "position": "Midscreen",
+      "damage": "2120 / 2600 / 4600",
+      "superMeter": "0/3",
+      "driveMeter": "0/",
+      "difficulty": "Hard",
+      "notes": "The juggles that you are least likely to see because of how deep into Ryu's jump arc the opening hit must be, these are the \"last moment\" j.MP air-to-air juggles."
+    },
+    {
+      "combo": "=> forward jump j.MP (2nd hit) > 214K/214KK/236LK > SA3",
+      "section": "ADVANCED/NICHE COMBOS / j.MP Air-To-Air Juggles",
+      "position": "Midscreen",
+      "damage": "2120 / 2600 / 4600",
+      "superMeter": "0/3",
+      "driveMeter": "0/",
+      "difficulty": "Hard",
+      "notes": "The juggles that you are least likely to see because of how deep into Ryu's jump arc the opening hit must be, these are the \"last moment\" j.MP air-to-air juggles."
+    },
+    {
+      "combo": "=> forward jump j.MP > 214K/214KK, 236236P/236236K/214LP, 623LP > 236236K",
+      "section": "ADVANCED/NICHE COMBOS / j.MP Air-To-Air Juggles",
+      "position": "Corner",
+      "damage": "3700 / 4800 / 4680",
+      "superMeter": "0/1/3",
+      "driveMeter": "0/",
+      "difficulty": "Hard",
+      "notes": "These are the possible corner extensions for the above \"last moment\" j.MP air-to-air juggles."
     },
     {
       "combo": "2L ~ 2L ~ 5L > 623H/6S",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Anywhere",
+      "damage": "1490/1322",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "Your basic light confirm into H Shoryuken. Modern Ryu can only access 2LP as a chain from 5L/2L. The simplified input 6S does less damage than the manual input."
     },
     {
       "combo": "2L ~ 2L ~ 2L > 4S/(A[4S], 623H)",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Anywhere/Corner",
+      "damage": "1130/1830",
+      "superMeter": "0",
+      "driveMeter": "0 /",
+      "difficulty": "Very Easy",
+      "notes": "Modern Ryu can only access 2LP as a chain from 2L, and can only access M Tatsu//OD Tatsu with the 4S/A[4S] input (L Tatsu and H Tatsu are both unavailable)."
     },
     {
       "combo": "5L ~ 5L ~ 2L > 4S",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Anywhere",
+      "damage": "1230",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "Due to Modern Ryu not having immediate access to 2LP, his only readily-available 4-frame normal is 5L. This can be chained into 2L to make the combo into 4S possible."
     },
     {
       "combo": "A[L ~ L]",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Anywhere",
+      "damage": "1180",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "Modern Ryu's Light Assisted-Combo, equivalent to 5LK > 236LK. This assisted-combo is the only way that Modern Ryu can access 236LK, an important tool that gives a safe-jump setup in the corner."
     },
     {
       "combo": "(A[L] / 5L ~ 2L) > 214L ( > 236236H )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Anywhere",
+      "damage": "860/1030/3030",
+      "superMeter": "0/3",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "All versions of Ryu's Hashogeki are available with a manual input and a corresponding L, M or H input. As well as being crucial for burn-out loops, any cancelable L normal into L Hashogeki is a confirm into Super Art 3."
     },
     {
       "combo": "CH 5L, ( A[L ~ L] / A[L] > 4S )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Anywhere",
+      "damage": "1160/1370",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Counter-hit fishing with Modern Ryu's 4-frame 5L into A[L] can vastly expand the possible combo routes..."
     },
     {
       "combo": "CH 5L, A[M] > ( 2S / A[2S], 4H > 623H / A[2S], 6H > 214X )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Anywhere/Midscreen",
+      "damage": "1512/2138/2133",
+      "superMeter": "0",
+      "driveMeter": "0 /",
+      "difficulty": "Easy",
+      "notes": "...including into Medium links for higher-damage extensions. Note that Modern Ryu also has the crucial hop-kick command normal as 6H, so he can still access the 6H > Aerial Tatsu juggle for good oki."
     },
     {
-      "combo": "CH 214L, PDR A[ M ] > 623H CH 214L, PDR A[ M ] > 4S CH 214L, PDR 5M > 214M, 623H ( > 236236H)!TRADE! CH 214L, PDR 5H > 623H!TRADE! CH 214L, PDR 5H > 214M, 623H ( > 236236H)",
-      "section": "MODERN CONTROLS COMBOS"
+      "combo": "CH 214L, PDR A[ M ] > 623H",
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Anywhere",
+      "damage": "2320",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "214L launches on Counter-Hit, a very common occurence. 214L is a frame trap from the chained 2L and A[ L ] (5L > 214L can trade w/ 4-frame normals, which is actually beneficial as Ryu recovers faster after getting hit, allowing juggles into Heavy normals out of PDR)"
+    },
+    {
+      "combo": "CH 214L, PDR A[ M ] > 4S",
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Anywhere",
+      "damage": "1890",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "214L launches on Counter-Hit, a very common occurence. 214L is a frame trap from the chained 2L and A[ L ] (5L > 214L can trade w/ 4-frame normals, which is actually beneficial as Ryu recovers faster after getting hit, allowing juggles into Heavy normals out of PDR)"
+    },
+    {
+      "combo": "CH 214L, PDR 5M > 214M, 623H ( > 236236H)",
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Corner",
+      "damage": "2720 (4720)",
+      "superMeter": "0 (3)",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "214L launches on Counter-Hit, a very common occurence. 214L is a frame trap from the chained 2L and A[ L ] (5L > 214L can trade w/ 4-frame normals, which is actually beneficial as Ryu recovers faster after getting hit, allowing juggles into Heavy normals out of PDR)"
+    },
+    {
+      "combo": "!TRADE! CH 214L, PDR 5H > 623H",
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Anywhere",
+      "damage": "2472",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "214L launches on Counter-Hit, a very common occurence. 214L is a frame trap from the chained 2L and A[ L ] (5L > 214L can trade w/ 4-frame normals, which is actually beneficial as Ryu recovers faster after getting hit, allowing juggles into Heavy normals out of PDR)"
+    },
+    {
+      "combo": "!TRADE! CH 214L, PDR 5H > 214M, 623H ( > 236236H)",
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Corner",
+      "damage": "2890 (4890)",
+      "superMeter": "0 (3)",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "214L launches on Counter-Hit, a very common occurence. 214L is a frame trap from the chained 2L and A[ L ] (5L > 214L can trade w/ 4-frame normals, which is actually beneficial as Ryu recovers faster after getting hit, allowing juggles into Heavy normals out of PDR)"
     },
     {
       "combo": "PC 5L, 2M > (4S / 623H / A[2S], 4H > 623H )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Anywhere/Midscreen",
+      "damage": "1320/1740/2058",
+      "superMeter": "0",
+      "driveMeter": "0 /",
+      "difficulty": "Easy",
+      "notes": "Modern Ryu gets much the same combo routes as Classic Ryu does from a Punish Counter 5L, the only difference being some damage reduction on M Tatsu and OD Donkey Kick due to having to use the simplified input to access those moves."
     },
     {
       "combo": "PC A[L] > ( 2S / (A[2S], 4H > 623H / Denjin 214XX, dash, 2H > 623H )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Light Starter",
+      "position": "Anywhere/Midscreen",
+      "damage": "1128/1902/2500",
+      "superMeter": "0",
+      "driveMeter": "0 /",
+      "difficulty": "Easy",
+      "notes": "Punish Counter enables links from A[L] into Ryu's OD specials, useful for moves that leave the opponent at -5 or worse but can be spaced beyond 5L's range (e.g. Bison's L and M Scissor Kicks). This also creates strong cashouts for Ryu's Denjin Charge if it is stocked."
     },
     {
       "combo": "2M > ( 4S / 2S / A[2S] > 4H > 623H )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Medium Starter",
+      "position": "Anywhere/Midscreen",
+      "damage": "1140/1268/2042",
+      "superMeter": "0",
+      "driveMeter": "0 /",
+      "difficulty": "Very Easy",
+      "notes": "Modern Ryu retains the classic 2MK as 2M. This can combo into any of Ryu's Light, Medium and OD specials, as well as 623H in many combos. The listed combos are just some examples of possible links."
     },
     {
       "combo": "2M > ( 236L / 236M / 236HP / 236PP )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "980/1140",
+      "superMeter": "0",
+      "driveMeter": "0 /",
+      "difficulty": "Very Easy",
+      "notes": "As yet unmentioned, Ryu's other manual input special aside from Hashogeki and Shoryuken is Hadoken. Due to buffs to Ryu's Crouching Medium Kick > Hadoken cancel, 2M > 236H is a true blockstring and 2M > 236L/236M is DI-safe. Using the manual input to access all versions of the special is therefore crucial to accessing the best of Modern Ryu."
     },
     {
       "combo": "5M, A[ M ] > ( 4S / 2S / 623H / A[ 2S ], 4H > 623H )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "1840/1968/2320/2742",
+      "superMeter": "0",
+      "driveMeter": "0 /",
+      "difficulty": "Very Easy",
+      "notes": "Ryu's Standing Medium Punch, Crouching Medium Punch link is retained in Modern as 5M, A[ M ] and allows much the same combos with the standard damage reduction applied to simple inputs for some specials. Note that Modern Ryu does not have access to 4HP, so this is the best link Modern Ryu gets from 5M."
     },
     {
       "combo": "A[ M ~ M ~ M ], ( w/ Denjin charge, corner-only) 6H > 214X",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "3730 / 4900",
+      "superMeter": "2",
+      "driveMeter": "0 /",
+      "difficulty": "Very Easy",
+      "notes": "Modern Ryu's Medium Auto-Combo is equivalent to 2MP > OD Hashogeki > Super Art 2. Holding down either the M or AUTO input allows the Super to be charged slightly for extra damage. If Denjin Charge is held, the OD Hashogeki will crumple the opponent, allowing extensions w/ 6H or Parry Drive Rush in the corner."
     },
     {
       "combo": "A[ M ], ( A[ L ~ L ] / A[ L ] > 4S )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "1780 / 1540",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "A[ M ], Crouching Medium Punch, is +5 on hit, allowing a link into Ryu's Light Auto-Combo or any other cancel route from A[ L ]."
     },
     {
       "combo": "CH 5M, 2H > ( 4S / 2S / A[2S] > 4H > 623H )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "2160/2288/3062",
+      "superMeter": "0",
+      "driveMeter": "0 /",
+      "difficulty": "Easy",
+      "notes": "On Counter-Hit, 5M will link into 2H. This requires close-range or else the 2H can whiff, so this can be substituted with 2M instead with all worthwhile follow-ups still available if spaced out"
     },
     {
       "combo": "PC 5M, 5H ~ H ~ 2X",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "2320",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "An available combo that stock a Denjin charge and gives good oki in the corner, can also be used after connecting with a PDR/DRC 5M due to the extra frame advantage"
     },
     {
       "combo": "PC 5M, 5H > ( 623H / A[ 2S ], 4H > 623H )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Medium Starter",
+      "position": "Anywhere",
+      "damage": "2640/3062",
+      "superMeter": "0",
+      "driveMeter": "0 /",
+      "difficulty": "Very Easy",
+      "notes": "A simple high-damage combo that can be performed off a PC 5M."
     },
     {
       "combo": "A[ H ~ H ~ H ~ H ]",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere",
+      "damage": "4440",
+      "superMeter": "3",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "Modern Ryu's Heavy Auto-Combo is equivalent to A[ H ], A[ M ] > 214M > 236236H."
     },
     {
       "combo": "A[ H ], A[ M ], ( A[ L ~ L ] / A[ L ] > 4S )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere",
+      "damage": "2410/2200",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Due to Modern Ryu lacking 5HK and 4HP, his combos involving Heavy normals are much less versatile than on Classic. Much of his combo potential in Modern revolves around A[ H ]. The simplest such example is this combo featuring Ryu's Auto normals being linked in descending order of strength. Alternatively, M Tatsu can be canceled into from A[ L ] instead of completing the Auto-Combo."
     },
     {
-      "combo": "A[ H ], A[ M ] > A[ 2S ], 4H > 623HA[ H ], A[ M ] > Denjin 214H, ( 4S / 2S )A[ H ], A[ M ] > Denjin 214XX, dash, 2H > 623H",
-      "section": "MODERN CONTROLS COMBOS"
+      "combo": "A[ H ], A[ M ] > A[ 2S ], 4H > 623H",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Midscreen / Anywhere",
+      "damage": "2942",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Stopping the descending Auto-Combo pattern at A[ M ] allows for extended combos with either OD Donkey Kick or Denjin-charged Hashogeki. Parry Drive Rush can also be used to extend combos from non-OD Denjin-Charged Hashogeki."
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214H, ( 4S / 2S )",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Midscreen / Anywhere",
+      "damage": "2600/2712",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Stopping the descending Auto-Combo pattern at A[ M ] allows for extended combos with either OD Donkey Kick or Denjin-charged Hashogeki. Parry Drive Rush can also be used to extend combos from non-OD Denjin-Charged Hashogeki."
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214XX, dash, 2H > 623H",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Midscreen / Anywhere",
+      "damage": "3440",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Stopping the descending Auto-Combo pattern at A[ M ] allows for extended combos with either OD Donkey Kick or Denjin-charged Hashogeki. Parry Drive Rush can also be used to extend combos from non-OD Denjin-Charged Hashogeki."
     },
     {
       "combo": "6H > 214X",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere",
+      "damage": "1700",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Much like 5H, 6H is a confirmable normal, and can be combo into Aerial Tatsu on hit. Failing to confirm this normal will leave Ryu extremely punishable at close-range."
     },
     {
-      "combo": "CH 5H, ( A[ L ~ L ] / A[ L ] > 4S )CH 5H, A[ L ] > A[ 4S ], 623H / 236236L",
-      "section": "MODERN CONTROLS COMBOS"
+      "combo": "CH 5H, ( A[ L ~ L ] / A[ L ] > 4S )",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere/Corner",
+      "damage": "2140/1900",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "On Counter-Hit, 5H has frame advantage of +6, allowing Ryu's far-reaching A[ L ] to combo into either its full Auto-Combo or a 4S ender. Both of these give excellent oki opportunities in the corner, and as 5H is an excellent meaty attack, opportunities to land this combo should be easy to find in matches. While in the corner itself, a combo extension with OD Tatsu is also available"
     },
     {
-      "combo": "PC 5H, 2M > ( 4S / 2S )PC 5H, 2M > A[ 4S ], 623H )",
-      "section": "MODERN CONTROLS COMBOS"
+      "combo": "CH 5H, A[ L ] > A[ 4S ], 623H / 236236L",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere/Corner",
+      "damage": "2880/3300",
+      "superMeter": "0 / 1",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "On Counter-Hit, 5H has frame advantage of +6, allowing Ryu's far-reaching A[ L ] to combo into either its full Auto-Combo or a 4S ender. Both of these give excellent oki opportunities in the corner, and as 5H is an excellent meaty attack, opportunities to land this combo should be easy to find in matches. While in the corner itself, a combo extension with OD Tatsu is also available"
     },
     {
-      "combo": "PC 5H/2H > 214H, ( 4S / 2S )PC 5H/2H > 214H, 214L, 623L",
-      "section": "MODERN CONTROLS COMBOS"
+      "combo": "PC 5H, 2M > ( 4S / 2S )",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere/Corner",
+      "damage": "2100/2228",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "5H has pretty excellent range, and in those situations where it lands as a Punish Counter from farther out, it is possible to link 2M afterwards to make the most of the opportunity."
     },
     {
-      "combo": "PC 5H/2H > 214H, PDR 5H/4H > 623H ( > 236236h )PC 5H/2H > 214H, PDR [ 5H ~ H ] > Denjin ChargePC 5H/2H > 214H, PDR 5H > 4SPC 5H/2H > 214H, PDR 2H > DRC 6H > 214X, safe jump in cornerPC 5H/2H > 214H, PDR 5H > 214M, 623H ( > 236236H )",
-      "section": "MODERN CONTROLS COMBOS"
+      "combo": "PC 5H, 2M > A[ 4S ], 623H )",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere/Corner",
+      "damage": "3080",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "5H has pretty excellent range, and in those situations where it lands as a Punish Counter from farther out, it is possible to link 2M afterwards to make the most of the opportunity."
     },
     {
-      "combo": "PC 6H, ( A[ L ~ L ] / A[ L ] > 4S )PC 6H, A[ L ] > A[ 4S ], 623H / 236236L",
-      "section": "MODERN CONTROLS COMBOS"
+      "combo": "PC 5H/2H > 214H, ( 4S / 2S )",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere",
+      "damage": "2400/2528",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "H Hashogeki does not naturally combo out of Ryu's Heavy normals, but on Punish Counter it will combo out of both 5H and 2H. This is most easily achieved following a Perfect Parry. However, without access to the 7-frame 4HP, Modern Ryu may struggle to punish certain attacks on Perfect Parry, such as safe jabs, with this sequence and may be forced to use a punish combo starting from a Medium attack instead."
+    },
+    {
+      "combo": "PC 5H/2H > 214H, 214L, 623L",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Corner",
+      "damage": "3090",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "H Hashogeki does not naturally combo out of Ryu's Heavy normals, but on Punish Counter it will combo out of both 5H and 2H. This is most easily achieved following a Perfect Parry. However, without access to the 7-frame 4HP, Modern Ryu may struggle to punish certain attacks on Perfect Parry, such as safe jabs, with this sequence and may be forced to use a punish combo starting from a Medium attack instead."
+    },
+    {
+      "combo": "PC 5H/2H > 214H, PDR 5H/4H > 623H ( > 236236h )",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere",
+      "damage": "3130 (5130)",
+      "superMeter": "0 (3)",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Due to lacking key Heavy normals, Modern Ryu is more reliant on PC [ 5H/2H > 214H ] launches to eke out damage. A Parry Drive Rush is required to get the most out of this opportunity, and it can be converted for either damage (623H), oki (4S), a Denjin Charge w/ oki in the corner ((5H ~ H) or a safe jump route in the corner (6H > 214X). Even with a smaller pool of normals, the possibilities here are numerous and worth experimenting with"
+    },
+    {
+      "combo": "PC 5H/2H > 214H, PDR [ 5H ~ H ] > Denjin Charge",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere",
+      "damage": "2894",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Due to lacking key Heavy normals, Modern Ryu is more reliant on PC [ 5H/2H > 214H ] launches to eke out damage. A Parry Drive Rush is required to get the most out of this opportunity, and it can be converted for either damage (623H), oki (4S), a Denjin Charge w/ oki in the corner ((5H ~ H) or a safe jump route in the corner (6H > 214X). Even with a smaller pool of normals, the possibilities here are numerous and worth experimenting with"
+    },
+    {
+      "combo": "PC 5H/2H > 214H, PDR 5H > 4S",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere",
+      "damage": "2774",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Due to lacking key Heavy normals, Modern Ryu is more reliant on PC [ 5H/2H > 214H ] launches to eke out damage. A Parry Drive Rush is required to get the most out of this opportunity, and it can be converted for either damage (623H), oki (4S), a Denjin Charge w/ oki in the corner ((5H ~ H) or a safe jump route in the corner (6H > 214X). Even with a smaller pool of normals, the possibilities here are numerous and worth experimenting with"
+    },
+    {
+      "combo": "PC 5H/2H > 214H, PDR 2H > DRC 6H > 214X, safe jump in corner",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Approaching Corner",
+      "damage": "3235",
+      "superMeter": "0",
+      "driveMeter": "4",
+      "difficulty": "Medium",
+      "notes": "Due to lacking key Heavy normals, Modern Ryu is more reliant on PC [ 5H/2H > 214H ] launches to eke out damage. A Parry Drive Rush is required to get the most out of this opportunity, and it can be converted for either damage (623H), oki (4S), a Denjin Charge w/ oki in the corner ((5H ~ H) or a safe jump route in the corner (6H > 214X). Even with a smaller pool of normals, the possibilities here are numerous and worth experimenting with"
+    },
+    {
+      "combo": "PC 5H/2H > 214H, PDR 5H > 214M, 623H ( > 236236H )",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Corner",
+      "damage": "3490 (5490)",
+      "superMeter": "0 (3)",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Due to lacking key Heavy normals, Modern Ryu is more reliant on PC [ 5H/2H > 214H ] launches to eke out damage. A Parry Drive Rush is required to get the most out of this opportunity, and it can be converted for either damage (623H), oki (4S), a Denjin Charge w/ oki in the corner ((5H ~ H) or a safe jump route in the corner (6H > 214X). Even with a smaller pool of normals, the possibilities here are numerous and worth experimenting with"
+    },
+    {
+      "combo": "PC 6H, ( A[ L ~ L ] / A[ L ] > 4S )",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere/Corner",
+      "damage": "2140/1900",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "The same links from a Counter-Hit 5H are available when 6H lands as a Punish Counter. As 6H has low-crush properties, this can happen quite often, especially vs players that are overly comfortable with pressing their character's low pokes"
+    },
+    {
+      "combo": "PC 6H, A[ L ] > A[ 4S ], 623H / 236236L",
+      "section": "MODERN CONTROLS COMBOS / Heavy Starter",
+      "position": "Anywhere/Corner",
+      "damage": "2880/3300",
+      "superMeter": "0 / 1",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "The same links from a Counter-Hit 5H are available when 6H lands as a Punish Counter. As 6H has low-crush properties, this can happen quite often, especially vs players that are overly comfortable with pressing their character's low pokes"
     },
     {
       "combo": "PDR 6M, 5M/A[M] > 4S/2S/623H",
-      "section": "MODERN CONTROLS COMBOS",
-      "driveMeter": "PDR 6M, 5M/A[M] > 4S/2S/623H"
+      "section": "MODERN CONTROLS COMBOS / Parry Drive Rush / Drive Rush Cancel Combos",
+      "position": "Anywhere",
+      "damage": "1840/1968/2320",
+      "superMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "The first half of Ryu's High/Low mixup out of a Parry Drive Rush. The PDR-enhanced overhead 6M is +3 on-block, allowing for follow-up pressure if the opponent successfully blocks"
     },
     {
       "combo": "PDR 2M, A[ L ~ L ] / A[ L ] > 4S",
-      "section": "MODERN CONTROLS COMBOS",
-      "driveMeter": "PDR 2M, A[ L ~ L ] / A[ L ] > 4S"
+      "section": "MODERN CONTROLS COMBOS / Parry Drive Rush / Drive Rush Cancel Combos",
+      "position": "Anywhere",
+      "damage": "##",
+      "superMeter": "0",
+      "difficulty": "Easy",
+      "notes": "The second half of Ryu's High/Low mixup out of a Parry Drive Rush. Note that unlike the PDR-enhanced overhead 6M, 2M is -2 on-block out of a Parry Drive Rush, so savvy opponents are likely to attempt to take their turn back"
     },
     {
       "combo": "Any Medium starter > A[ 2S ], PDR 5M, 6H > 214X, safe jump",
-      "section": "MODERN CONTROLS COMBOS",
-      "driveMeter": "Any Medium starter > A[ 2S ], PDR 5M, 6H > 214X, safe jump"
+      "section": "MODERN CONTROLS COMBOS / Parry Drive Rush / Drive Rush Cancel Combos",
+      "position": "Midscreen, approaching corner for safe jump",
+      "damage": "2052/2472",
+      "superMeter": "##",
+      "driveMeter": "x3",
+      "difficulty": "Medium",
+      "notes": "When standing just in front of the halfway point of the stage, Ryu can execute a safe-jump following an OD Donkey Kick combo. The damage varies greatly depending on if 2M or 5M/A[ M ] is used, with the former adding significant damage scaling"
     },
     {
       "combo": "Starter > A[ 4S ], PDR 5M, 214M, 623H",
-      "section": "MODERN CONTROLS COMBOS",
-      "driveMeter": "Starter > A[ 4S ], PDR 5M, 214M, 623H"
+      "section": "MODERN CONTROLS COMBOS / Parry Drive Rush / Drive Rush Cancel Combos",
+      "position": "Corner",
+      "damage": "2004/3194",
+      "superMeter": "0",
+      "driveMeter": "x3",
+      "difficulty": "Medium",
+      "notes": "A basic non-Super Parry Drive Rush extension following OD Tatsu in the corner. Can begin off Light, Medium or Heavy Starters. Damage tested with [ 2L > 5L > 5L ] and 5H starters"
     },
     {
       "combo": "Any Light starter > DRC 5L, 5M, ( A[ L ~ L ] )/( A[ M ] > 623H )",
-      "section": "MODERN CONTROLS COMBOS",
-      "driveMeter": "Any Light starter > DRC 5L, 5M, ( A[ L ~ L ] )/( A[ M ] > 623H )"
+      "section": "MODERN CONTROLS COMBOS / Parry Drive Rush / Drive Rush Cancel Combos",
+      "position": "Anywhere",
+      "damage": "1432/1609",
+      "superMeter": "0",
+      "driveMeter": "x3",
+      "difficulty": "Easy",
+      "notes": "Due to lacking the 7-frame startup 4HP, Modern Ryu's potential combo routes off a DRC'd Light normal are severely curtailed. His best option is the [ 5L, 5M ] route featured here, as it can link into either the L or M auto-normals."
     },
     {
       "combo": "Any Medium/Heavy starter > DRC 5H, ( 5M/A[ M ] > 623H ) / ( 5M, A[ L ~ L ] )",
-      "section": "MODERN CONTROLS COMBOS",
-      "driveMeter": "Any Medium/Heavy starter > DRC 5H, ( 5M/A[ M ] > 623H ) / ( 5M, A[ L ~ L ] )"
+      "section": "MODERN CONTROLS COMBOS / Parry Drive Rush / Drive Rush Cancel Combos",
+      "position": "Anywhere",
+      "damage": "2013 - 2714",
+      "superMeter": "0",
+      "driveMeter": "x3",
+      "difficulty": "Easy",
+      "notes": "The lack of 4HP similarly limits the potential routes into DRC 5H. The best option to link after DRC 5H is 5M as it can simply be canceled into a number of specials or can link into Modern Ryu's Light auto-combo. Damage tested with 2M and 5H starters"
     },
     {
       "combo": "PC ( DI / A[ H ] ) > ( DRC 5H, 5M )x2 > 623H > 236236H",
-      "section": "MODERN CONTROLS COMBOS",
-      "driveMeter": "PC ( DI / A[ H ] ) > ( DRC 5H, 5M )x2 > 623H > 236236H"
+      "section": "MODERN CONTROLS COMBOS / Parry Drive Rush / Drive Rush Cancel Combos",
+      "position": "Anywhere",
+      "damage": "5268/5794",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Easy",
+      "notes": "The need to interchange Medium and Heavy normals during Modern Ryu's Drive Rush Cancel combos severely impacts the damage output, even from an ideal starter. Notably, Modern Ryu can only combo into his Heavy normals off a Punish Counter A[ H ] starter or a Punish Counter Drive Impact"
     },
     {
       "combo": "Any starter > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H",
-      "section": "MODERN CONTROLS COMBOS",
-      "driveMeter": "Any starter > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H"
+      "section": "MODERN CONTROLS COMBOS / Parry Drive Rush / Drive Rush Cancel Combos",
+      "position": "Corner",
+      "damage": "4132 - 5548",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Medium",
+      "notes": "Optimal corner combo following an OD Tatsu launch in the corner. Damage tested with [ 2L > 5L > 5L ] and 5H starters"
     },
     {
-      "combo": "A[ H ], A[ M ] > 623HA[ H ], A[ M ] > A[ 2S ], 4H > 623HA[ H ], A[ M ] > A[ 2S ], 4H > 236236LA[ H ], A[ M ] > A[ 2S ] > 214124M, hold, then release, ( 236236L )A[ H ], A[ M ] > A[ 2S ], 4H > 623H > 236236H",
-      "section": "MODERN CONTROLS COMBOS",
-      "driveMeter": "A[ H ], A[ M ] > 623HA[ H ], A[ M ] > A[ 2S ], 4H > 623HA[ H ], A[ M ] > A[ 2S ], 4H > 236236LA[ H ], A[ M ] > A[ 2S ] > 214124M, hold, then release, ( 236236L )A[ H ], A[ M ] > A[ 2S ], 4H > 623H > 236236H"
+      "combo": "A[ H ], A[ M ] > 623H",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Midscreen",
+      "damage": "2860",
+      "superMeter": "0 - 3",
+      "driveMeter": "0 / 2",
+      "difficulty": "Easy",
+      "notes": "Due to lacking 5HK in Modern, Ryu's primary option following a Drive Impact crumple is the A[ H ], A[ M ] link and all its potential follow-ups. Here are the highest damage midscreen options."
     },
     {
-      "combo": "A[ H ], A[ M ] > Denjin 214H, PDR 5H > 4SA[ H ], A[ M ] > Denjin 214XX, dash, 2H > 623HA[ H ], A[ M ] > Denjin 214H, PDR 5H > 214L, 236236LA[ H ], A[ M ] > Denjin 214XX > 214124M, hold, then release, ( 236236L )A[ H ], A[ M ] > Denjin 214H, PDR 5H > 2S > 236236H",
-      "section": "MODERN CONTROLS COMBOS",
-      "driveMeter": "A[ H ], A[ M ] > Denjin 214H, PDR 5H > 4SA[ H ], A[ M ] > Denjin 214XX, dash, 2H > 623HA[ H ], A[ M ] > Denjin 214H, PDR 5H > 214L, 236236LA[ H ], A[ M ] > Denjin 214XX > 214124M, hold, then release, ( 236236L )A[ H ], A[ M ] > Denjin 214H, PDR 5H > 2S > 236236H"
+      "combo": "A[ H ], A[ M ] > A[ 2S ], 4H > 623H",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Midscreen",
+      "damage": "3074",
+      "superMeter": "0 - 3",
+      "driveMeter": "0 / 2",
+      "difficulty": "Easy",
+      "notes": "Due to lacking 5HK in Modern, Ryu's primary option following a Drive Impact crumple is the A[ H ], A[ M ] link and all its potential follow-ups. Here are the highest damage midscreen options."
     },
     {
-      "combo": "dash, 2H > 214M, 623HA[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > 214M, 623HA[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > 214M, 236236LA[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H",
-      "section": "MODERN CONTROLS COMBOS",
-      "driveMeter": "dash, 2H > 214M, 623HA[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > 214M, 623HA[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > 214M, 236236LA[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H"
+      "combo": "A[ H ], A[ M ] > A[ 2S ], 4H > 236236L",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Midscreen",
+      "damage": "3384",
+      "superMeter": "0 - 3",
+      "driveMeter": "0 / 2",
+      "difficulty": "Easy",
+      "notes": "Due to lacking 5HK in Modern, Ryu's primary option following a Drive Impact crumple is the A[ H ], A[ M ] link and all its potential follow-ups. Here are the highest damage midscreen options."
     },
     {
-      "combo": "A[ H ], A[ M ] > Denjin 214H, 214L, 623LA[ H ], A[ M ] > Denjin 214XX, dash, 2H > 214L, 623HA[ H ], A[ M ] > Denjin 214XX, 214H, PDR A[ M ] > 214M, 236236LA[ H ], A[ M ] > Denjin 214XX > 214214M, hold, then release, PDR 2H > 214L, ( 623H / 236236L )A[ H ], A[ M ] > Denjin 214XX, 5H > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H",
-      "section": "MODERN CONTROLS COMBOS",
-      "driveMeter": "A[ H ], A[ M ] > Denjin 214H, 214L, 623LA[ H ], A[ M ] > Denjin 214XX, dash, 2H > 214L, 623HA[ H ], A[ M ] > Denjin 214XX, 214H, PDR A[ M ] > 214M, 236236LA[ H ], A[ M ] > Denjin 214XX > 214214M, hold, then release, PDR 2H > 214L, ( 623H / 236236L )A[ H ], A[ M ] > Denjin 214XX, 5H > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H"
+      "combo": "A[ H ], A[ M ] > A[ 2S ] > 214124M, hold, then release, ( 236236L )",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Midscreen",
+      "damage": "3754(4454)",
+      "superMeter": "0 - 3",
+      "driveMeter": "0 / 2",
+      "difficulty": "Easy",
+      "notes": "Due to lacking 5HK in Modern, Ryu's primary option following a Drive Impact crumple is the A[ H ], A[ M ] link and all its potential follow-ups. Here are the highest damage midscreen options."
+    },
+    {
+      "combo": "A[ H ], A[ M ] > A[ 2S ], 4H > 623H > 236236H",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Midscreen",
+      "damage": "5074",
+      "superMeter": "0 - 3",
+      "driveMeter": "0 / 2",
+      "difficulty": "Easy",
+      "notes": "Due to lacking 5HK in Modern, Ryu's primary option following a Drive Impact crumple is the A[ H ], A[ M ] link and all its potential follow-ups. Here are the highest damage midscreen options."
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214H, PDR 5H > 4S",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Midscreen",
+      "damage": "3160",
+      "superMeter": "0 - 3",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Alternative midscreen routing for when Denjin Charge is held"
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214XX, dash, 2H > 623H",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Midscreen",
+      "damage": "3460",
+      "superMeter": "0 - 3",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "Alternative midscreen routing for when Denjin Charge is held"
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214H, PDR 5H > 214L, 236236L",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Midscreen",
+      "damage": "3674",
+      "superMeter": "0 - 3",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Alternative midscreen routing for when Denjin Charge is held"
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214XX > 214124M, hold, then release, ( 236236L )",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Midscreen",
+      "damage": "4000(4800)",
+      "superMeter": "0 - 3",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "Alternative midscreen routing for when Denjin Charge is held"
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214H, PDR 5H > 2S > 236236H",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Midscreen",
+      "damage": "5160",
+      "superMeter": "0 - 3",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Alternative midscreen routing for when Denjin Charge is held"
+    },
+    {
+      "combo": "dash, 2H > 214M, 623H",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "3000",
+      "superMeter": "0 - 3",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Corner routing for Modern Ryu's post-DI crumple combos is actually very similar to Classic, due to the prevalence of Hashogeki juggles. As Modern Ryu uses Hashogeki with a manual input only, both damage and routing are largely unchanged."
+    },
+    {
+      "combo": "A[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > 214M, 623H",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "3374",
+      "superMeter": "0 - 3",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Corner routing for Modern Ryu's post-DI crumple combos is actually very similar to Classic, due to the prevalence of Hashogeki juggles. As Modern Ryu uses Hashogeki with a manual input only, both damage and routing are largely unchanged."
+    },
+    {
+      "combo": "A[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > 214M, 236236L",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "3624",
+      "superMeter": "0 - 3",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Corner routing for Modern Ryu's post-DI crumple combos is actually very similar to Classic, due to the prevalence of Hashogeki juggles. As Modern Ryu uses Hashogeki with a manual input only, both damage and routing are largely unchanged."
+    },
+    {
+      "combo": "A[ H ], A[ M ] > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "5502",
+      "superMeter": "0 - 3",
+      "driveMeter": "6",
+      "difficulty": "Medium",
+      "notes": "Corner routing for Modern Ryu's post-DI crumple combos is actually very similar to Classic, due to the prevalence of Hashogeki juggles. As Modern Ryu uses Hashogeki with a manual input only, both damage and routing are largely unchanged."
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214H, 214L, 623L",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "3290",
+      "superMeter": "0 - 3",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Alternative corner routing for when Denjin Charge is held"
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214XX, dash, 2H > 214L, 623H",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "3600",
+      "superMeter": "0 - 3",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "Alternative corner routing for when Denjin Charge is held"
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214XX, 214H, PDR A[ M ] > 214M, 236236L",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "3904",
+      "superMeter": "0 - 3",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Alternative corner routing for when Denjin Charge is held"
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214XX > 214214M, hold, then release, PDR 2H > 214L, ( 623H / 236236L )",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "4685/5047",
+      "superMeter": "0 - 3",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Alternative corner routing for when Denjin Charge is held"
+    },
+    {
+      "combo": "A[ H ], A[ M ] > Denjin 214XX, 5H > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H",
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "5690",
+      "superMeter": "0 - 3",
+      "driveMeter": "6",
+      "difficulty": "Medium",
+      "notes": "Alternative corner routing for when Denjin Charge is held"
     },
     {
       "combo": "Wall Splat, 5H > 214M, 623H",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "2176",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Modern Ryu's basic wallsplat combo is unchanged from Classic, as all specials can use motions to retain max damage"
     },
     {
       "combo": "Denjin Charge (DC), j.H, 5H > Denjin 214H, 214L, 623L",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "2670",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Modern Ryu's best meterless Stun combo, note that Classic Ryu's best meterless Stun Combo elides using the Denjin Charge entirely and still does more damage"
     },
     {
       "combo": "DC, j.H, 5H > Denjin 214XX, walk/dash forward 2H > 214M, 623H ( > 236236H )",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "3020 (5020)",
+      "superMeter": "0 (3)",
+      "difficulty": "Easy",
+      "notes": "Fortunately, this slightly more expensive combo is entirely unchanged from Classic and does the same damage. However, due to lacking many of Classic Ryu's crucial Heavy normals, this is also close to being Modern Ryu's best route into SA3 off a Stun (it is certainlly the best value-for-Drive)"
     },
     {
       "combo": "DC, 214214M full charge, PDR 2H > DRC 2H > 2S, 623H/236236L",
-      "section": "MODERN CONTROLS COMBOS"
+      "section": "MODERN CONTROLS COMBOS / Drive Impact Crumple / Wall Splat / Stun",
+      "position": "Corner",
+      "damage": "4684/4888",
+      "superMeter": "2/3",
+      "driveMeter": "x4",
+      "difficulty": "Medium",
+      "notes": "When using SA2 in a Stun combo, it is best to start with a fully-charged SA2 immediately after performing the Denjin Charge. SA1 can be used at the end of the combo in lieau of 623H for some extra damage"
     },
     {
       "combo": "PC 214XX, 5M > ( DRC 5H, 5M )x2 > 623H > 236236H",
-      "section": "MODERN CONTROLS COMBOS",
-      "damage": "PC 214XX, 5M > ( DRC 5H, 5M )x2 > 623H > 236236H"
+      "section": "MODERN CONTROLS COMBOS / Max Damage Punishes",
+      "position": "Anywhere",
+      "damage": "5954",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Medium",
+      "notes": "Without Denjin Charge, Ryu's best midscreen Punish Counter starter is OD Hashogeki, just as it is in Classic"
     },
     {
       "combo": "PC 214XX, 5M > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H",
-      "section": "MODERN CONTROLS COMBOS",
-      "damage": "PC 214XX, 5M > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H"
+      "section": "MODERN CONTROLS COMBOS / Max Damage Punishes",
+      "position": "Corner",
+      "damage": "6206",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Hard",
+      "notes": "In the corner, Modern Ryu's best Punish Counter starter without Denjin Charge is still OD Hashogeki due to lacking access to Heavy Donkey Kick"
     },
     {
       "combo": "PC A[ H ], 5H > !DENJIN! 214XX, 5H > ( DRC 5H, 5M )x2 > 623H > 236236H",
-      "section": "MODERN CONTROLS COMBOS",
-      "damage": "PC A[ H ], 5H > !DENJIN! 214XX, 5H > ( DRC 5H, 5M )x2 > 623H > 236236H"
+      "section": "MODERN CONTROLS COMBOS / Max Damage Punishes",
+      "position": "Anywhere",
+      "damage": "6280",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Medium",
+      "notes": "With Denjin Charge available, Modern Ryu's best midscreen Punish Counter is a DRC loop starting off a Punish Counter A[ H ]. This is the closest Modern Ryu has to Classic Ryu's equivalent and far more damaging midscreen DRC loop"
     },
     {
       "combo": "PC A[ H ], 5H > !DENJIN! 214XX, 5H > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H",
-      "section": "MODERN CONTROLS COMBOS",
-      "damage": "PC A[ H ], 5H > !DENJIN! 214XX, 5H > A[ 4S ], PDR A[ M ] > DRC 2H > 2S, 623H > 236236H"
+      "section": "MODERN CONTROLS COMBOS / Max Damage Punishes",
+      "position": "Anywhere",
+      "damage": "6442",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Medium",
+      "notes": "Modern Ryu's best corner option with Denjin Charge available"
     },
     {
       "combo": "PC A[ H ], 5H > !DENJIN! 214XX > 214214M partial hold, PDR 2H > DRC 2H > 2S, 236236L",
-      "section": "MODERN CONTROLS COMBOS",
-      "damage": "PC A[ H ], 5H > !DENJIN! 214XX > 214214M partial hold, PDR 2H > DRC 2H > 2S, 236236L"
+      "section": "MODERN CONTROLS COMBOS / Max Damage Punishes",
+      "position": "Anywhere",
+      "damage": "6168",
+      "superMeter": "3",
+      "driveMeter": "x6",
+      "difficulty": "Hard",
+      "notes": "A very useful sequence as a manual delay following the partially-charged Shin Hashogeki can allow for slight recovery of Drive Gauge mid-combo, potentially preventing Burnout"
     },
     {
-      "combo": "Trade Setup",
-      "section": "ADVANCED/NICHE COMBOS",
-      "notes": "Position",
-      "starter": "Trade Setup"
+      "combo": "Potentially one of the strongest trade setups in the right matchups. The link from PDR CH 5HP to 5HP after the trade does 1760 damage by itself, and can be canceled into anything from a meterless ender (e.g. MK Donkey Kick) all the way up to a Drive Rush Cancel meter dump. Vs Dee Jay, whose only 4-frame normal has low hitstun, Ryu can even reliably link 6HK > OD Tatsumaki.",
+      "section": "ADVANCED/NICHE COMBOS / Trade Combos / Trade Combo Routes",
+      "position": "Potentially one of the strongest trade setups in the right matchups. The link from PDR CH 5HP to 5HP after the trade does 1760 damage by itself, and can be canceled into anything from a meterless ender (e.g. MK Donkey Kick) all the way up to a Drive Rush Cancel meter dump. Vs Dee Jay, whose only 4-frame normal has low hitstun, Ryu can even reliably link 6HK > OD Tatsumaki.",
+      "damage": "Potentially one of the strongest trade setups in the right matchups. The link from PDR CH 5HP to 5HP after the trade does 1760 damage by itself, and can be canceled into anything from a meterless ender (e.g. MK Donkey Kick) all the way up to a Drive Rush Cancel meter dump. Vs Dee Jay, whose only 4-frame normal has low hitstun, Ryu can even reliably link 6HK > OD Tatsumaki.",
+      "superMeter": "Potentially one of the strongest trade setups in the right matchups. The link from PDR CH 5HP to 5HP after the trade does 1760 damage by itself, and can be canceled into anything from a meterless ender (e.g. MK Donkey Kick) all the way up to a Drive Rush Cancel meter dump. Vs Dee Jay, whose only 4-frame normal has low hitstun, Ryu can even reliably link 6HK > OD Tatsumaki.",
+      "driveMeter": "Potentially one of the strongest trade setups in the right matchups. The link from PDR CH 5HP to 5HP after the trade does 1760 damage by itself, and can be canceled into anything from a meterless ender (e.g. MK Donkey Kick) all the way up to a Drive Rush Cancel meter dump. Vs Dee Jay, whose only 4-frame normal has low hitstun, Ryu can even reliably link 6HK > OD Tatsumaki.",
+      "difficulty": "Potentially one of the strongest trade setups in the right matchups. The link from PDR CH 5HP to 5HP after the trade does 1760 damage by itself, and can be canceled into anything from a meterless ender (e.g. MK Donkey Kick) all the way up to a Drive Rush Cancel meter dump. Vs Dee Jay, whose only 4-frame normal has low hitstun, Ryu can even reliably link 6HK > OD Tatsumaki."
     },
     {
-      "combo": "5LP > CH 214LP !TRADE!",
-      "section": "ADVANCED/NICHE COMBOS",
-      "notes": "A built-in frametrap from Ryu's LP Hashogeki. At -3 on block, this is not abuseable, but then again it isn't punishable either. The trade is only possible because of the shorter hitstun on Ryu's 5LP compared to his 2LP, the latter being a more true frametrap. The bonus of this trade is that it allows more damaging links following the launch, as CH LP Hashogeki is usually limited to juggles with specials, Super Art 1 or PDR into a Medium Punch due to its long recovery. The differences in hitstun caused by the opposing character's traded 4-frame normal do not make much difference here, as PDR, 5HP is a reliable link and is always the best and most versatile metered option, comboing into either HP Shoryuken or HK Donkey Kick. For extra damage in the corner, PDR, 5HP > MP Hashogeki, HP Shoryuken provides excellent damage for one Drive bar, and can cancel into Super Art 3.",
-      "starter": "Trade Setup"
+      "combo": "The tricksiest part of this setup is that the Parry Drive Rush can be feinted with 5LP to bait slow reversals: at -7, this will lose to wakeup normals, wakeup grabs and will still be hit by most characters' true reversals, but will call out any reversal from AKI (OD Serpent Slide can be grabbed after the feint), Ed, JP, Kimberly and Marisa (note, it will just about be tagged by Honda's SA1, Dhalsim's SA2 and will be caught by Gief's, Lily's and Manon's SA3).",
+      "section": "ADVANCED/NICHE COMBOS / Trade Combos / Trade Combo Routes",
+      "position": "The tricksiest part of this setup is that the Parry Drive Rush can be feinted with 5LP to bait slow reversals: at -7, this will lose to wakeup normals, wakeup grabs and will still be hit by most characters' true reversals, but will call out any reversal from AKI (OD Serpent Slide can be grabbed after the feint), Ed, JP, Kimberly and Marisa (note, it will just about be tagged by Honda's SA1, Dhalsim's SA2 and will be caught by Gief's, Lily's and Manon's SA3).",
+      "damage": "The tricksiest part of this setup is that the Parry Drive Rush can be feinted with 5LP to bait slow reversals: at -7, this will lose to wakeup normals, wakeup grabs and will still be hit by most characters' true reversals, but will call out any reversal from AKI (OD Serpent Slide can be grabbed after the feint), Ed, JP, Kimberly and Marisa (note, it will just about be tagged by Honda's SA1, Dhalsim's SA2 and will be caught by Gief's, Lily's and Manon's SA3).",
+      "superMeter": "The tricksiest part of this setup is that the Parry Drive Rush can be feinted with 5LP to bait slow reversals: at -7, this will lose to wakeup normals, wakeup grabs and will still be hit by most characters' true reversals, but will call out any reversal from AKI (OD Serpent Slide can be grabbed after the feint), Ed, JP, Kimberly and Marisa (note, it will just about be tagged by Honda's SA1, Dhalsim's SA2 and will be caught by Gief's, Lily's and Manon's SA3).",
+      "driveMeter": "The tricksiest part of this setup is that the Parry Drive Rush can be feinted with 5LP to bait slow reversals: at -7, this will lose to wakeup normals, wakeup grabs and will still be hit by most characters' true reversals, but will call out any reversal from AKI (OD Serpent Slide can be grabbed after the feint), Ed, JP, Kimberly and Marisa (note, it will just about be tagged by Honda's SA1, Dhalsim's SA2 and will be caught by Gief's, Lily's and Manon's SA3).",
+      "difficulty": "The tricksiest part of this setup is that the Parry Drive Rush can be feinted with 5LP to bait slow reversals: at -7, this will lose to wakeup normals, wakeup grabs and will still be hit by most characters' true reversals, but will call out any reversal from AKI (OD Serpent Slide can be grabbed after the feint), Ed, JP, Kimberly and Marisa (note, it will just about be tagged by Honda's SA1, Dhalsim's SA2 and will be caught by Gief's, Lily's and Manon's SA3)."
     },
     {
-      "combo": "Forward throw, PDR, CH 5HP !TRADE!",
-      "section": "ADVANCED/NICHE COMBOS",
-      "notes": "Potentially one of the strongest trade setups in the right matchups. The link from PDR CH 5HP to 5HP after the trade does 1760 damage by itself, and can be canceled into anything from a meterless ender (e.g. MK Donkey Kick) all the way up to a Drive Rush Cancel meter dump. Vs Dee Jay, whose only 4-frame normal has low hitstun, Ryu can even reliably link 6HK > OD Tatsumaki. The tricksiest part of this setup is that the Parry Drive Rush can be feinted with 5LP to bait slow reversals: at -7, this will lose to wakeup normals, wakeup grabs and will still be hit by most characters' true reversals, but will call out any reversal from AKI (OD Serpent Slide can be grabbed after the feint), Ed, JP, Kimberly and Marisa (note, it will just about be tagged by Honda's SA1, Dhalsim's SA2 and will be caught by Gief's, Lily's and Manon's SA3).",
-      "starter": "Trade Setup"
-    },
-    {
-      "combo": "Something +1/+2/+3 on block, CH 623LP/623MP/623HP (use the respective version for the block advantage) !TRADE!",
-      "section": "ADVANCED/NICHE COMBOS",
-      "notes": "It isn't the most useful trade but it is fun when it happens. Due to Shoryuken not going airborne until it's later frames, this trade will keep Ryu grounded and allow for a followup combo. The numbers here are adjusted to be against a reversal jab. Light Shoryuken's trade doesn't lead to much besides a Medium Tatsu or Shinku Hadoken midscreen or a 623HP in the corner. On the other hand, Heavy Shoryuken and Medium Shoryken both let you jump for a full j.MP late hit Air Tatsu to Heavy Shoryuken in the corner (with the obvious cancel to Shin Shoryuken). Flex your reads and make friends laugh (or cry).",
-      "starter": "Trade Setup"
+      "combo": "It isn't the most useful trade but it is fun when it happens. Due to Shoryuken not going airborne until it's later frames, this trade will keep Ryu grounded and allow for a followup combo. The numbers here are adjusted to be against a reversal jab. Light Shoryuken's trade doesn't lead to much besides a Medium Tatsu or Shinku Hadoken midscreen or a 623HP in the corner. On the other hand, Heavy Shoryuken and Medium Shoryken both let you jump for a full j.MP late hit Air Tatsu to Heavy Shoryuken in the corner (with the obvious cancel to Shin Shoryuken). Flex your reads and make friends laugh (or cry).",
+      "section": "ADVANCED/NICHE COMBOS / Trade Combos / Trade Combo Routes",
+      "position": "It isn't the most useful trade but it is fun when it happens. Due to Shoryuken not going airborne until it's later frames, this trade will keep Ryu grounded and allow for a followup combo. The numbers here are adjusted to be against a reversal jab. Light Shoryuken's trade doesn't lead to much besides a Medium Tatsu or Shinku Hadoken midscreen or a 623HP in the corner. On the other hand, Heavy Shoryuken and Medium Shoryken both let you jump for a full j.MP late hit Air Tatsu to Heavy Shoryuken in the corner (with the obvious cancel to Shin Shoryuken). Flex your reads and make friends laugh (or cry).",
+      "damage": "It isn't the most useful trade but it is fun when it happens. Due to Shoryuken not going airborne until it's later frames, this trade will keep Ryu grounded and allow for a followup combo. The numbers here are adjusted to be against a reversal jab. Light Shoryuken's trade doesn't lead to much besides a Medium Tatsu or Shinku Hadoken midscreen or a 623HP in the corner. On the other hand, Heavy Shoryuken and Medium Shoryken both let you jump for a full j.MP late hit Air Tatsu to Heavy Shoryuken in the corner (with the obvious cancel to Shin Shoryuken). Flex your reads and make friends laugh (or cry).",
+      "superMeter": "It isn't the most useful trade but it is fun when it happens. Due to Shoryuken not going airborne until it's later frames, this trade will keep Ryu grounded and allow for a followup combo. The numbers here are adjusted to be against a reversal jab. Light Shoryuken's trade doesn't lead to much besides a Medium Tatsu or Shinku Hadoken midscreen or a 623HP in the corner. On the other hand, Heavy Shoryuken and Medium Shoryken both let you jump for a full j.MP late hit Air Tatsu to Heavy Shoryuken in the corner (with the obvious cancel to Shin Shoryuken). Flex your reads and make friends laugh (or cry).",
+      "driveMeter": "It isn't the most useful trade but it is fun when it happens. Due to Shoryuken not going airborne until it's later frames, this trade will keep Ryu grounded and allow for a followup combo. The numbers here are adjusted to be against a reversal jab. Light Shoryuken's trade doesn't lead to much besides a Medium Tatsu or Shinku Hadoken midscreen or a 623HP in the corner. On the other hand, Heavy Shoryuken and Medium Shoryken both let you jump for a full j.MP late hit Air Tatsu to Heavy Shoryuken in the corner (with the obvious cancel to Shin Shoryuken). Flex your reads and make friends laugh (or cry).",
+      "difficulty": "It isn't the most useful trade but it is fun when it happens. Due to Shoryuken not going airborne until it's later frames, this trade will keep Ryu grounded and allow for a followup combo. The numbers here are adjusted to be against a reversal jab. Light Shoryuken's trade doesn't lead to much besides a Medium Tatsu or Shinku Hadoken midscreen or a 623HP in the corner. On the other hand, Heavy Shoryuken and Medium Shoryken both let you jump for a full j.MP late hit Air Tatsu to Heavy Shoryuken in the corner (with the obvious cancel to Shin Shoryuken). Flex your reads and make friends laugh (or cry)."
     }
   ],
-  "lastUpdated": "2026-03-16"
+  "lastUpdated": "2026-03-17"
 }
