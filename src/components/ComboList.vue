@@ -12,6 +12,7 @@ const selectedSection = ref('all');
 const selectedDifficulty = ref('all');
 const selectedPosition = ref('all');
 const selectedTrigger = ref('all');
+const isExpanded = ref(false);
 
 const triggerOptions = [
   { value: 'all', label: '全部' },
@@ -103,15 +104,20 @@ function getMetaChips(combo: Combo): string[] {
 
 <template>
   <section class="section-panel combo-panel">
-    <div class="section-head">
+    <div class="section-head" @click="isExpanded = !isExpanded" style="cursor: pointer; user-select: none;">
       <div>
         <p class="section-kicker">Combos</p>
         <h2 class="section-title">常用连段</h2>
       </div>
-      <div class="summary-chip">
-        {{ filteredCombos.length }} / {{ allCombos.length }} 条
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <div class="summary-chip">
+          {{ filteredCombos.length }} / {{ allCombos.length }} 条
+        </div>
+        <span class="collapse-icon" style="color: var(--color-text-muted);">{{ isExpanded ? '▼' : '▶' }}</span>
       </div>
     </div>
+
+    <div v-show="isExpanded" class="combo-collapsible-wrapper">
 
     <template v-if="data">
       <p v-if="data.comboTheory" class="combo-theory">
@@ -237,6 +243,7 @@ function getMetaChips(combo: Combo): string[] {
       <p>当前角色还没有抓取连段数据。</p>
       <code class="script-hint">pnpm exec tsx scripts/scraper-combos.ts {{ characterId }} --connect</code>
     </div>
+    </div>
   </section>
 </template>
 
@@ -253,6 +260,17 @@ function getMetaChips(combo: Combo): string[] {
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-md);
+  transition: opacity var(--transition-fast);
+}
+
+.section-head:hover {
+  opacity: 0.8;
+}
+
+.combo-collapsible-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--space-lg);
 }
 
 .section-kicker {

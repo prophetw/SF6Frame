@@ -35,6 +35,7 @@ const selectedCategory = ref<MoveCategory | 'all'>('all');
 const startupFilter = ref<number | ''>('');
 const sortKey = ref<string>('startup');
 const sortOrder = ref<'asc' | 'desc'>('asc');
+const isFrameExpanded = ref(false);
 
 const character = computed(() => {
   const id = route.params.id as string;
@@ -270,17 +271,21 @@ watch(
       />
 
       <section class="section-panel frame-section">
-        <div class="section-head">
+        <div class="section-head" @click="isFrameExpanded = !isFrameExpanded" style="cursor: pointer; user-select: none;">
           <div>
             <p class="section-kicker">Frame Data</p>
             <h2 class="section-title">完整帧表</h2>
           </div>
-          <p class="section-desc">
-            支持按发生、类别、优势和关键字快速筛选。
-          </p>
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <p class="section-desc">
+              支持按发生、类别、优势和关键字快速筛选。
+            </p>
+            <span class="collapse-icon" style="color: var(--color-text-muted);">{{ isFrameExpanded ? '▼' : '▶' }}</span>
+          </div>
         </div>
 
-        <div class="filters">
+        <div v-show="isFrameExpanded" class="frame-collapsible-wrapper">
+          <div class="filters">
           <div class="filters-row">
             <input
               v-model="searchQuery"
@@ -324,6 +329,7 @@ watch(
         <p v-if="frameData.lastUpdated" class="last-updated">
           帧数数据更新于 {{ frameData.lastUpdated }}
         </p>
+        </div>
       </section>
 
       <ComboList
@@ -524,12 +530,23 @@ watch(
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-md);
+  transition: opacity var(--transition-fast);
+}
+
+.section-head:hover {
+  opacity: 0.8;
 }
 
 .frame-section {
   display: flex;
   flex-direction: column;
+}
+
+.frame-collapsible-wrapper {
+  display: flex;
+  flex-direction: column;
   gap: var(--space-lg);
+  margin-top: var(--space-lg);
 }
 
 .filters {
