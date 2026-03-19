@@ -28,6 +28,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Chains into 5LP/2LP/2LK; useful in combos due to its extra 1f hitstun over 2LP (combos naturally into 214LP/MP, 236KK, and has more utility in CH/PC/DR routes)",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand LP",
@@ -40,10 +41,10 @@
         "dmg": 300,
         "total": 13,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 8,
         "hitstun": 15,
-        "sourceName": "Standing Light Punch",
+        "sourceName": "Stand LP",
         "sourceInput": "5LP",
         "cancelText": "Chn Sp SA"
       },
@@ -64,6 +65,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Great range for a cancelable poke; solid hitbox priority; important combo tool from Punish Counter 2LP (works from max range); has an extended hurtbox on whiff until the end of recovery",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand MP",
@@ -76,10 +78,10 @@
         "dmg": 600,
         "total": 26,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 21,
-        "sourceName": "Standing Medium Punch",
+        "sourceName": "Stand MP",
         "sourceInput": "5MP",
         "cancelText": "Sp SA"
       },
@@ -100,6 +102,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Very long range for a cancelable poke; great for combos and whiff punishing; combos from PC/DR 5LP for optimal conversions; slightly less pushback on Counter-hit/Punish Counter (makes some ranged 214P cancels more reliable)",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand HP",
@@ -112,10 +115,10 @@
         "dmg": 800,
         "total": 32,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 21,
         "hitstun": 25,
-        "sourceName": "Standing Heavy Punch",
+        "sourceName": "Stand HP",
         "sourceInput": "5HP",
         "cancelText": "Sp SA"
       },
@@ -137,6 +140,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Very short range (only combos naturally from point blank 5LP/2LP); only useful for 5LK~LK~LK Target Combo",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand LK",
@@ -149,10 +153,10 @@
         "dmg": 300,
         "total": 14,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 10,
         "hitstun": 12,
-        "sourceName": "Standing Light Kick",
+        "sourceName": "Stand LK",
         "sourceInput": "5LK",
         "cancelText": "Sp SA TC"
       },
@@ -168,6 +172,7 @@
       "onBlock": "-4",
       "onHit": "+5",
       "category": "normal",
+      "notes": "Solid poke with good hitbox priority that can lead to combos with CH/PC/DR; links consistently into SA2 when used as a whiff punish; Mai lifts up her front hurtbox on frames 4-17 making it useful vs. low attacks",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand MK",
@@ -180,10 +185,10 @@
         "dmg": 700,
         "total": 29,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "hitstun": 26,
-        "sourceName": "Standing Medium Kick",
+        "sourceName": "Stand MK",
         "sourceInput": "5MK",
         "cancelText": "-"
       },
@@ -199,6 +204,7 @@
       "onBlock": "-3",
       "onHit": "+3",
       "category": "normal",
+      "notes": "3f extra recovery on whiff; Great range for a safe poke; Mai lifts up her leg hurtbox on frames 10-16 making it decent vs. low attacks; grounded Punish Counter causes a crumple state (opponent is airborne for all follow-up hits); airborne Punish Counter puts opponents into limited juggle state; extends a hurtbox 1f before active that is vulnerable to projectiles; extends a hurtbox at mid-height for the first 17 recovery frames, making it more whiff punishable by standing or high-angled crouching buttons",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand HK",
@@ -211,10 +217,10 @@
         "dmg": 900,
         "total": 38,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 19,
         "hitstun": 25,
-        "sourceName": "Standing Heavy Kick",
+        "sourceName": "Stand HK",
         "sourceInput": "5HK",
         "cancelText": "-"
       },
@@ -236,6 +242,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Chains into 5LP/2LP/2LK; longest range of Mai's light normals; topmost hurtbox on frames 1-6 is vulnerable only to aerial strikes (preventing its use as an anti-air)",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch LP",
@@ -248,10 +255,10 @@
         "dmg": 300,
         "total": 13,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 9,
         "hitstun": 14,
-        "sourceName": "Crouching Light Punch",
+        "sourceName": "Crouch LP",
         "sourceInput": "2LP",
         "cancelText": "Chn Sp SA"
       },
@@ -272,6 +279,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "2f extra recovery on whiff; good range for a cancelable 6f medium; the forward movement makes it riskier to whiff than similar attacks",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch MP",
@@ -284,10 +292,10 @@
         "dmg": 600,
         "total": 26,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 24,
-        "sourceName": "Crouching Medium Punch",
+        "sourceName": "Crouch MP",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
       },
@@ -303,6 +311,7 @@
       "onBlock": "-3",
       "onHit": "+4",
       "category": "normal",
+      "notes": "2 hits; first hit has great hitbox priority for counter-poking and pulls the opponent closer on hit/block; useful as an approach or combo extension with Drive Rush; Counter-hit/Punish Counter advantage carries through both hits",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch HP",
@@ -315,10 +324,10 @@
         "dmg": null,
         "total": 41,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 29,
         "hitstun": 36,
-        "sourceName": "Crouching Heavy Punch",
+        "sourceName": "Crouch HP",
         "sourceInput": "2HP",
         "cancelText": "-"
       },
@@ -338,6 +347,7 @@
         "Chain",
         "Drive Rush"
       ],
+      "notes": "Chains into 5LP/2LP/2LK",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch LK",
@@ -350,10 +360,10 @@
         "dmg": 200,
         "total": 15,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 9,
         "hitstun": 13,
-        "sourceName": "Crouching Light Kick",
+        "sourceName": "Crouch LK",
         "sourceInput": "2LK",
         "cancelText": "Chn"
       },
@@ -374,6 +384,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Cancelable low poke with decent range; useful Counter-hit conversion after 5LP at ranges where 2MP whiffs; has an extended hurtbox on whiff until the end of recovery; DR cancel is delayed until after active frames",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch MK",
@@ -386,10 +397,10 @@
         "dmg": 500,
         "total": 28,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 20,
-        "sourceName": "Crouching Medium Kick",
+        "sourceName": "Crouch MK",
         "sourceInput": "2MK",
         "cancelText": "Sp SA"
       },
@@ -409,6 +420,7 @@
         "type": "soft",
         "advantage": 38
       },
+      "notes": "1f extra recovery on block; 3f extra recovery on whiff; good hitbox priority vs. low attacks (can low crush many low pokes); has an extended hurtbox on whiff until the end of recovery",
       "raw": {
         "source": "supercombo",
         "moveName": "Sori Geri",
@@ -421,7 +433,7 @@
         "dmg": 900,
         "total": 81,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 14,
         "sourceName": "Sori Geri",
         "sourceInput": "2HK",
@@ -439,6 +451,7 @@
       "onBlock": "+3(+6)",
       "onHit": "+6(+9)",
       "category": "normal",
+      "notes": "Fastest air-to-air option with good horizontal hitbox priority",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump LP",
@@ -451,10 +464,10 @@
         "dmg": 300,
         "total": 15,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 15,
         "hitstun": 18,
-        "sourceName": "Jumping Light Punch",
+        "sourceName": "Jump LP",
         "sourceInput": "j.LP",
         "cancelText": "-"
       },
@@ -475,6 +488,7 @@
         "SA2",
         "Drive Rush"
       ],
+      "notes": "Puts airborne opponents into limited juggle state; strong air-to-air hitbox; lower body projectile invuln 7-22f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump MP",
@@ -487,10 +501,10 @@
         "dmg": 600,
         "total": 14,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 11,
         "hitstun": 15,
-        "sourceName": "Jumping Medium Punch",
+        "sourceName": "Jump MP",
         "sourceInput": "j.MP",
         "cancelText": "Sp SA2"
       },
@@ -506,6 +520,7 @@
       "onBlock": "+3(+11)",
       "onHit": "+7(+15)",
       "category": "normal",
+      "notes": "Good hitbox for vertical approach; lower body projectile invuln 9-23f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump HP",
@@ -518,10 +533,10 @@
         "dmg": 800,
         "total": 16,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 11,
         "hitstun": 15,
-        "sourceName": "Jumping Heavy Punch",
+        "sourceName": "Jump HP",
         "sourceInput": "j.HP",
         "cancelText": "-"
       },
@@ -537,6 +552,7 @@
       "onBlock": "+1(+6)",
       "onHit": "+5(+10)",
       "category": "normal",
+      "notes": "Cross-up; can be used as a fuzzy instant overhead (except vs. Blanka)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump LK",
@@ -549,10 +565,10 @@
         "dmg": 300,
         "total": 14,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 11,
         "hitstun": 15,
-        "sourceName": "Jumping Light Kick",
+        "sourceName": "Jump LK",
         "sourceInput": "j.LK",
         "cancelText": "-"
       },
@@ -568,6 +584,7 @@
       "onBlock": "+4(+9)",
       "onHit": "+8(+13)",
       "category": "normal",
+      "notes": "Cross-up; lower body projectile invuln 7-20f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump MK",
@@ -580,10 +597,10 @@
         "dmg": 500,
         "total": 14,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 12,
         "hitstun": 16,
-        "sourceName": "Jumping Medium Kick",
+        "sourceName": "Jump MK",
         "sourceInput": "j.MK",
         "cancelText": "-"
       },
@@ -599,6 +616,7 @@
       "onBlock": "+7(+11)",
       "onHit": "+11(+15)",
       "category": "normal",
+      "notes": "Most horizontal range of Mai's jump-ins; lower body projectile invuln 10-23f (if used immediately on the way up, can avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump HK",
@@ -611,14 +629,82 @@
         "dmg": 800,
         "total": 18,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 20,
-        "sourceName": "Jumping Heavy Kick",
+        "sourceName": "Jump HK",
         "sourceInput": "j.HK",
         "cancelText": "-"
       },
       "nameZh": "跳跃重脚"
+    },
+    {
+      "name": "Senkotsu Uchi",
+      "input": "6MP",
+      "damage": "600",
+      "startup": "20",
+      "active": "3",
+      "recovery": "18",
+      "onBlock": "-3",
+      "onHit": "+2",
+      "category": "normal",
+      "notes": "Fast overhead that can combo into lights with perfect meaty timing; spike knockdown vs. airborne opponents",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Senkotsu Uchi",
+        "plnCmd": "6MP",
+        "startup": 20,
+        "active": 3,
+        "recovery": 18,
+        "onBlock": -3,
+        "onHit": 2,
+        "dmg": 600,
+        "total": 40,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 18,
+        "hitstun": 23,
+        "sourceName": "Senkotsu Uchi",
+        "sourceInput": "6MP",
+        "cancelText": "-"
+      },
+      "nameZh": "扇骨打"
+    },
+    {
+      "name": "Hoshi Kujaku 1",
+      "input": "4HK",
+      "damage": "800",
+      "startup": "8",
+      "active": "5",
+      "recovery": "20",
+      "onBlock": "-1(+3)",
+      "onHit": "+3(+7))",
+      "category": "normal",
+      "cancels": [
+        "Target Combo",
+        "Drive Rush"
+      ],
+      "notes": "Forces stand on hit (useful in DR combos involving 214HP); legs and lower body are anti-air invincible on frames 8-12 (great anti-air when used early, but leaves a tall standing hurtbox for the first 7 frames that can lose to strong vertical jump-ins); cannot hit cross-up; always a true blockstring when canceled into 4HK~HK TC (but very easy hitconfirm); strong oki tool that can be up to +7 oH / +3 oB when meaty",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Hoshi Kujaku 1",
+        "plnCmd": "4HK",
+        "startup": 8,
+        "active": 5,
+        "recovery": 20,
+        "onBlock": -1,
+        "onHit": 3,
+        "dmg": 800,
+        "total": 32,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 24,
+        "hitstun": 28,
+        "sourceName": "Hoshi Kujaku 1",
+        "sourceInput": "4HK",
+        "cancelText": "TC"
+      },
+      "nameZh": "星孔雀1"
     },
     {
       "name": "Hien Ren Kyaku 1",
@@ -634,6 +720,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "() refers to scaled damage; forces stand on hit; stopping after the second LK can be useful in combo extensions where a bouncing fan is falling onto the opponent; always a true blockstring",
       "raw": {
         "source": "supercombo",
         "moveName": "Hien Ren Kyaku 1",
@@ -646,7 +733,7 @@
         "dmg": 400,
         "total": 28,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 12,
         "hitstun": 20,
         "sourceName": "Hien Ren Kyaku 1",
@@ -670,6 +757,7 @@
         "SA2*",
         "Drive Rush"
       ],
+      "notes": "() refers to scaled damage; always a true blockstring; bounces far back into the air, usually keeping her safe due to pushback; can cancel the airborne frames into j.214P or Air SA2 (can be delayed significantly, allowing Mai to mix up her approach and gain better frame advantage); the divekick/SA2 can also let Mai avoid some moves that would otherwise punish the bounce; delaying too long will cause the follow-up to drop in combos (59f is the longest total hitconfirm window that still combos); divekick follow-up can lead to +42 safe jump if the initial 5LK is spaced out (e.g. DR~6MP, 5LK or DR~5LP, 5LP, 5LK)",
       "raw": {
         "source": "supercombo",
         "moveName": "Hien Ren Kyaku 2",
@@ -682,7 +770,7 @@
         "dmg": 500,
         "total": 39,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 20,
         "hitstun": 33,
         "sourceName": "Hien Ren Kyaku 2",
@@ -690,6 +778,41 @@
         "cancelText": "Sp* SA2*"
       },
       "nameZh": "飞燕连脚2"
+    },
+    {
+      "name": "Hoshi Kujaku 2",
+      "input": "4HK~HK",
+      "damage": "600x2",
+      "startup": "9",
+      "active": "1(3)",
+      "recovery": "30(38)",
+      "onBlock": "-11",
+      "onHit": "KD +48",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 48
+      },
+      "notes": "On hit, Mai performs a 2nd kick that is fully invincible until the end of recovery; in the corner, Mai can juggle into SA1 or 623LK/MK/KK; if the TC was juggled into, may also be able to juggle SA2 or 623HK; () refers to active/recovery/total on whiffed version if opponent is juggled too high",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Hoshi Kujaku 2",
+        "plnCmd": "4HK~HK",
+        "startup": 9,
+        "active": 4,
+        "recovery": 38,
+        "onBlock": -11,
+        "onHit": null,
+        "dmg": null,
+        "total": 50,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 23,
+        "sourceName": "Hoshi Kujaku 2",
+        "sourceInput": "4HK~HK",
+        "cancelText": "-"
+      },
+      "nameZh": "星孔雀2"
     },
     {
       "name": "Shiranui Gourin",
@@ -700,11 +823,12 @@
       "recovery": "23",
       "onBlock": "-",
       "onHit": "KD +21",
-      "category": "normal",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 21
       },
+      "notes": "Can dash forward for a corner throw loop (+3, cannot walk back to shimmy); can walk for a throw loop vs. Zangief (2f timing) or Blanka/E.Honda (1f timing); DR~4HK sets up auto-timed +6 on Block (slightly out of throw range); a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
       "raw": {
         "source": "supercombo",
         "moveName": "Shiranui Gourin",
@@ -716,13 +840,47 @@
         "onHit": null,
         "dmg": 1200,
         "total": 30,
-        "moveType": "normal",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "sourceName": "Shiranui Gourin",
         "sourceInput": "LPLK",
         "cancelText": "-"
       },
       "nameZh": "不知火刚临"
+    },
+    {
+      "name": "Fuusha Kuzushi",
+      "input": "4LPLK",
+      "damage": "1200 (2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +17",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 17
+      },
+      "notes": "Side switches; can only get corner oki with Drive Rush, or can pressure with a spaced meaty normal; DR~2LK is a good option (+4 oB and safe vs. 10f reversals); a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Fuusha Kuzushi",
+        "plnCmd": "4LPLK",
+        "startup": 5,
+        "active": 3,
+        "recovery": 23,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 1200,
+        "total": 30,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Fuusha Kuzushi",
+        "sourceInput": "4LPLK",
+        "cancelText": "-"
+      },
+      "nameZh": "风车崩"
     },
     {
       "name": "Yume Zakura",
@@ -733,11 +891,12 @@
       "recovery": "3 land",
       "onBlock": "-",
       "onHit": "KD +20",
-      "category": "normal",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 20
       },
+      "notes": "No real midscreen oki (can chase with a spaced Drive Rush normal); in the corner, can dash for +2 oki or Drive Rush for stronger pressure",
       "raw": {
         "source": "supercombo",
         "moveName": "Yume Zakura",
@@ -749,8 +908,8 @@
         "onHit": null,
         "dmg": 1200,
         "total": 10,
-        "moveType": "normal",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "sourceName": "Yume Zakura",
         "sourceInput": "j.LPLK",
         "cancelText": "-"
@@ -766,11 +925,12 @@
       "recovery": "35",
       "onBlock": "-3 / Wall Splat HKD +72",
       "onHit": "KD +35 / Wall Splat KD +65",
-      "category": "normal",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 35
       },
+      "notes": "See Drive Impact. Airborne connect gives spinning juggle state on Punish Counter or corner Wall Splat with variable height.",
       "raw": {
         "source": "supercombo",
         "moveName": "Botan Ichige",
@@ -782,13 +942,48 @@
         "onHit": null,
         "dmg": 800,
         "total": 62,
-        "moveType": "normal",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "sourceName": "Botan Ichige",
         "sourceInput": "HPHK",
         "cancelText": "-"
       },
       "nameZh": "斗气迸放"
+    },
+    {
+      "name": "Yusura Ume (Block)",
+      "input": "6HPHK",
+      "damage": "500 recoverable",
+      "startup": "20",
+      "active": "3",
+      "recovery": "26(31)",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Performed by holding 6HPHK on wakeup; 5f extra recovery on hit; does not have any screen freeze; see Drive Reversal.",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Yusura Ume (Block)",
+        "plnCmd": "6HPHK",
+        "startup": 20,
+        "active": 3,
+        "recovery": 31,
+        "onBlock": -6,
+        "onHit": null,
+        "dmg": null,
+        "total": 53,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "blockstun": 23,
+        "sourceName": "Yusura Ume (Block)",
+        "sourceInput": "6HPHK",
+        "cancelText": "-"
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Drive Parry",
@@ -799,7 +994,8 @@
       "recovery": "33(1)(11)",
       "onBlock": "-",
       "onHit": "-",
-      "category": "normal",
+      "category": "throw",
+      "notes": "See Drive Parry. Perfect Parrying has only 1F of recovery and disables the opponent from canceling their attack. Perfect Parrying projectiles puts you into fixed 11 frames of recovery. After a Perfect Parry, all Super Gauge gain is reduced by 20% and Drive Gauge gain/damage is reduced by 50% for the entire punish combo.",
       "raw": {
         "source": "supercombo",
         "moveName": "Drive Parry",
@@ -812,7 +1008,7 @@
         "dmg": null,
         "total": 23,
         "moveType": "drive",
-        "section": "",
+        "section": "Drive and Throw",
         "sourceName": "Drive Parry",
         "sourceInput": "MPMK",
         "cancelText": "-"
@@ -828,7 +1024,8 @@
       "recovery": "15(37)",
       "onBlock": "-",
       "onHit": "-",
-      "category": "normal",
+      "category": "throw",
+      "notes": "See Drive Rush; 1-bar version performed out of a Parry; startup refers to minimum time before an attack can cancel the Drive Rush animation (if performed immediately after a successful Parry, only 1+8 startup); the first 15 recovery frames are cancelable into any attack; the final 22 recovery frames are cancelable into any attack or movement option or blocking (except Parry); only Normal and Command Normal attacks are enhanced with +4 frame advantage and improved juggle properties; Distance: 0.669 (min/throw), 2.383 (min/block), 2.977 (max/final DR frame)",
       "raw": {
         "source": "supercombo",
         "moveName": "Parry Drive Rush",
@@ -840,7 +1037,7 @@
         "onHit": null,
         "dmg": null,
         "moveType": "drive",
-        "section": "",
+        "section": "Drive and Throw",
         "sourceName": "Parry Drive Rush",
         "sourceInput": "MPMK~66",
         "cancelText": "-"
@@ -856,7 +1053,8 @@
       "recovery": "15(37)",
       "onBlock": "-",
       "onHit": "-",
-      "category": "normal",
+      "category": "throw",
+      "notes": "See Drive Rush; 3-bar version performed on hit/block from a cancelable normal; can also be performed on whiff from cancelable light normals; startup refers to minimum time before an attack can cancel the Drive Rush animation; the first 15 recovery frames are cancelable into any attack; the final 22 recovery frames are cancelable into any attack or movement option or blocking (except Parry); only Normal and Command Normal attacks are enhanced with +4 frame advantage and improved juggle properties",
       "raw": {
         "source": "supercombo",
         "moveName": "Drive Rush Cancel",
@@ -868,365 +1066,12 @@
         "onHit": null,
         "dmg": null,
         "moveType": "drive",
-        "section": "",
+        "section": "Drive and Throw",
         "sourceName": "Drive Rush Cancel",
         "sourceInput": "MPMK or 66",
         "cancelText": "-"
       },
       "nameZh": "斗气冲锋取消"
-    },
-    {
-      "name": "Neutral Taunt",
-      "input": "5PPPKKK",
-      "damage": "-",
-      "startup": "279 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Neutral Taunt",
-        "plnCmd": "5PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Neutral Taunt",
-        "sourceInput": "5PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "原地挑衅"
-    },
-    {
-      "name": "Neutral Taunt",
-      "input": "5PPPKKK~2PPPKKK",
-      "damage": "-",
-      "startup": "363 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Neutral Taunt",
-        "plnCmd": "5PPPKKK~2PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Neutral Taunt",
-        "sourceInput": "5PPPKKK~2PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "原地挑衅"
-    },
-    {
-      "name": "Back Taunt",
-      "input": "4",
-      "damage": "100x7,800 (1500)",
-      "startup": "616",
-      "active": "121",
-      "recovery": "213",
-      "onBlock": "-234",
-      "onHit": "KD -148",
-      "category": "normal",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 148
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Back Taunt",
-        "plnCmd": "4",
-        "startup": 616,
-        "active": 121,
-        "recovery": 213,
-        "onBlock": -234,
-        "onHit": null,
-        "dmg": null,
-        "total": 949,
-        "moveType": "normal",
-        "section": "",
-        "blockstun": 100,
-        "sourceName": "Back Taunt",
-        "sourceInput": "4",
-        "cancelText": "-"
-      },
-      "nameZh": "后挑衅"
-    },
-    {
-      "name": "Senkotsu Uchi",
-      "input": "6MP",
-      "damage": "600",
-      "startup": "20",
-      "active": "3",
-      "recovery": "18",
-      "onBlock": "-3",
-      "onHit": "+2",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Senkotsu Uchi",
-        "plnCmd": "6MP",
-        "startup": 20,
-        "active": 3,
-        "recovery": 18,
-        "onBlock": -3,
-        "onHit": 2,
-        "dmg": 600,
-        "total": 40,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 18,
-        "hitstun": 23,
-        "sourceName": "Senkotsu Uchi",
-        "sourceInput": "6MP",
-        "cancelText": "-"
-      },
-      "nameZh": "扇骨打"
-    },
-    {
-      "name": "Hoshi Kujaku 1",
-      "input": "4HK",
-      "damage": "800",
-      "startup": "8",
-      "active": "5",
-      "recovery": "20",
-      "onBlock": "-1(+3)",
-      "onHit": "+3(+7))",
-      "category": "unique",
-      "cancels": [
-        "Target Combo",
-        "Drive Rush"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Hoshi Kujaku 1",
-        "plnCmd": "4HK",
-        "startup": 8,
-        "active": 5,
-        "recovery": 20,
-        "onBlock": -1,
-        "onHit": 3,
-        "dmg": 800,
-        "total": 32,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 24,
-        "hitstun": 28,
-        "sourceName": "Hoshi Kujaku 1",
-        "sourceInput": "4HK",
-        "cancelText": "TC"
-      },
-      "nameZh": "星孔雀1"
-    },
-    {
-      "name": "Hoshi Kujaku 2",
-      "input": "4HK~HK",
-      "damage": "600x2",
-      "startup": "9",
-      "active": "1(3)",
-      "recovery": "30(38)",
-      "onBlock": "-11",
-      "onHit": "KD +48",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 48
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Hoshi Kujaku 2",
-        "plnCmd": "4HK~HK",
-        "startup": 9,
-        "active": 4,
-        "recovery": 38,
-        "onBlock": -11,
-        "onHit": null,
-        "dmg": null,
-        "total": 50,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 23,
-        "sourceName": "Hoshi Kujaku 2",
-        "sourceInput": "4HK~HK",
-        "cancelText": "-"
-      },
-      "nameZh": "星孔雀2"
-    },
-    {
-      "name": "Fuusha Kuzushi",
-      "input": "4LPLK",
-      "damage": "1200 (2040)",
-      "startup": "5",
-      "active": "3",
-      "recovery": "23",
-      "onBlock": "-",
-      "onHit": "KD +17",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 17
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Fuusha Kuzushi",
-        "plnCmd": "4LPLK",
-        "startup": 5,
-        "active": 3,
-        "recovery": 23,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 1200,
-        "total": 30,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Fuusha Kuzushi",
-        "sourceInput": "4LPLK",
-        "cancelText": "-"
-      },
-      "nameZh": "风车崩"
-    },
-    {
-      "name": "Yusura Ume (Block)",
-      "input": "6HPHK",
-      "damage": "500 recoverable",
-      "startup": "20",
-      "active": "3",
-      "recovery": "26(31)",
-      "onBlock": "-6",
-      "onHit": "KD +23",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 23
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Yusura Ume (Block)",
-        "plnCmd": "6HPHK",
-        "startup": 20,
-        "active": 3,
-        "recovery": 31,
-        "onBlock": -6,
-        "onHit": null,
-        "dmg": null,
-        "total": 53,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 23,
-        "sourceName": "Yusura Ume (Block)",
-        "sourceInput": "6HPHK",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气反攻"
-    },
-    {
-      "name": "Yusura Ume (Recovery)",
-      "input": "6HPHK",
-      "damage": "500 recoverable",
-      "startup": "18",
-      "active": "3",
-      "recovery": "26(31)",
-      "onBlock": "-6",
-      "onHit": "KD +23",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 23
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Yusura Ume (Recovery)",
-        "plnCmd": "6HPHK",
-        "startup": 18,
-        "active": 3,
-        "recovery": 31,
-        "onBlock": -6,
-        "onHit": null,
-        "dmg": null,
-        "total": 51,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 23,
-        "sourceName": "Yusura Ume (Recovery)",
-        "sourceInput": "6HPHK",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气反攻"
-    },
-    {
-      "name": "Forward Taunt",
-      "input": "6PPPKKK",
-      "damage": "-",
-      "startup": "405 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Forward Taunt",
-        "plnCmd": "6PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Forward Taunt",
-        "sourceInput": "6PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "前挑衅"
-    },
-    {
-      "name": "Back Taunt",
-      "input": "4PPPKKK",
-      "damage": "100x8",
-      "startup": "430",
-      "active": "121",
-      "recovery": "213",
-      "onBlock": "-234",
-      "onHit": "KD -171",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 171
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Back Taunt",
-        "plnCmd": "4PPPKKK",
-        "startup": 430,
-        "active": 121,
-        "recovery": 213,
-        "onBlock": -234,
-        "onHit": null,
-        "dmg": null,
-        "total": 763,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 100,
-        "sourceName": "Back Taunt",
-        "sourceInput": "4PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "后挑衅"
     },
     {
       "name": "Kachousen",
@@ -1241,6 +1086,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "Enhanced version that costs 1 Flame Stock; slowest travel speed; 2-hit standard projectile (cannot be dissipated by strikes); can hold the button for 19f to charge to a stronger version; startup can increase up to 23f when partially held; only the first hit is cancelable to SA3; puts airborne opponents into a limited juggle state; Counter-hit/Punish Counter advantage carries through both hits; Mai has an extended hurtbox vulnerable to strikes on her leg (3-45f) and arm (16-42f)",
       "raw": {
         "source": "supercombo",
         "moveName": "Kachousen",
@@ -1252,7 +1098,7 @@
         "onHit": -1,
         "dmg": 500,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Kachousen",
         "sourceInput": "236LP",
         "cancelText": "SA3"
@@ -1272,6 +1118,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "Enhanced version that costs 1 Flame Stock; medium travel speed; 2-hit standard projectile (cannot be dissipated by strikes); can hold the button for 19f to charge to a stronger version; startup can increase up to 22f when partially held; only the first hit is cancelable to SA3; puts airborne opponents into a limited juggle state; Counter-hit/Punish Counter advantage carries through both hits; Mai has an extended hurtbox vulnerable to strikes on her leg (3-45f) and arm (14-40f)",
       "raw": {
         "source": "supercombo",
         "moveName": "Kachousen",
@@ -1283,7 +1130,7 @@
         "onHit": -3,
         "dmg": 500,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Kachousen",
         "sourceInput": "236MP",
         "cancelText": "SA3"
@@ -1303,6 +1150,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "Enhanced version that costs 1 Flame Stock; fastest travel speed; 2-hit standard projectile (cannot be dissipated by strikes); can hold the button for 19f to charge to a stronger version; startup can increase up to 20f when partially held; only the first hit is cancelable to SA3; puts airborne opponents into a limited juggle state; Counter-hit/Punish Counter advantage carries through both hits; Mai has an extended hurtbox vulnerable to strikes on her leg (3-45f) and arm (12-38f)",
       "raw": {
         "source": "supercombo",
         "moveName": "Kachousen",
@@ -1314,7 +1162,7 @@
         "onHit": -5,
         "dmg": 500,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Kachousen",
         "sourceInput": "236HP",
         "cancelText": "SA3"
@@ -1335,6 +1183,7 @@
         "SA2",
         "SA3"
       ],
+      "notes": "Enhanced version that costs 1 Flame Stock; 2-hit OD projectile (cannot be dissipated by strikes); bounces upward on contact with the opponent, then drops downward for a follow-up hit; () refers to damage/hitstun values of the bouncing fan follow-up on hit or block; can hold the button for 19f for a charged version that throws 2 fans; startup can increase up to 21f when partially held; only the first hit is cancelable to SA2/SA3; puts airborne opponents into a limited juggle state; Mai has an extended hurtbox vulnerable to strikes on her leg (12-37f) and upper body (15-27f); frame gap before follow-up bounce: 24f stand / 30f crouch (on hit), 26f stand / 32f crouch (on block); all gaps are 1f smaller vs. standing Dee Jay, 2f smaller vs. standing JP/Marisa/Zangief; the bouncing fan does not trigger proximity guard (allowing back walk) and counts as an air attack (allows anti-air invuln moves to pass through)",
       "raw": {
         "source": "supercombo",
         "moveName": "Kachousen",
@@ -1346,137 +1195,12 @@
         "onHit": 3,
         "dmg": 500,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Kachousen",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
       },
       "nameZh": "花蝶扇"
-    },
-    {
-      "name": "Kachousen (Flame)",
-      "input": "236LP",
-      "damage": "300x2",
-      "startup": "16",
-      "active": "-",
-      "recovery": "29",
-      "onBlock": "-3",
-      "onHit": "+1",
-      "category": "special",
-      "cancels": [
-        "SA3"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Kachousen (Flame)",
-        "plnCmd": "236LP",
-        "startup": 16,
-        "active": null,
-        "recovery": 29,
-        "onBlock": -3,
-        "onHit": 1,
-        "dmg": null,
-        "moveType": "special",
-        "section": "",
-        "sourceName": "Kachousen (Flame)",
-        "sourceInput": "236LP",
-        "cancelText": "SA3"
-      },
-      "nameZh": "花蝶扇(炎)"
-    },
-    {
-      "name": "Kachousen (Flame)",
-      "input": "236MP",
-      "damage": "300x2",
-      "startup": "14",
-      "active": "-",
-      "recovery": "31",
-      "onBlock": "-5",
-      "onHit": "-1",
-      "category": "special",
-      "cancels": [
-        "SA3"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Kachousen (Flame)",
-        "plnCmd": "236MP",
-        "startup": 14,
-        "active": null,
-        "recovery": 31,
-        "onBlock": -5,
-        "onHit": -1,
-        "dmg": null,
-        "moveType": "special",
-        "section": "",
-        "sourceName": "Kachousen (Flame)",
-        "sourceInput": "236MP",
-        "cancelText": "SA3"
-      },
-      "nameZh": "花蝶扇(炎)"
-    },
-    {
-      "name": "Kachousen (Flame)",
-      "input": "236HP",
-      "damage": "300x2",
-      "startup": "12",
-      "active": "-",
-      "recovery": "33",
-      "onBlock": "-7",
-      "onHit": "-3",
-      "category": "special",
-      "cancels": [
-        "SA3"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Kachousen (Flame)",
-        "plnCmd": "236HP",
-        "startup": 12,
-        "active": null,
-        "recovery": 33,
-        "onBlock": -7,
-        "onHit": -3,
-        "dmg": null,
-        "moveType": "special",
-        "section": "",
-        "sourceName": "Kachousen (Flame)",
-        "sourceInput": "236HP",
-        "cancelText": "SA3"
-      },
-      "nameZh": "花蝶扇(炎)"
-    },
-    {
-      "name": "Kachousen (Flame)",
-      "input": "236PP",
-      "damage": "300x2,(200)",
-      "startup": "12",
-      "active": "-",
-      "recovery": "30",
-      "onBlock": "+1",
-      "onHit": "+3",
-      "category": "special",
-      "cancels": [
-        "SA2",
-        "SA3"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Kachousen (Flame)",
-        "plnCmd": "236PP",
-        "startup": 12,
-        "active": null,
-        "recovery": 30,
-        "onBlock": 1,
-        "onHit": 3,
-        "dmg": null,
-        "moveType": "special",
-        "section": "",
-        "sourceName": "Kachousen (Flame)",
-        "sourceInput": "236PP",
-        "cancelText": "SA2 SA3"
-      },
-      "nameZh": "花蝶扇(炎)"
     },
     {
       "name": "Kachousen (Hold)",
@@ -1491,6 +1215,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "Charged/Enhanced version acts as a standard 2-hit projectile (does not dissipate on contact with strike hitboxes); bounces upward on contact with the opponent, then drops downward for a follow-up hit (this bounce is higher/slower than the non-flame version); () refers to damage/hitstun values of the bouncing fan follow-up on hit or block; the listed frame advantage refers to the first hit at point blank range before the follow-up connects; any hit that connects after the follow-up bounce overwrites the fan's hitstun/blockstun; projectile speed depends on button strength (LP slow / MP medium / HP fast); bounce height depends on button strength (LP low / MP medium / HP high); the time difference between the first and second fan on hit or block varies based on this bounce height; puts airborne opponents into a limited juggle state; Counter-hit/Punish Counter advantage carries through both hits; Mai has an extended hurtbox vulnerable to strikes on her leg (32-62f) and arm (32-48f); LP Version frame gap before follow-up bounce: 10f stand / 16f crouch (on hit), 12f stand / 18f crouch (on block); MP Version frame gap before follow-up bounce: 27f stand / 33f crouch (on hit), 29f stand / 35f crouch (on block); HP Version frame gap before follow-up bounce: 39f stand / 45f crouch (on hit), 41f stand / 47f crouch (on block); all gaps are 1f smaller vs. standing Dee Jay, 2f smaller vs. standing JP/Marisa/Zangief; the bouncing fan does not trigger proximity guard (allowing back walk) and counts as an air attack (allows anti-air invuln moves to pass through)",
       "raw": {
         "source": "supercombo",
         "moveName": "Kachousen (Hold)",
@@ -1502,7 +1227,7 @@
         "onHit": 1,
         "dmg": 500,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Kachousen (Hold)",
         "sourceInput": "236",
         "cancelText": "SA3"
@@ -1523,6 +1248,7 @@
         "type": "soft",
         "advantage": 61
       },
+      "notes": "Throws an additional 2-hit projectile with OD priority (does not dissipate on contact with strike hitboxes); on contact with the opponent, the fan splits into 2 additional projectiles and bounces up before hitting on the way down; the two falling fans bounce at staggered heights, with the second hitting much later than the first; if 1 hit of the first Midare Kachousen is dissipated then the low bouncing fan does not appear; puts opponents into a limited juggle state if the initial Midare Kachousen fan connects, while the falling fans keep the opponent in grounded hitstun; () refers to damage/hitstun values of the bouncing follow-ups on hit or block; any hit that connects after the follow-up bounce overwrites the fan's hitstun/blockstun; Mai has an extended hurtbox vulnerable to strikes on her arm/head (28-79f); the listed frame advantage assumes Mai is at point blank range; all hits up to the first bouncing fan are a true blockstring (advantage is calculated from that point, ignoring the final delayed fan); the bouncing fan does not trigger proximity guard (allowing back walk) and counts as an air attack (allows anti-air invuln moves to pass through)",
       "raw": {
         "source": "supercombo",
         "moveName": "Midare Kachousen",
@@ -1534,75 +1260,12 @@
         "onHit": null,
         "dmg": null,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Midare Kachousen",
         "sourceInput": "236~6P",
         "cancelText": "-"
       },
       "nameZh": "乱花蝶扇"
-    },
-    {
-      "name": "Kachousen (Flame+Hold)",
-      "input": "236",
-      "damage": "300x2,(200)",
-      "startup": "32",
-      "active": "-",
-      "recovery": "30",
-      "onBlock": "-1",
-      "onHit": "+1",
-      "category": "special",
-      "cancels": [
-        "SA3"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Kachousen (Flame+Hold)",
-        "plnCmd": "236",
-        "startup": 32,
-        "active": null,
-        "recovery": 30,
-        "onBlock": -1,
-        "onHit": 1,
-        "dmg": null,
-        "moveType": "special",
-        "section": "",
-        "sourceName": "Kachousen (Flame+Hold)",
-        "sourceInput": "236",
-        "cancelText": "SA3"
-      },
-      "nameZh": "花蝶扇(炎+蓄力)"
-    },
-    {
-      "name": "Midare Kachousen (Flame)",
-      "input": "236~6P",
-      "damage": "200x2,(300x2)",
-      "startup": "57+15",
-      "active": "-",
-      "recovery": "24",
-      "onBlock": "+33~40(+15~39 Tall)",
-      "onHit": "KD +60~",
-      "category": "special",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 60
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Midare Kachousen (Flame)",
-        "plnCmd": "236~6P",
-        "startup": 57,
-        "active": null,
-        "recovery": 24,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "special",
-        "section": "",
-        "sourceName": "Midare Kachousen (Flame)",
-        "sourceInput": "236~6P",
-        "cancelText": "-"
-      },
-      "nameZh": "乱花蝶扇(炎)"
     },
     {
       "name": "Ryuuenbu",
@@ -1617,6 +1280,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "Enhanced version that costs 1 Flame Stock; strike hitbox that can dissipate standard 1-hit projectiles during active frames; always safe on block, and very effective at creating spacing traps against light normals (even when canceled from ranged pokes); when used as a meaty, can be up to +4 on block or KD +41 for a juggle",
       "raw": {
         "source": "supercombo",
         "moveName": "Ryuuenbu",
@@ -1629,7 +1293,7 @@
         "dmg": 800,
         "total": 35,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 18,
         "hitstun": 25,
         "sourceName": "Ryuuenbu",
@@ -1656,6 +1320,7 @@
         "type": "soft",
         "advantage": 35
       },
+      "notes": "Enhanced version that costs 1 Flame Stock; 2 hits, () refers to startup of 2nd hit from longer range; similar utility to LP version (grants a combo from 5LP as a decent light chain ender); forward movement ensures both hits connect when canceled (except in some whiff punish scenarios); 2nd hit (frames 25-31) is a strike hitbox that can dissipate standard 1-hit projectiles; can be spaced relatively safely on block (max range can be -4 unlike the non-flame version due to forward movement during active frames); puts opponents into limited juggle state (can juggle 623MK or SA1); sets up a perfect KD +42 safe jump on grounded or juggled hit (unless spaced out at max range where it becomes +44)",
       "raw": {
         "source": "supercombo",
         "moveName": "Ryuuenbu",
@@ -1668,7 +1333,7 @@
         "dmg": 200,
         "total": 47,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 28,
         "sourceName": "Ryuuenbu",
         "sourceInput": "214MP",
@@ -1694,6 +1359,7 @@
         "type": "soft",
         "advantage": 43
       },
+      "notes": "Enhanced version that costs 1 Flame Stock; 2 hits, () refers to startup of 2nd hit from longer range; whiffs on crouching opponents unless they extend a vertical hurtbox (unsafe on hit if 1st hit connects like this); puts opponent into a limited juggle state (higher launch gives more follow-up options like 236KK launch or Flame 214MP safe jump); head hurtbox is anti-air invincible on frames 6-17 (slow but rewarding anti-air); 2nd hit (frames 27-36) is a strike hitbox that can dissipate standard 1-hit projectiles; incurs no extra damage scaling, making it a significantly stronger combo tool than the non-flame version",
       "raw": {
         "source": "supercombo",
         "moveName": "Ryuuenbu",
@@ -1706,7 +1372,7 @@
         "dmg": 200,
         "total": 48,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 28,
         "sourceName": "Ryuuenbu",
         "sourceInput": "214HP",
@@ -1733,6 +1399,7 @@
         "type": "soft",
         "advantage": 48
       },
+      "notes": "Enhanced version that costs 1 Flame Stock; 3 hits; puts opponent into a limited juggle state (free juggle state if only the final hit connects); allows more lenient juggle routes than non-flame version (Juggle Increase of 1 instead of 2); 2nd/3rd hits (frames 30-34 and 42-46) are strike hitboxes that can dissipate 1-hit OD projectiles; 8f extra recovery on block; Super cancels always whiff or give partial animation (should always manually link the juggle afterward unless the opponent is armoring through your attack)",
       "raw": {
         "source": "supercombo",
         "moveName": "Ryuuenbu",
@@ -1745,165 +1412,13 @@
         "dmg": null,
         "total": 70,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 35,
         "sourceName": "Ryuuenbu",
         "sourceInput": "214PP",
         "cancelText": "SA2 SA3 (3rd)"
       },
       "nameZh": "龙炎舞"
-    },
-    {
-      "name": "Ryuuenbu (Flame)",
-      "input": "214LP",
-      "damage": "900",
-      "startup": "14",
-      "active": "7",
-      "recovery": "15",
-      "onBlock": "-2",
-      "onHit": "KD +35",
-      "category": "special",
-      "cancels": [
-        "SA3"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 35
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Ryuuenbu (Flame)",
-        "plnCmd": "214LP",
-        "startup": 14,
-        "active": 7,
-        "recovery": 15,
-        "onBlock": -2,
-        "onHit": null,
-        "dmg": 900,
-        "total": 35,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 20,
-        "sourceName": "Ryuuenbu (Flame)",
-        "sourceInput": "214LP",
-        "cancelText": "SA3"
-      },
-      "nameZh": "龙炎舞(炎)"
-    },
-    {
-      "name": "Ryuuenbu (Flame)",
-      "input": "214MP",
-      "damage": "200,900",
-      "startup": "14(25)",
-      "active": "2(9)7",
-      "recovery": "16",
-      "onBlock": "-6(-4)",
-      "onHit": "KD +42(+44)",
-      "category": "special",
-      "cancels": [
-        "SA3",
-        "(2nd)"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 42
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Ryuuenbu (Flame)",
-        "plnCmd": "214MP",
-        "startup": 14,
-        "active": 18,
-        "recovery": 16,
-        "onBlock": -6,
-        "onHit": null,
-        "dmg": 200,
-        "total": 47,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 28,
-        "sourceName": "Ryuuenbu (Flame)",
-        "sourceInput": "214MP",
-        "cancelText": "SA3 (2nd)"
-      },
-      "nameZh": "龙炎舞(炎)"
-    },
-    {
-      "name": "Ryuuenbu (Flame)",
-      "input": "214HP",
-      "damage": "200,700",
-      "startup": "15(27)",
-      "active": "3(9)10",
-      "recovery": "12",
-      "onBlock": "-6",
-      "onHit": "KD +47",
-      "category": "special",
-      "cancels": [
-        "SA3",
-        "(2nd)"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 47
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Ryuuenbu (Flame)",
-        "plnCmd": "214HP",
-        "startup": 15,
-        "active": 22,
-        "recovery": 12,
-        "onBlock": -6,
-        "onHit": null,
-        "dmg": 200,
-        "total": 48,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 28,
-        "sourceName": "Ryuuenbu (Flame)",
-        "sourceInput": "214HP",
-        "cancelText": "SA3 (2nd)"
-      },
-      "nameZh": "龙炎舞(炎)"
-    },
-    {
-      "name": "Ryuuenbu (Flame)",
-      "input": "214PP",
-      "damage": "200,450x2 (1100)",
-      "startup": "16",
-      "active": "2(12)5(7)5",
-      "recovery": "16(24)",
-      "onBlock": "-12",
-      "onHit": "KD +48",
-      "category": "special",
-      "cancels": [
-        "SA2",
-        "SA3",
-        "(3rd)"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 48
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Ryuuenbu (Flame)",
-        "plnCmd": "214PP",
-        "startup": 16,
-        "active": 31,
-        "recovery": 24,
-        "onBlock": -12,
-        "onHit": null,
-        "dmg": null,
-        "total": 70,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 35,
-        "sourceName": "Ryuuenbu (Flame)",
-        "sourceInput": "214PP",
-        "cancelText": "SA2 SA3 (3rd)"
-      },
-      "nameZh": "龙炎舞(炎)"
     },
     {
       "name": "Hissatsu Shinobi Bachi",
@@ -1923,6 +1438,7 @@
         "type": "soft",
         "advantage": 27
       },
+      "notes": "Enhanced version that costs 1 Flame Stock; only the first 7 active frames of the 2nd hit are SA3 cancelable; puts the opponent into a limited juggle state (allows some follow-ups after high-connect juggles); SA3 cancel can occur on whiff when the first cartwheel connects (allows SA3 to connect during these high-connect juggles when the cancel window would normally have passed); combos from any light normal, making it Mai's most consistent combo ender and a great corner carry tool; reaches about 80% screen length; can be very plus if spaced perfectly or timed as a meaty (but very reactable startup in this scenario); 2nd hit active frames 7-13 whiff on crouching opponents unless they extend a vertical hurtbox; this makes it more interruptible by crouching attacks at long range, but makes it at least +3 when crouch blocked",
       "raw": {
         "source": "supercombo",
         "moveName": "Hissatsu Shinobi Bachi",
@@ -1935,7 +1451,7 @@
         "dmg": null,
         "total": 55,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 36,
         "sourceName": "Hissatsu Shinobi Bachi",
         "sourceInput": "236LK",
@@ -1961,6 +1477,7 @@
         "type": "soft",
         "advantage": 23
       },
+      "notes": "Enhanced version that costs 1 Flame Stock; only the first 7 active frames of the 2nd hit are SA3 cancelable; puts the opponent into a limited juggle state (allows some follow-ups after high-connect juggles); SA3 cancel can occur on whiff when the first cartwheel connects (allows SA3 to connect during these high-connect juggles when the cancel window would normally have passed); combos from medium/heavy normals and Punish Counter light normals, making it a solid combo ender and a great corner carry tool; reaches about 99% screen length (barely whiffs on fullscreen standing opponents); can be very plus if spaced perfectly or timed as a meaty (but very reactable startup in this scenario); 2nd hit active frames 7-15 whiff on crouching opponents unless they extend a vertical hurtbox; this makes it more interruptible by crouching attacks at long range, but makes it at least +3 when crouch blocked; sets up a safe jab vs. 9f or slower reversals (close range hit grounded hit into Dash + 5LP or 2LP)",
       "raw": {
         "source": "supercombo",
         "moveName": "Hissatsu Shinobi Bachi",
@@ -1973,7 +1490,7 @@
         "dmg": null,
         "total": 64,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 38,
         "sourceName": "Hissatsu Shinobi Bachi",
         "sourceInput": "236MK",
@@ -1999,6 +1516,7 @@
         "type": "soft",
         "advantage": 22
       },
+      "notes": "Enhanced version that costs 1 Flame Stock; only the first 7 active frames of the 2nd hit are SA3 cancelable; puts the opponent into a limited juggle state (allows some follow-ups after high-connect juggles); SA3 cancel can occur on whiff when the first cartwheel connects (allows SA3 to connect during these high-connect juggles when the cancel window would normally have passed); combos from medium/heavy normals and Punish Counter 5LP, making it a solid combo ender and a great corner carry tool; reaches beyond full screen length; can be very plus if spaced perfectly or timed as a meaty (but very reactable startup in this scenario); 2nd hit active frames 7-15 whiff on crouching opponents unless they extend a vertical hurtbox; this makes it more interruptible by crouching attacks at long range, but makes it at least +2 when crouch blocked",
       "raw": {
         "source": "supercombo",
         "moveName": "Hissatsu Shinobi Bachi",
@@ -2011,7 +1529,7 @@
         "dmg": null,
         "total": 68,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 38,
         "sourceName": "Hissatsu Shinobi Bachi",
         "sourceInput": "236HK",
@@ -2038,6 +1556,7 @@
         "type": "soft",
         "advantage": 27
       },
+      "notes": "Enhanced version that costs 1 Flame Stock; no extra damage scaling, making it a much stronger combo route than regular version; stops after the 2nd hit on block; on hit, puts opponent into a limited juggle state (can follow up with air normals/specials/supers on frames 54-74); canceling the 2nd hit into SA2 whiffs (partial connect in the corner); Mai still performs the jump animation on whiff, allowing her to come down with an air normal (mostly a gimmick during charged Kachousen pressure); only the first active frame of the 2nd hit can connect on grounded opponents (the remaining 16 active frames only hit airborne); combos from 5LP, making it a useful damage/corner carry option even from light starters",
       "raw": {
         "source": "supercombo",
         "moveName": "Hissatsu Shinobi Bachi",
@@ -2050,166 +1569,13 @@
         "dmg": null,
         "total": 77,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 52,
         "sourceName": "Hissatsu Shinobi Bachi",
         "sourceInput": "236KK",
         "cancelText": "SA2 SA3 (2nd)"
       },
       "nameZh": "必杀忍蜂"
-    },
-    {
-      "name": "Hissatsu Shinobi Bachi (Flame)",
-      "input": "236LK",
-      "damage": "400,500",
-      "startup": "10",
-      "active": "2(11)17",
-      "recovery": "16",
-      "onBlock": "-10(+6)",
-      "onHit": "KD +27(+43)",
-      "category": "special",
-      "cancels": [
-        "SA3",
-        "(2nd)"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 27
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Hissatsu Shinobi Bachi (Flame)",
-        "plnCmd": "236LK",
-        "startup": 10,
-        "active": 30,
-        "recovery": 16,
-        "onBlock": -10,
-        "onHit": null,
-        "dmg": 400,
-        "total": 55,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 36,
-        "sourceName": "Hissatsu Shinobi Bachi (Flame)",
-        "sourceInput": "236LK",
-        "cancelText": "SA3 (2nd)"
-      },
-      "nameZh": "必杀忍蜂(炎)"
-    },
-    {
-      "name": "Hissatsu Shinobi Bachi (Flame)",
-      "input": "236MK",
-      "damage": "450,550",
-      "startup": "15",
-      "active": "2(11)17",
-      "recovery": "20",
-      "onBlock": "-12(+4)",
-      "onHit": "KD +23(+39)",
-      "category": "special",
-      "cancels": [
-        "SA3",
-        "(2nd)"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 23
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Hissatsu Shinobi Bachi (Flame)",
-        "plnCmd": "236MK",
-        "startup": 15,
-        "active": 30,
-        "recovery": 20,
-        "onBlock": -12,
-        "onHit": null,
-        "dmg": 450,
-        "total": 64,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 38,
-        "sourceName": "Hissatsu Shinobi Bachi (Flame)",
-        "sourceInput": "236MK",
-        "cancelText": "SA3 (2nd)"
-      },
-      "nameZh": "必杀忍蜂(炎)"
-    },
-    {
-      "name": "Hissatsu Shinobi Bachi (Flame)",
-      "input": "236HK",
-      "damage": "500,600",
-      "startup": "18",
-      "active": "2(11)17",
-      "recovery": "21",
-      "onBlock": "-13(+3)",
-      "onHit": "KD +22(+38)",
-      "category": "special",
-      "cancels": [
-        "SA3",
-        "(2nd)"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 22
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Hissatsu Shinobi Bachi (Flame)",
-        "plnCmd": "236HK",
-        "startup": 18,
-        "active": 30,
-        "recovery": 21,
-        "onBlock": -13,
-        "onHit": null,
-        "dmg": 500,
-        "total": 68,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 38,
-        "sourceName": "Hissatsu Shinobi Bachi (Flame)",
-        "sourceInput": "236HK",
-        "cancelText": "SA3 (2nd)"
-      },
-      "nameZh": "必杀忍蜂(炎)"
-    },
-    {
-      "name": "Hissatsu Shinobi Bachi (Flame)",
-      "input": "236KK",
-      "damage": "400,500",
-      "startup": "14",
-      "active": "2(13)17",
-      "recovery": "29+3 land",
-      "onBlock": "-12",
-      "onHit": "KD +27",
-      "category": "special",
-      "cancels": [
-        "SA2",
-        "SA3",
-        "(2nd)"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 27
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Hissatsu Shinobi Bachi (Flame)",
-        "plnCmd": "236KK",
-        "startup": 14,
-        "active": 32,
-        "recovery": 32,
-        "onBlock": -12,
-        "onHit": null,
-        "dmg": 400,
-        "total": 77,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 52,
-        "sourceName": "Hissatsu Shinobi Bachi (Flame)",
-        "sourceInput": "236KK",
-        "cancelText": "SA2 SA3 (2nd)"
-      },
-      "nameZh": "必杀忍蜂(炎)"
     },
     {
       "name": "Hishou Ryuuenjin",
@@ -2225,6 +1591,7 @@
         "type": "soft",
         "advantage": 29
       },
+      "notes": "Enhanced version that costs 1 Flame Stock in exchange for slightly better damage, juggle potential, and KD advantage; close range anti-air and juggle ender; cannot hit cross-up; puts opponents into limited juggle state on hit; first/second hits can whiff if used too early as an anti-air; last 2 hits whiff on crouch block (except vs. Dee Jay/JP/Marisa/Zangief) resulting in worse block advantage and reduced chip/drive damage",
       "raw": {
         "source": "supercombo",
         "moveName": "Hishou Ryuuenjin",
@@ -2237,7 +1604,7 @@
         "dmg": 400,
         "total": 52,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 19,
         "sourceName": "Hishou Ryuuenjin",
         "sourceInput": "623LK",
@@ -2259,6 +1626,7 @@
         "type": "soft",
         "advantage": 31
       },
+      "notes": "Enhanced version that costs 1 Flame Stock in exchange for slightly better damage, juggle potential, and KD advantage; close/mid range anti-air and juggle ender; cannot hit cross-up; puts opponents into limited juggle state on hit; first/second hits can whiff if used too early as an anti-air; last 2 hits whiff on crouch block resulting in worse block advantage and reduced chip/drive damage",
       "raw": {
         "source": "supercombo",
         "moveName": "Hishou Ryuuenjin",
@@ -2271,7 +1639,7 @@
         "dmg": 500,
         "total": 52,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 19,
         "sourceName": "Hishou Ryuuenjin",
         "sourceInput": "623MK",
@@ -2293,6 +1661,7 @@
         "type": "soft",
         "advantage": 31
       },
+      "notes": "Enhanced version that costs 1 Flame Stock in exchange for slightly better damage, juggle potential, and KD advantage; mid/farther range anti-air and juggle ender (slower startup limits its use in some juggle routes); cannot hit cross-up; puts opponents into limited juggle state on hit; first/second hits can whiff if used too early as an anti-air; last 2 hits whiff on block (except vs. standing Dee Jay/JP/Marisa/Zangief) resulting in worse block advantage and reduced chip/drive damage",
       "raw": {
         "source": "supercombo",
         "moveName": "Hishou Ryuuenjin",
@@ -2305,7 +1674,7 @@
         "dmg": null,
         "total": 53,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 19,
         "sourceName": "Hishou Ryuuenjin",
         "sourceInput": "623HK",
@@ -2327,6 +1696,7 @@
         "type": "soft",
         "advantage": 20
       },
+      "notes": "Enhanced version that costs 1 Flame Stock in exchange for slightly better damage and KD advantage; Mai's primary reversal, as well as an anti-air and strong juggle ender; cannot hit cross-up; puts opponents into limited juggle state on hit; first/second hits can whiff if used too early as an anti-air; last 2 hits whiff on crouch block resulting in worse block advantage and reduced chip/drive damage; 7f extra landing recovery on block",
       "raw": {
         "source": "supercombo",
         "moveName": "Hishou Ryuuenjin",
@@ -2339,149 +1709,13 @@
         "dmg": null,
         "total": 45,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 12,
         "sourceName": "Hishou Ryuuenjin",
         "sourceInput": "623KK",
         "cancelText": "-"
       },
       "nameZh": "飞翔龙炎阵"
-    },
-    {
-      "name": "Hishou Ryuuenjin (Flame)",
-      "input": "623LK",
-      "damage": "400,300x2 (1000)",
-      "startup": "5",
-      "active": "5,2,11",
-      "recovery": "15+15 land",
-      "onBlock": "-29(-32)",
-      "onHit": "KD +31",
-      "category": "special",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 31
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Hishou Ryuuenjin (Flame)",
-        "plnCmd": "623LK",
-        "startup": 5,
-        "active": 18,
-        "recovery": 30,
-        "onBlock": -29,
-        "onHit": null,
-        "dmg": null,
-        "total": 52,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 19,
-        "sourceName": "Hishou Ryuuenjin (Flame)",
-        "sourceInput": "623LK",
-        "cancelText": "-"
-      },
-      "nameZh": "飞翔龙炎阵(炎)"
-    },
-    {
-      "name": "Hishou Ryuuenjin (Flame)",
-      "input": "623MK",
-      "damage": "500,350x2 (1200)",
-      "startup": "6",
-      "active": "5,2,12",
-      "recovery": "13+15 land",
-      "onBlock": "-28(-31)",
-      "onHit": "KD +32",
-      "category": "special",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 32
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Hishou Ryuuenjin (Flame)",
-        "plnCmd": "623MK",
-        "startup": 6,
-        "active": 19,
-        "recovery": 28,
-        "onBlock": -28,
-        "onHit": null,
-        "dmg": null,
-        "total": 52,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 19,
-        "sourceName": "Hishou Ryuuenjin (Flame)",
-        "sourceInput": "623MK",
-        "cancelText": "-"
-      },
-      "nameZh": "飞翔龙炎阵(炎)"
-    },
-    {
-      "name": "Hishou Ryuuenjin (Flame)",
-      "input": "623HK",
-      "damage": "500,400x2 (1300)",
-      "startup": "7",
-      "active": "5,2,11",
-      "recovery": "14+15 land",
-      "onBlock": "-28(-31)",
-      "onHit": "KD +32",
-      "category": "special",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 32
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Hishou Ryuuenjin (Flame)",
-        "plnCmd": "623HK",
-        "startup": 7,
-        "active": 18,
-        "recovery": 29,
-        "onBlock": -28,
-        "onHit": null,
-        "dmg": null,
-        "total": 53,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 19,
-        "sourceName": "Hishou Ryuuenjin (Flame)",
-        "sourceInput": "623HK",
-        "cancelText": "-"
-      },
-      "nameZh": "飞翔龙炎阵(炎)"
-    },
-    {
-      "name": "Hishou Ryuuenjin (Flame)",
-      "input": "623KK",
-      "damage": "800,500,400 (1700)",
-      "startup": "6",
-      "active": "5,2,11",
-      "recovery": "18+16(23) land",
-      "onBlock": "-40(-47)",
-      "onHit": "KD +27",
-      "category": "special",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 27
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Hishou Ryuuenjin (Flame)",
-        "plnCmd": "623KK",
-        "startup": 6,
-        "active": 18,
-        "recovery": 23,
-        "onBlock": -40,
-        "onHit": null,
-        "dmg": 800,
-        "total": 46,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 12,
-        "sourceName": "Hishou Ryuuenjin (Flame)",
-        "sourceInput": "623KK",
-        "cancelText": "-"
-      },
-      "nameZh": "飞翔龙炎阵(炎)"
     },
     {
       "name": "Musasabi no Mai",
@@ -2497,6 +1731,7 @@
         "type": "soft",
         "advantage": 38
       },
+      "notes": "Can only be performed during Forward Jump or after 5LK~LK~LK; enhanced version with better frame advantage and damage; 7f extra landing recovery on whiff (10f extra when crossing behind the opponent); Mai is in a crouching state on the final frame of landing recovery (can affect punish routes); puts grounded opponents into limited juggle state; spike knockdown vs. airborne opponents that causes a very quick OTG bounce state (allows juggle into held 236PP with specific air-to-air timing); cannot hit cross-up; solid hitbox for a divekick but very unsafe if whiffed",
       "raw": {
         "source": "supercombo",
         "moveName": "Musasabi no Mai",
@@ -2508,7 +1743,7 @@
         "onHit": null,
         "dmg": 1000,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Musasabi no Mai",
         "sourceInput": "j.214P",
         "cancelText": "-"
@@ -2532,6 +1767,7 @@
         "type": "soft",
         "advantage": 44
       },
+      "notes": "Can only be performed during Forward Jump or after 5LK~LK~LK; enhanced version with better frame advantage and damage; 7f extra landing recovery on whiff (10f extra when crossing behind the opponent); Mai is in a crouching state on the final frame of landing recovery (can affect punish routes); puts grounded opponents into limited juggle state and causes a high OTG bounce vs. airborne opponents; does not cause spike knockdown vs. airborne like the non-flame version, making it better in juggles; SA2 cancelable until the 2nd to last airborne active frame on the way down (TK version vs. grounded opponents can hit too late for cancel); cannot hit cross-up; solid hitbox for a divekick but very unsafe if whiffed",
       "raw": {
         "source": "supercombo",
         "moveName": "Musasabi no Mai",
@@ -2543,79 +1779,12 @@
         "onHit": null,
         "dmg": 1200,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Musasabi no Mai",
         "sourceInput": "j.214PP",
         "cancelText": "SA2"
       },
       "nameZh": "鼯鼠之舞"
-    },
-    {
-      "name": "Musasabi no Mai (Flame)",
-      "input": "j.214P",
-      "damage": "1100",
-      "startup": "21",
-      "active": "until land",
-      "recovery": "18(25~28) land",
-      "onBlock": "-5(+2)",
-      "onHit": "KD +39(+46)",
-      "category": "special",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 39
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Musasabi no Mai (Flame)",
-        "plnCmd": "j.214P",
-        "startup": 21,
-        "active": null,
-        "recovery": 43,
-        "onBlock": -5,
-        "onHit": null,
-        "dmg": 1100,
-        "moveType": "special",
-        "section": "",
-        "sourceName": "Musasabi no Mai (Flame)",
-        "sourceInput": "j.214P",
-        "cancelText": "-"
-      },
-      "nameZh": "鼯鼠之舞(炎)"
-    },
-    {
-      "name": "Musasabi no Mai (Flame)",
-      "input": "j.214PP",
-      "damage": "1300",
-      "startup": "21",
-      "active": "until land",
-      "recovery": "18(25~28) land",
-      "onBlock": "-5(+2)",
-      "onHit": "KD +53(+60)",
-      "category": "special",
-      "cancels": [
-        "SA2"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 53
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Musasabi no Mai (Flame)",
-        "plnCmd": "j.214PP",
-        "startup": 21,
-        "active": null,
-        "recovery": 43,
-        "onBlock": -5,
-        "onHit": null,
-        "dmg": 1300,
-        "moveType": "special",
-        "section": "",
-        "sourceName": "Musasabi no Mai (Flame)",
-        "sourceInput": "j.214PP",
-        "cancelText": "SA2"
-      },
-      "nameZh": "鼯鼠之舞(炎)"
     },
     {
       "name": "Kagerou no Mai",
@@ -2626,11 +1795,12 @@
       "recovery": "51",
       "onBlock": "-31",
       "onHit": "KD +26",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "soft",
         "advantage": 26
       },
+      "notes": "Refills Mai's flame stock count to 5 on the last frame of recovery; flame stocks enhance special moves and SA1/SA2 (stocks do not carry over between rounds); flame-enhanced version has a wider hitbox in both directions and grants better oki; KD advantage refers to grounded hit (higher advantage vs. airborne but also variable); short horizontal range but has a good anti-air hitbox that hits on both sides; puts the opponent into a limited juggle state; 12-hit projectile, but Perfect Parry only incurs 1 recovery frame per hit (allows the opponent to interrupt between hits after one Perfect Parry); this projectile hitbox can cause it to lose to projectile invuln options when used as a reversal; on hit/block, the last projectile hit has 1 active frame, converting the remaining 2 active frames to \"recovery frames\"",
       "raw": {
         "source": "supercombo",
         "moveName": "Kagerou no Mai",
@@ -2642,48 +1812,14 @@
         "onHit": null,
         "dmg": null,
         "total": 90,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 54,
         "sourceName": "Kagerou no Mai",
         "sourceInput": "236236P",
         "cancelText": "-"
       },
       "nameZh": "阳炎之舞"
-    },
-    {
-      "name": "Kagerou no Mai (Flame)",
-      "input": "236236P",
-      "damage": "150x10,300,500 (2300)",
-      "startup": "6",
-      "active": "7x9,4,20,3(90 total)",
-      "recovery": "46",
-      "onBlock": "-26",
-      "onHit": "KD +40",
-      "category": "special",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 40
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Kagerou no Mai (Flame)",
-        "plnCmd": "236236P",
-        "startup": 6,
-        "active": 90,
-        "recovery": 46,
-        "onBlock": -26,
-        "onHit": null,
-        "dmg": null,
-        "total": 141,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 110,
-        "sourceName": "Kagerou no Mai (Flame)",
-        "sourceInput": "236236P",
-        "cancelText": "-"
-      },
-      "nameZh": "阳炎之舞(炎)"
     },
     {
       "name": "Chou Hissatsu Shinobi Bachi",
@@ -2694,11 +1830,12 @@
       "recovery": "26(37)",
       "onBlock": "-24",
       "onHit": "KD +33",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "soft",
         "advantage": 33
       },
+      "notes": "Enhanced version for 1 Flame Stock; 6f extra recovery on block; moves forward much more quickly and has extra projectile invincibility compared to the standard version, making it an incredible anti-fireball and whiff punish tool; good reversal and juggle ender; deals less damage from long range due to earlier hits whiffing; puts opponents into limited juggle state (can juggle 623LK in the corner, and higher juggle/anti-air connects can give better juggles (e.g. midscreen Flame 214PP, juggle Flame SA2 + Flame 623KK); generally should not be canceled into from OD specials (214PP: manually juggle afterward, 236KK: juggle j.MP > Air SA2)",
       "raw": {
         "source": "supercombo",
         "moveName": "Chou Hissatsu Shinobi Bachi",
@@ -2710,8 +1847,8 @@
         "onHit": null,
         "dmg": null,
         "total": 79,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 38,
         "sourceName": "Chou Hissatsu Shinobi Bachi",
         "sourceInput": "236236K",
@@ -2728,11 +1865,12 @@
       "recovery": "24 land",
       "onBlock": "-50~",
       "onHit": "KD +6(+11)",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "soft",
         "advantage": 6
       },
+      "notes": "Enhanced version that costs 1 Flame Stock; can be input during forward or neutral jump; good air-to-air and combo tool; no invincibility of any kind, but can be very effective against projectiles when input at minimum height with a Tiger Knee motion (2362369K); deals less damage from long range due to earlier hits whiffing; frame advantage varies drastically depending on the height and distance it connects; very likely to fly over the opponent on block unless they are fully cornered; cannot hit cross-up",
       "raw": {
         "source": "supercombo",
         "moveName": "Air Chou Hissatsu Shinobi Bachi",
@@ -2744,82 +1882,14 @@
         "onHit": null,
         "dmg": null,
         "total": 46,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": -6,
         "sourceName": "Air Chou Hissatsu Shinobi Bachi",
         "sourceInput": "j.236236K",
         "cancelText": "-"
       },
       "nameZh": "空中超必杀忍蜂"
-    },
-    {
-      "name": "Chou Hissatsu Shinobi Bachi (Flame)",
-      "input": "236236K",
-      "damage": "200x11,800 (3000)",
-      "startup": "7",
-      "active": "3x12",
-      "recovery": "31(37)",
-      "onBlock": "-24",
-      "onHit": "KD +38",
-      "category": "special",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 38
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Chou Hissatsu Shinobi Bachi (Flame)",
-        "plnCmd": "236236K",
-        "startup": 7,
-        "active": 36,
-        "recovery": 37,
-        "onBlock": -24,
-        "onHit": null,
-        "dmg": null,
-        "total": 79,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 43,
-        "sourceName": "Chou Hissatsu Shinobi Bachi (Flame)",
-        "sourceInput": "236236K",
-        "cancelText": "-"
-      },
-      "nameZh": "超必杀忍蜂(炎)"
-    },
-    {
-      "name": "Air Chou Hissatsu Shinobi Bachi (Flame)",
-      "input": "j.236236K",
-      "damage": "200x11,800 (3000)",
-      "startup": "3",
-      "active": "2x12",
-      "recovery": "24 land",
-      "onBlock": "-50~",
-      "onHit": "KD +7(+17)",
-      "category": "special",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 7
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Air Chou Hissatsu Shinobi Bachi (Flame)",
-        "plnCmd": "j.236236K",
-        "startup": 3,
-        "active": 24,
-        "recovery": 24,
-        "onBlock": -50,
-        "onHit": null,
-        "dmg": null,
-        "total": 50,
-        "moveType": "special",
-        "section": "",
-        "blockstun": -2,
-        "sourceName": "Air Chou Hissatsu Shinobi Bachi (Flame)",
-        "sourceInput": "j.236236K",
-        "cancelText": "-"
-      },
-      "nameZh": "空中超必杀忍蜂(炎)"
     },
     {
       "name": "Shiranui Ryuu: Enbu Ada Zakura",
@@ -2830,11 +1900,12 @@
       "recovery": "46",
       "onBlock": "-33",
       "onHit": "HKD +19(KD +52)",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "hard",
         "advantage": 19
       },
+      "notes": "1st hit causes cinematic; non-cinematic version does less damage (varies based on how many hits connect), but can juggle into 623K to recover some lost damage; available at 25% HP or below; cinematic time regenerates ~2.1 Drive bars for Mai; 3f startup when canceled from 236K/KK only; slower startup makes it risky as a reversal (many light normals can be safe with meaty timing)",
       "raw": {
         "source": "supercombo",
         "moveName": "Shiranui Ryuu: Enbu Ada Zakura",
@@ -2846,49 +1917,15 @@
         "onHit": null,
         "dmg": 4000,
         "total": 94,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 52,
         "sourceName": "Shiranui Ryuu: Enbu Ada Zakura",
         "sourceInput": "214214P",
         "cancelText": "-"
       },
       "nameZh": "不知火流：炎舞徒樱"
-    },
-    {
-      "name": "Shiranui Ryuu: Enbu Ada Zakura (CA)",
-      "input": "214214P",
-      "damage": "4500(400,300,2300)",
-      "startup": "10(3)",
-      "active": "2(4)2(15)4(8)4",
-      "recovery": "46",
-      "onBlock": "-33",
-      "onHit": "HKD +20(KD +52)",
-      "category": "special",
-      "knockdown": {
-        "type": "hard",
-        "advantage": 20
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Shiranui Ryuu: Enbu Ada Zakura (CA)",
-        "plnCmd": "214214P",
-        "startup": 10,
-        "active": 39,
-        "recovery": 46,
-        "onBlock": -33,
-        "onHit": null,
-        "dmg": 4500,
-        "total": 94,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 52,
-        "sourceName": "Shiranui Ryuu: Enbu Ada Zakura (CA)",
-        "sourceInput": "214214P",
-        "cancelText": "-"
-      },
-      "nameZh": "不知火流：炎舞徒樱(CA)"
     }
   ],
-  "lastUpdated": "2026-02-10"
+  "lastUpdated": "2026-03-19"
 }

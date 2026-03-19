@@ -244,7 +244,7 @@
         "Super",
         "Drive Rush"
       ],
-      "notes": "Chains into 5LP/2LP/2LK; excellent range for a 4f jab; high pushback makes tick throw and counter-hit pressure weaker, but also allows Sagat to space himself outside the opponent's reversal normals on block; DR cancel is delayed until after 2nd~3rd recovery frame; topmost hurtbox on frames 1-5 is vulnerable only to aerial attacks (preventing its use as an anti-air) and is projectile invincible to avoid High Tiger Shot",
+      "notes": "Chains into 5LP/2LP/2LK; excellent range for a 4f jab; high pushback makes tick throw and counter-hit pressure weaker, but also allows Sagat to space himself outside the opponent's reversal normals on block; DR cancel is delayed until after 2nd~3rd recovery frame; topmost hurtbox on frames 1-5 is vulnerable only to aerial strikes (preventing its use as an anti-air)",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch LP",
@@ -282,7 +282,7 @@
         "Target Combo",
         "Drive Rush"
       ],
-      "notes": "Solid mid-range cancelable poke and buffer tool; 1f extra recovery on whiff/block; significantly more range on active frames 2-3 (more effective linking from +8 or punishing -8 moves); cancelable into 2 different Target Combo follow-ups with different hitconfirm timings (requires Punish Counter or Drive Rush for 2MP~HP combo); topmost hurtbox is vulnerable only to aerial attacks on frames 1-9 (preventing its use as an anti-air) and is projectile invincible on frames 1-14 to avoid High Tiger Shot (frames 15-26 are still vulnerable)",
+      "notes": "Solid mid-range cancelable poke and buffer tool; 1f extra recovery on whiff/block; significantly more range on active frames 2-3 (more effective linking from +8 or punishing -8 moves); cancelable into 2 different Target Combo follow-ups with different hitconfirm timings (requires Punish Counter or Drive Rush for 2MP~HP combo); topmost hurtbox is vulnerable only to aerial strikes on frames 1-9 (preventing its use as an anti-air), and is projectile invincible on frames 1-14 to avoid High Tiger Shot (frames 15-26 are still vulnerable)",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch MP",
@@ -319,7 +319,7 @@
         "Super",
         "Drive Rush"
       ],
-      "notes": "Very long range for a cancelable and hitconfirmable poke; significantly more range on active frames 3-4; topmost hurtbox is vulnerable only to aerial attacks on frames 1-14 (preventing its use as an anti-air) and is projectile invincible on frames 1-19 to avoid High Tiger Shot (frames 20-35 are still vulnerable)",
+      "notes": "Very long range for a cancelable and hitconfirmable poke; significantly more range on active frames 3-4; topmost hurtbox is vulnerable only to aerial strikes on frames 1-14 (preventing its use as an anti-air), and is projectile invincible on frames 1-19 to avoid High Tiger Shot (frames 20-35 are still vulnerable)",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch HP",
@@ -2257,5 +2257,5 @@
       "nameZh": "猛虎征服者"
     }
   ],
-  "lastUpdated": "2026-03-04"
+  "lastUpdated": "2026-03-19"
 }

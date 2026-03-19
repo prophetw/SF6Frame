@@ -26,6 +26,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Good neutral buffer into 5LP~LP Target Combo (requires at least a Counter-hit to combo); causes air reset if juggled into",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand LP",
@@ -38,10 +39,10 @@
         "dmg": 400,
         "total": 19,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 12,
         "hitstun": 14,
-        "sourceName": "Standing Light Punch",
+        "sourceName": "Stand LP",
         "sourceInput": "5LP",
         "cancelText": "TC"
       },
@@ -61,6 +62,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "2f extra recovery on whiff; great hitbox and a strong buffer into 5MP~MP Target Combo",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand MP",
@@ -73,10 +75,10 @@
         "dmg": 700,
         "total": 27,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "hitstun": 21,
-        "sourceName": "Standing Medium Punch",
+        "sourceName": "Stand MP",
         "sourceInput": "5MP",
         "cancelText": "TC"
       },
@@ -96,6 +98,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Can hold button 21f for improved properties; strong whiff punish tool",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand HP",
@@ -108,10 +111,10 @@
         "dmg": 1000,
         "total": 36,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 22,
         "hitstun": 28,
-        "sourceName": "Standing Heavy Punch",
+        "sourceName": "Stand HP",
         "sourceInput": "5HP",
         "cancelText": "TC"
       },
@@ -131,6 +134,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "1f extra recovery on whiff; releasing the button on frames 7-17 results in uncharged version with 5f startup; great range and frame advantage for follow-up combos and pressure; puts airborne opponents into limited juggle state",
       "raw": {
         "source": "supercombo",
         "moveName": "Marisa Style (HP)",
@@ -143,7 +147,7 @@
         "dmg": 1200,
         "total": 46,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 27,
         "hitstun": 30,
         "sourceName": "Marisa Style (HP)",
@@ -167,6 +171,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "At farther ranges, can only combo into SA2; special cancel is delayed until after 2nd recovery frame; DR cancel is delayed until after 3rd recovery frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand LK",
@@ -179,10 +184,10 @@
         "dmg": 400,
         "total": 21,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 14,
         "hitstun": 16,
-        "sourceName": "Standing Light Kick",
+        "sourceName": "Stand LK",
         "sourceInput": "5LK",
         "cancelText": "Sp SA"
       },
@@ -198,6 +203,7 @@
       "onBlock": "-2",
       "onHit": "+4",
       "category": "normal",
+      "notes": "Good poke and Drive Rush starter",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand MK",
@@ -210,10 +216,10 @@
         "dmg": 800,
         "total": 30,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "hitstun": 24,
-        "sourceName": "Standing Medium Kick",
+        "sourceName": "Stand MK",
         "sourceInput": "5MK",
         "cancelText": "-"
       },
@@ -229,6 +235,7 @@
       "onBlock": "-3",
       "onHit": "+1",
       "category": "normal",
+      "notes": "Can hold button 17f for improved properties; solid poke with good hitbox priority; Punish Counter puts opponent into free juggle state; puts airborne opponents into limited juggle state; extends a hurtbox 1f before active that is vulnerable to projectiles",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand HK",
@@ -241,48 +248,14 @@
         "dmg": 1000,
         "total": 41,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 24,
         "hitstun": 28,
-        "sourceName": "Standing Heavy Kick",
+        "sourceName": "Stand HK",
         "sourceInput": "5HK",
         "cancelText": "-"
       },
       "nameZh": "站立重脚"
-    },
-    {
-      "name": "Marisa Style (HK)",
-      "input": "5",
-      "damage": "1200",
-      "startup": "24(10)",
-      "active": "2",
-      "recovery": "25",
-      "onBlock": "+1",
-      "onHit": "KD +36",
-      "category": "normal",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 36
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Marisa Style (HK)",
-        "plnCmd": "5",
-        "startup": 24,
-        "active": 2,
-        "recovery": 25,
-        "onBlock": 1,
-        "onHit": null,
-        "dmg": 1200,
-        "total": 50,
-        "moveType": "normal",
-        "section": "",
-        "blockstun": 28,
-        "sourceName": "Marisa Style (HK)",
-        "sourceInput": "5",
-        "cancelText": "-"
-      },
-      "nameZh": "玛丽莎流(重脚)"
     },
     {
       "name": "Crouch LP",
@@ -300,6 +273,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Chains into 2LP/2LK; Marisa's only 4f normal; special cancel is delayed until after active frames; DR cancel is delayed until after 2nd recovery frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch LP",
@@ -312,10 +286,10 @@
         "dmg": 300,
         "total": 15,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 11,
         "hitstun": 16,
-        "sourceName": "Crouching Light Punch",
+        "sourceName": "Crouch LP",
         "sourceInput": "2LP",
         "cancelText": "Chn Sp SA"
       },
@@ -336,6 +310,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Long range for a cancelable 2MP (but slower than average startup); topmost hurtboxes on frames 8-15 are projectile invincible (avoids Sagat's MP/HP Tiger Shot)",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch MP",
@@ -348,10 +323,10 @@
         "dmg": 700,
         "total": 26,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "hitstun": 22,
-        "sourceName": "Crouching Medium Punch",
+        "sourceName": "Crouch MP",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
       },
@@ -371,6 +346,7 @@
         "type": "soft",
         "advantage": 35
       },
+      "notes": "Can hold button 17f for improved properties; slow but solid anti-air; cannot hit cross-up; only first 2 active frames hit grounded opponents; active frames 3-5 only hit airborne opponents; puts opponent into limited juggle state on hit (higher launch vs. airborne, and much higher on Punish Counter)",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch HP",
@@ -383,9 +359,9 @@
         "dmg": 900,
         "total": 36,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 22,
-        "sourceName": "Crouching Heavy Punch",
+        "sourceName": "Crouch HP",
         "sourceInput": "2HP",
         "cancelText": "-"
       },
@@ -409,6 +385,7 @@
         "type": "soft",
         "advantage": 52
       },
+      "notes": "Launches opponent into limited juggle state on hit, and much higher launch on Punish Counter; useful for continuing juggles; cannot hit cross-up and too slow to realistically anti-air; only first 2 active frames hit grounded opponents; active frames 3-6 only hit airborne opponents; releasing the button on frames 5-16 results in uncharged version with 4f startup; only Super cancelable on the first 2 active frames; can always combo into a fully charged SA1 for incredible 1-bar damage; hitstop is 2 frames longer on hit than on block for easier cancel hitconfirms",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch HP (Hold)",
@@ -421,9 +398,9 @@
         "dmg": 1000,
         "total": 47,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 24,
-        "sourceName": "Crouching Heavy Punch (Hold)",
+        "sourceName": "Crouch HP (Hold)",
         "sourceInput": "2",
         "cancelText": "SA"
       },
@@ -443,6 +420,7 @@
         "Chain",
         "Drive Rush"
       ],
+      "notes": "Chains into 2LP/2LK",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch LK",
@@ -455,10 +433,10 @@
         "dmg": 300,
         "total": 19,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 12,
         "hitstun": 17,
-        "sourceName": "Crouching Light Kick",
+        "sourceName": "Crouch LK",
         "sourceInput": "2LK",
         "cancelText": "Chn"
       },
@@ -474,6 +452,7 @@
       "onBlock": "-2",
       "onHit": "+3",
       "category": "normal",
+      "notes": "Solid low poke with good range and hitbox priority; can lead to 5MP~MP combos out of Drive Rush at closer ranges; topmost hurtboxes on frames 9-16 are projectile invincible (avoids Sagat's MP/HP Tiger Shot but becomes vulnerable on frame 17~)",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch MK",
@@ -486,10 +465,10 @@
         "dmg": 600,
         "total": 29,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 19,
         "hitstun": 24,
-        "sourceName": "Crouching Medium Kick",
+        "sourceName": "Crouch MK",
         "sourceInput": "2MK",
         "cancelText": "-"
       },
@@ -509,6 +488,7 @@
         "type": "soft",
         "advantage": 29
       },
+      "notes": "Can hold button 20f for improved properties; has juggle potential; topmost hurtboxes on frames 1-7 are projectile invincible (avoids Sagat's MP/HP Tiger Shot)",
       "raw": {
         "source": "supercombo",
         "moveName": "Gaia Bash",
@@ -521,47 +501,13 @@
         "dmg": 1000,
         "total": 39,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "sourceName": "Gaia Bash",
         "sourceInput": "2HK",
         "cancelText": "-"
       },
       "nameZh": "盖亚猛击"
-    },
-    {
-      "name": "Gaia Bash (Hold)",
-      "input": "2",
-      "damage": "1200",
-      "startup": "20(4)",
-      "active": "3",
-      "recovery": "20(23)",
-      "onBlock": "-3",
-      "onHit": "KD +35",
-      "category": "normal",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 35
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Gaia Bash (Hold)",
-        "plnCmd": "2",
-        "startup": 20,
-        "active": 3,
-        "recovery": 23,
-        "onBlock": -3,
-        "onHit": null,
-        "dmg": 1200,
-        "total": 45,
-        "moveType": "normal",
-        "section": "",
-        "blockstun": 20,
-        "sourceName": "Gaia Bash (Hold)",
-        "sourceInput": "2",
-        "cancelText": "-"
-      },
-      "nameZh": "盖亚猛击(蓄力)"
     },
     {
       "name": "Jump LP",
@@ -573,6 +519,7 @@
       "onBlock": "+6(+8)",
       "onHit": "+9(+11)",
       "category": "normal",
+      "notes": "Quick air-to-air",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump LP",
@@ -585,10 +532,10 @@
         "dmg": 300,
         "total": 13,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 19,
-        "sourceName": "Jumping Light Punch",
+        "sourceName": "Jump LP",
         "sourceInput": "j.LP",
         "cancelText": "-"
       },
@@ -608,6 +555,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Puts airborne opponents into limited juggle state; lower body projectile invuln 7-21f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump MP",
@@ -620,10 +568,10 @@
         "dmg": 700,
         "total": 13,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 11,
         "hitstun": 15,
-        "sourceName": "Jumping Medium Punch",
+        "sourceName": "Jump MP",
         "sourceInput": "j.MP",
         "cancelText": "TC"
       },
@@ -639,6 +587,7 @@
       "onBlock": "+5(+11)",
       "onHit": "+9(+15)",
       "category": "normal",
+      "notes": "Can hold button 20f for improved properties; causes spike knockdown vs. airborne opponents; lower body projectile invuln 9-23f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump HP",
@@ -651,10 +600,10 @@
         "dmg": 800,
         "total": 19,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 15,
         "hitstun": 19,
-        "sourceName": "Jumping Heavy Punch",
+        "sourceName": "Jump HP",
         "sourceInput": "j.HP",
         "cancelText": "-"
       },
@@ -674,6 +623,7 @@
         "type": "hard",
         "advantage": 69
       },
+      "notes": "Releasing the button on frames 5-22 results in uncharged version with 5f startup; causes spike knockdown; lower body projectile invuln 28-37f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Marisa Style (j.HP)",
@@ -686,7 +636,7 @@
         "dmg": 1500,
         "total": 36,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 21,
         "sourceName": "Marisa Style (j.HP)",
         "sourceInput": "j.",
@@ -704,6 +654,7 @@
       "onBlock": "+1(+8)",
       "onHit": "+4(+11)",
       "category": "normal",
+      "notes": "Cross-up; useful for safe jumps; can be used as a fuzzy instant overhead",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump LK",
@@ -716,10 +667,10 @@
         "dmg": 300,
         "total": 17,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 14,
         "hitstun": 17,
-        "sourceName": "Jumping Light Kick",
+        "sourceName": "Jump LK",
         "sourceInput": "j.LK",
         "cancelText": "-"
       },
@@ -735,6 +686,7 @@
       "onBlock": "+6(+11)",
       "onHit": "+9(+14)",
       "category": "normal",
+      "notes": "Farthest reaching horizontal jump-in with good hitbox priority; lower body projectile invuln 8-25f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump MK",
@@ -747,10 +699,10 @@
         "dmg": 500,
         "total": 18,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "hitstun": 20,
-        "sourceName": "Jumping Medium Kick",
+        "sourceName": "Jump MK",
         "sourceInput": "j.MK",
         "cancelText": "-"
       },
@@ -766,6 +718,7 @@
       "onBlock": "+6(+11)",
       "onHit": "+10(+15)",
       "category": "normal",
+      "notes": "Can hold button 20f for improved properties; lower body projectile invuln 10-21f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump HK",
@@ -778,48 +731,87 @@
         "dmg": 800,
         "total": 19,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 20,
-        "sourceName": "Jumping Heavy Kick",
+        "sourceName": "Jump HK",
         "sourceInput": "j.HK",
         "cancelText": "-"
       },
       "nameZh": "跳跃重脚"
     },
     {
-      "name": "Marisa Style (j.HK)",
-      "input": "j.",
-      "damage": "1500",
-      "startup": "29(3)",
-      "active": "6",
-      "recovery": "3 land",
-      "onBlock": "+13(+18)",
-      "onHit": "HKD +70(+75)",
+      "name": "Novacule 1",
+      "input": "6MP",
+      "damage": "800",
+      "startup": "10",
+      "active": "2",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "+2",
       "category": "normal",
-      "knockdown": {
-        "type": "hard",
-        "advantage": 70
-      },
+      "cancels": [
+        "Target Combo",
+        "Drive Rush"
+      ],
+      "notes": "Strong forward movement with useful links out after Counter-hit, Punish Counter, or Drive Rush; has 2 hitconfirmable Target Combo follow-ups",
       "raw": {
         "source": "supercombo",
-        "moveName": "Marisa Style (j.HK)",
-        "plnCmd": "j.",
-        "startup": 29,
-        "active": 6,
-        "recovery": 3,
-        "onBlock": 13,
-        "onHit": null,
-        "dmg": 1500,
-        "total": 37,
+        "moveName": "Novacule 1",
+        "plnCmd": "6MP",
+        "startup": 10,
+        "active": 2,
+        "recovery": 20,
+        "onBlock": -3,
+        "onHit": 2,
+        "dmg": 800,
+        "total": 31,
         "moveType": "normal",
-        "section": "",
-        "blockstun": 22,
-        "sourceName": "Marisa Style (j.HK)",
-        "sourceInput": "j.",
-        "cancelText": "-"
+        "section": "Normals and Target Combos",
+        "blockstun": 19,
+        "hitstun": 24,
+        "sourceName": "Novacule 1",
+        "sourceInput": "6MP",
+        "cancelText": "TC"
       },
-      "nameZh": "玛丽莎流(跳重脚)"
+      "nameZh": "剃刀1"
+    },
+    {
+      "name": "Magna Bunker",
+      "input": "4HP",
+      "damage": "900",
+      "startup": "8",
+      "active": "2",
+      "recovery": "21(24)",
+      "onBlock": "-1",
+      "onHit": "+3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Drive Rush"
+      ],
+      "notes": "3f extra recovery on whiff; can hold button 17f for improved properties; causes air reset when juggled into without Drive Rush; short range but important in combos and pressure; special/DR cancel is delayed until after 2nd recovery frame",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Magna Bunker",
+        "plnCmd": "4HP",
+        "startup": 8,
+        "active": 2,
+        "recovery": 24,
+        "onBlock": -1,
+        "onHit": 3,
+        "dmg": 900,
+        "total": 33,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 22,
+        "hitstun": 26,
+        "sourceName": "Magna Bunker",
+        "sourceInput": "4HP",
+        "cancelText": "Sp SA"
+      },
+      "nameZh": "马格纳掩体"
     },
     {
       "name": "Magna Bunker (Hold)",
@@ -836,6 +828,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "5f extra recovery on whiff; 2nd active frame is omitted on hit/block (when combined with the extra whiff recovery, the total frame count is 6f longer on whiff compared to hit/block); releasing the button on frames 5-16 results in uncharged version with 3f startup; short range but excellent combo and pressure tool; meaty connect does not give extra frame advantage; puts airborne opponents into limited juggle state",
       "raw": {
         "source": "supercombo",
         "moveName": "Magna Bunker (Hold)",
@@ -848,7 +841,7 @@
         "dmg": 1000,
         "total": 45,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 25,
         "hitstun": 34,
         "sourceName": "Magna Bunker (Hold)",
@@ -871,6 +864,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Can hold button 17f for improved propertied; has a Target Combo follow-up; causes a short OTG bounce vs. airborne opponents",
       "raw": {
         "source": "supercombo",
         "moveName": "Malleus Breaker 1",
@@ -883,7 +877,7 @@
         "dmg": 900,
         "total": 43,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 20,
         "hitstun": 23,
         "sourceName": "Malleus Breaker 1",
@@ -906,6 +900,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Slow overhead that can combo on hit or give pressure on block; releasing the button on frames 7-13 results in uncharged version with 14f startup; causes a short OTG bounce vs. airborne opponents",
       "raw": {
         "source": "supercombo",
         "moveName": "Malleus Breaker 1 (Hold)",
@@ -918,7 +913,7 @@
         "dmg": 1000,
         "total": 48,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 23,
         "hitstun": 26,
         "sourceName": "Malleus Breaker 1 (Hold)",
@@ -926,6 +921,44 @@
         "cancelText": "TC"
       },
       "nameZh": "重锤粉碎1(蓄力)"
+    },
+    {
+      "name": "Falx Crusher 1",
+      "input": "6HK",
+      "damage": "900",
+      "startup": "14",
+      "active": "4",
+      "recovery": "21",
+      "onBlock": "-3",
+      "onHit": "0",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Target Combo",
+        "Drive Rush"
+      ],
+      "notes": "Can hold button 21f for improved properties; has a hitconfirmable Target Combo follow-up; forces stand on hit",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Falx Crusher 1",
+        "plnCmd": "6HK",
+        "startup": 14,
+        "active": 4,
+        "recovery": 21,
+        "onBlock": -3,
+        "onHit": 0,
+        "dmg": 900,
+        "total": 38,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 22,
+        "hitstun": 25,
+        "sourceName": "Falx Crusher 1",
+        "sourceInput": "6HK",
+        "cancelText": "Sp SA TC"
+      },
+      "nameZh": "镰刀粉碎1"
     },
     {
       "name": "Falx Crusher 1 (Hold)",
@@ -943,6 +976,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Releasing the button on frames 7-14 results in uncharged version with 7f startup (frames 15-20: 4f startup); has a hitconfirmable Target Combo follow-up; forces stand on hit; puts airborne opponents into limited juggle state; more range than uncharged version with excellent follow-up combos or block pressure; special/DR cancel is delayed until after 3rd active frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Falx Crusher 1 (Hold)",
@@ -955,7 +989,7 @@
         "dmg": 1000,
         "total": 49,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 26,
         "hitstun": 33,
         "sourceName": "Falx Crusher 1 (Hold)",
@@ -974,6 +1008,7 @@
       "onBlock": "+7(+11)",
       "onHit": "+11(+15)",
       "category": "normal",
+      "notes": "Can hit Cross-up; can hold button 20f for improved properties; causes spike knockdown vs. airborne opponents; lower body projectile invuln 9f until land except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Caelum Arc",
@@ -986,7 +1021,7 @@
         "dmg": 800,
         "total": 20,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 19,
         "hitstun": 23,
         "sourceName": "Caelum Arc",
@@ -1009,6 +1044,7 @@
         "type": "hard",
         "advantage": 71
       },
+      "notes": "Can hit Cross-up; releasing the button on frames 5-24 results in uncharged version with 4f startup; causes spike knockdown; lower body projectile invuln 28f until land except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Caelum Arc (Hold)",
@@ -1021,7 +1057,7 @@
         "dmg": 1500,
         "total": 39,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 26,
         "sourceName": "Caelum Arc (Hold)",
         "sourceInput": "nj.2",
@@ -1044,6 +1080,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Requires Counter-hit, Punish Counter, or Drive Rush 5LP to combo; 3f gap on block between hits that allows for a frame trap",
       "raw": {
         "source": "supercombo",
         "moveName": "Light Two Hitter",
@@ -1056,7 +1093,7 @@
         "dmg": 600,
         "total": 38,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 19,
         "hitstun": 22,
         "sourceName": "Light Two Hitter",
@@ -1080,6 +1117,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Great pressure and bully tool from 5MP; true blockstring between hits; special/DR cancel is delayed until after 1st recovery frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Medium Two Hitter",
@@ -1092,7 +1130,7 @@
         "dmg": 600,
         "total": 38,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "hitstun": 22,
         "sourceName": "Medium Two Hitter",
@@ -1115,6 +1153,7 @@
         "type": "soft",
         "advantage": 42
       },
+      "notes": "() refers to scaled damage after 5HP combo starter; 6f gap between hits on block (1f gap if starting from 5); grants a safe jump near the corner on a grounded hit or low-height juggle",
       "raw": {
         "source": "supercombo",
         "moveName": "Heavy Two Hitter",
@@ -1127,363 +1166,13 @@
         "dmg": 1000,
         "total": 45,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 24,
         "sourceName": "Heavy Two Hitter",
         "sourceInput": "5HP~HP",
         "cancelText": "-"
       },
       "nameZh": "重二连击"
-    },
-    {
-      "name": "Malleus Breaker 2",
-      "input": "3HP~3HP",
-      "damage": "900",
-      "startup": "18",
-      "active": "2",
-      "recovery": "24",
-      "onBlock": "-12",
-      "onHit": "KD +29",
-      "category": "normal",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 29
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Malleus Breaker 2",
-        "plnCmd": "3HP~3HP",
-        "startup": 18,
-        "active": 2,
-        "recovery": 24,
-        "onBlock": -12,
-        "onHit": null,
-        "dmg": 900,
-        "total": 43,
-        "moveType": "normal",
-        "section": "",
-        "blockstun": 14,
-        "sourceName": "Malleus Breaker 2",
-        "sourceInput": "3HP~3HP",
-        "cancelText": "-"
-      },
-      "nameZh": "重锤粉碎2"
-    },
-    {
-      "name": "Volare Combo",
-      "input": "j.MP~MP",
-      "damage": "800",
-      "startup": "10",
-      "active": "3",
-      "recovery": "3 land",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Volare Combo",
-        "plnCmd": "j.MP~MP",
-        "startup": 10,
-        "active": 3,
-        "recovery": 3,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 800,
-        "total": 15,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Volare Combo",
-        "sourceInput": "j.MP~MP",
-        "cancelText": "-"
-      },
-      "nameZh": "飞翔连击"
-    },
-    {
-      "name": "Mounted Grace",
-      "input": "LPLK",
-      "damage": "1200 (2040)",
-      "startup": "5",
-      "active": "3",
-      "recovery": "23",
-      "onBlock": "-",
-      "onHit": "KD +23",
-      "category": "normal",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 23
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Mounted Grace",
-        "plnCmd": "LPLK",
-        "startup": 5,
-        "active": 3,
-        "recovery": 23,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 1200,
-        "total": 30,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Mounted Grace",
-        "sourceInput": "LPLK",
-        "cancelText": "-"
-      },
-      "nameZh": "骑乘优雅"
-    },
-    {
-      "name": "Secutor",
-      "input": "HPHK",
-      "damage": "800",
-      "startup": "26",
-      "active": "2",
-      "recovery": "35",
-      "onBlock": "-3 / Wall Splat HKD +72",
-      "onHit": "KD +35 / Wall Splat KD +65",
-      "category": "normal",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 35
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Secutor",
-        "plnCmd": "HPHK",
-        "startup": 26,
-        "active": 2,
-        "recovery": 35,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 800,
-        "total": 62,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Secutor",
-        "sourceInput": "HPHK",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气迸放"
-    },
-    {
-      "name": "Drive Parry",
-      "input": "MPMK",
-      "damage": "-",
-      "startup": "1",
-      "active": "12 or until released",
-      "recovery": "33(1)(11)",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Drive Parry",
-        "plnCmd": "MPMK",
-        "startup": 1,
-        "active": 12,
-        "recovery": 1,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "total": 13,
-        "moveType": "drive",
-        "section": "",
-        "sourceName": "Drive Parry",
-        "sourceInput": "MPMK",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气招架"
-    },
-    {
-      "name": "Parry Drive Rush",
-      "input": "MPMK~66",
-      "damage": "-",
-      "startup": "3+8",
-      "active": "-",
-      "recovery": "15(37)",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Parry Drive Rush",
-        "plnCmd": "MPMK~66",
-        "startup": 3,
-        "active": null,
-        "recovery": 37,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "drive",
-        "section": "",
-        "sourceName": "Parry Drive Rush",
-        "sourceInput": "MPMK~66",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气冲锋"
-    },
-    {
-      "name": "Drive Rush Cancel",
-      "input": "MPMK or 66",
-      "damage": "-",
-      "startup": "9",
-      "active": "-",
-      "recovery": "15(37)",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Drive Rush Cancel",
-        "plnCmd": "MPMK or 66",
-        "startup": 9,
-        "active": null,
-        "recovery": 37,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "drive",
-        "section": "",
-        "sourceName": "Drive Rush Cancel",
-        "sourceInput": "MPMK or 66",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气冲锋取消"
-    },
-    {
-      "name": "Neutral Taunt",
-      "input": "5PPPKKK",
-      "damage": "-",
-      "startup": "242 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Neutral Taunt",
-        "plnCmd": "5PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Neutral Taunt",
-        "sourceInput": "5PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "原地挑衅"
-    },
-    {
-      "name": "Novacule 1",
-      "input": "6MP",
-      "damage": "800",
-      "startup": "10",
-      "active": "2",
-      "recovery": "20",
-      "onBlock": "-3",
-      "onHit": "+2",
-      "category": "unique",
-      "cancels": [
-        "Target Combo",
-        "Drive Rush"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Novacule 1",
-        "plnCmd": "6MP",
-        "startup": 10,
-        "active": 2,
-        "recovery": 20,
-        "onBlock": -3,
-        "onHit": 2,
-        "dmg": 800,
-        "total": 31,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 19,
-        "hitstun": 24,
-        "sourceName": "Novacule 1",
-        "sourceInput": "6MP",
-        "cancelText": "TC"
-      },
-      "nameZh": "剃刀1"
-    },
-    {
-      "name": "Magna Bunker",
-      "input": "4HP",
-      "damage": "900",
-      "startup": "8",
-      "active": "2",
-      "recovery": "21(24)",
-      "onBlock": "-1",
-      "onHit": "+3",
-      "category": "unique",
-      "cancels": [
-        "Special",
-        "Super",
-        "Drive Rush"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Magna Bunker",
-        "plnCmd": "4HP",
-        "startup": 8,
-        "active": 2,
-        "recovery": 24,
-        "onBlock": -1,
-        "onHit": 3,
-        "dmg": 900,
-        "total": 33,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 22,
-        "hitstun": 26,
-        "sourceName": "Magna Bunker",
-        "sourceInput": "4HP",
-        "cancelText": "Sp SA"
-      },
-      "nameZh": "马格纳掩体"
-    },
-    {
-      "name": "Falx Crusher 1",
-      "input": "6HK",
-      "damage": "900",
-      "startup": "14",
-      "active": "4",
-      "recovery": "21",
-      "onBlock": "-3",
-      "onHit": "0",
-      "category": "unique",
-      "cancels": [
-        "Special",
-        "Super",
-        "Target Combo",
-        "Drive Rush"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Falx Crusher 1",
-        "plnCmd": "6HK",
-        "startup": 14,
-        "active": 4,
-        "recovery": 21,
-        "onBlock": -3,
-        "onHit": 0,
-        "dmg": 900,
-        "total": 38,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 22,
-        "hitstun": 25,
-        "sourceName": "Falx Crusher 1",
-        "sourceInput": "6HK",
-        "cancelText": "Sp SA TC"
-      },
-      "nameZh": "镰刀粉碎1"
     },
     {
       "name": "Novacule Swipe",
@@ -1494,11 +1183,12 @@
       "recovery": "26",
       "onBlock": "-12",
       "onHit": "KD +31",
-      "category": "unique",
+      "category": "normal",
       "knockdown": {
         "type": "soft",
         "advantage": 31
       },
+      "notes": "Low follow-up; true blockstring from 6MP, so an opponent mashing a crouching button after blocked 6MP will not be frame trapped; useful confirm if 6MP hits crouching opponent",
       "raw": {
         "source": "supercombo",
         "moveName": "Novacule Swipe",
@@ -1510,8 +1200,8 @@
         "onHit": null,
         "dmg": 800,
         "total": 38,
-        "moveType": "unique",
-        "section": "",
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "sourceName": "Novacule Swipe",
         "sourceInput": "6MP~HP",
@@ -1528,7 +1218,7 @@
       "recovery": "23",
       "onBlock": "-10(-26)",
       "onHit": "KD +39 / (-21)",
-      "category": "unique",
+      "category": "normal",
       "cancels": [
         "Super",
         "Drive Rush"
@@ -1537,6 +1227,7 @@
         "type": "soft",
         "advantage": 39
       },
+      "notes": "Whiffs on crouching opponents; if the opponent is standing, this ender is preferable for its corner carry and Super cancelability; Super cancel is delayed until after 3rd active frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Novacule Thrust",
@@ -1548,14 +1239,49 @@
         "onHit": null,
         "dmg": 800,
         "total": 37,
-        "moveType": "unique",
-        "section": "",
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "sourceName": "Novacule Thrust",
         "sourceInput": "6MP~HK",
         "cancelText": "SA"
       },
       "nameZh": "剃刀突刺"
+    },
+    {
+      "name": "Malleus Breaker 2",
+      "input": "3HP~3HP",
+      "damage": "900",
+      "startup": "18",
+      "active": "2",
+      "recovery": "24",
+      "onBlock": "-12",
+      "onHit": "KD +29",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 29
+      },
+      "notes": "Gives a risky 2nd overhead after 3MP; true blockstring, so opponent can safely mash a standing normal after blocking 3MP without being frame trapped or hit by the overhead; can be juggled into (KD +31)",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Malleus Breaker 2",
+        "plnCmd": "3HP~3HP",
+        "startup": 18,
+        "active": 2,
+        "recovery": 24,
+        "onBlock": -12,
+        "onHit": null,
+        "dmg": 900,
+        "total": 43,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 14,
+        "sourceName": "Malleus Breaker 2",
+        "sourceInput": "3HP~3HP",
+        "cancelText": "-"
+      },
+      "nameZh": "重锤粉碎2"
     },
     {
       "name": "Falx Crusher 2",
@@ -1566,11 +1292,12 @@
       "recovery": "25",
       "onBlock": "-12",
       "onHit": "KD +52",
-      "category": "unique",
+      "category": "normal",
       "knockdown": {
         "type": "soft",
         "advantage": 52
       },
+      "notes": "Hitconfirmable ender after 6HK; delaying the input can create a frame trap up to 3f on block (no gap if starting from 6); puts opponent into limited juggle state; extremely powerful when juggled into (does not increase juggle count at all from DR~6HK)",
       "raw": {
         "source": "supercombo",
         "moveName": "Falx Crusher 2",
@@ -1582,14 +1309,78 @@
         "onHit": null,
         "dmg": 1000,
         "total": 45,
-        "moveType": "unique",
-        "section": "",
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "sourceName": "Falx Crusher 2",
         "sourceInput": "6HK~6HK",
         "cancelText": "-"
       },
       "nameZh": "镰刀粉碎2"
+    },
+    {
+      "name": "Volare Combo",
+      "input": "j.MP~MP",
+      "damage": "800",
+      "startup": "10",
+      "active": "3",
+      "recovery": "3 land",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "normal",
+      "notes": "Spike KD vs. airborne opponents",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Volare Combo",
+        "plnCmd": "j.MP~MP",
+        "startup": 10,
+        "active": 3,
+        "recovery": 3,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 800,
+        "total": 15,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "sourceName": "Volare Combo",
+        "sourceInput": "j.MP~MP",
+        "cancelText": "-"
+      },
+      "nameZh": "飞翔连击"
+    },
+    {
+      "name": "Mounted Grace",
+      "input": "LPLK",
+      "damage": "1200 (2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +23",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Can use Drive Rush for a corner throw loop with 2f timing on standard characters; a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Mounted Grace",
+        "plnCmd": "LPLK",
+        "startup": 5,
+        "active": 3,
+        "recovery": 23,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 1200,
+        "total": 30,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Mounted Grace",
+        "sourceInput": "LPLK",
+        "cancelText": "-"
+      },
+      "nameZh": "骑乘优雅"
     },
     {
       "name": "Ponte Milvio",
@@ -1600,11 +1391,12 @@
       "recovery": "23",
       "onBlock": "-",
       "onHit": "KD +33",
-      "category": "unique",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 33
       },
+      "notes": "Side switch; after throwing opponent into corner, can Drive Rush for strong strike/throw mixup; DR~5 trades with reversal 4f normals for a high-damage trade combo; meaty options are much weaker after normal dash (no throw, limited conversions on hit); a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
       "raw": {
         "source": "supercombo",
         "moveName": "Ponte Milvio",
@@ -1616,13 +1408,47 @@
         "onHit": null,
         "dmg": 1200,
         "total": 30,
-        "moveType": "unique",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "sourceName": "Ponte Milvio",
         "sourceInput": "4LPLK",
         "cancelText": "-"
       },
       "nameZh": "米尔维奥桥"
+    },
+    {
+      "name": "Secutor",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3 / Wall Splat HKD +72",
+      "onHit": "KD +35 / Wall Splat KD +65",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "See Drive Impact. Airborne connect gives spinning juggle state on Punish Counter or corner Wall Splat with variable height.",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Secutor",
+        "plnCmd": "HPHK",
+        "startup": 26,
+        "active": 2,
+        "recovery": 35,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 800,
+        "total": 62,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Secutor",
+        "sourceInput": "HPHK",
+        "cancelText": "-"
+      },
+      "nameZh": "斗气迸放"
     },
     {
       "name": "Love Tap (Block)",
@@ -1633,11 +1459,12 @@
       "recovery": "26(31)",
       "onBlock": "-6",
       "onHit": "KD +23",
-      "category": "unique",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 23
       },
+      "notes": "Performed by holding 6HPHK on wakeup; 5f extra recovery on hit; does not have any screen freeze; 4f less hitstop on block compared to most Drive Reversals (changes the punish timing); see Drive Reversal.",
       "raw": {
         "source": "supercombo",
         "moveName": "Love Tap (Block)",
@@ -1649,8 +1476,8 @@
         "onHit": null,
         "dmg": null,
         "total": 53,
-        "moveType": "unique",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "blockstun": 23,
         "sourceName": "Love Tap (Block)",
         "sourceInput": "6HPHK",
@@ -1659,94 +1486,92 @@
       "nameZh": "斗气反攻"
     },
     {
-      "name": "Love Tap (Recovery)",
-      "input": "6HPHK",
-      "damage": "500 recoverable",
-      "startup": "18",
-      "active": "3",
-      "recovery": "26(31)",
-      "onBlock": "-6",
-      "onHit": "KD +23",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 23
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Love Tap (Recovery)",
-        "plnCmd": "6HPHK",
-        "startup": 18,
-        "active": 3,
-        "recovery": 31,
-        "onBlock": -6,
-        "onHit": null,
-        "dmg": null,
-        "total": 51,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 23,
-        "sourceName": "Love Tap (Recovery)",
-        "sourceInput": "6HPHK",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气反攻"
-    },
-    {
-      "name": "Forward Taunt",
-      "input": "6PPPKKK",
+      "name": "Drive Parry",
+      "input": "MPMK",
       "damage": "-",
-      "startup": "85",
-      "active": "-",
-      "recovery": "72",
+      "startup": "1",
+      "active": "12 or until released",
+      "recovery": "33(1)(11)",
       "onBlock": "-",
       "onHit": "-",
-      "category": "unique",
+      "category": "throw",
+      "notes": "See Drive Parry. Perfect Parrying has only 1F of recovery and disables the opponent from canceling their attack. Perfect Parrying projectiles puts you into fixed 11 frames of recovery. After a Perfect Parry, all Super Gauge gain is reduced by 20% and Drive Gauge gain/damage is reduced by 50% for the entire punish combo.",
       "raw": {
         "source": "supercombo",
-        "moveName": "Forward Taunt",
-        "plnCmd": "6PPPKKK",
-        "startup": 85,
-        "active": null,
-        "recovery": 72,
+        "moveName": "Drive Parry",
+        "plnCmd": "MPMK",
+        "startup": 1,
+        "active": 12,
+        "recovery": 11,
         "onBlock": null,
         "onHit": null,
         "dmg": null,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Forward Taunt",
-        "sourceInput": "6PPPKKK",
+        "total": 23,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Drive Parry",
+        "sourceInput": "MPMK",
         "cancelText": "-"
       },
-      "nameZh": "前挑衅"
+      "nameZh": "斗气招架"
     },
     {
-      "name": "Back Taunt",
-      "input": "4PPPKKK",
+      "name": "Parry Drive Rush",
+      "input": "MPMK~66",
       "damage": "-",
-      "startup": "184 (total)",
+      "startup": "3+8",
       "active": "-",
-      "recovery": "-",
+      "recovery": "15(37)",
       "onBlock": "-",
       "onHit": "-",
-      "category": "unique",
+      "category": "throw",
+      "notes": "See Drive Rush; 1-bar version performed out of a Parry; startup refers to minimum time before an attack can cancel the Drive Rush animation (if performed immediately after a successful Parry, only 1+8 startup); the first 15 recovery frames are cancelable into any attack; the final 22 recovery frames are cancelable into any attack or movement option or blocking (except Parry); only Normal and Command Normal attacks are enhanced with +4 frame advantage and improved juggle properties; Distance: 0.544 (min/throw), 1.903 (min/block), 3.081 (max/final DR frame)",
       "raw": {
         "source": "supercombo",
-        "moveName": "Back Taunt",
-        "plnCmd": "4PPPKKK",
-        "startup": null,
+        "moveName": "Parry Drive Rush",
+        "plnCmd": "MPMK~66",
+        "startup": 3,
         "active": null,
-        "recovery": null,
+        "recovery": 37,
         "onBlock": null,
         "onHit": null,
         "dmg": null,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Back Taunt",
-        "sourceInput": "4PPPKKK",
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Parry Drive Rush",
+        "sourceInput": "MPMK~66",
         "cancelText": "-"
       },
-      "nameZh": "后挑衅"
+      "nameZh": "斗气冲锋"
+    },
+    {
+      "name": "Drive Rush Cancel",
+      "input": "MPMK or 66",
+      "damage": "-",
+      "startup": "9",
+      "active": "-",
+      "recovery": "15(37)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "throw",
+      "notes": "See Drive Rush; 3-bar version performed on hit/block from a cancelable normal; can also be performed on whiff from cancelable light normals; startup refers to minimum time before an attack can cancel the Drive Rush animation; the first 15 recovery frames are cancelable into any attack; the final 22 recovery frames are cancelable into any attack or movement option or blocking (except Parry); only Normal and Command Normal attacks are enhanced with +4 frame advantage and improved juggle properties",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Drive Rush Cancel",
+        "plnCmd": "MPMK or 66",
+        "startup": 9,
+        "active": null,
+        "recovery": 37,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": null,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Drive Rush Cancel",
+        "sourceInput": "MPMK or 66",
+        "cancelText": "-"
+      },
+      "nameZh": "斗气冲锋取消"
     },
     {
       "name": "Gladius",
@@ -1765,6 +1590,7 @@
         "type": "soft",
         "advantage": 36
       },
+      "notes": "Armor loses to low attacks; cannot hit cross-up; can hold the button 26f to charge a more powerful version (armor is lost immediately upon button release); after releasing partial charge, startup is 5f (frames 12-19) or 4f (frames 20-25); holding the button for 11-12f can extend the armor by 1-2f without increasing startup",
       "raw": {
         "source": "supercombo",
         "moveName": "Gladius",
@@ -1777,13 +1603,52 @@
         "dmg": 1200,
         "total": 41,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 20,
         "sourceName": "Gladius",
         "sourceInput": "236LP",
         "cancelText": "SA3"
       },
       "nameZh": "短剑"
+    },
+    {
+      "name": "Gladius (Hold)",
+      "input": "236",
+      "damage": "1200,1000,200 (2400)",
+      "startup": "30",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "+4",
+      "onHit": "HKD +40",
+      "category": "special",
+      "cancels": [
+        "SA3",
+        "(1st)"
+      ],
+      "knockdown": {
+        "type": "hard",
+        "advantage": 40
+      },
+      "notes": "Armor loses to low attacks; transitions to a cinematic follow-up on hit; vs. airborne opponents, 2nd follow-up hit whiffs (no Hard Knockdown and reduced Super Meter gain); cannot hit cross-up",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Gladius (Hold)",
+        "plnCmd": "236",
+        "startup": 30,
+        "active": 4,
+        "recovery": 20,
+        "onBlock": 4,
+        "onHit": null,
+        "dmg": 1200,
+        "total": 53,
+        "moveType": "special",
+        "section": "Specials",
+        "blockstun": 28,
+        "sourceName": "Gladius (Hold)",
+        "sourceInput": "236",
+        "cancelText": "SA3 (1st)"
+      },
+      "nameZh": "短剑(蓄力)"
     },
     {
       "name": "Gladius",
@@ -1802,6 +1667,7 @@
         "type": "soft",
         "advantage": 36
       },
+      "notes": "Armor loses to low attacks; cannot hit cross-up; can hold the button 29f to charge a more powerful version (armor is lost immediately upon button release); after releasing partial charge, startup is 7f (frames 12-19) or 6f (frames 20-28)",
       "raw": {
         "source": "supercombo",
         "moveName": "Gladius",
@@ -1814,7 +1680,7 @@
         "dmg": 1400,
         "total": 43,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 20,
         "sourceName": "Gladius",
         "sourceInput": "236MP",
@@ -1839,6 +1705,7 @@
         "type": "soft",
         "advantage": 36
       },
+      "notes": "Armor loses to low attacks; cannot hit cross-up; can hold the button 35f to charge a more powerful version (armor is lost immediately upon button release); after releasing partial charge, startup is 10f (frames 12-19), 9f (frames 20-27), or 8f (frames 28-34); holding the button for 33-34f results in an uncharged 236HP with even slower startup than the fully charged version",
       "raw": {
         "source": "supercombo",
         "moveName": "Gladius",
@@ -1851,7 +1718,7 @@
         "dmg": 1600,
         "total": 46,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 20,
         "sourceName": "Gladius",
         "sourceInput": "236HP",
@@ -1877,6 +1744,7 @@
         "type": "soft",
         "advantage": 36
       },
+      "notes": "Armor loses to low attacks; cannot hit cross-up; can hold the button 29f to charge a more powerful version (2nd hit of armor is lost immediately upon releasing both Punch buttons); after releasing partial charge, startup is 8f (frames 11-12), 7f (frames 13-19), or 6f (frames 20-28)",
       "raw": {
         "source": "supercombo",
         "moveName": "Gladius",
@@ -1889,51 +1757,13 @@
         "dmg": 1700,
         "total": 43,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 23,
         "sourceName": "Gladius",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
       },
       "nameZh": "短剑"
-    },
-    {
-      "name": "Gladius (Hold)",
-      "input": "236",
-      "damage": "1200,1000,200 (2400)",
-      "startup": "30",
-      "active": "4",
-      "recovery": "20",
-      "onBlock": "+4",
-      "onHit": "HKD +40",
-      "category": "special",
-      "cancels": [
-        "SA3",
-        "(1st)"
-      ],
-      "knockdown": {
-        "type": "hard",
-        "advantage": 40
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Gladius (Hold)",
-        "plnCmd": "236",
-        "startup": 30,
-        "active": 4,
-        "recovery": 20,
-        "onBlock": 4,
-        "onHit": null,
-        "dmg": 1200,
-        "total": 53,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 28,
-        "sourceName": "Gladius (Hold)",
-        "sourceInput": "236",
-        "cancelText": "SA3 (1st)"
-      },
-      "nameZh": "短剑(蓄力)"
     },
     {
       "name": "Dimachaerus",
@@ -1948,6 +1778,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "Cannot hit cross-up; cancelable into 6P follow-up on hit or armor absorb; puts airborne opponents into free juggle state",
       "raw": {
         "source": "supercombo",
         "moveName": "Dimachaerus",
@@ -1960,7 +1791,7 @@
         "dmg": 600,
         "total": 45,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 18,
         "hitstun": 31,
         "sourceName": "Dimachaerus",
@@ -1982,6 +1813,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "Cannot hit cross-up; cancelable into 6P follow-up on hit or armor absorb; puts airborne opponents into free juggle state",
       "raw": {
         "source": "supercombo",
         "moveName": "Dimachaerus",
@@ -1994,7 +1826,7 @@
         "dmg": 700,
         "total": 49,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 18,
         "hitstun": 34,
         "sourceName": "Dimachaerus",
@@ -2020,6 +1852,7 @@
         "type": "soft",
         "advantage": 38
       },
+      "notes": "Cannot hit cross-up; cancelable into 6P follow-up on hit or armor absorb; puts airborne opponents into free juggle state",
       "raw": {
         "source": "supercombo",
         "moveName": "Dimachaerus",
@@ -2032,7 +1865,7 @@
         "dmg": 800,
         "total": 55,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 18,
         "sourceName": "Dimachaerus",
         "sourceInput": "214HP",
@@ -2058,6 +1891,7 @@
         "type": "soft",
         "advantage": 42
       },
+      "notes": "Cannot hit cross-up; cancelable into 6P follow-up on hit or armor absorb; puts airborne opponents into free juggle state",
       "raw": {
         "source": "supercombo",
         "moveName": "Dimachaerus",
@@ -2070,7 +1904,7 @@
         "dmg": 600,
         "total": 45,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 18,
         "sourceName": "Dimachaerus",
         "sourceInput": "214PP",
@@ -2092,6 +1926,7 @@
         "type": "soft",
         "advantage": 31
       },
+      "notes": "Only comes out after 214LP hits or is armor absorbed",
       "raw": {
         "source": "supercombo",
         "moveName": "LP Dimachaerus Follow-up",
@@ -2104,7 +1939,7 @@
         "dmg": 600,
         "total": 40,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "LP Dimachaerus Follow-up",
         "sourceInput": "214LP~6P",
         "cancelText": "-"
@@ -2125,6 +1960,7 @@
         "type": "soft",
         "advantage": 36
       },
+      "notes": "Only comes out after 214MP hits or is armor absorbed; gives a slight ground bounce on hit (can follow up with juggle vs. airborne opponents)",
       "raw": {
         "source": "supercombo",
         "moveName": "MP Dimachaerus Follow-up",
@@ -2137,7 +1973,7 @@
         "dmg": 600,
         "total": 41,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "MP Dimachaerus Follow-up",
         "sourceInput": "214MP~6P",
         "cancelText": "-"
@@ -2158,6 +1994,7 @@
         "type": "soft",
         "advantage": 56
       },
+      "notes": "Only comes out after 214HP hits or is armor absorbed",
       "raw": {
         "source": "supercombo",
         "moveName": "HP Dimachaerus Follow-up",
@@ -2170,7 +2007,7 @@
         "dmg": 600,
         "total": 45,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "HP Dimachaerus Follow-up",
         "sourceInput": "214HP~6P",
         "cancelText": "-"
@@ -2191,6 +2028,7 @@
         "type": "soft",
         "advantage": 58
       },
+      "notes": "Only comes out after 214PP hits or is armor absorbed",
       "raw": {
         "source": "supercombo",
         "moveName": "OD Dimachaerus Follow-up",
@@ -2203,7 +2041,7 @@
         "dmg": 600,
         "total": 40,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "OD Dimachaerus Follow-up",
         "sourceInput": "214PP~6P",
         "cancelText": "-"
@@ -2224,6 +2062,7 @@
         "type": "soft",
         "advantage": 42
       },
+      "notes": "Cannot hit cross-up; hits 1f later vs. crouching opponents",
       "raw": {
         "source": "supercombo",
         "moveName": "Phalanx",
@@ -2236,7 +2075,7 @@
         "dmg": 1500,
         "total": 45,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 23,
         "sourceName": "Phalanx",
         "sourceInput": "623LP",
@@ -2258,6 +2097,7 @@
         "type": "soft",
         "advantage": 42
       },
+      "notes": "Cannot hit cross-up; hits 1f later vs. crouching opponents",
       "raw": {
         "source": "supercombo",
         "moveName": "Phalanx",
@@ -2270,7 +2110,7 @@
         "dmg": 1600,
         "total": 48,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 23,
         "sourceName": "Phalanx",
         "sourceInput": "623MP",
@@ -2292,6 +2132,7 @@
         "type": "soft",
         "advantage": 42
       },
+      "notes": "Cannot hit cross-up; hits 1f later vs. crouching opponents",
       "raw": {
         "source": "supercombo",
         "moveName": "Phalanx",
@@ -2304,7 +2145,7 @@
         "dmg": 1700,
         "total": 52,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 23,
         "sourceName": "Phalanx",
         "sourceInput": "623HP",
@@ -2326,6 +2167,7 @@
         "type": "hard",
         "advantage": 70
       },
+      "notes": "Sends opponent tumbling backward into OTG state; if opponent hits the corner, a low-height Wall Splat occurs (opponent is grounded and throwable, but strikes put them into juggle state); cannot hit cross-up; hits 1f later vs. crouching opponents",
       "raw": {
         "source": "supercombo",
         "moveName": "Phalanx",
@@ -2338,7 +2180,7 @@
         "dmg": 1400,
         "total": 48,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 25,
         "sourceName": "Phalanx",
         "sourceInput": "623PP",
@@ -2363,6 +2205,7 @@
         "type": "soft",
         "advantage": 35
       },
+      "notes": "Cannot hit cross-up; ~50% screen length",
       "raw": {
         "source": "supercombo",
         "moveName": "Quadriga",
@@ -2375,7 +2218,7 @@
         "dmg": 1400,
         "total": 47,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 22,
         "sourceName": "Quadriga",
         "sourceInput": "236LK",
@@ -2400,6 +2243,7 @@
         "type": "soft",
         "advantage": 37
       },
+      "notes": "Cannot hit cross-up; ~60% screen length",
       "raw": {
         "source": "supercombo",
         "moveName": "Quadriga",
@@ -2412,7 +2256,7 @@
         "dmg": 1500,
         "total": 49,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 22,
         "sourceName": "Quadriga",
         "sourceInput": "236MK",
@@ -2437,6 +2281,7 @@
         "type": "soft",
         "advantage": 37
       },
+      "notes": "Cannot hit cross-up; ~70% screen length",
       "raw": {
         "source": "supercombo",
         "moveName": "Quadriga",
@@ -2449,7 +2294,7 @@
         "dmg": 1600,
         "total": 53,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 22,
         "sourceName": "Quadriga",
         "sourceInput": "236HK",
@@ -2475,6 +2320,7 @@
         "type": "soft",
         "advantage": 50
       },
+      "notes": "Cannot hit cross-up; ~65% screen length; Wall Splat on hit; KD Advantage increases when farther from the wall; significant pushback on block makes it hard to punish when spaced out",
       "raw": {
         "source": "supercombo",
         "moveName": "Quadriga",
@@ -2487,7 +2333,7 @@
         "dmg": 1500,
         "total": 51,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 22,
         "sourceName": "Quadriga",
         "sourceInput": "236KK",
@@ -2505,55 +2351,25 @@
       "onBlock": "-",
       "onHit": "-",
       "category": "special",
+      "notes": "Automatically triggers counterattack after 214K absorbs attack; Marisa is in a Punish Counter state for entire duration; can hold button to remain in Scutum stance after counterattack; hit advantage depends on attack that is absorbed; Marisa's short 6f hitstop causes attack to land as a +1 Counter-hit against most Medium/Heavy normals, while landing as a +3 Punish Counter against Lights",
       "raw": {
         "source": "supercombo",
         "moveName": "Scutum",
         "plnCmd": "214K",
         "startup": 3,
-        "active": 26,
+        "active": 142,
         "recovery": 26,
         "onBlock": null,
         "onHit": null,
         "dmg": null,
-        "total": 54,
+        "total": 170,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Scutum",
         "sourceInput": "214K",
         "cancelText": "-"
       },
       "nameZh": "大盾"
-    },
-    {
-      "name": "Scutum (Counter)",
-      "input": "214K",
-      "damage": "700",
-      "startup": "7",
-      "active": "4",
-      "recovery": "20",
-      "onBlock": "-3",
-      "onHit": "-1",
-      "category": "special",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Scutum (Counter)",
-        "plnCmd": "214K",
-        "startup": 7,
-        "active": 4,
-        "recovery": 20,
-        "onBlock": -3,
-        "onHit": -1,
-        "dmg": 700,
-        "total": 30,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 21,
-        "hitstun": 23,
-        "sourceName": "Scutum (Counter)",
-        "sourceInput": "214K",
-        "cancelText": "-"
-      },
-      "nameZh": "大盾(反击)"
     },
     {
       "name": "Scutum",
@@ -2565,55 +2381,25 @@
       "onBlock": "-",
       "onHit": "-",
       "category": "special",
+      "notes": "Automatically triggers counterattack after 214KK absorbs attack; Marisa is in a Punish Counter state for entire duration; can hold button to remain in Scutum stance after counterattack; hit advantage depends on attack that is absorbed; Marisa's short 6f hitstop causes attack to land as a +1 Counter-hit against most Medium/Heavy normals, while landing as a +3 Punish Counter against Lights",
       "raw": {
         "source": "supercombo",
         "moveName": "Scutum",
         "plnCmd": "214KK",
         "startup": 1,
-        "active": 28,
+        "active": 86,
         "recovery": 29,
         "onBlock": null,
         "onHit": null,
         "dmg": null,
-        "total": 57,
+        "total": 115,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Scutum",
         "sourceInput": "214KK",
         "cancelText": "-"
       },
       "nameZh": "大盾"
-    },
-    {
-      "name": "Scutum (Counter)",
-      "input": "214KK",
-      "damage": "700",
-      "startup": "7",
-      "active": "4",
-      "recovery": "20",
-      "onBlock": "-3",
-      "onHit": "-1",
-      "category": "special",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Scutum (Counter)",
-        "plnCmd": "214KK",
-        "startup": 7,
-        "active": 4,
-        "recovery": 20,
-        "onBlock": -3,
-        "onHit": -1,
-        "dmg": 700,
-        "total": 30,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 21,
-        "hitstun": 23,
-        "sourceName": "Scutum (Counter)",
-        "sourceInput": "214KK",
-        "cancelText": "-"
-      },
-      "nameZh": "大盾(反击)"
     },
     {
       "name": "Tonitrus 1",
@@ -2628,6 +2414,7 @@
       "cancels": [
         "Target Combo"
       ],
+      "notes": "1st active frame only hits airborne opponents (functionally 8+16f startup vs. grounded); causes spike knockdown vs. airborne opponents; Marisa is in a Punish Counter state for entire duration; hitconfirm window is 1f shorter vs. grounded opponents; cannot be canceled into Tonitrus 2 on whiff; range includes 0.218 forward movement from 214K startup",
       "raw": {
         "source": "supercombo",
         "moveName": "Tonitrus 1",
@@ -2640,7 +2427,7 @@
         "dmg": 900,
         "total": 35,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 23,
         "hitstun": 27,
         "sourceName": "Tonitrus 1",
@@ -2663,6 +2450,7 @@
         "type": "soft",
         "advantage": 31
       },
+      "notes": "True blockstring from overhead starter; Marisa is in a Punish Counter state for entire duration; cannot be performed when Tonitrus 1 whiffs",
       "raw": {
         "source": "supercombo",
         "moveName": "Tonitrus 2",
@@ -2675,7 +2463,7 @@
         "dmg": 1000,
         "total": 58,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 18,
         "sourceName": "Tonitrus 2",
         "sourceInput": "214K~P~P",
@@ -2697,6 +2485,7 @@
         "type": "hard",
         "advantage": 22
       },
+      "notes": "Risky low ender; may catch opponent by surprise since the overhead ender is safe on block; Marisa is in a Punish Counter state for entire duration; range includes 0.218 forward movement from 214K startup",
       "raw": {
         "source": "supercombo",
         "moveName": "Procella",
@@ -2709,7 +2498,7 @@
         "dmg": 1200,
         "total": 47,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 16,
         "sourceName": "Procella",
         "sourceInput": "214K~K",
@@ -2731,6 +2520,7 @@
         "type": "hard",
         "advantage": 18
       },
+      "notes": "Marisa is in a Punish Counter state for entire duration; Range: 1.109 (final active frame: 1.164); range includes 0.218 forward movement from 214K startup",
       "raw": {
         "source": "supercombo",
         "moveName": "Enfold",
@@ -2743,7 +2533,7 @@
         "dmg": 2500,
         "total": 64,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Enfold",
         "sourceInput": "214K~LPLK",
         "cancelText": "-"
@@ -2759,11 +2549,12 @@
       "recovery": "60",
       "onBlock": "-43",
       "onHit": "KD +14",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "soft",
         "advantage": 14
       },
+      "notes": "Can hold button 27f for more damage and a cinematic counter that activates against strikes and throws",
       "raw": {
         "source": "supercombo",
         "moveName": "Javelin of Marisa",
@@ -2775,8 +2566,8 @@
         "onHit": null,
         "dmg": 2200,
         "total": 83,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 22,
         "sourceName": "Javelin of Marisa",
         "sourceInput": "236236P",
@@ -2793,11 +2584,12 @@
       "recovery": "60",
       "onBlock": "-42",
       "onHit": "HKD +35 (KD +17)",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "hard",
         "advantage": 35
       },
+      "notes": "Held version; only the first 3 active frames trigger cinematic hit, which deals extra damage and Drive damage; max-range non-cinematic version does not give a Hard Knockdown; if frames 1-27 absorb a strike or throw, results in Counterattack version instead; has slightly less range than the uncharged version",
       "raw": {
         "source": "supercombo",
         "moveName": "Javelin of Marisa",
@@ -2809,8 +2601,8 @@
         "onHit": null,
         "dmg": 2900,
         "total": 107,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 24,
         "sourceName": "Javelin of Marisa",
         "sourceInput": "236236",
@@ -2827,11 +2619,12 @@
       "recovery": "54",
       "onBlock": "-37",
       "onHit": "KD +46",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "soft",
         "advantage": 46
       },
+      "notes": "Automatically triggers counterattack after Held SA1 armor absorbs a strike or throw on frames 1-27; can be baited with safe jump timing",
       "raw": {
         "source": "supercombo",
         "moveName": "Javelin of Marisa",
@@ -2843,8 +2636,8 @@
         "onHit": null,
         "dmg": 2400,
         "total": 63,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 20,
         "sourceName": "Javelin of Marisa",
         "sourceInput": "236236 Counter",
@@ -2861,25 +2654,26 @@
       "recovery": "59",
       "onBlock": "-44(-77)",
       "onHit": "HKD +17",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "hard",
         "advantage": 17
       },
+      "notes": "Useful anti-air, reversal, and juggle ender; can be steered by holding forward/back; this affects the range, allowing you to hold back for close anti-airs or hold forward in ranged juggles or fireball punishes; upward hit triggers a cinematic; on block/whiff, ends with a downward slam that does 500 less damage than the cinematic version (still does full Drive Damage on hit); Marisa's collision box extends far downward, preventing opponent from walking or dashing underneath (opponent can still jump to avoid 2nd hit)",
       "raw": {
         "source": "supercombo",
         "moveName": "Meteorite",
         "plnCmd": "214214P",
         "startup": 9,
-        "active": 8,
+        "active": 43,
         "recovery": 59,
         "onBlock": -44,
         "onHit": null,
         "dmg": 3000,
-        "total": 75,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 23,
+        "total": 110,
+        "moveType": "super",
+        "section": "Supers",
+        "blockstun": 58,
         "sourceName": "Meteorite",
         "sourceInput": "214214P",
         "cancelText": "-"
@@ -2895,11 +2689,12 @@
       "recovery": "60",
       "onBlock": "-39(-33)",
       "onHit": "HKD +14",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "hard",
         "advantage": 14
       },
+      "notes": "Takes opponent to corner; available at 25% HP or below; cinematic time regenerates ~2.1 Drive bars for Marisa; excellent whiff punish and projectile counter tool (especially with Modern controls)",
       "raw": {
         "source": "supercombo",
         "moveName": "Goddess of the Hunt",
@@ -2911,49 +2706,15 @@
         "onHit": null,
         "dmg": 4000,
         "total": 79,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 28,
         "sourceName": "Goddess of the Hunt",
         "sourceInput": "236236K",
         "cancelText": "-"
       },
       "nameZh": "狩猎女神"
-    },
-    {
-      "name": "Goddess of the Hunt (CA)",
-      "input": "236236K",
-      "damage": "4500",
-      "startup": "13",
-      "active": "7",
-      "recovery": "60",
-      "onBlock": "-39(-33)",
-      "onHit": "HKD +14",
-      "category": "special",
-      "knockdown": {
-        "type": "hard",
-        "advantage": 14
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Goddess of the Hunt (CA)",
-        "plnCmd": "236236K",
-        "startup": 13,
-        "active": 7,
-        "recovery": 60,
-        "onBlock": -39,
-        "onHit": null,
-        "dmg": 4500,
-        "total": 79,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 28,
-        "sourceName": "Goddess of the Hunt (CA)",
-        "sourceInput": "236236K",
-        "cancelText": "-"
-      },
-      "nameZh": "狩猎女神(CA)"
     }
   ],
-  "lastUpdated": "2026-02-06"
+  "lastUpdated": "2026-03-19"
 }

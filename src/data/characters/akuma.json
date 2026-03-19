@@ -28,6 +28,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Chains into 5LP/2LP/2LK; fastest chain timing (more useful vs. DI)",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand LP",
@@ -40,10 +41,10 @@
         "dmg": 300,
         "total": 13,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 9,
         "hitstun": 14,
-        "sourceName": "Standing Light Punch",
+        "sourceName": "Stand LP",
         "sourceInput": "5LP",
         "cancelText": "Chn Sp SA"
       },
@@ -65,6 +66,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Primary tool for block pressure (high active frame count makes it strong for oki); leads into much stronger combos on counter-hit",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand MP",
@@ -77,10 +79,10 @@
         "dmg": 600,
         "total": 20,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 19,
-        "sourceName": "Standing Medium Punch",
+        "sourceName": "Stand MP",
         "sourceInput": "5MP",
         "cancelText": "Sp SA TC"
       },
@@ -101,6 +103,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Long-range hitconfirmable poke with a great hitbox; special/DR cancel is delayed until after 3rd active frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand HP",
@@ -113,10 +116,10 @@
         "dmg": 800,
         "total": 31,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 20,
         "hitstun": 26,
-        "sourceName": "Standing Heavy Punch",
+        "sourceName": "Stand HP",
         "sourceInput": "5HP",
         "cancelText": "Sp SA"
       },
@@ -137,6 +140,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Good range for a light normal; useful in light confirms, punishes, and neutral buffers; DR cancel is delayed until after active frames",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand LK",
@@ -149,10 +153,10 @@
         "dmg": 300,
         "total": 18,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 10,
         "hitstun": 16,
-        "sourceName": "Standing Light Kick",
+        "sourceName": "Stand LK",
         "sourceInput": "5LK",
         "cancelText": "Sp SA"
       },
@@ -174,6 +178,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Forces stand (important for 214LK in combos and whiff punishes); high active frame count and good hitbox for counterpoking and for meaty pressure; only 15f to hitconfirm TC cancel without CH/PC/DR",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand MK",
@@ -186,10 +191,10 @@
         "dmg": 700,
         "total": 26,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "hitstun": 23,
-        "sourceName": "Standing Medium Kick",
+        "sourceName": "Stand MK",
         "sourceInput": "5MK",
         "cancelText": "Sp SA TC"
       },
@@ -205,6 +210,7 @@
       "onBlock": "+3(-13)",
       "onHit": "+7",
       "category": "normal",
+      "notes": "2 hits; 1st hit forces stand (important for combos); both the 2nd hit and the farthest-reaching hitbox of 1st hit whiff on crouching opponents unless they extend a vertical hurtbox; if 1st hit is stand blocked, both hits will connect on block; 1f extra recovery when 2nd hit whiffs; Counter-hit/Punish Counter advantage carries through both hits; great punish starter since scaling doesn't apply; both hits put airborne opponents into limited juggle state",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand HK",
@@ -217,10 +223,10 @@
         "dmg": null,
         "total": 43,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 33,
         "hitstun": 37,
-        "sourceName": "Standing Heavy Kick",
+        "sourceName": "Stand HK",
         "sourceInput": "5HK",
         "cancelText": "-"
       },
@@ -242,6 +248,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Chains into 5LP/2LP/2LK; Akuma's best light normal for combos due to 5LK link and 5MK counter-hit link; DR cancel is delayed until after active frames; topmost hurtbox on frames 1-5 is vulnerable only to aerial strikes (preventing its use as an anti-air)",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch LP",
@@ -254,10 +261,10 @@
         "dmg": 300,
         "total": 14,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 10,
         "hitstun": 16,
-        "sourceName": "Crouching Light Punch",
+        "sourceName": "Crouch LP",
         "sourceInput": "2LP",
         "cancelText": "Chn Sp SA"
       },
@@ -278,6 +285,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "2f extra recovery on whiff; excellent button for combos, midscreen buffers, and Drive Rush pressure (more rewarding than 5MP); topmost hurtbox on frames 1-8 is vulnerable only to aerial strikes (preventing its use as an anti-air); extends a wider hurtbox until the end of recovery",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch MP",
@@ -290,10 +298,10 @@
         "dmg": 600,
         "total": 24,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 23,
-        "sourceName": "Crouching Medium Punch",
+        "sourceName": "Crouch MP",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
       },
@@ -314,6 +322,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Forces stand (important combo/punish tool for 214LK); head/arm hurtbox is anti-air invuln while active on frames 8-15; good anti-air for vertical approaches but cannot hit cross-up (anti-air hitbox takes ~11f to come out, making it slower than average); only cancelable on active frames 1-3",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch HP",
@@ -326,10 +335,10 @@
         "dmg": 900,
         "total": 34,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 19,
         "hitstun": 27,
-        "sourceName": "Crouching Heavy Punch",
+        "sourceName": "Crouch HP",
         "sourceInput": "2HP",
         "cancelText": "Sp SA"
       },
@@ -349,6 +358,7 @@
         "Chain",
         "Drive Rush"
       ],
+      "notes": "Chains into 5LP/2LP/2LK",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch LK",
@@ -361,10 +371,10 @@
         "dmg": 200,
         "total": 16,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 9,
         "hitstun": 15,
-        "sourceName": "Crouching Light Kick",
+        "sourceName": "Crouch LK",
         "sourceInput": "2LK",
         "cancelText": "Chn"
       },
@@ -385,6 +395,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Extends a wide hurtbox 3f before startup and during recovery; special/DR cancel is delayed until after active frames; DI cancel can occur on 1st active frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch MK",
@@ -397,10 +408,10 @@
         "dmg": 500,
         "total": 29,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 23,
-        "sourceName": "Crouching Medium Kick",
+        "sourceName": "Crouch MK",
         "sourceInput": "2MK",
         "cancelText": "Sp SA"
       },
@@ -420,6 +431,7 @@
         "type": "soft",
         "advantage": 40
       },
+      "notes": "6f extra recovery on block; good range and hitbox priority; has some juggle potential (no Hard Knockdown when juggled into); KD +37 when juggled into (like after 214LK); on block, always plays out a fixed 29f recovery (cannot be made safer with meaty timing)",
       "raw": {
         "source": "supercombo",
         "moveName": "Low Cutter",
@@ -432,7 +444,7 @@
         "dmg": 900,
         "total": 40,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 14,
         "sourceName": "Low Cutter",
         "sourceInput": "2HK",
@@ -450,6 +462,7 @@
       "onBlock": "0(+5)",
       "onHit": "+4(+9)",
       "category": "normal",
+      "notes": "Fast air-to-air; can be used as a fuzzy instant overhead",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump LP",
@@ -462,10 +475,10 @@
         "dmg": 300,
         "total": 16,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 13,
         "hitstun": 17,
-        "sourceName": "Jumping Light Punch",
+        "sourceName": "Jump LP",
         "sourceInput": "j.LP",
         "cancelText": "-"
       },
@@ -486,6 +499,7 @@
         "SA1",
         "Drive Rush"
       ],
+      "notes": "Puts airborne opponents into limited juggle state but no juggle potential on its own; lenient cancel window to juggle into j.214K/j.236P/Air SA1; lower body projectile invuln 8-23f (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump MP",
@@ -498,10 +512,10 @@
         "dmg": 700,
         "total": 14,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 12,
         "hitstun": 16,
-        "sourceName": "Jumping Medium Punch",
+        "sourceName": "Jump MP",
         "sourceInput": "j.MP",
         "cancelText": "Sp SA1"
       },
@@ -517,6 +531,7 @@
       "onBlock": "+4(+11)",
       "onHit": "+8(+15)",
       "category": "normal",
+      "notes": "Spike knockdown vs. airborne opponents on Counter-hit/Punish Counter; good hitbox priority for air approaches; lower body projectile invuln 9-23f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump HP",
@@ -529,10 +544,10 @@
         "dmg": 800,
         "total": 17,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 13,
         "hitstun": 17,
-        "sourceName": "Jumping Heavy Punch",
+        "sourceName": "Jump HP",
         "sourceInput": "j.HP",
         "cancelText": "-"
       },
@@ -548,6 +563,7 @@
       "onBlock": "+1(+6)",
       "onHit": "+5(+10)",
       "category": "normal",
+      "notes": "Cross-up",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump LK",
@@ -560,10 +576,10 @@
         "dmg": 300,
         "total": 18,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 14,
         "hitstun": 18,
-        "sourceName": "Jumping Light Kick",
+        "sourceName": "Jump LK",
         "sourceInput": "j.LK",
         "cancelText": "-"
       },
@@ -579,6 +595,7 @@
       "onBlock": "+4(+9)",
       "onHit": "+8(+13)",
       "category": "normal",
+      "notes": "Cross-up; lower body projectile invuln 7-20f (if used immediately on the way up, can avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump MK",
@@ -591,10 +608,10 @@
         "dmg": 500,
         "total": 15,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 13,
         "hitstun": 17,
-        "sourceName": "Jumping Medium Kick",
+        "sourceName": "Jump MK",
         "sourceInput": "j.MK",
         "cancelText": "-"
       },
@@ -610,6 +627,7 @@
       "onBlock": "+5(+11)",
       "onHit": "+9(+15)",
       "category": "normal",
+      "notes": "Most horizontal range of Akuma's air normals; lower body projectile invuln 12-19f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump HK",
@@ -622,14 +640,154 @@
         "dmg": 800,
         "total": 20,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 14,
         "hitstun": 18,
-        "sourceName": "Jumping Heavy Kick",
+        "sourceName": "Jump HK",
         "sourceInput": "j.HK",
         "cancelText": "-"
       },
       "nameZh": "跳跃重脚"
+    },
+    {
+      "name": "Skull Splitter",
+      "input": "6MP",
+      "damage": "200,400",
+      "startup": "20",
+      "active": "1(1)3",
+      "recovery": "18",
+      "onBlock": "-1",
+      "onHit": "+3",
+      "category": "normal",
+      "notes": "2-hits; fast overhead with excellent reward (5MK) when used out of Drive Rush; if blocked, gets strong frame traps but is out of throw range; 2nd hit is no longer an overhead if the first hit connects",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Skull Splitter",
+        "plnCmd": "6MP",
+        "startup": 20,
+        "active": 5,
+        "recovery": 18,
+        "onBlock": -1,
+        "onHit": 3,
+        "dmg": 200,
+        "total": 42,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 22,
+        "hitstun": 26,
+        "sourceName": "Skull Splitter",
+        "sourceInput": "6MP",
+        "cancelText": "-"
+      },
+      "nameZh": "头骸割"
+    },
+    {
+      "name": "Resso Snap Kick",
+      "input": "6MK",
+      "damage": "700",
+      "startup": "10",
+      "active": "3",
+      "recovery": "15(18/19)",
+      "onBlock": "-4",
+      "onHit": "+5",
+      "category": "normal",
+      "notes": "3f extra recovery on block, 4f extra recovery on whiff; whiffed version extends a wider hurtbox during recovery; long-range poke with great hitbox priority; good whiff punish tool that allows a link to 2HK from closer ranges, or into SA2 from around Akuma's 2MK range; safe from all reversal 4f normal even at point blank (except Zangief 2LK, which gets no follow-up)",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Resso Snap Kick",
+        "plnCmd": "6MK",
+        "startup": 10,
+        "active": 3,
+        "recovery": 52,
+        "onBlock": -4,
+        "onHit": 5,
+        "dmg": 700,
+        "total": 64,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 14,
+        "hitstun": 23,
+        "sourceName": "Resso Snap Kick",
+        "sourceInput": "6MK",
+        "cancelText": "-"
+      },
+      "nameZh": "热爪跃击"
+    },
+    {
+      "name": "Kikoku",
+      "input": "6HP",
+      "damage": "800",
+      "startup": "13",
+      "active": "4",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "+4",
+      "category": "normal",
+      "cancels": [
+        "Target Combo",
+        "Drive Rush"
+      ],
+      "notes": "Solid poke with easy hitconfirm timing; TC follow-up is always a true blockstring even at max delay; more damaging than 5HK when used mid-combo due to lack of damage scaling; useful out of Drive Rush for long-range oki (e.g. after midscreen throw); extends a wider hurtbox until the end of recovery",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Kikoku",
+        "plnCmd": "6HP",
+        "startup": 13,
+        "active": 4,
+        "recovery": 20,
+        "onBlock": -3,
+        "onHit": 4,
+        "dmg": 800,
+        "total": 36,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 21,
+        "hitstun": 28,
+        "sourceName": "Kikoku",
+        "sourceInput": "6HP",
+        "cancelText": "TC"
+      },
+      "nameZh": "鬼哭"
+    },
+    {
+      "name": "Rago High Kick",
+      "input": "4HK",
+      "damage": "800",
+      "startup": "12",
+      "active": "5",
+      "recovery": "27",
+      "onBlock": "-15",
+      "onHit": "KD +47",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Drive Rush"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 47
+      },
+      "notes": "Puts opponents into limited juggle state (free juggle if used out of Drive Rush); upper body and kicking leg is anti-air invuln while active (frames 12-16); unreliable anti-air due to slow startup and extended vertical hurtbox before the invuln starts; being a cancelable launcher allows Akuma to juggle into Demon Raid follow-ups or charged fireballs",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Rago High Kick",
+        "plnCmd": "4HK",
+        "startup": 12,
+        "active": 5,
+        "recovery": 27,
+        "onBlock": -15,
+        "onHit": null,
+        "dmg": 800,
+        "total": 43,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 17,
+        "sourceName": "Rago High Kick",
+        "sourceInput": "4HK",
+        "cancelText": "Sp SA"
+      },
+      "nameZh": "罗睺上段踢"
     },
     {
       "name": "Tenmaku Blade Kick",
@@ -641,6 +799,7 @@
       "onBlock": "-4(+6)",
       "onHit": "+1(+11)",
       "category": "normal",
+      "notes": "Forward Jump only; 6f extra landing recovery on whiff; great tool for mixing up jump timings, especially against characters that rely on non-invincible anti-airs; much stronger hurtbox compared to other divekicks; cannot hit cross-up; all landing recovery after the first 2 frames has a crouch-sized hurtbox, and the final recovery frame is in a crouching state; kicking leg is projectile invuln on frame 14 until landing",
       "raw": {
         "source": "supercombo",
         "moveName": "Tenmaku Blade Kick",
@@ -652,7 +811,7 @@
         "onHit": 1,
         "dmg": 800,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "sourceName": "Tenmaku Blade Kick",
         "sourceInput": "j.2MK",
         "cancelText": "-"
@@ -674,6 +833,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Important combo/hitconfirm tool; always a true blockstring from 5MP",
       "raw": {
         "source": "supercombo",
         "moveName": "Viscera Piercer",
@@ -686,7 +846,7 @@
         "dmg": 700,
         "total": 30,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "hitstun": 23,
         "sourceName": "Viscera Piercer",
@@ -705,6 +865,7 @@
       "onBlock": "-3",
       "onHit": "+1",
       "category": "normal",
+      "notes": "Safe overhead Target Combo that's great for chipping Drive gauge; puts airborne opponents into limited juggle OTG state (can be used in juggles where 5MK connects, like wallsplat or DR~5MK routes); interruptible 5f gap between hits on block (up to 8f at max delay); will not combo on final 2 cancelable frames of 5MK without CH/PC/DR starter making it very difficult to hitconfirm",
       "raw": {
         "source": "supercombo",
         "moveName": "Bone Crusher Axe Kick",
@@ -717,7 +878,7 @@
         "dmg": 600,
         "total": 42,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 20,
         "hitstun": 24,
         "sourceName": "Bone Crusher Axe Kick",
@@ -725,383 +886,6 @@
         "cancelText": "-"
       },
       "nameZh": "碎骨斧脚"
-    },
-    {
-      "name": "Goshoha",
-      "input": "LPLK",
-      "damage": "1200 (2040)",
-      "startup": "5",
-      "active": "3",
-      "recovery": "23",
-      "onBlock": "-",
-      "onHit": "KD + 28",
-      "category": "normal",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 28
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Goshoha",
-        "plnCmd": "LPLK",
-        "startup": 5,
-        "active": 3,
-        "recovery": 23,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 1200,
-        "total": 30,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Goshoha",
-        "sourceInput": "LPLK",
-        "cancelText": "-"
-      },
-      "nameZh": "轰冲破"
-    },
-    {
-      "name": "Oni Goroshi",
-      "input": "HPHK",
-      "damage": "800",
-      "startup": "26",
-      "active": "2",
-      "recovery": "35",
-      "onBlock": "-3 / Wall Splat HKD +72",
-      "onHit": "KD +35 / Wall Splat KD +65",
-      "category": "normal",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 35
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Oni Goroshi",
-        "plnCmd": "HPHK",
-        "startup": 26,
-        "active": 2,
-        "recovery": 35,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 800,
-        "total": 62,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Oni Goroshi",
-        "sourceInput": "HPHK",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气迸放"
-    },
-    {
-      "name": "Drive Parry",
-      "input": "MPMK",
-      "damage": "-",
-      "startup": "1",
-      "active": "12 or until released",
-      "recovery": "33(1)(11)",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Drive Parry",
-        "plnCmd": "MPMK",
-        "startup": 1,
-        "active": 12,
-        "recovery": 11,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "total": 23,
-        "moveType": "drive",
-        "section": "",
-        "sourceName": "Drive Parry",
-        "sourceInput": "MPMK",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气招架"
-    },
-    {
-      "name": "Parry Drive Rush",
-      "input": "MPMK~66",
-      "damage": "-",
-      "startup": "3+8",
-      "active": "-",
-      "recovery": "15(37)",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Parry Drive Rush",
-        "plnCmd": "MPMK~66",
-        "startup": 3,
-        "active": null,
-        "recovery": 37,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "drive",
-        "section": "",
-        "sourceName": "Parry Drive Rush",
-        "sourceInput": "MPMK~66",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气冲锋"
-    },
-    {
-      "name": "Drive Rush Cancel",
-      "input": "MPMK or 66",
-      "damage": "-",
-      "startup": "9",
-      "active": "-",
-      "recovery": "15(37)",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Drive Rush Cancel",
-        "plnCmd": "MPMK or 66",
-        "startup": 9,
-        "active": null,
-        "recovery": 37,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "drive",
-        "section": "",
-        "sourceName": "Drive Rush Cancel",
-        "sourceInput": "MPMK or 66",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气冲锋取消"
-    },
-    {
-      "name": "Neutral Taunt",
-      "input": "5PPPKKK",
-      "damage": "-",
-      "startup": "433 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Neutral Taunt",
-        "plnCmd": "5PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Neutral Taunt",
-        "sourceInput": "5PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "原地挑衅"
-    },
-    {
-      "name": "Down Taunt",
-      "input": "2PPPKKK",
-      "damage": "-",
-      "startup": "123 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Down Taunt",
-        "plnCmd": "2PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Down Taunt",
-        "sourceInput": "2PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "下蹲挑衅"
-    },
-    {
-      "name": "Kongou-Kokuretsuzan",
-      "input": "22PPP",
-      "damage": "330x8,360 (3000)",
-      "startup": "8",
-      "active": "30",
-      "recovery": "41",
-      "onBlock": "-39",
-      "onHit": "KD +38",
-      "category": "normal",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 38
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Kongou-Kokuretsuzan",
-        "plnCmd": "22PPP",
-        "startup": 8,
-        "active": 30,
-        "recovery": 41,
-        "onBlock": -39,
-        "onHit": null,
-        "dmg": null,
-        "total": 78,
-        "moveType": "normal",
-        "section": "",
-        "blockstun": 32,
-        "sourceName": "Kongou-Kokuretsuzan",
-        "sourceInput": "22PPP",
-        "cancelText": "-"
-      },
-      "nameZh": "金刚国裂斩"
-    },
-    {
-      "name": "Skull Splitter",
-      "input": "6MP",
-      "damage": "200,400",
-      "startup": "20",
-      "active": "1(1)3",
-      "recovery": "18",
-      "onBlock": "-1",
-      "onHit": "+3",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Skull Splitter",
-        "plnCmd": "6MP",
-        "startup": 20,
-        "active": 5,
-        "recovery": 18,
-        "onBlock": -1,
-        "onHit": 3,
-        "dmg": 200,
-        "total": 42,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 22,
-        "hitstun": 26,
-        "sourceName": "Skull Splitter",
-        "sourceInput": "6MP",
-        "cancelText": "-"
-      },
-      "nameZh": "头骸割"
-    },
-    {
-      "name": "Resso Snap Kick",
-      "input": "6MK",
-      "damage": "700",
-      "startup": "10",
-      "active": "3",
-      "recovery": "15(18/19)",
-      "onBlock": "-4",
-      "onHit": "+5",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Resso Snap Kick",
-        "plnCmd": "6MK",
-        "startup": 10,
-        "active": 3,
-        "recovery": 52,
-        "onBlock": -4,
-        "onHit": 5,
-        "dmg": 700,
-        "total": 64,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 14,
-        "hitstun": 23,
-        "sourceName": "Resso Snap Kick",
-        "sourceInput": "6MK",
-        "cancelText": "-"
-      },
-      "nameZh": "热爪跃击"
-    },
-    {
-      "name": "Kikoku",
-      "input": "6HP",
-      "damage": "800",
-      "startup": "13",
-      "active": "4",
-      "recovery": "20",
-      "onBlock": "-3",
-      "onHit": "+4",
-      "category": "unique",
-      "cancels": [
-        "Target Combo",
-        "Drive Rush"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Kikoku",
-        "plnCmd": "6HP",
-        "startup": 13,
-        "active": 4,
-        "recovery": 20,
-        "onBlock": -3,
-        "onHit": 4,
-        "dmg": 800,
-        "total": 36,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 21,
-        "hitstun": 28,
-        "sourceName": "Kikoku",
-        "sourceInput": "6HP",
-        "cancelText": "TC"
-      },
-      "nameZh": "鬼哭"
-    },
-    {
-      "name": "Rago High Kick",
-      "input": "4HK",
-      "damage": "800",
-      "startup": "12",
-      "active": "5",
-      "recovery": "27",
-      "onBlock": "-15",
-      "onHit": "KD +47",
-      "category": "unique",
-      "cancels": [
-        "Special",
-        "Super",
-        "Drive Rush"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 47
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Rago High Kick",
-        "plnCmd": "4HK",
-        "startup": 12,
-        "active": 5,
-        "recovery": 27,
-        "onBlock": -15,
-        "onHit": null,
-        "dmg": 800,
-        "total": 43,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 17,
-        "sourceName": "Rago High Kick",
-        "sourceInput": "4HK",
-        "cancelText": "Sp SA"
-      },
-      "nameZh": "罗睺上段踢"
     },
     {
       "name": "Kikoku Combination 1",
@@ -1112,7 +896,7 @@
       "recovery": "21(24)",
       "onBlock": "-10",
       "onHit": "KD +39",
-      "category": "unique",
+      "category": "normal",
       "cancels": [
         "Target Combo",
         "Drive Rush"
@@ -1121,6 +905,7 @@
         "type": "soft",
         "advantage": 39
       },
+      "notes": "3f extra recovery on block; always a true blockstring even at max delay; puts opponent into limited juggle state; can finish with HK ender midscreen or 623MP in the corner; stronger extensions possible on a higher juggle (like Wallsplat into 2HK or any Super); easily hitconfirmable combo extension",
       "raw": {
         "source": "supercombo",
         "moveName": "Kikoku Combination 1",
@@ -1132,8 +917,8 @@
         "onHit": null,
         "dmg": 600,
         "total": 36,
-        "moveType": "unique",
-        "section": "",
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
         "blockstun": 14,
         "sourceName": "Kikoku Combination 1",
         "sourceInput": "6HP~6HP",
@@ -1150,11 +935,12 @@
       "recovery": "24",
       "onBlock": "-13",
       "onHit": "KD +35",
-      "category": "unique",
+      "category": "normal",
       "knockdown": {
         "type": "soft",
         "advantage": 35
       },
+      "notes": "() refers to scaled damage after 6HP~6HP combo starter; always a true blockstring even at max delay; puts opponent into limited juggle state; useful midscreen ender (623MP is stronger after a corner 6HP~6HP launch)",
       "raw": {
         "source": "supercombo",
         "moveName": "Kikoku Combination 2",
@@ -1166,14 +952,48 @@
         "onHit": null,
         "dmg": 875,
         "total": 35,
-        "moveType": "unique",
-        "section": "",
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
         "blockstun": 14,
         "sourceName": "Kikoku Combination 2",
         "sourceInput": "6HP~6HP~HK",
         "cancelText": "-"
       },
       "nameZh": "鬼哭连击2"
+    },
+    {
+      "name": "Goshoha",
+      "input": "LPLK",
+      "damage": "1200 (2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD + 28",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 28
+      },
+      "notes": "Can walk or Dash + walk for manually-timed corner throw loop; immediate TK OD Air Fireball can stuff some wakeup reversals and leave Akuma plus on block; midscreen, cannot get strike/throw mixup but can Drive Rush into delayed 6HP to beat wakeup 4f normals (+1 oB); a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Goshoha",
+        "plnCmd": "LPLK",
+        "startup": 5,
+        "active": 3,
+        "recovery": 23,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 1200,
+        "total": 30,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Goshoha",
+        "sourceInput": "LPLK",
+        "cancelText": "-"
+      },
+      "nameZh": "轰冲破"
     },
     {
       "name": "Shuretto",
@@ -1184,11 +1004,12 @@
       "recovery": "23",
       "onBlock": "-",
       "onHit": "KD + 14",
-      "category": "unique",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 14
       },
+      "notes": "Side switches; can walk for pseudo-throw loop after throwing opponent into corner (loses to reversal 4f normals); can use immediate DR~5MP for stronger oki (but loses to invincible reversals on reaction); immediate 6HP hits meaty, becoming +6/-1 with a link to 2MP on hit or 2HP on Counter-hit; a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
       "raw": {
         "source": "supercombo",
         "moveName": "Shuretto",
@@ -1200,13 +1021,47 @@
         "onHit": null,
         "dmg": 1200,
         "total": 30,
-        "moveType": "unique",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "sourceName": "Shuretto",
         "sourceInput": "4LPLK",
         "cancelText": "-"
       },
       "nameZh": "修罗夺"
+    },
+    {
+      "name": "Oni Goroshi",
+      "input": "HPHK",
+      "damage": "800",
+      "startup": "26",
+      "active": "2",
+      "recovery": "35",
+      "onBlock": "-3 / Wall Splat HKD +72",
+      "onHit": "KD +35 / Wall Splat KD +65",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "See Drive Impact. Airborne connect gives spinning juggle state on Punish Counter or corner Wall Splat with variable height.",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Oni Goroshi",
+        "plnCmd": "HPHK",
+        "startup": 26,
+        "active": 2,
+        "recovery": 35,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 800,
+        "total": 62,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Oni Goroshi",
+        "sourceInput": "HPHK",
+        "cancelText": "-"
+      },
+      "nameZh": "斗气迸放"
     },
     {
       "name": "Souha Double Palm (Block)",
@@ -1217,11 +1072,12 @@
       "recovery": "26(31)",
       "onBlock": "-6",
       "onHit": "KD +23",
-      "category": "unique",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 23
       },
+      "notes": "Performed by holding 6HPHK on wakeup; 5f extra recovery on hit; does not have any screen freeze; see Drive Reversal.",
       "raw": {
         "source": "supercombo",
         "moveName": "Souha Double Palm (Block)",
@@ -1233,8 +1089,8 @@
         "onHit": null,
         "dmg": null,
         "total": 53,
-        "moveType": "unique",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "blockstun": 23,
         "sourceName": "Souha Double Palm (Block)",
         "sourceInput": "6HPHK",
@@ -1243,248 +1099,92 @@
       "nameZh": "斗气反攻"
     },
     {
-      "name": "Souha Double Palm (Recovery)",
-      "input": "6HPHK",
-      "damage": "500 recoverable",
-      "startup": "18",
-      "active": "3",
-      "recovery": "26(31)",
-      "onBlock": "-6",
-      "onHit": "KD +23",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 23
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Souha Double Palm (Recovery)",
-        "plnCmd": "6HPHK",
-        "startup": 18,
-        "active": 3,
-        "recovery": 31,
-        "onBlock": -6,
-        "onHit": null,
-        "dmg": null,
-        "total": 51,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 23,
-        "sourceName": "Souha Double Palm (Recovery)",
-        "sourceInput": "6HPHK",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气反攻"
-    },
-    {
-      "name": "Ashura Senku (Forward)",
-      "input": "6KKK",
+      "name": "Drive Parry",
+      "input": "MPMK",
       "damage": "-",
-      "startup": "(23~)",
-      "active": "-",
-      "recovery": "51",
+      "startup": "1",
+      "active": "12 or until released",
+      "recovery": "33(1)(11)",
       "onBlock": "-",
       "onHit": "-",
-      "category": "unique",
-      "cancels": [
-        "Sp*",
-        "Drive Rush"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Ashura Senku (Forward)",
-        "plnCmd": "6KKK",
-        "startup": 23,
-        "active": null,
-        "recovery": 51,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Ashura Senku (Forward)",
-        "sourceInput": "6KKK",
-        "cancelText": "Sp*"
-      },
-      "nameZh": "阿修罗闪空(前)"
-    },
-    {
-      "name": "Ashura Senku (Backward)",
-      "input": "4KKK",
-      "damage": "-",
-      "startup": "-",
-      "active": "-",
-      "recovery": "49 total",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Ashura Senku (Backward)",
-        "plnCmd": "4KKK",
-        "startup": null,
-        "active": null,
-        "recovery": 49,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Ashura Senku (Backward)",
-        "sourceInput": "4KKK",
-        "cancelText": "-"
-      },
-      "nameZh": "阿修罗闪空(后)"
-    },
-    {
-      "name": "Shun Goku Satsu (CA)",
-      "input": "LP~LP~6LK~HP",
-      "damage": "4700",
-      "startup": "6+0",
-      "active": "21",
-      "recovery": "57",
-      "onBlock": "-",
-      "onHit": "HKD + 18",
-      "category": "unique",
-      "knockdown": {
-        "type": "hard",
-        "advantage": 18
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Shun Goku Satsu (CA)",
-        "plnCmd": "LP~LP~6LK~HP",
-        "startup": 6,
-        "active": 21,
-        "recovery": 57,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 4700,
-        "total": 83,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Shun Goku Satsu (CA)",
-        "sourceInput": "LP~LP~6LK~HP",
-        "cancelText": "-"
-      },
-      "nameZh": "瞬狱杀 (CA)"
-    },
-    {
-      "name": "Forward Taunt",
-      "input": "6PPPKKK",
-      "damage": "-",
-      "startup": "570(514) (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Forward Taunt",
-        "plnCmd": "6PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Forward Taunt",
-        "sourceInput": "6PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "前挑衅"
-    },
-    {
-      "name": "Back Taunt",
-      "input": "4PPPKKK",
-      "damage": "-",
-      "startup": "765 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Back Taunt",
-        "plnCmd": "4PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Back Taunt",
-        "sourceInput": "4PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "后挑衅"
-    },
-    {
-      "name": "Back~Down Taunt",
-      "input": "4PPPKKK~2PPPKKK",
-      "damage": "-",
-      "startup": "1604",
-      "active": "-",
-      "recovery": "186",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Back~Down Taunt",
-        "plnCmd": "4PPPKKK~2PPPKKK",
-        "startup": 1604,
-        "active": null,
-        "recovery": 186,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Back~Down Taunt",
-        "sourceInput": "4PPPKKK~2PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "后~下蹲挑衅"
-    },
-    {
-      "name": "Oboro Throw",
-      "input": "6KKK~LPLK",
-      "damage": "2200 (2900)",
-      "startup": "(23~37)+8",
-      "active": "3",
-      "recovery": "50",
-      "onBlock": "-",
-      "onHit": "HKD +20",
       "category": "throw",
-      "knockdown": {
-        "type": "hard",
-        "advantage": 20
-      },
+      "notes": "See Drive Parry. Perfect Parrying has only 1F of recovery and disables the opponent from canceling their attack. Perfect Parrying projectiles puts you into fixed 11 frames of recovery. After a Perfect Parry, all Super Gauge gain is reduced by 20% and Drive Gauge gain/damage is reduced by 50% for the entire punish combo.",
       "raw": {
         "source": "supercombo",
-        "moveName": "Oboro Throw",
-        "plnCmd": "6KKK~LPLK",
-        "startup": 23,
-        "active": 3,
-        "recovery": 50,
+        "moveName": "Drive Parry",
+        "plnCmd": "MPMK",
+        "startup": 1,
+        "active": 12,
+        "recovery": 11,
         "onBlock": null,
         "onHit": null,
-        "dmg": 2200,
-        "total": 75,
-        "moveType": "throw",
-        "section": "",
-        "sourceName": "Oboro Throw",
-        "sourceInput": "6KKK~LPLK",
+        "dmg": null,
+        "total": 23,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Drive Parry",
+        "sourceInput": "MPMK",
         "cancelText": "-"
       },
-      "nameZh": "胧投"
+      "nameZh": "斗气招架"
+    },
+    {
+      "name": "Parry Drive Rush",
+      "input": "MPMK~66",
+      "damage": "-",
+      "startup": "3+8",
+      "active": "-",
+      "recovery": "15(37)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "throw",
+      "notes": "See Drive Rush; 1-bar version performed out of a Parry; startup refers to minimum time before an attack can cancel the Drive Rush animation (if performed immediately after a successful Parry, only 1+8 startup); the first 15 recovery frames are cancelable into any attack; the final 22 recovery frames are cancelable into any attack or movement option or blocking (except Parry); only Normal and Command Normal attacks are enhanced with +4 frame advantage and improved juggle properties; Distance: 0.880 (min/throw), 2.121 (min/block), 3.425 (max/final DR frame)",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Parry Drive Rush",
+        "plnCmd": "MPMK~66",
+        "startup": 3,
+        "active": null,
+        "recovery": 37,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": null,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Parry Drive Rush",
+        "sourceInput": "MPMK~66",
+        "cancelText": "-"
+      },
+      "nameZh": "斗气冲锋"
+    },
+    {
+      "name": "Drive Rush Cancel",
+      "input": "MPMK or 66",
+      "damage": "-",
+      "startup": "9",
+      "active": "-",
+      "recovery": "15(37)",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "throw",
+      "notes": "See Drive Rush; 3-bar version performed on hit/block from a cancelable normal; can also be performed on whiff from cancelable light normals; startup refers to minimum time before an attack can cancel the Drive Rush animation; the first 15 recovery frames are cancelable into any attack; the final 22 recovery frames are cancelable into any attack or movement option or blocking (except Parry); only Normal and Command Normal attacks are enhanced with +4 frame advantage and improved juggle properties",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Drive Rush Cancel",
+        "plnCmd": "MPMK or 66",
+        "startup": 9,
+        "active": null,
+        "recovery": 37,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": null,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Drive Rush Cancel",
+        "sourceInput": "MPMK or 66",
+        "cancelText": "-"
+      },
+      "nameZh": "斗气冲锋取消"
     },
     {
       "name": "Gou Hadoken",
@@ -1499,6 +1199,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "1-hit projectile; slowest movement speed and startup but fastest recovery; can hold button to charge fireball to a higher level for more hits (25f for Lv.2, 49f for Lv.3); puts airborne opponents into limited juggle state; slight hurtbox extension on legs from frame 16~ and on arms (projectile invuln) from frame 18~",
       "raw": {
         "source": "supercombo",
         "moveName": "Gou Hadoken",
@@ -1510,7 +1211,7 @@
         "onHit": 0,
         "dmg": 700,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Gou Hadoken",
         "sourceInput": "236LP",
         "cancelText": "SA3"
@@ -1530,6 +1231,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "1-hit projectile; middle ground for startup, movement speed, and recovery; can hold button to charge fireball to a higher level for more hits (25f for Lv.2, 49f for Lv.3); puts airborne opponents into limited juggle state; slight hurtbox extension on legs from frame 14~ and on arms (projectile invuln) from frame 16~",
       "raw": {
         "source": "supercombo",
         "moveName": "Gou Hadoken",
@@ -1541,7 +1243,7 @@
         "onHit": -2,
         "dmg": 700,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Gou Hadoken",
         "sourceInput": "236MP",
         "cancelText": "SA3"
@@ -1561,6 +1263,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "1-hit projectile; fastest movement speed and startup but slowest recovery; can hold button to charge fireball to a higher level for more hits (25f for Lv.2, 49f for Lv.3); puts airborne opponents into limited juggle state; slight hurtbox extension on legs from frame 12~ and on arms (projectile invuln) from frame 14~",
       "raw": {
         "source": "supercombo",
         "moveName": "Gou Hadoken",
@@ -1572,7 +1275,7 @@
         "onHit": -4,
         "dmg": 700,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Gou Hadoken",
         "sourceInput": "236HP",
         "cancelText": "SA3"
@@ -1597,6 +1300,7 @@
         "type": "soft",
         "advantage": 55
       },
+      "notes": "2-hit OD projectile; holding buttons for 24f gives the fully charged 3-hit version; holding button 9-23f extends the startup while still giving uncharged version; projectile hitbox comes out 4f after button release; puts airborne opponents into limited juggle state; slight hurtbox extension on legs from frame 12~ and on arms (projectile invuln) from frame 16~",
       "raw": {
         "source": "supercombo",
         "moveName": "Gou Hadoken",
@@ -1608,7 +1312,7 @@
         "onHit": null,
         "dmg": 400,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Gou Hadoken",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
@@ -1632,6 +1336,7 @@
         "type": "soft",
         "advantage": 55
       },
+      "notes": "2-hit projectile; projectile speed depends on button strength; button must be held at least 25f and up to 48f for Lv.2 version (total startup 31~54f); projectile hitbox comes out 6f after button release; puts opponents into limited juggle state; useful in certain combo/juggle routes and for zoning; extended arm hurtbox is projectile invuln while charging; has an extended leg hurtbox on frames 13~",
       "raw": {
         "source": "supercombo",
         "moveName": "Gou Hadoken Lv.2",
@@ -1643,7 +1348,7 @@
         "onHit": null,
         "dmg": 400,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Gou Hadoken Lv.2",
         "sourceInput": "236{P}",
         "cancelText": "SA3"
@@ -1667,6 +1372,7 @@
         "type": "soft",
         "advantage": 57
       },
+      "notes": "3-hit projectile; projectile speed depends on button strength; button must be held 49f to perform full charge; puts opponents into limited juggle state; extended arm hurtbox is projectile invuln while charging; has an extended leg hurtbox on frames 13~",
       "raw": {
         "source": "supercombo",
         "moveName": "Gou Hadoken Lv.3",
@@ -1678,48 +1384,12 @@
         "onHit": null,
         "dmg": null,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Gou Hadoken Lv.3",
         "sourceInput": "236",
         "cancelText": "SA3"
       },
       "nameZh": "豪波动拳Lv.3"
-    },
-    {
-      "name": "OD Gou Hadoken Lv.2",
-      "input": "236",
-      "damage": "300x2,600 (1200)",
-      "startup": "31",
-      "active": "-",
-      "recovery": "28",
-      "onBlock": "+5",
-      "onHit": "KD +57",
-      "category": "special",
-      "cancels": [
-        "SA2",
-        "SA3"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 57
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "OD Gou Hadoken Lv.2",
-        "plnCmd": "236",
-        "startup": 31,
-        "active": null,
-        "recovery": 28,
-        "onBlock": 5,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "special",
-        "section": "",
-        "sourceName": "OD Gou Hadoken Lv.2",
-        "sourceInput": "236",
-        "cancelText": "SA2 SA3"
-      },
-      "nameZh": "OD豪波动拳Lv.2"
     },
     {
       "name": "Zanku Hadoken",
@@ -1731,6 +1401,7 @@
       "onBlock": "varies",
       "onHit": "varies",
       "category": "special",
+      "notes": "Forward Jump only on airborne frame 9-33; 1-hit projectile; dissipates if Akuma is hit; button strength determines fireball trajectory (LP ~35 degrees / MP ~45 degrees, HP ~50 degrees); on hit only, landing recovery after 2f is cancelable into any action except walking/jumping; projectile hitbox is considered an airborne attack (can be avoided with anti-air invuln moves); puts airborne opponents into free juggle state (or maintains existing juggle state); advantage varies significantly depending on timing/spacing/angle (at worst, approximately -5 oB vs. tall characters, -3 oB vs. standard characters, and unsafe on Perfect Parry; always enough hit advantage to link); foot hurtbox is projectile invuln 1f~land; upper half of hitbox only connects on opponents mid-combo",
       "raw": {
         "source": "supercombo",
         "moveName": "Zanku Hadoken",
@@ -1742,7 +1413,7 @@
         "onHit": null,
         "dmg": 600,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Zanku Hadoken",
         "sourceInput": "j.236P",
         "cancelText": "-"
@@ -1763,6 +1434,7 @@
         "type": "soft",
         "advantage": 25
       },
+      "notes": "Forward/Neutral Jump only on airborne frame 9-33; 3-hit OD projectile; dissipates if Akuma is hit; creates stationary projectile on frames 6-20, then shoots downward at ~50 degree angle (this projectile will only have 2 hits if the initial hitbox collided with opponent); on hit only, landing recovery after 2f is cancelable into any action except walking/jumping; projectile hitbox is considered an airborne attack (can be avoided with anti-air invuln moves); puts airborne opponents into free juggle state (or maintains existing juggle state); puts grounded opponents into limited juggle state; advantage varies significantly depending on timing/spacing/angle (at worst, approximately -3 oB vs. tall characters, -1 oB vs. standard characters, but +1~3 if all hits Perfect Parried); foot hurtbox is projectile invuln 1f~land; upper half of hitbox only connects on opponents mid-combo",
       "raw": {
         "source": "supercombo",
         "moveName": "Zanku Hadoken",
@@ -1774,7 +1446,7 @@
         "onHit": null,
         "dmg": null,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Zanku Hadoken",
         "sourceInput": "j.236PP",
         "cancelText": "-"
@@ -1798,6 +1470,7 @@
         "type": "soft",
         "advantage": 38
       },
+      "notes": "Puts opponent into limited juggle state; 300 less damage and higher juggle limit on active frames 4-10; cannot hit cross-up; only the first active frame can cancel into SA3",
       "raw": {
         "source": "supercombo",
         "moveName": "Gou Shoryuken",
@@ -1810,7 +1483,7 @@
         "dmg": 1100,
         "total": 47,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 20,
         "sourceName": "Gou Shoryuken",
         "sourceInput": "623LP",
@@ -1835,6 +1508,7 @@
         "type": "soft",
         "advantage": 32
       },
+      "notes": "Puts opponent into limited juggle state; cannot hit cross-up; only the first active frame can cancel into SA3",
       "raw": {
         "source": "supercombo",
         "moveName": "Gou Shoryuken",
@@ -1847,7 +1521,7 @@
         "dmg": 700,
         "total": 57,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 22,
         "sourceName": "Gou Shoryuken",
         "sourceInput": "623MP",
@@ -1872,6 +1546,7 @@
         "type": "soft",
         "advantage": 30
       },
+      "notes": "Puts opponent into limited juggle state; 3f worse on block and 100 less chip damage vs. crouching; cannot hit cross-up; only the first active frame can cancel into SA3; higher juggle limit on active frame 7~",
       "raw": {
         "source": "supercombo",
         "moveName": "Gou Shoryuken",
@@ -1884,7 +1559,7 @@
         "dmg": 600,
         "total": 67,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 25,
         "sourceName": "Gou Shoryuken",
         "sourceInput": "623HP",
@@ -1906,6 +1581,7 @@
         "type": "soft",
         "advantage": 14
       },
+      "notes": "Can only hit twice vs. grounded opponents (will not break DI armor); cannot hit cross-up; transitions to follow-up slam on hit if either of the first 2 hits connect (active frames 1-4); if only 3rd hit connects, does not perform the slam and does only 300 damage; recovery/total refers to whiff/block version",
       "raw": {
         "source": "supercombo",
         "moveName": "Gou Shoryuken",
@@ -1918,7 +1594,7 @@
         "dmg": null,
         "total": 68,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 22,
         "sourceName": "Gou Shoryuken",
         "sourceInput": "623PP",
@@ -1940,6 +1616,7 @@
         "type": "soft",
         "advantage": 50
       },
+      "notes": "6f extra recovery on block/whiff; whiffs on crouching opponents (for consistency, cancel from 5MK or 2HP); cannot hit cross-up; puts opponent into limited juggle state; allows juggle into 623P (close range), 2HK (safe jump setup), or any Super",
       "raw": {
         "source": "supercombo",
         "moveName": "Tatsumaki Zanku-Kyaku",
@@ -1952,7 +1629,7 @@
         "dmg": 600,
         "total": 26,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 10,
         "sourceName": "Tatsumaki Zanku-Kyaku",
         "sourceInput": "214LK",
@@ -1974,6 +1651,7 @@
         "type": "soft",
         "advantage": 41
       },
+      "notes": "2 hits; whiffs on crouching opponents; cannot hit cross-up; puts opponent into limited juggle state (follow-up requires higher juggle connect, like after wallsplat); 2nd hit has 3f worse KD advantage; -28 oB refers to fuzzy guard scenario where 1st hit can connect vs. crouch block",
       "raw": {
         "source": "supercombo",
         "moveName": "Tatsumaki Zanku-Kyaku",
@@ -1986,7 +1664,7 @@
         "dmg": null,
         "total": 58,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 35,
         "sourceName": "Tatsumaki Zanku-Kyaku",
         "sourceInput": "214MK",
@@ -2008,6 +1686,7 @@
         "type": "soft",
         "advantage": 34
       },
+      "notes": "6f extra recovery on block/whiff; can hit crouching opponents; upward angle, primarily used as a juggle ender for damage and corner carry",
       "raw": {
         "source": "supercombo",
         "moveName": "Tatsumaki Zanku-Kyaku",
@@ -2020,7 +1699,7 @@
         "dmg": null,
         "total": 71,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 21,
         "sourceName": "Tatsumaki Zanku-Kyaku",
         "sourceInput": "214HK",
@@ -2042,6 +1721,7 @@
         "type": "soft",
         "advantage": 47
       },
+      "notes": "Whiffs on crouching opponents; if 1st hit is stand blocked, opponent can crouch block after 2nd hit resulting in much worse disadvantage; cannot hit cross-up; puts opponent into limited juggle state (combos into 623LP/MP/PP); performs final kick on hit only",
       "raw": {
         "source": "supercombo",
         "moveName": "Tatsumaki Zanku-Kyaku",
@@ -2054,7 +1734,7 @@
         "dmg": null,
         "total": 63,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 34,
         "sourceName": "Tatsumaki Zanku-Kyaku",
         "sourceInput": "214KK",
@@ -2076,6 +1756,7 @@
         "type": "soft",
         "advantage": 46
       },
+      "notes": "During forward jump only; can hit cross-up but does not hit overhead; puts opponent into limited juggle state; KD and block advantage depends on how high it connects; 4f less blockstun on cross-up version; Akuma is in a crouching state on frames 4-16 of landing recovery; lower foot/leg hurtbox is projectile invuln 1f~land",
       "raw": {
         "source": "supercombo",
         "moveName": "Aerial Tatsumaki Zanku-Kyaku",
@@ -2088,7 +1769,7 @@
         "dmg": 900,
         "total": 42,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Aerial Tatsumaki Zanku-Kyaku",
         "sourceInput": "j.214K",
         "cancelText": "-"
@@ -2109,6 +1790,7 @@
         "type": "soft",
         "advantage": 40
       },
+      "notes": "During forward jump only; cannot hit cross-up or against grounded opponents; stops Akuma's jump momentum; performs final kick on hit only, which slams opponent down into a limited juggle OTG state (combos into 623LP/MP/PP on lower connect, but more lenient after high connect like j.MP > j.214KK); KD advantage depends on how high it connects; Akuma is in a crouching state on frames 4-16 of landing recovery; lower foot/leg hurtbox is projectile invuln 1f~land",
       "raw": {
         "source": "supercombo",
         "moveName": "Aerial Tatsumaki Zanku-Kyaku",
@@ -2121,7 +1803,7 @@
         "dmg": null,
         "total": 44,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Aerial Tatsumaki Zanku-Kyaku",
         "sourceInput": "j.214KK",
         "cancelText": "-"
@@ -2141,6 +1823,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "6P follow-up is a true blockstring even at max delay; can be spaced in neutral for +1f better advantage (very precise); foot hurtbox is pulled back on frames 6-12 (can make low attacks whiff); only version of 214P that can combo from 2LP/5LK",
       "raw": {
         "source": "supercombo",
         "moveName": "Adamant Flame",
@@ -2153,7 +1836,7 @@
         "dmg": 700,
         "total": 40,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 18,
         "hitstun": 27,
         "sourceName": "Adamant Flame",
@@ -2175,6 +1858,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "3f extra recovery on whiff; extra advantage on Punish Counter (+10) makes it a strong shimmy tool; 6P follow-up is a true blockstring even at max delay; can be spaced in neutral for +1f better advantage (very precise); foot hurtbox is pulled back on frames 6-15 (can make low attacks whiff)",
       "raw": {
         "source": "supercombo",
         "moveName": "Adamant Flame",
@@ -2187,7 +1871,7 @@
         "dmg": 800,
         "total": 44,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 19,
         "hitstun": 25,
         "sourceName": "Adamant Flame",
@@ -2209,6 +1893,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "2f extra recovery on whiff; extra advantage on Punish Counter (+12) makes it a strong shimmy tool; 6P follow-up is a true blockstring even at max delay; can be spaced in neutral for +1f better advantage (very precise); foot hurtbox is pulled back on frames 6-18 (can make low attacks whiff); has more pushback on block vs. Burnout",
       "raw": {
         "source": "supercombo",
         "moveName": "Adamant Flame",
@@ -2221,7 +1906,7 @@
         "dmg": 900,
         "total": 46,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 19,
         "hitstun": 25,
         "sourceName": "Adamant Flame",
@@ -2244,6 +1929,7 @@
         "SA2",
         "SA3"
       ],
+      "notes": "Can be spaced in neutral for +2f better advantage (very precise); grounded Punish Counter crumple is +16 before opponent becomes airborne; foot hurtbox is pulled back on frames 6-14 (can make low attacks whiff); combos from Punish Counter 5LK/2LP",
       "raw": {
         "source": "supercombo",
         "moveName": "Adamant Flame",
@@ -2256,7 +1942,7 @@
         "dmg": 700,
         "total": 43,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 23,
         "hitstun": 27,
         "sourceName": "Adamant Flame",
@@ -2278,6 +1964,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "4f extra recovery on block; cannot come out on whiff; true blockstring from 214LP even at max delay; keeps opponent grounded for strike/throw mixup (requires microwalk if midscreen)",
       "raw": {
         "source": "supercombo",
         "moveName": "Adamant Flame Follow-Up",
@@ -2290,7 +1977,7 @@
         "dmg": 500,
         "total": 32,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 12,
         "hitstun": 25,
         "sourceName": "Adamant Flame Follow-Up",
@@ -2316,6 +2003,7 @@
         "type": "soft",
         "advantage": 32
       },
+      "notes": "Cannot come out on whiff; true blockstring from 214MP even at max delay; puts opponents into limited juggle state",
       "raw": {
         "source": "supercombo",
         "moveName": "Adamant Flame Follow-Up",
@@ -2328,7 +2016,7 @@
         "dmg": 600,
         "total": 42,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 18,
         "sourceName": "Adamant Flame Follow-Up",
         "sourceInput": "214MP~6P",
@@ -2353,6 +2041,7 @@
         "type": "soft",
         "advantage": 47
       },
+      "notes": "Cannot come out on whiff; true blockstring from 214HP even at max delay; puts opponents into limited juggle state with follow-up juggles possible in the corner",
       "raw": {
         "source": "supercombo",
         "moveName": "Adamant Flame Follow-Up",
@@ -2365,7 +2054,7 @@
         "dmg": 600,
         "total": 42,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 18,
         "sourceName": "Adamant Flame Follow-Up",
         "sourceInput": "214HP~6P",
@@ -2389,14 +2078,9 @@
       ],
       "knockdown": {
         "type": "hard",
-        "advantage": 45,
-        "alternativeAdvantages": [
-          {
-            "condition": "Wall Splat",
-            "advantage": 63
-          }
-        ]
+        "advantage": 45
       },
+      "notes": "() refers to scaled damage from 214PP combo starter; 6f extra recovery on block; cannot come out on whiff; true blockstring from 214PP even at max delay; sends opponent to the edge of the screen for a wallsplat unless SA2 wallsplat occurred earlier in the combo (much less KD advantage, around +26~33); grounded wallsplat puts opponent into free juggle state (limited juggle state vs. airborne); allows a follow-up juggle if near the corner; KD advantage varies significantly depending on distance from corner",
       "raw": {
         "source": "supercombo",
         "moveName": "Adamant Flame Follow-Up",
@@ -2409,7 +2093,7 @@
         "dmg": 300,
         "total": 48,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 18,
         "sourceName": "Adamant Flame Follow-Up",
         "sourceInput": "214PP~6P",
@@ -2427,6 +2111,7 @@
       "onBlock": "-",
       "onHit": "-",
       "category": "special",
+      "notes": "Button strength determines trajectory (LK short, MK mid, HK far); counter-hit state for entire duration; cancelable into follow-ups on frames 18-40; on frame 41, automatically transitions to Demon Low Slash (or Demon Swoop if holding Down)",
       "raw": {
         "source": "supercombo",
         "moveName": "Demon Raid",
@@ -2438,7 +2123,7 @@
         "onHit": null,
         "dmg": null,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Demon Raid",
         "sourceInput": "236K",
         "cancelText": "-"
@@ -2455,6 +2140,7 @@
       "onBlock": "-",
       "onHit": "-",
       "category": "special",
+      "notes": "Tracks opponent's location regardless of distance; counter-hit state for entire duration; cancelable into follow-ups on frames 16-40 (16-38 for Fireball/Tatsu and Air SA1 follow-ups); on frame 41, automatically transitions to Demon Low Slash (or Demon Swoop if holding Down)",
       "raw": {
         "source": "supercombo",
         "moveName": "Demon Raid",
@@ -2466,7 +2152,7 @@
         "onHit": null,
         "dmg": null,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Demon Raid",
         "sourceInput": "236KK",
         "cancelText": "-"
@@ -2487,6 +2173,7 @@
         "type": "hard",
         "advantage": 39
       },
+      "notes": "4f extra recovery on whiff; recovery is in a crouching state until the final frame (final 5f on whiff); causes Akuma to auto-correct if Demon Raid crosses up; can be spaced for better frame advantage",
       "raw": {
         "source": "supercombo",
         "moveName": "Demon Low Slash",
@@ -2499,7 +2186,7 @@
         "dmg": 1000,
         "total": 75,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 21,
         "sourceName": "Demon Low Slash",
         "sourceInput": "236K~No Input",
@@ -2521,6 +2208,7 @@
         "type": "hard",
         "advantage": 39
       },
+      "notes": "4f extra recovery on whiff; recovery is in a crouching state until the final frame (final 5f on whiff); causes Akuma to auto-correct if Demon Raid crosses up",
       "raw": {
         "source": "supercombo",
         "moveName": "Demon Low Slash",
@@ -2533,7 +2221,7 @@
         "dmg": 1000,
         "total": 75,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 21,
         "sourceName": "Demon Low Slash",
         "sourceInput": "236KK~No Input",
@@ -2555,6 +2243,7 @@
         "type": "soft",
         "advantage": 37
       },
+      "notes": "Overhead with many active frames, making it good for meaty pressure; strong hitbox and mid-air pause makes it more difficult to anti-air; cannot hit cross-up; frames 4-8 of landing recovery have a crouch-sized hurtbox (but still standing)",
       "raw": {
         "source": "supercombo",
         "moveName": "Demon Guillotine",
@@ -2566,7 +2255,7 @@
         "onHit": null,
         "dmg": 1300,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Demon Guillotine",
         "sourceInput": "236K~P",
         "cancelText": "-"
@@ -2587,6 +2276,7 @@
         "type": "soft",
         "advantage": 37
       },
+      "notes": "Overhead with many active frames, making it good for meaty pressure; strong hitbox and mid-air pause makes it more difficult to anti-air; cannot hit cross-up; frames 4-8 of landing recovery have a crouch-sized hurtbox (but still standing)",
       "raw": {
         "source": "supercombo",
         "moveName": "Demon Guillotine",
@@ -2598,7 +2288,7 @@
         "onHit": null,
         "dmg": 1300,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Demon Guillotine",
         "sourceInput": "236KK~P",
         "cancelText": "-"
@@ -2615,6 +2305,7 @@
       "onBlock": "-5(+5)",
       "onHit": "0(+10)",
       "category": "special",
+      "notes": "5f extra recovery on whiff; button strength determines angle (LK short, MK mid, HK far); puts airborne opponents into limited juggle state (or maintains juggle state if used mid-combo); extends a large projectile invincible hurtbox on frame 11 until landing (making the divekick easier to anti-air while still being useful for avoiding fireballs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Demon Blade Kick",
@@ -2626,7 +2317,7 @@
         "onHit": 0,
         "dmg": 700,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Demon Blade Kick",
         "sourceInput": "236K~K",
         "cancelText": "-"
@@ -2643,6 +2334,7 @@
       "onBlock": "-5(+5)",
       "onHit": "0(+10)",
       "category": "special",
+      "notes": "5f extra recovery on whiff; button strength determines angle (LK short, MK mid, HK far); puts airborne opponents into limited juggle state (or maintains juggle state if used mid-combo); extends a large projectile invincible hurtbox on frame 11 until landing (making the divekick easier to anti-air while still being useful for avoiding fireballs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Demon Blade Kick",
@@ -2654,7 +2346,7 @@
         "onHit": 0,
         "dmg": 700,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Demon Blade Kick",
         "sourceInput": "236KK~K",
         "cancelText": "-"
@@ -2671,6 +2363,7 @@
       "onBlock": "-",
       "onHit": "-",
       "category": "special",
+      "notes": "Acts like an empty jump (with the same 45f duration) with adjustable distance; 5f extra landing recovery when crossing over opponent; useful for baiting opponent's anti-air, Drive Impact, or Parry; must be inputting any Down direction on frame 41 of 236K; cannot block during landing recovery, and Akuma is in a counter-hit state for entire duration; crouching state on final recovery frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Demon Swoop",
@@ -2682,7 +2375,7 @@
         "onHit": null,
         "dmg": null,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Demon Swoop",
         "sourceInput": "236K~",
         "cancelText": "-"
@@ -2699,6 +2392,7 @@
       "onBlock": "-",
       "onHit": "-",
       "category": "special",
+      "notes": "Acts like an empty jump (with the same 45f duration) that puts Akuma point blank; 5f extra landing recovery when crossing over opponent; useful for baiting opponent's Drive Impact or Parry; must be inputting any Down direction on frame 41 of 236KK; cannot block during landing recovery, and Akuma is in a counter-hit state for entire duration; crouching state on final recovery frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Demon Swoop",
@@ -2710,7 +2404,7 @@
         "onHit": null,
         "dmg": null,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Demon Swoop",
         "sourceInput": "236KK~",
         "cancelText": "-"
@@ -2731,6 +2425,7 @@
         "type": "soft",
         "advantage": 25
       },
+      "notes": "3-hit OD projectile; can be input on frame 16-38 of 236KK (unless Gou Hadoken is on-screen); does not consume additional Drive gauge; dissipates if Akuma is hit; creates stationary projectile on frames 6-20, then shoots downward at ~50 degree angle (this projectile will only have 2 hits if the initial hitbox collided with opponent); on hit only, landing recovery after 2f is cancelable into any action except walking/jumping; projectile hitbox is considered an airborne attack (can be avoided with anti-air invuln moves); puts airborne opponents into free juggle state (or maintains existing juggle state); puts grounded opponents into limited juggle state; advantage varies significantly depending on timing/spacing/angle; foot hurtbox is projectile invuln 1f~land",
       "raw": {
         "source": "supercombo",
         "moveName": "Demon Gou Zanku",
@@ -2742,7 +2437,7 @@
         "onHit": null,
         "dmg": null,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Demon Gou Zanku",
         "sourceInput": "236KK~j.236P",
         "cancelText": "-"
@@ -2763,6 +2458,7 @@
         "type": "soft",
         "advantage": 46
       },
+      "notes": "Can be input on frame 16-38 of 236KK (unless Gou Hadoken is on-screen); does not consume additional Drive gauge; cannot hit cross-up or against grounded opponents; stops Akuma's air momentum; performs final kick on hit only, which slams opponent down into a limited juggle OTG state; KD advantage depends on how high it connects (useful after 4HK launch, allowing most juggle enders to combo); Akuma is in a crouching state on frames 4-10 of landing recovery; lower foot/leg hurtbox is projectile invuln 1f~land",
       "raw": {
         "source": "supercombo",
         "moveName": "Demon Gou Rasen",
@@ -2775,12 +2471,136 @@
         "dmg": null,
         "total": 44,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Demon Gou Rasen",
         "sourceInput": "236KK~j.214K",
         "cancelText": "-"
       },
       "nameZh": "百鬼豪螺旋"
+    },
+    {
+      "name": "Ashura Senku (Backward)",
+      "input": "4KKK",
+      "damage": "-",
+      "startup": "-",
+      "active": "-",
+      "recovery": "49 total",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Cannot be canceled into; travels back ~1/2 screen; no collision box on frames 15-37; no invincibility whatsoever; counter-hit state for entire duration; Distance: 2.128",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Ashura Senku (Backward)",
+        "plnCmd": "4KKK",
+        "startup": null,
+        "active": null,
+        "recovery": 49,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": null,
+        "moveType": "special",
+        "section": "Specials",
+        "sourceName": "Ashura Senku (Backward)",
+        "sourceInput": "4KKK",
+        "cancelText": "-"
+      },
+      "nameZh": "阿修罗闪空(后)"
+    },
+    {
+      "name": "Ashura Senku (Forward)",
+      "input": "6KKK",
+      "damage": "-",
+      "startup": "(23~)",
+      "active": "-",
+      "recovery": "51",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "cancels": [
+        "Sp*"
+      ],
+      "notes": "Cannot be canceled into; no collision box on frames 17-35 (can pass through opponent); no invincibility whatsoever, but passing through opponent may cause attack hitbox to whiff; counter-hit state for entire duration; frames 24-38 are cancelable into Oboro Throw follow-up; Distance: 3.663",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Ashura Senku (Forward)",
+        "plnCmd": "6KKK",
+        "startup": 23,
+        "active": null,
+        "recovery": 51,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": null,
+        "moveType": "special",
+        "section": "Specials",
+        "sourceName": "Ashura Senku (Forward)",
+        "sourceInput": "6KKK",
+        "cancelText": "Sp*"
+      },
+      "nameZh": "阿修罗闪空(前)"
+    },
+    {
+      "name": "Oboro Throw",
+      "input": "6KKK~LPLK",
+      "damage": "2200 (2900)",
+      "startup": "(23~37)+8",
+      "active": "3",
+      "recovery": "50",
+      "onBlock": "-",
+      "onHit": "HKD +20",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 20
+      },
+      "notes": "Total startup 31-45f depending on input timing; can be activated even after passing through opponent; 1.076 Range does not including 6KKK travel distance (maximum total range of 3.697)",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Oboro Throw",
+        "plnCmd": "6KKK~LPLK",
+        "startup": 23,
+        "active": 3,
+        "recovery": 50,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 2200,
+        "total": 75,
+        "moveType": "special",
+        "section": "Specials",
+        "sourceName": "Oboro Throw",
+        "sourceInput": "6KKK~LPLK",
+        "cancelText": "-"
+      },
+      "nameZh": "胧投"
+    },
+    {
+      "name": "Double Zanku Hadoken",
+      "input": "j.214PP",
+      "damage": "600x2",
+      "startup": "8(21)",
+      "active": "-",
+      "recovery": "9(2) land",
+      "onBlock": "varies",
+      "onHit": "varies",
+      "category": "special",
+      "notes": "Shin Akuma only (Back Taunt~Down Taunt); forward Jump only on airborne frame 9-33; throws 2 consecutive 1-hit fireballs (2nd fireball travels faster and farther); dissipates if Akuma is hit; fireballs travel downward at ~45 degree angle; on hit only, landing recovery after 2f is cancelable into any action except walking/jumping; projectile hitbox is considered an airborne attack (can be avoided with anti-air invuln moves); puts airborne opponents into free juggle state (or maintains existing juggle state); advantage varies significantly depending on timing/spacing/angle (at worst, approximately +5 oB vs. tall characters, +7 oB vs. standard characters, and unsafe on Perfect Parry; always enough hit advantage to link); foot hurtbox is projectile invuln 1f~land; upper half of hitbox only connects on opponents mid-combo",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Double Zanku Hadoken",
+        "plnCmd": "j.214PP",
+        "startup": 8,
+        "active": null,
+        "recovery": 2,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": null,
+        "moveType": "special",
+        "section": "Specials",
+        "sourceName": "Double Zanku Hadoken",
+        "sourceInput": "j.214PP",
+        "cancelText": "-"
+      },
+      "nameZh": "双重斩空波动拳"
     },
     {
       "name": "Messatsu Gohado",
@@ -2791,11 +2611,12 @@
       "recovery": "96",
       "onBlock": "-41",
       "onHit": "KD +9",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "soft",
         "advantage": 9
       },
+      "notes": "5-hit Super projectile; projectile speed is not affected by button strength; can be used while OD projectiles are on-screen; slower startup allows opponents (except Dhalsim/Lily/Zangief) to avoid with a jump after the screen freeze",
       "raw": {
         "source": "supercombo",
         "moveName": "Messatsu Gohado",
@@ -2806,8 +2627,8 @@
         "onBlock": -41,
         "onHit": null,
         "dmg": null,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "sourceName": "Messatsu Gohado",
         "sourceInput": "236236P",
         "cancelText": "-"
@@ -2823,11 +2644,12 @@
       "recovery": "23(33) land",
       "onBlock": "-28~",
       "onHit": "KD +49~",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "soft",
         "advantage": 49
       },
+      "notes": "5-hit Super projectile; during Forward or Neutral Jump only; 10f extra landing recovery on block/whiff; KD advantage varies significantly depending on angle and distance from opponent; puts airborne opponents into limited juggle state; travels down at ~45 degree angle; projectile speed/angle is not affected by button strength; projectile hitbox is considered an airborne attack (can be avoided with anti-air invuln moves); dissipates if Akuma is hit; can be used while OD projectiles are on-screen; leg hurtbox is projectile invuln until landing; crouching state on final recovery frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Tenma Gozanku",
@@ -2838,8 +2660,8 @@
         "onBlock": -28,
         "onHit": null,
         "dmg": null,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "sourceName": "Tenma Gozanku",
         "sourceInput": "j.236236K",
         "cancelText": "-"
@@ -2855,11 +2677,12 @@
       "recovery": "52",
       "onBlock": "-35",
       "onHit": "HKD +29 (HKD +97 Wallsplat)",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "hard",
         "advantage": 29
       },
+      "notes": "Sends the opponent tumbling ~1/3 screen; causes wallsplat near corner (unless 214PP~6P wallsplat occurred earlier in the combo); the cinematic resets the opponent's juggle counter, allowing a follow-up wallsplat juggle regardless of previous juggle state; wallsplat is similar to Drive Impact, allowing moves to juggle that normally would not be possible; close-range opponent cannot jump away after the Super freeze to avoid chip damage",
       "raw": {
         "source": "supercombo",
         "moveName": "Empyrean’s End",
@@ -2871,8 +2694,8 @@
         "onHit": null,
         "dmg": 2800,
         "total": 63,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 20,
         "sourceName": "Empyrean’s End",
         "sourceInput": "214214P",
@@ -2889,11 +2712,12 @@
       "recovery": "58",
       "onBlock": "-41",
       "onHit": "HKD +18",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "hard",
         "advantage": 18
       },
+      "notes": "Available at 25% HP or below; cinematic time regenerates ~2.3 Drive bars for Akuma; close-range opponent cannot jump away after the Super freeze to avoid chip damage; only 2f startup when canceled from 623P/214P/214P~6P; leaves opponent in range for microwalk 6HP pressure or Drive Rush oki",
       "raw": {
         "source": "supercombo",
         "moveName": "Sip of Calamity",
@@ -2905,8 +2729,8 @@
         "onHit": null,
         "dmg": 4000,
         "total": 69,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 21,
         "sourceName": "Sip of Calamity",
         "sourceInput": "236236K",
@@ -2915,66 +2739,38 @@
       "nameZh": "祸坏"
     },
     {
-      "name": "Sip of Calamity (CA)",
-      "input": "236236K",
-      "damage": "4500",
-      "startup": "8(2)",
-      "active": "4",
-      "recovery": "58",
-      "onBlock": "-41",
-      "onHit": "HKD +18",
-      "category": "special",
+      "name": "Shun Goku Satsu (CA)",
+      "input": "LP~LP~6LK~HP",
+      "damage": "4700",
+      "startup": "6+0",
+      "active": "21",
+      "recovery": "57",
+      "onBlock": "-",
+      "onHit": "HKD + 18",
+      "category": "super",
       "knockdown": {
         "type": "hard",
         "advantage": 18
       },
+      "notes": "Available at 25% HP or below; cinematic time regenerates ~2.3 Drive bars for Akuma; command grab that can be comboed into on grounded opponents; entire startup happens before the Super freeze, making the grab inescapable if the opponent is within throw range; very short range makes it unable to punish most -6 attacks; Range does not include travel distance (max total distance 2.927); generally impractical as a fireball counter due to the slow travel speed and input requirement (unless opponent has a much slower fireball recovery, or a chargeable fireball that can easily be reacted to)",
       "raw": {
         "source": "supercombo",
-        "moveName": "Sip of Calamity (CA)",
-        "plnCmd": "236236K",
-        "startup": 8,
-        "active": 4,
-        "recovery": 58,
-        "onBlock": -41,
-        "onHit": null,
-        "dmg": 4500,
-        "total": 69,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 21,
-        "sourceName": "Sip of Calamity (CA)",
-        "sourceInput": "236236K",
-        "cancelText": "-"
-      },
-      "nameZh": "祸坏(CA)"
-    },
-    {
-      "name": "Double Zanku Hadoken",
-      "input": "j.214PP",
-      "damage": "600x2",
-      "startup": "8(21)",
-      "active": "-",
-      "recovery": "9(2) land",
-      "onBlock": "varies",
-      "onHit": "varies",
-      "category": "special",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Double Zanku Hadoken",
-        "plnCmd": "j.214PP",
-        "startup": 8,
-        "active": null,
-        "recovery": 2,
+        "moveName": "Shun Goku Satsu (CA)",
+        "plnCmd": "LP~LP~6LK~HP",
+        "startup": 6,
+        "active": 21,
+        "recovery": 57,
         "onBlock": null,
         "onHit": null,
-        "dmg": null,
-        "moveType": "special",
-        "section": "",
-        "sourceName": "Double Zanku Hadoken",
-        "sourceInput": "j.214PP",
+        "dmg": 4700,
+        "total": 83,
+        "moveType": "super",
+        "section": "Supers",
+        "sourceName": "Shun Goku Satsu (CA)",
+        "sourceInput": "LP~LP~6LK~HP",
         "cancelText": "-"
       },
-      "nameZh": "双重斩空波动拳"
+      "nameZh": "瞬狱杀 (CA)"
     },
     {
       "name": "Misogi",
@@ -2985,11 +2781,12 @@
       "recovery": "88(85)",
       "onBlock": "-58(-57)",
       "onHit": "KD +25(26)",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "soft",
         "advantage": 25
       },
+      "notes": "Shin Akuma only (Back Taunt~Down Taunt); teleports above opponent from anywhere on screen; 3f less recovery on whiff or Perfect Parry; startup is functionally 9f on grounded opponents (10f vs. standard-height crouchers); much less KD advantage and 2f more recovery vs. airborne opponents; cannot be canceled into from OD specials like other Level 2 Supers; cannot be beaten with anti-air invincibility since Akuma is fully invuln and technically never goes airborne",
       "raw": {
         "source": "supercombo",
         "moveName": "Misogi",
@@ -3001,15 +2798,50 @@
         "onHit": null,
         "dmg": 2900,
         "total": 96,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 37,
         "sourceName": "Misogi",
         "sourceInput": "214214K",
         "cancelText": "-"
       },
       "nameZh": "禊"
+    },
+    {
+      "name": "Kongou-Kokuretsuzan",
+      "input": "22PPP",
+      "damage": "330x8,360 (3000)",
+      "startup": "8",
+      "active": "30",
+      "recovery": "41",
+      "onBlock": "-39",
+      "onHit": "KD +38",
+      "category": "super",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 38
+      },
+      "notes": "Shin Akuma only (Back Taunt~Down Taunt); 9-hit Super projectile with a massive vertical hitbox; cannot be canceled into from OD specials like other Level 2 Supers; puts opponent into limited juggle state (but very difficult to launch high enough for a follow-up)",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Kongou-Kokuretsuzan",
+        "plnCmd": "22PPP",
+        "startup": 8,
+        "active": 30,
+        "recovery": 41,
+        "onBlock": -39,
+        "onHit": null,
+        "dmg": null,
+        "total": 78,
+        "moveType": "super",
+        "section": "Supers",
+        "blockstun": 32,
+        "sourceName": "Kongou-Kokuretsuzan",
+        "sourceInput": "22PPP",
+        "cancelText": "-"
+      },
+      "nameZh": "金刚国裂斩"
     }
   ],
-  "lastUpdated": "2026-03-03"
+  "lastUpdated": "2026-03-19"
 }

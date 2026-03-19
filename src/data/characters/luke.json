@@ -28,6 +28,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Long range for a cancelable light normal, good whiff punish tool; 3f extra recovery on whiff; greatly extends hurtbox for 3f before active, making it susceptible to counterpokes; special/DR cancel is delayed until after active frames",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand LP",
@@ -40,10 +41,10 @@
         "dmg": 300,
         "total": 22,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 10,
         "hitstun": 15,
-        "sourceName": "Standing Light Punch",
+        "sourceName": "Stand LP",
         "sourceInput": "5LP",
         "cancelText": "Sp SA TC"
       },
@@ -64,6 +65,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Good whiff punish tool when buffered into Target Combo or Super",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand MP",
@@ -76,10 +78,10 @@
         "dmg": 600,
         "total": 28,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "hitstun": 22,
-        "sourceName": "Standing Medium Punch",
+        "sourceName": "Stand MP",
         "sourceInput": "5MP",
         "cancelText": "SA TC"
       },
@@ -100,6 +102,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Good whiff punish tool due to its long range and cancelability; extends a vertical collision box to reduce the risk of whiffing under opponent mid-juggle",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand HP",
@@ -112,10 +115,10 @@
         "dmg": 800,
         "total": 35,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 20,
         "hitstun": 27,
-        "sourceName": "Standing Heavy Punch",
+        "sourceName": "Stand HP",
         "sourceInput": "5HP",
         "cancelText": "Sp SA"
       },
@@ -136,6 +139,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "DR cancel is delayed until after 1st recovery frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand LK",
@@ -148,10 +152,10 @@
         "dmg": 300,
         "total": 18,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 12,
         "hitstun": 17,
-        "sourceName": "Standing Light Kick",
+        "sourceName": "Stand LK",
         "sourceInput": "5LK",
         "cancelText": "Sp SA"
       },
@@ -167,6 +171,7 @@
       "onBlock": "-3",
       "onHit": "+1",
       "category": "normal",
+      "notes": "Good neutral poke; 3f extra recovery on whiff; lifts up leg hurtbox on frames 4-11, making it strong vs. low attacks",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand MK",
@@ -179,10 +184,10 @@
         "dmg": 700,
         "total": 29,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 20,
-        "sourceName": "Standing Medium Kick",
+        "sourceName": "Stand MK",
         "sourceInput": "5MK",
         "cancelText": "-"
       },
@@ -198,6 +203,7 @@
       "onBlock": "-5(+1)",
       "onHit": "+2(+8)",
       "category": "normal",
+      "notes": "8-15f Low Crush (feet are strike invincible); puts airborne opponents into limited juggle state; Punish Counter launches opponent high into a limited juggle state; can be spaced for significantly better advantage; extends a hurtbox 1f before active that is vulnerable to projectiles; first 2 active frames have shorter range (makes it easier to space properly); causes camera shake effect on block when connecting with final active frame (easier to tell when Luke has advantage)",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand HK",
@@ -210,10 +216,10 @@
         "dmg": 900,
         "total": 32,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "hitstun": 25,
-        "sourceName": "Standing Heavy Kick",
+        "sourceName": "Stand HK",
         "sourceInput": "5HK",
         "cancelText": "-"
       },
@@ -235,6 +241,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Chains into 2LP/2LK; Luke's only 4f normal, useful in 3-hit light confirms; DR cancel is delayed until after 1st recovery frame; topmost hurtbox on frames 1-5 is vulnerable only to aerial strikes (preventing its use as an anti-air)",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch LP",
@@ -247,10 +254,10 @@
         "dmg": 300,
         "total": 15,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 10,
         "hitstun": 16,
-        "sourceName": "Crouching Light Punch",
+        "sourceName": "Crouch LP",
         "sourceInput": "2LP",
         "cancelText": "Chn Sp SA"
       },
@@ -271,6 +278,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "3f extra recovery on whiff; great pressure tool with high reward on counter-hit or when canceled to Drive Rush; has an extended hurtbox on whiff until the end of recovery; topmost hurtbox on frames 1-7 is vulnerable only to aerial strikes (preventing its use as an anti-air)",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch MP",
@@ -283,10 +291,10 @@
         "dmg": 600,
         "total": 24,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "hitstun": 21,
-        "sourceName": "Crouching Medium Punch",
+        "sourceName": "Crouch MP",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
       },
@@ -307,6 +315,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Forces stand on hit; only the first active frame is cancelable; good anti-air hitbox but cannot hit cross-ups",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch HP",
@@ -319,10 +328,10 @@
         "dmg": 800,
         "total": 35,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 30,
-        "sourceName": "Crouching Heavy Punch",
+        "sourceName": "Crouch HP",
         "sourceInput": "2HP",
         "cancelText": "Sp SA"
       },
@@ -342,6 +351,7 @@
         "Chain",
         "Drive Rush"
       ],
+      "notes": "Chains into 2LP/2LK",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch LK",
@@ -354,10 +364,10 @@
         "dmg": 200,
         "total": 18,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 11,
         "hitstun": 14,
-        "sourceName": "Crouching Light Kick",
+        "sourceName": "Crouch LK",
         "sourceInput": "2LK",
         "cancelText": "Chn"
       },
@@ -379,6 +389,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Moves Luke forward, greatly increasing its range despite the stubby-looking animation; Range: 1.482 (1st active frame: 1.44); DR cancel is delayed until after active frames; has an extended hurtbox on whiff until the end of recovery",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch MK",
@@ -391,10 +402,10 @@
         "dmg": 500,
         "total": 29,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 20,
-        "sourceName": "Crouching Medium Kick",
+        "sourceName": "Crouch MK",
         "sourceInput": "2MK",
         "cancelText": "Sp SA TC"
       },
@@ -414,6 +425,7 @@
         "type": "soft",
         "advantage": 40
       },
+      "notes": "Has juggle potential; has a fixed 26f recovery on block regardless of which active frame connects (always -9 oB even when meaty)",
       "raw": {
         "source": "supercombo",
         "moveName": "Trench Breaker",
@@ -426,7 +438,7 @@
         "dmg": 900,
         "total": 38,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "sourceName": "Trench Breaker",
         "sourceInput": "2HK",
@@ -456,10 +468,10 @@
         "dmg": 300,
         "total": 16,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 13,
         "hitstun": 17,
-        "sourceName": "Jumping Light Punch",
+        "sourceName": "Jump LP",
         "sourceInput": "j.LP",
         "cancelText": "-"
       },
@@ -479,6 +491,7 @@
         "Special",
         "Drive Rush"
       ],
+      "notes": "Puts airborne opponents into limited juggle state; has some juggle potential; can significantly delay the cancel into j.214P, allowing unique combos after pf.214; lower body projectile invuln 9-22f (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump MP",
@@ -491,10 +504,10 @@
         "dmg": 700,
         "total": 15,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 12,
         "hitstun": 16,
-        "sourceName": "Jumping Medium Punch",
+        "sourceName": "Jump MP",
         "sourceInput": "j.MP",
         "cancelText": "Sp"
       },
@@ -510,6 +523,7 @@
       "onBlock": "+2(+11)",
       "onHit": "+6(+15)",
       "category": "normal",
+      "notes": "Spike knockdown on counter-hit/Punish Counter vs. airborne opponents; good close range jump-in and neutral jump throw bait tool; lower body projectile invuln 9-23f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump HP",
@@ -522,10 +536,10 @@
         "dmg": 800,
         "total": 17,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 11,
         "hitstun": 15,
-        "sourceName": "Jumping Heavy Punch",
+        "sourceName": "Jump HP",
         "sourceInput": "j.HP",
         "cancelText": "-"
       },
@@ -541,6 +555,7 @@
       "onBlock": "+1(+6)",
       "onHit": "+5(+10)",
       "category": "normal",
+      "notes": "Cross-up",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump LK",
@@ -553,10 +568,10 @@
         "dmg": 300,
         "total": 14,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 10,
         "hitstun": 14,
-        "sourceName": "Jumping Light Kick",
+        "sourceName": "Jump LK",
         "sourceInput": "j.LK",
         "cancelText": "-"
       },
@@ -572,6 +587,7 @@
       "onBlock": "+4(+9)",
       "onHit": "+8(+13)",
       "category": "normal",
+      "notes": "Cross-up; lower body projectile invuln 7-20f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump MK",
@@ -584,10 +600,10 @@
         "dmg": 500,
         "total": 15,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 13,
         "hitstun": 17,
-        "sourceName": "Jumping Medium Kick",
+        "sourceName": "Jump MK",
         "sourceInput": "j.MK",
         "cancelText": "-"
       },
@@ -603,6 +619,7 @@
       "onBlock": "+4(+11)",
       "onHit": "+8(+15)",
       "category": "normal",
+      "notes": "Better horizontal range than j.HP for long-range jumps; lower body projectile invuln 10-19f except around attack hitbox, and 10-24f for lowest part of foot hurtbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump HK",
@@ -615,14 +632,151 @@
         "dmg": 800,
         "total": 18,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 13,
         "hitstun": 17,
-        "sourceName": "Jumping Heavy Kick",
+        "sourceName": "Jump HK",
         "sourceInput": "j.HK",
         "cancelText": "-"
       },
       "nameZh": "跳跃重脚"
+    },
+    {
+      "name": "Rawhide",
+      "input": "6MP",
+      "damage": "600",
+      "startup": "21",
+      "active": "2",
+      "recovery": "21",
+      "onBlock": "-3",
+      "onHit": "+2",
+      "category": "normal",
+      "notes": "Causes spike knockdown vs. airborne opponents; has some juggle potential",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Rawhide",
+        "plnCmd": "6MP",
+        "startup": 21,
+        "active": 2,
+        "recovery": 21,
+        "onBlock": -3,
+        "onHit": 2,
+        "dmg": 600,
+        "total": 43,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 20,
+        "hitstun": 25,
+        "sourceName": "Rawhide",
+        "sourceInput": "6MP",
+        "cancelText": "-"
+      },
+      "nameZh": "生皮鞭"
+    },
+    {
+      "name": "Suppressor",
+      "input": "4HP",
+      "damage": "800",
+      "startup": "16",
+      "active": "3",
+      "recovery": "20",
+      "onBlock": "-3",
+      "onHit": "+3",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Drive Rush"
+      ],
+      "notes": "Pulls back hurtbox frames 5-12 for an auto-shimmy tool (also very strong when used out of Drive Rush)",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Suppressor",
+        "plnCmd": "4HP",
+        "startup": 16,
+        "active": 3,
+        "recovery": 20,
+        "onBlock": -3,
+        "onHit": 3,
+        "dmg": 800,
+        "total": 38,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 20,
+        "hitstun": 26,
+        "sourceName": "Suppressor",
+        "sourceInput": "4HP",
+        "cancelText": "Sp SA"
+      },
+      "nameZh": "压制者"
+    },
+    {
+      "name": "Outlaw Kick",
+      "input": "4HK",
+      "damage": "1000",
+      "startup": "12",
+      "active": "4",
+      "recovery": "24",
+      "onBlock": "-3",
+      "onHit": "+4",
+      "category": "normal",
+      "notes": "Whiffs on crouching opponents at farther ranges unless they extend a vertical hurtbox; puts airborne opponents into spinning limited juggle state; no head hurtbox during active frames, making it a useful anti-air; after DR~4HK on block, Luke is at the edge of throw range and can also threaten with 2LK~2LP to punish walk back, or 2LP to beat reversal 4f normals; extends a hurtbox 1f before active that is vulnerable to projectiles",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Outlaw Kick",
+        "plnCmd": "4HK",
+        "startup": 12,
+        "active": 4,
+        "recovery": 24,
+        "onBlock": -3,
+        "onHit": 4,
+        "dmg": 1000,
+        "total": 39,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 25,
+        "hitstun": 32,
+        "sourceName": "Outlaw Kick",
+        "sourceInput": "4HK",
+        "cancelText": "-"
+      },
+      "nameZh": "亡命踢"
+    },
+    {
+      "name": "Brutal Spike",
+      "input": "6HP",
+      "damage": "800",
+      "startup": "16",
+      "active": "3",
+      "recovery": "15(19)",
+      "onBlock": "-3",
+      "onHit": "+3",
+      "category": "normal",
+      "cancels": [
+        "Target Combo",
+        "Drive Rush"
+      ],
+      "notes": "4f extra recovery on whiff; 5f gap on block into TC follow-up",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Brutal Spike",
+        "plnCmd": "6HP",
+        "startup": 16,
+        "active": 3,
+        "recovery": 19,
+        "onBlock": -3,
+        "onHit": 3,
+        "dmg": 800,
+        "total": 37,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 15,
+        "hitstun": 21,
+        "sourceName": "Brutal Spike",
+        "sourceInput": "6HP",
+        "cancelText": "TC"
+      },
+      "nameZh": "残暴钉刺"
     },
     {
       "name": "Triple Impact",
@@ -638,6 +792,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "() refers to scaled damage when starting combo with 5LP",
       "raw": {
         "source": "supercombo",
         "moveName": "Triple Impact",
@@ -650,7 +805,7 @@
         "dmg": 400,
         "total": 31,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 15,
         "hitstun": 22,
         "sourceName": "Triple Impact",
@@ -678,6 +833,7 @@
         "type": "soft",
         "advantage": 27
       },
+      "notes": "() refers to scaled damage when starting combo with 5LP; puts opponent into limited juggle state; special/DR cancel is delayed until after 2nd active frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Triple Impact 2",
@@ -690,7 +846,7 @@
         "dmg": 800,
         "total": 39,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "sourceName": "Triple Impact 2",
         "sourceInput": "5LP~MP~HP",
@@ -712,6 +868,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Useful buffer from 5MP in neutral that can end with Super or the full Target Combo sequence; Super cancel is delayed until after 4th recovery frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Snapback Combo",
@@ -724,7 +881,7 @@
         "dmg": 300,
         "total": 36,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "hitstun": 25,
         "sourceName": "Snapback Combo",
@@ -747,6 +904,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "() refers to scaled damage",
       "raw": {
         "source": "supercombo",
         "moveName": "Snapback Combo 2",
@@ -759,7 +917,7 @@
         "dmg": 300,
         "total": 41,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "hitstun": 25,
         "sourceName": "Snapback Combo 2",
@@ -782,6 +940,7 @@
         "type": "soft",
         "advantage": 34
       },
+      "notes": "() refers to scaled damage; full sequence builds significant Drive gauge; knockdown grants a perfect meaty Dash + 5HK (+1 on Block even vs. midscreen Back Rise)",
       "raw": {
         "source": "supercombo",
         "moveName": "Snapback Combo 3",
@@ -794,13 +953,53 @@
         "dmg": 500,
         "total": 39,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "sourceName": "Snapback Combo 3",
         "sourceInput": "5MP~MP~MP~MP",
         "cancelText": "-"
       },
       "nameZh": "回弹连击3"
+    },
+    {
+      "name": "Double Impact",
+      "input": "6HP~HP",
+      "damage": "600",
+      "startup": "11",
+      "active": "2",
+      "recovery": "34",
+      "onBlock": "-19",
+      "onHit": "KD +20",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Drive Rush"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 20
+      },
+      "notes": "5f gap on block between hits",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Double Impact",
+        "plnCmd": "6HP~HP",
+        "startup": 11,
+        "active": 2,
+        "recovery": 34,
+        "onBlock": -19,
+        "onHit": null,
+        "dmg": 600,
+        "total": 46,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 17,
+        "sourceName": "Double Impact",
+        "sourceInput": "6HP~HP",
+        "cancelText": "Sp SA"
+      },
+      "nameZh": "双重冲击"
     },
     {
       "name": "Nose Breaker",
@@ -824,7 +1023,7 @@
         "dmg": 600,
         "total": 36,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 20,
         "hitstun": 30,
         "sourceName": "Nose Breaker",
@@ -842,11 +1041,12 @@
       "recovery": "23",
       "onBlock": "-",
       "onHit": "KD +19",
-      "category": "normal",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 19
       },
+      "notes": "Has access to corner throw loop, requires walking with manual timing (4f timing leniency to beat reversal 4f buttons); a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
       "raw": {
         "source": "supercombo",
         "moveName": "Sweeper",
@@ -858,13 +1058,47 @@
         "onHit": null,
         "dmg": 1200,
         "total": 30,
-        "moveType": "normal",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "sourceName": "Sweeper",
         "sourceInput": "LPLK",
         "cancelText": "-"
       },
       "nameZh": "扫荡腿"
+    },
+    {
+      "name": "Scrapper",
+      "input": "4LPLK",
+      "damage": "1200 (2040)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +14",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 14
+      },
+      "notes": "Side switches; no throw oki after back throwing opponent into corner, but can threaten with meaty strikes; a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Scrapper",
+        "plnCmd": "4LPLK",
+        "startup": 5,
+        "active": 3,
+        "recovery": 23,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 1200,
+        "total": 30,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Scrapper",
+        "sourceInput": "4LPLK",
+        "cancelText": "-"
+      },
+      "nameZh": "乱斗者"
     },
     {
       "name": "Muzzle Flash",
@@ -875,11 +1109,12 @@
       "recovery": "35",
       "onBlock": "-3 / Wall Splat HKD +72",
       "onHit": "KD +35 / Wall Splat KD +65",
-      "category": "normal",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 35
       },
+      "notes": "See Drive Impact. Airborne connect gives spinning juggle state on Punish Counter or corner Wall Splat with variable height.",
       "raw": {
         "source": "supercombo",
         "moveName": "Muzzle Flash",
@@ -891,13 +1126,48 @@
         "onHit": null,
         "dmg": 800,
         "total": 62,
-        "moveType": "normal",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "sourceName": "Muzzle Flash",
         "sourceInput": "HPHK",
         "cancelText": "-"
       },
       "nameZh": "斗气迸放"
+    },
+    {
+      "name": "Battering Ram (Block)",
+      "input": "6HPHK",
+      "damage": "500 recoverable",
+      "startup": "20",
+      "active": "3",
+      "recovery": "26(31)",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Performed by holding 6HPHK on wakeup; 5f extra recovery on hit; does not have any screen freeze; see Drive Reversal.",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Battering Ram (Block)",
+        "plnCmd": "6HPHK",
+        "startup": 20,
+        "active": 3,
+        "recovery": 31,
+        "onBlock": -6,
+        "onHit": null,
+        "dmg": null,
+        "total": 53,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "blockstun": 23,
+        "sourceName": "Battering Ram (Block)",
+        "sourceInput": "6HPHK",
+        "cancelText": "-"
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Drive Parry",
@@ -908,20 +1178,21 @@
       "recovery": "33(1)(11)",
       "onBlock": "-",
       "onHit": "-",
-      "category": "normal",
+      "category": "throw",
+      "notes": "See Drive Parry. Perfect Parrying has only 1F of recovery and disables the opponent from canceling their attack. Perfect Parrying projectiles puts you into fixed 11 frames of recovery. After a Perfect Parry, all Super Gauge gain is reduced by 20% and Drive Gauge gain/damage is reduced by 50% for the entire punish combo.",
       "raw": {
         "source": "supercombo",
         "moveName": "Drive Parry",
         "plnCmd": "MPMK",
         "startup": 1,
         "active": 12,
-        "recovery": 1,
+        "recovery": 11,
         "onBlock": null,
         "onHit": null,
         "dmg": null,
-        "total": 13,
+        "total": 23,
         "moveType": "drive",
-        "section": "",
+        "section": "Drive and Throw",
         "sourceName": "Drive Parry",
         "sourceInput": "MPMK",
         "cancelText": "-"
@@ -937,7 +1208,8 @@
       "recovery": "15(37)",
       "onBlock": "-",
       "onHit": "-",
-      "category": "normal",
+      "category": "throw",
+      "notes": "See Drive Rush; 1-bar version performed out of a Parry; startup refers to minimum time before an attack can cancel the Drive Rush animation (if performed immediately after a successful Parry, only 1+8 startup); the first 15 recovery frames are cancelable into any attack; the final 22 recovery frames are cancelable into any attack or movement option or blocking (except Parry); only Normal and Command Normal attacks are enhanced with +4 frame advantage and improved juggle properties; Distance: 0.817 (min/throw), 2.499 (min/block), 3.461 (max/final DR frame)",
       "raw": {
         "source": "supercombo",
         "moveName": "Parry Drive Rush",
@@ -949,7 +1221,7 @@
         "onHit": null,
         "dmg": null,
         "moveType": "drive",
-        "section": "",
+        "section": "Drive and Throw",
         "sourceName": "Parry Drive Rush",
         "sourceInput": "MPMK~66",
         "cancelText": "-"
@@ -965,7 +1237,8 @@
       "recovery": "15(37)",
       "onBlock": "-",
       "onHit": "-",
-      "category": "normal",
+      "category": "throw",
+      "notes": "See Drive Rush; 3-bar version performed on hit/block from a cancelable normal; can also be performed on whiff from cancelable light normals; startup refers to minimum time before an attack can cancel the Drive Rush animation; the first 15 recovery frames are cancelable into any attack; the final 22 recovery frames are cancelable into any attack or movement option or blocking (except Parry); only Normal and Command Normal attacks are enhanced with +4 frame advantage and improved juggle properties",
       "raw": {
         "source": "supercombo",
         "moveName": "Drive Rush Cancel",
@@ -977,369 +1250,12 @@
         "onHit": null,
         "dmg": null,
         "moveType": "drive",
-        "section": "",
+        "section": "Drive and Throw",
         "sourceName": "Drive Rush Cancel",
         "sourceInput": "MPMK or 66",
         "cancelText": "-"
       },
       "nameZh": "斗气冲锋取消"
-    },
-    {
-      "name": "Neutral Taunt",
-      "input": "5PPPKKK",
-      "damage": "-",
-      "startup": "96 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Neutral Taunt",
-        "plnCmd": "5PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Neutral Taunt",
-        "sourceInput": "5PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "原地挑衅"
-    },
-    {
-      "name": "Rawhide",
-      "input": "6MP",
-      "damage": "600",
-      "startup": "21",
-      "active": "2",
-      "recovery": "21",
-      "onBlock": "-3",
-      "onHit": "+2",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Rawhide",
-        "plnCmd": "6MP",
-        "startup": 21,
-        "active": 2,
-        "recovery": 21,
-        "onBlock": -3,
-        "onHit": 2,
-        "dmg": 600,
-        "total": 43,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 20,
-        "hitstun": 25,
-        "sourceName": "Rawhide",
-        "sourceInput": "6MP",
-        "cancelText": "-"
-      },
-      "nameZh": "生皮鞭"
-    },
-    {
-      "name": "Suppressor",
-      "input": "4HP",
-      "damage": "800",
-      "startup": "16",
-      "active": "3",
-      "recovery": "20",
-      "onBlock": "-3",
-      "onHit": "+3",
-      "category": "unique",
-      "cancels": [
-        "Special",
-        "Super",
-        "Drive Rush"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Suppressor",
-        "plnCmd": "4HP",
-        "startup": 16,
-        "active": 3,
-        "recovery": 20,
-        "onBlock": -3,
-        "onHit": 3,
-        "dmg": 800,
-        "total": 38,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 20,
-        "hitstun": 26,
-        "sourceName": "Suppressor",
-        "sourceInput": "4HP",
-        "cancelText": "Sp SA"
-      },
-      "nameZh": "压制者"
-    },
-    {
-      "name": "Outlaw Kick",
-      "input": "4HK",
-      "damage": "1000",
-      "startup": "12",
-      "active": "4",
-      "recovery": "24",
-      "onBlock": "-3",
-      "onHit": "+4",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Outlaw Kick",
-        "plnCmd": "4HK",
-        "startup": 12,
-        "active": 4,
-        "recovery": 24,
-        "onBlock": -3,
-        "onHit": 4,
-        "dmg": 1000,
-        "total": 39,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 25,
-        "hitstun": 32,
-        "sourceName": "Outlaw Kick",
-        "sourceInput": "4HK",
-        "cancelText": "-"
-      },
-      "nameZh": "亡命踢"
-    },
-    {
-      "name": "Brutal Spike",
-      "input": "6HP",
-      "damage": "800",
-      "startup": "16",
-      "active": "3",
-      "recovery": "15(19)",
-      "onBlock": "-3",
-      "onHit": "+3",
-      "category": "unique",
-      "cancels": [
-        "Target Combo",
-        "Drive Rush"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Brutal Spike",
-        "plnCmd": "6HP",
-        "startup": 16,
-        "active": 3,
-        "recovery": 19,
-        "onBlock": -3,
-        "onHit": 3,
-        "dmg": 800,
-        "total": 37,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 15,
-        "hitstun": 21,
-        "sourceName": "Brutal Spike",
-        "sourceInput": "6HP",
-        "cancelText": "TC"
-      },
-      "nameZh": "残暴钉刺"
-    },
-    {
-      "name": "Double Impact",
-      "input": "6HP~HP",
-      "damage": "600",
-      "startup": "11",
-      "active": "2",
-      "recovery": "34",
-      "onBlock": "-19",
-      "onHit": "KD +20",
-      "category": "unique",
-      "cancels": [
-        "Special",
-        "Super",
-        "Drive Rush"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 20
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Double Impact",
-        "plnCmd": "6HP~HP",
-        "startup": 11,
-        "active": 2,
-        "recovery": 34,
-        "onBlock": -19,
-        "onHit": null,
-        "dmg": 600,
-        "total": 46,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 17,
-        "sourceName": "Double Impact",
-        "sourceInput": "6HP~HP",
-        "cancelText": "Sp SA"
-      },
-      "nameZh": "双重冲击"
-    },
-    {
-      "name": "Scrapper",
-      "input": "4LPLK",
-      "damage": "1200 (2040)",
-      "startup": "5",
-      "active": "3",
-      "recovery": "23",
-      "onBlock": "-",
-      "onHit": "KD +14",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 14
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Scrapper",
-        "plnCmd": "4LPLK",
-        "startup": 5,
-        "active": 3,
-        "recovery": 23,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 1200,
-        "total": 30,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Scrapper",
-        "sourceInput": "4LPLK",
-        "cancelText": "-"
-      },
-      "nameZh": "乱斗者"
-    },
-    {
-      "name": "Battering Ram (Block)",
-      "input": "6HPHK",
-      "damage": "500 recoverable",
-      "startup": "20",
-      "active": "3",
-      "recovery": "26(31)",
-      "onBlock": "-6",
-      "onHit": "KD +23",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 23
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Battering Ram (Block)",
-        "plnCmd": "6HPHK",
-        "startup": 20,
-        "active": 3,
-        "recovery": 31,
-        "onBlock": -6,
-        "onHit": null,
-        "dmg": null,
-        "total": 53,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 23,
-        "sourceName": "Battering Ram (Block)",
-        "sourceInput": "6HPHK",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气反攻"
-    },
-    {
-      "name": "Battering Ram (Recovery)",
-      "input": "6HPHK",
-      "damage": "500 recoverable",
-      "startup": "18",
-      "active": "3",
-      "recovery": "26(31)",
-      "onBlock": "-6",
-      "onHit": "KD +23",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 23
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Battering Ram (Recovery)",
-        "plnCmd": "6HPHK",
-        "startup": 18,
-        "active": 3,
-        "recovery": 31,
-        "onBlock": -6,
-        "onHit": null,
-        "dmg": null,
-        "total": 51,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 23,
-        "sourceName": "Battering Ram (Recovery)",
-        "sourceInput": "6HPHK",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气反攻"
-    },
-    {
-      "name": "Forward Taunt",
-      "input": "6PPPKKK",
-      "damage": "-",
-      "startup": "180 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Forward Taunt",
-        "plnCmd": "6PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Forward Taunt",
-        "sourceInput": "6PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "前挑衅"
-    },
-    {
-      "name": "Back Taunt",
-      "input": "4PPPKKK",
-      "damage": "-",
-      "startup": "109 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Back Taunt",
-        "plnCmd": "4PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Back Taunt",
-        "sourceInput": "4PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "后挑衅"
     },
     {
       "name": "Sand Blast",
@@ -1354,6 +1270,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "1-hit projectile, travels ~48% screen length; [] refers to projectile active time",
       "raw": {
         "source": "supercombo",
         "moveName": "Sand Blast",
@@ -1365,7 +1282,7 @@
         "onHit": -3,
         "dmg": 600,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Sand Blast",
         "sourceInput": "236LP",
         "cancelText": "SA3"
@@ -1385,6 +1302,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "1-hit projectile, travels ~66% screen length; [] refers to projectile active time",
       "raw": {
         "source": "supercombo",
         "moveName": "Sand Blast",
@@ -1396,7 +1314,7 @@
         "onHit": 0,
         "dmg": 600,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Sand Blast",
         "sourceInput": "236MP",
         "cancelText": "SA3"
@@ -1416,6 +1334,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "1-hit projectile, travels ~91% screen length; [] refers to projectile active time",
       "raw": {
         "source": "supercombo",
         "moveName": "Sand Blast",
@@ -1427,7 +1346,7 @@
         "onHit": 3,
         "dmg": 600,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Sand Blast",
         "sourceInput": "236HP",
         "cancelText": "SA3"
@@ -1452,6 +1371,7 @@
         "type": "soft",
         "advantage": 41
       },
+      "notes": "2-hit OD projectile, full screen length; puts opponent into limited juggle state; can follow up with PP for 1 extra Drive bar; extends a projectile invuln hurtbox on frames 19-36 (more vulnerable to ranged jumps and anti-projectile moves)",
       "raw": {
         "source": "supercombo",
         "moveName": "Sand Blast",
@@ -1463,7 +1383,7 @@
         "onHit": null,
         "dmg": null,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Sand Blast",
         "sourceInput": "236PP",
         "cancelText": "SA2 SA3"
@@ -1484,6 +1404,7 @@
         "type": "soft",
         "advantage": 46
       },
+      "notes": "1-hit OD projectile; costs 1 extra Drive bar; () refers to scaled damage after 236PP connects; causes a wallsplat on hit (can combo near the corner, or whiff 236K~P to safely gain ground); extends a projectile invuln hurtbox on frames 10-32 (more vulnerable to ranged jumps and anti-projectile moves)",
       "raw": {
         "source": "supercombo",
         "moveName": "Fatal Shot",
@@ -1495,7 +1416,7 @@
         "onHit": null,
         "dmg": 1000,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Fatal Shot",
         "sourceInput": "236PP~PP",
         "cancelText": "-"
@@ -1519,20 +1440,21 @@
         "type": "soft",
         "advantage": 28
       },
+      "notes": "Reduced damage and higher juggle start/increase/limit on active frames 3-10; cannot hit cross-up; does not juggle into SA3 despite being cancelable; much higher juggle limit than other versions of Rising Uppercut (useful in corner juggles)",
       "raw": {
         "source": "supercombo",
         "moveName": "Rising Uppercut",
         "plnCmd": "623LP",
         "startup": 5,
         "active": 10,
-        "recovery": 22,
+        "recovery": 34,
         "onBlock": -27,
         "onHit": null,
         "dmg": 900,
-        "total": 36,
+        "total": 48,
         "moveType": "special",
-        "section": "",
-        "blockstun": 5,
+        "section": "Specials",
+        "blockstun": 17,
         "sourceName": "Rising Uppercut",
         "sourceInput": "623LP",
         "cancelText": "SA3"
@@ -1556,20 +1478,21 @@
         "type": "soft",
         "advantage": 28
       },
+      "notes": "Reduced damage and higher juggle start/increase/limit on active frames 3-10; cannot hit cross-up; does not juggle into SA3 despite being cancelable",
       "raw": {
         "source": "supercombo",
         "moveName": "Rising Uppercut",
         "plnCmd": "623MP",
         "startup": 6,
         "active": 10,
-        "recovery": 24,
+        "recovery": 36,
         "onBlock": -29,
         "onHit": null,
         "dmg": 1000,
-        "total": 39,
+        "total": 51,
         "moveType": "special",
-        "section": "",
-        "blockstun": 5,
+        "section": "Specials",
+        "blockstun": 17,
         "sourceName": "Rising Uppercut",
         "sourceInput": "623MP",
         "cancelText": "SA3"
@@ -1593,20 +1516,21 @@
         "type": "soft",
         "advantage": 29
       },
+      "notes": "Reduced damage and higher juggle start/increase/limit on active frames 2-10; cannot hit cross-up; does not juggle into SA3 despite being cancelable",
       "raw": {
         "source": "supercombo",
         "moveName": "Rising Uppercut",
         "plnCmd": "623HP",
         "startup": 9,
         "active": 10,
-        "recovery": 25,
+        "recovery": 40,
         "onBlock": -33,
         "onHit": null,
         "dmg": 1200,
-        "total": 43,
+        "total": 58,
         "moveType": "special",
-        "section": "",
-        "blockstun": 2,
+        "section": "Specials",
+        "blockstun": 17,
         "sourceName": "Rising Uppercut",
         "sourceInput": "623HP",
         "cancelText": "SA3"
@@ -1627,20 +1551,21 @@
         "type": "soft",
         "advantage": 25
       },
+      "notes": "Reduced damage 3rd active frame of 1st hit (will only do 1 hit for 600 damage on later active frames); cannot hit cross-up; can cancel into PP follow-up on hit for 1 Drive bar; 2nd hit whiffs vs. crouch block (reduced chip damage, worse advantage)",
       "raw": {
         "source": "supercombo",
         "moveName": "Rising Uppercut",
         "plnCmd": "623PP",
         "startup": 6,
-        "active": 3,
-        "recovery": 35,
+        "active": 10,
+        "recovery": 50,
         "onBlock": -40,
         "onHit": null,
         "dmg": 800,
-        "total": 43,
+        "total": 65,
         "moveType": "special",
-        "section": "",
-        "blockstun": -2,
+        "section": "Specials",
+        "blockstun": 20,
         "sourceName": "Rising Uppercut",
         "sourceInput": "623PP",
         "cancelText": "-"
@@ -1661,19 +1586,20 @@
         "type": "soft",
         "advantage": 14
       },
+      "notes": "Follow-up on hit only for 1 additional Drive bar; can whiff against high juggled opponent; counts as a separate hit for damage scaling",
       "raw": {
         "source": "supercombo",
         "moveName": "Slam Dunk",
         "plnCmd": "623PP~PP",
         "startup": 16,
         "active": 3,
-        "recovery": 14,
+        "recovery": 30,
         "onBlock": null,
         "onHit": null,
         "dmg": 600,
-        "total": 32,
+        "total": 48,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Slam Dunk",
         "sourceInput": "623PP~PP",
         "cancelText": "-"
@@ -1686,34 +1612,37 @@
       "damage": "700",
       "startup": "13",
       "active": "3",
-      "recovery": "31",
-      "onBlock": "-18",
-      "onHit": "KD +32",
+      "recovery": "27",
+      "onBlock": "-12",
+      "onHit": "KD +36",
       "category": "special",
       "cancels": [
+        "Special",
+        "SA2",
         "SA3"
       ],
       "knockdown": {
         "type": "soft",
-        "advantage": 32
+        "advantage": 36
       },
+      "notes": "Puts opponent into limited juggle state (will only combo to Super unless opponent is juggled very high); late cancel into SA3 will drop; no head hurtbox on frames 6-17 for improved anti-air",
       "raw": {
         "source": "supercombo",
         "moveName": "LP Flash Knuckle",
         "plnCmd": "214LP",
         "startup": 13,
         "active": 3,
-        "recovery": 31,
-        "onBlock": -18,
+        "recovery": 27,
+        "onBlock": -12,
         "onHit": null,
         "dmg": 700,
-        "total": 46,
+        "total": 42,
         "moveType": "special",
-        "section": "",
-        "blockstun": 16,
+        "section": "Specials",
+        "blockstun": 18,
         "sourceName": "LP Flash Knuckle",
         "sourceInput": "214LP",
-        "cancelText": "SA3"
+        "cancelText": "Sp SA2 SA3"
       },
       "nameZh": "轻闪光指节"
     },
@@ -1734,20 +1663,21 @@
         "type": "soft",
         "advantage": 54
       },
+      "notes": "Puts opponent into limited juggle state; active frames 3-4 can nullify normal 1-hit projectiles; canceling to SA3 will cause juggle to whiff; 1f more recovery on hit/block; no head hurtbox on frames 6-29 for improved anti-air",
       "raw": {
         "source": "supercombo",
         "moveName": "LP Flash Knuckle (hold)",
         "plnCmd": "214",
         "startup": 26,
-        "active": 2,
+        "active": 4,
         "recovery": 26,
         "onBlock": -8,
         "onHit": null,
         "dmg": 600,
-        "total": 53,
+        "total": 55,
         "moveType": "special",
-        "section": "",
-        "blockstun": 19,
+        "section": "Specials",
+        "blockstun": 21,
         "sourceName": "LP Flash Knuckle (hold)",
         "sourceInput": "214",
         "cancelText": "SA3"
@@ -1771,20 +1701,21 @@
         "type": "soft",
         "advantage": 56
       },
+      "notes": "Hold LP 18-20f for perfect version; launches opponent high into a limited juggle state; active frames 3-4 can nullify normal 1-hit projectiles; canceling to SA3 will cause juggle to whiff; 1f more recovery on hit/block; no head hurtbox on frames 6-29 for improved anti-air",
       "raw": {
         "source": "supercombo",
         "moveName": "LP Flash Knuckle (perfect)",
         "plnCmd": "pf.214",
         "startup": 26,
-        "active": 2,
+        "active": 4,
         "recovery": 23,
         "onBlock": -8,
         "onHit": null,
         "dmg": 700,
-        "total": 50,
+        "total": 52,
         "moveType": "special",
-        "section": "",
-        "blockstun": 16,
+        "section": "Specials",
+        "blockstun": 18,
         "sourceName": "LP Flash Knuckle (perfect)",
         "sourceInput": "pf.214",
         "cancelText": "SA3"
@@ -1804,6 +1735,7 @@
       "cancels": [
         "SA3"
       ],
+      "notes": "Leaves opponent standing on hit, very slightly out of throw range; knocks airborne opponents far away into a limited juggle state",
       "raw": {
         "source": "supercombo",
         "moveName": "MP Flash Knuckle",
@@ -1816,7 +1748,7 @@
         "dmg": 900,
         "total": 48,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 22,
         "hitstun": 33,
         "sourceName": "MP Flash Knuckle",
@@ -1824,80 +1756,6 @@
         "cancelText": "SA3"
       },
       "nameZh": "中闪光指节"
-    },
-    {
-      "name": "MP Flash Knuckle (hold)",
-      "input": "214",
-      "damage": "800,200",
-      "startup": "29",
-      "active": "2,2",
-      "recovery": "26",
-      "onBlock": "-3",
-      "onHit": "KD +54(+67)",
-      "category": "special",
-      "cancels": [
-        "SA3"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 54
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "MP Flash Knuckle (hold)",
-        "plnCmd": "214",
-        "startup": 29,
-        "active": 2,
-        "recovery": 26,
-        "onBlock": -3,
-        "onHit": null,
-        "dmg": 800,
-        "total": 56,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 25,
-        "sourceName": "MP Flash Knuckle (hold)",
-        "sourceInput": "214",
-        "cancelText": "SA3"
-      },
-      "nameZh": "中闪光指节 (蓄力)"
-    },
-    {
-      "name": "MP Flash Knuckle (perfect)",
-      "input": "pf.214",
-      "damage": "850,250",
-      "startup": "29",
-      "active": "2,2",
-      "recovery": "26(27)",
-      "onBlock": "-3",
-      "onHit": "KD +53(+66)",
-      "category": "special",
-      "cancels": [
-        "SA3"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 53
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "MP Flash Knuckle (perfect)",
-        "plnCmd": "pf.214",
-        "startup": 29,
-        "active": 2,
-        "recovery": 27,
-        "onBlock": -3,
-        "onHit": null,
-        "dmg": 850,
-        "total": 57,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 25,
-        "sourceName": "MP Flash Knuckle (perfect)",
-        "sourceInput": "pf.214",
-        "cancelText": "SA3"
-      },
-      "nameZh": "中闪光指节 (完美)"
     },
     {
       "name": "HP Flash Knuckle",
@@ -1916,6 +1774,7 @@
         "type": "soft",
         "advantage": 42
       },
+      "notes": "Puts opponent into limited juggle state (can only juggle into canceled SA3); worse KD advantage vs. airborne opponents (+31 when juggled after 5LP~MP~HP); can cancel into SA3 on reaction if opponent attempts a Drive Impact; pulls back hurtbox on frames 5-15",
       "raw": {
         "source": "supercombo",
         "moveName": "HP Flash Knuckle",
@@ -1928,87 +1787,13 @@
         "dmg": 1000,
         "total": 45,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 20,
         "sourceName": "HP Flash Knuckle",
         "sourceInput": "214HP",
         "cancelText": "SA3"
       },
       "nameZh": "重闪光指节"
-    },
-    {
-      "name": "HP Flash Knuckle (hold)",
-      "input": "214",
-      "damage": "1000,300",
-      "startup": "33",
-      "active": "2,2",
-      "recovery": "24(25)",
-      "onBlock": "+4",
-      "onHit": "KD +64",
-      "category": "special",
-      "cancels": [
-        "SA3"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 64
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "HP Flash Knuckle (hold)",
-        "plnCmd": "214",
-        "startup": 33,
-        "active": 2,
-        "recovery": 25,
-        "onBlock": 4,
-        "onHit": null,
-        "dmg": 1000,
-        "total": 59,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 30,
-        "sourceName": "HP Flash Knuckle (hold)",
-        "sourceInput": "214",
-        "cancelText": "SA3"
-      },
-      "nameZh": "重闪光指节 (蓄力)"
-    },
-    {
-      "name": "HP Flash Knuckle (perfect)",
-      "input": "pf.214",
-      "damage": "1200,400",
-      "startup": "33",
-      "active": "2,2",
-      "recovery": "24(25)",
-      "onBlock": "+4",
-      "onHit": "KD +64",
-      "category": "special",
-      "cancels": [
-        "SA3"
-      ],
-      "knockdown": {
-        "type": "soft",
-        "advantage": 64
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "HP Flash Knuckle (perfect)",
-        "plnCmd": "pf.214",
-        "startup": 33,
-        "active": 2,
-        "recovery": 25,
-        "onBlock": 4,
-        "onHit": null,
-        "dmg": 1200,
-        "total": 59,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 30,
-        "sourceName": "HP Flash Knuckle (perfect)",
-        "sourceInput": "pf.214",
-        "cancelText": "SA3"
-      },
-      "nameZh": "重闪光指节 (完美)"
     },
     {
       "name": "OD Flash Knuckle",
@@ -2028,6 +1813,7 @@
         "type": "soft",
         "advantage": 62
       },
+      "notes": "Puts opponent into limited juggle state; active frames 3-4 can nullify normal 1-hit projectiles; listed recovery is for blocked/whiffed version (on hit, automatically transitions to 2nd hit); 1st hit is cancelable into PP follow-up for 1 extra Drive bar on hit only; can juggle directly into any Super (canceling into Super will cause SA3 to whiff; SA2 will whiff on final cancelable frame)",
       "raw": {
         "source": "supercombo",
         "moveName": "OD Flash Knuckle",
@@ -2040,7 +1826,7 @@
         "dmg": null,
         "total": 56,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 20,
         "sourceName": "OD Flash Knuckle",
         "sourceInput": "214PP",
@@ -2062,6 +1848,7 @@
         "type": "hard",
         "advantage": 12
       },
+      "notes": "Costs 1 extra Drive bar on 214PP 1st hit only (cannot activate on block or when armor absorbed); leaves Luke close enough to walk in for a strike/throw mixup; counts as a separate hit from 214PP for damage scaling; in juggles, only connects on opponents low to the ground and will not come out if opponent is juggled higher",
       "raw": {
         "source": "supercombo",
         "moveName": "DDT",
@@ -2073,7 +1860,7 @@
         "onHit": null,
         "dmg": 2500,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "DDT",
         "sourceInput": "214PP~PP",
         "cancelText": "-"
@@ -2094,6 +1881,7 @@
         "type": "soft",
         "advantage": 25
       },
+      "notes": "Can be input during forward/neutral jump (or back jump when canceled from j.MP); 7f extra landing recovery on whiff if input during the first 32 jump frames; Luke is in a crouching state from 4th landing recovery frame onward; improved frame advantage when done lower to the ground, and spaced out at farther ranges; can only be up to -1 on block if not precisely spaced; can partially charge the attack and release early for better juggle advantage after 214",
       "raw": {
         "source": "supercombo",
         "moveName": "Aerial Flash Knuckle",
@@ -2106,7 +1894,7 @@
         "dmg": 700,
         "total": 38,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 6,
         "sourceName": "Aerial Flash Knuckle",
         "sourceInput": "j.214P",
@@ -2128,6 +1916,7 @@
         "type": "soft",
         "advantage": 25
       },
+      "notes": "Can be input during forward/neutral jump (or back jump when canceled from j.MP); the final 12 recovery frames are in a crouching state; puts the opponent into a limited juggle state (can follow-up with 623LP if opponent is juggled at max height)",
       "raw": {
         "source": "supercombo",
         "moveName": "Aerial Flash Knuckle (hold)",
@@ -2140,7 +1929,7 @@
         "dmg": 1000,
         "total": 43,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": -9,
         "sourceName": "Aerial Flash Knuckle (hold)",
         "sourceInput": "j.214",
@@ -2162,6 +1951,7 @@
         "type": "soft",
         "advantage": 25
       },
+      "notes": "Can be input during forward/neutral jump (or back jump when canceled from j.MP); the final 12 recovery frames are in a crouching state; puts the opponent into a limited juggle state; kara-canceling the startup with j.214P~PP can affect Luke's trajectory and frame advantage",
       "raw": {
         "source": "supercombo",
         "moveName": "Aerial Flash Knuckle",
@@ -2174,7 +1964,7 @@
         "dmg": 1300,
         "total": 34,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": -12,
         "sourceName": "Aerial Flash Knuckle",
         "sourceInput": "j.214PP",
@@ -2192,6 +1982,7 @@
       "onBlock": "-",
       "onHit": "-",
       "category": "special",
+      "notes": "Follow-up P or K can be input on frames 12-32; Luke is in a counter-hit state for entire duration",
       "raw": {
         "source": "supercombo",
         "moveName": "Avenger",
@@ -2203,37 +1994,9 @@
         "onHit": null,
         "dmg": null,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Avenger",
         "sourceInput": "236K",
-        "cancelText": "-"
-      },
-      "nameZh": "复仇者"
-    },
-    {
-      "name": "Avenger",
-      "input": "236KK",
-      "damage": "-",
-      "startup": "11",
-      "active": "-",
-      "recovery": "10",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "special",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Avenger",
-        "plnCmd": "236KK",
-        "startup": 11,
-        "active": null,
-        "recovery": 10,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "special",
-        "section": "",
-        "sourceName": "Avenger",
-        "sourceInput": "236KK",
         "cancelText": "-"
       },
       "nameZh": "复仇者"
@@ -2255,6 +2018,7 @@
         "type": "soft",
         "advantage": 32
       },
+      "notes": "Puts opponent into limited juggle state; very late connect to juggle into 623LP/MP, SA1, or SA2 (otherwise, can only cancel into SA3)",
       "raw": {
         "source": "supercombo",
         "moveName": "No Chaser",
@@ -2267,13 +2031,77 @@
         "dmg": 900,
         "total": 37,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 20,
         "sourceName": "No Chaser",
         "sourceInput": "236K~P",
         "cancelText": "SA3"
       },
       "nameZh": "直饮"
+    },
+    {
+      "name": "Impaler",
+      "input": "236K~K",
+      "damage": "1200",
+      "startup": "12+13",
+      "active": "8",
+      "recovery": "22(27)",
+      "onBlock": "-8(-3)",
+      "onHit": "KD +30(+35)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 30
+      },
+      "notes": "First 2 active frames can only hit airborne opponents; 3rd active frame hits grounded and gives the best KD Advantage (cannot hit meaty to allow a follow-up juggle); Luke is in a crouching state for entire recovery duration; puts opponents into limited juggle state; 5f extra recovery on whiff",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Impaler",
+        "plnCmd": "236K~K",
+        "startup": 12,
+        "active": 8,
+        "recovery": 27,
+        "onBlock": -8,
+        "onHit": null,
+        "dmg": 1200,
+        "total": 46,
+        "moveType": "special",
+        "section": "Specials",
+        "blockstun": 22,
+        "sourceName": "Impaler",
+        "sourceInput": "236K~K",
+        "cancelText": "-"
+      },
+      "nameZh": "穿刺者"
+    },
+    {
+      "name": "Avenger",
+      "input": "236KK",
+      "damage": "-",
+      "startup": "11",
+      "active": "-",
+      "recovery": "10",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Armor does not apply to follow-up attacks; follow-up P or K can be input up to frame 32; follow-up can start immediately after armor hit freeze without waiting for any additional Avenger startup frames to occur; Luke is in a Punish Counter state for entire duration",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Avenger",
+        "plnCmd": "236KK",
+        "startup": 11,
+        "active": null,
+        "recovery": 10,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": null,
+        "moveType": "special",
+        "section": "Specials",
+        "sourceName": "Avenger",
+        "sourceInput": "236KK",
+        "cancelText": "-"
+      },
+      "nameZh": "复仇者"
     },
     {
       "name": "No Chaser",
@@ -2293,6 +2121,7 @@
         "type": "soft",
         "advantage": 32
       },
+      "notes": "Puts opponent into limited juggle state; very late connect to juggle into 623LP/MP, SA1, or SA2 (otherwise, can only cancel into SA2 or SA3); midscreen, later active frames canceled into SA2 will whiff",
       "raw": {
         "source": "supercombo",
         "moveName": "No Chaser",
@@ -2305,47 +2134,13 @@
         "dmg": 1300,
         "total": 36,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 20,
         "sourceName": "No Chaser",
         "sourceInput": "236KK~P",
         "cancelText": "SA2 SA3"
       },
       "nameZh": "直饮"
-    },
-    {
-      "name": "Impaler",
-      "input": "236K~K",
-      "damage": "1200",
-      "startup": "12+13",
-      "active": "8",
-      "recovery": "22(27)",
-      "onBlock": "-8(-3)",
-      "onHit": "KD +30(+35)",
-      "category": "special",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 30
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Impaler",
-        "plnCmd": "236K~K",
-        "startup": 12,
-        "active": 8,
-        "recovery": 27,
-        "onBlock": -8,
-        "onHit": null,
-        "dmg": 1200,
-        "total": 46,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 22,
-        "sourceName": "Impaler",
-        "sourceInput": "236K~K",
-        "cancelText": "-"
-      },
-      "nameZh": "穿刺者"
     },
     {
       "name": "Impaler",
@@ -2361,6 +2156,7 @@
         "type": "soft",
         "advantage": 38
       },
+      "notes": "First 2 active frames can only hit airborne opponents; Luke is in a crouching state for entire recovery duration; puts opponent into limited juggle state",
       "raw": {
         "source": "supercombo",
         "moveName": "Impaler",
@@ -2373,7 +2169,7 @@
         "dmg": 1200,
         "total": 37,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "blockstun": 24,
         "sourceName": "Impaler",
         "sourceInput": "236KK~K",
@@ -2390,25 +2186,26 @@
       "recovery": "45",
       "onBlock": "-29",
       "onHit": "KD +17(+30)",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "soft",
         "advantage": 17
       },
+      "notes": "5 hit Super projectile, first 4 hits travel 65% screen, final hit goes fullscreen; higher KD Adv. when farther from wall; extends a projectile-vulnerable hurtbox during startup frames 2-5 (more difficult to use as an anti-fireball tool)",
       "raw": {
         "source": "supercombo",
         "moveName": "Vulcan Blast",
         "plnCmd": "236236P",
         "startup": 6,
-        "active": 13,
+        "active": 58,
         "recovery": 45,
         "onBlock": -29,
         "onHit": null,
         "dmg": null,
-        "total": 63,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 29,
+        "total": 108,
+        "moveType": "super",
+        "section": "Supers",
+        "blockstun": 74,
         "sourceName": "Vulcan Blast",
         "sourceInput": "236236P",
         "cancelText": "-"
@@ -2424,11 +2221,12 @@
       "recovery": "51",
       "onBlock": "-29",
       "onHit": "KD +2",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "soft",
         "advantage": 2
       },
+      "notes": "Extremely fast super that works well in juggles; in the corner, gives Luke an auto-timed strike/throw mixup; on hit, the animation is not invincible until the very end (can be hit by delayed projectiles like Kimberly Spraycan or JP Amnesia orbs); Full Dmg distribution: 300x3,200x6,700",
       "raw": {
         "source": "supercombo",
         "moveName": "Eraser",
@@ -2440,8 +2238,8 @@
         "onHit": null,
         "dmg": 2800,
         "total": 58,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 25,
         "sourceName": "Eraser",
         "sourceInput": "214214P",
@@ -2458,11 +2256,12 @@
       "recovery": "66(92)",
       "onBlock": "-42",
       "onHit": "HKD +18",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "hard",
         "advantage": 18
       },
+      "notes": "Luke runs forward; active frames occur upon reaching the opponent or on frame 27 (whichever occurs first) but invincibility is not extended when far from opponent; has juggle potential; on block, bounces away with a fixed recovery period (whiff recovery is 26f slower); cinematic time regenerates ~2.3 Drive bars for Luke; available at 25% HP or below; does not take opponent to Memphis",
       "raw": {
         "source": "supercombo",
         "moveName": "Pale Rider",
@@ -2474,49 +2273,15 @@
         "onHit": null,
         "dmg": 4000,
         "total": 105,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 28,
         "sourceName": "Pale Rider",
         "sourceInput": "236236K",
         "cancelText": "-"
       },
       "nameZh": "苍白骑士"
-    },
-    {
-      "name": "Pale Rider (CA)",
-      "input": "236236K",
-      "damage": "4500",
-      "startup": "10(27)",
-      "active": "4",
-      "recovery": "66(92)",
-      "onBlock": "-42",
-      "onHit": "HKD +18",
-      "category": "special",
-      "knockdown": {
-        "type": "hard",
-        "advantage": 18
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Pale Rider (CA)",
-        "plnCmd": "236236K",
-        "startup": 10,
-        "active": 4,
-        "recovery": 92,
-        "onBlock": -42,
-        "onHit": null,
-        "dmg": 4500,
-        "total": 105,
-        "moveType": "special",
-        "section": "",
-        "blockstun": 28,
-        "sourceName": "Pale Rider (CA)",
-        "sourceInput": "236236K",
-        "cancelText": "-"
-      },
-      "nameZh": "苍白骑士 (CA)"
     }
   ],
-  "lastUpdated": "2026-02-06"
+  "lastUpdated": "2026-03-19"
 }

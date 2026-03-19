@@ -28,6 +28,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Chains into 5LP/2LP/2LK with no gap on blockstring; 4f startup when chained into; sets up a true mixup on block between strike and command throw",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand LP",
@@ -40,10 +41,10 @@
         "dmg": 400,
         "total": 18,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 14,
         "hitstun": 16,
-        "sourceName": "Standing Light Punch",
+        "sourceName": "Stand LP",
         "sourceInput": "5LP",
         "cancelText": "Chn Sp SA"
       },
@@ -63,6 +64,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Great poke due to its range and hitbox; TC follow-up is extremely lenient, but only works after counter-hit, Punish Counter, or Drive Rush; can perform TC follow-up on whiff; 6f blockstring gap when canceling to 5MP~MP",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand MP",
@@ -75,10 +77,10 @@
         "dmg": 700,
         "total": 29,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 19,
         "hitstun": 23,
-        "sourceName": "Standing Medium Punch",
+        "sourceName": "Stand MP",
         "sourceInput": "5MP",
         "cancelText": "TC"
       },
@@ -94,6 +96,7 @@
       "onBlock": "-3",
       "onHit": "+3",
       "category": "normal",
+      "notes": "Button can be held up to 22f for armored partial charge (armor loses to hitboxes that connect on Zangief's lower body); 10f startup after button release (total startup 16-32f); 2 extra recovery frames on whiff; counter-hit also gives KD +32; puts airborne opponents into limited juggle state",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand HP",
@@ -106,10 +109,10 @@
         "dmg": 1000,
         "total": 32,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 22,
         "hitstun": 28,
-        "sourceName": "Standing Heavy Punch",
+        "sourceName": "Stand HP",
         "sourceInput": "5HP",
         "cancelText": "-"
       },
@@ -129,6 +132,7 @@
         "type": "soft",
         "advantage": 40
       },
+      "notes": "Armor loses to hitboxes that connect on Zangief's lower body; button must be held 23f for full charge; 2 extra recovery frames on whiff; Counter-hit gives HKD +40; Punish Counter causes opponent to slide far along the ground",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand HP (hold)",
@@ -141,9 +145,9 @@
         "dmg": 1400,
         "total": 58,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 28,
-        "sourceName": "Standing Heavy Punch (hold)",
+        "sourceName": "Stand HP (hold)",
         "sourceInput": "5",
         "cancelText": "-"
       },
@@ -164,6 +168,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Very long range for a light normal (slightly longer than 5MP)",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand LK",
@@ -176,10 +181,10 @@
         "dmg": 400,
         "total": 25,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 15,
         "hitstun": 17,
-        "sourceName": "Standing Light Kick",
+        "sourceName": "Stand LK",
         "sourceInput": "5LK",
         "cancelText": "Sp SA"
       },
@@ -195,6 +200,7 @@
       "onBlock": "-4",
       "onHit": "+1",
       "category": "normal",
+      "notes": "Strong poke due to its range and hitbox priority",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand MK",
@@ -207,10 +213,10 @@
         "dmg": 900,
         "total": 32,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 19,
         "hitstun": 24,
-        "sourceName": "Standing Medium Kick",
+        "sourceName": "Stand MK",
         "sourceInput": "5MK",
         "cancelText": "-"
       },
@@ -226,6 +232,7 @@
       "onBlock": "+1",
       "onHit": "+3",
       "category": "normal",
+      "notes": "Cannot hit crouching opponents; puts airborne opponents into limited juggle state; Punish Counter puts grounded/airborne opponents into free juggle state; extends a hurtbox 1f before active that is vulnerable to projectiles; good anti-air but slow to startup",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand HK",
@@ -238,10 +245,10 @@
         "dmg": 1000,
         "total": 37,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 26,
         "hitstun": 28,
-        "sourceName": "Standing Heavy Kick",
+        "sourceName": "Stand HK",
         "sourceInput": "5HK",
         "cancelText": "-"
       },
@@ -263,6 +270,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Chains into 5LP/2LP/2LK with no blockstring gap into 2LP/2LK; 3f startup when chained into; topmost hurtbox on frames 1-7 is vulnerable only to aerial strikes (preventing its use as an anti-air)",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch LP",
@@ -275,10 +283,10 @@
         "dmg": 300,
         "total": 15,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 11,
         "hitstun": 16,
-        "sourceName": "Crouching Light Punch",
+        "sourceName": "Crouch LP",
         "sourceInput": "2LP",
         "cancelText": "Chn Sp SA"
       },
@@ -299,6 +307,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Useful in combos due to its cancelability, especially into SA2; decent hitbox priority in neutral; topmost hurtbox is vulnerable only to aerial strikes on frames 1-7 (preventing its use as an anti-air), and is projectile invincible on frames 1-15 to avoid High Tiger Shot (frames 16-26 are still vulnerable)",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch MP",
@@ -311,10 +320,10 @@
         "dmg": 700,
         "total": 26,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "hitstun": 22,
-        "sourceName": "Crouching Medium Punch",
+        "sourceName": "Crouch MP",
         "sourceInput": "2MP",
         "cancelText": "Sp SA"
       },
@@ -334,6 +343,7 @@
         "type": "soft",
         "advantage": 20
       },
+      "notes": "Active frames 4-8 cannot hit grounded opponents, but can anti-air cross-ups; useful anti-air with slow startup; puts airborne opponents into limited juggle state; Punish Counter puts grounded/airborne opponents into free juggle state, followed by OTG bounce which can be followed up with Drive Rush buttons midscreen or an auto-timed 3MP in the corner",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch HP",
@@ -346,9 +356,9 @@
         "dmg": 1000,
         "total": 54,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 24,
-        "sourceName": "Crouching Heavy Punch",
+        "sourceName": "Crouch HP",
         "sourceInput": "2HP",
         "cancelText": "-"
       },
@@ -368,6 +378,7 @@
         "Chain",
         "Drive Rush"
       ],
+      "notes": "Chains into 5LP/2LP/2LK with no blockstring gap into 2LP/2LK; 3f startup when chained into; Zangief's only 4f normal",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch LK",
@@ -380,10 +391,10 @@
         "dmg": 250,
         "total": 18,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 12,
         "hitstun": 15,
-        "sourceName": "Crouching Light Kick",
+        "sourceName": "Crouch LK",
         "sourceInput": "2LK",
         "cancelText": "Chn"
       },
@@ -399,6 +410,7 @@
       "onBlock": "-2",
       "onHit": "+3",
       "category": "normal",
+      "notes": "Long-range low poke with incredible hitbox priority; can confirm into 3MP after a Drive Rush starter",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch MK",
@@ -411,10 +423,10 @@
         "dmg": 700,
         "total": 29,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 19,
         "hitstun": 24,
-        "sourceName": "Crouching Medium Kick",
+        "sourceName": "Crouch MK",
         "sourceInput": "2MK",
         "cancelText": "-"
       },
@@ -434,6 +446,7 @@
         "type": "soft",
         "advantage": 36
       },
+      "notes": "Long-range sweep; has some natural juggle potential without Drive Rush; Punish Counter causes a Hard Knockdown",
       "raw": {
         "source": "supercombo",
         "moveName": "Big Stampede",
@@ -446,7 +459,7 @@
         "dmg": 1000,
         "total": 41,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "sourceName": "Big Stampede",
         "sourceInput": "2HK",
@@ -464,6 +477,7 @@
       "onBlock": "+8",
       "onHit": "+11",
       "category": "normal",
+      "notes": "Decent air-to-air",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump LP",
@@ -476,10 +490,10 @@
         "dmg": 300,
         "total": 14,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "hitstun": 21,
-        "sourceName": "Jumping Light Punch",
+        "sourceName": "Jump LP",
         "sourceInput": "j.LP",
         "cancelText": "-"
       },
@@ -495,6 +509,7 @@
       "onBlock": "+7(+11)",
       "onHit": "+10(+14)",
       "category": "normal",
+      "notes": "Puts airborne opponents into limited juggle state on counter-hit/Punish Counter; lower body projectile invuln 8-21f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump MP",
@@ -507,10 +522,10 @@
         "dmg": 700,
         "total": 15,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 15,
         "hitstun": 18,
-        "sourceName": "Jumping Medium Punch",
+        "sourceName": "Jump MP",
         "sourceInput": "j.MP",
         "cancelText": "-"
       },
@@ -526,6 +541,7 @@
       "onBlock": "+7(+13)",
       "onHit": "+15(+21)",
       "category": "normal",
+      "notes": "Causes spike knockdown vs. airborne opponents; lower body projectile invuln 9-23f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump HP",
@@ -538,10 +554,10 @@
         "dmg": 800,
         "total": 17,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 16,
         "hitstun": 24,
-        "sourceName": "Jumping Heavy Punch",
+        "sourceName": "Jump HP",
         "sourceInput": "j.HP",
         "cancelText": "-"
       },
@@ -557,6 +573,7 @@
       "onBlock": "-1(+8)",
       "onHit": "+2(+11)",
       "category": "normal",
+      "notes": "Cross-up; can be used as a fuzzy instant overhead",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump LK",
@@ -569,10 +586,10 @@
         "dmg": 300,
         "total": 17,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 12,
         "hitstun": 15,
-        "sourceName": "Jumping Light Kick",
+        "sourceName": "Jump LK",
         "sourceInput": "j.LK",
         "cancelText": "-"
       },
@@ -588,6 +605,7 @@
       "onBlock": "+3(+11)",
       "onHit": "+6(+14)",
       "category": "normal",
+      "notes": "Good jump-in with long horizontal and vertical reach; can be used as a fuzzy instant overhead vs. JP/Marisa/Zangief only (requires deep j.2HP or opponent in Burnout for true blockstring); lower body projectile invuln 8-25f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump MK",
@@ -600,10 +618,10 @@
         "dmg": 500,
         "total": 18,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 14,
         "hitstun": 17,
-        "sourceName": "Jumping Medium Kick",
+        "sourceName": "Jump MK",
         "sourceInput": "j.MK",
         "cancelText": "-"
       },
@@ -619,6 +637,7 @@
       "onBlock": "+8(+11)",
       "onHit": "+12(+15)",
       "category": "normal",
+      "notes": "Can be held for a powered up version (holding less than 20f gives a regular j.HK with delayed timing); long horizontal range; lower body projectile invuln 10-21f except around attack hitbox (cannot be used to avoid the 2nd hit of JP's OD Amnesia bombs)",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump HK",
@@ -631,10 +650,10 @@
         "dmg": 800,
         "total": 19,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "hitstun": 22,
-        "sourceName": "Jumping Heavy Kick",
+        "sourceName": "Jump HK",
         "sourceInput": "j.HK",
         "cancelText": "-"
       },
@@ -650,6 +669,7 @@
       "onBlock": "-30(-43)",
       "onHit": "Wall Splat +1(+33)",
       "category": "normal",
+      "notes": "Button must be held for 20f; wall splats on hit; wall bounce on PC allows follow-up juggles; KD Advantage depends on height and distance from corner; projectile invulnerable on Zangief's body (not legs) while active until landing; landing recovery on whiff is 20f if fully charged, or 12f if only partially charged; whiff landing recovery is cancelable into attacks (but not movement) starting on 2nd frame; if active frames 2-6 connect right as Zangief lands, he does not bounce away and the landing recovery becomes cancelable into attacks (-1 oB if not canceled); lower body projectile invuln 32f~land except around attack hitbox",
       "raw": {
         "source": "supercombo",
         "moveName": "Jump HK (hold)",
@@ -662,9 +682,9 @@
         "dmg": 1500,
         "total": 49,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 6,
-        "sourceName": "Jumping Heavy Kick (hold)",
+        "sourceName": "Jump HK (hold)",
         "sourceInput": "j.",
         "cancelText": "-"
       },
@@ -685,6 +705,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Forces stand; puts airborne opponents into limited juggle state; lenient cancel window (final cancelable frame will not combo to meterless Lariat); the arm anti-air invincibility is not very useful due to Zangief's large head hurtbox (will only work against long range jumps with extended hurtbox); special/DR cancel is delayed until after active frames",
       "raw": {
         "source": "supercombo",
         "moveName": "Hellstab",
@@ -697,7 +718,7 @@
         "dmg": 800,
         "total": 30,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 21,
         "hitstun": 23,
         "sourceName": "Hellstab",
@@ -705,6 +726,110 @@
         "cancelText": "Sp SA"
       },
       "nameZh": "地狱刺"
+    },
+    {
+      "name": "Knee Hammer",
+      "input": "6MK",
+      "damage": "700",
+      "startup": "14",
+      "active": "7",
+      "recovery": "13",
+      "onBlock": "-4(+2)",
+      "onHit": "+1(+7)",
+      "category": "normal",
+      "notes": "Better advantage if well-spaced; final active frame has more range, making it easier to space at max distance for best frame advantage; low crushes during lower body invuln frames 7-23, but not airborne; extends a wide hurtbox from frame 2 onward making it susceptible to counterpokes",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Knee Hammer",
+        "plnCmd": "6MK",
+        "startup": 14,
+        "active": 7,
+        "recovery": 13,
+        "onBlock": -4,
+        "onHit": 1,
+        "dmg": 700,
+        "total": 33,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 16,
+        "hitstun": 21,
+        "sourceName": "Knee Hammer",
+        "sourceInput": "6MK",
+        "cancelText": "-"
+      },
+      "nameZh": "膝盖冲撞"
+    },
+    {
+      "name": "Headbutt",
+      "input": "6HP",
+      "damage": "1000",
+      "startup": "14",
+      "active": "5",
+      "recovery": "15(17)",
+      "onBlock": "+4",
+      "onHit": "+8",
+      "category": "normal",
+      "cancels": [
+        "Special",
+        "Super",
+        "Drive Rush"
+      ],
+      "notes": "2 extra recovery frames on whiff; great oki tool due to frame advantage, cancelability, and high active frame count; puts airborne opponents into limited juggle state spike knockdown; special/DR cancel is delayed until after 3rd active frame",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Headbutt",
+        "plnCmd": "6HP",
+        "startup": 14,
+        "active": 5,
+        "recovery": 17,
+        "onBlock": 4,
+        "onHit": 8,
+        "dmg": 1000,
+        "total": 35,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 24,
+        "hitstun": 28,
+        "sourceName": "Headbutt",
+        "sourceInput": "6HP",
+        "cancelText": "Sp SA"
+      },
+      "nameZh": "头锤"
+    },
+    {
+      "name": "Cyclone Wheel Kick",
+      "input": "6HK",
+      "damage": "1300",
+      "startup": "22(24)",
+      "active": "7(5)",
+      "recovery": "25",
+      "onBlock": "-9(-5)",
+      "onHit": "KD +28(+30)",
+      "category": "normal",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 28
+      },
+      "notes": "Long range overhead with high pushback (moves back during recovery and can be hard to punish at max range); low crushes during lower body invuln frames 13-28, but not airborne; active frames 1-2 can only hit airborne; active frames 3-4 whiff on crouching opponents unless they extend a vertical hurtbox, making it effectively 26f vs. crouching; +2 better KD Adv. vs. crouching; Punish Counter puts opponent into OTG free juggle state; puts airborne opponents into limited juggle state; has some juggle potential",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Cyclone Wheel Kick",
+        "plnCmd": "6HK",
+        "startup": 22,
+        "active": 12,
+        "recovery": 25,
+        "onBlock": -9,
+        "onHit": null,
+        "dmg": 1300,
+        "total": 58,
+        "moveType": "normal",
+        "section": "Normals and Target Combos",
+        "blockstun": 28,
+        "sourceName": "Cyclone Wheel Kick",
+        "sourceInput": "6HK",
+        "cancelText": "-"
+      },
+      "nameZh": "旋风轮踢"
     },
     {
       "name": "Smetana Dropkick",
@@ -720,6 +845,7 @@
         "type": "soft",
         "advantage": 21
       },
+      "notes": "Low crushes during throw/lower body invuln frames 5-26, but not airborne; great hitbox priority, but long recovery makes it a risky counterpoke; puts airborne opponents into limited juggle state; has juggle potential; Punish Counter causes wallsplat after tumble if it reaches the corner; wallsplat keeps opponent grounded and throwable (strikes still put opponent into limited juggle state)",
       "raw": {
         "source": "supercombo",
         "moveName": "Smetana Dropkick",
@@ -732,7 +858,7 @@
         "dmg": 1000,
         "total": 59,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 26,
         "sourceName": "Smetana Dropkick",
         "sourceInput": "3HK",
@@ -754,6 +880,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Can perform TC follow-ups on whiff; 2f blockstring gap between 22MK~MK TC hits",
       "raw": {
         "source": "supercombo",
         "moveName": "Power Stomp 1",
@@ -766,7 +893,7 @@
         "dmg": 500,
         "total": 28,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "hitstun": 24,
         "sourceName": "Power Stomp 1",
@@ -785,6 +912,7 @@
       "onBlock": "+10(+14)",
       "onHit": "+14(+18)",
       "category": "normal",
+      "notes": "Cross-up; can be done from any jump direction; spike knockdown on counter-hit/Punish Counter vs. airborne opponents; more recovery on landing than other air normals (always punishable when Perfect Parried even at latest timing); legs (behind Zangief) are projectile invuln 9f~land",
       "raw": {
         "source": "supercombo",
         "moveName": "Flying Body Press",
@@ -797,7 +925,7 @@
         "dmg": 800,
         "total": 25,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 27,
         "hitstun": 31,
         "sourceName": "Flying Body Press",
@@ -820,6 +948,7 @@
         "Special",
         "Drive Rush"
       ],
+      "notes": "Combos to j.360+KK when canceled; puts airborne opponents into limited juggle state; short range but good air-to-air hitbox",
       "raw": {
         "source": "supercombo",
         "moveName": "Flying Headbutt",
@@ -832,7 +961,7 @@
         "dmg": 900,
         "total": 14,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 20,
         "hitstun": 25,
         "sourceName": "Flying Headbutt",
@@ -855,6 +984,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Can combo from 5MP on counter-hit, Punish Counter, or Drive Rush with lenient confirm timing; combos into a third MP with no counter-hit required; can perform TC on whiff; 2nd hit may whiff if 5MP connects from too far away; 6f blockstring gap between 5MP~MP hits",
       "raw": {
         "source": "supercombo",
         "moveName": "Machine Gun Chops 1",
@@ -867,7 +997,7 @@
         "dmg": 600,
         "total": 32,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "hitstun": 26,
         "sourceName": "Machine Gun Chops 1",
@@ -890,6 +1020,7 @@
         "type": "soft",
         "advantage": 27
       },
+      "notes": "Combos naturally from 5MP~MP; can be performed on whiff; 7f blockstring gap between 2nd and 3rd hits of TC; puts airborne opponents into limited juggle state",
       "raw": {
         "source": "supercombo",
         "moveName": "Machine Gun Chops 2",
@@ -902,7 +1033,7 @@
         "dmg": 900,
         "total": 49,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "sourceName": "Machine Gun Chops 2",
         "sourceInput": "5MP~MP~MP",
@@ -926,6 +1057,7 @@
         "Target Combo",
         "Drive Rush"
       ],
+      "notes": "Combos from 22MK naturally, but requires counter-hit to continue into 3rd hit of TC; counter-hit/Punish Counter bonus advantage does not carry over from initial 22MK; can be performed on whiff; 2f blockstring gap between 22MK~MK hits",
       "raw": {
         "source": "supercombo",
         "moveName": "Power Stomps 2",
@@ -938,7 +1070,7 @@
         "dmg": 500,
         "total": 30,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 18,
         "hitstun": 19,
         "sourceName": "Power Stomps 2",
@@ -962,6 +1094,7 @@
         "Super",
         "Drive Rush"
       ],
+      "notes": "Special cancelable, allowing Drive Rush extensions and safety on block (meterless Lariat will not combo on final cancelable frame); requires counter-hit on 2nd hit of 22MK~MK to combo into this attack; 2f blockstring gap between 2nd and 3rd hits of 22MK~MK~MK TC (can catch opponents trying to take back their turn, or use Drive Rush after 3rd hit to bail out safely); special/DR cancel is delayed until after 2nd active frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Power Stomps 3",
@@ -974,7 +1107,7 @@
         "dmg": 700,
         "total": 36,
         "moveType": "normal",
-        "section": "",
+        "section": "Normals and Target Combos",
         "blockstun": 17,
         "hitstun": 25,
         "sourceName": "Power Stomps 3",
@@ -992,11 +1125,12 @@
       "recovery": "23",
       "onBlock": "-",
       "onHit": "KD +22(+0)",
-      "category": "normal",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 22
       },
+      "notes": "() refers to follow-up attack used by holding Throw buttons; by omitting the follow-up attack, Zangief can manually time a corner throw loop; a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
       "raw": {
         "source": "supercombo",
         "moveName": "Bodyslam",
@@ -1008,8 +1142,8 @@
         "onHit": null,
         "dmg": 1200,
         "total": 30,
-        "moveType": "normal",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "sourceName": "Bodyslam",
         "sourceInput": "5LPLK",
         "cancelText": "-"
@@ -1017,23 +1151,58 @@
       "nameZh": "身体猛击"
     },
     {
-      "name": "Brain Buster",
-      "input": "2LPLK",
+      "name": "Capture Suplex",
+      "input": "4LPLK",
+      "damage": "1400 (2380)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +8",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 8
+      },
+      "notes": "Switches sides; after back throwing opponent into the corner, can mix between SPD and ranged strike; a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Capture Suplex",
+        "plnCmd": "4LPLK",
+        "startup": 5,
+        "active": 3,
+        "recovery": 23,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 1400,
+        "total": 30,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Capture Suplex",
+        "sourceInput": "4LPLK",
+        "cancelText": "-"
+      },
+      "nameZh": "捕获背摔"
+    },
+    {
+      "name": "German Suplex",
+      "input": "6LPLK",
       "damage": "1500 (2550)",
       "startup": "5",
       "active": "3",
       "recovery": "23",
       "onBlock": "-",
-      "onHit": "KD +14",
-      "category": "normal",
+      "onHit": "KD +10",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
-        "advantage": 14
+        "advantage": 10
       },
+      "notes": "High damage, but poor oki; a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
       "raw": {
         "source": "supercombo",
-        "moveName": "Brain Buster",
-        "plnCmd": "2LPLK",
+        "moveName": "German Suplex",
+        "plnCmd": "6LPLK",
         "startup": 5,
         "active": 3,
         "recovery": 23,
@@ -1041,13 +1210,13 @@
         "onHit": null,
         "dmg": 1500,
         "total": 30,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Brain Buster",
-        "sourceInput": "2LPLK",
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "German Suplex",
+        "sourceInput": "6LPLK",
         "cancelText": "-"
       },
-      "nameZh": "碎脑摔"
+      "nameZh": "德式背摔"
     },
     {
       "name": "Spinebuster",
@@ -1058,11 +1227,12 @@
       "recovery": "23",
       "onBlock": "-",
       "onHit": "KD +28",
-      "category": "normal",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 28
       },
+      "notes": "Gives access to corner throw loop, but less damaging throw overall; can still give decent oki even midscreen (but no throw loop without Drive Rush); a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
       "raw": {
         "source": "supercombo",
         "moveName": "Spinebuster",
@@ -1074,8 +1244,8 @@
         "onHit": null,
         "dmg": 1200,
         "total": 30,
-        "moveType": "normal",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "sourceName": "Spinebuster",
         "sourceInput": "3LPLK",
         "cancelText": "-"
@@ -1091,11 +1261,12 @@
       "recovery": "23",
       "onBlock": "-",
       "onHit": "KD +9",
-      "category": "normal",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 9
       },
+      "notes": "Switches sides; recovers too far away for any follow-up oki; a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
       "raw": {
         "source": "supercombo",
         "moveName": "Russian Drop",
@@ -1107,13 +1278,47 @@
         "onHit": null,
         "dmg": 1500,
         "total": 30,
-        "moveType": "normal",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "sourceName": "Russian Drop",
         "sourceInput": "1LPLK",
         "cancelText": "-"
       },
       "nameZh": "俄罗斯下落摔"
+    },
+    {
+      "name": "Brain Buster",
+      "input": "2LPLK",
+      "damage": "1500 (2550)",
+      "startup": "5",
+      "active": "3",
+      "recovery": "23",
+      "onBlock": "-",
+      "onHit": "KD +14",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 14
+      },
+      "notes": "Switches sides; no follow-up throw oki after putting opponent into corner, but can connect with meaty strike; a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Brain Buster",
+        "plnCmd": "2LPLK",
+        "startup": 5,
+        "active": 3,
+        "recovery": 23,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 1500,
+        "total": 30,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "sourceName": "Brain Buster",
+        "sourceInput": "2LPLK",
+        "cancelText": "-"
+      },
+      "nameZh": "碎脑摔"
     },
     {
       "name": "Double Russian Chop",
@@ -1124,11 +1329,12 @@
       "recovery": "35",
       "onBlock": "-3 / Wall Splat HKD +72",
       "onHit": "KD +35 / Wall Splat KD +65",
-      "category": "normal",
+      "category": "throw",
       "knockdown": {
         "type": "soft",
         "advantage": 35
       },
+      "notes": "See Drive Impact. Airborne connect gives spinning juggle state on Punish Counter or corner Wall Splat with variable height.",
       "raw": {
         "source": "supercombo",
         "moveName": "Double Russian Chop",
@@ -1140,13 +1346,48 @@
         "onHit": null,
         "dmg": 800,
         "total": 62,
-        "moveType": "normal",
-        "section": "",
+        "moveType": "drive",
+        "section": "Drive and Throw",
         "sourceName": "Double Russian Chop",
         "sourceInput": "HPHK",
         "cancelText": "-"
       },
       "nameZh": "斗气迸放"
+    },
+    {
+      "name": "Reverse Russian Kick (Block)",
+      "input": "6HPHK",
+      "damage": "500 recoverable",
+      "startup": "20",
+      "active": "3",
+      "recovery": "26(31)",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Performed by holding 6HPHK on wakeup; 5f extra recovery on hit; does not have any screen freeze; see Drive Reversal.",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Reverse Russian Kick (Block)",
+        "plnCmd": "6HPHK",
+        "startup": 20,
+        "active": 3,
+        "recovery": 31,
+        "onBlock": -6,
+        "onHit": null,
+        "dmg": null,
+        "total": 53,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "blockstun": 23,
+        "sourceName": "Reverse Russian Kick (Block)",
+        "sourceInput": "6HPHK",
+        "cancelText": "-"
+      },
+      "nameZh": "斗气反攻"
     },
     {
       "name": "Drive Parry",
@@ -1157,20 +1398,21 @@
       "recovery": "33(1)(11)",
       "onBlock": "-",
       "onHit": "-",
-      "category": "normal",
+      "category": "throw",
+      "notes": "See Drive Parry. Perfect Parrying has only 1F of recovery and disables the opponent from canceling their attack. Perfect Parrying projectiles puts you into fixed 11 frames of recovery. After a Perfect Parry, all Super Gauge gain is reduced by 20% and Drive Gauge gain/damage is reduced by 50% for the entire punish combo.",
       "raw": {
         "source": "supercombo",
         "moveName": "Drive Parry",
         "plnCmd": "MPMK",
         "startup": 1,
         "active": 12,
-        "recovery": 1,
+        "recovery": 11,
         "onBlock": null,
         "onHit": null,
         "dmg": null,
-        "total": 13,
+        "total": 23,
         "moveType": "drive",
-        "section": "",
+        "section": "Drive and Throw",
         "sourceName": "Drive Parry",
         "sourceInput": "MPMK",
         "cancelText": "-"
@@ -1186,7 +1428,8 @@
       "recovery": "15(37)",
       "onBlock": "-",
       "onHit": "-",
-      "category": "normal",
+      "category": "throw",
+      "notes": "See Drive Rush; 1-bar version performed out of a Parry; startup refers to minimum time before an attack can cancel the Drive Rush animation (if performed immediately after a successful Parry, only 1+8 startup); the first 15 recovery frames are cancelable into any attack; the final 22 recovery frames are cancelable into any attack or movement option or blocking (except Parry); only Normal and Command Normal attacks are enhanced with +4 frame advantage and improved juggle properties; Distance: 0.327 (min/throw), 1.455 (min/block), 3.040 (max/final DR frame)",
       "raw": {
         "source": "supercombo",
         "moveName": "Parry Drive Rush",
@@ -1198,7 +1441,7 @@
         "onHit": null,
         "dmg": null,
         "moveType": "drive",
-        "section": "",
+        "section": "Drive and Throw",
         "sourceName": "Parry Drive Rush",
         "sourceInput": "MPMK~66",
         "cancelText": "-"
@@ -1214,7 +1457,8 @@
       "recovery": "15(37)",
       "onBlock": "-",
       "onHit": "-",
-      "category": "normal",
+      "category": "throw",
+      "notes": "See Drive Rush; 3-bar version performed on hit/block from a cancelable normal; can also be performed on whiff from cancelable light normals; startup refers to minimum time before an attack can cancel the Drive Rush animation; the first 15 recovery frames are cancelable into any attack; the final 22 recovery frames are cancelable into any attack or movement option or blocking (except Parry); only Normal and Command Normal attacks are enhanced with +4 frame advantage and improved juggle properties",
       "raw": {
         "source": "supercombo",
         "moveName": "Drive Rush Cancel",
@@ -1226,7 +1470,7 @@
         "onHit": null,
         "dmg": null,
         "moveType": "drive",
-        "section": "",
+        "section": "Drive and Throw",
         "sourceName": "Drive Rush Cancel",
         "sourceInput": "MPMK or 66",
         "cancelText": "-"
@@ -1242,29 +1486,29 @@
       "recovery": "27",
       "onBlock": "-12(-41)",
       "onHit": "KD +27(+56)",
-      "category": "normal",
+      "category": "special",
       "cancels": [
-        "SA3",
-        "Drive Rush"
+        "SA3"
       ],
       "knockdown": {
         "type": "soft",
         "advantage": 27
       },
+      "notes": "First hit can anti-air but cannot hit cross-ups; head hurtbox disappears on frames 1-5 of startup, then further shrinks hurtbox on frames 6-16; all hits (except 1st) whiff vs. crouch (only connects once on hit); can hold left/right to move during animation; cancel into SA3 is only useful vs. armor; final hit puts opponent into free juggle state (useful combo starter after stun)",
       "raw": {
         "source": "supercombo",
         "moveName": "Double Lariat",
         "plnCmd": "PP",
         "startup": 15,
-        "active": 2,
+        "active": 31,
         "recovery": 27,
         "onBlock": -12,
         "onHit": null,
         "dmg": 1400,
-        "total": 43,
-        "moveType": "normal",
-        "section": "",
-        "blockstun": 17,
+        "total": 72,
+        "moveType": "special",
+        "section": "Specials",
+        "blockstun": 46,
         "sourceName": "Double Lariat",
         "sourceInput": "PP",
         "cancelText": "SA3"
@@ -1280,360 +1524,36 @@
       "recovery": "26",
       "onBlock": "-11(-30)",
       "onHit": "KD +38(+57)",
-      "category": "normal",
+      "category": "special",
       "cancels": [
         "SA2",
         "SA3",
-        "(1st)",
-        "Drive Rush"
+        "(1st)"
       ],
       "knockdown": {
         "type": "soft",
         "advantage": 38
       },
+      "notes": "First hit can anti-air but cannot hit cross-ups; head hurtbox disappears on frames 1-5 of startup, then further shrinks hurtbox on frames 6-13; can hold left/right to move during animation; 2 hits vs. crouch block or on hit, 5 hits vs. stand block; 1st hit crumples grounded opponents (allows SA3 combo); faster startup makes it more consistent than meterless Lariat in combos; in juggles, can combo into j.360+KK or SA1 if the juggling hits are staggered",
       "raw": {
         "source": "supercombo",
         "moveName": "Double Lariat",
         "plnCmd": "PPP",
         "startup": 12,
-        "active": 2,
+        "active": 25,
         "recovery": 26,
         "onBlock": -11,
         "onHit": null,
         "dmg": 700,
-        "total": 39,
-        "moveType": "normal",
-        "section": "",
-        "blockstun": 17,
+        "total": 62,
+        "moveType": "special",
+        "section": "Specials",
+        "blockstun": 40,
         "sourceName": "Double Lariat",
         "sourceInput": "PPP",
         "cancelText": "SA2 SA3 (1st)"
       },
       "nameZh": "双截拳"
-    },
-    {
-      "name": "Tundra Storm",
-      "input": "22HK",
-      "damage": "2400",
-      "startup": "6",
-      "active": "50",
-      "recovery": "24",
-      "onBlock": "-",
-      "onHit": "HKD +5",
-      "category": "normal",
-      "knockdown": {
-        "type": "hard",
-        "advantage": 5
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Tundra Storm",
-        "plnCmd": "22HK",
-        "startup": 6,
-        "active": 50,
-        "recovery": 24,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 2400,
-        "total": 79,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Tundra Storm",
-        "sourceInput": "22HK",
-        "cancelText": "-"
-      },
-      "nameZh": "冻原风暴"
-    },
-    {
-      "name": "Neutral Taunt",
-      "input": "5PPPKKK",
-      "damage": "-",
-      "startup": "194 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Neutral Taunt",
-        "plnCmd": "5PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Neutral Taunt",
-        "sourceInput": "5PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "原地挑衅"
-    },
-    {
-      "name": "Down Taunt",
-      "input": "2PPPKKK",
-      "damage": "-",
-      "startup": "210 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "normal",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Down Taunt",
-        "plnCmd": "2PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "normal",
-        "section": "",
-        "sourceName": "Down Taunt",
-        "sourceInput": "2PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "下蹲挑衅"
-    },
-    {
-      "name": "Knee Hammer",
-      "input": "6MK",
-      "damage": "700",
-      "startup": "14",
-      "active": "7",
-      "recovery": "13",
-      "onBlock": "-4(+2)",
-      "onHit": "+1(+7)",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Knee Hammer",
-        "plnCmd": "6MK",
-        "startup": 14,
-        "active": 7,
-        "recovery": 13,
-        "onBlock": -4,
-        "onHit": 1,
-        "dmg": 700,
-        "total": 33,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 16,
-        "hitstun": 21,
-        "sourceName": "Knee Hammer",
-        "sourceInput": "6MK",
-        "cancelText": "-"
-      },
-      "nameZh": "膝盖冲撞"
-    },
-    {
-      "name": "Headbutt",
-      "input": "6HP",
-      "damage": "1000",
-      "startup": "14",
-      "active": "5",
-      "recovery": "15(17)",
-      "onBlock": "+4",
-      "onHit": "+8",
-      "category": "unique",
-      "cancels": [
-        "Special",
-        "Super",
-        "Drive Rush"
-      ],
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Headbutt",
-        "plnCmd": "6HP",
-        "startup": 14,
-        "active": 5,
-        "recovery": 17,
-        "onBlock": 4,
-        "onHit": 8,
-        "dmg": 1000,
-        "total": 35,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 24,
-        "hitstun": 28,
-        "sourceName": "Headbutt",
-        "sourceInput": "6HP",
-        "cancelText": "Sp SA"
-      },
-      "nameZh": "头锤"
-    },
-    {
-      "name": "Cyclone Wheel Kick",
-      "input": "6HK",
-      "damage": "1300",
-      "startup": "22(24)",
-      "active": "7(5)",
-      "recovery": "25",
-      "onBlock": "-9(-5)",
-      "onHit": "KD +28(+30)",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 28
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Cyclone Wheel Kick",
-        "plnCmd": "6HK",
-        "startup": 22,
-        "active": 7,
-        "recovery": 25,
-        "onBlock": -9,
-        "onHit": null,
-        "dmg": 1300,
-        "total": 53,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 23,
-        "sourceName": "Cyclone Wheel Kick",
-        "sourceInput": "6HK",
-        "cancelText": "-"
-      },
-      "nameZh": "旋风轮踢"
-    },
-    {
-      "name": "German Suplex",
-      "input": "6LPLK",
-      "damage": "1500 (2550)",
-      "startup": "5",
-      "active": "3",
-      "recovery": "23",
-      "onBlock": "-",
-      "onHit": "KD +10",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 10
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "German Suplex",
-        "plnCmd": "6LPLK",
-        "startup": 5,
-        "active": 3,
-        "recovery": 23,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 1500,
-        "total": 30,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "German Suplex",
-        "sourceInput": "6LPLK",
-        "cancelText": "-"
-      },
-      "nameZh": "德式背摔"
-    },
-    {
-      "name": "Capture Suplex",
-      "input": "4LPLK",
-      "damage": "1400 (2380)",
-      "startup": "5",
-      "active": "3",
-      "recovery": "23",
-      "onBlock": "-",
-      "onHit": "KD +8",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 8
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Capture Suplex",
-        "plnCmd": "4LPLK",
-        "startup": 5,
-        "active": 3,
-        "recovery": 23,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 1400,
-        "total": 30,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Capture Suplex",
-        "sourceInput": "4LPLK",
-        "cancelText": "-"
-      },
-      "nameZh": "捕获背摔"
-    },
-    {
-      "name": "Reverse Russian Kick (Block)",
-      "input": "6HPHK",
-      "damage": "500 recoverable",
-      "startup": "20",
-      "active": "3",
-      "recovery": "26(31)",
-      "onBlock": "-6",
-      "onHit": "KD +23",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 23
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Reverse Russian Kick (Block)",
-        "plnCmd": "6HPHK",
-        "startup": 20,
-        "active": 3,
-        "recovery": 31,
-        "onBlock": -6,
-        "onHit": null,
-        "dmg": null,
-        "total": 53,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 23,
-        "sourceName": "Reverse Russian Kick (Block)",
-        "sourceInput": "6HPHK",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气反攻"
-    },
-    {
-      "name": "Reverse Russian Kick (Recovery)",
-      "input": "6HPHK",
-      "damage": "500 recoverable",
-      "startup": "18",
-      "active": "3",
-      "recovery": "26(31)",
-      "onBlock": "-6",
-      "onHit": "KD +23",
-      "category": "unique",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 23
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Reverse Russian Kick (Recovery)",
-        "plnCmd": "6HPHK",
-        "startup": 18,
-        "active": 3,
-        "recovery": 31,
-        "onBlock": -6,
-        "onHit": null,
-        "dmg": null,
-        "total": 51,
-        "moveType": "unique",
-        "section": "",
-        "blockstun": 23,
-        "sourceName": "Reverse Russian Kick (Recovery)",
-        "sourceInput": "6HPHK",
-        "cancelText": "-"
-      },
-      "nameZh": "斗气反攻"
     },
     {
       "name": "Screw Piledriver",
@@ -1644,11 +1564,12 @@
       "recovery": "54",
       "onBlock": "-",
       "onHit": "HKD +30",
-      "category": "unique",
+      "category": "special",
       "knockdown": {
         "type": "hard",
         "advantage": 30
       },
+      "notes": "Can be input up to 6th jump frame; () refers to Punish Counter damage; longest range SPD but least damage",
       "raw": {
         "source": "supercombo",
         "moveName": "Screw Piledriver",
@@ -1661,7 +1582,7 @@
         "dmg": 2500,
         "total": 61,
         "moveType": "drive",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Screw Piledriver",
         "sourceInput": "360+LP",
         "cancelText": "-"
@@ -1677,11 +1598,12 @@
       "recovery": "54",
       "onBlock": "-",
       "onHit": "HKD +28",
-      "category": "unique",
+      "category": "special",
       "knockdown": {
         "type": "hard",
         "advantage": 28
       },
+      "notes": "Can be input up to 6th jump frame; () refers to Punish Counter damage; middle ground for range and damage",
       "raw": {
         "source": "supercombo",
         "moveName": "Screw Piledriver",
@@ -1694,7 +1616,7 @@
         "dmg": 2900,
         "total": 61,
         "moveType": "drive",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Screw Piledriver",
         "sourceInput": "360+MP",
         "cancelText": "-"
@@ -1710,11 +1632,12 @@
       "recovery": "54",
       "onBlock": "-",
       "onHit": "HKD +28",
-      "category": "unique",
+      "category": "special",
       "knockdown": {
         "type": "hard",
         "advantage": 28
       },
+      "notes": "Can be input up to 6th jump frame; () refers to Punish Counter damage; highest damage for meterless SPD but shortest range",
       "raw": {
         "source": "supercombo",
         "moveName": "Screw Piledriver",
@@ -1727,7 +1650,7 @@
         "dmg": 3300,
         "total": 61,
         "moveType": "drive",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Screw Piledriver",
         "sourceInput": "360+HP",
         "cancelText": "-"
@@ -1743,11 +1666,12 @@
       "recovery": "54",
       "onBlock": "-",
       "onHit": "HKD +28",
-      "category": "unique",
+      "category": "special",
       "knockdown": {
         "type": "hard",
         "advantage": 28
       },
+      "notes": "Can be input up to 6th jump frame; () refers to Punish Counter damage; highest damage SPD, slightly less range than LP version",
       "raw": {
         "source": "supercombo",
         "moveName": "Screw Piledriver",
@@ -1760,7 +1684,7 @@
         "dmg": 3400,
         "total": 61,
         "moveType": "drive",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Screw Piledriver",
         "sourceInput": "360+PP",
         "cancelText": "-"
@@ -1776,11 +1700,12 @@
       "recovery": "21(36)+16 land",
       "onBlock": "-",
       "onHit": "HKD +19",
-      "category": "unique",
+      "category": "special",
       "knockdown": {
         "type": "hard",
         "advantage": 19
       },
+      "notes": "Can be performed on first airborne jump frame (very low to the ground); grabs airborne opponents only; () refers to Punish Counter damage; Zangief is in a crouching state during landing recovery; juggle-only hitbox expands to match the OD version in combos",
       "raw": {
         "source": "supercombo",
         "moveName": "Borscht Dynamite",
@@ -1792,8 +1717,8 @@
         "onHit": null,
         "dmg": 2900,
         "total": 42,
-        "moveType": "unique",
-        "section": "",
+        "moveType": "special",
+        "section": "Specials",
         "sourceName": "Borscht Dynamite",
         "sourceInput": "j.360+K",
         "cancelText": "-"
@@ -1809,11 +1734,12 @@
       "recovery": "21(36)+16 land",
       "onBlock": "-",
       "onHit": "HKD +19",
-      "category": "unique",
+      "category": "special",
       "knockdown": {
         "type": "hard",
         "advantage": 19
       },
+      "notes": "Can be performed on first airborne jump frame (very low to the ground); grabs airborne opponents only; can be juggled into; () refers to Punish Counter damage; Zangief is in a crouching state during landing recovery",
       "raw": {
         "source": "supercombo",
         "moveName": "Borscht Dynamite",
@@ -1825,135 +1751,13 @@
         "onHit": null,
         "dmg": 3000,
         "total": 42,
-        "moveType": "unique",
-        "section": "",
+        "moveType": "special",
+        "section": "Specials",
         "sourceName": "Borscht Dynamite",
         "sourceInput": "j.360+KK",
         "cancelText": "-"
       },
       "nameZh": "罗宋汤炸药"
-    },
-    {
-      "name": "Bolshoi Storm Buster",
-      "input": "720+P",
-      "damage": "4800",
-      "startup": "6+0",
-      "active": "2",
-      "recovery": "116",
-      "onBlock": "-",
-      "onHit": "HKD +26",
-      "category": "unique",
-      "knockdown": {
-        "type": "hard",
-        "advantage": 26
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Bolshoi Storm Buster",
-        "plnCmd": "720+P",
-        "startup": 6,
-        "active": 2,
-        "recovery": 116,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 4800,
-        "total": 123,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Bolshoi Storm Buster",
-        "sourceInput": "720+P",
-        "cancelText": "-"
-      },
-      "nameZh": "莫斯科风暴破坏者"
-    },
-    {
-      "name": "Bolshoi Storm Buster (CA)",
-      "input": "720+P",
-      "damage": "5300",
-      "startup": "6+0",
-      "active": "2",
-      "recovery": "116",
-      "onBlock": "-",
-      "onHit": "HKD +26",
-      "category": "unique",
-      "knockdown": {
-        "type": "hard",
-        "advantage": 26
-      },
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Bolshoi Storm Buster (CA)",
-        "plnCmd": "720+P",
-        "startup": 6,
-        "active": 2,
-        "recovery": 116,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": 5300,
-        "total": 123,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Bolshoi Storm Buster (CA)",
-        "sourceInput": "720+P",
-        "cancelText": "-"
-      },
-      "nameZh": "莫斯科风暴破坏者 (CA)"
-    },
-    {
-      "name": "Forward Taunt",
-      "input": "6PPPKKK",
-      "damage": "-",
-      "startup": "227 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Forward Taunt",
-        "plnCmd": "6PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Forward Taunt",
-        "sourceInput": "6PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "前挑衅"
-    },
-    {
-      "name": "Back Taunt",
-      "input": "4PPPKKK",
-      "damage": "-",
-      "startup": "202 (total)",
-      "active": "-",
-      "recovery": "-",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "unique",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Back Taunt",
-        "plnCmd": "4PPPKKK",
-        "startup": null,
-        "active": null,
-        "recovery": null,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "unique",
-        "section": "",
-        "sourceName": "Back Taunt",
-        "sourceInput": "4PPPKKK",
-        "cancelText": "-"
-      },
-      "nameZh": "后挑衅"
     },
     {
       "name": "Russian Suplex",
@@ -1969,6 +1773,7 @@
         "type": "hard",
         "advantage": 26
       },
+      "notes": "Only activates from close proximity; switches sides on hit; () refers to Punish Counter damage",
       "raw": {
         "source": "supercombo",
         "moveName": "Russian Suplex",
@@ -1981,7 +1786,7 @@
         "dmg": 2900,
         "total": 61,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Russian Suplex",
         "sourceInput": "63214K (Close)",
         "cancelText": "-"
@@ -2002,6 +1807,7 @@
         "type": "hard",
         "advantage": 27
       },
+      "notes": "Only activates from close proximity; switches sides on hit; () refers to Punish Counter damage",
       "raw": {
         "source": "supercombo",
         "moveName": "Russian Suplex",
@@ -2014,7 +1820,7 @@
         "dmg": 3200,
         "total": 61,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Russian Suplex",
         "sourceInput": "63214KK (Close)",
         "cancelText": "-"
@@ -2035,6 +1841,7 @@
         "type": "hard",
         "advantage": 29
       },
+      "notes": "Activates when out of Russian Suplex range but within ~1/2 screen; less damage than Suplex but better KD Adv. and no side switch; () refers to Punish Counter damage; Run Speed: 0.086",
       "raw": {
         "source": "supercombo",
         "moveName": "Siberian Express",
@@ -2047,7 +1854,7 @@
         "dmg": 2700,
         "total": 70,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Siberian Express",
         "sourceInput": "63214K (Mid)",
         "cancelText": "-"
@@ -2068,6 +1875,7 @@
         "type": "hard",
         "advantage": 29
       },
+      "notes": "Activates when out of Russian Suplex range but within ~1/2 screen; less damage than Suplex but better KD Adv. and no side switch; () refers to Punish Counter damage; Run Speed: 0.086",
       "raw": {
         "source": "supercombo",
         "moveName": "Siberian Express",
@@ -2080,7 +1888,7 @@
         "dmg": 3000,
         "total": 68,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Siberian Express",
         "sourceInput": "63214KK (Mid)",
         "cancelText": "-"
@@ -2101,6 +1909,7 @@
         "type": "hard",
         "advantage": 29
       },
+      "notes": "Activates from beyond ~1/2 screen; armor lasts until throw becomes active; startup increases at farther range; Zangief throws his arms up at the beginning, creating a noticeable visual cue; () refers to Punish Counter damage; immediately transitions to grab animation after absorbing a strike; Run Speed: 0.094 (31-37f) / 0.090 (38f~) / 0.099 (close proximity)",
       "raw": {
         "source": "supercombo",
         "moveName": "Siberian Express",
@@ -2113,7 +1922,7 @@
         "dmg": 2700,
         "total": 96,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Siberian Express",
         "sourceInput": "63214K (Far)",
         "cancelText": "-"
@@ -2134,6 +1943,7 @@
         "type": "hard",
         "advantage": 29
       },
+      "notes": "Activates from beyond ~1/2 screen; 2-hit armor lasts until throw becomes active; startup increases at farther range; Zangief throws his arms up at the beginning, creating a noticeable visual cue; () refers to Punish Counter damage; immediately transitions to grab animation after absorbing a strike; Run Speed: 0.045 (28-30f) / 0.094 (31-37f) / 0.090 (38f~) / 0.099 (close proximity or after absorbing strike)",
       "raw": {
         "source": "supercombo",
         "moveName": "Siberian Express",
@@ -2146,12 +1956,46 @@
         "dmg": 3000,
         "total": 95,
         "moveType": "special",
-        "section": "",
+        "section": "Specials",
         "sourceName": "Siberian Express",
         "sourceInput": "63214KK (Far)",
         "cancelText": "-"
       },
       "nameZh": "西伯利亚特快"
+    },
+    {
+      "name": "Tundra Storm",
+      "input": "22HK",
+      "damage": "2400",
+      "startup": "6",
+      "active": "50",
+      "recovery": "24",
+      "onBlock": "-",
+      "onHit": "HKD +5",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 5
+      },
+      "notes": "Counter is active 6-55f; only activates vs. kick attacks that connect with the hitbox between Zangief's arms (can work against normals, specials, and Drive moves); cannot counter low-hitting kicks; on successful counter, the attack uses a throw hitbox, causing it to whiff vs. airborne or throw invincible opponents",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Tundra Storm",
+        "plnCmd": "22HK",
+        "startup": 6,
+        "active": 50,
+        "recovery": 24,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 2400,
+        "total": 79,
+        "moveType": "special",
+        "section": "Specials",
+        "sourceName": "Tundra Storm",
+        "sourceInput": "22HK",
+        "cancelText": "-"
+      },
+      "nameZh": "冻原风暴"
     },
     {
       "name": "Aerial Russian Slam",
@@ -2162,24 +2006,25 @@
       "recovery": "13+47 land",
       "onBlock": "-",
       "onHit": "HKD +29",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "hard",
         "advantage": 29
       },
+      "notes": "Can only hit airborne opponents; cannot anti-air cross-ups",
       "raw": {
         "source": "supercombo",
         "moveName": "Aerial Russian Slam",
         "plnCmd": "236236K",
         "startup": 11,
         "active": 7,
-        "recovery": 13,
+        "recovery": 60,
         "onBlock": null,
         "onHit": null,
         "dmg": 3500,
-        "total": 30,
-        "moveType": "special",
-        "section": "",
+        "total": 77,
+        "moveType": "super",
+        "section": "Supers",
         "sourceName": "Aerial Russian Slam",
         "sourceInput": "236236K",
         "cancelText": "-"
@@ -2195,11 +2040,12 @@
       "recovery": "52",
       "onBlock": "-35",
       "onHit": "HKD +5(+1)",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "hard",
         "advantage": 5
       },
+      "notes": "Switches sides on hit; can hold forward/back on hit to move in that direction, dealing 100 less damage; holding forward keeps opponent on the same side with 4f worse KD Advantage; too slow to work as a reversal against many attacks, but half-screen suction makes it powerful as a projectile counter; can hold button for a fully charged launching version; plays out the held version on block or when juggled into; active frame distribution: vacuum 91f, juggle 1(4)2(7)2(8)2(7)2(8)2(9)2(7)2(9)2(8)3 starting on frame 33",
       "raw": {
         "source": "supercombo",
         "moveName": "Cyclone Lariat",
@@ -2211,8 +2057,8 @@
         "onHit": null,
         "dmg": 3160,
         "total": 171,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 119,
         "sourceName": "Cyclone Lariat",
         "sourceInput": "236236P",
@@ -2229,11 +2075,12 @@
       "recovery": "25(52)",
       "onBlock": "-35",
       "onHit": "KD +87 Launch",
-      "category": "special",
+      "category": "super",
       "knockdown": {
         "type": "soft",
         "advantage": 87
       },
+      "notes": "Launches opponent into free juggle state on grounded hit, limited juggle state if juggled into; too slow to work as a reversal against many attacks, but half-screen suction makes it powerful as a projectile counter; 25f recovery on hit, 52f recovery on whiff/block; active frame distribution: vacuum 94f, juggle 3(5)2(7)2(8)2(7)2(8)2(9)2(7)2(9)2(8)3 starting on frame 33",
       "raw": {
         "source": "supercombo",
         "moveName": "Cyclone Lariat (hold P)",
@@ -2245,15 +2092,49 @@
         "onHit": null,
         "dmg": null,
         "total": 174,
-        "moveType": "special",
-        "section": "",
+        "moveType": "super",
+        "section": "Supers",
         "blockstun": 95,
         "sourceName": "Cyclone Lariat (hold P)",
         "sourceInput": "236236",
         "cancelText": "-"
       },
       "nameZh": "旋风套索 (蓄力)"
+    },
+    {
+      "name": "Bolshoi Storm Buster",
+      "input": "720+P",
+      "damage": "4800",
+      "startup": "6+0",
+      "active": "2",
+      "recovery": "116",
+      "onBlock": "-",
+      "onHit": "HKD +26",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 26
+      },
+      "notes": "Command grab Super; opponent cannot jump after the freeze; can only be comboed into with OD Lariat (1st hit), Punish Counter 3HK wall splat, or grounded crumple state; available at 25% HP or below; cinematic time regenerates ~2.7 Drive bars for Zangief; Range: 1.61 (2nd active frame, jumpable: 1.65)",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Bolshoi Storm Buster",
+        "plnCmd": "720+P",
+        "startup": 6,
+        "active": 2,
+        "recovery": 116,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 4800,
+        "total": 123,
+        "moveType": "super",
+        "section": "Supers",
+        "sourceName": "Bolshoi Storm Buster",
+        "sourceInput": "720+P",
+        "cancelText": "-"
+      },
+      "nameZh": "莫斯科风暴破坏者"
     }
   ],
-  "lastUpdated": "2026-02-06"
+  "lastUpdated": "2026-03-19"
 }

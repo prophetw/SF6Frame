@@ -269,11 +269,6 @@ watch(
         :data="resolvedKeyMoveData"
       />
 
-      <ComboList
-        :character-id="character?.id ?? String(route.params.id)"
-        :data="comboData"
-      />
-
       <section class="section-panel frame-section">
         <div class="section-head">
           <div>
@@ -330,6 +325,11 @@ watch(
           帧数数据更新于 {{ frameData.lastUpdated }}
         </p>
       </section>
+
+      <ComboList
+        :character-id="character?.id ?? String(route.params.id)"
+        :data="comboData"
+      />
     </div>
   </div>
 </template>
