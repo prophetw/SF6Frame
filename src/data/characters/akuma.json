@@ -56,7 +56,7 @@
       "damage": "600",
       "startup": "6",
       "active": "4",
-      "recovery": "11",
+      "recovery": "11(13)",
       "onBlock": "+1",
       "onHit": "+4",
       "category": "normal",
@@ -66,18 +66,18 @@
         "Target Combo",
         "Drive Rush"
       ],
-      "notes": "Primary tool for block pressure (high active frame count makes it strong for oki); leads into much stronger combos on counter-hit",
+      "notes": "2f extra recovery on whiff; primary tool for block pressure (high active frame count makes it strong for oki); leads into much stronger combos on counter-hit",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand MP",
         "plnCmd": "5MP",
         "startup": 6,
         "active": 4,
-        "recovery": 11,
+        "recovery": 13,
         "onBlock": 1,
         "onHit": 4,
         "dmg": 600,
-        "total": 20,
+        "total": 22,
         "moveType": "normal",
         "section": "Normals and Target Combos",
         "blockstun": 16,
@@ -315,14 +315,14 @@
       "active": "8",
       "recovery": "19",
       "onBlock": "-8",
-      "onHit": "0",
+      "onHit": "+1",
       "category": "normal",
       "cancels": [
         "Special",
         "Super",
         "Drive Rush"
       ],
-      "notes": "Forces stand (important combo/punish tool for 214LK); head/arm hurtbox is anti-air invuln while active on frames 8-15; good anti-air for vertical approaches but cannot hit cross-up (anti-air hitbox takes ~11f to come out, making it slower than average); only cancelable on active frames 1-3",
+      "notes": "Forces stand (important combo/punish tool for 214LK); head/arm hurtbox is anti-air invuln while active on frames 8-15; good anti-air for vertical approaches but cannot hit cross-up (anti-air hitbox takes ~11f to come out, making it slower than average); only cancelable on active frames 1-3 with 1f extra hitstun on these frames",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch HP",
@@ -331,13 +331,13 @@
         "active": 8,
         "recovery": 19,
         "onBlock": -8,
-        "onHit": 0,
+        "onHit": 1,
         "dmg": 900,
         "total": 34,
         "moveType": "normal",
         "section": "Normals and Target Combos",
         "blockstun": 19,
-        "hitstun": 27,
+        "hitstun": 28,
         "sourceName": "Crouch HP",
         "sourceInput": "2HP",
         "cancelText": "Sp SA"
@@ -388,7 +388,7 @@
       "active": "3",
       "recovery": "19",
       "onBlock": "-6",
-      "onHit": "+1",
+      "onHit": "0",
       "category": "normal",
       "cancels": [
         "Special",
@@ -404,13 +404,13 @@
         "active": 3,
         "recovery": 19,
         "onBlock": -6,
-        "onHit": 1,
+        "onHit": 0,
         "dmg": 500,
         "total": 29,
         "moveType": "normal",
         "section": "Normals and Target Combos",
         "blockstun": 16,
-        "hitstun": 23,
+        "hitstun": 22,
         "sourceName": "Crouch MK",
         "sourceInput": "2MK",
         "cancelText": "Sp SA"
@@ -1358,29 +1358,29 @@
     {
       "name": "Gou Hadoken Lv.3",
       "input": "236",
-      "damage": "300x2,600 (1200)",
+      "damage": "250x3,600 (1350)",
       "startup": "56",
       "active": "-",
-      "recovery": "28",
-      "onBlock": "+5",
-      "onHit": "KD +57",
+      "recovery": "21(26)",
+      "onBlock": "+20",
+      "onHit": "KD +69",
       "category": "special",
       "cancels": [
         "SA3"
       ],
       "knockdown": {
         "type": "soft",
-        "advantage": 57
+        "advantage": 69
       },
-      "notes": "3-hit projectile; projectile speed depends on button strength; button must be held 49f to perform full charge; puts opponents into limited juggle state; extended arm hurtbox is projectile invuln while charging; has an extended leg hurtbox on frames 13~",
+      "notes": "4-hit projectile; 5f extra recovery if projectile does not make contact within the first 21 active frames; projectile speed depends on button strength; button must be held 49f to perform full charge; puts opponents into limited juggle state; extended arm hurtbox is projectile invuln while charging; has an extended leg hurtbox on frames 13~",
       "raw": {
         "source": "supercombo",
         "moveName": "Gou Hadoken Lv.3",
         "plnCmd": "236",
         "startup": 56,
         "active": null,
-        "recovery": 28,
-        "onBlock": 5,
+        "recovery": 26,
+        "onBlock": 20,
         "onHit": null,
         "dmg": null,
         "moveType": "special",
@@ -1642,8 +1642,8 @@
       "input": "214MK",
       "damage": "500x2 (1000)",
       "startup": "11",
-      "active": "2(13)2",
-      "recovery": "11+20 land",
+      "active": "2(13)3",
+      "recovery": "10+20 land",
       "onBlock": "-13(-28)",
       "onHit": "KD +41(38)",
       "category": "special",
@@ -1657,8 +1657,8 @@
         "moveName": "Tatsumaki Zanku-Kyaku",
         "plnCmd": "214MK",
         "startup": 11,
-        "active": 17,
-        "recovery": 31,
+        "active": 18,
+        "recovery": 30,
         "onBlock": -13,
         "onHit": null,
         "dmg": null,
@@ -1919,7 +1919,7 @@
       "name": "Adamant Flame",
       "input": "214PP",
       "damage": "700",
-      "startup": "18",
+      "startup": "18(20)",
       "active": "3",
       "recovery": "23",
       "onBlock": "-3",
@@ -1929,7 +1929,7 @@
         "SA2",
         "SA3"
       ],
-      "notes": "Can be spaced in neutral for +2f better advantage (very precise); grounded Punish Counter crumple is +16 before opponent becomes airborne; foot hurtbox is pulled back on frames 6-14 (can make low attacks whiff); combos from Punish Counter 5LK/2LP",
+      "notes": "Can be spaced in neutral for +2f better advantage (very precise); grounded Punish Counter crumple is +16 before opponent becomes airborne; foot hurtbox is pulled back on frames 6-14 (can make low attacks whiff); combos from Punish Counter 5LK/2LP; 2f slower startup when canceled from 2MK to prevent it from comboing naturally",
       "raw": {
         "source": "supercombo",
         "moveName": "Adamant Flame",
@@ -2843,5 +2843,5 @@
       "nameZh": "金刚国裂斩"
     }
   ],
-  "lastUpdated": "2026-03-19"
+  "lastUpdated": "2026-03-25"
 }
