@@ -1,5 +1,84 @@
 {
   "characterId": "alex",
-  "combos": [],
+  "combos": [
+    {
+      "combo": "2LK/2LP/5LP ~ 2LP/5LP > 236LP",
+      "section": "Normal Hit:",
+      "position": "Anywhere (close)",
+      "damage": "1000/1100",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very easy",
+      "notes": "When close enough a second 2LP or 5LP can be added. Damage is then 1130/1230."
+    },
+    {
+      "combo": "5LP ~ 5LP ~ 5LP > 623HK",
+      "section": "Normal Hit:",
+      "position": "Anywhere (close)",
+      "damage": "1650",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very easy",
+      "notes": "Other light starters work as well"
+    },
+    {
+      "combo": "2HP > 2PP > LP ~ HP, 5LK > 623HK/623KK/236LP/236PP",
+      "section": "Normal Hit:",
+      "position": "Anywhere",
+      "damage": "3010/3130/2590/2890",
+      "superMeter": "0",
+      "driveMeter": "0/2",
+      "difficulty": "Intermediate",
+      "notes": "Ending in 623HK purely for damage still gives good oki in the corner. If you want to spend super 236LP/236PP allow cancels into SA3 and 236PP allows cancels into SA2."
+    },
+    {
+      "combo": "6MP, 2LP > 623HK",
+      "section": "Counter Hit:",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Simple counter hit combo from overhead. Also works with 5LP when close enough but 2LP is more consistent."
+    },
+    {
+      "combo": "2HP > 2PP > HP, 623HK",
+      "section": "Punish Counter:",
+      "position": "Anywhere",
+      "damage": "3160",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Seems like the optimal meterless midscreen punish using 2HP"
+    },
+    {
+      "combo": "236HP, 5MP/2HP > DR ~ 2HP > 236HP ~ 63214P",
+      "section": "Punish Counter:",
+      "position": "Anywhere",
+      "damage": "4065/4265",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "Easy/Intermediate",
+      "notes": "Sideswap. Link with the 5MP is easier and works at all ranges. At longer ranges the 2HP whiffs"
+    },
+    {
+      "combo": "236HP, 5MP/2HP > DR ~ 2HP > 236HP ~ 63214PP ( > 6 )",
+      "section": "Punish Counter:",
+      "position": "Anywhere",
+      "damage": "4253/4453/4329/4529",
+      "superMeter": "0",
+      "driveMeter": "5",
+      "difficulty": "Easy/Intermediate",
+      "notes": "Holding forward removes sideswap and gives extra damage. Same combo as before. Less drive efficient."
+    },
+    {
+      "combo": "236HP, 5MP/2HP > DR ~ 2HP > 236HP ~ 63214PP ~ SA2 (PP)",
+      "section": "Punish Counter:",
+      "position": "Anywhere",
+      "damage": "5373/5573",
+      "superMeter": "2",
+      "driveMeter": "5",
+      "difficulty": "Easy/Intermediate"
+    }
+  ],
   "lastUpdated": "2026-04-01"
 }
