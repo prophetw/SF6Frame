@@ -1,0 +1,15 @@
+{
+  "character": {
+    "id": "alex",
+    "name": "Alex",
+    "nameJp": "アレックス"
+  },
+  "stats": {
+    "health": 10000,
+    "forwardDash": 22,
+    "backDash": 22,
+    "forwardWalk": 0.04,
+    "backWalk": 0.03
+  },
+  "moves": []
+}

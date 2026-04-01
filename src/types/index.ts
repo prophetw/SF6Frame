@@ -129,4 +129,5 @@ export const SF6_CHARACTERS: Character[] = [
     { id: 'elena', name: 'Elena', nameJp: 'エレナ', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/Elena' },
     { id: 'c-viper', name: 'C. Viper', nameJp: 'C. ヴァイパー', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/C.Viper' },
     { id: 'sagat', name: 'Sagat', nameJp: 'サガト', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/Sagat' },
+    { id: 'alex', name: 'Alex', nameJp: 'アレックス', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/Alex' },
 ];
