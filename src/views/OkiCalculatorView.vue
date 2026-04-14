@@ -2090,7 +2090,7 @@ function formatTolerance(val: number | undefined): string {
             <span v-if="sortKey === 'block'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
           </span>
           <span class="sortable-header" @click="toggleSort('hit')">
-            被击
+            被击打康加2
             <span v-if="sortKey === 'hit'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
           </span>
           <span class="sortable-header" @click="toggleSort('trade')">
