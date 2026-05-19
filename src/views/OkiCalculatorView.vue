@@ -5,6 +5,16 @@ import { calculateTradeAdvantage, parseHitstun, getEffectiveHitstun } from '../u
 import { buildOkiResultKeyBase, getUniqueOkiResultKey } from '../utils/okiResultKey';
 import { calculateMoveTotalFrames as calculateUnifiedMoveTotalFrames } from '../utils/frameTotals';
 import { isAirborneMove } from '../utils/moveFilters';
+import {
+  calculateDriveRushAttackTiming,
+  DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET,
+  DRIVE_RUSH_FRAME_ADVANTAGE_BONUS,
+  getDriveRushActionTotalFrames,
+  getDriveRushMoveStartup,
+  PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME,
+  getFastestDriveRushHitFrame,
+  isDriveRushFollowUpMove,
+} from '../utils/driveRush';
 import { getMoveDisplayName } from '../i18n';
 
 const attackerCharId = ref<string>('');
@@ -128,7 +138,7 @@ onMounted(() => {
 
 // Combo chain - list of actions
 interface ComboAction {
-  type: 'dash' | 'move';
+  type: 'dash' | 'move' | 'driveRush';
   name: string;
   frames: number;
   active?: number;  // Only for moves
@@ -166,6 +176,7 @@ const selectedResultKey = ref<string | null>(null);
 const selectedThrowResultKey = ref<string | null>(null);
 const selectedBurstResultKey = ref<string | null>(null);
 const selectedFrameTrapResultKey = ref<string | null>(null);
+const selectedDriveRushResultKey = ref<string | null>(null);
 
 // Effective knockdown advantage
 // Effective knockdown advantage
@@ -533,10 +544,33 @@ function getMoveTotalFrames(move: Move): number {
 }
 
 function getActionTotalFrames(action: ComboAction): number {
+  if (action.type === 'driveRush' && action.move) {
+    return getDriveRushActionTotalFrames(action.move) ?? action.frames;
+  }
   if (action.type === 'move' && action.move) {
     return getMoveTotalFrames(action.move);
   }
   return action.frames;
+}
+
+function getActionDisplayName(action: ComboAction): string {
+  if (action.type === 'driveRush' && action.move) {
+    return `绿冲${getMoveDisplayName(action.move)}`;
+  }
+  if (action.type === 'move' && action.move) {
+    return getMoveDisplayName(action.move);
+  }
+  return action.name;
+}
+
+function getActionInput(action: ComboAction): string {
+  if (action.type === 'driveRush' && action.move) {
+    return `DR + ${action.move.input || getMoveDisplayName(action.move)}`;
+  }
+  if (action.type === 'move') {
+    return action.move?.input || action.name;
+  }
+  return action.name;
 }
 
 // Calculate combo result
@@ -550,7 +584,7 @@ const comboResult = computed(() => {
   for (let i = 0; i < comboChain.value.length; i++) {
     const action = comboChain.value[i];
     if (!action) continue;
-    if (i === comboChain.value.length - 1 && action.type === 'move') {
+    if (i === comboChain.value.length - 1 && (action.type === 'move' || action.type === 'driveRush')) {
       // Last action: add startup, track active separately
       baseTotalStartup += action.frames;
       lastActiveFrames = action.active || 1;
@@ -626,6 +660,13 @@ interface ExtendedOkiResult {
   tradeDetail?: string;
   tradeExplanation?: string;
   tags?: string[]; // New: e.g. 'Corner Only'
+  isDriveRush?: boolean;
+  driveRushStartFrame?: number;
+  driveRushAttackStartFrame?: number;
+  driveRushFastestHitFrame?: number;
+  driveRushAdvantageBonus?: number;
+  sourcePrefixName?: string;
+  sourcePrefixFrames?: number;
 }
 
 function parseFrameAdvantage(adv: string): number | null {
@@ -657,16 +698,13 @@ const comboChainPrefixFrames = computed(() => {
 const comboChainPrefixName = computed(() => {
   if (comboChain.value.length === 0) return '';
   return comboChain.value
-    .map((a: ComboAction) => (a.type === 'move' && a.move ? getMoveDisplayName(a.move) : a.name))
+    .map((a: ComboAction) => getActionDisplayName(a))
     .join(' + ');
 });
 
 const comboChainPrefixInput = computed(() => {
   if (comboChain.value.length === 0) return '';
-  return comboChain.value.map((a: ComboAction) => {
-    if (a.type === 'dash') return a.name;
-    return a.move?.input || a.name;
-  }).join(' + ');
+  return comboChain.value.map((a: ComboAction) => getActionInput(a)).join(' + ');
 });
 
 // Prefix frames for throw (includes move recovery)
@@ -708,6 +746,14 @@ function toggleFrameTrapResultDetail(key: string) {
   }
 }
 
+function toggleDriveRushResultDetail(key: string) {
+  if (selectedDriveRushResultKey.value === key) {
+    selectedDriveRushResultKey.value = null;
+  } else {
+    selectedDriveRushResultKey.value = key;
+  }
+}
+
 // Sort State
 const sortKey = ref<'block' | 'hit' | 'trade' | 'startup' | 'tolerance'>('block');
 const sortOrder = ref<'asc' | 'desc'>('desc');
@@ -721,6 +767,13 @@ function toggleSort(key: 'block' | 'hit' | 'trade' | 'startup' | 'tolerance') {
     sortOrder.value = key === 'startup' ? 'asc' : 'desc'; // Default order by key
   }
 }
+
+const driveRushFollowUpMoves = computed<Move[]>(() => {
+  return allMoves.value.filter((move) => {
+    if (isComboSequenceMove(move)) return false;
+    return isDriveRushFollowUpMove(move);
+  });
+});
 
 // Auto results
 const allOkiResults = computed<ExtendedOkiResult[]>(() => {
@@ -913,6 +966,134 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           tradeDetail: tradeDet,
           tradeExplanation: tradeExpl,
           tags: prefix.isCorner ? ['版边(Corner)'] : []
+        });
+      }
+    }
+
+    for (const move of driveRushFollowUpMoves.value) {
+      const startup = getDriveRushMoveStartup(move) ?? 0;
+      if (startup <= 0) continue;
+
+      const activeInfo = parseActiveSegments(move.active);
+      const activeHasGap = activeInfo.gaps.length > 0;
+      const activeHasMultipleSegments = activeInfo.segments.length > 1;
+      const activeHitTotal = parseTotalActiveFrames(move.active);
+      const activeDisplayStartOffset = activeHasGap ? activeInfo.lastSegmentStartOffset : 0;
+      const activeDisplayLength = activeHasGap ? activeInfo.lastSegmentLength : activeHitTotal;
+      const meatyStartOffset = activeHasMultipleSegments ? activeInfo.lastSegmentStartOffset : 0;
+      const meatyLength = activeHasMultipleSegments ? activeInfo.lastSegmentLength : activeHitTotal;
+
+      const timing = calculateDriveRushAttackTiming({
+        driveRushStartFrame: prefix.frames,
+        moveStartup: startup,
+        activeStartOffset: activeDisplayStartOffset,
+        activeLength: activeDisplayLength,
+      });
+      const ourStart = timing.firstActiveFrame;
+      const ourEnd = timing.lastActiveFrame;
+
+      const overlapsPreActive =
+        hasPreActiveWindow && ourEnd >= oppWindowStart && ourStart <= oppWindowEnd;
+      const overlapsOppFirst = ourStart <= oppFirst && ourEnd >= oppFirst;
+
+      const isSuccessMatch = overlapsPreActive;
+      const isTradeMatch = overlapsOppFirst && !overlapsPreActive;
+      const toleranceFrames = isSuccessMatch ? Math.max(0, oppWindowEnd - ourStart) : undefined;
+
+      if (isSuccessMatch || isTradeMatch) {
+        const meatyStartFrame = timing.fastestHitFrame + meatyStartOffset;
+        const effectiveHitFrame = Math.max(meatyStartFrame, oppWindowStart);
+        const canApplyMeaty = !move.noMeaty;
+        const meatyBonus = canApplyMeaty ? (effectiveHitFrame - meatyStartFrame) : 0;
+        const driveRushAdvantageBonus = getDriveRushAdvantageBonus(move);
+
+        let calcBlock: number | string | undefined;
+        let calcHit: number | string | undefined;
+        let tradeAdv: number | undefined;
+        let tradeDet: string | undefined;
+        let tradeExpl = '';
+
+        const baseBlock = parseFrameAdvantage(move.onBlock);
+        if (baseBlock !== null) {
+          calcBlock = baseBlock + driveRushAdvantageBonus + meatyBonus;
+        } else {
+          calcBlock = move.onBlock;
+        }
+
+        const baseHit = parseFrameAdvantage(move.onHit);
+        if (baseHit !== null) {
+          const chBonus = isSuccessMatch ? 2 : 0;
+          calcHit = baseHit + driveRushAdvantageBonus + meatyBonus + chBonus;
+        } else {
+          calcHit = move.onHit;
+        }
+
+        if (isTradeMatch) {
+          if (selectedDefenderMove.value && move.raw && selectedDefenderMove.value.raw) {
+            const adv = calculateTradeAdvantage(move.raw, selectedDefenderMove.value.raw);
+            tradeAdv = adv;
+            tradeDet = `${adv > 0 ? '+' : ''}${adv}`;
+
+            const effA = getEffectiveHitstun(move.raw);
+            const effB = getEffectiveHitstun(selectedDefenderMove.value.raw);
+
+            const labelA = effA.type === 'blockstun' ? `(Blockstun ${parseHitstun(move.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(move.raw.hitstun)} + 2CH)`;
+            const labelB = effB.type === 'blockstun' ? `(Blockstun ${parseHitstun(selectedDefenderMove.value.raw.blockstun)} + 2CH)` : `(Hitstun ${parseHitstun(selectedDefenderMove.value.raw.hitstun)} + 2CH)`;
+
+            tradeExpl = `绿冲${getMoveDisplayName(move)} ${labelA} - ${getMoveDisplayName(selectedDefenderMove.value)} ${labelB} = ${adv}`;
+          } else {
+            tradeDet = '需选择招式';
+          }
+        }
+
+        const driveRushPrefixName = prefix.name ? `${prefix.name} + 绿冲` : '绿冲';
+        const driveRushPrefixInput = prefix.input ? `${prefix.input} + DR` : 'DR';
+        const effectivePrefixFrames = prefix.frames + DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET;
+        const baseKey = buildOkiResultKeyBase({
+          prefixName: driveRushPrefixName,
+          prefixFrames: effectivePrefixFrames,
+          prefixInput: driveRushPrefixInput,
+          moveName: move.name,
+          moveInput: move.input,
+          ourActiveStart: ourStart,
+          ourActiveEnd: ourEnd
+        });
+        const key = getUniqueOkiResultKey(baseKey, keyCounts);
+
+        results.push({
+          key,
+          move,
+          prefix: driveRushPrefixName,
+          prefixInput: driveRushPrefixInput,
+          prefixFrames: effectivePrefixFrames,
+          ourActiveStart: ourStart,
+          ourActiveEnd: ourEnd,
+          activeDisplayStartOffset,
+          activeDisplayLength,
+          activeHasGap,
+          activeHasMultipleSegments,
+          activeHitTotal,
+          meatyStartFrame,
+          meatyStartOffset,
+          meatyLength,
+          toleranceFrames,
+          coversOpponent: isSuccessMatch,
+          isTrade: isTradeMatch,
+          calculatedOnBlock: calcBlock,
+          calculatedOnHit: calcHit,
+          meatyBonus,
+          effectiveHitFrame,
+          tradeAdvantage: tradeAdv,
+          tradeDetail: tradeDet,
+          tradeExplanation: tradeExpl,
+          tags: prefix.isCorner ? ['版边(Corner)'] : [],
+          isDriveRush: true,
+          driveRushStartFrame: prefix.frames,
+          driveRushAttackStartFrame: timing.attackStartFrame,
+          driveRushFastestHitFrame: timing.fastestHitFrame,
+          driveRushAdvantageBonus,
+          sourcePrefixName: prefix.name,
+          sourcePrefixFrames: prefix.frames,
         });
       }
     }
@@ -1335,6 +1516,167 @@ const allFrameTrapResults = computed<FrameTrapResult[]>(() => {
     .slice(0, 50);
 });
 
+interface DriveRushOkiResult {
+  key: string;
+  prefix: string;
+  prefixFrames: number;
+  extraDelayFrames: number;
+  driveRushStartDelay: number;
+  attackStartFrame: number;
+  move: Move;
+  startup: number;
+  fastestHitFrame: number;
+  firstActive: number;
+  lastActive: number;
+  wakeupOffset: number;
+  toleranceFrames?: number;
+  coversOpponent: boolean;
+  isTrade: boolean;
+  activeDisplayStartOffset: number;
+  activeDisplayLength: number;
+  activeHasGap: boolean;
+  activeHasMultipleSegments: boolean;
+  activeHitTotal: number;
+  meatyStartFrame: number;
+  meatyStartOffset: number;
+  meatyLength: number;
+  meatyBonus: number;
+  effectiveHitFrame: number;
+  driveRushAdvantageBonus: number;
+  calculatedOnBlock?: number | string;
+  calculatedOnHit?: number | string;
+}
+
+function isDriveRushAdvantageMove(move: Move): boolean {
+  return move.category === 'normal' || move.category === 'unique';
+}
+
+function getDriveRushAdvantageBonus(move: Move): number {
+  return isDriveRushAdvantageMove(move) ? DRIVE_RUSH_FRAME_ADVANTAGE_BONUS : 0;
+}
+
+const allDriveRushOkiResults = computed<DriveRushOkiResult[]>(() => {
+  if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
+
+  const results: DriveRushOkiResult[] = [];
+  const keyCounts = new Map<string, number>();
+  const prefixes = getAltPrefixes();
+  const extraDelay = normalizedAltExtraDelay.value;
+  const oppFirst = opponentFirstActiveFrame.value;
+  const oppWindowStart = opponentWakeupFrame.value;
+  const oppWindowEnd = opponentPreActiveEnd.value;
+  const hasPreActiveWindow = oppWindowEnd >= oppWindowStart;
+
+  for (const prefix of prefixes) {
+    for (const move of driveRushFollowUpMoves.value) {
+      const startup = getDriveRushMoveStartup(move) ?? 0;
+      if (startup <= 0) continue;
+
+      const activeInfo = parseActiveSegments(move.active);
+      const activeHasGap = activeInfo.gaps.length > 0;
+      const activeHasMultipleSegments = activeInfo.segments.length > 1;
+      const activeHitTotal = parseTotalActiveFrames(move.active);
+      const activeDisplayStartOffset = activeHasGap ? activeInfo.lastSegmentStartOffset : 0;
+      const activeDisplayLength = activeHasGap ? activeInfo.lastSegmentLength : activeHitTotal;
+      const meatyStartOffset = activeHasMultipleSegments ? activeInfo.lastSegmentStartOffset : 0;
+      const meatyLength = activeHasMultipleSegments ? activeInfo.lastSegmentLength : activeHitTotal;
+
+      const driveRushStartDelay = prefix.frames + extraDelay;
+      const timing = calculateDriveRushAttackTiming({
+        driveRushStartFrame: driveRushStartDelay,
+        moveStartup: startup,
+        activeStartOffset: activeDisplayStartOffset,
+        activeLength: activeDisplayLength,
+      });
+      const attackStartFrame = timing.attackStartFrame;
+      const fastestHitFrame = timing.fastestHitFrame;
+      const firstActive = timing.firstActiveFrame;
+      const lastActive = timing.lastActiveFrame;
+
+      const overlapsPreActive =
+        hasPreActiveWindow && lastActive >= oppWindowStart && firstActive <= oppWindowEnd;
+      const overlapsOppFirst = firstActive <= oppFirst && lastActive >= oppFirst;
+      const isSuccessMatch = overlapsPreActive;
+      const isTradeMatch = overlapsOppFirst && !overlapsPreActive;
+
+      if (!isSuccessMatch && !isTradeMatch) continue;
+
+      const meatyStartFrame = fastestHitFrame + meatyStartOffset;
+      const effectiveHitFrame = Math.max(meatyStartFrame, oppWindowStart);
+      const canApplyMeaty = !move.noMeaty;
+      const meatyBonus = canApplyMeaty ? (effectiveHitFrame - meatyStartFrame) : 0;
+      const driveRushAdvantageBonus = getDriveRushAdvantageBonus(move);
+      const toleranceFrames = isSuccessMatch ? Math.max(0, oppWindowEnd - firstActive) : undefined;
+
+      let calcBlock: number | string | undefined;
+      let calcHit: number | string | undefined;
+
+      const baseBlock = parseFrameAdvantage(move.onBlock);
+      if (baseBlock !== null) {
+        calcBlock = baseBlock + driveRushAdvantageBonus + meatyBonus;
+      } else {
+        calcBlock = move.onBlock;
+      }
+
+      const baseHit = parseFrameAdvantage(move.onHit);
+      if (baseHit !== null) {
+        const chBonus = isSuccessMatch ? 2 : 0;
+        calcHit = baseHit + driveRushAdvantageBonus + meatyBonus + chBonus;
+      } else {
+        calcHit = move.onHit;
+      }
+
+      const baseKey = buildOkiResultKeyBase({
+        prefixName: `${prefix.name}|DR`,
+        prefixFrames: driveRushStartDelay,
+        moveName: move.name,
+        moveInput: move.input,
+        ourActiveStart: firstActive,
+        ourActiveEnd: lastActive,
+      });
+      const key = getUniqueOkiResultKey(baseKey, keyCounts);
+
+      results.push({
+        key,
+        prefix: prefix.name,
+        prefixFrames: prefix.frames,
+        extraDelayFrames: extraDelay,
+        driveRushStartDelay,
+        attackStartFrame,
+        move,
+        startup,
+        fastestHitFrame,
+        firstActive,
+        lastActive,
+        wakeupOffset: firstActive - opponentWakeupFrame.value + 1,
+        toleranceFrames,
+        coversOpponent: isSuccessMatch,
+        isTrade: isTradeMatch,
+        activeDisplayStartOffset,
+        activeDisplayLength,
+        activeHasGap,
+        activeHasMultipleSegments,
+        activeHitTotal,
+        meatyStartFrame,
+        meatyStartOffset,
+        meatyLength,
+        meatyBonus,
+        effectiveHitFrame,
+        driveRushAdvantageBonus,
+        calculatedOnBlock: calcBlock,
+        calculatedOnHit: calcHit,
+      });
+    }
+  }
+
+  return results
+    .sort((a, b) => {
+      if (a.coversOpponent !== b.coversOpponent) return a.coversOpponent ? -1 : 1;
+      return a.firstActive - b.firstActive || a.startup - b.startup;
+    })
+    .slice(0, 50);
+});
+
 // Actions
 // Character data modules
 const characterModules = import.meta.glob('../data/characters/*.json');
@@ -1451,6 +1793,25 @@ function addMove(move: Move) {
     frames: startup,
     active: active,
     move: move,
+  });
+  moveSearchQuery.value = '';
+}
+
+function canAddDriveRushMove(move: Move): boolean {
+  return !isComboSequenceMove(move) && isDriveRushFollowUpMove(move);
+}
+
+function addDriveRushMove(move: Move) {
+  if (!canAddDriveRushMove(move)) return;
+  const startup = getDriveRushMoveStartup(move);
+  if (startup === null || startup <= 0) return;
+  const active = parseActiveWindowFrames(move.active);
+  comboChain.value.push({
+    type: 'driveRush',
+    name: `绿冲${move.name}`,
+    frames: getFastestDriveRushHitFrame(startup),
+    active,
+    move,
   });
   moveSearchQuery.value = '';
 }
@@ -1967,7 +2328,7 @@ function formatTolerance(val: number | undefined): string {
         <div class="combo-builder-title">前置动作</div>
         <div class="combo-chain">
           <div v-for="(action, idx) in comboChain" :key="idx" class="chain-item">
-            <span class="chain-name">{{ action.type === 'move' && action.move ? getMoveDisplayName(action.move) : action.name }}</span>
+            <span class="chain-name">{{ getActionDisplayName(action) }}</span>
             <span class="chain-frames">{{ action.frames }}F</span>
             <button class="chain-remove" @click="removeAction(idx)">×</button>
             <span v-if="idx < comboChain.length - 1" class="chain-plus">+</span>
@@ -1994,11 +2355,20 @@ function formatTolerance(val: number | undefined): string {
           <div class="move-search">
             <input type="text" v-model="moveSearchQuery" placeholder="搜索招式..." class="move-search-input" />
             <div v-if="moveSearchQuery" class="move-dropdown">
-              <button v-for="move in filteredMoves" :key="`${move.name}-${move.input}`" class="move-option" @click="addMove(move)">
-                <span>{{ getMoveDisplayName(move) }}</span>
-                <span class="move-input">{{ move.input }}</span>
-                <span>{{ move.startup }}F</span>
-              </button>
+              <div v-for="move in filteredMoves" :key="`${move.name}-${move.input}`" class="move-option-row">
+                <button class="move-option" @click="addMove(move)">
+                  <span>{{ getMoveDisplayName(move) }}</span>
+                  <span class="move-input">{{ move.input }}</span>
+                  <span>{{ move.startup }}F</span>
+                </button>
+                <button
+                  v-if="canAddDriveRushMove(move)"
+                  class="move-option-dr"
+                  @click="addDriveRushMove(move)"
+                >
+                  DR {{ getFastestDriveRushHitFrame(getDriveRushMoveStartup(move) ?? 0) }}F
+                </button>
+              </div>
             </div>
           </div>
           <button v-if="comboChain.length > 0" class="action-btn clear-btn" @click="clearCombo">
@@ -2134,7 +2504,16 @@ function formatTolerance(val: number | undefined): string {
                 {{ result.prefix || '无' }}
                 <span v-if="result.prefixInput"> ({{ result.prefixInput }})</span>
                 = {{ result.prefixFrames }}F
+                <span v-if="result.isDriveRush">有效偏移</span>
               </span>
+            </div>
+            <div class="detail-row" v-if="result.isDriveRush">
+              <span class="detail-label">绿冲起点:</span>
+              <span>{{ result.sourcePrefixName || '无前置' }} = {{ result.sourcePrefixFrames ?? 0 }}F</span>
+            </div>
+            <div class="detail-row" v-if="result.isDriveRush">
+              <span class="detail-label">动作开始:</span>
+              <span>{{ result.sourcePrefixFrames ?? 0 }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} = {{ result.driveRushAttackStartFrame }}F</span>
             </div>
             <div class="detail-row">
               <span class="detail-label">招式发生:</span>
@@ -2146,7 +2525,14 @@ function formatTolerance(val: number | undefined): string {
             </div>
             <div class="detail-row calc">
               <span class="detail-label">计算:</span>
-              <span>
+              <span v-if="result.isDriveRush">
+                {{ result.sourcePrefixFrames ?? 0 }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + {{ result.move.startup }} - 1
+                <span v-if="result.activeDisplayStartOffset && result.activeDisplayStartOffset > 0">
+                  + {{ result.activeDisplayStartOffset }}
+                </span>
+                = {{ result.ourActiveStart }}F
+              </span>
+              <span v-else>
                 {{ result.prefixFrames }} + {{ result.move.startup }}
                 <span v-if="result.activeDisplayStartOffset && result.activeDisplayStartOffset > 0">
                   + {{ result.activeDisplayStartOffset }}
@@ -2173,6 +2559,9 @@ function formatTolerance(val: number | undefined): string {
               <span class="detail-label">被防计算:</span>
               <span>
                 {{ result.move.onBlock }} (原始)
+                <span v-if="result.driveRushAdvantageBonus && result.driveRushAdvantageBonus > 0" class="meaty-bonus-highlight">
+                  + {{ result.driveRushAdvantageBonus }} (绿冲)
+                </span>
                 <span v-if="result.meatyBonus && result.meatyBonus > 0" class="meaty-bonus-highlight">
                   + {{ result.meatyBonus }} (Meaty: {{ result.effectiveHitFrame }}F击中 - {{ result.meatyStartFrame ?? result.ourActiveStart }}F发生)
                 </span>
@@ -2185,6 +2574,9 @@ function formatTolerance(val: number | undefined): string {
               <span class="detail-label">被击计算:</span>
               <span>
                 {{ result.move.onHit }} (原始)
+                <span v-if="result.driveRushAdvantageBonus && result.driveRushAdvantageBonus > 0" class="meaty-bonus-highlight">
+                  + {{ result.driveRushAdvantageBonus }} (绿冲)
+                </span>
                 <span v-if="result.meatyBonus && result.meatyBonus > 0" class="meaty-bonus-highlight">
                   + {{ result.meatyBonus }} (Meaty)
                 </span>
@@ -2512,6 +2904,157 @@ function formatTolerance(val: number | undefined): string {
       </div>
 
       <div class="alt-oki-grid">
+        <div class="alt-oki-card">
+          <h3 class="subsection-title">绿冲 + 动作压起身</h3>
+          <p class="section-desc">按绿冲动作第 1 帧计时，Parry Drive Rush 第 10 帧可取消进攻击。最速命中帧 = 招式发生 + 9。</p>
+
+          <div class="throw-summary">
+            <div class="summary-item">
+              <span class="summary-label">击倒优势 N</span>
+              <span class="summary-value">{{ effectiveKnockdownAdv }}F</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">额外延迟</span>
+              <span class="summary-value">{{ normalizedAltExtraDelay }}F</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">绿冲可取消</span>
+              <span class="summary-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }}F</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">有效偏移</span>
+              <span class="summary-value">+{{ DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET }}F</span>
+            </div>
+          </div>
+
+          <div class="throw-math">
+            <div class="math-row">
+              <span class="math-label">核心公式:</span>
+              <span class="math-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + 招式发生 - 1 = 招式发生 + {{ DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET }}</span>
+            </div>
+            <div class="math-row">
+              <span class="math-label">5LP 示例:</span>
+              <span class="math-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + 4 - 1 = {{ getFastestDriveRushHitFrame(4) }}F</span>
+            </div>
+            <div class="math-row">
+              <span class="math-label">6MP 示例:</span>
+              <span class="math-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + 20 - 1 = {{ getFastestDriveRushHitFrame(20) }}F</span>
+            </div>
+            <div class="math-row">
+              <span class="math-label">可命中窗口:</span>
+              <span class="math-value" v-if="opponentPreActiveWindowValid">{{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F</span>
+              <span class="math-value" v-else>无</span>
+            </div>
+          </div>
+
+          <div class="results-header-row throw-results-header">
+            <h3 class="results-title">绿冲匹配 (共 {{ allDriveRushOkiResults.length }} 条，显示前 {{ allDriveRushOkiResults.length }} 条)</h3>
+          </div>
+
+          <div v-if="allDriveRushOkiResults.length > 0" class="results-table">
+            <div class="result-header throw-header">
+              <span>组合</span>
+              <span>最速命中</span>
+              <span>打击帧</span>
+              <span>压制帧</span>
+            </div>
+            <div
+              v-for="result in allDriveRushOkiResults"
+              :key="result.key"
+              :class="['result-row-auto', 'throw-row', {
+                expanded: selectedDriveRushResultKey === result.key,
+                success: result.coversOpponent,
+                trade: result.isTrade
+              }]"
+              @click="toggleDriveRushResultDetail(result.key)"
+            >
+              <div class="result-combo">
+                <span v-if="result.coversOpponent" class="success-badge">压制</span>
+                <span v-if="result.isTrade" class="trade-badge">相杀</span>
+                <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
+                <span v-if="result.prefix">+</span>
+                <span>绿冲</span>
+                <span>+</span>
+                <span>{{ getMoveDisplayName(result.move) }}</span>
+                <span class="move-input">({{ result.move.input }})</span>
+              </div>
+              <span>{{ result.fastestHitFrame }}F</span>
+              <span>{{ result.firstActive }}~{{ result.lastActive }}F</span>
+              <span>{{ result.wakeupOffset }}F</span>
+
+              <div v-if="selectedDriveRushResultKey === result.key" class="result-detail" @click.stop>
+                <div class="detail-title">帧数详情</div>
+                <div class="detail-row">
+                  <span class="detail-label">前置动作:</span>
+                  <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">额外延迟:</span>
+                  <span>{{ result.extraDelayFrames }}F</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">绿冲起点:</span>
+                  <span>{{ result.prefixFrames }} + {{ result.extraDelayFrames }} = {{ result.driveRushStartDelay }}F</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">动作开始:</span>
+                  <span>{{ result.driveRushStartDelay }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} = {{ result.attackStartFrame }}F</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">派生动作:</span>
+                  <span>{{ getMoveDisplayName(result.move) }}<span v-if="result.move.input"> ({{ result.move.input }})</span> = {{ result.startup }}F 发生, {{ result.move.active }} 持续</span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">最速命中:</span>
+                  <span>{{ result.driveRushStartDelay }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + {{ result.startup }} - 1 = {{ result.fastestHitFrame }}F</span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">
+                    {{ result.activeHasGap ? '最后段打击范围:' : '打击范围:' }}
+                  </span>
+                  <span class="frame-positive">{{ result.firstActive }}~{{ result.lastActive }}F</span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">压制帧:</span>
+                  <span>{{ result.firstActive }} - {{ opponentWakeupFrame }} + 1 = {{ result.wakeupOffset }}F</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">可命中窗口:</span>
+                  <span v-if="opponentPreActiveWindowValid">{{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F</span>
+                  <span v-else>无</span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">被防计算:</span>
+                  <span>
+                    {{ result.move.onBlock }} (原始)
+                    <span v-if="result.driveRushAdvantageBonus > 0" class="meaty-bonus-highlight">+ {{ result.driveRushAdvantageBonus }} (绿冲)</span>
+                    <span v-if="result.meatyBonus > 0" class="meaty-bonus-highlight">+ {{ result.meatyBonus }} (Meaty)</span>
+                    = <span :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{ formatFrame(result.calculatedOnBlock) }}</span>
+                  </span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">被击计算:</span>
+                  <span>
+                    {{ result.move.onHit }} (原始)
+                    <span v-if="result.driveRushAdvantageBonus > 0" class="meaty-bonus-highlight">+ {{ result.driveRushAdvantageBonus }} (绿冲)</span>
+                    <span v-if="result.meatyBonus > 0" class="meaty-bonus-highlight">+ {{ result.meatyBonus }} (Meaty)</span>
+                    <span v-if="result.coversOpponent" class="meaty-bonus-highlight">+ 2 (打康)</span>
+                    = <span :class="{ 'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit) }">{{ formatFrame(result.calculatedOnHit) }}</span>
+                  </span>
+                </div>
+                <div class="detail-row result">
+                  <span class="detail-label">判定:</span>
+                  <span v-if="result.coversOpponent" class="success">✓ 压制成功: {{ result.firstActive }}~{{ result.lastActive }} 与 {{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }} 有重叠</span>
+                  <span v-else-if="result.isTrade" class="trade">相杀: 与对手判定第一帧重合 ({{ opponentFirstActiveFrame }}F)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-else class="empty-state">
+            <p>没有匹配的绿冲压起身组合</p>
+          </div>
+        </div>
+
         <div class="alt-oki-card">
           <h3 class="subsection-title">斗气迸放压起身</h3>
           <p class="section-desc">固定 26F 发生，26~27F 持续。输入“压制帧”定义第一段判定相对起身的对齐位置。</p>
@@ -3102,6 +3645,35 @@ function formatTolerance(val: number | undefined): string {
 
 .move-option:last-child {
   border-bottom: none;
+}
+
+.move-option-row {
+  display: flex;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.move-option-row:last-child {
+  border-bottom: none;
+}
+
+.move-option-row .move-option {
+  flex: 1;
+  border-bottom: none;
+}
+
+.move-option-dr {
+  flex: 0 0 72px;
+  padding: var(--space-sm) var(--space-xs);
+  background: rgba(0, 212, 255, 0.12);
+  border: none;
+  border-left: 1px solid var(--color-border-light);
+  color: #00d4ff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.move-option-dr:hover {
+  background: rgba(0, 212, 255, 0.22);
 }
 
 /* Combo Result */
