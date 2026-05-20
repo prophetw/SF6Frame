@@ -6,14 +6,14 @@ import { isAirborneMove } from './moveFilters';
  * Timing origin: Parry Drive Rush frame 1.
  *
  * SF6 rule: Parry Drive Rush can cancel into an attack from frame 10.
- * Move startup is inclusive, so the move's frame 1 occupies Drive Rush frame 10.
+ * The oki calculator treats the earliest follow-up hit as frame 10 + move startup.
  */
 export const PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME = 10;
-export const DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET = PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME - 1;
+export const DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET = PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME;
 export const DRIVE_RUSH_FRAME_ADVANTAGE_BONUS = 4;
 
 export function getFastestDriveRushHitFrame(moveStartup: number): number {
-  return PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME + moveStartup - 1;
+  return PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME + moveStartup;
 }
 
 export type DriveRushAttackTiming = {

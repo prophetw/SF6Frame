@@ -2526,7 +2526,7 @@ function formatTolerance(val: number | undefined): string {
             <div class="detail-row calc">
               <span class="detail-label">计算:</span>
               <span v-if="result.isDriveRush">
-                {{ result.sourcePrefixFrames ?? 0 }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + {{ result.move.startup }} - 1
+                {{ result.sourcePrefixFrames ?? 0 }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + {{ result.move.startup }}
                 <span v-if="result.activeDisplayStartOffset && result.activeDisplayStartOffset > 0">
                   + {{ result.activeDisplayStartOffset }}
                 </span>
@@ -2906,7 +2906,7 @@ function formatTolerance(val: number | undefined): string {
       <div class="alt-oki-grid">
         <div class="alt-oki-card">
           <h3 class="subsection-title">绿冲 + 动作压起身</h3>
-          <p class="section-desc">按绿冲动作第 1 帧计时，Parry Drive Rush 第 10 帧可取消进攻击。最速命中帧 = 招式发生 + 9。</p>
+          <p class="section-desc">按绿冲动作第 1 帧计时，Parry Drive Rush 第 10 帧可取消进攻击。最速命中帧 = 招式发生 + 10。</p>
 
           <div class="throw-summary">
             <div class="summary-item">
@@ -2930,15 +2930,15 @@ function formatTolerance(val: number | undefined): string {
           <div class="throw-math">
             <div class="math-row">
               <span class="math-label">核心公式:</span>
-              <span class="math-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + 招式发生 - 1 = 招式发生 + {{ DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET }}</span>
+              <span class="math-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + 招式发生 = 招式发生 + {{ DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET }}</span>
             </div>
             <div class="math-row">
               <span class="math-label">5LP 示例:</span>
-              <span class="math-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + 4 - 1 = {{ getFastestDriveRushHitFrame(4) }}F</span>
+              <span class="math-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + 4 = {{ getFastestDriveRushHitFrame(4) }}F</span>
             </div>
             <div class="math-row">
               <span class="math-label">6MP 示例:</span>
-              <span class="math-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + 20 - 1 = {{ getFastestDriveRushHitFrame(20) }}F</span>
+              <span class="math-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + 20 = {{ getFastestDriveRushHitFrame(20) }}F</span>
             </div>
             <div class="math-row">
               <span class="math-label">可命中窗口:</span>
@@ -3006,7 +3006,7 @@ function formatTolerance(val: number | undefined): string {
                 </div>
                 <div class="detail-row calc">
                   <span class="detail-label">最速命中:</span>
-                  <span>{{ result.driveRushStartDelay }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + {{ result.startup }} - 1 = {{ result.fastestHitFrame }}F</span>
+                  <span>{{ result.driveRushStartDelay }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + {{ result.startup }} = {{ result.fastestHitFrame }}F</span>
                 </div>
                 <div class="detail-row calc">
                   <span class="detail-label">

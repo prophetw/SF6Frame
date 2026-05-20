@@ -21,9 +21,9 @@ const buildMove = (overrides: Partial<Move>): Move => ({
 });
 
 describe('driveRush', () => {
-  it('calculates fastest hit frame using inclusive startup counting', () => {
-    expect(getFastestDriveRushHitFrame(4)).toBe(13);
-    expect(getFastestDriveRushHitFrame(20)).toBe(29);
+  it('calculates fastest hit frame from the frame-10 drive rush cancel point', () => {
+    expect(getFastestDriveRushHitFrame(4)).toBe(14);
+    expect(getFastestDriveRushHitFrame(20)).toBe(30);
   });
 
   it('calculates drive rush follow-up timing from an existing prefix', () => {
@@ -34,16 +34,16 @@ describe('driveRush', () => {
     })).toEqual({
       driveRushStartFrame: 19,
       attackStartFrame: 29,
-      fastestHitFrame: 32,
-      firstActiveFrame: 32,
-      lastActiveFrame: 34,
+      fastestHitFrame: 33,
+      firstActiveFrame: 33,
+      lastActiveFrame: 35,
     });
   });
 
-  it('adds the inclusive drive rush offset when used as a chain action', () => {
+  it('adds the frame-10 drive rush offset when used as a chain action', () => {
     expect(getDriveRushActionTotalFrames(buildMove({
       raw: { total: 13 },
-    }))).toBe(22);
+    }))).toBe(23);
   });
 
   it('allows grounded non-throw moves as drive rush follow-ups', () => {
