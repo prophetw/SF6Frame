@@ -9,7 +9,6 @@ import {
   calculateDriveRushAttackTiming,
   DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET,
   DRIVE_RUSH_FRAME_ADVANTAGE_BONUS,
-  getDriveRushActionTotalFrames,
   getDriveRushMoveStartup,
   PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME,
   getFastestDriveRushHitFrame,
@@ -153,8 +152,7 @@ const autoMatchSearchQuery = ref(''); // New: Search query for auto match result
 const opponentReversalStartup = ref<number>(4);
 // const opponentReversalActive = ref<number>(3); // Unused
 
-// Use combo chain as prefix for auto calculation
-const useChainAsPrefix = ref(false);
+// Use combo chain as prefix for auto calculation (automatically filtered)
 
 // Loop throw calculator inputs
 // Loop throw calculator inputs
@@ -162,7 +160,6 @@ const throwStartup = ref<number>(5);
 const throwActive = ref<number>(3);
 const wakeupThrowInvul = ref<number>(1);
 const opponentAbareStartup = ref<number>(4);
-const comboExtraDelayFrames = ref<number>(0);
 const throwExtraDelayFrames = ref<number>(0);
 const altExtraDelayFrames = ref<number>(0);
 const burstPressureOffset = ref<number>(1);
@@ -231,7 +228,6 @@ const normalizedThrowStartup = computed(() => Math.max(1, throwStartup.value || 
 const normalizedThrowActive = computed(() => Math.max(1, throwActive.value || 1));
 const normalizedThrowInvul = computed(() => Math.max(0, wakeupThrowInvul.value || 0));
 const normalizedAbare = computed(() => Math.max(0, opponentAbareStartup.value || 0));
-const normalizedComboExtraDelay = computed(() => Math.max(0, Math.trunc(comboExtraDelayFrames.value || 0)));
 const normalizedThrowExtraDelay = computed(() => Math.max(0, Math.trunc(throwExtraDelayFrames.value || 0)));
 const normalizedAltExtraDelay = computed(() => Math.max(0, Math.trunc(altExtraDelayFrames.value || 0)));
 const normalizedBurstPressureOffset = computed(() => Math.max(1, Math.trunc(burstPressureOffset.value || 1)));
@@ -543,16 +539,6 @@ function getMoveTotalFrames(move: Move): number {
   return calculateUnifiedMoveTotalFrames(move) ?? 0;
 }
 
-function getActionTotalFrames(action: ComboAction): number {
-  if (action.type === 'driveRush' && action.move) {
-    return getDriveRushActionTotalFrames(action.move) ?? action.frames;
-  }
-  if (action.type === 'move' && action.move) {
-    return getMoveTotalFrames(action.move);
-  }
-  return action.frames;
-}
-
 function getActionDisplayName(action: ComboAction): string {
   if (action.type === 'driveRush' && action.move) {
     return `绿冲${getMoveDisplayName(action.move)}`;
@@ -563,74 +549,8 @@ function getActionDisplayName(action: ComboAction): string {
   return action.name;
 }
 
-function getActionInput(action: ComboAction): string {
-  if (action.type === 'driveRush' && action.move) {
-    return `DR + ${action.move.input || getMoveDisplayName(action.move)}`;
-  }
-  if (action.type === 'move') {
-    return action.move?.input || action.name;
-  }
-  return action.name;
-}
 
-// Calculate combo result
-const comboResult = computed(() => {
-  if (comboChain.value.length === 0 || effectiveKnockdownAdv.value <= 0) return null;
 
-  // Calculate total frames (all actions except last one uses full duration)
-  let baseTotalStartup = 0;
-  let lastActiveFrames = 1;
-
-  for (let i = 0; i < comboChain.value.length; i++) {
-    const action = comboChain.value[i];
-    if (!action) continue;
-    if (i === comboChain.value.length - 1 && (action.type === 'move' || action.type === 'driveRush')) {
-      // Last action: add startup, track active separately
-      baseTotalStartup += action.frames;
-      lastActiveFrames = action.active || 1;
-    } else {
-      // Not last action: add full frames
-      baseTotalStartup += getActionTotalFrames(action);
-    }
-  }
-
-  const totalStartup = baseTotalStartup + normalizedComboExtraDelay.value;
-  const ourStart = totalStartup;
-  const ourEnd = ourStart + lastActiveFrames - 1;
-
-  const oppFirst = opponentFirstActiveFrame.value;
-  const oppWindowStart = opponentWakeupFrame.value;
-  const oppWindowEnd = opponentPreActiveEnd.value;
-  const hasPreActiveWindow = oppWindowEnd >= oppWindowStart;
-  // Success: our active window overlaps opponent's vulnerable startup window
-  const overlapsPreActive =
-    hasPreActiveWindow && ourEnd >= oppWindowStart && ourStart <= oppWindowEnd;
-  const overlapsOppFirst = ourStart <= oppFirst && ourEnd >= oppFirst;
-  const isSuccess = overlapsPreActive;
-  const isTrade = overlapsOppFirst && !overlapsPreActive;
-  const coversOpponent = isSuccess; // For backward compatibility
-
-  let status = '';
-  if (isSuccess) {
-    status = '压制成功 ✓';
-  } else if (isTrade) {
-    status = '相杀';
-  } else if (ourEnd < oppWindowStart) {
-    status = '打击太早';
-  } else {
-    status = '打击太晚';
-  }
-
-  return {
-    baseTotalStartup,
-    extraDelayFrames: normalizedComboExtraDelay.value,
-    totalStartup,
-    ourStart,
-    ourEnd,
-    coversOpponent,
-    status,
-  };
-});
 
 // Extended Oki Result for auto list
 interface ExtendedOkiResult {
@@ -681,35 +601,12 @@ function isComboSequenceMove(move: Move): boolean {
   return input.includes('~') || name.includes('~');
 }
 
-// Calculate prefix frames from combo chain (use full duration for moves)
-const comboChainBasePrefixFrames = computed(() => {
-  let total = 0;
-  for (const action of comboChain.value) {
-    total += getActionTotalFrames(action);
-  }
-  return total;
-});
-
-const comboChainPrefixFrames = computed(() => {
-  return comboChainBasePrefixFrames.value + normalizedComboExtraDelay.value;
-});
-
 // Build prefix name from combo chain
 const comboChainPrefixName = computed(() => {
   if (comboChain.value.length === 0) return '';
   return comboChain.value
     .map((a: ComboAction) => getActionDisplayName(a))
     .join(' + ');
-});
-
-const comboChainPrefixInput = computed(() => {
-  if (comboChain.value.length === 0) return '';
-  return comboChain.value.map((a: ComboAction) => getActionInput(a)).join(' + ');
-});
-
-// Prefix frames for throw (includes move recovery)
-const comboChainThrowPrefixFrames = computed(() => {
-  return comboChainBasePrefixFrames.value + normalizedComboExtraDelay.value;
 });
 
 // Toggle result detail
@@ -795,58 +692,32 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
     return total > 0 && total < effectiveKnockdownAdv.value && total < 60;
   });
 
-  let prefixes: { name: string; frames: number; input?: string; isCorner?: boolean }[];
+  // Default prefixes (Dashes)
+  const prefixes: { name: string; frames: number; input?: string; isCorner?: boolean }[] = [
+    { name: '', frames: 0, isCorner: false },
+    { name: '前冲', frames: stats.value.forwardDash, isCorner: false },
+    { name: '前冲x2', frames: stats.value.forwardDash * 2, isCorner: false },
+  ];
 
-  if (useChainAsPrefix.value && comboChain.value.length > 0) {
-    // Use combo chain as the only prefix
-    const basePrefix = {
-      name: comboChainPrefixName.value,
-      frames: comboChainPrefixFrames.value,
-      input: comboChainPrefixInput.value,
-      isCorner: false
-    };
-    prefixes = [basePrefix];
+  // Add Frame Kill Moves (Single Move)
+  for (const kill of validFrameKills) {
+    const total = getMoveTotalFrames(kill);
+    prefixes.push({
+      name: kill.name,
+      frames: total,
+      input: kill.input,
+      isCorner: true
+    });
 
-    for (const kill of validFrameKills) {
-      const total = getMoveTotalFrames(kill);
-      const combinedFrames = basePrefix.frames + total;
+    // Add Dash + Move (Common setup)
+    const dashTotal = stats.value.forwardDash + total;
+    if (dashTotal < effectiveKnockdownAdv.value) {
       prefixes.push({
-        name: basePrefix.name ? `${basePrefix.name} + ${kill.name}` : kill.name,
-        frames: combinedFrames,
-        input: basePrefix.input ? `${basePrefix.input} + ${kill.input}` : kill.input,
+        name: `前冲 + ${kill.name}`,
+        frames: dashTotal,
+        input: kill.input,
         isCorner: true
       });
-    }
-  } else {
-    // Default prefixes (Dashes)
-    prefixes = [
-      { name: '', frames: 0, isCorner: false },
-      { name: '前冲', frames: stats.value.forwardDash, isCorner: false },
-      { name: '前冲x2', frames: stats.value.forwardDash * 2, isCorner: false },
-    ];
-
-    // Add Frame Kill Moves (Single Move)
-    // Filter moves that are suitable for frame kills (Total frames < advantage)
-    // And generally not supers?
-    for (const kill of validFrameKills) {
-      const total = getMoveTotalFrames(kill);
-      prefixes.push({
-        name: kill.name,
-        frames: total,
-        input: kill.input,
-        isCorner: true // Moves usually don't travel as far as dash, so imply corner
-      });
-
-      // Add Dash + Move (Common setup)
-      const dashTotal = stats.value.forwardDash + total;
-      if (dashTotal < effectiveKnockdownAdv.value) {
-        prefixes.push({
-          name: `前冲 + ${kill.name}`,
-          frames: dashTotal,
-          input: kill.input,
-          isCorner: true
-        });
-      }
     }
   }
 
@@ -1104,6 +975,16 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
 
 const okiResults = computed<ExtendedOkiResult[]>(() => {
   let filtered = allOkiResults.value;
+
+  if (comboChain.value.length > 0) {
+    filtered = filtered.filter(result => {
+      const fullText = `${result.prefix || ''} + ${getMoveDisplayName(result.move) || ''} + ${result.move.name || ''} + ${result.move.nameZh || ''}`.toLowerCase();
+      return comboChain.value.every(action => {
+        const actionName = action.name.toLowerCase();
+        return fullText.includes(actionName);
+      });
+    });
+  }
   
   if (autoMatchSearchQuery.value) {
     const queryRaw = autoMatchSearchQuery.value.trim();
@@ -1193,18 +1074,11 @@ const allThrowResults = computed<ThrowComboResult[]>(() => {
   if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
   if (throwDelayMax.value < 0) return [];
 
-  let prefixes: { name: string; frames: number }[];
-  if (useChainAsPrefix.value && comboChain.value.length > 0) {
-    prefixes = [
-      { name: comboChainPrefixName.value, frames: comboChainThrowPrefixFrames.value },
-    ];
-  } else {
-    prefixes = [
-      { name: '', frames: 0 },
-      { name: '前冲', frames: stats.value.forwardDash },
-      { name: '前冲x2', frames: stats.value.forwardDash * 2 },
-    ];
-  }
+  const prefixes: { name: string; frames: number }[] = [
+    { name: '', frames: 0 },
+    { name: '前冲', frames: stats.value.forwardDash },
+    { name: '前冲x2', frames: stats.value.forwardDash * 2 },
+  ];
 
   const results: ThrowComboResult[] = [];
   const minDelay = throwDelayMinClamped.value;
@@ -1278,7 +1152,18 @@ function toggleThrowSort(key: 'delay' | 'firstActive' | 'tolerance') {
 }
 
 const throwResults = computed(() => {
-  const sorted = [...allThrowResults.value].sort((a, b) => {
+  let filtered = allThrowResults.value;
+  if (comboChain.value.length > 0) {
+    filtered = filtered.filter(result => {
+      const fullText = `${result.prefix || ''} + ${result.fillerName || ''} + 投`.toLowerCase();
+      return comboChain.value.every(action => {
+        const actionName = action.name.toLowerCase();
+        return fullText.includes(actionName);
+      });
+    });
+  }
+
+  const sorted = [...filtered].sort((a, b) => {
     const valA = throwSortKey.value === 'delay'
       ? a.delay
       : throwSortKey.value === 'firstActive'
@@ -1308,9 +1193,6 @@ type AltPrefixOption = {
 
 function getAltPrefixes(): AltPrefixOption[] {
   if (!stats.value) return [];
-  if (useChainAsPrefix.value && comboChain.value.length > 0) {
-    return [{ name: comboChainPrefixName.value, frames: comboChainPrefixFrames.value }];
-  }
   return [
     { name: '', frames: 0 },
     { name: '前冲', frames: stats.value.forwardDash },
@@ -1348,21 +1230,7 @@ const burstRequiredDelay = computed(() => {
   return burstTargetFirstActiveFrame.value - BURST_STARTUP_FRAMES;
 });
 
-const comboChainBurstFirstActive = computed(() => {
-  return comboChainPrefixFrames.value + normalizedAltExtraDelay.value + BURST_STARTUP_FRAMES;
-});
 
-const comboChainBurstLastActive = computed(() => {
-  return comboChainBurstFirstActive.value + BURST_ACTIVE_FRAMES - 1;
-});
-
-const comboChainBurstOffset = computed(() => {
-  return comboChainBurstFirstActive.value - opponentWakeupFrame.value + 1;
-});
-
-const comboChainBurstDelayDelta = computed(() => {
-  return comboChainPrefixFrames.value + normalizedAltExtraDelay.value - burstRequiredDelay.value;
-});
 
 const allBurstPressureResults = computed<BurstPressureResult[]>(() => {
   if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
@@ -1424,7 +1292,18 @@ const allBurstPressureResults = computed<BurstPressureResult[]>(() => {
     }
   }
 
-  return results
+  let filtered = results;
+  if (comboChain.value.length > 0) {
+    filtered = filtered.filter(result => {
+      const fullText = `${result.prefix || ''} + ${result.fillerName || ''} + 迸放`.toLowerCase();
+      return comboChain.value.every(action => {
+        const actionName = action.name.toLowerCase();
+        return fullText.includes(actionName);
+      });
+    });
+  }
+
+  return filtered
     .sort((a, b) => a.delay - b.delay || a.prefixFrames - b.prefixFrames)
     .slice(0, 50);
 });
@@ -1446,13 +1325,7 @@ interface FrameTrapResult {
   deltaToTarget: number;
 }
 
-const comboChainFrameTrapAdvantage = computed(() => {
-  return effectiveKnockdownAdv.value - (comboChainPrefixFrames.value + normalizedAltExtraDelay.value);
-});
 
-const comboChainFrameTrapDelta = computed(() => {
-  return comboChainFrameTrapAdvantage.value - normalizedFrameTrapAdvTarget.value;
-});
 
 const allFrameTrapResults = computed<FrameTrapResult[]>(() => {
   if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
@@ -1511,7 +1384,18 @@ const allFrameTrapResults = computed<FrameTrapResult[]>(() => {
     }
   }
 
-  return results
+  let filtered = results;
+  if (comboChain.value.length > 0) {
+    filtered = filtered.filter(result => {
+      const fullText = `${result.prefix || ''} + ${result.fillerName || ''}`.toLowerCase();
+      return comboChain.value.every(action => {
+        const actionName = action.name.toLowerCase();
+        return fullText.includes(actionName);
+      });
+    });
+  }
+
+  return filtered
     .sort((a, b) => a.totalFrames - b.totalFrames || a.prefixFrames - b.prefixFrames)
     .slice(0, 50);
 });
@@ -1669,7 +1553,18 @@ const allDriveRushOkiResults = computed<DriveRushOkiResult[]>(() => {
     }
   }
 
-  return results
+  let filtered = results;
+  if (comboChain.value.length > 0) {
+    filtered = filtered.filter(result => {
+      const fullText = `绿冲 + ${result.prefix || ''} + ${getMoveDisplayName(result.move) || ''} + ${result.move.name || ''} + ${result.move.nameZh || ''}`.toLowerCase();
+      return comboChain.value.every(action => {
+        const actionName = action.name.toLowerCase();
+        return fullText.includes(actionName);
+      });
+    });
+  }
+
+  return filtered
     .sort((a, b) => {
       if (a.coversOpponent !== b.coversOpponent) return a.coversOpponent ? -1 : 1;
       return a.firstActive - b.firstActive || a.startup - b.startup;
@@ -1740,6 +1635,14 @@ watch(selectedDefenderMove, (newMove) => {
     }
   }
 });
+
+function addDriveRush() {
+  comboChain.value.push({
+    type: 'driveRush',
+    name: '绿冲',
+    frames: PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME,
+  });
+}
 
 function selectKnockdownMove(move: Move) {
   selectedKnockdownMove.value = move;
@@ -2271,7 +2174,7 @@ function formatTolerance(val: number | undefined): string {
     <section v-if="effectiveKnockdownAdv > 0 && attackerFrameData" class="oki-section results-section">
       <h2 class="section-title">
         <span class="step-number">3</span>
-        组合链计算
+        动作过滤与匹配 (Oki Routing)
       </h2>
 
       <!-- Opponent Info & Settings -->
@@ -2323,9 +2226,8 @@ function formatTolerance(val: number | undefined): string {
         </div>
       </div>
 
-      <!-- Combo Chain Builder -->
       <div class="combo-builder">
-        <div class="combo-builder-title">前置动作</div>
+        <div class="combo-builder-title">过滤动作</div>
         <div class="combo-chain">
           <div v-for="(action, idx) in comboChain" :key="idx" class="chain-item">
             <span class="chain-name">{{ getActionDisplayName(action) }}</span>
@@ -2333,14 +2235,10 @@ function formatTolerance(val: number | undefined): string {
             <button class="chain-remove" @click="removeAction(idx)">×</button>
             <span v-if="idx < comboChain.length - 1" class="chain-plus">+</span>
           </div>
-          <span v-if="comboChain.length === 0" class="chain-empty">点击下方添加前置动作</span>
+          <span v-if="comboChain.length === 0" class="chain-empty">点击下方添加过滤动作</span>
         </div>
 
-        <div class="combo-delay-row">
-          <span class="summary-label">额外延迟</span>
-          <input type="number" v-model.number="comboExtraDelayFrames" min="0" class="small-input" />
-          <span class="summary-unit">F</span>
-        </div>
+
 
         <div class="combo-actions">
           <button class="action-btn dash-btn" @click="addDash">
@@ -2351,6 +2249,9 @@ function formatTolerance(val: number | undefined): string {
           </button>
           <button class="action-btn dash-btn" @click="addJumpAction">
             + 跳跃 + 动作 (46F)
+          </button>
+          <button class="action-btn dash-btn" @click="addDriveRush">
+            + 绿冲 ({{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }}F)
           </button>
           <div class="move-search">
             <input type="text" v-model="moveSearchQuery" placeholder="搜索招式..." class="move-search-input" />
@@ -2377,40 +2278,6 @@ function formatTolerance(val: number | undefined): string {
         </div>
       </div>
 
-      <!-- Combo Result -->
-      <div v-if="comboResult" class="combo-result" :class="{ success: comboResult.coversOpponent }">
-        <div class="result-row">
-          <span class="result-label">额外延迟:</span>
-          <span class="result-value">{{ comboResult.extraDelayFrames }}F</span>
-        </div>
-        <div class="result-row">
-          <span class="result-label">计算:</span>
-          <span class="result-value">
-            {{ comboResult.baseTotalStartup }} + {{ comboResult.extraDelayFrames }} = {{ comboResult.totalStartup }}F
-          </span>
-        </div>
-        <div class="result-row">
-          <span class="result-label">打击帧范围:</span>
-          <span class="result-value">{{ comboResult.ourStart }}~{{ comboResult.ourEnd }}F</span>
-        </div>
-        <div class="result-row">
-          <span class="result-label">对手反击判定第一帧:</span>
-          <span class="result-value enemy">{{ opponentFirstActiveFrame }}F</span>
-        </div>
-        <div class="result-row">
-          <span class="result-label">可命中窗口:</span>
-          <span class="result-value" v-if="opponentPreActiveWindowValid">
-            {{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F
-          </span>
-          <span class="result-value" v-else>无</span>
-        </div>
-        <div class="result-row">
-          <span class="result-status" :class="{ success: comboResult.coversOpponent }">
-            {{ comboResult.status }}
-          </span>
-        </div>
-      </div>
-
       <!-- Auto Results -->
       <div class="results-header-row">
         <h3 class="results-title">
@@ -2426,13 +2293,10 @@ function formatTolerance(val: number | undefined): string {
               placeholder="搜索招式..." 
               class="auto-match-search-input" 
             />
-            <button v-if="comboChain.length > 0" 
-              :class="['filter-toggle-btn', { active: useChainAsPrefix }]"
-              @click="useChainAsPrefix = !useChainAsPrefix"
-              :title="useChainAsPrefix ? '点击取消前置过滤' : '点击使用当前组合作为前置过滤'">
-              <span class="icon">{{ useChainAsPrefix ? '★' : '☆' }}</span>
-              {{ useChainAsPrefix ? '以前置过滤: ' + comboChainPrefixName : '使用当前组合为前置' }}
-            </button>
+             <div v-if="comboChain.length > 0" class="filter-active-badge" title="已根据上方的过滤动作筛选结果">
+               <span class="icon">✨</span>
+               已启用动作筛选
+             </div>
           </div>
         </div>
       </div>
@@ -2499,7 +2363,7 @@ function formatTolerance(val: number | undefined): string {
           <div v-if="selectedResultKey === result.key" class="result-detail" @click.stop>
             <div class="detail-title">帧数详情</div>
             <div class="detail-row">
-              <span class="detail-label">前置动作:</span>
+              <span class="detail-label">动作序列:</span>
               <span>
                 {{ result.prefix || '无' }}
                 <span v-if="result.prefixInput"> ({{ result.prefixInput }})</span>
@@ -2769,8 +2633,8 @@ function formatTolerance(val: number | undefined): string {
           利用相同的延迟帧数，从“投”变为“打”或“跳”，触发街霸6核心猜拳机制 —— <strong>打投二择 (Strike/Throw Mixup)</strong>。
         </span>
       </div>
-      <p v-if="useChainAsPrefix && comboChain.length > 0" class="prefix-info">
-        前置: <strong>{{ comboChainPrefixName }} ({{ comboChainThrowPrefixFrames }}F)</strong> + 空挥 + 投
+      <p v-if="comboChain.length > 0" class="prefix-info">
+        已筛选包含 <strong>{{ comboChainPrefixName }}</strong> 的投组合
       </p>
 
       <div v-if="throwResults.length > 0" class="results-table">
@@ -2807,7 +2671,7 @@ function formatTolerance(val: number | undefined): string {
           <div v-if="selectedThrowResultKey === result.key" class="result-detail" @click.stop>
             <div class="detail-title">帧数详情</div>
             <div class="detail-row">
-              <span class="detail-label">前置动作:</span>
+              <span class="detail-label">动作序列:</span>
               <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
             </div>
             <div class="detail-row">
@@ -2985,7 +2849,7 @@ function formatTolerance(val: number | undefined): string {
               <div v-if="selectedDriveRushResultKey === result.key" class="result-detail" @click.stop>
                 <div class="detail-title">帧数详情</div>
                 <div class="detail-row">
-                  <span class="detail-label">前置动作:</span>
+                  <span class="detail-label">动作序列:</span>
                   <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
                 </div>
                 <div class="detail-row">
@@ -3100,19 +2964,7 @@ function formatTolerance(val: number | undefined): string {
               <span class="math-label">额外延迟 E:</span>
               <span class="math-value">{{ normalizedAltExtraDelay }}F</span>
             </div>
-            <div class="math-row">
-              <span class="math-label">当前组合链:</span>
-              <span class="math-value">
-                {{ comboChainPrefixFrames }} + {{ normalizedAltExtraDelay }} + {{ BURST_STARTUP_FRAMES }} = {{ comboChainBurstFirstActive }}~{{ comboChainBurstLastActive }}F
-                <span v-if="comboChainBurstDelayDelta === 0" class="frame-positive">(已匹配)</span>
-                <span v-else-if="comboChainBurstDelayDelta > 0" class="frame-negative">(慢 {{ comboChainBurstDelayDelta }}F)</span>
-                <span v-else class="frame-positive">(快 {{ -comboChainBurstDelayDelta }}F)</span>
-              </span>
-            </div>
-            <div class="math-row">
-              <span class="math-label">当前压制帧:</span>
-              <span class="math-value">{{ comboChainBurstOffset }}F</span>
-            </div>
+
           </div>
 
           <div v-if="burstRequiredDelay < 0" class="throw-warning">
@@ -3149,7 +3001,7 @@ function formatTolerance(val: number | undefined): string {
               <div v-if="selectedBurstResultKey === result.key" class="result-detail" @click.stop>
                 <div class="detail-title">帧数详情</div>
                 <div class="detail-row">
-                  <span class="detail-label">前置动作:</span>
+                  <span class="detail-label">动作序列:</span>
                   <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
                 </div>
                 <div class="detail-row">
@@ -3198,8 +3050,8 @@ function formatTolerance(val: number | undefined): string {
         </div>
 
         <div class="alt-oki-card">
-          <h3 class="subsection-title">目标优势帧反算前置</h3>
-          <p class="section-desc">根据用户设置的目标优势帧，反算可用前置动作。公式：击倒总帧 - 组合总帧 = 目标优势帧。</p>
+          <h3 class="subsection-title">目标优势帧反算组合</h3>
+          <p class="section-desc">根据用户设置的目标优势帧，反算可用组合路线。公式：击倒总帧 - 组合总帧 = 目标优势帧。</p>
 
           <div class="throw-summary">
             <div class="summary-item">
@@ -3226,23 +3078,10 @@ function formatTolerance(val: number | undefined): string {
               <span class="math-label">额外延迟 E:</span>
               <span class="math-value">{{ normalizedAltExtraDelay }}F</span>
             </div>
-            <div class="math-row">
-              <span class="math-label">当前组合链:</span>
-              <span class="math-value">{{ effectiveKnockdownAdv }} - ({{ comboChainPrefixFrames }} + {{ normalizedAltExtraDelay }}) = {{ comboChainFrameTrapAdvantage }}F</span>
-            </div>
-            <div class="math-row">
-              <span class="math-label">与目标差值:</span>
-              <span class="math-value">
-                <span v-if="comboChainFrameTrapDelta === 0" class="frame-positive">0F (已匹配)</span>
-                <span v-else :class="{ 'frame-negative': comboChainFrameTrapDelta < 0, 'frame-positive': comboChainFrameTrapDelta > 0 }">
-                  {{ formatFrame(comboChainFrameTrapDelta) }}F
-                </span>
-              </span>
-            </div>
           </div>
 
           <div class="results-header-row throw-results-header">
-            <h3 class="results-title">前置反算结果 (共 {{ allFrameTrapResults.length }} 条，显示前 {{ allFrameTrapResults.length }} 条)</h3>
+            <h3 class="results-title">组合反算结果 (共 {{ allFrameTrapResults.length }} 条，显示前 {{ allFrameTrapResults.length }} 条)</h3>
           </div>
 
           <div v-if="allFrameTrapResults.length > 0" class="results-table">
@@ -3275,7 +3114,7 @@ function formatTolerance(val: number | undefined): string {
               <div v-if="selectedFrameTrapResultKey === result.key" class="result-detail" @click.stop>
                 <div class="detail-title">帧数详情</div>
                 <div class="detail-row">
-                  <span class="detail-label">前置动作:</span>
+                  <span class="detail-label">动作序列:</span>
                   <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
                 </div>
                 <div class="detail-row">
@@ -4417,6 +4256,34 @@ function formatTolerance(val: number | undefined): string {
 
 .auto-match-search-input:focus {
   outline: none;
+}
+
+.filter-active-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(168, 85, 247, 0.15); /* Purple tint */
+  border: 1px dashed #a855f7;
+  color: #c084fc;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  white-space: nowrap;
+  animation: filterPulse 2s infinite ease-in-out;
+}
+
+@keyframes filterPulse {
+  0% {
+    box-shadow: 0 0 4px rgba(168, 85, 247, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+    background: rgba(168, 85, 247, 0.22);
+  }
+  100% {
+    box-shadow: 0 0 4px rgba(168, 85, 247, 0.2);
+  }
 }
 
 .filter-toggle-btn {
