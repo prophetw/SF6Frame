@@ -18,5 +18,6 @@ export const defaultCustomMoves: CustomMove[] = [
         "name": "214HP~236LK",
         "input": "214HP~236LK",
         "frames": 30
-    }
+    },
+    {"id":"1779865477582","characterId":"ryu","name":"214HP+绿冲","input":"5HP+214MK","frames":28}
 ]
