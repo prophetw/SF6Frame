@@ -14,6 +14,14 @@ import {
   getFastestDriveRushHitFrame,
   isDriveRushFollowUpMove,
 } from '../utils/driveRush';
+import {
+  canBlockWakeupDriveReversal,
+  getActionRecoverFrame,
+  getSafeBaitLimitFrame,
+  getWakeupDriveReversalImpactFrame,
+  isSafeBaitTotalFrames,
+  WAKEUP_DRIVE_REVERSAL,
+} from '../utils/wakeupDriveReversal';
 import { getMoveDisplayName } from '../i18n';
 
 const attackerCharId = ref<string>('');
@@ -174,6 +182,7 @@ const selectedThrowResultKey = ref<string | null>(null);
 const selectedBurstResultKey = ref<string | null>(null);
 const selectedFrameTrapResultKey = ref<string | null>(null);
 const selectedDriveRushResultKey = ref<string | null>(null);
+const selectedSafeBaitResultKey = ref<string | null>(null);
 
 // Effective knockdown advantage
 // Effective knockdown advantage
@@ -212,15 +221,39 @@ const opponentWakeupFrame = computed(() => {
   // First vulnerable frame after knockdown invul
   return effectiveKnockdownAdv.value + 1;
 });
+const normalizedOpponentReversalStartup = computed(() => Math.max(1, Math.trunc(opponentReversalStartup.value || 1)));
 const opponentFirstActiveFrame = computed(() => {
   // First active (damage) frame of the reversal
-  return effectiveKnockdownAdv.value + opponentReversalStartup.value;
+  return effectiveKnockdownAdv.value + normalizedOpponentReversalStartup.value;
 });
 const opponentPreActiveEnd = computed(() => {
   return opponentFirstActiveFrame.value - 1;
 });
 const opponentPreActiveWindowValid = computed(() => {
   return opponentPreActiveEnd.value >= opponentWakeupFrame.value;
+});
+const wakeupDriveReversalImpactFrame = computed(() => {
+  return getWakeupDriveReversalImpactFrame(opponentWakeupFrame.value);
+});
+const wakeupDriveReversalInvulStartFrame = computed(() => {
+  return opponentWakeupFrame.value + WAKEUP_DRIVE_REVERSAL.invincibleStartOffset;
+});
+const wakeupDriveReversalInvulEndFrame = computed(() => {
+  return opponentWakeupFrame.value + WAKEUP_DRIVE_REVERSAL.invincibleEndOffset;
+});
+const safeBaitStrictLimitFrame = computed(() => {
+  return opponentWakeupFrame.value + normalizedOpponentReversalStartup.value;
+});
+const safeBaitMaxTotalFrame = computed(() => {
+  return getSafeBaitLimitFrame({
+    opponentWakeupFrame: opponentWakeupFrame.value,
+    opponentMoveStartup: normalizedOpponentReversalStartup.value,
+  });
+});
+const safeBaitTargetLabel = computed(() => {
+  if (!selectedDefenderMove.value) return '当前对手招式';
+  const input = selectedDefenderMove.value.input ? ` (${selectedDefenderMove.value.input})` : '';
+  return `${getMoveDisplayName(selectedDefenderMove.value)}${input}`;
 });
 
 // Loop throw calculator
@@ -549,6 +582,37 @@ function getActionDisplayName(action: ComboAction): string {
   return action.name;
 }
 
+type MoveRecoveryTiming = {
+  activeWindowFrames: number;
+  recoveryFrames: number;
+  recoverFrame: number;
+  safeAgainstWakeupDriveReversal: boolean;
+  driveReversalSafetyMargin: number;
+};
+
+function getMoveRecoveryTiming(actionStartFrame: number, move: Move, startup: number): MoveRecoveryTiming {
+  const activeWindowFrames = parseActiveWindowFrames(move.active);
+  const recoveryFrames = parseTotalRecoveryFrames(move.recovery);
+  const recoverFrame = getActionRecoverFrame({
+    actionStartFrame,
+    startup,
+    active: activeWindowFrames,
+    recovery: recoveryFrames,
+  });
+  const safeAgainstWakeupDriveReversal = canBlockWakeupDriveReversal({
+    recoverFrame,
+    opponentWakeupFrame: opponentWakeupFrame.value,
+  });
+
+  return {
+    activeWindowFrames,
+    recoveryFrames,
+    recoverFrame,
+    safeAgainstWakeupDriveReversal,
+    driveReversalSafetyMargin: wakeupDriveReversalImpactFrame.value - recoverFrame,
+  };
+}
+
 
 
 
@@ -569,6 +633,11 @@ interface ExtendedOkiResult {
   meatyStartFrame?: number;
   meatyStartOffset?: number;
   meatyLength?: number;
+  activeWindowFrames: number;
+  recoveryFrames: number;
+  recoverFrame: number;
+  safeAgainstWakeupDriveReversal: boolean;
+  driveReversalSafetyMargin: number;
   toleranceFrames?: number;
   coversOpponent: boolean;
   isTrade: boolean;
@@ -648,6 +717,14 @@ function toggleDriveRushResultDetail(key: string) {
     selectedDriveRushResultKey.value = null;
   } else {
     selectedDriveRushResultKey.value = key;
+  }
+}
+
+function toggleSafeBaitResultDetail(key: string) {
+  if (selectedSafeBaitResultKey.value === key) {
+    selectedSafeBaitResultKey.value = null;
+  } else {
+    selectedSafeBaitResultKey.value = key;
   }
 }
 
@@ -799,6 +876,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           }
         }
 
+        const recoveryTiming = getMoveRecoveryTiming(prefix.frames, move, startup);
         const baseKey = buildOkiResultKeyBase({
           prefixName: prefix.name,
           prefixFrames: prefix.frames,
@@ -826,6 +904,11 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           meatyStartFrame,
           meatyStartOffset,
           meatyLength,
+          activeWindowFrames: recoveryTiming.activeWindowFrames,
+          recoveryFrames: recoveryTiming.recoveryFrames,
+          recoverFrame: recoveryTiming.recoverFrame,
+          safeAgainstWakeupDriveReversal: recoveryTiming.safeAgainstWakeupDriveReversal,
+          driveReversalSafetyMargin: recoveryTiming.driveReversalSafetyMargin,
           toleranceFrames,
           coversOpponent: isSuccessMatch,
           isTrade: isTradeMatch,
@@ -920,6 +1003,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
         const driveRushPrefixName = prefix.name ? `${prefix.name} + 绿冲` : '绿冲';
         const driveRushPrefixInput = prefix.input ? `${prefix.input} + DR` : 'DR';
         const effectivePrefixFrames = prefix.frames + DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET;
+        const recoveryTiming = getMoveRecoveryTiming(effectivePrefixFrames, move, startup);
         const baseKey = buildOkiResultKeyBase({
           prefixName: driveRushPrefixName,
           prefixFrames: effectivePrefixFrames,
@@ -947,6 +1031,11 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           meatyStartFrame,
           meatyStartOffset,
           meatyLength,
+          activeWindowFrames: recoveryTiming.activeWindowFrames,
+          recoveryFrames: recoveryTiming.recoveryFrames,
+          recoverFrame: recoveryTiming.recoverFrame,
+          safeAgainstWakeupDriveReversal: recoveryTiming.safeAgainstWakeupDriveReversal,
+          driveReversalSafetyMargin: recoveryTiming.driveReversalSafetyMargin,
           toleranceFrames,
           coversOpponent: isSuccessMatch,
           isTrade: isTradeMatch,
@@ -1397,6 +1486,107 @@ const allFrameTrapResults = computed<FrameTrapResult[]>(() => {
 
   return filtered
     .sort((a, b) => a.totalFrames - b.totalFrames || a.prefixFrames - b.prefixFrames)
+    .slice(0, 50);
+});
+
+interface SafeBaitResult {
+  key: string;
+  prefix: string;
+  prefixFrames: number;
+  filler?: Move;
+  fillerName: string;
+  fillerFrames: number;
+  fillerStartup?: number;
+  fillerActive?: number;
+  fillerRecovery?: number;
+  baseTotalFrames: number;
+  extraDelayFrames: number;
+  totalFrames: number;
+  strictLimitFrame: number;
+  baitLimitFrame: number;
+  safetyMargin: number;
+}
+
+const allSafeBaitResults = computed<SafeBaitResult[]>(() => {
+  if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
+
+  const results: SafeBaitResult[] = [];
+  const prefixes = getAltPrefixes();
+  const extraDelay = normalizedAltExtraDelay.value;
+  const opponentStartup = normalizedOpponentReversalStartup.value;
+  const strictLimitFrame = safeBaitStrictLimitFrame.value;
+  const baitLimitFrame = safeBaitMaxTotalFrame.value;
+
+  const pushResult = (result: Omit<SafeBaitResult, 'strictLimitFrame' | 'baitLimitFrame' | 'safetyMargin'>) => {
+    if (!isSafeBaitTotalFrames({
+      totalFrames: result.totalFrames,
+      opponentWakeupFrame: opponentWakeupFrame.value,
+      opponentMoveStartup: opponentStartup,
+    })) {
+      return;
+    }
+
+    results.push({
+      ...result,
+      strictLimitFrame,
+      baitLimitFrame,
+      safetyMargin: baitLimitFrame - result.totalFrames,
+    });
+  };
+
+  for (const prefix of prefixes) {
+    const directTotal = prefix.frames + extraDelay;
+    pushResult({
+      key: `${prefix.name}|direct|${prefix.frames}`,
+      prefix: prefix.name,
+      prefixFrames: prefix.frames,
+      fillerName: '无追加动作',
+      fillerFrames: 0,
+      baseTotalFrames: prefix.frames,
+      extraDelayFrames: extraDelay,
+      totalFrames: directTotal,
+    });
+
+    for (const move of throwFillerMoves.value) {
+      const fillerFrames = getMoveTotalFrames(move);
+      if (fillerFrames <= 0) continue;
+
+      const fillerStartup = parseInt(move.startup) || 0;
+      const fillerActive = parseActiveWindowFrames(move.active);
+      const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
+      const baseTotalFrames = prefix.frames + fillerFrames;
+      const totalFrames = baseTotalFrames + extraDelay;
+
+      pushResult({
+        key: `${prefix.name}|${prefix.frames}|${move.name}|${move.input}|${fillerFrames}`,
+        prefix: prefix.name,
+        prefixFrames: prefix.frames,
+        filler: move,
+        fillerName: getMoveDisplayName(move),
+        fillerFrames,
+        fillerStartup,
+        fillerActive,
+        fillerRecovery,
+        baseTotalFrames,
+        extraDelayFrames: extraDelay,
+        totalFrames,
+      });
+    }
+  }
+
+  let filtered = results;
+  if (comboChain.value.length > 0) {
+    filtered = filtered.filter(result => {
+      const fullText = `${result.prefix || ''} + ${result.fillerName || ''} + 安全骗压`.toLowerCase();
+      return comboChain.value.every(action => {
+        const actionName = action.name.toLowerCase();
+        return fullText.includes(actionName);
+      });
+    });
+  }
+
+  return filtered
+    .sort((a, b) => a.safetyMargin - b.safetyMargin || b.totalFrames - a.totalFrames || a.prefixFrames - b.prefixFrames)
     .slice(0, 50);
 });
 
@@ -2055,6 +2245,10 @@ function formatTolerance(val: number | undefined): string {
   if (val === undefined || val === null) return '-';
   return `${val}F`;
 }
+
+function formatFrameDelta(val: number): string {
+  return `${val >= 0 ? '+' : ''}${val}F`;
+}
 </script>
 
 <template>
@@ -2181,8 +2375,13 @@ function formatTolerance(val: number | undefined): string {
       <div class="opponent-info" style="display:block">
         <div class="mb-2">
           <strong>对手反击判定第一帧 (Reversal Active):</strong>
-          {{ effectiveKnockdownAdv }} (击倒) + {{ opponentReversalStartup }} (发生) =
+          {{ effectiveKnockdownAdv }} (击倒) + {{ normalizedOpponentReversalStartup }} (发生) =
           <strong class="frame-negative">{{ opponentFirstActiveFrame }}F</strong>
+        </div>
+        <div class="mb-2">
+          <strong>起身斗反:</strong>
+          {{ WAKEUP_DRIVE_REVERSAL.startup }}F 生效，{{ wakeupDriveReversalInvulStartFrame }}~{{ wakeupDriveReversalInvulEndFrame }}F 无敌，
+          安全压制需恢复帧 ≤ <strong class="frame-negative">{{ wakeupDriveReversalImpactFrame }}F</strong>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
@@ -2303,6 +2502,7 @@ function formatTolerance(val: number | undefined): string {
       <div class="auto-match-notes">
         <span class="note-item">排序规则：优先显示被防有利 (On Block) 的压制，其次为发生更快（发生F 更小）。</span>
         <span class="note-item">容错：当前招式“最晚可以延迟几帧”仍能压制（0 表示必须精准卡帧）。</span>
+        <span class="note-item">防斗反：我方恢复帧不晚于起身斗反第 {{ WAKEUP_DRIVE_REVERSAL.startup }}F 生效帧。</span>
         <span class="note-item">仅显示前 50 条最优解。</span>
       </div>
       <!-- Removed separate text info as it's now in the button state -->
@@ -2319,6 +2519,7 @@ function formatTolerance(val: number | undefined): string {
             容错
             <span v-if="sortKey === 'tolerance'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
           </span>
+          <span>安全</span>
           <span class="sortable-header" @click="toggleSort('block')">
             被防
             <span v-if="sortKey === 'block'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
@@ -2349,6 +2550,10 @@ function formatTolerance(val: number | undefined): string {
           <span>{{ result.prefixFrames + parseInt(result.move.startup) }}F</span>
           <span>{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
           <span>{{ formatTolerance(result.toleranceFrames) }}</span>
+          <span>
+            <span v-if="result.safeAgainstWakeupDriveReversal" class="safe-dr-badge">防斗反</span>
+            <span v-else>-</span>
+          </span>
           <span
             :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
               formatFrame(result.calculatedOnBlock) }}</span>
@@ -2418,6 +2623,19 @@ function formatTolerance(val: number | undefined): string {
               <span class="detail-label">可命中窗口:</span>
               <span v-if="opponentPreActiveWindowValid">{{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F</span>
               <span v-else>无</span>
+            </div>
+            <div class="detail-row calc">
+              <span class="detail-label">防斗反:</span>
+              <span>
+                恢复 {{ result.recoverFrame }}F
+                = {{ result.prefixFrames }} + {{ result.move.startup }} + {{ result.activeWindowFrames }} + {{ result.recoveryFrames }}
+                ；斗反生效 {{ wakeupDriveReversalImpactFrame }}F
+                <span
+                  :class="{ 'frame-positive': result.safeAgainstWakeupDriveReversal, 'frame-negative': !result.safeAgainstWakeupDriveReversal }"
+                >
+                  {{ result.safeAgainstWakeupDriveReversal ? `可防，余量 ${formatFrameDelta(result.driveReversalSafetyMargin)}` : `不可防，差 ${formatFrameDelta(result.driveReversalSafetyMargin)}` }}
+                </span>
+              </span>
             </div>
             <div class="detail-row calc">
               <span class="detail-label">被防计算:</span>
@@ -3157,6 +3375,111 @@ function formatTolerance(val: number | undefined): string {
             <p>没有匹配的前置反算组合</p>
           </div>
         </div>
+
+        <div class="alt-oki-card">
+          <h3 class="subsection-title">安全骗压</h3>
+          <p class="section-desc">用前置动作或空挥动作骗对手起身凹招，在对手招式判定前结束整套动作。</p>
+
+          <div class="throw-summary">
+            <div class="summary-item">
+              <span class="summary-label">击倒优势 N</span>
+              <span class="summary-value">{{ effectiveKnockdownAdv }}F</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">额外延迟</span>
+              <span class="summary-value">{{ normalizedAltExtraDelay }}F</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">对手招式</span>
+              <span class="summary-value">{{ normalizedOpponentReversalStartup }}F</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">目标</span>
+              <span class="summary-value">{{ safeBaitTargetLabel }}</span>
+            </div>
+          </div>
+
+          <div class="throw-math">
+            <div class="math-row">
+              <span class="math-label">安全公式:</span>
+              <span class="math-value">组合总帧 &lt; {{ opponentWakeupFrame }} + {{ normalizedOpponentReversalStartup }} = {{ safeBaitStrictLimitFrame }}F</span>
+            </div>
+            <div class="math-row">
+              <span class="math-label">最大可用总帧:</span>
+              <span class="math-value">{{ safeBaitMaxTotalFrame }}F</span>
+            </div>
+          </div>
+
+          <div class="results-header-row throw-results-header">
+            <h3 class="results-title">安全骗压结果 (共 {{ allSafeBaitResults.length }} 条，显示前 {{ allSafeBaitResults.length }} 条)</h3>
+          </div>
+
+          <div v-if="allSafeBaitResults.length > 0" class="results-table">
+            <div class="result-header throw-header">
+              <span>组合</span>
+              <span>组合总帧</span>
+              <span>对手判定</span>
+              <span>余量</span>
+            </div>
+            <div
+              v-for="result in allSafeBaitResults"
+              :key="result.key"
+              :class="['result-row-auto', 'throw-row', 'safe-bait-row', { expanded: selectedSafeBaitResultKey === result.key }]"
+              @click="toggleSafeBaitResultDetail(result.key)"
+            >
+              <div class="result-combo">
+                <span class="safe-dr-badge">安全</span>
+                <span class="combo-prefix">{{ result.prefix || '无前置' }}</span>
+                <span>+</span>
+                <span>{{ result.fillerName }}</span>
+                <span v-if="result.filler" class="move-input">({{ result.filler.input }})</span>
+              </div>
+              <span>{{ result.totalFrames }}F</span>
+              <span>{{ result.strictLimitFrame }}F</span>
+              <span class="frame-positive">{{ result.safetyMargin }}F</span>
+
+              <div v-if="selectedSafeBaitResultKey === result.key" class="result-detail" @click.stop>
+                <div class="detail-title">帧数详情</div>
+                <div class="detail-row">
+                  <span class="detail-label">动作序列:</span>
+                  <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">追加动作:</span>
+                  <span v-if="result.filler">
+                    {{ result.fillerName }}<span v-if="result.filler.input"> ({{ result.filler.input }})</span> =
+                    <span v-if="result.filler.raw?.total">
+                      {{ result.fillerFrames }}F (原始数据)
+                    </span>
+                    <span v-else>
+                      {{ result.fillerStartup }} + {{ result.fillerActive }} + {{ result.fillerRecovery }} = {{ result.fillerFrames }}F
+                    </span>
+                  </span>
+                  <span v-else>无 = 0F</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">对手目标:</span>
+                  <span>{{ safeBaitTargetLabel }}，{{ normalizedOpponentReversalStartup }}F 发生</span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">组合总帧:</span>
+                  <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} + {{ result.extraDelayFrames }} = {{ result.totalFrames }}F</span>
+                </div>
+                <div class="detail-row calc">
+                  <span class="detail-label">安全线:</span>
+                  <span>{{ opponentWakeupFrame }} + {{ normalizedOpponentReversalStartup }} = {{ result.strictLimitFrame }}F，需 &lt; {{ result.strictLimitFrame }}F</span>
+                </div>
+                <div class="detail-row result">
+                  <span class="detail-label">判定:</span>
+                  <span class="success">✓ 安全骗压成立：{{ result.totalFrames }}F ≤ {{ result.baitLimitFrame }}F，余量 {{ result.safetyMargin }}F</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div v-else class="empty-state">
+            <p>没有匹配的安全骗压组合</p>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -3660,7 +3983,7 @@ function formatTolerance(val: number | undefined): string {
 .result-header,
 .result-row-auto {
   display: grid;
-  grid-template-columns: 2.5fr 1fr 1.2fr 0.7fr 0.8fr 0.8fr 1fr;
+  grid-template-columns: 2.5fr 1fr 1.2fr 0.7fr 0.8fr 0.8fr 0.8fr 1fr;
   gap: var(--space-sm);
   padding: var(--space-xs) var(--space-md);
   align-items: center;
@@ -3734,6 +4057,17 @@ function formatTolerance(val: number | undefined): string {
   border-radius: var(--radius-sm);
   font-size: var(--font-size-xs);
   font-weight: 600;
+}
+
+.safe-dr-badge {
+  background: rgba(0, 212, 255, 0.18);
+  color: #00d4ff;
+  padding: 2px 6px;
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .tag-badge {
