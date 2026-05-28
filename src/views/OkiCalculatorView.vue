@@ -2574,262 +2574,393 @@ function formatFrameDelta(val: number): string {
       </div>
       <!-- Removed separate text info as it's now in the button state -->
 
-      <div v-if="okiResults.length > 0" class="results-table">
-        <div class="result-header">
-          <span>组合</span>
-          <span class="sortable-header" @click="toggleSort('startup')">
-            发生
-            <span v-if="sortKey === 'startup'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
-          </span>
-          <span>打击帧</span>
-          <span class="sortable-header" @click="toggleSort('tolerance')">
-            容错
-            <span v-if="sortKey === 'tolerance'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
-          </span>
-          <span>安全</span>
-          <span class="sortable-header" @click="toggleSort('block')">
-            被防
-            <span v-if="sortKey === 'block'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
-          </span>
-          <span class="sortable-header" @click="toggleSort('hit')">
-            被击打康加2
-            <span v-if="sortKey === 'hit'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
-          </span>
-          <span class="sortable-header" @click="toggleSort('trade')">
-            相杀
-            <span v-if="sortKey === 'trade'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
-          </span>
-        </div>
-        <div v-for="result in okiResults" :key="result.key" :class="['result-row-auto', {
-          expanded: selectedResultKey === result.key,
-          success: result.coversOpponent,
-          trade: result.isTrade
-        }]" @click="toggleResultDetail(result.key)">
-          <div class="result-combo">
-            <span v-if="result.coversOpponent" class="success-badge">压制</span>
-            <span v-if="result.isTrade" class="trade-badge">相杀</span>
-            <span v-if="result.tags && result.tags.length > 0" class="tag-badge">{{ result.tags.join(', ') }}</span>
-            <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
-            <span v-if="result.prefix">+</span>
-            <span>{{ getMoveDisplayName(result.move) }}</span>
-            <span class="move-input">{{ result.move.input }}</span>
+      <div v-if="okiResults.length > 0">
+        <!-- Desktop Results Table -->
+        <div class="desktop-results-table results-table">
+          <div class="result-header">
+            <span>组合</span>
+            <span class="sortable-header" @click="toggleSort('startup')">
+              发生
+              <span v-if="sortKey === 'startup'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
+            </span>
+            <span>打击帧</span>
+            <span class="sortable-header" @click="toggleSort('tolerance')">
+              容错
+              <span v-if="sortKey === 'tolerance'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
+            </span>
+            <span>安全</span>
+            <span class="sortable-header" @click="toggleSort('block')">
+              被防
+              <span v-if="sortKey === 'block'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
+            </span>
+            <span class="sortable-header" @click="toggleSort('hit')">
+              被击打康加2
+              <span v-if="sortKey === 'hit'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
+            </span>
+            <span class="sortable-header" @click="toggleSort('trade')">
+              相杀
+              <span v-if="sortKey === 'trade'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
+            </span>
           </div>
-          <span>{{ result.prefixFrames + parseInt(result.move.startup) }}F</span>
-          <span>{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
-          <span>{{ formatTolerance(result.toleranceFrames) }}</span>
-          <span>
-            <span v-if="result.safeAgainstWakeupDriveReversal" class="safe-dr-badge">防斗反</span>
-            <span v-else>-</span>
-          </span>
-          <span
-            :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
-              formatFrame(result.calculatedOnBlock) }}</span>
-          <span
-            :class="{ 'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit) }">{{
-              formatFrame(result.calculatedOnHit) }}</span>
-          <span
-            :class="{ 'frame-positive': isPositive(result.tradeAdvantage), 'frame-negative': isNegative(result.tradeAdvantage) }">{{
-              result.tradeDetail || '-' }}</span>
+          <div v-for="result in okiResults" :key="result.key" :class="['result-row-auto', {
+            expanded: selectedResultKey === result.key,
+            success: result.coversOpponent,
+            trade: result.isTrade
+          }]" @click="toggleResultDetail(result.key)">
+            <div class="result-combo">
+              <span v-if="result.coversOpponent" class="success-badge">压制</span>
+              <span v-if="result.isTrade" class="trade-badge">相杀</span>
+              <span v-if="result.tags && result.tags.length > 0" class="tag-badge">{{ result.tags.join(', ') }}</span>
+              <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
+              <span v-if="result.prefix">+</span>
+              <span>{{ getMoveDisplayName(result.move) }}</span>
+              <span class="move-input">{{ result.move.input }}</span>
+            </div>
+            <span>{{ result.prefixFrames + parseInt(result.move.startup) }}F</span>
+            <span>{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+            <span>{{ formatTolerance(result.toleranceFrames) }}</span>
+            <span>
+              <span v-if="result.safeAgainstWakeupDriveReversal" class="safe-dr-badge">防斗反</span>
+              <span v-else>-</span>
+            </span>
+            <span
+              :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
+                formatFrame(result.calculatedOnBlock) }}</span>
+            <span
+              :class="{ 'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit) }">{{
+                formatFrame(result.calculatedOnHit) }}</span>
+            <span
+              :class="{ 'frame-positive': isPositive(result.tradeAdvantage), 'frame-negative': isNegative(result.tradeAdvantage) }">{{
+                result.tradeDetail || '-' }}</span>
 
-          <!-- Expandable Detail -->
-          <div v-if="selectedResultKey === result.key" class="result-detail" @click.stop>
-            <div class="detail-title">帧数详情</div>
-            <div class="detail-row">
-              <span class="detail-label">动作序列:</span>
-              <span>
-                {{ result.prefix || '无' }}
-                <span v-if="result.prefixInput"> ({{ result.prefixInput }})</span>
-                = {{ result.prefixFrames }}F
-                <span v-if="result.isDriveRush">有效偏移</span>
-              </span>
-            </div>
-            <div class="detail-row" v-if="result.isDriveRush">
-              <span class="detail-label">绿冲起点:</span>
-              <span>{{ result.sourcePrefixName || '无前置' }} = {{ result.sourcePrefixFrames ?? 0 }}F</span>
-            </div>
-            <div class="detail-row" v-if="result.isDriveRush">
-              <span class="detail-label">动作开始:</span>
-              <span>{{ result.sourcePrefixFrames ?? 0 }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} = {{ result.driveRushAttackStartFrame }}F</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-label">招式发生:</span>
-              <span>{{ getMoveDisplayName(result.move) }} ({{ result.move.input }}) = {{ result.move.startup }}F</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-label">招式持续:</span>
-              <span>{{ result.move.active }} (共{{ result.activeHitTotal ?? parseTotalActiveFrames(result.move.active) }}帧)</span>
-            </div>
-            <div class="detail-row calc">
-              <span class="detail-label">计算:</span>
-              <span v-if="result.isDriveRush">
-                {{ result.sourcePrefixFrames ?? 0 }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + {{ result.move.startup }}
-                <span v-if="result.activeDisplayStartOffset && result.activeDisplayStartOffset > 0">
-                  + {{ result.activeDisplayStartOffset }}
+            <!-- Expandable Detail -->
+            <div v-if="selectedResultKey === result.key" class="result-detail" @click.stop>
+              <div class="detail-title">帧数详情</div>
+              <div class="detail-row">
+                <span class="detail-label">动作序列:</span>
+                <span>
+                  {{ result.prefix || '无' }}
+                  <span v-if="result.prefixInput"> ({{ result.prefixInput }})</span>
+                  = {{ result.prefixFrames }}F
+                  <span v-if="result.isDriveRush">有效偏移</span>
                 </span>
-                = {{ result.ourActiveStart }}F
-              </span>
-              <span v-else>
-                {{ result.prefixFrames }} + {{ result.move.startup }}
-                <span v-if="result.activeDisplayStartOffset && result.activeDisplayStartOffset > 0">
-                  + {{ result.activeDisplayStartOffset }}
+              </div>
+              <div class="detail-row" v-if="result.isDriveRush">
+                <span class="detail-label">绿冲起点:</span>
+                <span>{{ result.sourcePrefixName || '无前置' }} = {{ result.sourcePrefixFrames ?? 0 }}F</span>
+              </div>
+              <div class="detail-row" v-if="result.isDriveRush">
+                <span class="detail-label">动作开始:</span>
+                <span>{{ result.sourcePrefixFrames ?? 0 }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} = {{ result.driveRushAttackStartFrame }}F</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">招式发生:</span>
+                <span>{{ getMoveDisplayName(result.move) }} ({{ result.move.input }}) = {{ result.move.startup }}F</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">招式持续:</span>
+                <span>{{ result.move.active }} (共{{ result.activeHitTotal ?? parseTotalActiveFrames(result.move.active) }}帧)</span>
+              </div>
+              <div class="detail-row calc">
+                <span class="detail-label">计算:</span>
+                <span v-if="result.isDriveRush">
+                  {{ result.sourcePrefixFrames ?? 0 }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + {{ result.move.startup }}
+                  <span v-if="result.activeDisplayStartOffset && result.activeDisplayStartOffset > 0">
+                    + {{ result.activeDisplayStartOffset }}
+                  </span>
+                  = {{ result.ourActiveStart }}F
                 </span>
-                = {{ result.ourActiveStart }}F
-              </span>
-            </div>
-            <div class="detail-row calc">
-              <span class="detail-label">
-                {{ result.activeHasGap ? '最后段打击范围:' : '打击范围:' }}
-              </span>
-              <span class="frame-positive">{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-label">对手反击判定第一帧:</span>
-              <span class="frame-negative">{{ opponentFirstActiveFrame }}F</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-label">可命中窗口:</span>
-              <span v-if="opponentPreActiveWindowValid">{{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F</span>
-              <span v-else>无</span>
-            </div>
-            <div class="detail-row calc">
-              <span class="detail-label">防斗反:</span>
-              <span v-if="result.projectileOki">
-                本体恢复 {{ result.recoverFrame }}F
-                = {{ result.prefixFrames }} + {{ result.projectileOki.totalFrames }} (波动拳本体总帧)
-                ；斗反生效 {{ wakeupDriveReversalImpactFrame }}F
-                <span
-                  :class="{ 'frame-positive': result.safeAgainstWakeupDriveReversal, 'frame-negative': !result.safeAgainstWakeupDriveReversal }"
-                >
-                  {{ result.safeAgainstWakeupDriveReversal ? `可防，余量 ${formatFrameDelta(result.driveReversalSafetyMargin)}` : `不可防，差 ${formatFrameDelta(result.driveReversalSafetyMargin)}` }}
+                <span v-else>
+                  {{ result.prefixFrames }} + {{ result.move.startup }}
+                  <span v-if="result.activeDisplayStartOffset && result.activeDisplayStartOffset > 0">
+                    + {{ result.activeDisplayStartOffset }}
+                  </span>
+                  = {{ result.ourActiveStart }}F
                 </span>
-              </span>
-              <span v-else>
-                恢复 {{ result.recoverFrame }}F
-                = {{ result.prefixFrames }} + {{ result.move.startup }} + {{ result.activeWindowFrames }} + {{ result.recoveryFrames }}
-                ；斗反生效 {{ wakeupDriveReversalImpactFrame }}F
-                <span
-                  :class="{ 'frame-positive': result.safeAgainstWakeupDriveReversal, 'frame-negative': !result.safeAgainstWakeupDriveReversal }"
-                >
-                  {{ result.safeAgainstWakeupDriveReversal ? `可防，余量 ${formatFrameDelta(result.driveReversalSafetyMargin)}` : `不可防，差 ${formatFrameDelta(result.driveReversalSafetyMargin)}` }}
+              </div>
+              <div class="detail-row calc">
+                <span class="detail-label">
+                  {{ result.activeHasGap ? '最后段打击范围:' : '打击范围:' }}
                 </span>
-              </span>
-            </div>
-            <div class="detail-row calc">
-              <span class="detail-label">被防计算:</span>
-              <span v-if="result.projectileOki">
-                {{ result.projectileOki.blockFrameFromInput }} (输入到被防)
-                + {{ result.projectileOki.blockstun }} (防御硬直)
-                - {{ result.projectileOki.totalFrames }} (本体总帧)
-                = <span
-                  :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
-                    formatFrame(result.calculatedOnBlock) }}</span>
-              </span>
-              <span v-else>
-                {{ result.move.onBlock }} (原始)
-                <span v-if="result.driveRushAdvantageBonus && result.driveRushAdvantageBonus > 0" class="meaty-bonus-highlight">
-                  + {{ result.driveRushAdvantageBonus }} (绿冲)
+                <span class="frame-positive">{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">对手反击判定第一帧:</span>
+                <span class="frame-negative">{{ opponentFirstActiveFrame }}F</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">可命中窗口:</span>
+                <span v-if="opponentPreActiveWindowValid">{{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F</span>
+                <span v-else>无</span>
+              </div>
+              <div class="detail-row calc">
+                <span class="detail-label">防斗反:</span>
+                <span v-if="result.projectileOki">
+                  本体恢复 {{ result.recoverFrame }}F
+                  = {{ result.prefixFrames }} + {{ result.projectileOki.totalFrames }} (波动拳本体总帧)
+                  ；斗反生效 {{ wakeupDriveReversalImpactFrame }}F
+                  <span
+                    :class="{ 'frame-positive': result.safeAgainstWakeupDriveReversal, 'frame-negative': !result.safeAgainstWakeupDriveReversal }"
+                  >
+                    {{ result.safeAgainstWakeupDriveReversal ? `可防，余量 ${formatFrameDelta(result.driveReversalSafetyMargin)}` : `不可防，差 ${formatFrameDelta(result.driveReversalSafetyMargin)}` }}
+                  </span>
                 </span>
-                <span v-if="result.meatyBonus && result.meatyBonus > 0" class="meaty-bonus-highlight">
-                  + {{ result.meatyBonus }} (Meaty: {{ result.effectiveHitFrame }}F击中 - {{ result.meatyStartFrame ?? result.ourActiveStart }}F发生)
+                <span v-else>
+                  恢复 {{ result.recoverFrame }}F
+                  = {{ result.prefixFrames }} + {{ result.move.startup }} + {{ result.activeWindowFrames }} + {{ result.recoveryFrames }}
+                  ；斗反生效 {{ wakeupDriveReversalImpactFrame }}F
+                  <span
+                    :class="{ 'frame-positive': result.safeAgainstWakeupDriveReversal, 'frame-negative': !result.safeAgainstWakeupDriveReversal }"
+                  >
+                    {{ result.safeAgainstWakeupDriveReversal ? `可防，余量 ${formatFrameDelta(result.driveReversalSafetyMargin)}` : `不可防，差 ${formatFrameDelta(result.driveReversalSafetyMargin)}` }}
+                  </span>
                 </span>
-                = <span
-                  :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
-                    formatFrame(result.calculatedOnBlock) }}</span>
-              </span>
-            </div>
-            <div class="detail-row calc">
-              <span class="detail-label">被击计算:</span>
-              <span>
-                {{ result.move.onHit }} (原始)
-                <span v-if="result.driveRushAdvantageBonus && result.driveRushAdvantageBonus > 0" class="meaty-bonus-highlight">
-                  + {{ result.driveRushAdvantageBonus }} (绿冲)
+              </div>
+              <div class="detail-row calc">
+                <span class="detail-label">被防计算:</span>
+                <span v-if="result.projectileOki">
+                  {{ result.projectileOki.blockFrameFromInput }} (输入到被防)
+                  + {{ result.projectileOki.blockstun }} (防御硬直)
+                  - {{ result.projectileOki.totalFrames }} (本体总帧)
+                  = <span
+                    :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
+                      formatFrame(result.calculatedOnBlock) }}</span>
                 </span>
-                <span v-if="result.meatyBonus && result.meatyBonus > 0" class="meaty-bonus-highlight">
-                  + {{ result.meatyBonus }} (Meaty)
+                <span v-else>
+                  {{ result.move.onBlock }} (原始)
+                  <span v-if="result.driveRushAdvantageBonus && result.driveRushAdvantageBonus > 0" class="meaty-bonus-highlight">
+                    + {{ result.driveRushAdvantageBonus }} (绿冲)
+                  </span>
+                  <span v-if="result.meatyBonus && result.meatyBonus > 0" class="meaty-bonus-highlight">
+                    + {{ result.meatyBonus }} (Meaty: {{ result.effectiveHitFrame }}F击中 - {{ result.meatyStartFrame ?? result.ourActiveStart }}F发生)
+                  </span>
+                  = <span
+                    :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
+                      formatFrame(result.calculatedOnBlock) }}</span>
                 </span>
-                <span v-if="result.coversOpponent" class="meaty-bonus-highlight">
-                  + 2 (打康)
+              </div>
+              <div class="detail-row calc">
+                <span class="detail-label">被击计算:</span>
+                <span>
+                  {{ result.move.onHit }} (原始)
+                  <span v-if="result.driveRushAdvantageBonus && result.driveRushAdvantageBonus > 0" class="meaty-bonus-highlight">
+                    + {{ result.driveRushAdvantageBonus }} (绿冲)
+                  </span>
+                  <span v-if="result.meatyBonus && result.meatyBonus > 0" class="meaty-bonus-highlight">
+                    + {{ result.meatyBonus }} (Meaty)
+                  </span>
+                  <span v-if="result.coversOpponent" class="meaty-bonus-highlight">
+                    + 2 (打康)
+                  </span>
+                  = <span
+                    :class="{ 'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit) }">{{
+                      formatFrame(result.calculatedOnHit) }}</span>
                 </span>
-                = <span
-                  :class="{ 'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit) }">{{
-                    formatFrame(result.calculatedOnHit) }}</span>
-              </span>
-            </div>
-            <div class="detail-row" v-if="result.isTrade">
-              <span class="detail-label">相杀有利 (Trade):</span>
-              <span>{{ result.tradeDetail }}</span>
-            </div>
-            <div class="detail-row calc" style="width: 100%" v-if="result.isTrade && result.tradeExplanation">
-              <span class="detail-label">相杀计算:</span>
-              <span>{{ result.tradeExplanation }}</span>
-            </div>
-            <div class="detail-row result">
-              <span class="detail-label">判定:</span>
-              <span v-if="result.coversOpponent" class="success">
-                ✓ 压制成功: {{ result.activeHasGap ? '最后段 ' : '' }}{{ result.ourActiveStart }}~{{ result.ourActiveEnd }} 与 {{ opponentWakeupFrame }}~{{
-                  opponentPreActiveEnd }} 有重叠
-              </span>
-              <span v-else-if="result.isTrade" class="trade">
-                ⚠ 相杀: 与对手判定第一帧重合 ({{ opponentFirstActiveFrame }}F)
-              </span>
-            </div>
+              </div>
+              <div class="detail-row" v-if="result.isTrade">
+                <span class="detail-label">相杀有利 (Trade):</span>
+                <span>{{ result.tradeDetail }}</span>
+              </div>
+              <div class="detail-row calc" style="width: 100%" v-if="result.isTrade && result.tradeExplanation">
+                <span class="detail-label">相杀计算:</span>
+                <span>{{ result.tradeExplanation }}</span>
+              </div>
+              <div class="detail-row result">
+                <span class="detail-label">判定:</span>
+                <span v-if="result.coversOpponent" class="success">
+                  ✓ 压制成功: {{ result.activeHasGap ? '最后段 ' : '' }}{{ result.ourActiveStart }}~{{ result.ourActiveEnd }} 与 {{ opponentWakeupFrame }}~{{
+                    opponentPreActiveEnd }} 有重叠
+                </span>
+                <span v-else-if="result.isTrade" class="trade">
+                  ⚠ 相杀: 与对手判定第一帧重合 ({{ opponentFirstActiveFrame }}F)
+                </span>
+              </div>
 
-            <!-- Timeline UI (Multi-Row View) -->
-            <div class="timeline-wrapper">
-              <div class="timeline-header">
-                <div class="legend-row">
-                  <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
-                  <span class="timeline-legend-item"><span class="legend-color startup"></span>发生</span>
-                  <span class="timeline-legend-item"><span class="legend-color active"></span>持续</span>
-                  <span class="timeline-legend-item"><span class="legend-color recovery"></span>硬直</span>
+              <!-- Timeline UI (Multi-Row View) -->
+              <div class="timeline-wrapper">
+                <div class="timeline-header">
+                  <div class="legend-row">
+                    <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
+                    <span class="timeline-legend-item"><span class="legend-color startup"></span>发生</span>
+                    <span class="timeline-legend-item"><span class="legend-color active"></span>持续</span>
+                    <span class="timeline-legend-item"><span class="legend-color recovery"></span>硬直</span>
+                  </div>
+                  <div class="legend-row">
+                    <span class="timeline-legend-item"><span class="legend-color down"></span>倒地</span>
+                    <span class="timeline-legend-item"><span class="legend-color vulnerable"></span>可被击</span>
+                    <span class="timeline-legend-item"><span class="legend-color hitstun"></span>被击硬直</span>
+                    <span class="timeline-legend-item"><span class="legend-color blockstun"></span>被防硬直</span>
+                  </div>
                 </div>
-                <div class="legend-row">
-                  <span class="timeline-legend-item"><span class="legend-color down"></span>倒地</span>
-                  <span class="timeline-legend-item"><span class="legend-color vulnerable"></span>可被击</span>
-                  <span class="timeline-legend-item"><span class="legend-color hitstun"></span>被击硬直</span>
-                  <span class="timeline-legend-item"><span class="legend-color blockstun"></span>被防硬直</span>
+
+                <div class="timeline-scroll-container">
+                  <!-- Row 1: Attacker -->
+                  <div class="timeline-row-label">进攻方 (Self)</div>
+                  <div class="timeline-blocks-container">
+                    <div v-for="frame in generateTimelineFrames(result, opponentWakeupFrame, opponentFirstActiveFrame)"
+                      :key="frame.index" :class="['frame-block', frame.type, {
+                        'is-hit': frame.isHit,
+                        'is-vulnerable': frame.isVulnerable
+                      }]">
+                      <div class="frame-content">
+                        <!-- Markers overlaid (Only Wakeup/Reversal reference on attacker row?) -->
+                        <!-- Maybe keep clean, put markers on Defender row -->
+                        <div v-if="frame.isWakeup" class="frame-marker wakeup ghost">▼</div>
+                      </div>
+                      <div class="frame-number" v-if="frame.label">{{ frame.label }}</div>
+                    </div>
+                  </div>
+
+                  <!-- Row 2: Defender (Hit) -->
+                  <div class="timeline-row-label mt-4">对手 - 被击 (Hit)</div>
+                  <div class="timeline-blocks-container">
+                    <div v-for="frame in generateDefenderFrames(result, opponentWakeupFrame, 'hit')"
+                      :key="frame.globalFrame" :class="['frame-block', frame.type]">
+                      <div class="frame-content">
+                        <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
+                        <div v-if="frame.isHit" class="frame-marker hit-marker">💥</div>
+                      </div>
+                      <!-- Only show distinct frame numbers if needed -->
+                    </div>
+                  </div>
+
+                  <!-- Row 3: Defender (Block) -->
+                  <div class="timeline-row-label mt-2">对手 - 被防 (Block)</div>
+                  <div class="timeline-blocks-container">
+                    <div v-for="frame in generateDefenderFrames(result, opponentWakeupFrame, 'block')"
+                      :key="frame.globalFrame" :class="['frame-block', frame.type]">
+                      <div class="frame-content">
+                        <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
+                        <div v-if="frame.isHit" class="frame-marker block-marker">🛡️</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Results Cards -->
+        <div class="mobile-results-list">
+          <div
+            v-for="result in okiResults"
+            :key="'mob-step3-' + result.key"
+            :class="['mobile-result-card', {
+              expanded: selectedResultKey === result.key,
+              success: result.coversOpponent,
+              trade: result.isTrade
+            }]"
+            @click="toggleResultDetail(result.key)"
+          >
+            <div class="card-header">
+              <div class="card-combo-title">
+                <span v-if="result.prefix" class="mob-prefix">{{ result.prefix }}</span>
+                <span v-if="result.prefix" class="mob-plus">+</span>
+                <span class="mob-move-name">{{ getMoveDisplayName(result.move) }}</span>
+                <span class="mob-move-input">({{ result.move.input }})</span>
+              </div>
+              <span class="mob-expand-chevron" :class="{ rotated: selectedResultKey === result.key }">▼</span>
+            </div>
+
+            <div class="card-tags-row">
+              <span v-if="result.coversOpponent" class="badge-mini success">压制成功</span>
+              <span v-if="result.isTrade" class="badge-mini trade">相杀</span>
+              <span v-if="result.safeAgainstWakeupDriveReversal" class="badge-mini safe-dr">防斗反</span>
+              <span class="badge-mini frame font-mono">发生: {{ result.prefixFrames + parseInt(result.move.startup) }}F</span>
+              <span class="badge-mini frame font-mono">打击: {{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+              <span class="badge-mini frame font-mono">容错: {{ formatTolerance(result.toleranceFrames) }}</span>
+            </div>
+
+            <!-- Mobile Expanded Details Panel -->
+            <div v-if="selectedResultKey === result.key" class="mobile-card-details" @click.stop>
+              <div class="mobile-detail-section">
+                <div class="section-divider">帧数计算步骤</div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">前置动作:</span>
+                  <span class="step-val font-mono">{{ result.prefix || '无' }} ({{ result.prefixFrames }}F)</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">招式发生 ({{ getMoveDisplayName(result.move) }}):</span>
+                  <span class="step-val font-mono">+ {{ result.move.startup }}F</span>
+                </div>
+                <div class="detail-step-item highlight-final">
+                  <span class="step-lbl">总发生 (Start):</span>
+                  <span class="step-val font-mono">= {{ result.ourActiveStart }}F</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">打击持续判定:</span>
+                  <span class="step-val font-mono frame-positive">{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">对手判定第一帧:</span>
+                  <span class="step-val font-mono frame-negative">{{ opponentFirstActiveFrame }}F</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">防守方起手脆弱:</span>
+                  <span class="step-val font-mono">{{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F</span>
                 </div>
               </div>
 
-              <div class="timeline-scroll-container">
-                <!-- Row 1: Attacker -->
-                <div class="timeline-row-label">进攻方 (Self)</div>
-                <div class="timeline-blocks-container">
-                  <div v-for="frame in generateTimelineFrames(result, opponentWakeupFrame, opponentFirstActiveFrame)"
-                    :key="frame.index" :class="['frame-block', frame.type, {
-                      'is-hit': frame.isHit,
-                      'is-vulnerable': frame.isVulnerable
-                    }]">
-                    <div class="frame-content">
-                      <!-- Markers overlaid (Only Wakeup/Reversal reference on attacker row?) -->
-                      <!-- Maybe keep clean, put markers on Defender row -->
-                      <div v-if="frame.isWakeup" class="frame-marker wakeup ghost">▼</div>
+              <div class="mobile-detail-section">
+                <div class="section-divider">防御/命中有利帧 (Advantage)</div>
+                <div class="advantage-blocks">
+                  <div class="adv-card block-adv">
+                    <div class="adv-title">🛡️ 被防帧优势</div>
+                    <div class="adv-calc font-mono-sm">
+                      {{ result.move.onBlock }}
+                      <span v-if="result.driveRushAdvantageBonus" class="bonus-tag">+{{ result.driveRushAdvantageBonus }}</span>
+                      <span v-if="result.meatyBonus" class="bonus-tag green">+{{ result.meatyBonus }}</span>
                     </div>
-                    <div class="frame-number" v-if="frame.label">{{ frame.label }}</div>
+                    <div :class="['adv-value', { 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }]">
+                      {{ formatFrame(result.calculatedOnBlock) }}
+                    </div>
+                  </div>
+
+                  <div class="adv-card hit-adv">
+                    <div class="adv-title">🎯 命中(打康)帧优势</div>
+                    <div class="adv-calc font-mono-sm">
+                      {{ result.move.onHit }}
+                      <span v-if="result.driveRushAdvantageBonus" class="bonus-tag">+{{ result.driveRushAdvantageBonus }}</span>
+                      <span v-if="result.meatyBonus" class="bonus-tag green">+{{ result.meatyBonus }}</span>
+                      <span v-if="result.coversOpponent" class="bonus-tag yellow">+2</span>
+                    </div>
+                    <div :class="['adv-value', { 'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit) }]">
+                      {{ formatFrame(result.calculatedOnHit) }}
+                    </div>
                   </div>
                 </div>
 
-                <!-- Row 2: Defender (Hit) -->
-                <div class="timeline-row-label mt-4">对手 - 被击 (Hit)</div>
-                <div class="timeline-blocks-container">
-                  <div v-for="frame in generateDefenderFrames(result, opponentWakeupFrame, 'hit')"
-                    :key="frame.globalFrame" :class="['frame-block', frame.type]">
-                    <div class="frame-content">
-                      <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
-                      <div v-if="frame.isHit" class="frame-marker hit-marker">💥</div>
-                    </div>
-                    <!-- Only show distinct frame numbers if needed -->
-                  </div>
+                <div class="detail-step-item" v-if="result.isTrade">
+                  <span class="step-lbl">相杀有利:</span>
+                  <span class="step-val font-mono frame-positive">{{ result.tradeDetail }}</span>
                 </div>
+              </div>
 
-                <!-- Row 3: Defender (Block) -->
-                <div class="timeline-row-label mt-2">对手 - 被防 (Block)</div>
-                <div class="timeline-blocks-container">
-                  <div v-for="frame in generateDefenderFrames(result, opponentWakeupFrame, 'block')"
-                    :key="frame.globalFrame" :class="['frame-block', frame.type]">
-                    <div class="frame-content">
-                      <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
-                      <div v-if="frame.isHit" class="frame-marker block-marker">🛡️</div>
+              <!-- Mobile Timeline inside Mobile Card Details -->
+              <div class="mobile-timeline-wrapper">
+                <div class="section-divider">时序可视化</div>
+                <div class="timeline-scroll-container">
+                  <!-- Attacker Timeline -->
+                  <div class="timeline-row-label">进攻方 (Self)</div>
+                  <div class="timeline-blocks-container">
+                    <div v-for="frame in generateTimelineFrames(result, opponentWakeupFrame, opponentFirstActiveFrame)"
+                      :key="'mob-t1-' + frame.index" :class="['frame-block', frame.type, { 'is-hit': frame.isHit }]">
+                      <div class="frame-content">
+                        <div v-if="frame.isWakeup" class="frame-marker wakeup ghost">▼</div>
+                      </div>
+                      <div class="frame-number" v-if="frame.label">{{ frame.label }}</div>
+                    </div>
+                  </div>
+                  <!-- Defender Timeline (Hit) -->
+                  <div class="timeline-row-label mt-4">对手 (Hit)</div>
+                  <div class="timeline-blocks-container">
+                    <div v-for="frame in generateDefenderFrames(result, opponentWakeupFrame, 'hit')"
+                      :key="'mob-t2-' + frame.globalFrame" :class="['frame-block', frame.type]">
+                      <div class="frame-content">
+                        <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
+                        <div v-if="frame.isHit" class="frame-marker hit-marker">💥</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2940,114 +3071,208 @@ function formatFrameDelta(val: number): string {
         已筛选包含 <strong>{{ comboChainPrefixName }}</strong> 的投组合
       </p>
 
-      <div v-if="throwResults.length > 0" class="results-table">
-        <div class="result-header throw-header">
-          <span>组合</span>
-          <span class="sortable-header" @click="toggleThrowSort('delay')">
-            延迟S
-            <span v-if="throwSortKey === 'delay'" class="sort-indicator">{{ throwSortOrder === 'desc' ? '↓' : '↑' }}</span>
-          </span>
-          <span class="sortable-header" @click="toggleThrowSort('firstActive')">
-            第一帧判定
-            <span v-if="throwSortKey === 'firstActive'" class="sort-indicator">{{ throwSortOrder === 'desc' ? '↓' : '↑' }}</span>
-          </span>
-          <span class="sortable-header" @click="toggleThrowSort('tolerance')">
-            容错
-            <span v-if="throwSortKey === 'tolerance'" class="sort-indicator">{{ throwSortOrder === 'desc' ? '↓' : '↑' }}</span>
-          </span>
-        </div>
-        <div v-for="result in throwResults" :key="result.key"
-          :class="['result-row-auto', 'throw-row', { expanded: selectedThrowResultKey === result.key }]"
-          @click="toggleThrowResultDetail(result.key)">
-          <div class="result-combo">
-            <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
-            <span v-if="result.prefix">+</span>
-            <span v-if="result.fillerName !== '直接投'">{{ result.fillerName }}</span>
-            <span v-if="result.filler && result.fillerName !== '直接投'" class="move-input">({{ result.filler.input }})</span>
-            <span v-if="result.fillerName !== '直接投'">+</span>
-            <span>投</span>
+      <div v-if="throwResults.length > 0">
+        <!-- Desktop Results Table -->
+        <div class="desktop-results-table results-table">
+          <div class="result-header throw-header">
+            <span>组合</span>
+            <span class="sortable-header" @click="toggleThrowSort('delay')">
+              延迟S
+              <span v-if="throwSortKey === 'delay'" class="sort-indicator">{{ throwSortOrder === 'desc' ? '↓' : '↑' }}</span>
+            </span>
+            <span class="sortable-header" @click="toggleThrowSort('firstActive')">
+              第一帧判定
+              <span v-if="throwSortKey === 'firstActive'" class="sort-indicator">{{ throwSortOrder === 'desc' ? '↓' : '↑' }}</span>
+            </span>
+            <span class="sortable-header" @click="toggleThrowSort('tolerance')">
+              容错
+              <span v-if="throwSortKey === 'tolerance'" class="sort-indicator">{{ throwSortOrder === 'desc' ? '↓' : '↑' }}</span>
+            </span>
           </div>
-          <span>{{ result.delay }}F</span>
-          <span>{{ result.firstActive }}F</span>
-          <span>{{ formatTolerance(result.toleranceFrames) }}</span>
+          <div v-for="result in throwResults" :key="result.key"
+            :class="['result-row-auto', 'throw-row', { expanded: selectedThrowResultKey === result.key }]"
+            @click="toggleThrowResultDetail(result.key)">
+            <div class="result-combo">
+              <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
+              <span v-if="result.prefix">+</span>
+              <span v-if="result.fillerName !== '直接投'">{{ result.fillerName }}</span>
+              <span v-if="result.filler && result.fillerName !== '直接投'" class="move-input">({{ result.filler.input }})</span>
+              <span v-if="result.fillerName !== '直接投'">+</span>
+              <span>投</span>
+            </div>
+            <span>{{ result.delay }}F</span>
+            <span>{{ result.firstActive }}F</span>
+            <span>{{ formatTolerance(result.toleranceFrames) }}</span>
 
-          <div v-if="selectedThrowResultKey === result.key" class="result-detail" @click.stop>
-            <div class="detail-title">帧数详情</div>
-            <div class="detail-row">
-              <span class="detail-label">动作序列:</span>
-              <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-label">空挥招式:</span>
-              <span v-if="result.filler">
-                {{ result.fillerName }}<span v-if="result.filler.input">({{ result.filler.input }})</span> = 
-                <span v-if="result.filler.raw?.total">
-                    {{ result.fillerFrames }}F (原始数据)
+            <div v-if="selectedThrowResultKey === result.key" class="result-detail" @click.stop>
+              <div class="detail-title">帧数详情</div>
+              <div class="detail-row">
+                <span class="detail-label">动作序列:</span>
+                <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">空挥招式:</span>
+                <span v-if="result.filler">
+                  {{ result.fillerName }}<span v-if="result.filler.input">({{ result.filler.input }})</span> = 
+                  <span v-if="result.filler.raw?.total">
+                      {{ result.fillerFrames }}F (原始数据)
+                  </span>
+                  <span v-else>
+                      {{ result.fillerStartup }} + {{ result.fillerActive }} + {{ result.fillerRecovery }} = {{ result.fillerFrames }}F
+                  </span>
                 </span>
-                <span v-else>
-                    {{ result.fillerStartup }} + {{ result.fillerActive }} + {{ result.fillerRecovery }} = {{ result.fillerFrames }}F
-                </span>
-              </span>
-              <span v-else>无 = 0F</span>
-            </div>
-            <div class="detail-row calc">
-              <span class="detail-label">延迟 S:</span>
-              <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} + {{ result.extraDelayFrames }} = {{ result.delay }}F</span>
-            </div>
-            <div class="detail-row calc">
-              <span class="detail-label">第一帧:</span>
-              <span>{{ result.delay }} + {{ normalizedThrowStartup }} = {{ result.firstActive }}F</span>
-            </div>
-
-            <!-- Loop Throw Timeline -->
-            <div class="timeline-wrapper">
-              <div class="timeline-header">
-                <div class="legend-row">
-                  <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
-                  <span class="timeline-legend-item"><span class="legend-color startup"></span>发生</span>
-                  <span class="timeline-legend-item"><span class="legend-color active"></span>持续</span>
-                  <span class="timeline-legend-item"><span class="legend-color recovery"></span>硬直/空挥</span>
-                  <span class="timeline-legend-item"><span class="legend-color hitstun"></span>被投</span>
-                </div>
-                <div class="legend-row">
-                  <span class="timeline-legend-item"><span class="legend-color down"></span>倒地</span>
-                  <span class="timeline-legend-item"><span class="legend-icon opponent-wakeup">▼</span>起身</span>
-                  <span class="timeline-legend-item"><span class="legend-icon">⚠️</span>投命中</span>
-                </div>
+                <span v-else>无 = 0F</span>
+              </div>
+              <div class="detail-row calc">
+                <span class="detail-label">延迟 S:</span>
+                <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} + {{ result.extraDelayFrames }} = {{ result.delay }}F</span>
+              </div>
+              <div class="detail-row calc">
+                <span class="detail-label">第一帧:</span>
+                <span>{{ result.delay }} + {{ normalizedThrowStartup }} = {{ result.firstActive }}F</span>
               </div>
 
-              <div class="timeline-scroll-container">
-                <!-- Row 1: Attacker -->
-                <div class="timeline-row-label">进攻方 (Self)</div>
-                <div class="timeline-blocks-container">
-                  <div
-                    v-for="frame in generateThrowTimelineFrames(result, opponentWakeupFrame, normalizedThrowStartup, normalizedThrowActive)"
-                    :key="frame.index" :class="['frame-block', frame.type, {
-                      'is-hit': frame.isHit
-                    }]">
-                    <div class="frame-content">
-                      <div v-if="frame.isWakeup" class="frame-marker wakeup ghost">▼</div>
-                    </div>
-                    <div class="frame-number" v-if="frame.label">{{ frame.label }}</div>
+              <!-- Loop Throw Timeline -->
+              <div class="timeline-wrapper">
+                <div class="timeline-header">
+                  <div class="legend-row">
+                    <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
+                    <span class="timeline-legend-item"><span class="legend-color startup"></span>发生</span>
+                    <span class="timeline-legend-item"><span class="legend-color active"></span>持续</span>
+                    <span class="timeline-legend-item"><span class="legend-color recovery"></span>硬直/空挥</span>
+                    <span class="timeline-legend-item"><span class="legend-color hitstun"></span>被投</span>
+                  </div>
+                  <div class="legend-row">
+                    <span class="timeline-legend-item"><span class="legend-color down"></span>倒地</span>
+                    <span class="timeline-legend-item"><span class="legend-icon opponent-wakeup">▼</span>起身</span>
+                    <span class="timeline-legend-item"><span class="legend-icon">⚠️</span>投命中</span>
                   </div>
                 </div>
 
-                <!-- Row 2: Defender -->
-                <div class="timeline-row-label mt-4">对手 (Defender)</div>
-                <div class="timeline-blocks-container">
-                  <div v-for="frame in generateThrowDefenderFrames(result, opponentWakeupFrame, result.firstActive)"
-                    :key="frame.globalFrame" :class="['frame-block', frame.type]">
-                    <div class="frame-content">
-                      <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
-                      <div v-if="frame.isHit" class="frame-marker hit-marker">⚠️</div>
+                <div class="timeline-scroll-container">
+                  <!-- Row 1: Attacker -->
+                  <div class="timeline-row-label">进攻方 (Self)</div>
+                  <div class="timeline-blocks-container">
+                    <div
+                      v-for="frame in generateThrowTimelineFrames(result, opponentWakeupFrame, normalizedThrowStartup, normalizedThrowActive)"
+                      :key="frame.index" :class="['frame-block', frame.type, {
+                        'is-hit': frame.isHit
+                      }]">
+                      <div class="frame-content">
+                        <div v-if="frame.isWakeup" class="frame-marker wakeup ghost">▼</div>
+                      </div>
+                      <div class="frame-number" v-if="frame.label">{{ frame.label }}</div>
+                    </div>
+                  </div>
+
+                  <!-- Row 2: Defender -->
+                  <div class="timeline-row-label mt-4">对手 (Defender)</div>
+                  <div class="timeline-blocks-container">
+                    <div v-for="frame in generateThrowDefenderFrames(result, opponentWakeupFrame, result.firstActive)"
+                      :key="frame.globalFrame" :class="['frame-block', frame.type]">
+                      <div class="frame-content">
+                        <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
+                        <div v-if="frame.isHit" class="frame-marker hit-marker">⚠️</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="detail-row">
+                <span class="detail-label">允许窗口:</span>
+                <span>{{ throwDelayMin }}F ~ {{ throwDelayMax }}F</span>
+              </div>
             </div>
-            <div class="detail-row">
-              <span class="detail-label">允许窗口:</span>
-              <span>{{ throwDelayMin }}F ~ {{ throwDelayMax }}F</span>
+          </div>
+        </div>
+
+        <!-- Mobile Results Cards for Step 4 -->
+        <div class="mobile-results-list">
+          <div
+            v-for="result in throwResults"
+            :key="'mob-throw-' + result.key"
+            :class="['mobile-result-card', {
+              expanded: selectedThrowResultKey === result.key
+            }]"
+            @click="toggleThrowResultDetail(result.key)"
+          >
+            <div class="card-header">
+              <div class="card-combo-title">
+                <span v-if="result.prefix" class="mob-prefix">{{ result.prefix }}</span>
+                <span v-if="result.prefix" class="mob-plus">+</span>
+                <span v-if="result.fillerName !== '直接投'" class="mob-move-name">{{ result.fillerName }}</span>
+                <span v-if="result.filler && result.fillerName !== '直接投'" class="mob-move-input">({{ result.filler.input }})</span>
+                <span v-if="result.fillerName !== '直接投'" class="mob-plus">+</span>
+                <span class="mob-dr-badge">投</span>
+              </div>
+              <span class="mob-expand-chevron" :class="{ rotated: selectedThrowResultKey === result.key }">▼</span>
+            </div>
+
+            <div class="card-tags-row">
+              <span class="badge-mini frame font-mono">延迟S: {{ result.delay }}F</span>
+              <span class="badge-mini frame font-mono">第一帧: {{ result.firstActive }}F</span>
+              <span class="badge-mini frame font-mono">容错: {{ formatTolerance(result.toleranceFrames) }}</span>
+            </div>
+
+            <!-- Mobile Expanded Details Panel for Throw -->
+            <div v-if="selectedThrowResultKey === result.key" class="mobile-card-details" @click.stop>
+              <div class="mobile-detail-section">
+                <div class="section-divider">帧数计算步骤</div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">前置动作:</span>
+                  <span class="step-val font-mono">{{ result.prefix || '无' }} ({{ result.prefixFrames }}F)</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">空挥招式:</span>
+                  <span class="step-val font-mono">
+                    <span v-if="result.filler">{{ result.fillerName }} ({{ result.fillerFrames }}F)</span>
+                    <span v-else>无 (0F)</span>
+                  </span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">延迟 S:</span>
+                  <span class="step-val font-mono">= {{ result.delay }}F</span>
+                </div>
+                <div class="detail-step-item highlight-final">
+                  <span class="step-lbl">第一帧判定:</span>
+                  <span class="step-val font-mono">= {{ result.firstActive }}F</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">允许窗口:</span>
+                  <span class="step-val font-mono frame-positive">{{ throwDelayMin }}F ~ {{ throwDelayMax }}F</span>
+                </div>
+              </div>
+
+              <!-- Mobile Timeline inside Mobile Card Details -->
+              <div class="mobile-timeline-wrapper">
+                <div class="section-divider">时序可视化</div>
+                <div class="timeline-scroll-container">
+                  <!-- Attacker Timeline -->
+                  <div class="timeline-row-label">进攻方 (Self)</div>
+                  <div class="timeline-blocks-container">
+                    <div
+                      v-for="frame in generateThrowTimelineFrames(result, opponentWakeupFrame, normalizedThrowStartup, normalizedThrowActive)"
+                      :key="'mob-throw-t1-' + frame.index" :class="['frame-block', frame.type, { 'is-hit': frame.isHit }]">
+                      <div class="frame-content">
+                        <div v-if="frame.isWakeup" class="frame-marker wakeup ghost">▼</div>
+                      </div>
+                      <div class="frame-number" v-if="frame.label">{{ frame.label }}</div>
+                    </div>
+                  </div>
+                  <!-- Defender Timeline -->
+                  <div class="timeline-row-label mt-4">对手 (Defender)</div>
+                  <div class="timeline-blocks-container">
+                    <div v-for="frame in generateThrowDefenderFrames(result, opponentWakeupFrame, result.firstActive)"
+                      :key="'mob-throw-t2-' + frame.globalFrame" :class="['frame-block', frame.type]">
+                      <div class="frame-content">
+                        <div v-if="frame.isWakeup" class="frame-marker wakeup">▼</div>
+                        <div v-if="frame.isHit" class="frame-marker hit-marker">⚠️</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -4431,7 +4656,7 @@ function formatFrameDelta(val: number): string {
 
 .result-row-auto.expanded {
   background: rgba(63, 185, 80, 0.15);
-  grid-template-columns: 1fr;
+  /* grid-template-columns: 1fr; -- REMOVED to maintain table column alignments! */
 }
 
 .result-row-auto.trade.expanded {
@@ -5544,67 +5769,70 @@ function formatFrameDelta(val: number): string {
 .frame-block {
   position: relative;
   width: 14px;
-  height: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  margin-right: 1px;
+  height: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
   flex-shrink: 0;
-  /* Default background for safety */
-  background: #333;
+  background: #27272a;
+  transition: all var(--transition-fast);
 }
 
-/* Colors */
+.timeline-blocks-container {
+  display: flex;
+  align-items: flex-start;
+  min-width: max-content;
+  gap: 2px;
+}
+
+/* Colors with modern gradients and glowing edges */
 .frame-block.prefix {
-  background-color: #374151;
-  /* Dark Gray */
-  border-color: #4b5563;
+  background: linear-gradient(180deg, #4b5563 0%, #1f2937 100%);
+  border-color: #6b7280;
 }
 
 .frame-block.startup {
-  background-color: #9ca3af;
-  /* Light Gray */
+  background: linear-gradient(180deg, #9ca3af 0%, #6b7280 100%);
   border-color: #d1d5db;
-  color: #000;
-  /* Contrast if needed */
 }
 
 .frame-block.active {
-  background-color: #dc2626;
-  /* Red */
-  border-color: #ef4444;
+  background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
+  border-color: #f87171;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
 }
 
 .frame-block.recovery {
-  background-color: #2563eb;
-  /* Blue */
-  border-color: #3b82f6;
+  background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+  border-color: #60a5fa;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
 }
 
 /* Defender States */
 .frame-block.down {
-  background-color: #000;
-  border-color: #374151;
+  background: linear-gradient(180deg, #18181b 0%, #09090b 100%);
+  border-color: #3f3f46;
 }
 
 .frame-block.vulnerable {
-  background-color: rgba(74, 222, 128, 0.2);
-  border-color: var(--color-positive);
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.25) 0%, rgba(5, 150, 105, 0.15) 100%);
+  border-color: rgba(16, 185, 129, 0.6);
 }
 
 .frame-block.hitstun {
-  background-color: #ca8a04;
-  /* Yellow/Gold */
-  border-color: #eab308;
+  background: linear-gradient(180deg, #fbbf24 0%, #d97706 100%);
+  border-color: #fcd34d;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.3);
 }
 
 .frame-block.blockstun {
-  background-color: #9333ea;
-  /* Purple */
-  border-color: #a855f7;
+  background: linear-gradient(180deg, #a78bfa 0%, #6d28d9 100%);
+  border-color: #c084fc;
+  box-shadow: 0 0 8px rgba(167, 139, 250, 0.3);
 }
 
 .frame-block.neutral {
-  background-color: #1f2937;
-  border-color: #374151;
+  background: linear-gradient(180deg, #27272a 0%, #18181b 100%);
+  border-color: #3f3f46;
 }
 
 /* Legend Colors */
@@ -6047,6 +6275,408 @@ function formatFrameDelta(val: number): string {
   padding: 0 var(--space-md);
 }
 
+/* Custom Moves Palette Fallbacks */
+:root {
+  --color-surface: var(--color-bg-card);
+  --color-bg: var(--color-bg-primary);
+  --color-danger: var(--color-negative);
+  --color-danger-rgb: 248, 81, 73;
+  --color-primary: var(--color-accent);
+}
+
+/* Glassmorphic Dropdowns & Custom Search Upgrade */
+.move-dropdown {
+  background: rgba(28, 33, 40, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--color-accent-light) !important;
+  box-shadow: var(--shadow-lg), 0 0 15px rgba(255, 107, 53, 0.1) !important;
+  padding: var(--space-xs);
+  transition: all var(--transition-normal);
+}
+
+.move-option-row {
+  display: flex;
+  gap: var(--space-xs);
+  padding: 2px 4px;
+}
+
+.move-option {
+  flex: 1;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all var(--transition-fast);
+}
+
+.move-option:hover {
+  background: rgba(255, 107, 53, 0.15) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.move-option-dr {
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid #00d4ff;
+  color: #00d4ff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.move-option-dr:hover {
+  background: #00d4ff;
+  color: #000;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
+}
+
+/* Sequencer Combo Chain Upgrades */
+.combo-chain {
+  background: rgba(22, 27, 34, 0.6) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--color-border) !important;
+  padding: var(--space-md) !important;
+  min-height: 52px !important;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm) !important;
+}
+
+.chain-item {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.12) 0%, rgba(123, 47, 247, 0.18) 100%) !important;
+  border: 1px solid rgba(0, 212, 255, 0.4) !important;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.1) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 6px 12px !important;
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  animation: slideIn var(--transition-fast) ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.chain-plus {
+  color: var(--color-accent) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 6px rgba(255, 107, 53, 0.4);
+}
+
+/* Quick Action Buttons Redesign */
+.dash-btn {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.05) 100%) !important;
+  border: 1px solid rgba(0, 212, 255, 0.4) !important;
+  color: #00d4ff !important;
+  transition: all var(--transition-fast) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dash-btn:hover {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.25) 0%, rgba(0, 212, 255, 0.1) 100%) !important;
+  border-color: #00d4ff !important;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.25) !important;
+  transform: translateY(-1px);
+}
+
+.dash-btn:active {
+  transform: translateY(1px);
+}
+
+/* Mobile Responsive Results List & Card styling */
+.mobile-result-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-result-card:hover {
+  border-color: var(--color-accent-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.mobile-result-card.success {
+  border-color: rgba(63, 185, 80, 0.4);
+  background: linear-gradient(180deg, var(--color-bg-card) 0%, rgba(63, 185, 80, 0.04) 100%);
+}
+
+.mobile-result-card.success:hover {
+  border-color: var(--color-positive);
+  box-shadow: 0 0 15px rgba(63, 185, 80, 0.15);
+}
+
+.mobile-result-card.trade {
+  border-color: rgba(210, 153, 34, 0.4);
+  background: linear-gradient(180deg, var(--color-bg-card) 0%, rgba(210, 153, 34, 0.04) 100%);
+}
+
+.mobile-result-card.trade:hover {
+  border-color: var(--color-warning);
+  box-shadow: 0 0 15px rgba(210, 153, 34, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-combo-title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  flex-wrap: wrap;
+}
+
+.mob-prefix {
+  color: var(--color-text-secondary);
+}
+
+.mob-plus {
+  color: var(--color-text-muted);
+  font-weight: bold;
+}
+
+.mob-move-name {
+  color: var(--color-text-primary);
+}
+
+.mob-move-input {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-accent);
+}
+
+.mob-dr-badge {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid #00d4ff;
+  color: #00d4ff;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.mob-expand-chevron {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  transition: transform var(--transition-normal);
+}
+
+.mob-expand-chevron.rotated {
+  transform: rotate(180deg);
+  color: var(--color-accent);
+}
+
+.card-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.badge-mini {
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.badge-mini.success {
+  background: rgba(63, 185, 80, 0.2);
+  color: var(--color-positive);
+}
+
+.badge-mini.trade {
+  background: rgba(210, 153, 34, 0.2);
+  color: #d29922;
+}
+
+.badge-mini.safe-dr {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: #00d4ff;
+}
+
+.badge-mini.frame {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+/* Expanded Card Calculations Dashboard */
+.mobile-card-details {
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-xs);
+  padding-top: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  animation: slideDown var(--transition-normal) ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+.mobile-detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobile-detail-section .section-divider {
+  margin: var(--space-sm) 0 var(--space-xs);
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+}
+
+.detail-step-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-xs);
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.detail-step-item.highlight-line {
+  background: rgba(0, 212, 255, 0.05);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  border-bottom: none;
+}
+
+.detail-step-item.highlight-final {
+  background: var(--color-accent-light);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border-bottom: none;
+  font-weight: 600;
+}
+
+.step-lbl {
+  color: var(--color-text-secondary);
+}
+
+.step-val {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.advantage-blocks {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+
+.adv-card {
+  flex: 1;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.adv-title {
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.adv-calc {
+  font-size: 9px;
+  color: var(--color-text-muted);
+}
+
+.adv-value {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  font-family: var(--font-mono);
+}
+
+.mobile-timeline-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.mobile-timeline-wrapper .timeline-scroll-container {
+  padding: var(--space-sm);
+  background: rgba(22, 27, 34, 0.4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+/* Scroll tracks */
+.timeline-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.timeline-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+.timeline-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .desktop-results-table {
+    display: none !important;
+  }
+  
+  .mobile-results-list {
+    display: flex !important;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 600px) {
   .form-row {
@@ -6056,6 +6686,10 @@ function formatFrameDelta(val: number): string {
   
   .frames-input-group {
     width: 100%;
+  }
+  
+  .advantage-blocks {
+    flex-direction: column;
   }
 }
 </style>
