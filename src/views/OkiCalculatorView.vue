@@ -22,6 +22,11 @@ import {
   isSafeBaitTotalFrames,
   WAKEUP_DRIVE_REVERSAL,
 } from '../utils/wakeupDriveReversal';
+import {
+  calculateRyuHadokenCornerOkiGuardAdvantage,
+  isRyuHadokenOkiMove,
+  type RyuHadokenOkiGuardCalculation,
+} from '../utils/projectileOki';
 import { getMoveDisplayName } from '../i18n';
 
 const attackerCharId = ref<string>('');
@@ -613,6 +618,22 @@ function getMoveRecoveryTiming(actionStartFrame: number, move: Move, startup: nu
   };
 }
 
+function getBodyTotalRecoveryTiming(actionStartFrame: number, totalFrames: number): MoveRecoveryTiming {
+  const recoverFrame = actionStartFrame + totalFrames;
+  const safeAgainstWakeupDriveReversal = canBlockWakeupDriveReversal({
+    recoverFrame,
+    opponentWakeupFrame: opponentWakeupFrame.value,
+  });
+
+  return {
+    activeWindowFrames: 0,
+    recoveryFrames: totalFrames,
+    recoverFrame,
+    safeAgainstWakeupDriveReversal,
+    driveReversalSafetyMargin: wakeupDriveReversalImpactFrame.value - recoverFrame,
+  };
+}
+
 
 
 
@@ -645,6 +666,7 @@ interface ExtendedOkiResult {
   calculatedOnHit?: number | string;
   meatyBonus?: number;
   effectiveHitFrame?: number;
+  projectileOki?: RyuHadokenOkiGuardCalculation;
   tradeAdvantage?: number;
   tradeDetail?: string;
   tradeExplanation?: string;
@@ -815,8 +837,20 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
       // Display/overlap window:
       // - If there is a gap, only show the last segment as the effective window.
       // - If no gap (e.g. "2,3"), treat as continuous 5F window.
-      const ourStart = prefix.frames + startup + activeDisplayStartOffset;
-      const ourEnd = ourStart + activeDisplayLength - 1;
+      const normalOurStart = prefix.frames + startup + activeDisplayStartOffset;
+      const normalOurEnd = normalOurStart + activeDisplayLength - 1;
+      const isRyuHadoken = isRyuHadokenOkiMove(attackerCharId.value, move);
+      const projectileOkiCandidate = calculateRyuHadokenCornerOkiGuardAdvantage({
+        characterId: attackerCharId.value,
+        move,
+        blockFrameFromInput: oppWindowStart - prefix.frames,
+      });
+      const projectileOki = projectileOkiCandidate && projectileOkiCandidate.contactDelayAfterStartup >= 0
+        ? projectileOkiCandidate
+        : null;
+      if (isRyuHadoken && !projectileOki) continue;
+      const ourStart = projectileOki ? oppWindowStart : normalOurStart;
+      const ourEnd = projectileOki ? oppWindowStart : normalOurEnd;
 
       // Success: our active window overlaps opponent's vulnerable startup window
       const overlapsPreActive =
@@ -829,10 +863,16 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
 
       if (isSuccessMatch || isTradeMatch) {
         // Calculate Meaty Bonus
-        const meatyStartFrame = prefix.frames + startup + meatyStartOffset;
-        const effectiveHitFrame = Math.max(meatyStartFrame, oppWindowStart);
+        const meatyStartFrame = projectileOki
+          ? prefix.frames + projectileOki.startup
+          : prefix.frames + startup + meatyStartOffset;
+        const effectiveHitFrame = projectileOki
+          ? oppWindowStart
+          : Math.max(meatyStartFrame, oppWindowStart);
         const canApplyMeaty = !move.noMeaty;
-        const meatyBonus = canApplyMeaty ? (effectiveHitFrame - meatyStartFrame) : 0;
+        const meatyBonus = projectileOki
+          ? projectileOki.contactDelayAfterStartup
+          : canApplyMeaty ? (effectiveHitFrame - meatyStartFrame) : 0;
 
         let calcBlock: number | string | undefined;
         let calcHit: number | string | undefined;
@@ -841,7 +881,9 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
         let tradeExpl = '';
 
         const baseBlock = parseFrameAdvantage(move.onBlock);
-        if (baseBlock !== null) {
+        if (projectileOki) {
+          calcBlock = projectileOki.guardAdvantage;
+        } else if (baseBlock !== null) {
           calcBlock = baseBlock + meatyBonus;
         } else {
           calcBlock = move.onBlock;
@@ -876,7 +918,9 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           }
         }
 
-        const recoveryTiming = getMoveRecoveryTiming(prefix.frames, move, startup);
+        const recoveryTiming = projectileOki
+          ? getBodyTotalRecoveryTiming(prefix.frames, projectileOki.totalFrames)
+          : getMoveRecoveryTiming(prefix.frames, move, startup);
         const baseKey = buildOkiResultKeyBase({
           prefixName: prefix.name,
           prefixFrames: prefix.frames,
@@ -916,10 +960,14 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           calculatedOnHit: calcHit,
           meatyBonus,
           effectiveHitFrame,
+          projectileOki: projectileOki ?? undefined,
           tradeAdvantage: tradeAdv,
           tradeDetail: tradeDet,
           tradeExplanation: tradeExpl,
-          tags: prefix.isCorner ? ['版边(Corner)'] : []
+          tags: [
+            ...(prefix.isCorner || projectileOki ? ['版边(Corner)'] : []),
+            ...(projectileOki ? ['波动拳公式'] : []),
+          ],
         });
       }
     }
@@ -1940,13 +1988,10 @@ function generateTimelineFrames(
   const prefixFrames = result.prefixFrames;
   const startup = parseInt(result.move.startup) || 0;
   const active = parseActiveWindowFrames(result.move.active);
-  const recovery = parseTotalRecoveryFrames(result.move.recovery);
-
-  const moveStartFrame = prefixFrames;
 
   // Calculate Attacker Duration
   // Prefix + Startup + Active + Recovery
-  const total = moveStartFrame + startup + active + recovery;
+  const total = Math.max(result.recoverFrame, result.effectiveHitFrame ?? result.ourActiveEnd);
 
   // Also consider Defender's interaction to extend timeline if needed? 
   // For Attacker Row, just show functionality.
@@ -1954,8 +1999,12 @@ function generateTimelineFrames(
   // But let's let CSS handle alignment (width). 
   // We'll generate up to Attacker's End for now.
 
-  const activeStart = prefixFrames + startup;
-  const activeEnd = prefixFrames + startup + active - 1;
+  const activeStart = result.projectileOki
+    ? result.effectiveHitFrame ?? result.ourActiveStart
+    : prefixFrames + startup;
+  const activeEnd = result.projectileOki
+    ? activeStart
+    : prefixFrames + startup + active - 1;
 
 
   for (let i = 1; i <= total; i++) {
@@ -1963,8 +2012,12 @@ function generateTimelineFrames(
 
     let type: TimelineFrame['type'];
 
-    if (i <= prefixFrames) {
+    if (result.projectileOki && i === activeStart) {
+      type = 'active';
+    } else if (i <= prefixFrames) {
       type = 'prefix';
+    } else if (i > result.recoverFrame) {
+      type = 'neutral';
     } else if (i < activeStart) {
       type = 'startup';
     } else if (i <= activeEnd) {
@@ -2018,11 +2071,7 @@ function generateDefenderFrames(
   const frames: TimelineFrame[] = [];
 
   // Calculate durations
-  const prefixFrames = result.prefixFrames;
-  const startup = parseInt(result.move.startup) || 0;
-  const active = parseActiveWindowFrames(result.move.active);
-  const recovery = parseTotalRecoveryFrames(result.move.recovery);
-  const attackerEnd = prefixFrames + startup + active + recovery;
+  const attackerEnd = result.recoverFrame;
 
   // Calculate Advantage & Stun End
   const advantage = mode === 'hit'
@@ -2626,7 +2675,17 @@ function formatFrameDelta(val: number): string {
             </div>
             <div class="detail-row calc">
               <span class="detail-label">防斗反:</span>
-              <span>
+              <span v-if="result.projectileOki">
+                本体恢复 {{ result.recoverFrame }}F
+                = {{ result.prefixFrames }} + {{ result.projectileOki.totalFrames }} (波动拳本体总帧)
+                ；斗反生效 {{ wakeupDriveReversalImpactFrame }}F
+                <span
+                  :class="{ 'frame-positive': result.safeAgainstWakeupDriveReversal, 'frame-negative': !result.safeAgainstWakeupDriveReversal }"
+                >
+                  {{ result.safeAgainstWakeupDriveReversal ? `可防，余量 ${formatFrameDelta(result.driveReversalSafetyMargin)}` : `不可防，差 ${formatFrameDelta(result.driveReversalSafetyMargin)}` }}
+                </span>
+              </span>
+              <span v-else>
                 恢复 {{ result.recoverFrame }}F
                 = {{ result.prefixFrames }} + {{ result.move.startup }} + {{ result.activeWindowFrames }} + {{ result.recoveryFrames }}
                 ；斗反生效 {{ wakeupDriveReversalImpactFrame }}F
@@ -2639,7 +2698,15 @@ function formatFrameDelta(val: number): string {
             </div>
             <div class="detail-row calc">
               <span class="detail-label">被防计算:</span>
-              <span>
+              <span v-if="result.projectileOki">
+                {{ result.projectileOki.blockFrameFromInput }} (输入到被防)
+                + {{ result.projectileOki.blockstun }} (防御硬直)
+                - {{ result.projectileOki.totalFrames }} (本体总帧)
+                = <span
+                  :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
+                    formatFrame(result.calculatedOnBlock) }}</span>
+              </span>
+              <span v-else>
                 {{ result.move.onBlock }} (原始)
                 <span v-if="result.driveRushAdvantageBonus && result.driveRushAdvantageBonus > 0" class="meaty-bonus-highlight">
                   + {{ result.driveRushAdvantageBonus }} (绿冲)
