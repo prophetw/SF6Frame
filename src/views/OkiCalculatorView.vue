@@ -178,6 +178,24 @@ const altExtraDelayFrames = ref<number>(0);
 const burstPressureOffset = ref<number>(1);
 const frameTrapAdvantageTarget = ref<number>(-3);
 
+const activeAltOkiTab = ref<'driveRush' | 'driveImpact' | 'frameTrap' | 'safeBait'>('driveRush');
+
+function stepAltExtraDelay(val: number) {
+  altExtraDelayFrames.value = Math.max(0, (altExtraDelayFrames.value || 0) + val);
+}
+
+function stepBurstPressureOffset(val: number) {
+  burstPressureOffset.value = Math.max(1, (burstPressureOffset.value || 1) + val);
+}
+
+function stepFrameTrapAdvTarget(val: number) {
+  frameTrapAdvantageTarget.value = (frameTrapAdvantageTarget.value || 0) + val;
+}
+
+function stepOpponentReversalStartup(val: number) {
+  opponentReversalStartup.value = Math.max(1, (opponentReversalStartup.value || 1) + val);
+}
+
 const BURST_STARTUP_FRAMES = 26;
 const BURST_ACTIVE_FRAMES = 2;
 
@@ -3040,512 +3058,836 @@ function formatFrameDelta(val: number): string {
       </div>
     </section>
 
-    <section v-if="effectiveKnockdownAdv > 0" class="oki-section">
-      <h2 class="section-title">
-        <span class="step-number">5</span>
-        另类压起身
-      </h2>
-
-      <div class="alt-oki-delay-row">
-        <span class="summary-label">额外延迟</span>
-        <input type="number" v-model.number="altExtraDelayFrames" min="0" class="small-input" />
-        <span class="summary-unit">F</span>
+    <section v-if="effectiveKnockdownAdv > 0" class="oki-section alt-oki-section">
+      <div class="alt-oki-header">
+        <h2 class="section-title">
+          <span class="step-number">5</span>
+          另类压起身
+        </h2>
+        <div class="alt-oki-global-delay">
+          <span class="delay-label">全局额外延迟</span>
+          <div class="stepper-container">
+            <button class="stepper-btn" @click="stepAltExtraDelay(-1)" type="button">−</button>
+            <span class="stepper-value">{{ altExtraDelayFrames }}F</span>
+            <button class="stepper-btn" @click="stepAltExtraDelay(1)" type="button">+</button>
+          </div>
+        </div>
       </div>
 
-      <div class="alt-oki-grid">
-        <div class="alt-oki-card">
-          <h3 class="subsection-title">绿冲 + 动作压起身</h3>
-          <p class="section-desc">按绿冲动作第 1 帧计时，Parry Drive Rush 第 10 帧可取消进攻击。最速命中帧 = 招式发生 + 10。</p>
+      <!-- Segmented Tab Control -->
+      <div class="alt-oki-tabs">
+        <button
+          type="button"
+          :class="['alt-oki-tab-btn', { active: activeAltOkiTab === 'driveRush' }]"
+          @click="activeAltOkiTab = 'driveRush'"
+        >
+          🚗 绿冲压制
+        </button>
+        <button
+          type="button"
+          :class="['alt-oki-tab-btn', { active: activeAltOkiTab === 'driveImpact' }]"
+          @click="activeAltOkiTab = 'driveImpact'"
+        >
+          💥 迸放对齐
+        </button>
+        <button
+          type="button"
+          :class="['alt-oki-tab-btn', { active: activeAltOkiTab === 'frameTrap' }]"
+          @click="activeAltOkiTab = 'frameTrap'"
+        >
+          🎯 优势反算
+        </button>
+        <button
+          type="button"
+          :class="['alt-oki-tab-btn', { active: activeAltOkiTab === 'safeBait' }]"
+          @click="activeAltOkiTab = 'safeBait'"
+        >
+          🛡️ 安全骗压
+        </button>
+      </div>
 
-          <div class="throw-summary">
-            <div class="summary-item">
-              <span class="summary-label">击倒优势 N</span>
-              <span class="summary-value">{{ effectiveKnockdownAdv }}F</span>
-            </div>
-            <div class="summary-item">
-              <span class="summary-label">额外延迟</span>
-              <span class="summary-value">{{ normalizedAltExtraDelay }}F</span>
-            </div>
-            <div class="summary-item">
-              <span class="summary-label">绿冲可取消</span>
-              <span class="summary-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }}F</span>
-            </div>
-            <div class="summary-item">
-              <span class="summary-label">有效偏移</span>
-              <span class="summary-value">+{{ DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET }}F</span>
-            </div>
+      <!-- TAB 1: 绿冲 + 动作压起身 -->
+      <div v-if="activeAltOkiTab === 'driveRush'" class="alt-oki-panel fade-in">
+        <div class="panel-intro">
+          <h3 class="panel-subtitle">绿冲 + 动作压起身</h3>
+          <p class="panel-desc">按绿冲动作第 1 帧计时，Parry Drive Rush 第 10 帧可取消进攻击。最速命中帧 = 招式发生 + 10。</p>
+        </div>
+
+        <div class="math-hud-flow">
+          <div class="flow-step">
+            <span class="flow-label">击倒优势 (N)</span>
+            <span class="flow-val highlight">{{ effectiveKnockdownAdv }}F</span>
           </div>
-
-          <div class="throw-math">
-            <div class="math-row">
-              <span class="math-label">核心公式:</span>
-              <span class="math-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + 招式发生 = 招式发生 + {{ DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET }}</span>
-            </div>
-            <div class="math-row">
-              <span class="math-label">5LP 示例:</span>
-              <span class="math-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + 4 = {{ getFastestDriveRushHitFrame(4) }}F</span>
-            </div>
-            <div class="math-row">
-              <span class="math-label">6MP 示例:</span>
-              <span class="math-value">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + 20 = {{ getFastestDriveRushHitFrame(20) }}F</span>
-            </div>
-            <div class="math-row">
-              <span class="math-label">可命中窗口:</span>
-              <span class="math-value" v-if="opponentPreActiveWindowValid">{{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F</span>
-              <span class="math-value" v-else>无</span>
-            </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step">
+            <span class="flow-label">全局额外延迟</span>
+            <span class="flow-val">{{ normalizedAltExtraDelay }}F</span>
           </div>
-
-          <div class="results-header-row throw-results-header">
-            <h3 class="results-title">绿冲匹配 (共 {{ allDriveRushOkiResults.length }} 条，显示前 {{ allDriveRushOkiResults.length }} 条)</h3>
+          <div class="flow-arrow">+</div>
+          <div class="flow-step">
+            <span class="flow-label">绿冲前置取消</span>
+            <span class="flow-val">{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }}F</span>
           </div>
-
-          <div v-if="allDriveRushOkiResults.length > 0" class="results-table">
-            <div class="result-header throw-header">
-              <span>组合</span>
-              <span>最速命中</span>
-              <span>打击帧</span>
-              <span>压制帧</span>
-            </div>
-            <div
-              v-for="result in allDriveRushOkiResults"
-              :key="result.key"
-              :class="['result-row-auto', 'throw-row', {
-                expanded: selectedDriveRushResultKey === result.key,
-                success: result.coversOpponent,
-                trade: result.isTrade
-              }]"
-              @click="toggleDriveRushResultDetail(result.key)"
-            >
-              <div class="result-combo">
-                <span v-if="result.coversOpponent" class="success-badge">压制</span>
-                <span v-if="result.isTrade" class="trade-badge">相杀</span>
-                <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
-                <span v-if="result.prefix">+</span>
-                <span>绿冲</span>
-                <span>+</span>
-                <span>{{ getMoveDisplayName(result.move) }}</span>
-                <span class="move-input">({{ result.move.input }})</span>
-              </div>
-              <span>{{ result.fastestHitFrame }}F</span>
-              <span>{{ result.firstActive }}~{{ result.lastActive }}F</span>
-              <span>{{ result.wakeupOffset }}F</span>
-
-              <div v-if="selectedDriveRushResultKey === result.key" class="result-detail" @click.stop>
-                <div class="detail-title">帧数详情</div>
-                <div class="detail-row">
-                  <span class="detail-label">动作序列:</span>
-                  <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
-                </div>
-                <div class="detail-row">
-                  <span class="detail-label">额外延迟:</span>
-                  <span>{{ result.extraDelayFrames }}F</span>
-                </div>
-                <div class="detail-row">
-                  <span class="detail-label">绿冲起点:</span>
-                  <span>{{ result.prefixFrames }} + {{ result.extraDelayFrames }} = {{ result.driveRushStartDelay }}F</span>
-                </div>
-                <div class="detail-row">
-                  <span class="detail-label">动作开始:</span>
-                  <span>{{ result.driveRushStartDelay }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} = {{ result.attackStartFrame }}F</span>
-                </div>
-                <div class="detail-row">
-                  <span class="detail-label">派生动作:</span>
-                  <span>{{ getMoveDisplayName(result.move) }}<span v-if="result.move.input"> ({{ result.move.input }})</span> = {{ result.startup }}F 发生, {{ result.move.active }} 持续</span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">最速命中:</span>
-                  <span>{{ result.driveRushStartDelay }} + {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }} + {{ result.startup }} = {{ result.fastestHitFrame }}F</span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">
-                    {{ result.activeHasGap ? '最后段打击范围:' : '打击范围:' }}
-                  </span>
-                  <span class="frame-positive">{{ result.firstActive }}~{{ result.lastActive }}F</span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">压制帧:</span>
-                  <span>{{ result.firstActive }} - {{ opponentWakeupFrame }} + 1 = {{ result.wakeupOffset }}F</span>
-                </div>
-                <div class="detail-row">
-                  <span class="detail-label">可命中窗口:</span>
-                  <span v-if="opponentPreActiveWindowValid">{{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }}F</span>
-                  <span v-else>无</span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">被防计算:</span>
-                  <span>
-                    {{ result.move.onBlock }} (原始)
-                    <span v-if="result.driveRushAdvantageBonus > 0" class="meaty-bonus-highlight">+ {{ result.driveRushAdvantageBonus }} (绿冲)</span>
-                    <span v-if="result.meatyBonus > 0" class="meaty-bonus-highlight">+ {{ result.meatyBonus }} (Meaty)</span>
-                    = <span :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{ formatFrame(result.calculatedOnBlock) }}</span>
-                  </span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">被击计算:</span>
-                  <span>
-                    {{ result.move.onHit }} (原始)
-                    <span v-if="result.driveRushAdvantageBonus > 0" class="meaty-bonus-highlight">+ {{ result.driveRushAdvantageBonus }} (绿冲)</span>
-                    <span v-if="result.meatyBonus > 0" class="meaty-bonus-highlight">+ {{ result.meatyBonus }} (Meaty)</span>
-                    <span v-if="result.coversOpponent" class="meaty-bonus-highlight">+ 2 (打康)</span>
-                    = <span :class="{ 'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit) }">{{ formatFrame(result.calculatedOnHit) }}</span>
-                  </span>
-                </div>
-                <div class="detail-row result">
-                  <span class="detail-label">判定:</span>
-                  <span v-if="result.coversOpponent" class="success">✓ 压制成功: {{ result.firstActive }}~{{ result.lastActive }} 与 {{ opponentWakeupFrame }}~{{ opponentPreActiveEnd }} 有重叠</span>
-                  <span v-else-if="result.isTrade" class="trade">相杀: 与对手判定第一帧重合 ({{ opponentFirstActiveFrame }}F)</span>
-                </div>
-              </div>
-            </div>
+          <div class="flow-arrow">+</div>
+          <div class="flow-step">
+            <span class="flow-label">招式发生</span>
+            <span class="flow-val">发生F</span>
           </div>
-          <div v-else class="empty-state">
-            <p>没有匹配的绿冲压起身组合</p>
+          <div class="flow-arrow">=</div>
+          <div class="flow-step final">
+            <span class="flow-label">最速命中帧</span>
+            <span class="flow-val">发生 + 10F</span>
           </div>
         </div>
 
-        <div class="alt-oki-card">
-          <h3 class="subsection-title">斗气迸放压起身</h3>
-          <p class="section-desc">固定 26F 发生，26~27F 持续。输入“压制帧”定义第一段判定相对起身的对齐位置。</p>
-
-          <div class="throw-summary">
-            <div class="summary-item">
-              <span class="summary-label">击倒优势 N</span>
-              <span class="summary-value">{{ effectiveKnockdownAdv }}F</span>
-            </div>
-            <div class="summary-item">
-              <span class="summary-label">额外延迟</span>
-              <span class="summary-value">{{ normalizedAltExtraDelay }}F</span>
-            </div>
-            <div class="summary-item">
-              <span class="summary-label">压制帧</span>
-              <input type="number" v-model.number="burstPressureOffset" min="1" class="small-input" />
-              <span class="summary-unit">F</span>
-            </div>
-            <div class="summary-item">
-              <span class="summary-label">迸放发生</span>
-              <span class="summary-value">{{ BURST_STARTUP_FRAMES }}F</span>
-            </div>
-            <div class="summary-item">
-              <span class="summary-label">迸放持续</span>
-              <span class="summary-value">{{ BURST_STARTUP_FRAMES }}~{{ BURST_STARTUP_FRAMES + BURST_ACTIVE_FRAMES - 1 }}F</span>
-            </div>
+        <div class="math-formula-box">
+          <div class="formula-title">对手可命中窗口：</div>
+          <div class="formula-value" v-if="opponentPreActiveWindowValid">
+            起身第 <span class="badge green">{{ opponentWakeupFrame }}F</span> 到 判定前 <span class="badge yellow">{{ opponentPreActiveEnd }}F</span> (共 {{ opponentPreActiveEnd - opponentWakeupFrame + 1 }} 帧窗口)
           </div>
+          <div class="formula-value red" v-else>无 (对手直接凹招判定生效)</div>
+        </div>
 
-          <div class="throw-math">
-            <div class="math-row">
-              <span class="math-label">目标第一帧:</span>
-              <span class="math-value">{{ opponentWakeupFrame }} + ({{ normalizedBurstPressureOffset }} - 1) = {{ burstTargetFirstActiveFrame }}F</span>
-            </div>
-            <div class="math-row">
-              <span class="math-label">目标判定范围:</span>
-              <span class="math-value">{{ burstTargetFirstActiveFrame }}~{{ burstTargetLastActiveFrame }}F</span>
-            </div>
-            <div class="math-row">
-              <span class="math-label">需要前置总帧:</span>
-              <span class="math-value">{{ burstTargetFirstActiveFrame }} - {{ BURST_STARTUP_FRAMES }} = {{ burstRequiredDelay }}F</span>
-            </div>
-            <div class="math-row">
-              <span class="math-label">额外延迟 E:</span>
-              <span class="math-value">{{ normalizedAltExtraDelay }}F</span>
-            </div>
+        <div class="results-header-row throw-results-header">
+          <h4 class="results-title">绿冲匹配结果 (共 {{ allDriveRushOkiResults.length }} 条)</h4>
+        </div>
 
+        <!-- Desktop Results Table -->
+        <div v-if="allDriveRushOkiResults.length > 0" class="desktop-results-table results-table">
+          <div class="result-header throw-header">
+            <span>组合</span>
+            <span>最速命中</span>
+            <span>打击持续帧</span>
+            <span>压制帧</span>
           </div>
-
-          <div v-if="burstRequiredDelay < 0" class="throw-warning">
-            当前目标需要负延迟（前置总帧 &lt; 0），无法成立。
-          </div>
-
-          <div class="results-header-row throw-results-header">
-            <h3 class="results-title">迸放匹配 (共 {{ allBurstPressureResults.length }} 条，显示前 {{ allBurstPressureResults.length }} 条)</h3>
-          </div>
-
-          <div v-if="allBurstPressureResults.length > 0" class="results-table">
-            <div class="result-header throw-header">
-              <span>组合</span>
-              <span>前置总帧</span>
-              <span>判定帧</span>
-              <span>压制帧</span>
+          <div
+            v-for="result in allDriveRushOkiResults"
+            :key="result.key"
+            :class="['result-row-auto', 'throw-row', {
+              expanded: selectedDriveRushResultKey === result.key,
+              success: result.coversOpponent,
+              trade: result.isTrade
+            }]"
+            @click="toggleDriveRushResultDetail(result.key)"
+          >
+            <div class="result-combo">
+              <span v-if="result.coversOpponent" class="success-badge">压制成功</span>
+              <span v-if="result.isTrade" class="trade-badge">相杀</span>
+              <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
+              <span v-if="result.prefix">+</span>
+              <span class="badge-dr-tag">绿冲</span>
+              <span>+</span>
+              <span>{{ getMoveDisplayName(result.move) }}</span>
+              <span class="move-input">({{ result.move.input }})</span>
             </div>
-            <div
-              v-for="result in allBurstPressureResults"
-              :key="result.key"
-              :class="['result-row-auto', 'throw-row', { expanded: selectedBurstResultKey === result.key }]"
-              @click="toggleBurstResultDetail(result.key)"
-            >
-              <div class="result-combo">
-                <span class="combo-prefix">{{ result.prefix || '无前置' }}</span>
-                <span>+</span>
-                <span>{{ result.fillerName }}</span>
-                <span v-if="result.filler" class="move-input">({{ result.filler.input }})</span>
-              </div>
-              <span>{{ result.delay }}F</span>
-              <span>{{ result.firstActive }}~{{ result.lastActive }}F</span>
-              <span>{{ result.wakeupOffset }}F</span>
+            <span class="font-mono-bold">{{ result.fastestHitFrame }}F</span>
+            <span class="font-mono">{{ result.firstActive }}~{{ result.lastActive }}F</span>
+            <span :class="result.coversOpponent ? 'frame-positive' : 'frame-neutral'">{{ result.wakeupOffset }}F</span>
 
-              <div v-if="selectedBurstResultKey === result.key" class="result-detail" @click.stop>
-                <div class="detail-title">帧数详情</div>
-                <div class="detail-row">
-                  <span class="detail-label">动作序列:</span>
-                  <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+            <!-- Expanded Details Panel inside row -->
+            <div v-if="selectedDriveRushResultKey === result.key" class="result-detail" @click.stop>
+              <div class="detail-title">📖 绿冲压制帧数详情</div>
+              <div class="detail-grid">
+                <div class="detail-steps-column">
+                  <h5 class="detail-sub-title">1. 帧数计算步骤 (Steps)</h5>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">前置动作序列:</span>
+                    <span class="step-val font-mono">{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">全局额外延迟:</span>
+                    <span class="step-val font-mono">+ {{ result.extraDelayFrames }}F</span>
+                  </div>
+                  <div class="detail-step-item highlight-line">
+                    <span class="step-lbl">绿冲起点延迟:</span>
+                    <span class="step-val font-mono">= {{ result.driveRushStartDelay }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">绿冲攻击取消前置:</span>
+                    <span class="step-val font-mono">+ {{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">派生动作发生 ({{ getMoveDisplayName(result.move) }}):</span>
+                    <span class="step-val font-mono">+ {{ result.startup }}F</span>
+                  </div>
+                  <div class="detail-step-item highlight-final">
+                    <span class="step-lbl">最速命中帧 (Fastest):</span>
+                    <span class="step-val font-mono">= {{ result.fastestHitFrame }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">打击持续判定范围:</span>
+                    <span class="step-val font-mono frame-positive">{{ result.firstActive }}~{{ result.lastActive }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">压制帧 (Wakeup Offset):</span>
+                    <span class="step-val font-mono frame-positive">{{ result.wakeupOffset }}F</span>
+                  </div>
                 </div>
-                <div class="detail-row">
-                  <span class="detail-label">追加动作:</span>
-                  <span v-if="result.filler">
-                    {{ result.fillerName }}<span v-if="result.filler.input"> ({{ result.filler.input }})</span> =
-                    <span v-if="result.filler.raw?.total">
-                      {{ result.fillerFrames }}F (原始数据)
-                    </span>
-                    <span v-else>
-                      {{ result.fillerStartup }} + {{ result.fillerActive }} + {{ result.fillerRecovery }} = {{ result.fillerFrames }}F
-                    </span>
-                  </span>
-                  <span v-else>无 = 0F</span>
-                </div>
-                <div class="detail-row">
-                  <span class="detail-label">迸放数据:</span>
-                  <span>{{ BURST_STARTUP_FRAMES }}F 发生, {{ BURST_ACTIVE_FRAMES }}F 持续</span>
-                </div>
-                <div class="detail-row">
-                  <span class="detail-label">目标压制:</span>
-                  <span>起身第 {{ normalizedBurstPressureOffset }}F, 目标判定 {{ burstTargetFirstActiveFrame }}~{{ burstTargetLastActiveFrame }}F</span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">前置总帧:</span>
-                  <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} + {{ result.extraDelayFrames }} = {{ result.delay }}F</span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">判定帧:</span>
-                  <span>{{ result.delay }} + {{ BURST_STARTUP_FRAMES }} = {{ result.firstActive }}~{{ result.lastActive }}F</span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">压制帧:</span>
-                  <span>{{ result.firstActive }} - {{ opponentWakeupFrame }} + 1 = {{ result.wakeupOffset }}F</span>
-                </div>
-                <div class="detail-row result">
-                  <span class="detail-label">判定:</span>
-                  <span class="success">✓ 精确匹配目标压制帧</span>
+
+                <div class="detail-advantage-column">
+                  <h5 class="detail-sub-title">2. 命中/防御判定结果 (Advantage)</h5>
+                  <div class="advantage-blocks">
+                    <div class="adv-card block-adv">
+                      <div class="adv-title">🛡️ 被防帧优势</div>
+                      <div class="adv-calc font-mono-sm">
+                        {{ result.move.onBlock }} (基准)
+                        <span v-if="result.driveRushAdvantageBonus > 0" class="bonus-tag">+{{ result.driveRushAdvantageBonus }} (绿冲)</span>
+                        <span v-if="result.meatyBonus > 0" class="bonus-tag green">+{{ result.meatyBonus }} (持续)</span>
+                      </div>
+                      <div :class="['adv-value', { 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }]">
+                        {{ formatFrame(result.calculatedOnBlock) }}
+                      </div>
+                    </div>
+
+                    <div class="adv-card hit-adv">
+                      <div class="adv-title">🎯 命中(打康)帧优势</div>
+                      <div class="adv-calc font-mono-sm">
+                        {{ result.move.onHit }} (基准)
+                        <span v-if="result.driveRushAdvantageBonus > 0" class="bonus-tag">+{{ result.driveRushAdvantageBonus }} (绿冲)</span>
+                        <span v-if="result.meatyBonus > 0" class="bonus-tag green">+{{ result.meatyBonus }} (持续)</span>
+                        <span v-if="result.coversOpponent" class="bonus-tag yellow">+2 (打康)</span>
+                      </div>
+                      <div :class="['adv-value', { 'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit) }]">
+                        {{ formatFrame(result.calculatedOnHit) }}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="advantage-verdict" :class="{ success: result.coversOpponent, trade: result.isTrade }">
+                    <span v-if="result.coversOpponent">✓ 压制成功: 持续判定与起身的脆弱窗口完全重合</span>
+                    <span v-else-if="result.isTrade">⚠️ 相杀: 与对手最速凹招判定帧在第 {{ opponentFirstActiveFrame }}F 重合</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div v-else-if="burstRequiredDelay >= 0" class="empty-state">
-            <p>没有匹配的迸放压起身组合</p>
           </div>
         </div>
 
-        <div class="alt-oki-card">
-          <h3 class="subsection-title">目标优势帧反算组合</h3>
-          <p class="section-desc">根据用户设置的目标优势帧，反算可用组合路线。公式：击倒总帧 - 组合总帧 = 目标优势帧。</p>
-
-          <div class="throw-summary">
-            <div class="summary-item">
-              <span class="summary-label">击倒总帧 N</span>
-              <span class="summary-value">{{ effectiveKnockdownAdv }}F</span>
-            </div>
-            <div class="summary-item">
-              <span class="summary-label">额外延迟</span>
-              <span class="summary-value">{{ normalizedAltExtraDelay }}F</span>
-            </div>
-            <div class="summary-item">
-              <span class="summary-label">目标优势帧</span>
-              <input type="number" v-model.number="frameTrapAdvantageTarget" class="small-input" />
-              <span class="summary-unit">F</span>
-            </div>
-          </div>
-
-          <div class="throw-math">
-            <div class="math-row">
-              <span class="math-label">目标公式:</span>
-              <span class="math-value">N - 组合总帧 = {{ normalizedFrameTrapAdvTarget }}</span>
-            </div>
-            <div class="math-row">
-              <span class="math-label">额外延迟 E:</span>
-              <span class="math-value">{{ normalizedAltExtraDelay }}F</span>
-            </div>
-          </div>
-
-          <div class="results-header-row throw-results-header">
-            <h3 class="results-title">组合反算结果 (共 {{ allFrameTrapResults.length }} 条，显示前 {{ allFrameTrapResults.length }} 条)</h3>
-          </div>
-
-          <div v-if="allFrameTrapResults.length > 0" class="results-table">
-            <div class="result-header throw-header">
-              <span>组合</span>
-              <span>组合总帧</span>
-              <span>结果优势</span>
-              <span>目标差值</span>
-            </div>
-            <div
-              v-for="result in allFrameTrapResults"
-              :key="result.key"
-              :class="['result-row-auto', 'throw-row', { expanded: selectedFrameTrapResultKey === result.key }]"
-              @click="toggleFrameTrapResultDetail(result.key)"
-            >
-              <div class="result-combo">
-                <span class="combo-prefix">{{ result.prefix || '无前置' }}</span>
-                <span>+</span>
-                <span>{{ result.fillerName }}</span>
-                <span v-if="result.filler" class="move-input">({{ result.filler.input }})</span>
+        <!-- Mobile Results Cards -->
+        <div v-if="allDriveRushOkiResults.length > 0" class="mobile-results-list">
+          <div
+            v-for="result in allDriveRushOkiResults"
+            :key="'mob-' + result.key"
+            :class="['mobile-result-card', {
+              expanded: selectedDriveRushResultKey === result.key,
+              success: result.coversOpponent,
+              trade: result.isTrade
+            }]"
+            @click="toggleDriveRushResultDetail(result.key)"
+          >
+            <div class="card-header">
+              <div class="card-combo-title">
+                <span v-if="result.prefix" class="mob-prefix">{{ result.prefix }}</span>
+                <span v-if="result.prefix" class="mob-plus">+</span>
+                <span class="mob-dr-badge">绿冲</span>
+                <span class="mob-plus">+</span>
+                <span class="mob-move-name">{{ getMoveDisplayName(result.move) }}</span>
+                <span class="mob-move-input">({{ result.move.input }})</span>
               </div>
-              <span>{{ result.totalFrames }}F</span>
-              <span :class="{ 'frame-positive': isPositive(result.resultingAdvantage), 'frame-negative': isNegative(result.resultingAdvantage) }">
-                {{ formatFrame(result.resultingAdvantage) }}
+              <span class="mob-expand-chevron" :class="{ rotated: selectedDriveRushResultKey === result.key }">▼</span>
+            </div>
+
+            <div class="card-tags-row">
+              <span v-if="result.coversOpponent" class="badge-mini success">压制成功</span>
+              <span v-if="result.isTrade" class="badge-mini trade">相杀</span>
+              <span class="badge-mini frame font-mono">最速命中: {{ result.fastestHitFrame }}F</span>
+              <span class="badge-mini frame font-mono" :class="result.coversOpponent ? 'green' : 'gray'">压制: {{ result.wakeupOffset }}F</span>
+            </div>
+
+            <!-- Mobile Expanded Details Panel -->
+            <div v-if="selectedDriveRushResultKey === result.key" class="mobile-card-details" @click.stop>
+              <div class="mobile-detail-section">
+                <div class="section-divider">帧数计算步骤</div>
+                <div class="mob-calc-step">前置动作: <span class="font-mono-bold">{{ result.prefix || '无' }} ({{ result.prefixFrames }}F)</span></div>
+                <div class="mob-calc-step">全局延迟: <span class="font-mono-bold">+{{ result.extraDelayFrames }}F</span></div>
+                <div class="mob-calc-step">绿冲起点: <span class="font-mono-bold">= {{ result.driveRushStartDelay }}F</span></div>
+                <div class="mob-calc-step">攻击取消: <span class="font-mono-bold">+{{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }}F</span></div>
+                <div class="mob-calc-step">招式发生: <span class="font-mono-bold">+{{ result.startup }}F</span></div>
+                <div class="mob-calc-step highlight">最速命中: <span class="font-mono-bold">= {{ result.fastestHitFrame }}F</span></div>
+                <div class="mob-calc-step">持续时间: <span class="font-mono-bold">{{ result.firstActive }}~{{ result.lastActive }}F</span></div>
+              </div>
+
+              <div class="mobile-detail-section">
+                <div class="section-divider">最终优势</div>
+                <div class="mob-adv-row">
+                  <span class="adv-label">🛡️ 被防优势:</span>
+                  <span :class="['adv-num', { 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }]">
+                    {{ formatFrame(result.calculatedOnBlock) }}
+                  </span>
+                  <span class="adv-math-desc">({{ result.move.onBlock }} + DR{{ result.driveRushAdvantageBonus }} + Meaty{{ result.meatyBonus }})</span>
+                </div>
+                <div class="mob-adv-row">
+                  <span class="adv-label">🎯 打康优势:</span>
+                  <span :class="['adv-num', { 'frame-positive': isPositive(result.calculatedOnHit), 'frame-negative': isNegative(result.calculatedOnHit) }]">
+                    {{ formatFrame(result.calculatedOnHit) }}
+                  </span>
+                  <span class="adv-math-desc">({{ result.move.onHit }} + DR{{ result.driveRushAdvantageBonus }} + Meaty{{ result.meatyBonus }} + 打康2)</span>
+                </div>
+              </div>
+
+              <div class="mobile-verdict-banner" :class="{ success: result.coversOpponent, trade: result.isTrade }">
+                <span v-if="result.coversOpponent">✓ 压制成功: 覆盖对手起身无敌后脆弱帧</span>
+                <span v-else-if="result.isTrade">⚠️ 相杀: 与对手最速凹招在第 {{ opponentFirstActiveFrame }}F 发生重合</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div v-else class="empty-state">
+          <p>没有找到自动匹配的绿冲压起身组合</p>
+        </div>
+      </div>
+
+      <!-- TAB 2: 斗气迸放压起身 -->
+      <div v-if="activeAltOkiTab === 'driveImpact'" class="alt-oki-panel fade-in">
+        <div class="panel-intro">
+          <h3 class="panel-subtitle">斗气迸放压起身 (Drive Impact)</h3>
+          <p class="panel-desc">固定 26F 发生，26~27F 持续。通过配置目标“压制帧”来精确对齐判定位置。</p>
+        </div>
+
+        <!-- Custom Parameter Stepper -->
+        <div class="panel-setting-block">
+          <div class="panel-setting-row">
+            <span class="setting-label">目标压制帧 (Wakeup Offset Target)</span>
+            <div class="stepper-container">
+              <button class="stepper-btn" @click="stepBurstPressureOffset(-1)" type="button">−</button>
+              <span class="stepper-value">{{ burstPressureOffset }}F</span>
+              <button class="stepper-btn" @click="stepBurstPressureOffset(1)" type="button">+</button>
+            </div>
+            <span class="setting-unit">F</span>
+          </div>
+          <p class="setting-desc-text">定义迸放第一段判定相对起身的对齐帧数。例如 1F 代表最速压起身。</p>
+        </div>
+
+        <div class="math-hud-flow impact">
+          <div class="flow-step">
+            <span class="flow-label">击倒优势 (N)</span>
+            <span class="flow-val highlight">{{ effectiveKnockdownAdv }}F</span>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step">
+            <span class="flow-label">额外延迟</span>
+            <span class="flow-val">{{ normalizedAltExtraDelay }}F</span>
+          </div>
+          <div class="flow-arrow">+</div>
+          <div class="flow-step">
+            <span class="flow-label">目标第一帧</span>
+            <span class="flow-val">{{ burstTargetFirstActiveFrame }}F</span>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step">
+            <span class="flow-label">需要前置</span>
+            <span class="flow-val">{{ burstRequiredDelay }}F</span>
+          </div>
+          <div class="flow-arrow">+</div>
+          <div class="flow-step">
+            <span class="flow-label">迸放发生</span>
+            <span class="flow-val">26F</span>
+          </div>
+          <div class="flow-arrow">=</div>
+          <div class="flow-step final">
+            <span class="flow-label">目标判定范围</span>
+            <span class="flow-val">{{ burstTargetFirstActiveFrame }}~{{ burstTargetLastActiveFrame }}F</span>
+          </div>
+        </div>
+
+        <div v-if="burstRequiredDelay < 0" class="throw-warning-glow">
+          ⚠️ 当前设定的目标压制帧需要负的前置帧数（{{ burstRequiredDelay }}F），该方案无法在实际对局中成立！请减小目标压制帧。
+        </div>
+
+        <div class="results-header-row throw-results-header">
+          <h4 class="results-title">斗气迸放匹配 (共 {{ allBurstPressureResults.length }} 条)</h4>
+        </div>
+
+        <!-- Desktop Results Table -->
+        <div v-if="allBurstPressureResults.length > 0" class="desktop-results-table results-table">
+          <div class="result-header throw-header">
+            <span>前置组合</span>
+            <span>前置总帧</span>
+            <span>判定帧</span>
+            <span>压制帧</span>
+          </div>
+          <div
+            v-for="result in allBurstPressureResults"
+            :key="result.key"
+            :class="['result-row-auto', 'throw-row', { expanded: selectedBurstResultKey === result.key }]"
+            @click="toggleBurstResultDetail(result.key)"
+          >
+            <div class="result-combo">
+              <span class="combo-prefix">{{ result.prefix || '无前置' }}</span>
+              <span>+</span>
+              <span class="badge-di-tag">迸放</span>
+              <span>+</span>
+              <span class="filler-name">{{ result.fillerName }}</span>
+              <span class="move-input" v-if="result.filler">({{ result.filler.input }})</span>
+            </div>
+            <span class="font-mono-bold">{{ result.delay }}F</span>
+            <span class="font-mono">{{ result.firstActive }}~{{ result.lastActive }}F</span>
+            <span class="frame-positive font-mono-bold">{{ result.wakeupOffset }}F</span>
+
+            <!-- Expanded Details -->
+            <div v-if="selectedBurstResultKey === result.key" class="result-detail" @click.stop>
+              <div class="detail-title">📖 斗气迸放压制帧数详情</div>
+              <div class="detail-grid single-col">
+                <div class="detail-steps-column">
+                  <div class="detail-step-item">
+                    <span class="step-lbl">动作序列前置:</span>
+                    <span class="step-val font-mono">{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">追加动作 ({{ result.fillerName }}):</span>
+                    <span class="step-val font-mono" v-if="result.filler">
+                      + {{ result.fillerFrames }}F
+                      <span class="setting-tip">({{ result.filler.raw?.total ? '原始总帧' : '各阶段累加' }})</span>
+                    </span>
+                    <span class="step-val font-mono" v-else>+ 0F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">额外空盘延迟:</span>
+                    <span class="step-val font-mono">+ {{ result.extraDelayFrames }}F</span>
+                  </div>
+                  <div class="detail-step-item highlight-line">
+                    <span class="step-lbl">实际前置总帧 (Delay):</span>
+                    <span class="step-val font-mono">= {{ result.delay }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">迸放启动时间 (Burst Startup):</span>
+                    <span class="step-val font-mono">+ {{ BURST_STARTUP_FRAMES }}F</span>
+                  </div>
+                  <div class="detail-step-item highlight-final">
+                    <span class="step-lbl">迸放判定生效范围:</span>
+                    <span class="step-val font-mono frame-positive">= {{ result.firstActive }} ~ {{ result.lastActive }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">对应对手起身压制帧:</span>
+                    <span class="step-val font-mono frame-positive">{{ result.wakeupOffset }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">对手起身第1帧:</span>
+                    <span class="step-val font-mono">{{ opponentWakeupFrame }}F</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Results Cards -->
+        <div v-if="allBurstPressureResults.length > 0" class="mobile-results-list">
+          <div
+            v-for="result in allBurstPressureResults"
+            :key="'mob-' + result.key"
+            :class="['mobile-result-card', 'di-theme', { expanded: selectedBurstResultKey === result.key }]"
+            @click="toggleBurstResultDetail(result.key)"
+          >
+            <div class="card-header">
+              <div class="card-combo-title">
+                <span class="mob-prefix">{{ result.prefix || '无前置' }}</span>
+                <span class="mob-plus">+</span>
+                <span class="mob-di-badge">迸放</span>
+                <span class="mob-plus" v-if="result.filler">+</span>
+                <span class="mob-move-name" v-if="result.filler">{{ result.fillerName }}</span>
+              </div>
+              <span class="mob-expand-chevron" :class="{ rotated: selectedBurstResultKey === result.key }">▼</span>
+            </div>
+
+            <div class="card-tags-row">
+              <span class="badge-mini success">精确压制</span>
+              <span class="badge-mini frame font-mono">前置总帧: {{ result.delay }}F</span>
+              <span class="badge-mini frame font-mono green">压制: +{{ result.wakeupOffset }}F</span>
+            </div>
+
+            <!-- Mobile Expanded Details -->
+            <div v-if="selectedBurstResultKey === result.key" class="mobile-card-details" @click.stop>
+              <div class="mobile-detail-section">
+                <div class="section-divider">帧数计算步骤</div>
+                <div class="mob-calc-step">前置动作: <span class="font-mono-bold">{{ result.prefix || '无' }} ({{ result.prefixFrames }}F)</span></div>
+                <div class="mob-calc-step">追加前置: <span class="font-mono-bold">+{{ result.fillerFrames }}F</span></div>
+                <div class="mob-calc-step">追加延迟: <span class="font-mono-bold">+{{ result.extraDelayFrames }}F</span></div>
+                <div class="mob-calc-step highlight">前置总帧: <span class="font-mono-bold">= {{ result.delay }}F</span></div>
+                <div class="mob-calc-step">迸放启动: <span class="font-mono-bold">+{{ BURST_STARTUP_FRAMES }}F</span></div>
+                <div class="mob-calc-step highlight">判定范围: <span class="font-mono-bold">{{ result.firstActive }}~{{ result.lastActive }}F</span></div>
+                <div class="mob-calc-step">压制对齐: <span class="font-mono-bold">第 {{ result.wakeupOffset }} 帧压制</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div v-else-if="burstRequiredDelay >= 0" class="empty-state">
+          <p>没有找到自动匹配的迸放压起身组合</p>
+        </div>
+      </div>
+
+      <!-- TAB 3: 目标优势帧反算组合 -->
+      <div v-if="activeAltOkiTab === 'frameTrap'" class="alt-oki-panel fade-in">
+        <div class="panel-intro">
+          <h3 class="panel-subtitle">目标优势帧反算组合</h3>
+          <p class="panel-desc">根据您期望保留的特定目标优势帧，自动反向计算出可行的连段/前置空挥路线。</p>
+        </div>
+
+        <!-- Custom Parameter Stepper -->
+        <div class="panel-setting-block">
+          <div class="panel-setting-row">
+            <span class="setting-label">期望目标优势帧 (Target Advantage Frame)</span>
+            <div class="stepper-container">
+              <button class="stepper-btn" @click="stepFrameTrapAdvTarget(-1)" type="button">−</button>
+              <span class="stepper-value">{{ frameTrapAdvantageTarget >= 0 ? '+' : '' }}{{ frameTrapAdvantageTarget }}</span>
+              <button class="stepper-btn" @click="stepFrameTrapAdvTarget(1)" type="button">+</button>
+            </div>
+            <span class="setting-unit">F</span>
+          </div>
+          <p class="setting-desc-text">输入您想在对手起床后获得的帧数优势（正值表示我方先动，负值表示对手先动）。</p>
+        </div>
+
+        <div class="math-hud-flow ft">
+          <div class="flow-step">
+            <span class="flow-label">击倒优势 (N)</span>
+            <span class="flow-val highlight">{{ effectiveKnockdownAdv }}F</span>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step">
+            <span class="flow-label">全局额外延迟</span>
+            <span class="flow-val">{{ normalizedAltExtraDelay }}F</span>
+          </div>
+          <div class="flow-arrow">−</div>
+          <div class="flow-step">
+            <span class="flow-label">组合总帧数</span>
+            <span class="flow-val">组合总F</span>
+          </div>
+          <div class="flow-arrow">=</div>
+          <div class="flow-step final">
+            <span class="flow-label">结果优势帧</span>
+            <span class="flow-val highlight">{{ frameTrapAdvantageTarget >= 0 ? '+' : '' }}{{ normalizedFrameTrapAdvTarget }}F</span>
+          </div>
+        </div>
+
+        <div class="results-header-row throw-results-header">
+          <h4 class="results-title">优势反算匹配 (共 {{ allFrameTrapResults.length }} 条)</h4>
+        </div>
+
+        <!-- Desktop Results Table -->
+        <div v-if="allFrameTrapResults.length > 0" class="desktop-results-table results-table">
+          <div class="result-header throw-header">
+            <span>组合路线</span>
+            <span>组合总帧</span>
+            <span>结果优势</span>
+            <span>目标差值</span>
+          </div>
+          <div
+            v-for="result in allFrameTrapResults"
+            :key="result.key"
+            :class="['result-row-auto', 'throw-row', { expanded: selectedFrameTrapResultKey === result.key }]"
+            @click="toggleFrameTrapResultDetail(result.key)"
+          >
+            <div class="result-combo">
+              <span class="combo-prefix">{{ result.prefix || '无前置' }}</span>
+              <span>+</span>
+              <span class="move-name">{{ result.fillerName }}</span>
+              <span class="move-input" v-if="result.filler">({{ result.filler.input }})</span>
+            </div>
+            <span class="font-mono-bold">{{ result.totalFrames }}F</span>
+            <span :class="['font-mono-bold', { 'frame-positive': isPositive(result.resultingAdvantage), 'frame-negative': isNegative(result.resultingAdvantage) }]">
+              {{ formatFrame(result.resultingAdvantage) }}
+            </span>
+            <span :class="['font-mono', { 'frame-positive': isPositive(result.deltaToTarget), 'frame-negative': isNegative(result.deltaToTarget) }]">
+              {{ formatFrame(result.deltaToTarget) }}
+            </span>
+
+            <!-- Expanded Details -->
+            <div v-if="selectedFrameTrapResultKey === result.key" class="result-detail" @click.stop>
+              <div class="detail-title">📖 连段前置反算帧数详情</div>
+              <div class="detail-grid single-col">
+                <div class="detail-steps-column">
+                  <div class="detail-step-item">
+                    <span class="step-lbl">第一段动作前置:</span>
+                    <span class="step-val font-mono">{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">追加空挥/移动动作:</span>
+                    <span class="step-val font-mono" v-if="result.filler">
+                      + {{ result.fillerFrames }}F
+                      <span class="setting-tip">({{ result.filler.raw?.total ? '动作总帧' : '启动+持续+恢复' }})</span>
+                    </span>
+                    <span class="step-val font-mono" v-else>+ 0F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">额外空盘延迟:</span>
+                    <span class="step-val font-mono">+ {{ result.extraDelayFrames }}F</span>
+                  </div>
+                  <div class="detail-step-item highlight-line">
+                    <span class="step-lbl">组合总消耗帧 (Cost):</span>
+                    <span class="step-val font-mono">= {{ result.totalFrames }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">原始击倒优势:</span>
+                    <span class="step-val font-mono">{{ effectiveKnockdownAdv }}F</span>
+                  </div>
+                  <div class="detail-step-item highlight-final">
+                    <span class="step-lbl">最终生成帧优势 (Advantage):</span>
+                    <span :class="['step-val', 'font-mono-bold', { 'frame-positive': isPositive(result.resultingAdvantage), 'frame-negative': isNegative(result.resultingAdvantage) }]">
+                      {{ formatFrame(result.resultingAdvantage) }}
+                    </span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">设定目标优势:</span>
+                    <span class="step-val font-mono">{{ formatFrame(normalizedFrameTrapAdvTarget) }}</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">与目标差值 (Delta):</span>
+                    <span :class="['step-val', 'font-mono', { 'frame-positive': isPositive(result.deltaToTarget), 'frame-negative': isNegative(result.deltaToTarget) }]">
+                      {{ formatFrame(result.deltaToTarget) }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Results Cards -->
+        <div v-if="allFrameTrapResults.length > 0" class="mobile-results-list">
+          <div
+            v-for="result in allFrameTrapResults"
+            :key="'mob-' + result.key"
+            :class="['mobile-result-card', 'ft-theme', { expanded: selectedFrameTrapResultKey === result.key }]"
+            @click="toggleFrameTrapResultDetail(result.key)"
+          >
+            <div class="card-header">
+              <div class="card-combo-title">
+                <span class="mob-prefix">{{ result.prefix || '无前置' }}</span>
+                <span class="mob-plus">+</span>
+                <span class="mob-move-name">{{ result.fillerName }}</span>
+              </div>
+              <span class="mob-expand-chevron" :class="{ rotated: selectedFrameTrapResultKey === result.key }">▼</span>
+            </div>
+
+            <div class="card-tags-row">
+              <span class="badge-mini success">反算成功</span>
+              <span class="badge-mini frame font-mono">组合总帧: {{ result.totalFrames }}F</span>
+              <span :class="['badge-mini', 'frame', 'font-mono', isPositive(result.resultingAdvantage) ? 'green' : 'red']">
+                优势: {{ formatFrame(result.resultingAdvantage) }}
               </span>
-              <span :class="{ 'frame-positive': isPositive(result.deltaToTarget), 'frame-negative': isNegative(result.deltaToTarget) }">
-                {{ formatFrame(result.deltaToTarget) }}
-              </span>
+            </div>
 
-              <div v-if="selectedFrameTrapResultKey === result.key" class="result-detail" @click.stop>
-                <div class="detail-title">帧数详情</div>
-                <div class="detail-row">
-                  <span class="detail-label">动作序列:</span>
-                  <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
-                </div>
-                <div class="detail-row">
-                  <span class="detail-label">追加动作:</span>
-                  <span v-if="result.filler">
-                    {{ result.fillerName }}<span v-if="result.filler.input"> ({{ result.filler.input }})</span> =
-                    <span v-if="result.filler.raw?.total">
-                      {{ result.fillerFrames }}F (原始数据)
-                    </span>
-                    <span v-else>
-                      {{ result.fillerStartup }} + {{ result.fillerActive }} + {{ result.fillerRecovery }} = {{ result.fillerFrames }}F
-                    </span>
-                  </span>
-                  <span v-else>无 = 0F</span>
-                </div>
-                <div class="detail-row">
-                  <span class="detail-label">目标优势帧:</span>
-                  <span>{{ formatFrame(normalizedFrameTrapAdvTarget) }}</span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">组合总帧:</span>
-                  <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} + {{ result.extraDelayFrames }} = {{ result.totalFrames }}F</span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">结果优势:</span>
-                  <span>{{ effectiveKnockdownAdv }} - {{ result.totalFrames }} = {{ formatFrame(result.resultingAdvantage) }}</span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">目标差值:</span>
-                  <span>{{ formatFrame(result.resultingAdvantage) }} - {{ formatFrame(normalizedFrameTrapAdvTarget) }} = {{ formatFrame(result.deltaToTarget) }}</span>
-                </div>
-                <div class="detail-row result">
-                  <span class="detail-label">判定:</span>
-                  <span class="success">✓ 精确匹配目标优势帧</span>
-                </div>
+            <!-- Mobile Expanded Details -->
+            <div v-if="selectedFrameTrapResultKey === result.key" class="mobile-card-details" @click.stop>
+              <div class="mobile-detail-section">
+                <div class="section-divider">帧数计算步骤</div>
+                <div class="mob-calc-step">前置消耗: <span class="font-mono-bold">{{ result.prefix || '无' }} ({{ result.prefixFrames }}F)</span></div>
+                <div class="mob-calc-step">动作空挥: <span class="font-mono-bold">+{{ result.fillerFrames }}F</span></div>
+                <div class="mob-calc-step">追加延迟: <span class="font-mono-bold">+{{ result.extraDelayFrames }}F</span></div>
+                <div class="mob-calc-step highlight">组合消耗: <span class="font-mono-bold">= {{ result.totalFrames }}F</span></div>
+                <div class="mob-calc-step">击倒帧数: <span class="font-mono-bold">{{ effectiveKnockdownAdv }}F</span></div>
+                <div class="mob-calc-step highlight">结果优势: <span :class="['font-mono-bold', isPositive(result.resultingAdvantage) ? 'green-text' : 'red-text']">{{ formatFrame(result.resultingAdvantage) }}</span></div>
+                <div class="mob-calc-step">目标差值: <span class="font-mono-bold">{{ formatFrame(result.deltaToTarget) }}</span></div>
               </div>
             </div>
-          </div>
-          <div v-else class="empty-state">
-            <p>没有匹配的前置反算组合</p>
           </div>
         </div>
 
-        <div class="alt-oki-card">
-          <h3 class="subsection-title">安全骗压</h3>
-          <p class="section-desc">用前置动作或空挥动作骗对手起身凹招，在对手招式判定前结束整套动作。</p>
+        <div v-else class="empty-state">
+          <p>没有找到自动匹配的反算前置组合</p>
+        </div>
+      </div>
 
-          <div class="throw-summary">
-            <div class="summary-item">
-              <span class="summary-label">击倒优势 N</span>
-              <span class="summary-value">{{ effectiveKnockdownAdv }}F</span>
+      <!-- TAB 4: 安全骗压 -->
+      <div v-if="activeAltOkiTab === 'safeBait'" class="alt-oki-panel fade-in">
+        <div class="panel-intro">
+          <h3 class="panel-subtitle">安全骗压 (Safe Bait Setup)</h3>
+          <p class="panel-desc">使用空挥前置动作欺骗对手起身凹招，保证整套动作在对手凹招判定发生前完成，从而能够完美防御。</p>
+        </div>
+
+        <!-- Custom Parameter Stepper -->
+        <div class="panel-setting-block block-grid">
+          <div class="panel-setting-row">
+            <span class="setting-label">对手凹招发生帧</span>
+            <div class="stepper-container">
+              <button class="stepper-btn" @click="stepOpponentReversalStartup(-1)" type="button">−</button>
+              <span class="stepper-value">{{ opponentReversalStartup }}F</span>
+              <button class="stepper-btn" @click="stepOpponentReversalStartup(1)" type="button">+</button>
             </div>
-            <div class="summary-item">
-              <span class="summary-label">额外延迟</span>
-              <span class="summary-value">{{ normalizedAltExtraDelay }}F</span>
-            </div>
-            <div class="summary-item">
-              <span class="summary-label">对手招式</span>
-              <span class="summary-value">{{ normalizedOpponentReversalStartup }}F</span>
-            </div>
-            <div class="summary-item">
-              <span class="summary-label">目标</span>
-              <span class="summary-value">{{ safeBaitTargetLabel }}</span>
-            </div>
+            <span class="setting-unit">F</span>
           </div>
 
-          <div class="throw-math">
-            <div class="math-row">
-              <span class="math-label">安全公式:</span>
-              <span class="math-value">组合总帧 &lt; {{ opponentWakeupFrame }} + {{ normalizedOpponentReversalStartup }} = {{ safeBaitStrictLimitFrame }}F</span>
-            </div>
-            <div class="math-row">
-              <span class="math-label">最大可用总帧:</span>
-              <span class="math-value">{{ safeBaitMaxTotalFrame }}F</span>
-            </div>
-          </div>
-
-          <div class="results-header-row throw-results-header">
-            <h3 class="results-title">安全骗压结果 (共 {{ allSafeBaitResults.length }} 条，显示前 {{ allSafeBaitResults.length }} 条)</h3>
-          </div>
-
-          <div v-if="allSafeBaitResults.length > 0" class="results-table">
-            <div class="result-header throw-header">
-              <span>组合</span>
-              <span>组合总帧</span>
-              <span>对手判定</span>
-              <span>余量</span>
-            </div>
-            <div
-              v-for="result in allSafeBaitResults"
-              :key="result.key"
-              :class="['result-row-auto', 'throw-row', 'safe-bait-row', { expanded: selectedSafeBaitResultKey === result.key }]"
-              @click="toggleSafeBaitResultDetail(result.key)"
-            >
-              <div class="result-combo">
-                <span class="safe-dr-badge">安全</span>
-                <span class="combo-prefix">{{ result.prefix || '无前置' }}</span>
-                <span>+</span>
-                <span>{{ result.fillerName }}</span>
-                <span v-if="result.filler" class="move-input">({{ result.filler.input }})</span>
-              </div>
-              <span>{{ result.totalFrames }}F</span>
-              <span>{{ result.strictLimitFrame }}F</span>
-              <span class="frame-positive">{{ result.safetyMargin }}F</span>
-
-              <div v-if="selectedSafeBaitResultKey === result.key" class="result-detail" @click.stop>
-                <div class="detail-title">帧数详情</div>
-                <div class="detail-row">
-                  <span class="detail-label">动作序列:</span>
-                  <span>{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
-                </div>
-                <div class="detail-row">
-                  <span class="detail-label">追加动作:</span>
-                  <span v-if="result.filler">
-                    {{ result.fillerName }}<span v-if="result.filler.input"> ({{ result.filler.input }})</span> =
-                    <span v-if="result.filler.raw?.total">
-                      {{ result.fillerFrames }}F (原始数据)
-                    </span>
-                    <span v-else>
-                      {{ result.fillerStartup }} + {{ result.fillerActive }} + {{ result.fillerRecovery }} = {{ result.fillerFrames }}F
-                    </span>
-                  </span>
-                  <span v-else>无 = 0F</span>
-                </div>
-                <div class="detail-row">
-                  <span class="detail-label">对手目标:</span>
-                  <span>{{ safeBaitTargetLabel }}，{{ normalizedOpponentReversalStartup }}F 发生</span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">组合总帧:</span>
-                  <span>{{ result.prefixFrames }} + {{ result.fillerFrames }} + {{ result.extraDelayFrames }} = {{ result.totalFrames }}F</span>
-                </div>
-                <div class="detail-row calc">
-                  <span class="detail-label">安全线:</span>
-                  <span>{{ opponentWakeupFrame }} + {{ normalizedOpponentReversalStartup }} = {{ result.strictLimitFrame }}F，需 &lt; {{ result.strictLimitFrame }}F</span>
-                </div>
-                <div class="detail-row result">
-                  <span class="detail-label">判定:</span>
-                  <span class="success">✓ 安全骗压成立：{{ result.totalFrames }}F ≤ {{ result.baitLimitFrame }}F，余量 {{ result.safetyMargin }}F</span>
-                </div>
+          <div class="panel-setting-row search-defender-reversal">
+            <span class="setting-label">或搜索对手动作快速设定</span>
+            <div class="move-search">
+              <input
+                type="text"
+                v-model="defenderMoveSearchQuery"
+                @focus="showDefenderDropdown = true"
+                @blur="handleDefenderBlur"
+                placeholder="搜索防守方必杀技/凹招..."
+                class="move-search-input"
+              />
+              <div v-if="showDefenderDropdown && filteredDefenderMoves.length > 0" class="move-dropdown">
+                <button
+                  type="button"
+                  v-for="move in filteredDefenderMoves"
+                  :key="move.name"
+                  @mousedown="selectDefenderMove(move)"
+                  class="move-option"
+                >
+                  <span>{{ getMoveDisplayName(move) }}</span>
+                  <span class="move-input">{{ move.input }} ({{ move.startup }}F)</span>
+                </button>
               </div>
             </div>
           </div>
-          <div v-else class="empty-state">
-            <p>没有匹配的安全骗压组合</p>
+        </div>
+
+        <div class="math-hud-flow sb">
+          <div class="flow-step">
+            <span class="flow-label">对手起身</span>
+            <span class="flow-val">{{ opponentWakeupFrame }}F</span>
           </div>
+          <div class="flow-arrow">+</div>
+          <div class="flow-step">
+            <span class="flow-label">凹招发生</span>
+            <span class="flow-val highlight">{{ normalizedOpponentReversalStartup }}F</span>
+          </div>
+          <div class="flow-arrow">=</div>
+          <div class="flow-step final">
+            <span class="flow-label">凹招判定第1帧</span>
+            <span class="flow-val highlight">{{ safeBaitStrictLimitFrame }}F</span>
+          </div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step final green-border">
+            <span class="flow-label">最大安全组合帧</span>
+            <span class="flow-val highlight">{{ safeBaitMaxTotalFrame }}F</span>
+          </div>
+        </div>
+
+        <div class="math-formula-box bg-blue">
+          <div class="formula-title">🛡️ 安全骗压安全公式：</div>
+          <div class="formula-value">
+            组合总帧数 <span class="badge blue">&lt; 对手凹招第一帧 ({{ safeBaitStrictLimitFrame }}F)</span>。最大允许动作总帧数为 <span class="badge green">{{ safeBaitMaxTotalFrame }}F</span> 
+            <span class="window-bonus">({{ safeBaitTargetLabel }})</span>
+          </div>
+        </div>
+
+        <div class="results-header-row throw-results-header">
+          <h4 class="results-title">安全骗压结果 (共 {{ allSafeBaitResults.length }} 条)</h4>
+        </div>
+
+        <!-- Desktop Results Table -->
+        <div v-if="allSafeBaitResults.length > 0" class="desktop-results-table results-table">
+          <div class="result-header throw-header">
+            <span>前置骗凹组合</span>
+            <span>组合总帧</span>
+            <span>对手判定帧</span>
+            <span>防御余量</span>
+          </div>
+          <div
+            v-for="result in allSafeBaitResults"
+            :key="result.key"
+            :class="['result-row-auto', 'throw-row', 'safe-bait-row', { expanded: selectedSafeBaitResultKey === result.key }]"
+            @click="toggleSafeBaitResultDetail(result.key)"
+          >
+            <div class="result-combo">
+              <span class="safe-dr-badge">安全诱骗</span>
+              <span class="combo-prefix">{{ result.prefix || '无前置' }}</span>
+              <span>+</span>
+              <span class="move-name">{{ result.fillerName }}</span>
+              <span class="move-input" v-if="result.filler">({{ result.filler.input }})</span>
+            </div>
+            <span class="font-mono-bold">{{ result.totalFrames }}F</span>
+            <span class="font-mono">{{ result.strictLimitFrame }}F</span>
+            <span class="frame-positive font-mono-bold">+{{ result.safetyMargin }}F</span>
+
+            <!-- Expanded Details -->
+            <div v-if="selectedSafeBaitResultKey === result.key" class="result-detail" @click.stop>
+              <div class="detail-title">📖 安全骗凹帧数计算详情</div>
+              <div class="detail-grid single-col">
+                <div class="detail-steps-column">
+                  <div class="detail-step-item">
+                    <span class="step-lbl">第一段前置动作:</span>
+                    <span class="step-val font-mono">{{ result.prefix || '无' }} = {{ result.prefixFrames }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">欺骗用追加挥空动作:</span>
+                    <span class="step-val font-mono" v-if="result.filler">
+                      + {{ result.fillerFrames }}F
+                      <span class="setting-tip">({{ result.filler.raw?.total ? '动作总帧' : '动作收招' }})</span>
+                    </span>
+                    <span class="step-val font-mono" v-else>+ 0F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">连段额外延迟:</span>
+                    <span class="step-val font-mono">+ {{ result.extraDelayFrames }}F</span>
+                  </div>
+                  <div class="detail-step-item highlight-line">
+                    <span class="step-lbl">我方动作链消耗总帧:</span>
+                    <span class="step-val font-mono">= {{ result.totalFrames }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">防守方起身第1帧:</span>
+                    <span class="step-val font-mono">{{ opponentWakeupFrame }}F</span>
+                  </div>
+                  <div class="detail-step-item">
+                    <span class="step-lbl">对手防守招式 ({{ safeBaitTargetLabel }}):</span>
+                    <span class="step-val font-mono">{{ opponentReversalStartup }}F 发生</span>
+                  </div>
+                  <div class="detail-step-item highlight-final blue-border">
+                    <span class="step-lbl">对方攻击伤害生效帧 (Strict Limit):</span>
+                    <span class="step-val font-mono">= {{ result.strictLimitFrame }}F</span>
+                  </div>
+                  <div class="detail-step-item result-banner-green">
+                    <span class="step-lbl">判定结果 (Verdict):</span>
+                    <span class="step-val frame-positive">
+                      ✓ 安全诱骗成立：我方整套动作收招（{{ result.totalFrames }}F）比对手凹招攻击生效（{{ result.strictLimitFrame }}F）快了 {{ result.safetyMargin }} 帧，支持起身后直接拉防！
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Results Cards -->
+        <div v-if="allSafeBaitResults.length > 0" class="mobile-results-list">
+          <div
+            v-for="result in allSafeBaitResults"
+            :key="'mob-' + result.key"
+            :class="['mobile-result-card', 'sb-theme', { expanded: selectedSafeBaitResultKey === result.key }]"
+            @click="toggleSafeBaitResultDetail(result.key)"
+          >
+            <div class="card-header">
+              <div class="card-combo-title">
+                <span class="mob-prefix">{{ result.prefix || '无前置' }}</span>
+                <span class="mob-plus">+</span>
+                <span class="mob-move-name">{{ result.fillerName }}</span>
+              </div>
+              <span class="mob-expand-chevron" :class="{ rotated: selectedSafeBaitResultKey === result.key }">▼</span>
+            </div>
+
+            <div class="card-tags-row">
+              <span class="badge-mini success">安全防御</span>
+              <span class="badge-mini frame font-mono">总帧: {{ result.totalFrames }}F</span>
+              <span class="badge-mini frame font-mono green">防守余量: +{{ result.safetyMargin }}F</span>
+            </div>
+
+            <!-- Mobile Expanded Details -->
+            <div v-if="selectedSafeBaitResultKey === result.key" class="mobile-card-details" @click.stop>
+              <div class="mobile-detail-section">
+                <div class="section-divider">帧数计算步骤</div>
+                <div class="mob-calc-step">动作前置: <span class="font-mono-bold">{{ result.prefix || '无' }} ({{ result.prefixFrames }}F)</span></div>
+                <div class="mob-calc-step">追加动作: <span class="font-mono-bold">+{{ result.fillerFrames }}F</span></div>
+                <div class="mob-calc-step">追加延迟: <span class="font-mono-bold">+{{ result.extraDelayFrames }}F</span></div>
+                <div class="mob-calc-step highlight">动作总耗: <span class="font-mono-bold">= {{ result.totalFrames }}F</span></div>
+                <div class="mob-calc-step">对手判定: <span class="font-mono-bold">第 {{ result.strictLimitFrame }}F 生效</span></div>
+                <div class="mob-calc-step highlight margin">防御余量: <span class="font-mono-bold green-text">+{{ result.safetyMargin }}F</span></div>
+              </div>
+
+              <div class="mobile-verdict-banner success">
+                ✓ 诱骗成立：我方在对手凹招判定第 {{ result.strictLimitFrame }}F 前已收招，可完防对方动作。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div v-else class="empty-state">
+          <p>没有找到自动匹配的安全骗压组合</p>
         </div>
       </div>
     </section>
@@ -4313,29 +4655,833 @@ function formatFrameDelta(val: number): string {
   font-weight: 600;
 }
 
-.alt-oki-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--space-lg);
+/* Redesigned Alt Oki Styles */
+.alt-oki-section {
+  position: relative;
+  overflow: visible;
 }
 
-.alt-oki-card {
+.alt-oki-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border-light);
+  padding-bottom: var(--space-md);
+}
+
+.alt-oki-global-delay {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.delay-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+/* Numeric Steppers styling */
+.stepper-container {
+  display: inline-flex;
+  align-items: center;
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.stepper-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: none;
+  color: var(--color-text-primary);
+  width: 36px;
+  height: 36px;
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.stepper-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-accent);
+}
+
+.stepper-btn:active {
+  transform: scale(0.9);
+}
+
+.stepper-value {
+  padding: 0 var(--space-md);
+  min-width: 50px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  background: var(--color-bg-primary);
+}
+
+/* Segmented Tab Control */
+.alt-oki-tabs {
+  display: flex;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xs);
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.alt-oki-tab-btn {
+  flex: 1;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-normal);
+}
+
+.alt-oki-tab-btn:hover {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.alt-oki-tab-btn.active {
+  background: var(--gradient-fire);
+  color: white;
+  box-shadow: var(--shadow-md), 0 0 10px rgba(255, 107, 53, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Tab Panel Animations */
+.alt-oki-panel {
+  width: 100%;
+}
+
+.panel-intro {
+  margin-bottom: var(--space-md);
+}
+
+.panel-subtitle {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.panel-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Mathematical flowchart display */
+.math-hud-flow {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, var(--color-bg-secondary) 0%, rgba(22, 27, 34, 0.5) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  gap: var(--space-md);
+  overflow-x: auto;
+  box-shadow: var(--shadow-sm);
 }
 
-@media (max-width: 640px) {
-  .combo-actions {
+.math-hud-flow.impact {
+  border-color: rgba(255, 107, 53, 0.3);
+}
+
+.math-hud-flow.ft {
+  border-color: rgba(147, 51, 234, 0.3);
+}
+
+.math-hud-flow.sb {
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.flow-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.flow-val {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  background: var(--color-bg-tertiary);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.flow-val.highlight {
+  color: var(--color-accent);
+}
+
+.flow-step.final .flow-val {
+  background: rgba(255, 107, 53, 0.1);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.15);
+}
+
+.flow-step.final.green-border .flow-val {
+  background: rgba(63, 185, 80, 0.1);
+  border-color: var(--color-positive);
+  color: var(--color-positive);
+  box-shadow: 0 0 10px rgba(63, 185, 80, 0.15);
+}
+
+.flow-arrow {
+  font-weight: 700;
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  padding-top: var(--font-size-sm);
+}
+
+/* Math Formula custom box */
+.math-formula-box {
+  background: rgba(63, 185, 80, 0.05);
+  border: 1px solid rgba(63, 185, 80, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.math-formula-box.bg-blue {
+  background: rgba(0, 212, 255, 0.05);
+  border-color: rgba(0, 212, 255, 0.2);
+}
+
+.formula-title {
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.formula-value {
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.formula-value.red {
+  color: var(--color-negative);
+  font-weight: 600;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+}
+
+.badge.green {
+  background: rgba(63, 185, 80, 0.2);
+  color: var(--color-positive);
+}
+
+.badge.yellow {
+  background: rgba(210, 153, 34, 0.2);
+  color: #ca8a04;
+}
+
+.badge.blue {
+  background: rgba(0, 212, 255, 0.2);
+  color: #00d4ff;
+}
+
+/* Settings controls in panels */
+.panel-setting-block {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.panel-setting-block.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.panel-setting-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.panel-setting-row.search-defender-reversal {
+  flex-grow: 1;
+}
+
+.setting-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.setting-unit {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.setting-desc-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+  margin-bottom: 0;
+}
+
+.setting-tip {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.throw-warning-glow {
+  background: rgba(248, 81, 73, 0.1);
+  border: 1px solid rgba(248, 81, 73, 0.3);
+  color: var(--color-negative);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  margin-bottom: var(--space-lg);
+  box-shadow: 0 0 10px rgba(248, 81, 73, 0.1);
+}
+
+/* Extra Tags */
+.badge-dr-tag {
+  background: rgba(0, 212, 255, 0.12);
+  color: #00d4ff;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
+.badge-di-tag {
+  background: rgba(255, 107, 53, 0.12);
+  color: #ff6b35;
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+}
+
+.font-mono-bold {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.font-mono-sm {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+}
+
+/* Results detail expanded cards styling */
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-sm);
+}
+
+.detail-grid.single-col {
+  grid-template-columns: 1fr;
+}
+
+.detail-sub-title {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-sm);
+}
+
+.detail-step-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-sm);
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.detail-step-item.highlight-line {
+  border-bottom-color: var(--color-border);
+  color: var(--color-accent);
+}
+
+.detail-step-item.highlight-final {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 2px solid var(--color-accent);
+  padding: var(--space-sm) 0;
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.detail-step-item.highlight-final.blue-border {
+  border-bottom-color: #00d4ff;
+  color: #00d4ff;
+}
+
+.detail-step-item.result-banner-green {
+  border-top: 1px solid var(--color-border);
+  border-bottom: none;
+  padding: var(--space-sm) 0;
+  color: var(--color-positive);
+  font-weight: 600;
+}
+
+.step-lbl {
+  color: var(--color-text-muted);
+}
+
+.step-val {
+  font-weight: 600;
+}
+
+/* Advantage Output Cards */
+.advantage-blocks {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.adv-card {
+  flex: 1;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.adv-title {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.adv-calc {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.adv-value {
+  font-size: var(--font-size-2xl);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.bonus-tag {
+  display: inline-block;
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: 0 4px;
+  margin-left: 2px;
+}
+
+.bonus-tag.green {
+  color: var(--color-positive);
+  background: rgba(63, 185, 80, 0.05);
+  border-color: rgba(63, 185, 80, 0.15);
+}
+
+.bonus-tag.yellow {
+  color: var(--color-warning);
+  background: rgba(210, 153, 34, 0.05);
+  border-color: rgba(210, 153, 34, 0.15);
+}
+
+.advantage-verdict {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.advantage-verdict.success {
+  background: rgba(63, 185, 80, 0.1);
+  border: 1px solid rgba(63, 185, 80, 0.25);
+  color: var(--color-positive);
+}
+
+.advantage-verdict.trade {
+  background: rgba(210, 153, 34, 0.1);
+  border: 1px solid rgba(210, 153, 34, 0.25);
+  color: #ca8a04;
+}
+
+/* Mobile responsive results styling */
+.desktop-results-table {
+  display: block;
+}
+
+.mobile-results-list {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.mobile-result-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--color-neutral);
+}
+
+.mobile-result-card:hover {
+  border-color: var(--color-accent);
+}
+
+.mobile-result-card.success {
+  border-left-color: var(--color-positive);
+}
+
+.mobile-result-card.trade {
+  border-left-color: var(--color-warning);
+}
+
+.mobile-result-card.di-theme {
+  border-left-color: #ff6b35;
+}
+
+.mobile-result-card.ft-theme {
+  border-left-color: #9333ea;
+}
+
+.mobile-result-card.sb-theme {
+  border-left-color: #00d4ff;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.card-combo-title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+}
+
+.mob-prefix {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.mob-plus {
+  color: var(--color-text-muted);
+}
+
+.mob-dr-badge {
+  background: rgba(0, 212, 255, 0.15);
+  color: #00d4ff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.mob-di-badge {
+  background: rgba(255, 107, 53, 0.15);
+  color: #ff6b35;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.mob-move-name {
+  color: var(--color-text-primary);
+}
+
+.mob-move-input {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.mob-expand-chevron {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  transition: transform var(--transition-normal);
+  padding: 4px;
+}
+
+.mob-expand-chevron.rotated {
+  transform: rotate(180deg);
+  color: var(--color-accent);
+}
+
+.card-tags-row {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.badge-mini {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 2px;
+}
+
+.badge-mini.success {
+  background: rgba(63, 185, 80, 0.15);
+  color: var(--color-positive);
+  border: 1px solid rgba(63, 185, 80, 0.25);
+}
+
+.badge-mini.trade {
+  background: rgba(210, 153, 34, 0.15);
+  color: #ca8a04;
+  border: 1px solid rgba(210, 153, 34, 0.25);
+}
+
+.badge-mini.frame {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.badge-mini.frame.green {
+  color: var(--color-positive);
+  background: rgba(63, 185, 80, 0.05);
+  border-color: rgba(63, 185, 80, 0.15);
+}
+
+.badge-mini.frame.red {
+  color: var(--color-negative);
+  background: rgba(248, 81, 73, 0.05);
+  border-color: rgba(248, 81, 73, 0.15);
+}
+
+/* Mobile card expanded details */
+.mobile-card-details {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-light);
+  animation: fadeIn var(--transition-normal) ease;
+}
+
+.mobile-detail-section {
+  margin-bottom: var(--space-md);
+}
+
+.section-divider {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-xs);
+  border-bottom: 1px dashed var(--color-border);
+  padding-bottom: 2px;
+}
+
+.mob-calc-step {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-xxs) 0;
+}
+
+.mob-calc-step.highlight {
+  color: var(--color-accent);
+  font-weight: 700;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
+.mob-calc-step.highlight.margin {
+  border-bottom-color: rgba(0, 212, 255, 0.3);
+  color: #00d4ff;
+}
+
+.mob-adv-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  padding: var(--space-xs) 0;
+  flex-wrap: wrap;
+}
+
+.adv-label {
+  color: var(--color-text-secondary);
+}
+
+.adv-num {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: var(--font-size-md);
+}
+
+.adv-math-desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}
+
+.green-text {
+  color: var(--color-positive);
+}
+
+.red-text {
+  color: var(--color-negative);
+}
+
+.mobile-verdict-banner {
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.mobile-verdict-banner.success {
+  background: rgba(63, 185, 80, 0.1);
+  border: 1px solid rgba(63, 185, 80, 0.2);
+  color: var(--color-positive);
+}
+
+.mobile-verdict-banner.trade {
+  background: rgba(210, 153, 34, 0.1);
+  border: 1px solid rgba(210, 153, 34, 0.2);
+  color: #ca8a04;
+}
+
+/* Media Queries for full mobile responsiveness */
+@media (max-width: 992px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .alt-oki-header {
     flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
   }
 
-  .move-search {
-    min-width: 100%;
+  .alt-oki-global-delay {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .alt-oki-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .desktop-results-table {
+    display: none !important;
+  }
+
+  .mobile-results-list {
+    display: flex !important;
   }
 }
 
+@media (max-width: 480px) {
+  .alt-oki-tabs {
+    grid-template-columns: 1fr;
+  }
+  
+  .panel-setting-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+  
+  .stepper-container {
+    width: 100%;
+  }
+  
+  .stepper-btn {
+    flex: 1;
+  }
+  
+  .stepper-value {
+    flex: 2;
+  }
+  
+  .math-hud-flow {
+    padding: var(--space-sm);
+  }
+}
 .meaty-bonus-highlight {
   color: #4ade80;
   font-weight: bold;
