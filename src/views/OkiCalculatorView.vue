@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { SF6_CHARACTERS, type Move, type FrameData, type CharacterStats } from '../types';
 import { calculateTradeAdvantage, parseHitstun, getEffectiveHitstun } from '../utils/trade';
 import { buildOkiResultKeyBase, getUniqueOkiResultKey } from '../utils/okiResultKey';
@@ -141,8 +141,6 @@ function removeCustomMove(id: string) {
   localStorage.setItem('sf6_oki_custom_moves', JSON.stringify(customMoves.value));
 }
 
-// Load on mount
-import { onMounted } from 'vue';
 onMounted(() => {
     loadCustomMoves();
 });
@@ -160,6 +158,11 @@ interface ComboAction {
 const comboChain = ref<ComboAction[]>([]);
 const moveSearchQuery = ref('');
 const autoMatchSearchQuery = ref(''); // New: Search query for auto match results
+const knockdownSearchQuery = ref('');
+const showAllKnockdownPresets = ref(false);
+const showAllAutoResults = ref(false);
+const showResultTimeline = ref(false);
+const showThrowTimeline = ref(false);
 
 // Opponent's fastest reversal settings
 const opponentReversalStartup = ref<number>(4);
@@ -179,6 +182,11 @@ const burstPressureOffset = ref<number>(1);
 const frameTrapAdvantageTarget = ref<number>(-3);
 
 const activeAltOkiTab = ref<'driveRush' | 'driveImpact' | 'frameTrap' | 'safeBait'>('driveRush');
+const showThrowSection = ref(false);
+const showAltOkiSection = ref(false);
+
+const KNOCKDOWN_PRESET_PREVIEW_COUNT = 12;
+const MOBILE_RESULT_PREVIEW_COUNT = 12;
 
 function stepAltExtraDelay(val: number) {
   altExtraDelayFrames.value = Math.max(0, (altExtraDelayFrames.value || 0) + val);
@@ -375,6 +383,38 @@ const knockdownMoves = computed<Move[]>(() => {
   }
   return expanded;
 });
+
+const filteredKnockdownMoves = computed<Move[]>(() => {
+  const queryRaw = knockdownSearchQuery.value.trim();
+  if (!queryRaw) return knockdownMoves.value;
+
+  const queryLower = queryRaw.toLowerCase();
+  return knockdownMoves.value.filter((move) => {
+    const fields = [
+      move.name,
+      move.nameZh,
+      move.input,
+      getMoveDisplayName(move),
+      `${parseKnockdownAdvantage(move)}F`,
+    ].filter((val): val is string => typeof val === 'string' && val.length > 0);
+
+    return fields.some((field) => field.toLowerCase().includes(queryLower));
+  });
+});
+
+const visibleKnockdownMoves = computed<Move[]>(() => {
+  if (showAllKnockdownPresets.value || knockdownSearchQuery.value.trim()) {
+    return filteredKnockdownMoves.value;
+  }
+
+  return filteredKnockdownMoves.value.slice(0, KNOCKDOWN_PRESET_PREVIEW_COUNT);
+});
+
+const hiddenKnockdownPresetCount = computed(() => {
+  return Math.max(0, filteredKnockdownMoves.value.length - visibleKnockdownMoves.value.length);
+});
+
+const hasKnockdownPresetFilter = computed(() => knockdownSearchQuery.value.trim().length > 0);
 
 // ALL moves for selection (Attacker)
 const allMoves = computed<Move[]>(() => {
@@ -1195,6 +1235,15 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
   return sorted.slice(0, 50);
 });
 
+const visibleOkiResults = computed<ExtendedOkiResult[]>(() => {
+  if (showAllAutoResults.value) return okiResults.value;
+  return okiResults.value.slice(0, MOBILE_RESULT_PREVIEW_COUNT);
+});
+
+const hiddenOkiResultCount = computed(() => {
+  return Math.max(0, okiResults.value.length - visibleOkiResults.value.length);
+});
+
 // Throw filler moves (exclude throws, keep reasonable total frames)
 const throwFillerMoves = computed<Move[]>(() => {
   if (!attackerFrameData.value) return [];
@@ -1341,6 +1390,10 @@ const throwResults = computed(() => {
   return sorted.slice(0, 50);
 });
 
+const visibleThrowResults = computed(() => {
+  return throwResults.value.slice(0, MOBILE_RESULT_PREVIEW_COUNT);
+});
+
 type AltPrefixOption = {
   name: string;
   frames: number;
@@ -1463,6 +1516,10 @@ const allBurstPressureResults = computed<BurstPressureResult[]>(() => {
     .slice(0, 50);
 });
 
+const visibleBurstPressureResults = computed(() => {
+  return allBurstPressureResults.value.slice(0, MOBILE_RESULT_PREVIEW_COUNT);
+});
+
 interface FrameTrapResult {
   key: string;
   prefix: string;
@@ -1553,6 +1610,10 @@ const allFrameTrapResults = computed<FrameTrapResult[]>(() => {
   return filtered
     .sort((a, b) => a.totalFrames - b.totalFrames || a.prefixFrames - b.prefixFrames)
     .slice(0, 50);
+});
+
+const visibleFrameTrapResults = computed(() => {
+  return allFrameTrapResults.value.slice(0, MOBILE_RESULT_PREVIEW_COUNT);
 });
 
 interface SafeBaitResult {
@@ -1654,6 +1715,10 @@ const allSafeBaitResults = computed<SafeBaitResult[]>(() => {
   return filtered
     .sort((a, b) => a.safetyMargin - b.safetyMargin || b.totalFrames - a.totalFrames || a.prefixFrames - b.prefixFrames)
     .slice(0, 50);
+});
+
+const visibleSafeBaitResults = computed(() => {
+  return allSafeBaitResults.value.slice(0, MOBILE_RESULT_PREVIEW_COUNT);
 });
 
 interface DriveRushOkiResult {
@@ -1828,6 +1893,10 @@ const allDriveRushOkiResults = computed<DriveRushOkiResult[]>(() => {
     .slice(0, 50);
 });
 
+const visibleDriveRushOkiResults = computed(() => {
+  return allDriveRushOkiResults.value.slice(0, MOBILE_RESULT_PREVIEW_COUNT);
+});
+
 // Actions
 // Character data modules
 const characterModules = import.meta.glob('../data/characters/*.json');
@@ -1870,9 +1939,6 @@ async function loadCharacterData(role: 'attacker' | 'defender', charId: string) 
     loading.value = false;
   }
 }
-
-// Watchers
-import { watch } from 'vue';
 
 watch(attackerCharId, (newVal) => {
   loadCharacterData('attacker', newVal);
@@ -2409,6 +2475,23 @@ function formatFrameDelta(val: number): string {
         <span>预设数据 (Presets)</span>
       </div>
 
+      <div class="preset-toolbar">
+        <input
+          type="text"
+          v-model="knockdownSearchQuery"
+          class="preset-search-input"
+          placeholder="搜索击倒招式 / 指令 / 帧数..."
+        />
+        <button
+          v-if="knockdownSearchQuery"
+          type="button"
+          class="preset-tool-btn"
+          @click="knockdownSearchQuery = ''"
+        >
+          清除
+        </button>
+      </div>
+
       <div class="custom-knockdown-row">
         <button :class="['custom-kd-btn', { active: useCustomKnockdown }]" @click="enableCustomKnockdown">
           快速自定义 (数字)
@@ -2421,7 +2504,7 @@ function formatFrameDelta(val: number): string {
       </div>
 
       <div class="knockdown-grid">
-        <button v-for="move in knockdownMoves" :key="`${move.name}-${move.input}`"
+        <button v-for="move in visibleKnockdownMoves" :key="`${move.name}-${move.input}`"
           :class="['knockdown-card', { active: isSelectedKnockdown(move) }]"
           @click="selectKnockdownMove(move)">
           <span class="move-name">{{ getMoveDisplayName(move) }}</span>
@@ -2429,6 +2512,25 @@ function formatFrameDelta(val: number): string {
           <span class="move-advantage" v-if="move.knockdown">+{{ parseKnockdownAdvantage(move) }}F</span>
         </button>
       </div>
+      <div v-if="filteredKnockdownMoves.length === 0" class="empty-inline">
+        没有匹配的击倒预设
+      </div>
+      <button
+        v-if="hiddenKnockdownPresetCount > 0 && !hasKnockdownPresetFilter"
+        type="button"
+        class="show-more-btn"
+        @click="showAllKnockdownPresets = true"
+      >
+        展开其余 {{ hiddenKnockdownPresetCount }} 个预设
+      </button>
+      <button
+        v-else-if="showAllKnockdownPresets && !hasKnockdownPresetFilter && filteredKnockdownMoves.length > KNOCKDOWN_PRESET_PREVIEW_COUNT"
+        type="button"
+        class="show-more-btn"
+        @click="showAllKnockdownPresets = false"
+      >
+        收起预设
+      </button>
     </section>
 
     <!-- Step 3: Combo Builder -->
@@ -2776,8 +2878,12 @@ function formatFrameDelta(val: number): string {
                 </span>
               </div>
 
+              <button type="button" class="detail-toggle-btn" @click.stop="showResultTimeline = !showResultTimeline">
+                {{ showResultTimeline ? '隐藏时序图' : '查看时序图' }}
+              </button>
+
               <!-- Timeline UI (Multi-Row View) -->
-              <div class="timeline-wrapper">
+              <div v-if="showResultTimeline" class="timeline-wrapper">
                 <div class="timeline-header">
                   <div class="legend-row">
                     <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
@@ -2844,7 +2950,7 @@ function formatFrameDelta(val: number): string {
         <!-- Mobile Results Cards -->
         <div class="mobile-results-list">
           <div
-            v-for="result in okiResults"
+            v-for="result in visibleOkiResults"
             :key="'mob-step3-' + result.key"
             :class="['mobile-result-card', {
               expanded: selectedResultKey === result.key,
@@ -2937,8 +3043,12 @@ function formatFrameDelta(val: number): string {
                 </div>
               </div>
 
+              <button type="button" class="detail-toggle-btn" @click.stop="showResultTimeline = !showResultTimeline">
+                {{ showResultTimeline ? '隐藏时序图' : '查看时序图' }}
+              </button>
+
               <!-- Mobile Timeline inside Mobile Card Details -->
-              <div class="mobile-timeline-wrapper">
+              <div v-if="showResultTimeline" class="mobile-timeline-wrapper">
                 <div class="section-divider">时序可视化</div>
                 <div class="timeline-scroll-container">
                   <!-- Attacker Timeline -->
@@ -2967,6 +3077,22 @@ function formatFrameDelta(val: number): string {
               </div>
             </div>
           </div>
+          <button
+            v-if="hiddenOkiResultCount > 0 && !showAllAutoResults"
+            type="button"
+            class="show-more-btn mobile-only"
+            @click="showAllAutoResults = true"
+          >
+            显示其余 {{ hiddenOkiResultCount }} 条
+          </button>
+          <button
+            v-else-if="showAllAutoResults && okiResults.length > MOBILE_RESULT_PREVIEW_COUNT"
+            type="button"
+            class="show-more-btn mobile-only"
+            @click="showAllAutoResults = false"
+          >
+            收起结果
+          </button>
         </div>
       </div>
 
@@ -2976,11 +3102,20 @@ function formatFrameDelta(val: number): string {
     </section>
 
     <!-- Step 4: Loop Throw Calculator -->
-    <section v-if="effectiveKnockdownAdv > 0" class="oki-section throw-section">
-      <h2 class="section-title">
-        <span class="step-number">4</span>
-        循环投计算器
-      </h2>
+    <section v-if="effectiveKnockdownAdv > 0" :class="['oki-section', 'throw-section', { collapsed: !showThrowSection }]">
+      <div class="collapsible-heading">
+        <h2 class="section-title">
+          <span class="step-number">4</span>
+          循环投计算器
+        </h2>
+        <button type="button" class="section-toggle-btn" @click="showThrowSection = !showThrowSection">
+          {{ showThrowSection ? '收起' : '展开' }}
+        </button>
+      </div>
+      <p v-if="!showThrowSection" class="section-desc compact">
+        计算投压起身与打投二择的前置帧。默认收起以减少主结果浏览长度。
+      </p>
+      <template v-if="showThrowSection">
       <p class="section-desc">
         目标：让投的<strong>第一帧判定</strong>压在对手起身后、刚能被投的那一帧。
       </p>
@@ -3132,8 +3267,12 @@ function formatFrameDelta(val: number): string {
                 <span>{{ result.delay }} + {{ normalizedThrowStartup }} = {{ result.firstActive }}F</span>
               </div>
 
+              <button type="button" class="detail-toggle-btn" @click.stop="showThrowTimeline = !showThrowTimeline">
+                {{ showThrowTimeline ? '隐藏时序图' : '查看时序图' }}
+              </button>
+
               <!-- Loop Throw Timeline -->
-              <div class="timeline-wrapper">
+              <div v-if="showThrowTimeline" class="timeline-wrapper">
                 <div class="timeline-header">
                   <div class="legend-row">
                     <span class="timeline-legend-item"><span class="legend-color prefix"></span>前置</span>
@@ -3189,7 +3328,7 @@ function formatFrameDelta(val: number): string {
         <!-- Mobile Results Cards for Step 4 -->
         <div class="mobile-results-list">
           <div
-            v-for="result in throwResults"
+            v-for="result in visibleThrowResults"
             :key="'mob-throw-' + result.key"
             :class="['mobile-result-card', {
               expanded: selectedThrowResultKey === result.key
@@ -3243,8 +3382,12 @@ function formatFrameDelta(val: number): string {
                 </div>
               </div>
 
+              <button type="button" class="detail-toggle-btn" @click.stop="showThrowTimeline = !showThrowTimeline">
+                {{ showThrowTimeline ? '隐藏时序图' : '查看时序图' }}
+              </button>
+
               <!-- Mobile Timeline inside Mobile Card Details -->
-              <div class="mobile-timeline-wrapper">
+              <div v-if="showThrowTimeline" class="mobile-timeline-wrapper">
                 <div class="section-divider">时序可视化</div>
                 <div class="timeline-scroll-container">
                   <!-- Attacker Timeline -->
@@ -3281,15 +3424,19 @@ function formatFrameDelta(val: number): string {
       <div v-else-if="throwDelayMax >= 0" class="empty-state">
         <p>没有自动匹配的循环投组合</p>
       </div>
+      </template>
     </section>
 
-    <section v-if="effectiveKnockdownAdv > 0" class="oki-section alt-oki-section">
+    <section v-if="effectiveKnockdownAdv > 0" :class="['oki-section', 'alt-oki-section', { collapsed: !showAltOkiSection }]">
       <div class="alt-oki-header">
         <h2 class="section-title">
           <span class="step-number">5</span>
           另类压起身
         </h2>
-        <div class="alt-oki-global-delay">
+        <button type="button" class="section-toggle-btn" @click="showAltOkiSection = !showAltOkiSection">
+          {{ showAltOkiSection ? '收起' : '展开' }}
+        </button>
+        <div v-if="showAltOkiSection" class="alt-oki-global-delay">
           <span class="delay-label">全局额外延迟</span>
           <div class="stepper-container">
             <button class="stepper-btn" @click="stepAltExtraDelay(-1)" type="button">−</button>
@@ -3298,6 +3445,11 @@ function formatFrameDelta(val: number): string {
           </div>
         </div>
       </div>
+      <p v-if="!showAltOkiSection" class="section-desc compact">
+        绿冲、迸放、优势反算与安全骗压等进阶枚举。需要时展开查看。
+      </p>
+
+      <template v-if="showAltOkiSection">
 
       <!-- Segmented Tab Control -->
       <div class="alt-oki-tabs">
@@ -3386,7 +3538,7 @@ function formatFrameDelta(val: number): string {
             <span>压制帧</span>
           </div>
           <div
-            v-for="result in allDriveRushOkiResults"
+            v-for="result in visibleDriveRushOkiResults"
             :key="result.key"
             :class="['result-row-auto', 'throw-row', {
               expanded: selectedDriveRushResultKey === result.key,
@@ -3633,7 +3785,7 @@ function formatFrameDelta(val: number): string {
             <span>压制帧</span>
           </div>
           <div
-            v-for="result in allBurstPressureResults"
+            v-for="result in visibleBurstPressureResults"
             :key="result.key"
             :class="['result-row-auto', 'throw-row', { expanded: selectedBurstResultKey === result.key }]"
             @click="toggleBurstResultDetail(result.key)"
@@ -3799,7 +3951,7 @@ function formatFrameDelta(val: number): string {
             <span>目标差值</span>
           </div>
           <div
-            v-for="result in allFrameTrapResults"
+            v-for="result in visibleFrameTrapResults"
             :key="result.key"
             :class="['result-row-auto', 'throw-row', { expanded: selectedFrameTrapResultKey === result.key }]"
             @click="toggleFrameTrapResultDetail(result.key)"
@@ -4004,7 +4156,7 @@ function formatFrameDelta(val: number): string {
             <span>防御余量</span>
           </div>
           <div
-            v-for="result in allSafeBaitResults"
+            v-for="result in visibleSafeBaitResults"
             :key="result.key"
             :class="['result-row-auto', 'throw-row', 'safe-bait-row', { expanded: selectedSafeBaitResultKey === result.key }]"
             @click="toggleSafeBaitResultDetail(result.key)"
@@ -4115,6 +4267,7 @@ function formatFrameDelta(val: number): string {
           <p>没有找到自动匹配的安全骗压组合</p>
         </div>
       </div>
+      </template>
     </section>
   </div>
 </template>
@@ -4240,6 +4393,68 @@ function formatFrameDelta(val: number): string {
   gap: var(--space-sm);
   /* max-height: 160px; REMOVED to show all moves */
   /* overflow-y: auto; REMOVED */
+}
+
+.preset-toolbar {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.preset-search-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.preset-tool-btn,
+.show-more-btn,
+.detail-toggle-btn,
+.section-toggle-btn {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.preset-tool-btn,
+.section-toggle-btn {
+  padding: var(--space-sm) var(--space-md);
+  white-space: nowrap;
+}
+
+.show-more-btn {
+  width: 100%;
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.detail-toggle-btn {
+  margin-top: var(--space-sm);
+  padding: var(--space-xs) var(--space-md);
+}
+
+.preset-tool-btn:hover,
+.show-more-btn:hover,
+.detail-toggle-btn:hover,
+.section-toggle-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.empty-inline {
+  padding: var(--space-md);
+  color: var(--color-text-muted);
+  text-align: center;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.mobile-only {
+  display: none;
 }
 
 .knockdown-card {
@@ -4523,6 +4738,22 @@ function formatFrameDelta(val: number): string {
 .section-desc {
   color: var(--color-text-muted);
   margin-bottom: var(--space-md);
+}
+
+.section-desc.compact {
+  margin-bottom: 0;
+}
+
+.collapsible-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.collapsible-heading .section-title,
+.alt-oki-header .section-title {
+  margin-bottom: 0;
 }
 
 .results-header-row {
@@ -5655,13 +5886,50 @@ function formatFrameDelta(val: number): string {
 }
 
 @media (max-width: 768px) {
-  .alt-oki-header {
+  .oki-view {
+    padding-bottom: var(--space-xl) !important;
+  }
+
+  .page-title {
+    margin-top: var(--space-sm);
+  }
+
+  .stats-bar {
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .oki-section {
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .preset-toolbar {
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .knockdown-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .collapsible-heading {
     align-items: flex-start;
+  }
+
+  .alt-oki-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
     gap: var(--space-sm);
   }
 
   .alt-oki-global-delay {
+    grid-column: 1 / -1;
     width: 100%;
     justify-content: space-between;
   }

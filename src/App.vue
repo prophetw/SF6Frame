@@ -160,23 +160,54 @@ function handleLocaleChange(event: Event) {
 @media (max-width: 640px) {
   .nav {
     flex-direction: column;
+    align-items: stretch;
     height: auto;
-    padding: var(--space-md) 0;
-    gap: var(--space-md);
-  }
-  
-  .nav-links {
-    gap: var(--space-md);
+    padding: var(--space-sm) 0;
+    gap: var(--space-sm);
   }
 
+  .nav-brand {
+    justify-content: center;
+    min-height: 36px;
+  }
+  
   .nav-right {
-    flex-direction: column;
+    display: flex;
+    align-items: center;
     gap: var(--space-sm);
+    width: 100%;
+  }
+
+  .nav-links {
+    gap: var(--space-xs);
+    flex: 1 1 auto;
+    width: calc(100% - 92px);
+    max-width: calc(100% - 92px);
+    min-width: 0;
+    overflow: auto hidden;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
   }
   
   .nav-link {
+    flex: 0 0 auto;
     font-size: var(--font-size-sm);
-    padding: var(--space-xs) var(--space-sm);
+    line-height: 1;
+    padding: 10px var(--space-sm);
+    white-space: nowrap;
+  }
+
+  .nav-actions {
+    flex: 0 0 84px;
+    justify-content: flex-end;
+  }
+
+  .lang-select {
+    width: 84px;
+    padding: 0 var(--space-xs);
   }
 }
 </style>
