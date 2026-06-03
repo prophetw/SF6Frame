@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, watch } from 'vue';
 import { SF6_CHARACTERS, type Move, type FrameData, type CharacterStats } from '../types';
 import { calculateTradeAdvantage, parseHitstun, getEffectiveHitstun } from '../utils/trade';
+import { calculateMoveStats, parseFrameValue } from '../utils/gapCalculator';
 import { buildOkiResultKeyBase, getUniqueOkiResultKey } from '../utils/okiResultKey';
 import { calculateMoveTotalFrames as calculateUnifiedMoveTotalFrames } from '../utils/frameTotals';
 import { isAirborneMove } from '../utils/moveFilters';
@@ -181,9 +182,22 @@ const altExtraDelayFrames = ref<number>(0);
 const burstPressureOffset = ref<number>(1);
 const frameTrapAdvantageTarget = ref<number>(-3);
 
-const activeAltOkiTab = ref<'driveRush' | 'driveImpact' | 'frameTrap' | 'safeBait'>('driveRush');
+const activeAltOkiTab = ref<'driveRush' | 'driveImpact' | 'frameTrap' | 'safeBait' | 'baitThrow'>('driveRush');
 const showThrowSection = ref(false);
 const showAltOkiSection = ref(false);
+
+// Bait Throw inputs
+const selectedBaitInitiator = ref<Move | null>(null);
+const isBaitInitiatorDRC = ref<boolean>(false);
+const selectedBaitAction = ref<'jump' | 'backdash'>('jump');
+const defenderBaitReactionType = ref<'throw' | 'invincibleGrab'>('throw');
+const defenderBaitCustomStartup = ref<number>(5);
+const defenderBaitCustomWhiffRecovery = ref<number>(50);
+const defenderBaitSearchQuery = ref('');
+const showDefenderBaitDropdown = ref(false);
+const selectedDefenderBaitMove = ref<Move | null>(null);
+const baitInitiatorSearchQuery = ref('');
+const showBaitInitiatorDropdown = ref(false);
 
 const KNOCKDOWN_PRESET_PREVIEW_COUNT = 12;
 const MOBILE_RESULT_PREVIEW_COUNT = 12;
@@ -202,6 +216,14 @@ function stepFrameTrapAdvTarget(val: number) {
 
 function stepOpponentReversalStartup(val: number) {
   opponentReversalStartup.value = Math.max(1, (opponentReversalStartup.value || 1) + val);
+}
+
+function stepDefenderBaitCustomStartup(val: number) {
+  defenderBaitCustomStartup.value = Math.max(1, (defenderBaitCustomStartup.value || 1) + val);
+}
+
+function stepDefenderBaitCustomWhiffRecovery(val: number) {
+  defenderBaitCustomWhiffRecovery.value = Math.max(1, (defenderBaitCustomWhiffRecovery.value || 1) + val);
 }
 
 const BURST_STARTUP_FRAMES = 26;
@@ -1897,6 +1919,189 @@ const visibleDriveRushOkiResults = computed(() => {
   return allDriveRushOkiResults.value.slice(0, MOBILE_RESULT_PREVIEW_COUNT);
 });
 
+// Search and dropdown logic for bait initiator and defender bait reversal
+const filteredBaitInitiators = computed<Move[]>(() => {
+  if (!allMoves.value) return [];
+  const queryRaw = baitInitiatorSearchQuery.value.trim();
+  const queryLower = queryRaw.toLowerCase();
+  if (!queryRaw) return allMoves.value.slice(0, 30);
+
+  return allMoves.value.filter((m: Move) =>
+    m.name.toLowerCase().includes(queryLower) ||
+    (m.nameZh && m.nameZh.includes(queryRaw)) ||
+    (m.input && m.input.toLowerCase().includes(queryLower))
+  ).slice(0, 30);
+});
+
+function selectBaitInitiator(move: Move) {
+  selectedBaitInitiator.value = move;
+  baitInitiatorSearchQuery.value = getMoveDisplayName(move);
+  showBaitInitiatorDropdown.value = false;
+}
+
+watch(selectedBaitInitiator, (newVal) => {
+  if (newVal) {
+    baitInitiatorSearchQuery.value = getMoveDisplayName(newVal);
+  } else {
+    baitInitiatorSearchQuery.value = '';
+  }
+});
+
+function handleBaitInitiatorBlur() {
+  setTimeout(() => showBaitInitiatorDropdown.value = false, 200);
+}
+
+const filteredDefenderBaitMoves = computed<Move[]>(() => {
+  if (!defenderMoves.value) return [];
+  const queryRaw = defenderBaitSearchQuery.value.trim();
+  const queryLower = queryRaw.toLowerCase();
+  if (!queryRaw) return defenderMoves.value.slice(0, 30);
+
+  return defenderMoves.value.filter((m: Move) =>
+    m.name.toLowerCase().includes(queryLower) ||
+    (m.nameZh && m.nameZh.includes(queryRaw)) ||
+    (m.input && m.input.toLowerCase().includes(queryLower))
+  ).slice(0, 30);
+});
+
+function selectDefenderBaitMove(move: Move) {
+  selectedDefenderBaitMove.value = move;
+  defenderBaitSearchQuery.value = getMoveDisplayName(move);
+  showDefenderBaitDropdown.value = false;
+}
+
+watch(selectedDefenderBaitMove, (newVal) => {
+  if (newVal) {
+    defenderBaitSearchQuery.value = getMoveDisplayName(newVal);
+  } else {
+    defenderBaitSearchQuery.value = '';
+  }
+});
+
+function handleDefenderBaitBlur() {
+  setTimeout(() => showDefenderBaitDropdown.value = false, 200);
+}
+
+// Bait Throw calculation
+const baitThrowResult = computed(() => {
+  if (!attackerFrameData.value) return null;
+
+  // Attacker move info
+  const move1 = selectedBaitInitiator.value;
+  if (!move1) return null;
+
+  const stats1 = calculateMoveStats(move1);
+  const blockstun1 = stats1.blockstun;
+  const onBlock1 = parseFrameValue(move1.onBlock);
+
+  // Is cancelled into Drive Rush?
+  const isDRC = isBaitInitiatorDRC.value;
+
+  // Defender action info
+  const isCustomGrab = defenderBaitReactionType.value === 'throw';
+  let grabName = '普通拆投';
+  let grabInput = 'LP+LK';
+  let grabStartup = 5;
+  let grabRecovery = 50;
+  let grabTotal = 53;
+
+  if (!isCustomGrab && selectedDefenderBaitMove.value) {
+    const move2 = selectedDefenderBaitMove.value;
+    grabName = getMoveDisplayName(move2);
+    grabInput = move2.input;
+    grabStartup = parseInt(move2.startup) || 5;
+    
+    // Get total frames
+    const totalFrames = getMoveTotalFrames(move2);
+    grabTotal = totalFrames > 0 ? totalFrames : (grabStartup + 50);
+    grabRecovery = grabTotal - grabStartup;
+  } else {
+    grabStartup = defenderBaitCustomStartup.value;
+    grabRecovery = defenderBaitCustomWhiffRecovery.value;
+    grabTotal = grabStartup + grabRecovery;
+  }
+
+  // Bait action info
+  const baitAction = selectedBaitAction.value; // 'jump' | 'backdash'
+  let baitName = baitAction === 'jump' ? '垂直跳' : '后撤步';
+  let baitDuration = 45; // default jump
+  if (baitAction === 'backdash' && stats.value) {
+    baitDuration = stats.value.backDash;
+  } else if (baitAction === 'backdash') {
+    baitDuration = 23;
+  }
+
+  // Calculations relative to opponent recovery at Frame 0:
+  // - If direct (no DRC): defender recovers on Blockstun1. Attacker recovers on Blockstun1 - OnBlock1.
+  //   Relative start frame of bait action is: (Blockstun1 - OnBlock1) - Blockstun1 = -OnBlock1.
+  // - If DRC: attacker starts jump on Frame 11 of the run. Defender recovers on Blockstun1.
+  //   Relative start frame of bait action is: 11 - Blockstun1.
+  const relativeBaitStart = isDRC ? (11 - blockstun1) : -onBlock1;
+
+  // Let's set 1-based index where 1 is the defender's first recovery frame:
+  // Defender recovering frame is Frame 1.
+  // Grab active frame is Frame `grabStartup` (since startup 5 means it hits on 5th frame).
+  const F_opp_act = 1;
+  const F_grab_active = grabStartup;
+  const F_bait_start = relativeBaitStart + 1;
+
+  // Is the attacker immune when the grab becomes active?
+  let isSafe = false;
+  let safetyReason = '';
+
+  if (baitAction === 'jump') {
+    const F_airborne = F_bait_start + 4; // pre-jump is 4 frames (F_bait_start to F_bait_start+3)
+    isSafe = F_grab_active >= F_bait_start;
+    if (isSafe) {
+      if (F_grab_active >= F_airborne) {
+        safetyReason = `完全安全：对方在第 ${F_grab_active} 帧出招，我方在第 ${F_airborne} 帧已处于空中状态，投掷必定挥空。`;
+      } else {
+        safetyReason = `投掷安全（防抢招）：对方在第 ${F_grab_active} 帧投掷，我方正处于起跳预备帧（第 ${F_bait_start} 至 ${F_airborne - 1} 帧），享有完全的投无敌，投掷必定挥空。`;
+      }
+    } else {
+      safetyReason = `不安全被确反：我方收招过慢，起跳动作还未开始（第 ${F_bait_start} 帧）就已经被对方投掷判定命中（第 ${F_grab_active} 帧）。`;
+    }
+  } else {
+    // Backdash
+    const F_invul_end = F_bait_start + 16; // 17 frames of invul
+    isSafe = F_grab_active >= F_bait_start && F_grab_active <= F_invul_end;
+    if (isSafe) {
+      safetyReason = `后撤步安全：对方在第 ${F_grab_active} 帧投掷，我方处于后撤步投无敌时间（第 ${F_bait_start} 至 ${F_invul_end} 帧），投掷必定挥空。`;
+    } else if (F_grab_active < F_bait_start) {
+      safetyReason = `不安全被确反：我方收招过慢，后撤步动作还未开始就已经被对方投掷判定命中。`;
+    } else {
+      safetyReason = `可能不安全：对方判定在第 ${F_grab_active} 帧生效，已超出后撤步的投无敌时间。`;
+    }
+  }
+
+  // Punish frame advantage calculation
+  const F_attacker_recover = F_bait_start + baitDuration;
+  const F_defender_recover = F_opp_act + grabTotal - 1;
+  const punishAdvantage = F_defender_recover - F_attacker_recover;
+
+  return {
+    move1,
+    isDRC,
+    blockstun1,
+    onBlock1,
+    grabName,
+    grabInput,
+    grabStartup,
+    grabRecovery,
+    grabTotal,
+    baitName,
+    baitDuration,
+    F_bait_start,
+    F_opp_act,
+    F_grab_active,
+    isSafe,
+    safetyReason,
+    F_attacker_recover,
+    F_defender_recover,
+    punishAdvantage,
+  };
+});
+
 // Actions
 // Character data modules
 const characterModules = import.meta.glob('../data/characters/*.json');
@@ -1927,9 +2132,19 @@ async function loadCharacterData(role: 'attacker' | 'defender', charId: string) 
       selectedKnockdownMove.value = null;
       useCustomKnockdown.value = false;
       comboChain.value = [];
+      
+      // Set default bait initiator to 5HP or first normal
+      const normals = module.default.moves.filter((m: Move) => m.category === 'normal');
+      const hp5 = normals.find((m: Move) => m.input === '5HP');
+      selectedBaitInitiator.value = hp5 || normals[0] || null;
     } else {
       defenderFrameData.value = module.default;
       selectedDefenderMove.value = null;
+      
+      // Set default defender bait move (SA3, or first super)
+      const supers = module.default.moves.filter((m: Move) => m.category === 'super');
+      const sa3 = supers.find((m: Move) => m.name.includes('SA3') || (m.input && m.input.includes('720')) || m.name.includes('Storm Buster'));
+      selectedDefenderBaitMove.value = sa3 || supers[0] || null;
     }
   } catch (e) {
     console.error(`Failed to load character data for ${charId}:`, e);
@@ -3481,6 +3696,13 @@ function formatFrameDelta(val: number): string {
         >
           🛡️ 安全骗压
         </button>
+        <button
+          type="button"
+          :class="['alt-oki-tab-btn', { active: activeAltOkiTab === 'baitThrow' }]"
+          @click="activeAltOkiTab = 'baitThrow'"
+        >
+          🤼 打拆投
+        </button>
       </div>
 
       <!-- TAB 1: 绿冲 + 动作压起身 -->
@@ -4259,12 +4481,379 @@ function formatFrameDelta(val: number): string {
               <div class="mobile-verdict-banner success">
                 ✓ 诱骗成立：我方在对手凹招判定第 {{ result.strictLimitFrame }}F 前已收招，可完防对方动作。
               </div>
+            </div><!-- end mobile-card-details -->
+          </div><!-- end mobile-result-card v-for -->
+        </div><!-- end mobile-results-list -->
+
+        <div v-else class="empty-state">
+          <p>没有找到自动匹配的安全骗压组合</p>
+        </div>
+      </div>
+
+      <!-- TAB 5: 打拆投 (Bait Throw) -->
+      <div v-if="activeAltOkiTab === 'baitThrow'" class="alt-oki-panel fade-in">
+        <div class="panel-intro">
+          <h3 class="panel-subtitle">打拆投 / 骗大招 (Bait Throw / Grab Reversal)</h3>
+          <p class="panel-desc">通过垂直跳或后撤步，躲避对方在防守硬直结束后的即时拆投或指令投（如老桑 SA3），并计算确反优势。</p>
+        </div>
+
+        <!-- Parameters config -->
+        <div class="panel-setting-block block-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <!-- Left: Attacker Settings -->
+          <div class="setting-card">
+            <h4 class="card-title">攻方设定 (Attacker)</h4>
+            
+            <div class="panel-setting-row" style="margin-bottom: 15px;">
+              <span class="setting-label">起手压制招式</span>
+              <div class="move-search" style="display: inline-block; width: 220px; vertical-align: middle;">
+                <input
+                  type="text"
+                  v-model="baitInitiatorSearchQuery"
+                  @focus="showBaitInitiatorDropdown = true"
+                  @blur="handleBaitInitiatorBlur"
+                  placeholder="搜索攻方起手招式..."
+                  class="move-search-input"
+                />
+                <div v-if="showBaitInitiatorDropdown && filteredBaitInitiators.length > 0" class="move-dropdown">
+                  <button
+                    type="button"
+                    v-for="move in filteredBaitInitiators"
+                    :key="move.name + '-' + move.input"
+                    @mousedown="selectBaitInitiator(move)"
+                    class="move-option"
+                  >
+                    <span>{{ getMoveDisplayName(move) }}</span>
+                    <span class="move-input">{{ move.input }} (被防: {{ move.onBlock }}F)</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel-setting-row" style="margin-bottom: 15px;">
+              <span class="setting-label">是否取消绿冲 (DRC)</span>
+              <label class="switch-label" style="cursor: pointer; display: inline-flex; align-items: center;">
+                <input type="checkbox" v-model="isBaitInitiatorDRC" style="margin-right: 5px;" />
+                <span class="switch-txt">取消绿冲 (耗3格斗气)</span>
+              </label>
+            </div>
+
+            <div class="panel-setting-row">
+              <span class="setting-label">攻方回避动作</span>
+              <div class="segmented-control" style="display: inline-flex; gap: 5px;">
+                <button
+                  type="button"
+                  :class="['segmented-btn', { active: selectedBaitAction === 'jump' }]"
+                  @click="selectedBaitAction = 'jump'"
+                >
+                  垂直跳 (45F)
+                </button>
+                <button
+                  type="button"
+                  :class="['segmented-btn', { active: selectedBaitAction === 'backdash' }]"
+                  @click="selectedBaitAction = 'backdash'"
+                >
+                  后撤步 ({{ stats?.backDash || 23 }}F)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Defender Settings -->
+          <div class="setting-card">
+            <h4 class="card-title">防守方抢招设定 (Defender)</h4>
+            
+            <div class="panel-setting-row" style="margin-bottom: 15px;">
+              <span class="setting-label">防守方抢招类型</span>
+              <div class="segmented-control" style="display: inline-flex; gap: 5px;">
+                <button
+                  type="button"
+                  :class="['segmented-btn', { active: defenderBaitReactionType === 'throw' }]"
+                  @click="defenderBaitReactionType = 'throw'"
+                >
+                  普通拆投
+                </button>
+                <button
+                  type="button"
+                  :class="['segmented-btn', { active: defenderBaitReactionType === 'invincibleGrab' }]"
+                  @click="defenderBaitReactionType = 'invincibleGrab'"
+                >
+                  无敌投 / 必杀 / SA3
+                </button>
+              </div>
+            </div>
+
+            <div v-if="defenderBaitReactionType === 'throw'" class="custom-throw-inputs">
+              <div class="panel-setting-row" style="margin-bottom: 10px;">
+                <span class="setting-label">投掷发生帧 (Startup)</span>
+                <div class="stepper-container">
+                  <button class="stepper-btn" @click="stepDefenderBaitCustomStartup(-1)" type="button">−</button>
+                  <span class="stepper-value">{{ defenderBaitCustomStartup }}F</span>
+                  <button class="stepper-btn" @click="stepDefenderBaitCustomStartup(1)" type="button">+</button>
+                </div>
+              </div>
+              <div class="panel-setting-row">
+                <span class="setting-label">投掷空挥总硬直 (Recovery)</span>
+                <div class="stepper-container">
+                  <button class="stepper-btn" @click="stepDefenderBaitCustomWhiffRecovery(-5)" type="button">−</button>
+                  <span class="stepper-value">{{ defenderBaitCustomWhiffRecovery }}F</span>
+                  <button class="stepper-btn" @click="stepDefenderBaitCustomWhiffRecovery(5)" type="button">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div v-else class="defender-grab-search-input">
+              <div class="panel-setting-row">
+                <span class="setting-label">选择防守方指令投/大招</span>
+                <div class="move-search" style="display: inline-block; width: 220px; vertical-align: middle;">
+                  <input
+                    type="text"
+                    v-model="defenderBaitSearchQuery"
+                    @focus="showDefenderBaitDropdown = true"
+                    @blur="handleDefenderBaitBlur"
+                    placeholder="搜索防守方必杀技/超杀..."
+                    class="move-search-input"
+                    :disabled="!defenderFrameData"
+                  />
+                  <div v-if="showDefenderBaitDropdown && filteredDefenderBaitMoves.length > 0" class="move-dropdown">
+                    <button
+                      type="button"
+                      v-for="move in filteredDefenderBaitMoves"
+                      :key="move.name + '-' + move.input"
+                      @mousedown="selectDefenderBaitMove(move)"
+                      class="move-option"
+                    >
+                      <span>{{ getMoveDisplayName(move) }}</span>
+                      <span class="move-input">{{ move.input }} ({{ move.startup }}F)</span>
+                    </button>
+                  </div>
+                </div>
+                <p v-if="!defenderFrameData" class="text-xs text-gray-400 mt-1">请在上方选择防守方角色以启用招式搜索</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div v-else class="empty-state">
-          <p>没有找到自动匹配的安全骗压组合</p>
+        <!-- Bait Result Block -->
+        <div v-if="baitThrowResult" class="bait-result-block" style="margin-top: 25px;">
+          <!-- Verdict Banner -->
+          <div :class="['verdict-banner', baitThrowResult.isSafe ? 'banner-safe' : 'banner-danger']" style="padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: bold;">
+            <div class="verdict-title" style="font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+              <span v-if="baitThrowResult.isSafe">🟢 诱骗成立 (Safe Bait)</span>
+              <span v-else>🔴 诱骗失败 (Caught / Punished)</span>
+              <span class="punish-adv-badge" v-if="baitThrowResult.isSafe" style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px; font-size: 0.9rem;">
+                落地确反优势: +{{ baitThrowResult.punishAdvantage }}F
+              </span>
+            </div>
+            <div class="verdict-desc" style="font-size: 0.95rem; margin-top: 5px; font-weight: normal; opacity: 0.9;">
+              {{ baitThrowResult.safetyReason }}
+            </div>
+          </div>
+
+          <!-- Mathematical Alignment steps -->
+          <div class="math-hud-flow sb" style="margin-bottom: 25px;">
+            <div class="flow-step">
+              <span class="flow-label">防守方起身/恢复动作</span>
+              <span class="flow-val">第 {{ baitThrowResult.F_opp_act }}F</span>
+            </div>
+            <div class="flow-arrow">➔</div>
+            <div class="flow-step">
+              <span class="flow-label">抢招/超杀生效</span>
+              <span class="flow-val highlight">第 {{ baitThrowResult.F_grab_active }}F</span>
+            </div>
+            <div class="flow-arrow">⚡</div>
+            <div class="flow-step final" :class="[baitThrowResult.isSafe ? 'green-border' : 'red-border']">
+              <span class="flow-label">我方回避动作开始</span>
+              <span class="flow-val highlight">第 {{ baitThrowResult.F_bait_start }}F</span>
+            </div>
+          </div>
+
+          <!-- Timeline chart -->
+          <div class="timeline-visual" style="background: var(--color-bg-dark, #1a1b26); border: 1px solid var(--color-border, #2f304b); border-radius: 8px; padding: 20px; margin-top: 20px;">
+            <h4 style="margin: 0 0 15px 0; color: var(--color-text-secondary, #a9b1d6); font-size: 0.95rem;">📊 骗招对齐时间线 (Timeline Alignment)</h4>
+            <div class="timeline-container" style="display: flex; flex-direction: column; gap: 12px; position: relative;">
+              <!-- Ruler -->
+              <div class="timeline-ruler" style="display: flex; border-bottom: 1px solid #3b4261; padding-bottom: 5px; font-family: monospace; font-size: 11px; color: #565f89;">
+                <div style="width: 120px; font-weight: bold;">轴/帧数 (Frame)</div>
+                <div style="flex: 1; display: flex; justify-content: space-between;">
+                  <span>-15F</span>
+                  <span>-10F</span>
+                  <span>-5F</span>
+                  <span>0F (防守方恢复)</span>
+                  <span>+5F</span>
+                  <span>+10F</span>
+                  <span>+15F</span>
+                  <span>+20F</span>
+                  <span>+30F</span>
+                  <span>+40F</span>
+                  <span>+50F+</span>
+                </div>
+              </div>
+              
+              <!-- Attacker Row -->
+              <div class="timeline-row" style="display: flex; align-items: center;">
+                <div class="row-label" style="width: 120px; font-size: 12px; font-weight: bold; color: var(--color-text-primary, #c0caf5);">我方 (Attacker)</div>
+                <div class="row-bar-container" style="flex: 1; height: 24px; background: #24283b; border-radius: 4px; position: relative; overflow: hidden; border: 1px solid #414868;">
+                  <!-- Initial Move blocked -->
+                  <div class="time-block normal" :style="{
+                    left: '5%',
+                    width: '35%',
+                    background: '#34495e',
+                    height: '100%',
+                    position: 'absolute',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '11px',
+                    color: '#fff'
+                  }">
+                    {{ baitThrowResult.move1.name }} (被防)
+                  </div>
+                  <!-- DRC Cancel if active -->
+                  <div v-if="baitThrowResult.isDRC" class="time-block drc" :style="{
+                    left: '40%',
+                    width: '10%',
+                    background: '#1abc9c',
+                    height: '100%',
+                    position: 'absolute',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '11px',
+                    color: '#000',
+                    fontWeight: 'bold'
+                  }">
+                    绿冲取消
+                  </div>
+                  <!-- Bait Action start (Jump/Backdash) -->
+                  <div class="time-block action" :style="{
+                    left: baitThrowResult.isDRC ? '50%' : '42%',
+                    width: '40%',
+                    background: baitThrowResult.isSafe ? '#2ecc71' : '#e74c3c',
+                    height: '100%',
+                    position: 'absolute',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '11px',
+                    color: '#fff',
+                    fontWeight: 'bold'
+                  }">
+                    {{ baitThrowResult.baitName }} (持续 {{ baitThrowResult.baitDuration }}F)
+                  </div>
+                </div>
+              </div>
+
+              <!-- Defender Row -->
+              <div class="timeline-row" style="display: flex; align-items: center;">
+                <div class="row-label" style="width: 120px; font-size: 12px; font-weight: bold; color: var(--color-text-primary, #c0caf5);">对手 (Defender)</div>
+                <div class="row-bar-container" style="flex: 1; height: 24px; background: #24283b; border-radius: 4px; position: relative; overflow: hidden; border: 1px solid #414868;">
+                  <!-- Blockstun -->
+                  <div class="time-block blockstun" :style="{
+                    left: '5%',
+                    width: '40%',
+                    background: '#7f8c8d',
+                    height: '100%',
+                    position: 'absolute',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '11px',
+                    color: '#fff'
+                  }">
+                    防御硬直 ({{ baitThrowResult.blockstun1 }}F)
+                  </div>
+                  <!-- Reversal Startup -->
+                  <div class="time-block reversal" :style="{
+                    left: '45%',
+                    width: (baitThrowResult.grabStartup * 1.5) + '%',
+                    background: '#e67e22',
+                    height: '100%',
+                    position: 'absolute',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '11px',
+                    color: '#fff'
+                  }">
+                    抢招发生 ({{ baitThrowResult.grabStartup }}F)
+                  </div>
+                  <!-- Grab Whiff / Recovery -->
+                  <div class="time-block whiff" :style="{
+                    left: (45 + baitThrowResult.grabStartup * 1.5) + '%',
+                    width: '45%',
+                    background: '#9b59b6',
+                    height: '100%',
+                    position: 'absolute',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '11px',
+                    color: '#fff'
+                  }">
+                    空挥硬直 ({{ baitThrowResult.grabRecovery }}F)
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Explanatory note -->
+            <div class="timeline-legend" style="display: flex; gap: 15px; margin-top: 15px; font-size: 11px; flex-wrap: wrap;">
+              <span style="display: flex; align-items: center; gap: 4px;"><span style="display:inline-block; width:12px; height:12px; background:#34495e; border-radius:2px;"></span> 被防招式</span>
+              <span style="display: flex; align-items: center; gap: 4px;"><span style="display:inline-block; width:12px; height:12px; background:#1abc9c; border-radius:2px;"></span> 绿冲取消 (11F)</span>
+              <span style="display: flex; align-items: center; gap: 4px;"><span style="display:inline-block; width:12px; height:12px; background:#2ecc71; border-radius:2px;"></span> 安全回避</span>
+              <span style="display: flex; align-items: center; gap: 4px;"><span style="display:inline-block; width:12px; height:12px; background:#e74c3c; border-radius:2px;"></span> 不安全/被命中</span>
+              <span style="display: flex; align-items: center; gap: 4px;"><span style="display:inline-block; width:12px; height:12px; background:#7f8c8d; border-radius:2px;"></span> 对手防御硬直</span>
+              <span style="display: flex; align-items: center; gap: 4px;"><span style="display:inline-block; width:12px; height:12px; background:#e67e22; border-radius:2px;"></span> 抢招发生</span>
+              <span style="display: flex; align-items: center; gap: 4px;"><span style="display:inline-block; width:12px; height:12px; background:#9b59b6; border-radius:2px;"></span> 抢招空挥/收招</span>
+            </div>
+          </div>
+
+          <!-- Punish calculation detail card -->
+          <div class="results-table" style="margin-top: 20px;">
+            <div class="detail-title">📖 骗拆投确反帧数计算详情</div>
+            <div class="detail-grid single-col" style="padding: 15px; background: rgba(255,255,255,0.02); border-radius: 4px;">
+              <div class="detail-steps-column">
+                <div class="detail-step-item">
+                  <span class="step-lbl">我方起手压制招式:</span>
+                  <span class="step-val font-mono">{{ getMoveDisplayName(baitThrowResult.move1) }} = {{ baitThrowResult.move1.onBlock }}F (被防)</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">对手防御硬直 (Blockstun):</span>
+                  <span class="step-val font-mono">{{ baitThrowResult.blockstun1 }}F</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">绿冲动作状态:</span>
+                  <span class="step-val font-mono">{{ baitThrowResult.isDRC ? '有 (前冲占用 11 帧，第 12 帧可行动)' : '无' }}</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">我方回避动作起始帧 (相对于对手恢复第1帧):</span>
+                  <span class="step-val font-mono">第 {{ baitThrowResult.F_bait_start }}F</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">对手出招动作:</span>
+                  <span class="step-val font-mono">{{ baitThrowResult.grabName }} (发生: {{ baitThrowResult.grabStartup }}F, 硬直: {{ baitThrowResult.grabRecovery }}F, 总共: {{ baitThrowResult.grabTotal }}F)</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">对手出招判定生效帧:</span>
+                  <span class="step-val font-mono">第 {{ baitThrowResult.F_grab_active }}F</span>
+                </div>
+                <div class="detail-step-item highlight-line">
+                  <span class="step-lbl">我方动作完成/落地帧:</span>
+                  <span class="step-val font-mono">第 {{ baitThrowResult.F_attacker_recover }}F</span>
+                </div>
+                <div class="detail-step-item highlight-line">
+                  <span class="step-lbl">对手空挥/出招完成恢复帧:</span>
+                  <span class="step-val font-mono">第 {{ baitThrowResult.F_defender_recover }}F</span>
+                </div>
+                <div class="detail-step-item highlight-final" :class="[baitThrowResult.isSafe ? 'blue-border' : 'red-border']">
+                  <span class="step-lbl">判定确反帧优势 (Punish Advantage):</span>
+                  <span class="step-val font-mono" :class="[baitThrowResult.isSafe ? 'frame-positive' : 'frame-negative']">
+                    {{ baitThrowResult.punishAdvantage >= 0 ? '+' : '' }}{{ baitThrowResult.punishAdvantage }}F
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       </template>
@@ -6959,5 +7548,66 @@ function formatFrameDelta(val: number): string {
   .advantage-blocks {
     flex-direction: column;
   }
+/* Bait Throw specific styles */
+.setting-card {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--color-border-light, #2f304b);
+  border-radius: var(--radius-md, 6px);
+  padding: 20px;
+}
+.card-title {
+  margin: 0 0 15px 0;
+  font-size: 1rem;
+  color: var(--color-accent, #ff4757);
+  border-bottom: 1px solid var(--color-border-light, #2f304b);
+  padding-bottom: 8px;
+}
+.segmented-control {
+  display: inline-flex;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 3px;
+  border-radius: 6px;
+  border: 1px solid var(--color-border-light, #2f304b);
+}
+.segmented-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted, #7f8c8d);
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.segmented-btn.active {
+  background: var(--color-bg-tertiary, #2c2e3e);
+  color: var(--color-text-primary, #ffffff);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.verdict-banner {
+  border-left: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+.verdict-banner.banner-safe {
+  background: rgba(46, 204, 113, 0.15);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  border-left: 5px solid #2ecc71;
+  color: #2ecc71;
+}
+.verdict-banner.banner-danger {
+  background: rgba(231, 76, 60, 0.15);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  border-left: 5px solid #e74c3c;
+  color: #e74c3c;
+}
+.timeline-container {
+  overflow-x: auto;
+}
+.time-block {
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
 }
 </style>
