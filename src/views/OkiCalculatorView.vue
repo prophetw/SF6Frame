@@ -44,6 +44,7 @@ const customKnockdownAdv = ref<number>(38);
 const useCustomKnockdown = ref(false);
 
 import { defaultCustomMoves } from '../data/defaultCustomMoves';
+import { defaultExcludedMoves } from '../data/defaultExcludedMoves';
 
 // NEW: Custom Knockdown Move Interface & State
 export interface CustomMove {
@@ -54,12 +55,26 @@ export interface CustomMove {
   frames: number;
 }
 
+// NEW: Excluded Move Interface for Oki Routing
+export interface ExcludedMove {
+  id: string;       // unique ID
+  characterId: string;
+  moveName: string; // move name (matches result.move.name)
+  moveInput: string; // move input (matches result.move.input)
+  note?: string;    // optional user note (e.g., "不能打蹲防")
+}
+
 const customMoves = ref<CustomMove[]>([]);
 const newCustomMove = ref({
   name: '',
   input: '',
   frames: 40
 });
+
+// Excluded moves for Oki Routing (personal preference: exclude certain last-hit moves)
+const excludedMoves = ref<ExcludedMove[]>([]);
+const newExcludedMoveInput = ref('');
+const newExcludedMoveNote = ref('');
 
 // Load custom moves from localStorage and merge with defaults
 function loadCustomMoves() {
@@ -142,8 +157,54 @@ function removeCustomMove(id: string) {
   localStorage.setItem('sf6_oki_custom_moves', JSON.stringify(customMoves.value));
 }
 
+// Excluded moves management (Oki Routing last-move exclusion)
+function loadExcludedMoves() {
+  let storedMoves: ExcludedMove[] = [];
+  const stored = localStorage.getItem('sf6_oki_excluded_moves');
+  if (stored) {
+    try {
+      storedMoves = JSON.parse(stored);
+    } catch (e) {
+      console.error('Failed to parse excluded moves', e);
+    }
+  }
+
+  const moveMap = new Map<string, ExcludedMove>();
+  defaultExcludedMoves.forEach(m => moveMap.set(m.id, m));
+  storedMoves.forEach(m => moveMap.set(m.id, m));
+  excludedMoves.value = Array.from(moveMap.values());
+}
+
+function addExcludedMove(moveName: string, moveInput: string) {
+  if (!moveName || !moveInput) return;
+  // Deduplicate: don't add the same move twice for the same character
+  const exists = excludedMoves.value.some(
+    m => m.characterId === attackerCharId.value && m.moveName === moveName && m.moveInput === moveInput
+  );
+  if (exists) return;
+
+  const move: ExcludedMove = {
+    id: Date.now().toString(),
+    characterId: attackerCharId.value,
+    moveName,
+    moveInput,
+    note: newExcludedMoveNote.value || undefined,
+  };
+
+  excludedMoves.value.push(move);
+  localStorage.setItem('sf6_oki_excluded_moves', JSON.stringify(excludedMoves.value));
+  newExcludedMoveInput.value = '';
+  newExcludedMoveNote.value = '';
+}
+
+function removeExcludedMove(id: string) {
+  excludedMoves.value = excludedMoves.value.filter(m => m.id !== id);
+  localStorage.setItem('sf6_oki_excluded_moves', JSON.stringify(excludedMoves.value));
+}
+
 onMounted(() => {
     loadCustomMoves();
+    loadExcludedMoves();
 });
 
 
@@ -758,6 +819,14 @@ interface ExtendedOkiResult {
   driveRushAdvantageBonus?: number;
   sourcePrefixName?: string;
   sourcePrefixFrames?: number;
+  // Chain Cancel
+  isChainCancel?: boolean;
+  chainCancelSequence?: string; // e.g. "2LP×2" or "2LP→5LP"
+  chainCancelOffset?: number;   // first additional step offset (for same-move display)
+  chainCancelSteps?: number;    // number of chained moves used as frame kill
+  chainCancelMoveTotalFrames?: number; // first move total frames (for formula display)
+  chainCancelMoveInputs?: string[];    // sequence of move inputs e.g. ["2LP","5LP","2LP"]
+  chainCancelStepFrames?: number[];    // per-step frame contributions [totalFirst, ...offsets]
 }
 
 function parseFrameAdvantage(adv: string): number | null {
@@ -770,6 +839,11 @@ function isComboSequenceMove(move: Move): boolean {
   const input = move.input || '';
   const name = move.name || '';
   return input.includes('~') || name.includes('~');
+}
+
+function isChainCancelableMove(move: Move): boolean {
+  if (!move.cancels) return false;
+  return move.cancels.some(c => c.toUpperCase() === 'CHAIN' || c.toUpperCase() === 'CHN');
 }
 
 // Build prefix name from combo chain
@@ -900,9 +974,81 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
     }
   }
 
+  // --- Chain Cancel Prefixes ---
+  // Chain Cancel requires ≥2 chained moves (e.g. 5LP → 5LP).
+  // Frame accounting:
+  //   First move: totalFrames = startup + active - 1 + recovery
+  //   Each additional step: chainOffset = active + recovery - 1  (LP moves)
+  //                            chainOffset = active + recovery      (LK moves, no -1)
+  //
+  // Ryu examples:
+  //   5LP (total=13, offset=3+6=9):    ×2=22  ×3=31
+  //   2LP (total=14, offset=2+8=10):   ×2=24  ×3=34
+  //   2LK (total=16, offset=2+10=12):  ×2=28  ×3=40  (LK uses full recovery)
+  const chainCancelMoves = allMoves.value.filter(m => {
+    if (!m.cancels) return false;
+    return m.cancels.some(c => c.toUpperCase() === 'CHAIN' || c.toUpperCase() === 'CHN');
+  });
+
+  for (const chainMove of chainCancelMoves) {
+    const tf = getMoveTotalFrames(chainMove);
+    const active = parseActiveWindowFrames(chainMove.active);
+    const recovery = parseTotalRecoveryFrames(chainMove.recovery);
+    // LK moves use full recovery in chain cancel (no -1 truncation)
+    const isLK = (chainMove.input || '').toUpperCase().includes('LK');
+    const chainOffset = active + Math.max(0, isLK ? recovery : recovery - 1);
+    if (tf <= 0 || chainOffset <= 0) continue;
+
+    for (let steps = 2; steps <= 3; steps++) {
+      const prefixFrames = tf + (steps - 1) * chainOffset;
+      if (prefixFrames >= effectiveKnockdownAdv.value) continue;
+      const seqLabel = `${chainMove.input}×${steps} (Chain Cancel)`;
+      const moveInputs = Array(steps).fill(chainMove.input) as string[];
+      const stepFrames = [tf, ...Array(steps - 1).fill(chainOffset)] as number[];
+
+      prefixes.push({
+        name: seqLabel,
+        frames: prefixFrames,
+        input: chainMove.input,
+        isCorner: false,
+        _isChainCancel: true,
+        _chainCancelSteps: steps,
+        _chainCancelOffset: chainOffset,
+        _chainCancelMoveTotalFrames: tf,
+        _chainCancelMoveInputs: moveInputs,
+        _chainCancelStepFrames: stepFrames,
+        _chainCancelSeq: seqLabel,
+        _chainCancelMoveName: chainMove.input,
+      } as any);
+
+      const dashTotal = stats.value.forwardDash + prefixFrames;
+      if (dashTotal < effectiveKnockdownAdv.value) {
+        prefixes.push({
+          name: `前冲 + ${seqLabel}`,
+          frames: dashTotal,
+          input: chainMove.input,
+          isCorner: false,
+          _isChainCancel: true,
+          _chainCancelSteps: steps,
+          _chainCancelOffset: chainOffset,
+          _chainCancelMoveTotalFrames: tf,
+          _chainCancelMoveInputs: moveInputs,
+          _chainCancelStepFrames: stepFrames,
+          _chainCancelSeq: seqLabel,
+          _chainCancelMoveName: chainMove.input,
+        } as any);
+      }
+    }
+  }
+
   for (const prefix of prefixes) {
     for (const move of allMoves.value) {
       if (isComboSequenceMove(move)) continue;
+      // After a chain cancel prefix, skip chain-cancelable oki moves.
+      // Chain cancel prefixes already represent the optimal frame-kill sequence;
+      // pairing them with another chain-cancelable move would double-count startup
+      // (e.g. 2LP×2 + 2LP should just be 2LP×3 which is already a prefix).
+      if ((prefix as any)._isChainCancel && isChainCancelableMove(move)) continue;
       const startup = parseInt(move.startup) || 0;
       const activeInfo = parseActiveSegments(move.active);
       const activeHasGap = activeInfo.gaps.length > 0;
@@ -1048,6 +1194,13 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
             ...(prefix.isCorner || projectileOki ? ['版边(Corner)'] : []),
             ...(projectileOki ? ['波动拳公式'] : []),
           ],
+          isChainCancel: !!(prefix as any)._isChainCancel,
+          chainCancelSequence: (prefix as any)._chainCancelSeq,
+          chainCancelOffset: (prefix as any)._chainCancelOffset,
+          chainCancelSteps: (prefix as any)._chainCancelSteps,
+          chainCancelMoveTotalFrames: (prefix as any)._chainCancelMoveTotalFrames,
+          chainCancelMoveInputs: (prefix as any)._chainCancelMoveInputs,
+          chainCancelStepFrames: (prefix as any)._chainCancelStepFrames,
         });
       }
     }
@@ -1202,7 +1355,19 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
       });
     });
   }
-  
+
+  // Exclude moves based on user preferences (personal preference: skip certain last-hit moves)
+  const excludesForChar = excludedMoves.value.filter(m => m.characterId === attackerCharId.value);
+  if (excludesForChar.length > 0) {
+    filtered = filtered.filter(result => {
+      const moveName = result.move.name || '';
+      const moveInput = result.move.input || '';
+      return !excludesForChar.some(
+        exc => exc.moveName === moveName || exc.moveInput === moveInput
+      );
+    });
+  }
+
   if (autoMatchSearchQuery.value) {
     const queryRaw = autoMatchSearchQuery.value.trim();
     const queryLower = queryRaw.toLowerCase();
@@ -2861,6 +3026,62 @@ function formatFrameDelta(val: number): string {
         </div>
       </div>
 
+      <!-- Exclude Last-Hit Moves (Personal Preference) -->
+      <div class="exclude-moves-section">
+        <div class="exclude-moves-title">排除最后招式 (个人喜好)</div>
+        <p class="exclude-moves-desc">不想让某个招式作为 Oki 压制的最后一击（例如 5HK 不能打蹲防）。</p>
+        <div class="exclude-moves-list">
+          <div v-for="em in excludedMoves.filter(m => m.characterId === attackerCharId)" :key="em.id" class="exclude-move-tag">
+            <span class="exclude-move-name">{{ em.moveInput || em.moveName }}</span>
+            <span v-if="em.note" class="exclude-move-note" :title="em.note">({{ em.note }})</span>
+            <button class="exclude-move-remove" @click="removeExcludedMove(em.id)">×</button>
+          </div>
+          <span v-if="excludedMoves.filter(m => m.characterId === attackerCharId).length === 0" class="exclude-moves-empty">
+            暂无排除招式，在下方搜索添加
+          </span>
+        </div>
+        <div class="exclude-moves-add">
+          <div class="move-search" style="flex:1; min-width:150px">
+            <input
+              type="text"
+              v-model="newExcludedMoveInput"
+              placeholder="搜索招式（如 5HK）..."
+              class="move-search-input"
+              style="font-size: 0.8rem;"
+            />
+            <div v-if="newExcludedMoveInput" class="move-dropdown">
+              <button
+                v-for="move in attackerFrameData?.moves.filter(m => {
+                  const q = newExcludedMoveInput.toLowerCase();
+                  return (m.input || '').toLowerCase().includes(q) || (m.name || '').toLowerCase().includes(q);
+                }).slice(0, 10) ?? []"
+                :key="`excl-${move.input}-${move.name}`"
+                class="move-option text-xs"
+                @click="addExcludedMove(move.name, move.input)"
+              >
+                <span>{{ getMoveDisplayName(move) }}</span>
+                <span class="move-input text-xs">{{ move.input }}</span>
+              </button>
+            </div>
+          </div>
+          <input
+            type="text"
+            v-model="newExcludedMoveNote"
+            placeholder="备注（可选，如：不能打蹲防）"
+            class="small-input"
+            style="flex:1; min-width:120px; font-size:0.8rem;"
+          />
+          <button
+            v-if="newExcludedMoveInput"
+            class="action-btn"
+            style="background: var(--color-danger); color: #fff; white-space: nowrap;"
+            @click="addExcludedMove(newExcludedMoveInput, newExcludedMoveInput)"
+          >
+            手动添加
+          </button>
+        </div>
+      </div>
+
       <!-- Auto Results -->
       <div class="results-header-row">
         <h3 class="results-title">
@@ -2927,6 +3148,7 @@ function formatFrameDelta(val: number): string {
             <div class="result-combo">
               <span v-if="result.coversOpponent" class="success-badge">压制</span>
               <span v-if="result.isTrade" class="trade-badge">相杀</span>
+              <span v-if="result.isChainCancel" class="chain-cancel-badge">连锁取消 Chain Cancel</span>
               <span v-if="result.tags && result.tags.length > 0" class="tag-badge">{{ result.tags.join(', ') }}</span>
               <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
               <span v-if="result.prefix">+</span>
@@ -2960,6 +3182,24 @@ function formatFrameDelta(val: number): string {
                   <span v-if="result.prefixInput"> ({{ result.prefixInput }})</span>
                   = {{ result.prefixFrames }}F
                   <span v-if="result.isDriveRush">有效偏移</span>
+                </span>
+              </div>
+              <div class="detail-row calc" v-if="result.isChainCancel">
+                <span class="detail-label">连锁取消公式:</span>
+                <span>
+                  <template v-if="result.chainCancelStepFrames && result.chainCancelMoveInputs && result.chainCancelStepFrames.length === result.chainCancelMoveInputs.length">
+                    <span v-for="(f, i) in result.chainCancelStepFrames" :key="i">
+                      <span v-if="i > 0"> + </span>
+                      {{ f }}F<span v-if="i === 0"> ({{ result.chainCancelMoveInputs[i] }}首招)</span><span v-else> ({{ result.chainCancelMoveInputs[i] }})</span>
+                    </span>
+                    = {{ result.prefixFrames }}F
+                  </template>
+                  <template v-else>
+                    首招完整 {{ result.chainCancelMoveTotalFrames }}F
+                    + {{ result.chainCancelOffset }}F × ({{ result.chainCancelSteps }} − 1)步
+                    = {{ result.prefixFrames }}F
+                  </template>
+                  <em>（跳过发生帧, 截短收招 1 帧）</em>
                 </span>
               </div>
               <div class="detail-row" v-if="result.isDriveRush">
@@ -5345,6 +5585,83 @@ function formatFrameDelta(val: number): string {
   margin-bottom: 0;
 }
 
+/* Exclude Last-Hit Moves Section */
+.exclude-moves-section {
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+}
+
+.exclude-moves-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-warning);
+  margin-bottom: var(--space-xxs);
+}
+
+.exclude-moves-desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-sm);
+}
+
+.exclude-moves-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.exclude-move-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xxs);
+  padding: 2px var(--space-sm);
+  background: rgba(255, 100, 100, 0.15);
+  border: 1px solid rgba(255, 100, 100, 0.3);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+}
+
+.exclude-move-name {
+  color: var(--color-danger);
+  font-weight: 500;
+}
+
+.exclude-move-note {
+  color: var(--color-text-muted);
+  font-size: 11px;
+}
+
+.exclude-move-remove {
+  background: none;
+  border: none;
+  color: var(--color-danger);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 2px;
+  line-height: 1;
+}
+
+.exclude-move-remove:hover {
+  color: #fff;
+}
+
+.exclude-moves-empty {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  font-style: italic;
+}
+
+.exclude-moves-add {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
 .results-header-row {
   display: flex;
   justify-content: space-between;
@@ -5531,6 +5848,18 @@ function formatFrameDelta(val: number): string {
   border-radius: var(--radius-sm);
   font-size: var(--font-size-xs);
   font-weight: 600;
+}
+
+.chain-cancel-badge {
+  background: rgba(251, 146, 60, 0.25);
+  color: #fb923c;
+  padding: 2px 8px;
+  border: 1px solid rgba(251, 146, 60, 0.5);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
 /* Result Detail Panel */
