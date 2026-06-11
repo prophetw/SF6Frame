@@ -21,9 +21,9 @@ const buildMove = (overrides: Partial<Move>): Move => ({
 });
 
 describe('driveRush', () => {
-  it('calculates fastest hit frame from the frame-10 drive rush cancel point', () => {
-    expect(getFastestDriveRushHitFrame(4)).toBe(14);
-    expect(getFastestDriveRushHitFrame(20)).toBe(30);
+  it('calculates fastest hit frame from the frame-11 drive rush cancel point', () => {
+    expect(getFastestDriveRushHitFrame(4)).toBe(15);
+    expect(getFastestDriveRushHitFrame(20)).toBe(31);
   });
 
   it('calculates drive rush follow-up timing from an existing prefix', () => {
@@ -33,17 +33,17 @@ describe('driveRush', () => {
       activeLength: 3,
     })).toEqual({
       driveRushStartFrame: 19,
-      attackStartFrame: 29,
-      fastestHitFrame: 33,
-      firstActiveFrame: 33,
-      lastActiveFrame: 35,
+      attackStartFrame: 30,
+      fastestHitFrame: 34,
+      firstActiveFrame: 34,
+      lastActiveFrame: 36,
     });
   });
 
-  it('adds the frame-10 drive rush offset when used as a chain action', () => {
+  it('adds the frame-11 drive rush offset when used as a chain action', () => {
     expect(getDriveRushActionTotalFrames(buildMove({
       raw: { total: 13 },
-    }))).toBe(23);
+    }))).toBe(24);
   });
 
   it('allows grounded non-throw moves as drive rush follow-ups', () => {
@@ -55,7 +55,7 @@ describe('driveRush', () => {
     }))).toBe(true);
   });
 
-  it('does not treat throws or airborne moves as frame-10 drive rush follow-ups', () => {
+  it('does not treat throws or airborne moves as frame-11 drive rush follow-ups', () => {
     expect(isDriveRushFollowUpMove(buildMove({
       name: 'Forward Throw',
       input: '5LP+LK',

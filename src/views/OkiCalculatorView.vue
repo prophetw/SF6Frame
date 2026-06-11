@@ -3949,7 +3949,7 @@ function formatFrameDelta(val: number): string {
       <div v-if="activeAltOkiTab === 'driveRush'" class="alt-oki-panel fade-in">
         <div class="panel-intro">
           <h3 class="panel-subtitle">绿冲 + 动作压起身</h3>
-          <p class="panel-desc">按绿冲动作第 1 帧计时，Parry Drive Rush 第 10 帧可取消进攻击。最速命中帧 = 招式发生 + 10。</p>
+          <p class="panel-desc">按绿冲动作第 1 帧计时，Parry Drive Rush 第 11 帧可取消进攻击。最速命中帧 = 招式发生 + 11。</p>
         </div>
 
         <div class="math-hud-flow">
@@ -3975,7 +3975,7 @@ function formatFrameDelta(val: number): string {
           <div class="flow-arrow">=</div>
           <div class="flow-step final">
             <span class="flow-label">最速命中帧</span>
-            <span class="flow-val">发生 + 10F</span>
+            <span class="flow-val">发生 + 11F</span>
           </div>
         </div>
 

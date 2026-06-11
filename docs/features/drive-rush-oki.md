@@ -7,10 +7,10 @@
 ## 核心入口
 
 - `src/utils/driveRush.ts`
-  - `PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME`：Parry Drive Rush 可取消进攻击的基准帧，当前为 `10F`。
-  - `getFastestDriveRushHitFrame(startup)`：绿冲派生动作最速命中帧，公式为 `10 + startup`，不再额外 `-1`。
+  - `PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME`：Parry Drive Rush 可取消进攻击的基准帧，当前为 `11F`。
+  - `getFastestDriveRushHitFrame(startup)`：绿冲派生动作最速命中帧，公式为 `11 + startup`，不再额外 `-1`。
   - `calculateDriveRushAttackTiming(...)`：根据绿冲起点、招式发生和持续段计算动作开始、最速命中与打击范围。
-  - `getDriveRushActionTotalFrames(move)`：在前置动作链中把“绿冲 + 招式全帧数”折算为 `10 + moveTotalFrames`。
+  - `getDriveRushActionTotalFrames(move)`：在前置动作链中把“绿冲 + 招式全帧数”折算为 `11 + moveTotalFrames`。
 - `src/views/OkiCalculatorView.vue`
   - 前置动作搜索中可添加 `driveRush` 类型动作。
   - `allOkiResults` 把绿冲动作纳入普通压起身匹配。
@@ -27,7 +27,7 @@
 1. 从角色数据读取所有招式，过滤可作为绿冲派生的地面非投动作。
 2. 读取击倒优势、对手抢招发生、额外延迟和前置动作。
 3. 计算绿冲起点：`prefix.frames + extraDelay`。
-4. 计算派生动作最速命中：`driveRushStart + 10 + moveStartup`。
+4. 计算派生动作最速命中：`driveRushStart + 11 + moveStartup`。
 5. 结合持续帧得到打击范围：`firstActive~lastActive`。
 6. 与对手可命中窗口比较，生成压制成功或相杀结果。
 7. 展示被防、被击结果：原始帧数 + 绿冲加成 + Meaty 加成，命中压起身时再加打康 `+2F`。
@@ -54,13 +54,14 @@
 ## 测试验证方式
 
 - `pnpm test -- src/utils/driveRush.test.ts --run`
-  - 覆盖 `10 + startup` 的最速命中公式。
+  - 覆盖 `11 + startup` 的最速命中公式。
   - 覆盖带前置帧的绿冲派生动作时序。
-  - 覆盖前置动作链中的 `10 + moveTotalFrames` 折算。
+  - 覆盖前置动作链中的 `11 + moveTotalFrames` 折算。
   - 覆盖绿冲派生动作过滤规则。
 - `pnpm build`
   - 验证 Vue 模板中的公式展示与类型检查。
 
 ## 变更记录
 
+- 2026-06-11：根据测试反馈，将绿冲（DR）有效偏移/取消进攻击的基准帧从 `10F` 调整为 `11F`；更新公式为 `11 + startup` 及相关文档与测试用例。
 - 2026-05-20：修正绿冲派生动作计算公式，从 `10 + startup - 1` 调整为 `10 + startup`；同步更新测试与 UI 公式展示。
