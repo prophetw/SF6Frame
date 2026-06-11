@@ -2737,13 +2737,17 @@ function generateThrowDefenderFrames(
 }
 
 function isPositive(val: number | string | undefined): boolean {
-  if (typeof val !== 'number') return false;
-  return val >= 0;
+  if (val === undefined || val === null) return false;
+  if (typeof val === 'number') return val >= 0;
+  const parsed = parseInt(String(val), 10);
+  return !isNaN(parsed) && parsed >= 0;
 }
 
 function isNegative(val: number | string | undefined): boolean {
-  if (typeof val !== 'number') return false;
-  return val < 0;
+  if (val === undefined || val === null) return false;
+  if (typeof val === 'number') return val < 0;
+  const parsed = parseInt(String(val), 10);
+  return !isNaN(parsed) && parsed < 0;
 }
 
 function formatFrame(val: number | string | undefined): string {
@@ -3431,6 +3435,12 @@ function formatFrameDelta(val: number): string {
               <span class="badge-mini frame font-mono">发生: {{ result.prefixFrames + parseInt(result.move.startup) }}F</span>
               <span class="badge-mini frame font-mono">打击: {{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
               <span class="badge-mini frame font-mono">容错: {{ formatTolerance(result.toleranceFrames) }}</span>
+              <span :class="['badge-mini', 'frame', 'font-mono', isPositive(result.calculatedOnBlock) ? 'green' : (isNegative(result.calculatedOnBlock) ? 'red' : '')]">
+                被防: {{ formatFrame(result.calculatedOnBlock) }}
+              </span>
+              <span :class="['badge-mini', 'frame', 'font-mono', isPositive(result.calculatedOnHit) ? 'green' : (isNegative(result.calculatedOnHit) ? 'red' : '')]">
+                打康: {{ formatFrame(result.calculatedOnHit) }}
+              </span>
             </div>
 
             <!-- Mobile Expanded Details Panel -->
@@ -4131,6 +4141,12 @@ function formatFrameDelta(val: number): string {
               <span v-if="result.isTrade" class="badge-mini trade">相杀</span>
               <span class="badge-mini frame font-mono">最速命中: {{ result.fastestHitFrame }}F</span>
               <span class="badge-mini frame font-mono" :class="result.coversOpponent ? 'green' : 'gray'">压制: {{ result.wakeupOffset }}F</span>
+              <span :class="['badge-mini', 'frame', 'font-mono', isPositive(result.calculatedOnBlock) ? 'green' : (isNegative(result.calculatedOnBlock) ? 'red' : '')]">
+                被防: {{ formatFrame(result.calculatedOnBlock) }}
+              </span>
+              <span :class="['badge-mini', 'frame', 'font-mono', isPositive(result.calculatedOnHit) ? 'green' : (isNegative(result.calculatedOnHit) ? 'red' : '')]">
+                打康: {{ formatFrame(result.calculatedOnHit) }}
+              </span>
             </div>
 
             <!-- Mobile Expanded Details Panel -->
