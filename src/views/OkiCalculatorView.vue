@@ -64,6 +64,15 @@ export interface ExcludedMove {
   note?: string;    // optional user note (e.g., "不能打蹲防")
 }
 
+// NEW: Preferred Move Interface for Oki Routing
+export interface PreferredMove {
+  id: string;       // unique ID
+  characterId: string;
+  moveName: string; // move name
+  moveInput: string; // move input (e.g., "2MK")
+  note?: string;    // optional user note
+}
+
 const customMoves = ref<CustomMove[]>([]);
 const newCustomMove = ref({
   name: '',
@@ -75,6 +84,12 @@ const newCustomMove = ref({
 const excludedMoves = ref<ExcludedMove[]>([]);
 const newExcludedMoveInput = ref('');
 const newExcludedMoveNote = ref('');
+
+// Preferred moves for Oki Routing (personal preference: prioritize/filter certain moves)
+const preferredMoves = ref<PreferredMove[]>([]);
+const newPreferredMoveInput = ref('');
+const newPreferredMoveNote = ref('');
+const onlyShowPreferred = ref(false);
 
 // Load custom moves from localStorage and merge with defaults
 function loadCustomMoves() {
@@ -202,9 +217,54 @@ function removeExcludedMove(id: string) {
   localStorage.setItem('sf6_oki_excluded_moves', JSON.stringify(excludedMoves.value));
 }
 
+// Preferred moves management (Oki Routing preferred moves prioritization/filtering)
+function loadPreferredMoves() {
+  let storedMoves: PreferredMove[] = [];
+  const stored = localStorage.getItem('sf6_oki_preferred_moves');
+  if (stored) {
+    try {
+      storedMoves = JSON.parse(stored);
+    } catch (e) {
+      console.error('Failed to parse preferred moves', e);
+    }
+  }
+
+  const moveMap = new Map<string, PreferredMove>();
+  storedMoves.forEach(m => moveMap.set(m.id, m));
+  preferredMoves.value = Array.from(moveMap.values());
+}
+
+function addPreferredMove(moveName: string, moveInput: string) {
+  if (!moveName || !moveInput) return;
+  // Deduplicate: don't add the same move twice for the same character
+  const exists = preferredMoves.value.some(
+    m => m.characterId === attackerCharId.value && m.moveName === moveName && m.moveInput === moveInput
+  );
+  if (exists) return;
+
+  const move: PreferredMove = {
+    id: Date.now().toString(),
+    characterId: attackerCharId.value,
+    moveName,
+    moveInput,
+    note: newPreferredMoveNote.value || undefined,
+  };
+
+  preferredMoves.value.push(move);
+  localStorage.setItem('sf6_oki_preferred_moves', JSON.stringify(preferredMoves.value));
+  newPreferredMoveInput.value = '';
+  newPreferredMoveNote.value = '';
+}
+
+function removePreferredMove(id: string) {
+  preferredMoves.value = preferredMoves.value.filter(m => m.id !== id);
+  localStorage.setItem('sf6_oki_preferred_moves', JSON.stringify(preferredMoves.value));
+}
+
 onMounted(() => {
     loadCustomMoves();
     loadExcludedMoves();
+    loadPreferredMoves();
 });
 
 
@@ -827,6 +887,7 @@ interface ExtendedOkiResult {
   chainCancelMoveTotalFrames?: number; // first move total frames (for formula display)
   chainCancelMoveInputs?: string[];    // sequence of move inputs e.g. ["2LP","5LP","2LP"]
   chainCancelStepFrames?: number[];    // per-step frame contributions [totalFirst, ...offsets]
+  isPreferred?: boolean;
 }
 
 function parseFrameAdvantage(adv: string): number | null {
@@ -1368,10 +1429,43 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
     });
   }
 
+  // Determine if each result contains any preferred moves
+  const preferredForChar = preferredMoves.value.filter(m => m.characterId === attackerCharId.value);
+  let resultsWithPref = filtered.map(result => {
+    const isPreferred = preferredForChar.length > 0 && preferredForChar.some(pref => {
+      const prefInputLower = pref.moveInput.toLowerCase();
+      const prefNameLower = pref.moveName.toLowerCase();
+      
+      // Check final move input or name
+      if (result.move.input.toLowerCase() === prefInputLower || result.move.name.toLowerCase() === prefNameLower) {
+        return true;
+      }
+      // Check prefix input (contains the input, e.g. "2MK")
+      if (result.prefixInput && result.prefixInput.toLowerCase().includes(prefInputLower)) {
+        return true;
+      }
+      // Check prefix display name (contains the name)
+      if (result.prefix && result.prefix.toLowerCase().includes(prefNameLower)) {
+        return true;
+      }
+      return false;
+    });
+
+    return {
+      ...result,
+      isPreferred
+    };
+  });
+
+  // If onlyShowPreferred is checked, filter to only keep those containing preferred moves
+  if (preferredForChar.length > 0 && onlyShowPreferred.value) {
+    resultsWithPref = resultsWithPref.filter(r => r.isPreferred);
+  }
+
   if (autoMatchSearchQuery.value) {
     const queryRaw = autoMatchSearchQuery.value.trim();
     const queryLower = queryRaw.toLowerCase();
-    filtered = filtered.filter(result => {
+    resultsWithPref = resultsWithPref.filter(result => {
       const fields = [
         result.prefix,
         result.prefixInput,
@@ -1385,7 +1479,15 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
     });
   }
 
-  const sorted = [...filtered].sort((a, b) => {
+  const sorted = [...resultsWithPref].sort((a, b) => {
+    // 1. Prioritize preferred moves to the top if not strictly filtering
+    if (preferredForChar.length > 0 && !onlyShowPreferred.value) {
+      if (a.isPreferred !== b.isPreferred) {
+        return a.isPreferred ? -1 : 1;
+      }
+    }
+
+    // 2. Secondary sort based on sortKey
     let valA = 0;
     let valB = 0;
 
@@ -3086,6 +3188,71 @@ function formatFrameDelta(val: number): string {
         </div>
       </div>
 
+      <!-- Preferred Moves (Personal Preference) -->
+      <div class="preferred-moves-section">
+        <div class="preferred-moves-title">优先展示招式 (个人喜好)</div>
+        <p class="preferred-moves-desc">若组合中包含以下任一喜好招式，会优先在结果顶部展示。比如添加：2MK、236MK。</p>
+        <div class="preferred-moves-list">
+          <div v-for="pm in preferredMoves.filter(m => m.characterId === attackerCharId)" :key="pm.id" class="preferred-move-tag">
+            <span class="preferred-move-name">{{ pm.moveInput || pm.moveName }}</span>
+            <span v-if="pm.note" class="preferred-move-note" :title="pm.note">({{ pm.note }})</span>
+            <button class="preferred-move-remove" @click="removePreferredMove(pm.id)">×</button>
+          </div>
+          <span v-if="preferredMoves.filter(m => m.characterId === attackerCharId).length === 0" class="preferred-moves-empty">
+            暂无优先招式，在下方搜索添加
+          </span>
+        </div>
+        <div class="preferred-moves-add">
+          <div class="move-search" style="flex:1; min-width:150px">
+            <input
+              type="text"
+              v-model="newPreferredMoveInput"
+              placeholder="搜索招式（如 2MK）..."
+              class="move-search-input"
+              style="font-size: 0.8rem;"
+            />
+            <div v-if="newPreferredMoveInput" class="move-dropdown">
+              <button
+                v-for="move in attackerFrameData?.moves.filter(m => {
+                  const q = newPreferredMoveInput.toLowerCase();
+                  return (m.input || '').toLowerCase().includes(q) || (m.name || '').toLowerCase().includes(q);
+                }).slice(0, 10) ?? []"
+                :key="`pref-${move.input}-${move.name}`"
+                class="move-option text-xs"
+                @click="addPreferredMove(move.name, move.input)"
+              >
+                <span>{{ getMoveDisplayName(move) }}</span>
+                <span class="move-input text-xs">{{ move.input }}</span>
+              </button>
+            </div>
+          </div>
+          <input
+            type="text"
+            v-model="newPreferredMoveNote"
+            placeholder="备注（可选，如：核心连招）"
+            class="small-input"
+            style="flex:1; min-width:120px; font-size:0.8rem;"
+          />
+          <button
+            v-if="newPreferredMoveInput"
+            class="action-btn"
+            style="background: #fbbf24; color: #1e1b4b; white-space: nowrap;"
+            @click="addPreferredMove(newPreferredMoveInput, newPreferredMoveInput)"
+          >
+            手动添加
+          </button>
+        </div>
+        <div class="preferred-filter-toggle">
+          <label class="flex items-center cursor-pointer" style="gap: 8px;">
+            <input
+              type="checkbox"
+              v-model="onlyShowPreferred"
+            />
+            <span>仅显示包含喜好招式的组合 (只筛选这种)</span>
+          </label>
+        </div>
+      </div>
+
       <!-- Auto Results -->
       <div class="results-header-row">
         <h3 class="results-title">
@@ -3147,9 +3314,11 @@ function formatFrameDelta(val: number): string {
           <div v-for="result in okiResults" :key="result.key" :class="['result-row-auto', {
             expanded: selectedResultKey === result.key,
             success: result.coversOpponent,
-            trade: result.isTrade
+            trade: result.isTrade,
+            'preferred-row': result.isPreferred
           }]" @click="toggleResultDetail(result.key)">
             <div class="result-combo">
+              <span v-if="result.isPreferred" class="preferred-badge">★ 喜好</span>
               <span v-if="result.coversOpponent" class="success-badge">压制</span>
               <span v-if="result.isTrade" class="trade-badge">相杀</span>
               <span v-if="result.isChainCancel" class="chain-cancel-badge">连锁取消 Chain Cancel</span>
@@ -3414,12 +3583,14 @@ function formatFrameDelta(val: number): string {
             :class="['mobile-result-card', {
               expanded: selectedResultKey === result.key,
               success: result.coversOpponent,
-              trade: result.isTrade
+              trade: result.isTrade,
+              'preferred-card': result.isPreferred
             }]"
             @click="toggleResultDetail(result.key)"
           >
             <div class="card-header">
               <div class="card-combo-title">
+                <span v-if="result.isPreferred" class="preferred-badge" style="vertical-align: middle;">★ 喜好</span>
                 <span v-if="result.prefix" class="mob-prefix">{{ result.prefix }}</span>
                 <span v-if="result.prefix" class="mob-plus">+</span>
                 <span class="mob-move-name">{{ getMoveDisplayName(result.move) }}</span>
@@ -3429,6 +3600,7 @@ function formatFrameDelta(val: number): string {
             </div>
 
             <div class="card-tags-row">
+              <span v-if="result.isPreferred" class="badge-mini" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3)">★ 喜好</span>
               <span v-if="result.coversOpponent" class="badge-mini success">压制成功</span>
               <span v-if="result.isTrade" class="badge-mini trade">相杀</span>
               <span v-if="result.safeAgainstWakeupDriveReversal" class="badge-mini safe-dr">防斗反</span>
@@ -7954,5 +8126,126 @@ function formatFrameDelta(val: number): string {
   box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
+}
+
+/* Preferred Moves Section */
+.preferred-moves-section {
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+}
+
+.preferred-moves-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: #fbbf24;
+  margin-bottom: var(--space-xxs);
+}
+
+.preferred-moves-desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-sm);
+}
+
+.preferred-moves-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.preferred-move-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xxs);
+  padding: 2px var(--space-sm);
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+}
+
+.preferred-move-name {
+  color: #fbbf24;
+  font-weight: 500;
+}
+
+.preferred-move-note {
+  color: var(--color-text-muted);
+  font-size: 11px;
+}
+
+.preferred-move-remove {
+  background: none;
+  border: none;
+  color: #fbbf24;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 2px;
+  line-height: 1;
+}
+
+.preferred-move-remove:hover {
+  color: #fff;
+}
+
+.preferred-moves-empty {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  font-style: italic;
+}
+
+.preferred-moves-add {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.preferred-filter-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+  padding-top: var(--space-xs);
+  border-top: 1px dashed var(--color-border-light);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.preferred-filter-toggle input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: #fbbf24;
+}
+
+/* Preferred Row and Star Styling */
+.preferred-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(251, 191, 36, 0.2);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  color: #fbbf24;
+  border-radius: var(--radius-sm);
+  font-size: 10px;
+  font-weight: bold;
+  padding: 1px 4px;
+  margin-right: 4px;
+}
+
+.result-row-auto.preferred-row {
+  border-left: 3px solid #fbbf24 !important;
+  background: rgba(251, 191, 36, 0.03) !important;
+}
+
+.result-row-auto.preferred-row:hover {
+  background: rgba(251, 191, 36, 0.06) !important;
+}
+
+.mobile-result-card.preferred-card {
+  border-left: 3px solid #fbbf24 !important;
+  background: rgba(251, 191, 36, 0.03) !important;
 }
 </style>
