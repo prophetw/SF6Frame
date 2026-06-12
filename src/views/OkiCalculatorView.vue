@@ -261,6 +261,36 @@ function removePreferredMove(id: string) {
   localStorage.setItem('sf6_oki_preferred_moves', JSON.stringify(preferredMoves.value));
 }
 
+function getFilteredMovesForDropdown(query: string) {
+  if (!query) return [];
+  const q = query.toLowerCase();
+  
+  const moves = attackerFrameData.value?.moves.filter(m => {
+    return (m.input || '').toLowerCase().includes(q) || 
+           (m.name || '').toLowerCase().includes(q) || 
+           (m.nameZh || '').toLowerCase().includes(q);
+  }) || [];
+  
+  const results = moves.map(m => ({
+    name: m.name,
+    input: m.input,
+    displayName: getMoveDisplayName(m),
+  }));
+  
+  const drLabel = `+绿冲(${PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME}F)`;
+  const drQueryTerms = ['+绿冲', '绿冲', 'dr', 'drive rush', 'drive_rush', '冲', '11f'];
+  const isDrMatch = drQueryTerms.some(term => q.includes(term) || term.includes(q));
+  
+  if (isDrMatch) {
+    results.unshift({
+      name: drLabel,
+      input: drLabel,
+      displayName: drLabel,
+    });
+  }
+  return results.slice(0, 10);
+}
+
 onMounted(() => {
     loadCustomMoves();
     loadExcludedMoves();
@@ -1423,9 +1453,16 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
     filtered = filtered.filter(result => {
       const moveName = result.move.name || '';
       const moveInput = result.move.input || '';
-      return !excludesForChar.some(
-        exc => exc.moveName === moveName || exc.moveInput === moveInput
-      );
+      return !excludesForChar.some(exc => {
+        if (exc.moveName === moveName || exc.moveInput === moveInput) {
+          return true;
+        }
+        const isDrExc = exc.moveName.includes('绿冲') || exc.moveInput.includes('绿冲') || exc.moveInput.toLowerCase() === 'dr';
+        if (isDrExc && result.isDriveRush) {
+          return true;
+        }
+        return false;
+      });
     });
   }
 
@@ -1436,6 +1473,11 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
       const prefInputLower = pref.moveInput.toLowerCase();
       const prefNameLower = pref.moveName.toLowerCase();
       
+      const isDrPref = prefNameLower.includes('绿冲') || prefInputLower.includes('绿冲') || prefInputLower === 'dr';
+      if (isDrPref && result.isDriveRush) {
+        return true;
+      }
+
       // Check final move input or name
       if (result.move.input.toLowerCase() === prefInputLower || result.move.name.toLowerCase() === prefNameLower) {
         return true;
@@ -1472,7 +1514,15 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
         result.move.name,
         result.move.nameZh,
         result.move.input,
-        getMoveDisplayName(result.move)
+        getMoveDisplayName(result.move),
+        ...(result.isDriveRush ? [
+          `+绿冲(${PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME}f)`,
+          `+绿冲`,
+          `绿冲(${PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME}f)`,
+          `绿冲`,
+          `+dr`,
+          `dr`
+        ] : [])
       ].filter((val): val is string => typeof val === 'string' && val.length > 0);
 
       return fields.some(field => field.toLowerCase().includes(queryLower));
@@ -3157,16 +3207,13 @@ function formatFrameDelta(val: number): string {
             />
             <div v-if="newExcludedMoveInput" class="move-dropdown">
               <button
-                v-for="move in attackerFrameData?.moves.filter(m => {
-                  const q = newExcludedMoveInput.toLowerCase();
-                  return (m.input || '').toLowerCase().includes(q) || (m.name || '').toLowerCase().includes(q);
-                }).slice(0, 10) ?? []"
-                :key="`excl-${move.input}-${move.name}`"
+                v-for="item in getFilteredMovesForDropdown(newExcludedMoveInput)"
+                :key="`excl-${item.input}-${item.name}`"
                 class="move-option text-xs"
-                @click="addExcludedMove(move.name, move.input)"
+                @click="addExcludedMove(item.name, item.input)"
               >
-                <span>{{ getMoveDisplayName(move) }}</span>
-                <span class="move-input text-xs">{{ move.input }}</span>
+                <span>{{ item.displayName }}</span>
+                <span class="move-input text-xs" v-if="item.input !== item.displayName">{{ item.input }}</span>
               </button>
             </div>
           </div>
@@ -3213,16 +3260,13 @@ function formatFrameDelta(val: number): string {
             />
             <div v-if="newPreferredMoveInput" class="move-dropdown">
               <button
-                v-for="move in attackerFrameData?.moves.filter(m => {
-                  const q = newPreferredMoveInput.toLowerCase();
-                  return (m.input || '').toLowerCase().includes(q) || (m.name || '').toLowerCase().includes(q);
-                }).slice(0, 10) ?? []"
-                :key="`pref-${move.input}-${move.name}`"
+                v-for="item in getFilteredMovesForDropdown(newPreferredMoveInput)"
+                :key="`pref-${item.input}-${item.name}`"
                 class="move-option text-xs"
-                @click="addPreferredMove(move.name, move.input)"
+                @click="addPreferredMove(item.name, item.input)"
               >
-                <span>{{ getMoveDisplayName(move) }}</span>
-                <span class="move-input text-xs">{{ move.input }}</span>
+                <span>{{ item.displayName }}</span>
+                <span class="move-input text-xs" v-if="item.input !== item.displayName">{{ item.input }}</span>
               </button>
             </div>
           </div>
