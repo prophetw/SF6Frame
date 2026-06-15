@@ -19,12 +19,33 @@ export const defaultCustomMoves: CustomMove[] = [
         "input": "214HP~236LK",
         "frames": 30
     },
-    {"id":"1779865477582","characterId":"ryu","name":"214HP+绿冲","input":"5HP+214MK","frames":28},
+    { "id": "1779865477582", "characterId": "ryu", "name": "214HP+绿冲", "input": "5HP+214MK", "frames": 28 },
     {
-    "id": "1781442904126",
-    "characterId": "ken",
-    "name": "5mp+5hp",
-    "input": "kk+214k",
-    "frames": 43
-}
+        "id": "1781442904126",
+        "characterId": "ken",
+        "name": "5mp+5hp",
+        "input": "kk+214k",
+        "frames": 43
+    },
+    {
+        "id": "1781442904121",
+        "characterId": "ken",
+        "name": "5mp+5hp",
+        "input": "kk+623p",
+        "frames": 25
+    },
+    {
+        "id": "1781495876225",
+        "characterId": "ken",
+        "name": "214LK",
+        "input": "远距离",
+        "frames": 38
+    },
+    {
+        "id": "1781496083778",
+        "characterId": "ken",
+        "name": "236hk+6hk",
+        "input": "",
+        "frames": 38
+    }
 ]
