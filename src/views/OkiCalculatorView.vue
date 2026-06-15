@@ -288,6 +288,20 @@ function getFilteredMovesForDropdown(query: string) {
       displayName: drLabel,
     });
   }
+
+  const dashFrames = stats.value?.forwardDash || 19;
+  const dashLabel = `+前冲(${dashFrames}F)`;
+  const dashQueryTerms = ['+前冲', '前冲', 'dash', 'forward dash', 'forward_dash', '前', '19f'];
+  const isDashMatch = dashQueryTerms.some(term => q.includes(term) || term.includes(q));
+
+  if (isDashMatch) {
+    results.unshift({
+      name: dashLabel,
+      input: dashLabel,
+      displayName: dashLabel,
+    });
+  }
+
   return results.slice(0, 10);
 }
 
@@ -1461,6 +1475,10 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
         if (isDrExc && result.isDriveRush) {
           return true;
         }
+        const isDashExc = exc.moveName.includes('前冲') || exc.moveInput.includes('前冲') || exc.moveInput.toLowerCase() === 'dash';
+        if (isDashExc && (result.prefix || '').includes('前冲')) {
+          return true;
+        }
         return false;
       });
     });
@@ -1475,6 +1493,11 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
       
       const isDrPref = prefNameLower.includes('绿冲') || prefInputLower.includes('绿冲') || prefInputLower === 'dr';
       if (isDrPref && result.isDriveRush) {
+        return true;
+      }
+
+      const isDashPref = prefNameLower.includes('前冲') || prefInputLower.includes('前冲') || prefInputLower === 'dash';
+      if (isDashPref && (result.prefix || '').toLowerCase().includes('前冲')) {
         return true;
       }
 
@@ -3196,6 +3219,25 @@ function formatFrameDelta(val: number): string {
             暂无排除招式，在下方搜索添加
           </span>
         </div>
+        <div class="exclude-moves-quick flex items-center mb-3" style="gap: 8px; flex-wrap: wrap;">
+          <span class="text-xs text-gray-400">快速排除:</span>
+          <button
+            type="button"
+            class="action-btn dash-btn text-xs"
+            style="margin: 0; font-size: 0.75rem; padding: 4px 8px; height: auto; line-height: 1.2;"
+            @click="addExcludedMove(`+绿冲(${PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME}F)`, `+绿冲(${PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME}F)`)"
+          >
+            + 绿冲 ({{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }}F)
+          </button>
+          <button
+            type="button"
+            class="action-btn dash-btn text-xs"
+            style="margin: 0; font-size: 0.75rem; padding: 4px 8px; height: auto; line-height: 1.2;"
+            @click="addExcludedMove(`+前冲(${stats?.forwardDash || 19}F)`, `+前冲(${stats?.forwardDash || 19}F)`)"
+          >
+            + 前冲 ({{ stats?.forwardDash || 19 }}F)
+          </button>
+        </div>
         <div class="exclude-moves-add">
           <div class="move-search" style="flex:1; min-width:150px">
             <input
@@ -3248,6 +3290,25 @@ function formatFrameDelta(val: number): string {
           <span v-if="preferredMoves.filter(m => m.characterId === attackerCharId).length === 0" class="preferred-moves-empty">
             暂无优先招式，在下方搜索添加
           </span>
+        </div>
+        <div class="preferred-moves-quick flex items-center mb-3" style="gap: 8px; flex-wrap: wrap;">
+          <span class="text-xs text-gray-400">快速优先:</span>
+          <button
+            type="button"
+            class="action-btn dash-btn text-xs"
+            style="margin: 0; font-size: 0.75rem; padding: 4px 8px; height: auto; line-height: 1.2;"
+            @click="addPreferredMove(`+绿冲(${PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME}F)`, `+绿冲(${PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME}F)`)"
+          >
+            + 绿冲 ({{ PARRY_DRIVE_RUSH_ATTACK_CANCEL_FRAME }}F)
+          </button>
+          <button
+            type="button"
+            class="action-btn dash-btn text-xs"
+            style="margin: 0; font-size: 0.75rem; padding: 4px 8px; height: auto; line-height: 1.2;"
+            @click="addPreferredMove(`+前冲(${stats?.forwardDash || 19}F)`, `+前冲(${stats?.forwardDash || 19}F)`)"
+          >
+            + 前冲 ({{ stats?.forwardDash || 19 }}F)
+          </button>
         </div>
         <div class="preferred-moves-add">
           <div class="move-search" style="flex:1; min-width:150px">
