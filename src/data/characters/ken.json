@@ -694,7 +694,13 @@
       ],
       "knockdown": {
         "type": "soft",
-        "advantage": 28
+        "advantage": 28,
+        "alternativeAdvantages": [
+          {
+            "condition": "奋迅脚急停",
+            "advantage": 30
+          }
+        ]
       },
       "notes": "Puts opponent into limited juggle state; Run~Stop cancel: KD+30/-12",
       "raw": {
@@ -2169,7 +2175,7 @@
       "name": "Thunder Kick",
       "input": "KK~MK",
       "damage": "1000",
-      "startup": "11+18",
+      "startup": "29",
       "active": "3",
       "recovery": "20",
       "onBlock": "-3",
@@ -2183,13 +2189,13 @@
         "source": "supercombo",
         "moveName": "Thunder Kick",
         "plnCmd": "KK~MK",
-        "startup": 11,
+        "startup": 29,
         "active": 3,
         "recovery": 20,
         "onBlock": -3,
         "onHit": 3,
         "dmg": 1000,
-        "total": 33,
+        "total": 51,
         "moveType": "special",
         "section": "Specials",
         "blockstun": 20,
@@ -2204,7 +2210,7 @@
       "name": "Forward Step Kick",
       "input": "KK~HK",
       "damage": "800",
-      "startup": "11+10",
+      "startup": "21",
       "active": "4",
       "recovery": "20",
       "onBlock": "-4",
@@ -2218,13 +2224,13 @@
         "source": "supercombo",
         "moveName": "Forward Step Kick",
         "plnCmd": "KK~HK",
-        "startup": 11,
+        "startup": 21,
         "active": 4,
         "recovery": 20,
         "onBlock": -4,
         "onHit": 3,
         "dmg": 800,
-        "total": 34,
+        "total": 44,
         "moveType": "special",
         "section": "Specials",
         "blockstun": 20,

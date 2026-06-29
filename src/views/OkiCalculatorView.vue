@@ -608,7 +608,7 @@ const allMoves = computed<Move[]>(() => {
   if (!attackerFrameData.value) return [];
   return attackerFrameData.value.moves.filter((m: Move) => {
     if (isAirborneMove(m)) return false;
-    const startup = parseInt(m.startup) || 0;
+    const startup = parseStartup(m.startup);
     return startup > 0 && startup <= 50;
   });
 });
@@ -617,7 +617,7 @@ const allMoves = computed<Move[]>(() => {
 const defenderMoves = computed<Move[]>(() => {
   if (!defenderFrameData.value) return [];
   return defenderFrameData.value.moves.filter((m: Move) => {
-    const startup = parseInt(m.startup) || 0;
+    const startup = parseStartup(m.startup);
     return startup > 0;
   });
 });
@@ -934,15 +934,29 @@ interface ExtendedOkiResult {
   isPreferred?: boolean;
 }
 
-function parseFrameAdvantage(adv: string): number | null {
-  if (!adv || adv === 'KD') return null;
+function parseFrameAdvantage(adv: string | number | undefined): number | null {
+  if (typeof adv === 'number') return adv;
+  if (!adv) return null;
   const match = adv.match(/^[+-]?\d+/);
   return match ? parseInt(match[0]) : null;
+}
+
+function parseStartup(startupStr: string | number | undefined): number {
+  if (typeof startupStr === 'number') return startupStr;
+  if (!startupStr) return 0;
+  const firstPart = String(startupStr).split('(')[0];
+  const cleanStr = (firstPart || '').trim();
+  if (cleanStr.includes('+')) {
+    return cleanStr.split('+').reduce((sum, part) => sum + (parseInt(part, 10) || 0), 0);
+  }
+  const parsed = parseInt(cleanStr, 10);
+  return isNaN(parsed) ? 0 : parsed;
 }
 
 function isComboSequenceMove(move: Move): boolean {
   const input = move.input || '';
   const name = move.name || '';
+  if (input.startsWith('KK~')) return false;
   return input.includes('~') || name.includes('~');
 }
 
@@ -1044,6 +1058,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
   const validFrameKills = allMoves.value.filter(m => {
     if (m.category === 'super' || m.category === 'throw') return false;
     if (isComboSequenceMove(m)) return false;
+    if (m.input === 'KK~LK') return false;
     const total = getMoveTotalFrames(m);
     // Heuristic: Frame kill should be faster than the knockdown advantage
     // Also exclude moves that are too long (e.g. taunts)
@@ -1056,6 +1071,13 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
     { name: '前冲', frames: stats.value.forwardDash, isCorner: false },
     { name: '前冲x2', frames: stats.value.forwardDash * 2, isCorner: false },
   ];
+
+  if (attackerCharId.value === 'ken') {
+    prefixes.push({ name: 'KK~LK', frames: 27, input: 'KK~LK', isCorner: false });
+    if (stats.value.forwardDash + 27 < effectiveKnockdownAdv.value) {
+      prefixes.push({ name: '前冲 + KK~LK', frames: stats.value.forwardDash + 27, input: 'KK~LK', isCorner: false });
+    }
+  }
 
   // Add Frame Kill Moves (Single Move)
   for (const kill of validFrameKills) {
@@ -1154,7 +1176,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
       // pairing them with another chain-cancelable move would double-count startup
       // (e.g. 2LP×2 + 2LP should just be 2LP×3 which is already a prefix).
       if ((prefix as any)._isChainCancel && isChainCancelableMove(move)) continue;
-      const startup = parseInt(move.startup) || 0;
+      const startup = parseStartup(move.startup);
       const activeInfo = parseActiveSegments(move.active);
       const activeHasGap = activeInfo.gaps.length > 0;
       const activeHasMultipleSegments = activeInfo.segments.length > 1;
@@ -1612,7 +1634,7 @@ const throwFillerMoves = computed<Move[]>(() => {
   return attackerFrameData.value.moves.filter((m: Move) => {
     if (m.category === 'throw') return false;
     if (isAirborneMove(m)) return false;
-    const startup = parseInt(m.startup) || 0;
+    const startup = parseStartup(m.startup);
     if (startup <= 0) return false;
     const totalFrames = getMoveTotalFrames(m);
     return totalFrames > 0 && totalFrames <= 90;
@@ -1640,11 +1662,7 @@ const allThrowResults = computed<ThrowComboResult[]>(() => {
   if (effectiveKnockdownAdv.value <= 0 || !stats.value) return [];
   if (throwDelayMax.value < 0) return [];
 
-  const prefixes: { name: string; frames: number }[] = [
-    { name: '', frames: 0 },
-    { name: '前冲', frames: stats.value.forwardDash },
-    { name: '前冲x2', frames: stats.value.forwardDash * 2 },
-  ];
+  const prefixes = getAltPrefixes();
 
   const results: ThrowComboResult[] = [];
   const minDelay = throwDelayMinClamped.value;
@@ -1672,7 +1690,7 @@ const allThrowResults = computed<ThrowComboResult[]>(() => {
     }
 
     for (const move of throwFillerMoves.value) {
-      const fillerStartup = parseInt(move.startup) || 0;
+      const fillerStartup = parseStartup(move.startup);
       const fillerActive = parseActiveWindowFrames(move.active);
       const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
       // Use helper for correct total (handles raw.total and startup-1 logic)
@@ -1763,11 +1781,18 @@ type AltPrefixOption = {
 
 function getAltPrefixes(): AltPrefixOption[] {
   if (!stats.value) return [];
-  return [
+  const list: AltPrefixOption[] = [
     { name: '', frames: 0 },
     { name: '前冲', frames: stats.value.forwardDash },
     { name: '前冲x2', frames: stats.value.forwardDash * 2 },
   ];
+  if (attackerCharId.value === 'ken') {
+    list.push({ name: 'KK~LK', frames: 27 });
+    if (stats.value.forwardDash + 27 < effectiveKnockdownAdv.value) {
+      list.push({ name: '前冲 + KK~LK', frames: stats.value.forwardDash + 27 });
+    }
+  }
+  return list;
 }
 
 interface BurstPressureResult {
@@ -1832,7 +1857,7 @@ const allBurstPressureResults = computed<BurstPressureResult[]>(() => {
     }
 
     for (const move of throwFillerMoves.value) {
-      const fillerStartup = parseInt(move.startup) || 0;
+      const fillerStartup = parseStartup(move.startup);
       const fillerActive = parseActiveWindowFrames(move.active);
       const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
       const fillerFrames = getMoveTotalFrames(move);
@@ -1929,7 +1954,7 @@ const allFrameTrapResults = computed<FrameTrapResult[]>(() => {
     }
 
     for (const move of throwFillerMoves.value) {
-      const fillerStartup = parseInt(move.startup) || 0;
+      const fillerStartup = parseStartup(move.startup);
       const fillerActive = parseActiveWindowFrames(move.active);
       const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
       const fillerFrames = getMoveTotalFrames(move);
@@ -2040,7 +2065,7 @@ const allSafeBaitResults = computed<SafeBaitResult[]>(() => {
       const fillerFrames = getMoveTotalFrames(move);
       if (fillerFrames <= 0) continue;
 
-      const fillerStartup = parseInt(move.startup) || 0;
+      const fillerStartup = parseStartup(move.startup);
       const fillerActive = parseActiveWindowFrames(move.active);
       const fillerRecovery = parseTotalRecoveryFrames(move.recovery);
       const baseTotalFrames = prefix.frames + fillerFrames;
@@ -2349,7 +2374,7 @@ const baitThrowResult = computed(() => {
     const move2 = selectedDefenderBaitMove.value;
     grabName = getMoveDisplayName(move2);
     grabInput = move2.input;
-    grabStartup = parseInt(move2.startup) || 5;
+    grabStartup = parseStartup(move2.startup) || 5;
     
     // Get total frames
     const totalFrames = getMoveTotalFrames(move2);
@@ -2506,7 +2531,7 @@ watch(defenderCharId, (newVal) => {
 // When defender move changes, update abare startup
 watch(selectedDefenderMove, (newMove) => {
   if (newMove) {
-    const startup = parseInt(newMove.startup) || 0;
+    const startup = parseStartup(newMove.startup);
     if (startup > 0) {
       opponentReversalStartup.value = startup;
     }
@@ -2565,7 +2590,7 @@ function addJumpAction() {
 
 function addMove(move: Move) {
   if (isAirborneMove(move)) return;
-  const startup = parseInt(move.startup) || 0;
+  const startup = parseStartup(move.startup);
   const active = parseActiveWindowFrames(move.active);
   comboChain.value.push({
     type: 'move',
@@ -2625,7 +2650,7 @@ function generateTimelineFrames(
   const frames: TimelineFrame[] = [];
 
   const prefixFrames = result.prefixFrames;
-  const startup = parseInt(result.move.startup) || 0;
+  const startup = parseStartup(result.move.startup);
   const active = parseActiveWindowFrames(result.move.active);
 
   // Calculate Attacker Duration
@@ -3433,7 +3458,7 @@ function formatFrameDelta(val: number): string {
               <span>{{ getMoveDisplayName(result.move) }}</span>
               <span class="move-input">{{ result.move.input }}</span>
             </div>
-            <span>{{ result.prefixFrames + parseInt(result.move.startup) }}F</span>
+            <span>{{ result.prefixFrames + parseStartup(result.move.startup) }}F</span>
             <span>{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
             <span>{{ formatTolerance(result.toleranceFrames) }}</span>
             <span>
@@ -3709,7 +3734,7 @@ function formatFrameDelta(val: number): string {
               <span v-if="result.coversOpponent" class="badge-mini success">压制成功</span>
               <span v-if="result.isTrade" class="badge-mini trade">相杀</span>
               <span v-if="result.safeAgainstWakeupDriveReversal" class="badge-mini safe-dr">防斗反</span>
-              <span class="badge-mini frame font-mono">发生: {{ result.prefixFrames + parseInt(result.move.startup) }}F</span>
+              <span class="badge-mini frame font-mono">发生: {{ result.prefixFrames + parseStartup(result.move.startup) }}F</span>
               <span class="badge-mini frame font-mono">打击: {{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
               <span class="badge-mini frame font-mono">容错: {{ formatTolerance(result.toleranceFrames) }}</span>
               <span :class="['badge-mini', 'frame', 'font-mono', isPositive(result.calculatedOnBlock) ? 'green' : (isNegative(result.calculatedOnBlock) ? 'red' : '')]">
