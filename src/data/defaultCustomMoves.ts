@@ -47,5 +47,12 @@ export const defaultCustomMoves: CustomMove[] = [
         "name": "236hk+6hk",
         "input": "",
         "frames": 38
+    },
+    {
+        "id": "1782828221733",
+        "characterId": "ken",
+        "name": "5MP~HP",
+        "input": "KK~623K",
+        "frames": 42
     }
 ]
