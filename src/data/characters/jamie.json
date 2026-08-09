@@ -351,13 +351,13 @@
       "active": "2",
       "recovery": "11",
       "onBlock": "-3",
-      "onHit": "+1",
+      "onHit": "+3",
       "category": "normal",
       "cancels": [
         "Chain",
         "Drive Rush"
       ],
-      "notes": "Damage DL0-DL4: 180/190/200/210/220; chains into 5LK/2LP/2LK",
+      "notes": "Damage DL0-DL4: 180/190/200/210/220; chains into 5LK/2LP/2LK; useful option out of Drive Rush that links into 2MK for a double-low starter",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch LK (DL2)",
@@ -366,13 +366,13 @@
         "active": 2,
         "recovery": 11,
         "onBlock": -3,
-        "onHit": 1,
+        "onHit": 3,
         "dmg": 200,
         "total": 17,
         "moveType": "normal",
         "section": "Normals and Target Combos",
         "blockstun": 10,
-        "hitstun": 14,
+        "hitstun": 16,
         "sourceName": "Crouch LK (DL2)",
         "sourceInput": "2LK",
         "cancelText": "Chn"
@@ -1097,7 +1097,7 @@
         "Target Combo",
         "Drive Rush"
       ],
-      "notes": "Drink Lv.4 only; can be performed on whiff; follow-up special changes based on button timing (Close/Mid/Far refer to the distance Jamie has walked back away from the opponent); 25f hitconfirm window refers to the total time of 6HK~4HK before Headbutt must be input, but the 4HK itself must be input within 18f (more lenient on CH/PC)",
+      "notes": "Drink Lv.4 only; can be performed on whiff; follow-up special changes based on button timing (Close/Mid/Far refer to the distance Jamie has walked back away from the opponent); 27f hitconfirm window refers to the total time of 6HK~4HK before Headbutt must be input, but the 4HK itself must be input within 20f (more lenient on CH/PC)",
       "raw": {
         "source": "supercombo",
         "moveName": "Ransui Haze (DL4)",
@@ -1120,11 +1120,11 @@
       "name": "Ransui Haze Headbutt (DL4)",
       "input": "6HK~4HK~P (close)",
       "damage": "935",
-      "startup": "(25~45)+15",
-      "active": "4",
+      "startup": "(24~45)+14",
+      "active": "5",
       "recovery": "28",
-      "onBlock": "-12",
-      "onHit": "KD +32",
+      "onBlock": "-13",
+      "onHit": "KD +31",
       "category": "normal",
       "cancels": [
         "Special",
@@ -1133,17 +1133,17 @@
       ],
       "knockdown": {
         "type": "soft",
-        "advantage": 32
+        "advantage": 31
       },
-      "notes": "Drink Lv.4 only; 5f gap on block; combos naturally on hit (relatively confirmable); cancelable into any special or Super; startup includes 6HK plus the delay before Headbutt can be input; SA2 cancel: KD+54/+10; Drink cancel: KD+10/-34; special/DR cancel is delayed until after active frames; puts airborne opponents into free juggle state (e.g. if opponent tries to jump after 6HK)",
+      "notes": "Drink Lv.4 only; 3f gap on block; combos naturally on hit (relatively confirmable); cancelable into any special or Super; startup includes 6HK plus the delay before Headbutt can be input; SA2 cancel: KD+54/+10; Drink cancel: KD+10/-34; special/DR cancel is delayed until after active frames; puts airborne opponents into free juggle state (e.g. if opponent tries to jump after 6HK)",
       "raw": {
         "source": "supercombo",
         "moveName": "Ransui Haze Headbutt (DL4)",
         "plnCmd": "6HK~4HK~P (close)",
-        "startup": 25,
-        "active": 4,
+        "startup": 24,
+        "active": 5,
         "recovery": 28,
-        "onBlock": -12,
+        "onBlock": -13,
         "onHit": null,
         "dmg": 935,
         "total": 56,
@@ -1239,7 +1239,7 @@
         "type": "soft",
         "advantage": 23
       },
-      "notes": "Damage DL0-DL4: 1080/1139/1200/1259/1320 (PC: 1836/1937/2040/2141/2244); +4 after Forward Dash, allowing corner throw loops (or midscreen if opponent doesn't Back Rise); Jamie can also hold LP+LK to sacrifice oki for a Drink Level; a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
+      "notes": "Damage DL0-DL4: 1080/1139/1200/1259/1320 (PC: 1836/1937/2040/2141/2244); +4 after Forward Dash, allowing corner throw loops (or midscreen if opponent doesn't Back Rise); Jamie can also hold LP+LK to sacrifice oki for a Drink Level; a successful Throw Escape builds 0.5 Drive bars for the defender; Throw Escape is awarded to a random player if input simultaneously",
       "raw": {
         "source": "supercombo",
         "moveName": "Back Shaver (DL2)",
@@ -1273,7 +1273,7 @@
         "type": "soft",
         "advantage": 7
       },
-      "notes": "Damage DL0-DL4: 1080/1139/1200/1259/1320 (PC: 1836/1937/2040/2141/2244); leaves Jamie too far for follow-up oki, but can get corner pressure with ranged normals like 5MK; LP+LK must be pressed on frame 92 of throw animation for the drink to occur; builds an extra 0.5 Drive bars, or an extra 1 Drive bar at DL4; a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
+      "notes": "Damage DL0-DL4: 1080/1139/1200/1259/1320 (PC: 1836/1937/2040/2141/2244); leaves Jamie too far for follow-up oki, but can get corner pressure with ranged normals like 5MK; LP+LK must be pressed on frame 92 of throw animation for the drink to occur; builds an extra 0.5 Drive bars, or an extra 1 Drive bar at DL4; a successful Throw Escape builds 0.5 Drive bars for the defender; Throw Escape is awarded to a random player if input simultaneously",
       "raw": {
         "source": "supercombo",
         "moveName": "Back Shaver + Drink (DL2)",
@@ -1307,7 +1307,7 @@
         "type": "soft",
         "advantage": 26
       },
-      "notes": "Damage DL0-DL4: 1080/1139/1200/1259/1320 (PC: 1836/1937/2040/2141/2244); side switches; after throwing opponent into corner, dash leaves Jamie +7 and out of range for a true throw loop; can microwalk for a pseudo-throw loop, or immediate 5MP which links to 2MK on counter-hit; can also Drive Rush into a manually timed strike/throw mixup or immediately 214MP (+1 oB and juggles into 623LK on hit); a successful Throw Escape builds 1 Drive bar and 1000 Super gauge (10% bar); Throw Escape is awarded to a random player if input simultaneously",
+      "notes": "Damage DL0-DL4: 1080/1139/1200/1259/1320 (PC: 1836/1937/2040/2141/2244); side switches; after throwing opponent into corner, dash leaves Jamie +7 and out of range for a true throw loop; can microwalk for a pseudo-throw loop, or immediate 5MP which links to 2MK on counter-hit; can also Drive Rush into a manually timed strike/throw mixup or immediately 214MP (+1 oB and juggles into 623LK on hit); a successful Throw Escape builds 0.5 Drive bars for the defender; Throw Escape is awarded to a random player if input simultaneously",
       "raw": {
         "source": "supercombo",
         "moveName": "Wheel Punch (DL2)",
@@ -1375,7 +1375,7 @@
         "type": "soft",
         "advantage": 23
       },
-      "notes": "Performed by holding 6HPHK on wakeup; 5f extra recovery on hit; does not have any screen freeze; see Drive Reversal.",
+      "notes": "Performed by holding 6HPHK on wakeup; 5f extra recovery on hit; does not have any screen freeze except for a 12f freeze when interacting with the opponent's throw hitbox (this also refunds 1 Drive bar after punishing the throw); see Drive Reversal.",
       "raw": {
         "source": "supercombo",
         "moveName": "Leg Sweep (Block)",
@@ -2736,6 +2736,181 @@
       "nameZh": "爆海(饮酒等级2)"
     },
     {
+      "name": "236MK",
+      "input": "236MK",
+      "damage": "250x5,350 (1600)",
+      "startup": "22",
+      "active": "2(1)2(3)2(5)2(12)2(5)2",
+      "recovery": "31",
+      "onBlock": "-16",
+      "onHit": "KD +35",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 35
+      },
+      "notes": "Damage DL2-DL4: 1600/1677/1760 (Chip: 397/416/435)",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "236MK",
+        "plnCmd": "236MK",
+        "startup": 22,
+        "active": 38,
+        "recovery": 31,
+        "onBlock": -16,
+        "onHit": null,
+        "dmg": null,
+        "total": 90,
+        "moveType": "special",
+        "section": "Specials",
+        "blockstun": 53,
+        "sourceName": "236MK",
+        "sourceInput": "236MK",
+        "cancelText": "SA3"
+      }
+    },
+    {
+      "name": "236HK",
+      "input": "236HK",
+      "damage": "250x6,300 (1800)",
+      "startup": "25",
+      "active": "3(6)2(6)2(6)2(13)2(7)2(15)2",
+      "recovery": "32",
+      "onBlock": "-17",
+      "onHit": "KD +34",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 34
+      },
+      "notes": "Damage DL2-DL4: 1800/1887/1980 (Chip: 447/468/490); semi-consistent projectile counter at mid-range (except vs. fireballs with low recovery or with smaller extended hurtboxes)",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "236HK",
+        "plnCmd": "236HK",
+        "startup": 25,
+        "active": 68,
+        "recovery": 32,
+        "onBlock": -17,
+        "onHit": null,
+        "dmg": null,
+        "total": 124,
+        "moveType": "special",
+        "section": "Specials",
+        "blockstun": 83,
+        "sourceName": "236HK",
+        "sourceInput": "236HK",
+        "cancelText": "SA3"
+      }
+    },
+    {
+      "name": "236KK",
+      "input": "236KK",
+      "damage": "180x9,380 (2000)",
+      "startup": "18",
+      "active": "6(3)2(8)2(3)2(7)2(7)2(12)2(11)2(4)2(4)2",
+      "recovery": "59",
+      "onBlock": "-43",
+      "onHit": "KD +23",
+      "category": "special",
+      "cancels": [
+        "SA2",
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Damage DL2-DL4: 2000/2100/2200 (Chip: 500/522/545); fairly consistent projectile counter at mid-range (except vs. fireballs with low recovery or with smaller extended hurtboxes); Super cancel occurs on 7th hit; SA2 cancel: +14/+7; -97 if opponent Perfect Parries the 1st hit and then jumps to avoid the rest",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "236KK",
+        "plnCmd": "236KK",
+        "startup": 18,
+        "active": 83,
+        "recovery": 59,
+        "onBlock": -43,
+        "onHit": null,
+        "dmg": null,
+        "total": 159,
+        "moveType": "special",
+        "section": "Specials",
+        "blockstun": 99,
+        "sourceName": "236KK",
+        "sourceInput": "236KK",
+        "cancelText": "SA2 SA3"
+      }
+    },
+    {
+      "name": "63214K",
+      "input": "63214K",
+      "damage": "0",
+      "startup": "8",
+      "active": "2",
+      "recovery": "52",
+      "onBlock": "-",
+      "onHit": "+8",
+      "category": "special",
+      "notes": "Cannot be canceled into from normals; leaves opponent standing on hit for a grounded combo; does not benefit from Counter/Punish Counter bonus frame advantage; starter scaling is applied to the 3rd hit of the combo, while immediate scaling applies if Tenshin is comboed into (e.g. after Stun, PC Drive Impact, or corner PC 214PP)); Range: 0.96",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "63214K",
+        "plnCmd": "63214K",
+        "startup": 8,
+        "active": 2,
+        "recovery": 52,
+        "onBlock": null,
+        "onHit": 8,
+        "dmg": 0,
+        "total": 61,
+        "moveType": "special",
+        "section": "Specials",
+        "hitstun": 62,
+        "sourceName": "63214K",
+        "sourceInput": "63214K",
+        "cancelText": "-"
+      }
+    },
+    {
+      "name": "63214KK",
+      "input": "63214KK",
+      "damage": "682",
+      "startup": "8",
+      "active": "2",
+      "recovery": "52",
+      "onBlock": "-",
+      "onHit": "HKD +86 Crumple",
+      "category": "special",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 86
+      },
+      "notes": "Damage DL3-DL4: 682/715; cannot be canceled into from normals; Jamie is +28 before crumpled opponent goes airborne into a free juggle state; leaves enough frame advantage to dash or Drive Rush into a grounded combo; does not benefit from Counter/Punish Counter bonus frame advantage; Range: 0.96",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "63214KK",
+        "plnCmd": "63214KK",
+        "startup": 8,
+        "active": 2,
+        "recovery": 52,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": 682,
+        "total": 61,
+        "moveType": "special",
+        "section": "Specials",
+        "sourceName": "63214KK",
+        "sourceInput": "63214KK",
+        "cancelText": "-"
+      }
+    },
+    {
       "name": "Breakin'",
       "input": "236236K",
       "damage": "2200",
@@ -2869,5 +3044,5 @@
       "nameZh": "月牙查步(饮酒等级2)"
     }
   ],
-  "lastUpdated": "2026-03-19"
+  "lastUpdated": "2026-08-09"
 }

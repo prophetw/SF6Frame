@@ -33,283 +33,689 @@
     },
     {
       "combo": "2LP , 5LP~LK~MP > 623LK",
-      "section": "Confirms / Light Confirms"
+      "section": "Confirms / Light Confirms",
+      "position": "Anywhere",
+      "damage": "1544",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Easy link that is great for squeezing in extra damage after DRP~5HP"
     },
     {
       "combo": "5LK , 2LP , 5LP~LK~MP > 623LK",
-      "section": "Confirms / Light Confirms"
+      "section": "Confirms / Light Confirms",
+      "position": "Anywhere",
+      "damage": "1612",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Only possible at very close distances but does lead to some extra damage."
     },
     {
       "combo": "5MP , 5LK > 236LP~LK~LK",
-      "section": "Confirms / Medium Confirms"
+      "section": "Confirms / Medium Confirms",
+      "position": "Anywhere",
+      "damage": "1462",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Easy link that leads to a drink."
     },
     {
       "combo": "5MP , 5LK > 623MK",
-      "section": "Confirms / Medium Confirms"
+      "section": "Confirms / Medium Confirms",
+      "position": "Anywhere",
+      "damage": "1674",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Easy link that leads to a safe jump."
     },
     {
       "combo": "2MP > 236HP~HK~HK",
-      "section": "Confirms / Medium Confirms"
+      "section": "Confirms / Medium Confirms",
+      "position": "Anywhere",
+      "damage": "1507",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Low-hitting confirm into drink level"
     },
     {
       "combo": "5MP , 5LP~LK~MP > 623LK",
-      "section": "Confirms / Medium Confirms"
+      "section": "Confirms / Medium Confirms",
+      "position": "Anywhere",
+      "damage": "2135",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Easy link that leads to safe jump and more damage as well as a more lenient input window."
     },
     {
       "combo": "5MP , 5LP~LK~MP > 236MP~MK~MK",
-      "section": "Confirms / Medium Confirms"
+      "section": "Confirms / Medium Confirms",
+      "position": "Anywhere",
+      "damage": "1896",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Slightly less damage but increases drink level."
     },
     {
       "combo": "5MP , 5LP~LK~MP > 236LK",
-      "section": "Confirms / Medium Confirms"
+      "section": "Confirms / Medium Confirms",
+      "position": "Anywhere",
+      "damage": "2250",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "More damage and safe jump"
     },
     {
       "combo": "2HP > 214HP",
-      "section": "Confirms / Heavy Confirms"
+      "section": "Confirms / Heavy Confirms",
+      "position": "Anywhere",
+      "damage": "1890",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Simple combo but pretty damaging"
     },
     {
       "combo": "2HP > 236HP~HK~HK",
-      "section": "Confirms / Heavy Confirms"
+      "section": "Confirms / Heavy Confirms",
+      "position": "Anywhere",
+      "damage": "1777",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Simple combo that leads into drink"
     },
     {
       "combo": "2HP > 236HK",
-      "section": "Confirms / Heavy Confirms"
+      "section": "Confirms / Heavy Confirms",
+      "position": "Anywhere",
+      "damage": "2700",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Simple combo that is more damaging than ending in palm"
     },
     {
       "combo": "2HP > 214HP~6HP",
-      "section": "Confirms / Heavy Confirms"
+      "section": "Confirms / Heavy Confirms",
+      "position": "Anywhere",
+      "damage": "3102",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Extension to DL1 combo"
     },
     {
       "combo": "2LP, 2HP > 623HK",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -4",
+      "position": "Anywhere",
+      "damage": "2007",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy"
     },
     {
       "combo": "2LP, 2HP > 236HP~K~K",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -4",
+      "position": "Anywhere",
+      "damage": "1809",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+1 drink."
     },
     {
       "combo": "2LP, 2MK > 236MP~P~P",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -4",
+      "position": "Anywhere",
+      "damage": "1539",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "Ranged option."
     },
     {
       "combo": "2LP, 2MK > 236MP~K~K",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -4",
+      "position": "Anywhere",
+      "damage": "1422",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "+1 drink. Ranged option."
     },
     {
       "combo": "5HP, 5LK~LK > 623HK",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -5",
+      "position": "Anywhere",
+      "damage": "2340",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy"
     },
     {
       "combo": "5HP, 5LK~LK > 236LP~K~K",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -5",
+      "position": "Anywhere",
+      "damage": "2015",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+1 drink."
     },
     {
       "combo": "5LK, 2MK > 236MP~K~K",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -5",
+      "position": "Anywhere",
+      "damage": "1476",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+1 drink. Ranged option. 2MK may still whiff on max range."
     },
     {
       "combo": "2MP, 2MP > 236HP~K~K",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -6",
+      "position": "Anywhere",
+      "damage": "1998",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+1 drink."
     },
     {
       "combo": "2MP, 2MK > 236MP~K~K",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -6",
+      "position": "Anywhere",
+      "damage": "1845",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+1 drink. Ranged option."
     },
     {
       "combo": "5MP, 2HP > 623HK",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -8",
+      "position": "Anywhere",
+      "damage": "2466",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy"
     },
     {
       "combo": "5MP, 2HP > 236HP~K~K",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -8",
+      "position": "Anywhere",
+      "damage": "2268",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+1 drink."
     },
     {
       "combo": "5MP, 2MK > 236MP~K~K",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -8",
+      "position": "Anywhere",
+      "damage": "1845",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+1 drink. Ranged option. 2MK may still whiff on max range."
     },
     {
       "combo": "5HP, 5LK > 623HK",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -12",
+      "position": "Anywhere",
+      "damage": "2034",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Less damage than faster DL0 meterless options, but has more range."
     },
     {
       "combo": "5HP, 5LK > 236LP~K~K",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -12",
+      "position": "Anywhere",
+      "damage": "1678",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+1 drink. Less damage than faster DL0 meterless options, but has more range."
     },
     {
       "combo": "5HK, Dash, 2HP > 623HK",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -15",
+      "position": "Anywhere",
+      "damage": "2682",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy"
     },
     {
       "combo": "5HK, Dash, 5MK > 214HP",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -15",
+      "position": "Anywhere",
+      "damage": "2268",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Ranged option."
     },
     {
       "combo": "5HK, Dash, 5MK > 214PP",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -15",
+      "position": "Anywhere",
+      "damage": "2196",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+1~2 drinks. Ranged option."
     },
     {
       "combo": "5HK, Dash, 2HP > 623LK",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -15",
+      "position": "Anywhere",
+      "damage": "2527",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Simple and leads to a safe jump."
     },
     {
       "combo": "5HK, DR~2KK > j.HK, 5HP, 2HK-K-P",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -15",
+      "position": "Anywhere",
+      "damage": "2936",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "Hard",
+      "notes": "Generally would do this midscreen. 5HP into Sweep is hard but doable with practice!"
     },
     {
       "combo": "5HK, Dash, 2HP > 214PP, 2HK-K-P",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -15",
+      "position": "Corner",
+      "damage": "3416",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "Resource efficient damage and a drink with plus frames. Can do 623HK (3527) or SA1 (3989) for more damage."
     },
     {
       "combo": "6HK, 2MP > 236HP~K~K",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -16",
+      "position": "Anywhere",
+      "damage": "2322",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+1 drink"
     },
     {
       "combo": "6HK, 2MK > 236MP~K~K",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -16",
+      "position": "Anywhere",
+      "damage": "2169",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+1 drink. Ranged option."
     },
     {
       "combo": "6HK, 2MP > 236236K",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -16",
+      "position": "Anywhere",
+      "damage": "3024",
+      "superMeter": "1",
+      "driveMeter": "0",
+      "difficulty": "Medium"
     },
     {
       "combo": "6HK, 2MP > 236236K[2]",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -16",
+      "position": "Anywhere",
+      "damage": "2772",
+      "superMeter": "1",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "+1 drink."
     },
     {
       "combo": "DR~5HP, 2HP > 236236P, DR~2KK > dl.j.HK, j.MP > j.214HK",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -16",
+      "position": "Anywhere",
+      "damage": "4929",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "Universal SA3 route that leads to good damage. Dash after the divekick to be +7.",
+      "videoUrl": "https://www.twitch.tv/videos/1867164896?t=2h41m27s"
     },
     {
       "combo": "DR~5HP, 2HP > 214PP, 5HP > DR~2HP > 214PP, 623HK",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -16",
+      "position": "Corner",
+      "damage": "4103",
+      "superMeter": "0",
+      "driveMeter": "8",
+      "difficulty": "Medium",
+      "notes": "1st DR~5HP gains some Drive, so 8 Drive is spent total. Burnout -> Corner damage dump. SA1 = 4327"
     },
     {
       "combo": "DR~5HP, 2HP > 236236P, DR~2HP, 623HK, 623KK",
-      "section": "Punish Counter / Light Confirms"
+      "section": "Punish Counter / -16",
+      "position": "Corner",
+      "damage": "5329",
+      "superMeter": "3",
+      "driveMeter": "4",
+      "difficulty": "Easy",
+      "notes": "Super Art 3 for lots of damage."
     },
     {
       "combo": "2KK, 2HK~K~P",
-      "section": "2KK Anti-Air / Light Confirms"
+      "section": "2KK Anti-Air",
+      "position": "Anywhere",
+      "damage": "1539",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "+1 drink, +4 oki in the corner."
     },
     {
       "combo": "2KK > dl.j.MP > j.214HK",
-      "section": "2KK Anti-Air / Light Confirms"
+      "section": "2KK Anti-Air",
+      "position": "Anywhere",
+      "damage": "1876",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "+25 oki."
     },
     {
       "combo": "2KK > dl.j.MP > j.214KK, dl.2HK~K~P",
-      "section": "2KK Anti-Air / Light Confirms"
+      "section": "2KK Anti-Air",
+      "position": "Anywhere",
+      "damage": "2050",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "+1 drink, +4 oki in the corner."
     },
     {
       "combo": "2KK > dl.j.MP > j.214KK, 236LK",
-      "section": "2KK Anti-Air / Light Confirms"
+      "section": "2KK Anti-Air",
+      "position": "Anywhere",
+      "damage": "2460",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "Medium"
     },
     {
       "combo": "63124K 5MP, 5LP~5LK~5MP > 236LK",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "1565",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Allows for safejump in the corner."
     },
     {
       "combo": "63214K 2MP > DR~5MP, 2HP>236HK",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "1971",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "Easy"
     },
     {
       "combo": "63214K 2MP > DR~5MP, 2HP > DR~5MP, 2HP > 236HK",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "2091",
+      "superMeter": "0",
+      "driveMeter": "6",
+      "difficulty": "Easy"
     },
     {
       "combo": "63214K 2MP > DR~5MP, 2HP > 214PP, DR~5LK > 236HK",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Corner",
+      "damage": "2110",
+      "superMeter": "0",
+      "driveMeter": "6",
+      "difficulty": "Medium"
     },
     {
       "combo": "63214K > 236236K",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "2303",
+      "superMeter": "1",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Conserves drive meter while using SA1 for damage"
     },
     {
       "combo": "63214K 5MP, 5LP~5LK~5MP > DR~5HP, 5LK > 2LP > 5LP~5LK~5MP > 236236K",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "2148",
+      "superMeter": "1",
+      "driveMeter": "3",
+      "difficulty": "Medium",
+      "notes": "Optimal damage for SA1 when you only want to spend 3 Drive bars"
     },
     {
       "combo": "63214K 2MP > DR~5MP, 2HP > DR~5MP, 2HP > 236236K",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "2418",
+      "superMeter": "1",
+      "driveMeter": "6",
+      "difficulty": "Medium",
+      "notes": "Optimal damage for SA1 when you want to dump everything"
     },
     {
       "combo": "63214K 2MP > DR~5MP, 2HP > 236HK > 236236P, DR~2HP > 623HK, 623KK",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "3575",
+      "superMeter": "3",
+      "driveMeter": "6",
+      "difficulty": "Medium",
+      "notes": "I believe this is optimal SA3 damage at Drink Level 3. The combo after SA3 can be changed up to match your screen position. Here is Hatson's Drink Level 4 Route"
     },
     {
       "combo": "63214KK 2HP, 236HK",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "2758",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy"
     },
     {
       "combo": "63214KK DR~2KK > j.HK, 5HP, 2HK-K-P",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "2402",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "Hard",
+      "notes": "Generally would do this midscreen. 5HP into Sweep is hard but doable with practice!"
     },
     {
       "combo": "63214KK 2HP > DR~5MP, 2HP > 236HK",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "2968",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "Easy"
     },
     {
       "combo": "63214KK 2HP > DR~5MP, 2HP > DR~5MP, 2HP > 236HK",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Midscreen",
+      "damage": "3088",
+      "superMeter": "0",
+      "driveMeter": "6",
+      "difficulty": "Medium",
+      "notes": "Burnout -> Midscreen damage dump. 2HP SA1 = 2944, one DR extension into SA1 = 3070, the full thing into SA1 = 3415."
     },
     {
       "combo": "63214KK 2HP > 214PP, 5HP > DR~2HP > 236HK",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Corner",
+      "damage": "3155",
+      "superMeter": "0",
+      "driveMeter": "5",
+      "difficulty": "Medium",
+      "notes": "Burnout -> Corner damage dump"
     },
     {
       "combo": "63214KK 2HP > 214PP, 236236K",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Corner",
+      "damage": "3412",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "Easy SA1 combo in the corner. Lots of damage."
     },
     {
       "combo": "63214KK <Ender>",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "Depends on the Ender",
+      "superMeter": "3",
+      "driveMeter": "Depends on the Ender",
+      "difficulty": "Medium",
+      "notes": "Raw SA3 after OD-Grab is the most damage. Example enders from Hatson.",
+      "videoUrl": "https://twitter.com/DaFeetLee/status/1659915625949548547"
     },
     {
       "combo": "63214KK 6HK~4HK~P > 214MP~6P > (CA)236236P",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "4956",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Medium",
+      "notes": "Max damage route without additional drive spend after OD Command Grab."
     },
     {
       "combo": "63214KK 2HP > 214HP~6P > (CA)236236P",
-      "section": "Command Grab / Light Confirms"
+      "section": "Command Grab",
+      "position": "Anywhere",
+      "damage": "4945",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "Easier than 6HK TC route with nearly identical damage but slightly lower drive gain"
     },
     {
       "combo": "DI DR~2KK > j.HK, 5HP, 2HK-K-P",
-      "section": "Drive Impact / Light Confirms"
+      "section": "Drive Impact",
+      "position": "Anywhere",
+      "damage": "2608",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "Hard",
+      "notes": "Check the Midscreen Launcher section for notes on the 5HP to Sweep.",
+      "videoUrl": "https://www.twitch.tv/videos/1867164896?t=1h41m40s"
     },
     {
       "combo": "DI 2HP > 214PP, 2HK-K-P",
-      "section": "Drive Impact / Light Confirms"
+      "section": "Drive Impact",
+      "position": "Corner",
+      "damage": "3013",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "Resource efficient damage, +1 drink, and +4 oki"
     },
     {
       "combo": "DI 2HP > 214PP, 5HP > DR~2HP > 214PP, 623HK",
-      "section": "Drive Impact / Light Confirms"
+      "section": "Drive Impact",
+      "position": "Corner",
+      "damage": "3427",
+      "superMeter": "0",
+      "driveMeter": "7",
+      "difficulty": "Medium",
+      "notes": "Max damage, full drive dump."
     },
     {
       "combo": "DI 5LK, 5HP, 2HK-K-P",
-      "section": "Drive Impact / Light Confirms"
+      "section": "Drive Impact",
+      "position": "Corner",
+      "damage": "2330",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "WALL SPLAT ONLY. Meterless, +1 drink, +4 oki."
     },
     {
       "combo": "DI dl.6HK~4HK~P > 214PP , 2HK~HK~P",
-      "section": "Drive Impact / Light Confirms"
+      "section": "Drive Impact",
+      "position": "Corner",
+      "damage": "3773",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "On punish counter the 6HK needs to be delayed so it pops the opponent in the air. On wall splat, it can be done as soon as possible."
     },
     {
       "combo": "22[P](2), 2HP > 214PP, 2HK-K-P",
-      "section": "Stun / Light Confirms"
+      "section": "Stun",
+      "position": "Corner",
+      "damage": "2940",
+      "superMeter": "0",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "22[P](2) means to hold the punch button in order to drink twice. Easy combo that nets you three total drinks!"
     },
     {
       "combo": "22[P](2), 2HP > 214PP, 5HP > DR~2HP > 214PP, 623HK",
-      "section": "Stun / Light Confirms"
+      "section": "Stun",
+      "position": "Corner",
+      "damage": "3372",
+      "superMeter": "0",
+      "driveMeter": "7",
+      "difficulty": "Medium",
+      "notes": "Full drive meter dump."
     },
     {
       "combo": "22[P](2), 2HP > 214PP, 236236K",
-      "section": "Stun / Light Confirms"
+      "section": "Stun",
+      "position": "Corner",
+      "damage": "3470",
+      "superMeter": "1",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "SA1 confirm."
     },
     {
       "combo": "22[P](2), 2HP > 236236P, DR, 623HK, 623KK",
-      "section": "Stun / Light Confirms"
+      "section": "Stun",
+      "position": "Corner",
+      "damage": "4488",
+      "superMeter": "3",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "SA3 confirm."
     },
     {
       "combo": "2HP > 214214P, 2HP > 214HP ~ 6HP",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3420",
       "superMeter": "2",
@@ -319,7 +725,7 @@
     },
     {
       "combo": "2HP > 214214P, 6HK~4HK~P > 214HP ~ 6HP",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3567",
       "superMeter": "2",
@@ -329,7 +735,7 @@
     },
     {
       "combo": "[PC] DR~5HP, 2HP > 214214P, 2HP > 214HP~6HP",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3981",
       "superMeter": "2",
@@ -339,7 +745,7 @@
     },
     {
       "combo": "2HP > 236PP > 214214P, 2HP > 214HP ~ 6HP",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3414",
       "superMeter": "2",
@@ -349,7 +755,7 @@
     },
     {
       "combo": "2HP > 214PP > 214214P, DR~2HP > 214HP~6HP",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3660",
       "superMeter": "2",
@@ -359,7 +765,7 @@
     },
     {
       "combo": "2HP > 214214P, 2HP > DR~5MP, 2HP > 214HP~6HP",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3771",
       "superMeter": "2",
@@ -369,7 +775,7 @@
     },
     {
       "combo": "2HP > 214PP > 214214P, 214PP~6P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3454",
       "superMeter": "2",
@@ -379,7 +785,7 @@
     },
     {
       "combo": "2HP > 214214P, 2HP > DR~6HK~4HK~P > 214PP~6P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3755",
       "superMeter": "2",
@@ -389,7 +795,7 @@
     },
     {
       "combo": "2HP > 214214P, 2HP > DR~2HP > DR~2HP > 214HP~6P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3984",
       "superMeter": "2",
@@ -399,7 +805,7 @@
     },
     {
       "combo": "2HP > 214214P, 2HP > DR~5MP, 2HP > DR~5MP, 2HP > 214HP~6P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "4107",
       "superMeter": "2",
@@ -409,7 +815,7 @@
     },
     {
       "combo": "2HP > 214214P, 2HP > DR~6HK~4HK~P > DR~2HP > 214HP~6P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3971",
       "superMeter": "2",
@@ -419,7 +825,7 @@
     },
     {
       "combo": "j.214KK, 214PP > 214214P, DR~2HP > 214HP~6P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3186",
       "superMeter": "2",
@@ -429,7 +835,7 @@
     },
     {
       "combo": "j.214KK, 214PP > 214214P, DR~5HK > DR~dl.2HP > 214HP~6P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3412",
       "superMeter": "2",
@@ -439,7 +845,7 @@
     },
     {
       "combo": "2HP > 236KK > 214214P, 2HP > 214HP ~ 6HP",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "4359",
       "superMeter": "2",
@@ -449,7 +855,7 @@
     },
     {
       "combo": "2HP > 236KK > 214214P, 2HP > DR~5MP, 2HP > DR~5MP, 2HP > 214HP~6P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "4809",
       "superMeter": "2",
@@ -459,7 +865,7 @@
     },
     {
       "combo": "DR~6MK, 5HP > DR~5MP, 2HP > 236KK > 214214PP, 2HP > 214HP~P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3426",
       "superMeter": "2",
@@ -469,7 +875,7 @@
     },
     {
       "combo": "DR~6MK, 5HP > DR~5MP, 2HP > 236KK > 214214PP, 2HP > 214PP, 236236K",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3817",
       "superMeter": "3",
@@ -479,7 +885,7 @@
     },
     {
       "combo": "[PC] DR~5HP, 2HP > 236KK > 214214P, 2HP > DR~5MP, 2HP > DR~5MP, 2HP > 214HP~6P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "5079",
       "superMeter": "2",
@@ -489,7 +895,7 @@
     },
     {
       "combo": "[CH] 4HP~4HP > 214214P, 2HP > 214HP~P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3837",
       "superMeter": "2",
@@ -499,7 +905,7 @@
     },
     {
       "combo": "[CH] 4HP~4HP > 214214P, 2HP > DR~5MP, 2HP > 214HP~P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "4086",
       "superMeter": "2",
@@ -509,7 +915,7 @@
     },
     {
       "combo": "6HK~4HK~P > DR~2HP > 214214P, 5HK > 214HP~P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "3843",
       "superMeter": "2",
@@ -519,7 +925,7 @@
     },
     {
       "combo": "6HK~4HK~P > 214PP > 214214P, DR > 2HP > 214HP~P",
-      "section": "Super Art 2 Extensions / Light Confirms",
+      "section": "Super Art 2 Extensions",
       "position": "Anywhere",
       "damage": "4161",
       "superMeter": "2",
@@ -529,92 +935,206 @@
     },
     {
       "combo": "... > 236236P, DR~2HP > 623HK, 623KK",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Corner",
+      "damage": "4672",
+      "superMeter": "3",
+      "driveMeter": "3",
+      "difficulty": "Easy",
+      "notes": "Most optimal damage. Easier to input the 623HK after 2HP if 3HP is held instead.",
+      "videoUrl": "https://twitter.com/HatsonFGC/status/1678218372549341184"
     },
     {
       "combo": "... > 236236P, DR~2HP > 214LP, 5HP, 623LK",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Corner",
+      "damage": "4447",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Optimal damage for 1 Drive bar.",
+      "videoUrl": "https://twitter.com/HatsonFGC/status/1678218372549341184"
     },
     {
       "combo": "... > 236236P, DR~2HP > 214LP, 5HP > 623LK",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Corner",
+      "damage": "4076",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "+41 KD safe-jump",
+      "videoUrl": "https://twitter.com/HatsonFGC/status/1678218372549341184"
     },
     {
       "combo": "... > 236236P, DR~2HP > 214PP, DR~2HP > 623LK",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Corner",
+      "damage": "4622",
+      "superMeter": "3",
+      "driveMeter": "4",
+      "difficulty": "Medium",
+      "notes": "+42 KD safe-jump",
+      "videoUrl": "https://twitter.com/HatsonFGC/status/1678218372549341184"
     },
     {
       "combo": "... > 236236P, DR~2HP > 214LP, 5HP > 22P",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Corner",
+      "damage": "3626",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "+1 drink with +12 mix.",
+      "videoUrl": "https://twitter.com/HatsonFGC/status/1678218372549341184"
     },
     {
       "combo": "... > 236236P, DR~2HP > 214MP, 5HP > 22P",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Corner",
+      "damage": "3687",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "+1 drink with +9 mix.",
+      "videoUrl": "https://twitter.com/HatsonFGC/status/1678218372549341184"
     },
     {
       "combo": "... > 236236P, DR~2HP > 214LP, 2HK-K-P",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Corner",
+      "damage": "4222",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "+4 in corner"
     },
     {
       "combo": "... > 236236P, DR~2KK > j.HK, 2HK-K-P",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Anywhere",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Very easy combo for drink and is +4 if done in the corner."
     },
     {
       "combo": "... > 236236P, DR~2KK > j.HK, 5HK, 2HK-K-P",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Anywhere",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Slightly more difficult variation of previous combo. Delay the j.HK."
     },
     {
       "combo": "... > 236236P, DR~2KK > j.HK, DRP~236LK",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Anywhere",
+      "damage": "3814",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Hard",
+      "notes": "Side Switch combo, input the DP in the same direction you inputted the super."
     },
     {
       "combo": "... > 236236P, 2HK-K-P",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Anywhere",
+      "damage": "3060",
+      "superMeter": "3",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Use in burnout. Requires a micro-walk after the super animation to connect."
     },
     {
       "combo": "... > 236236P, 214HP",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Anywhere",
+      "damage": "3060",
+      "superMeter": "3",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Use in burnout. Use 214MP for a drink as it is +42."
     },
     {
       "combo": "... > 236236P, DR~2HP, 5LK > DI",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Corner",
+      "damage": "3176",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "Gimmick air reset into a Drive Impact. Catch them sleeping! DI combo notes are in another section.",
+      "videoUrl": "https://www.youtube.com/watch?v=Ay09-vOoueY&t=10293s"
     },
     {
       "combo": "... > 236236P, DR~2HP, 2LP > DI",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Corner",
+      "damage": "3176",
+      "superMeter": "3",
+      "driveMeter": "2",
+      "difficulty": "Easy",
+      "notes": "Similar reset into DI but easier to time as 2LP is 1 frame faster."
     },
     {
       "combo": "5HK, Dash, 2HP > 236236P, DR~5MP, 5MK, 63214K",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Corner",
+      "superMeter": "3",
+      "driveMeter": "1",
+      "difficulty": "Easy",
+      "notes": "Saw this on Twitter. Haven't tested but seems cheeky.",
+      "videoUrl": "https://twitter.com/SZNdaDON/status/1665533734240636928"
     },
     {
       "combo": "... > 236236P, DR~2KK > j.HK, j.MP > j.214KK, 623HK",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Anywhere",
+      "damage": "4621",
+      "superMeter": "3",
+      "driveMeter": "3",
+      "difficulty": "Hard",
+      "notes": "Great combo route when used outside of the corner with a lot of corner carry. The j.HK needs to be slightly delayed so the opponent is knocked high enough in the air for the j.MP to connect. 623LK can be used instead of 623HK in the corner for a safe jump."
     },
     {
       "combo": "... > 236236P, DR~2KK > j.HK, j.MP > j.214KK, 236LK",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Anywhere",
+      "damage": "4879",
+      "superMeter": "3",
+      "driveMeter": "3",
+      "difficulty": "Hard"
     },
     {
       "combo": "... > 236236P, 236MK",
-      "section": "Super Art 3 Extensions / Light Confirms"
+      "section": "Super Art 3 Extensions",
+      "position": "Anywhere",
+      "damage": "3950",
+      "superMeter": "3",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Use in burnout. Deals more damage than 214HP."
     },
     {
       "combo": "... > 236236P, DR~2KK > j.HK, j.MP > j.214KK, 214LP~6LP",
-      "section": "Super Art 3 Extensions / Light Confirms"
-    },
-    {
-      "combo": "Drinks",
-      "section": "Confirms",
-      "notes": "Combo",
-      "starter": "Drinks"
+      "section": "Super Art 3 Extensions",
+      "position": "Anywhere",
+      "damage": "5418",
+      "superMeter": "3",
+      "driveMeter": "3",
+      "difficulty": "Hard"
     },
     {
       "combo": "5LK~2LP > 236LP",
-      "section": "Confirms",
-      "notes": "Easy confirm. Useful for building drinks when you are at Drink Level 0. Also useful at higher drinks, but sacrifices a lot of damage and oki. Only light version works off of light confirms.",
-      "starter": "Drinks"
+      "section": "Confirms / Light Confirms",
+      "position": "Anywhere",
+      "damage": "?",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Easy confirm. Useful for building drinks when you are at Drink Level 0. Also useful at higher drinks, but sacrifices a lot of damage and oki. Only light version works off of light confirms."
     }
   ],
-  "lastUpdated": "2026-03-16"
+  "lastUpdated": "2026-08-09"
 }
