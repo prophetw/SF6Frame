@@ -91,6 +91,11 @@ const newPreferredMoveInput = ref('');
 const newPreferredMoveNote = ref('');
 const onlyShowPreferred = ref(false);
 
+// A whiffed action is useful as an oki route only when it leaves a small,
+// actionable lead before the defender becomes vulnerable on wakeup.
+const WHIFF_ADVANTAGE_MIN = 2;
+const WHIFF_ADVANTAGE_MAX = 5;
+
 // Load custom moves from localStorage and merge with defaults
 function loadCustomMoves() {
   let storedMoves: CustomMove[] = [];
@@ -909,6 +914,8 @@ interface ExtendedOkiResult {
   isTrade: boolean;
   calculatedOnBlock?: number | string;
   calculatedOnHit?: number | string;
+  isWhiffAdvantage?: boolean;
+  whiffAdvantage?: number;
   meatyBonus?: number;
   effectiveHitFrame?: number;
   projectileOki?: RyuHadokenOkiGuardCalculation;
@@ -1213,8 +1220,18 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
       const isSuccessMatch = overlapsPreActive;
       const isTradeMatch = overlapsOppFirst && !overlapsPreActive;
       const toleranceFrames = isSuccessMatch ? Math.max(0, oppWindowEnd - ourStart) : undefined;
+      const recoveryTiming = projectileOki
+        ? getBodyTotalRecoveryTiming(prefix.frames, projectileOki.totalFrames)
+        : getMoveRecoveryTiming(prefix.frames, move, startup);
+      const whiffAdvantage = !projectileOki && normalOurEnd < oppWindowStart
+        ? oppWindowStart - recoveryTiming.recoverFrame
+        : undefined;
+      const isWhiffAdvantageMatch = whiffAdvantage !== undefined
+        && whiffAdvantage >= WHIFF_ADVANTAGE_MIN
+        && whiffAdvantage <= WHIFF_ADVANTAGE_MAX;
 
-      if (isSuccessMatch || isTradeMatch) {
+      if (isSuccessMatch || isTradeMatch || isWhiffAdvantageMatch) {
+        const isWhiffAdvantage = isWhiffAdvantageMatch;
         // Calculate Meaty Bonus
         const meatyStartFrame = projectileOki
           ? prefix.frames + projectileOki.startup
@@ -1223,7 +1240,9 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           ? oppWindowStart
           : Math.max(meatyStartFrame, oppWindowStart);
         const canApplyMeaty = !move.noMeaty;
-        const meatyBonus = projectileOki
+        const meatyBonus = isWhiffAdvantage
+          ? 0
+          : projectileOki
           ? projectileOki.contactDelayAfterStartup
           : canApplyMeaty ? (effectiveHitFrame - meatyStartFrame) : 0;
 
@@ -1233,23 +1252,25 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
         let tradeDet: string | undefined;
         let tradeExpl = '';
 
-        const baseBlock = parseFrameAdvantage(move.onBlock);
-        if (projectileOki) {
-          calcBlock = projectileOki.guardAdvantage;
-        } else if (baseBlock !== null) {
-          calcBlock = baseBlock + meatyBonus;
-        } else {
-          calcBlock = move.onBlock;
-        }
+        if (!isWhiffAdvantage) {
+          const baseBlock = parseFrameAdvantage(move.onBlock);
+          if (projectileOki) {
+            calcBlock = projectileOki.guardAdvantage;
+          } else if (baseBlock !== null) {
+            calcBlock = baseBlock + meatyBonus;
+          } else {
+            calcBlock = move.onBlock;
+          }
 
-        const baseHit = parseFrameAdvantage(move.onHit);
-        if (baseHit !== null) {
-          // User requested: "Successful pressure is basically Counter Hit".
-          // So we add 2 frames for Counter Hit (since SF6 usually gives +2 for CH).
-          const chBonus = (isSuccessMatch) ? 2 : 0;
-          calcHit = baseHit + meatyBonus + chBonus;
-        } else {
-          calcHit = move.onHit;
+          const baseHit = parseFrameAdvantage(move.onHit);
+          if (baseHit !== null) {
+            // User requested: "Successful pressure is basically Counter Hit".
+            // So we add 2 frames for Counter Hit (since SF6 usually gives +2 for CH).
+            const chBonus = (isSuccessMatch) ? 2 : 0;
+            calcHit = baseHit + meatyBonus + chBonus;
+          } else {
+            calcHit = move.onHit;
+          }
         }
 
         // Calculate Trade Advantage
@@ -1271,9 +1292,6 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           }
         }
 
-        const recoveryTiming = projectileOki
-          ? getBodyTotalRecoveryTiming(prefix.frames, projectileOki.totalFrames)
-          : getMoveRecoveryTiming(prefix.frames, move, startup);
         const baseKey = buildOkiResultKeyBase({
           prefixName: prefix.name,
           prefixFrames: prefix.frames,
@@ -1311,8 +1329,10 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           isTrade: isTradeMatch,
           calculatedOnBlock: calcBlock,
           calculatedOnHit: calcHit,
+          isWhiffAdvantage: isWhiffAdvantage || undefined,
+          whiffAdvantage: isWhiffAdvantage ? whiffAdvantage : undefined,
           meatyBonus,
-          effectiveHitFrame,
+          effectiveHitFrame: isWhiffAdvantage ? undefined : effectiveHitFrame,
           projectileOki: projectileOki ?? undefined,
           tradeAdvantage: tradeAdv,
           tradeDetail: tradeDet,
@@ -1361,12 +1381,21 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
       const isSuccessMatch = overlapsPreActive;
       const isTradeMatch = overlapsOppFirst && !overlapsPreActive;
       const toleranceFrames = isSuccessMatch ? Math.max(0, oppWindowEnd - ourStart) : undefined;
+      const effectivePrefixFrames = prefix.frames + DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET;
+      const recoveryTiming = getMoveRecoveryTiming(effectivePrefixFrames, move, startup);
+      const whiffAdvantage = ourEnd < oppWindowStart
+        ? oppWindowStart - recoveryTiming.recoverFrame
+        : undefined;
+      const isWhiffAdvantageMatch = whiffAdvantage !== undefined
+        && whiffAdvantage >= WHIFF_ADVANTAGE_MIN
+        && whiffAdvantage <= WHIFF_ADVANTAGE_MAX;
 
-      if (isSuccessMatch || isTradeMatch) {
+      if (isSuccessMatch || isTradeMatch || isWhiffAdvantageMatch) {
+        const isWhiffAdvantage = isWhiffAdvantageMatch;
         const meatyStartFrame = timing.fastestHitFrame + meatyStartOffset;
         const effectiveHitFrame = Math.max(meatyStartFrame, oppWindowStart);
         const canApplyMeaty = !move.noMeaty;
-        const meatyBonus = canApplyMeaty ? (effectiveHitFrame - meatyStartFrame) : 0;
+        const meatyBonus = isWhiffAdvantage ? 0 : canApplyMeaty ? (effectiveHitFrame - meatyStartFrame) : 0;
         const driveRushAdvantageBonus = getDriveRushAdvantageBonus(move);
 
         let calcBlock: number | string | undefined;
@@ -1375,19 +1404,21 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
         let tradeDet: string | undefined;
         let tradeExpl = '';
 
-        const baseBlock = parseFrameAdvantage(move.onBlock);
-        if (baseBlock !== null) {
-          calcBlock = baseBlock + driveRushAdvantageBonus + meatyBonus;
-        } else {
-          calcBlock = move.onBlock;
-        }
+        if (!isWhiffAdvantage) {
+          const baseBlock = parseFrameAdvantage(move.onBlock);
+          if (baseBlock !== null) {
+            calcBlock = baseBlock + driveRushAdvantageBonus + meatyBonus;
+          } else {
+            calcBlock = move.onBlock;
+          }
 
-        const baseHit = parseFrameAdvantage(move.onHit);
-        if (baseHit !== null) {
-          const chBonus = isSuccessMatch ? 2 : 0;
-          calcHit = baseHit + driveRushAdvantageBonus + meatyBonus + chBonus;
-        } else {
-          calcHit = move.onHit;
+          const baseHit = parseFrameAdvantage(move.onHit);
+          if (baseHit !== null) {
+            const chBonus = isSuccessMatch ? 2 : 0;
+            calcHit = baseHit + driveRushAdvantageBonus + meatyBonus + chBonus;
+          } else {
+            calcHit = move.onHit;
+          }
         }
 
         if (isTradeMatch) {
@@ -1410,8 +1441,6 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
 
         const driveRushPrefixName = prefix.name ? `${prefix.name} + 绿冲` : '绿冲';
         const driveRushPrefixInput = prefix.input ? `${prefix.input} + DR` : 'DR';
-        const effectivePrefixFrames = prefix.frames + DRIVE_RUSH_EFFECTIVE_STARTUP_OFFSET;
-        const recoveryTiming = getMoveRecoveryTiming(effectivePrefixFrames, move, startup);
         const baseKey = buildOkiResultKeyBase({
           prefixName: driveRushPrefixName,
           prefixFrames: effectivePrefixFrames,
@@ -1449,8 +1478,10 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           isTrade: isTradeMatch,
           calculatedOnBlock: calcBlock,
           calculatedOnHit: calcHit,
+          isWhiffAdvantage: isWhiffAdvantage || undefined,
+          whiffAdvantage: isWhiffAdvantage ? whiffAdvantage : undefined,
           meatyBonus,
-          effectiveHitFrame,
+          effectiveHitFrame: isWhiffAdvantage ? undefined : effectiveHitFrame,
           tradeAdvantage: tradeAdv,
           tradeDetail: tradeDet,
           tradeExplanation: tradeExpl,
@@ -1588,8 +1619,10 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
 
     switch (sortKey.value) {
       case 'block':
-        valA = typeof a.calculatedOnBlock === 'number' ? a.calculatedOnBlock : -999;
-        valB = typeof b.calculatedOnBlock === 'number' ? b.calculatedOnBlock : -999;
+        // Whiff routes have no on-block value; keep their actionable lead visible
+        // in the default ordering instead of pushing every one below the result cap.
+        valA = typeof a.calculatedOnBlock === 'number' ? a.calculatedOnBlock : a.whiffAdvantage ?? -999;
+        valB = typeof b.calculatedOnBlock === 'number' ? b.calculatedOnBlock : b.whiffAdvantage ?? -999;
         break;
       case 'hit':
         valA = typeof a.calculatedOnHit === 'number' ? a.calculatedOnHit : -999;
@@ -3448,10 +3481,11 @@ function formatFrameDelta(val: number): string {
             'preferred-row': result.isPreferred
           }]" @click="toggleResultDetail(result.key)">
             <div class="result-combo">
-              <span v-if="result.isPreferred" class="preferred-badge">★ 喜好</span>
-              <span v-if="result.coversOpponent" class="success-badge">压制</span>
-              <span v-if="result.isTrade" class="trade-badge">相杀</span>
-              <span v-if="result.isChainCancel" class="chain-cancel-badge">连锁取消 Chain Cancel</span>
+            <span v-if="result.isPreferred" class="preferred-badge">★ 喜好</span>
+            <span v-if="result.coversOpponent" class="success-badge">压制</span>
+            <span v-if="result.isTrade" class="trade-badge">相杀</span>
+            <span v-if="result.isWhiffAdvantage" class="tag-badge">空挥 {{ formatFrame(result.whiffAdvantage) }}</span>
+            <span v-if="result.isChainCancel" class="chain-cancel-badge">连锁取消 Chain Cancel</span>
               <span v-if="result.tags && result.tags.length > 0" class="tag-badge">{{ result.tags.join(', ') }}</span>
               <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
               <span v-if="result.prefix">+</span>
@@ -3544,6 +3578,12 @@ function formatFrameDelta(val: number): string {
                 </span>
                 <span class="frame-positive">{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
               </div>
+              <div v-if="result.isWhiffAdvantage" class="detail-row calc">
+                <span class="detail-label">空挥优势:</span>
+                <span class="frame-positive">
+                  对手起身 {{ opponentWakeupFrame }}F - 我方恢复 {{ result.recoverFrame }}F = {{ formatFrame(result.whiffAdvantage) }}
+                </span>
+              </div>
               <div class="detail-row">
                 <span class="detail-label">对手反击判定第一帧:</span>
                 <span class="frame-negative">{{ opponentFirstActiveFrame }}F</span>
@@ -3576,7 +3616,7 @@ function formatFrameDelta(val: number): string {
                   </span>
                 </span>
               </div>
-              <div class="detail-row calc">
+              <div v-if="!result.isWhiffAdvantage" class="detail-row calc">
                 <span class="detail-label">被防计算:</span>
                 <span v-if="result.projectileOki">
                   {{ result.projectileOki.blockFrameFromInput }} (输入到被防)
@@ -3599,7 +3639,7 @@ function formatFrameDelta(val: number): string {
                       formatFrame(result.calculatedOnBlock) }}</span>
                 </span>
               </div>
-              <div class="detail-row calc">
+              <div v-if="!result.isWhiffAdvantage" class="detail-row calc">
                 <span class="detail-label">被击计算:</span>
                 <span>
                   {{ result.move.onHit }} (原始)
@@ -3733,6 +3773,7 @@ function formatFrameDelta(val: number): string {
               <span v-if="result.isPreferred" class="badge-mini" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3)">★ 喜好</span>
               <span v-if="result.coversOpponent" class="badge-mini success">压制成功</span>
               <span v-if="result.isTrade" class="badge-mini trade">相杀</span>
+              <span v-if="result.isWhiffAdvantage" class="badge-mini frame font-mono green">空挥: {{ formatFrame(result.whiffAdvantage) }}</span>
               <span v-if="result.safeAgainstWakeupDriveReversal" class="badge-mini safe-dr">防斗反</span>
               <span class="badge-mini frame font-mono">发生: {{ result.prefixFrames + parseStartup(result.move.startup) }}F</span>
               <span class="badge-mini frame font-mono">打击: {{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
