@@ -990,7 +990,7 @@
       "category": "normal",
       "knockdown": {
         "type": "soft",
-        "advantage": 1
+        "advantage": -1
       },
       "notes": "Increases Drink Level by 1; better to use midscreen, as opponent can't effectively take advantage of Jamie's -1 KD situation; Drink Level is built on 54th recovery frame; gives better advantage upon DL3 to DL4 drink activation, allowing for corner oki; refills 0.5 Drive bars; at DL4, refills 1 Drive bar; does not come out if you continue holding a kick button after 6MK~MK",
       "raw": {
@@ -1848,14 +1848,14 @@
       "active": "2",
       "recovery": "30",
       "onBlock": "-17",
-      "onHit": "KD +27",
+      "onHit": "KD +31",
       "category": "special",
       "cancels": [
         "SA3"
       ],
       "knockdown": {
         "type": "soft",
-        "advantage": 27
+        "advantage": 31
       },
       "notes": "Can be performed on hit/block/whiff (startup is delayed by 3f on whiff version); [] refers to total startup when whiffing initial 236P~6P; () refers to scaled damage when starting combo from 236P; 3 hits; 2-6f gap between 2nd/3rd Rekkas on block",
       "raw": {
@@ -1886,14 +1886,14 @@
       "active": "2",
       "recovery": "30",
       "onBlock": "-15",
-      "onHit": "KD +27",
+      "onHit": "KD +31",
       "category": "special",
       "cancels": [
         "SA3"
       ],
       "knockdown": {
         "type": "soft",
-        "advantage": 27
+        "advantage": 31
       },
       "notes": "Can be performed on hit/block/whiff (startup is delayed by 3f on whiff version); [] refers to total startup when whiffing initial 236P~6P; () refers to scaled damage when starting combo from 236P; 3 hits; 2-6f gap between 2nd/3rd Rekkas on block",
       "raw": {
@@ -1924,14 +1924,14 @@
       "active": "2",
       "recovery": "30",
       "onBlock": "-13",
-      "onHit": "KD +27",
+      "onHit": "KD +31",
       "category": "special",
       "cancels": [
         "SA3"
       ],
       "knockdown": {
         "type": "soft",
-        "advantage": 27
+        "advantage": 31
       },
       "notes": "Can be performed on hit/block/whiff (startup is delayed by 3f on whiff version); [] refers to total startup when whiffing initial 236P~6P; () refers to scaled damage when starting combo from 236P; 3 hits; 2-6f gap between 2nd/3rd Rekkas on block",
       "raw": {
@@ -2133,7 +2133,7 @@
       "category": "special",
       "knockdown": {
         "type": "soft",
-        "advantage": 1
+        "advantage": -1
       },
       "notes": "Damage DL0-DL4: 405/427/450/472/495 (Scaled: 324/342/360/378/396) (Chip: 100/106/112/117/123); 2nd Kick follow-up can be performed on whiff as long as the first 6K comes out; () refers to scaled damage when starting combo from 236P; increases Drink Level by 1 on frame 36 of recovery; refills 0.5 Drive bars; at DL4, refills 1 Drive bar; 2-6f blockstring gap depending on input timing; activating DL4 gives much better frame advantage",
       "raw": {
@@ -2167,7 +2167,7 @@
       "category": "special",
       "knockdown": {
         "type": "soft",
-        "advantage": 1
+        "advantage": -1
       },
       "notes": "Damage DL0-DL4: 450/475/500/525/550 (Scaled: 360/380/400/420/440) (Chip: 112/118/125/131/137); 2nd Kick follow-up can be performed on whiff as long as the first 6K comes out; increases Drink Level by 1 on frame 37 of recovery; refills 0.5 Drive bars; at DL4, refills 1 Drive bar; () refers to scaled damage when starting combo from 236P; 5-9f blockstring gap depending on input timing; activating DL4 gives much better frame advantage",
       "raw": {
@@ -2201,7 +2201,7 @@
       "category": "special",
       "knockdown": {
         "type": "soft",
-        "advantage": 1
+        "advantage": -1
       },
       "notes": "Damage DL0-DL4: 495/522/550/577/605 (Scaled: 396/418/440/462/484) (Chip: 123/130/137/143/150); 2nd Kick follow-up can be performed on whiff as long as the first 6K comes out; increases Drink Level by 1 on frame 37 of recovery; refills 0.5 Drive bars; at DL4, refills 1 Drive bar; () refers to scaled damage when starting combo from 236P; 8-12f blockstring gap depending on input timing; activating DL4 gives much better frame advantage",
       "raw": {

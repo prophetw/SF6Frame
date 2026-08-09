@@ -224,7 +224,7 @@ function normalizeOnHitValue(value: string): string {
     const num = extractNumber(cleaned);
     const label = /(HKD|HARD KNOCKDOWN)/.test(upper) ? 'HKD' : 'KD';
     if (num === null) return label;
-    return `${label} +${Math.abs(num)}`;
+    return `${label} ${num >= 0 ? '+' : ''}${num}`;
 }
 
 function normalizeInput(value: string): string {
@@ -303,7 +303,7 @@ function parseKnockdown(onHit: string, category: MoveCategory): KnockdownData | 
     if (/(HKD|KD|KNOCKDOWN|CRUMPLE)/.test(upper)) {
         const num = extractNumber(cleaned);
         const type: KnockdownData['type'] = /(HKD|HARD KNOCKDOWN)/.test(upper) ? 'hard' : 'soft';
-        const advantage = num !== null ? Math.abs(num) : estimateKnockdownAdvantage({ category });
+        const advantage = num !== null ? num : estimateKnockdownAdvantage({ category });
         return { type, advantage };
     }
     return undefined;

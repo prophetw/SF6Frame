@@ -3,19 +3,48 @@
   "combos": [
     {
       "combo": "2MP, 5LK/2LP...",
-      "section": "Links and Starters / Normal Hit"
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "This doubles as a pressure string but will trade with 4f buttons when using 5LK. Another 2LP can be used if 2MP hits point blank. / 214LP can be used as an ender for either LP or LK, which followed up with 623LP or SA2 in the corner. LP can cancel into 623HP while LK will whiff, but will hit sour unless 2MP is landed point-blank"
     },
     {
-      "combo": "2LK > 2LP > 2LP... 2LP > 2LK > 2LP...",
-      "section": "Links and Starters / Normal Hit"
+      "combo": "2LK > 2LP > 2LP...",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "Doubles as a pressure string. This will inherently beat wake-up Drive Impact due to being three hits, and all three lights are cancelable to counter DI. It will lose to other reversal options like Parry or DPs. 214LP can be canceled into from a 3-hit string, but a cancel into 623HP will only connect from a 2-hit string."
+    },
+    {
+      "combo": "2LP > 2LK > 2LP...",
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Very Easy",
+      "notes": "Doubles as a pressure string. This will inherently beat wake-up Drive Impact due to being three hits, and all three lights are cancelable to counter DI. It will lose to other reversal options like Parry or DPs. 214LP can be canceled into from a 3-hit string, but a cancel into 623HP will only connect from a 2-hit string."
     },
     {
       "combo": "spaced 5HK > 2LP...",
-      "section": "Links and Starters / Normal Hit"
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "While 5HK is usually only +2 on hit, it can be spaced to be up to +7. 2LP always connects after a spaced hit."
     },
     {
       "combo": "j.X > 2HP...",
-      "section": "Links and Starters / Normal Hit"
+      "section": "Links and Starters / Normal Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Even j.LP and j.LK can connect to 2HP on a deep enough hit."
     },
     {
       "combo": "5LP~MP~HP > 214HP/(214PP, 214HP)",
@@ -47,109 +76,256 @@
     },
     {
       "combo": "CH 5LK, 2LP...",
-      "section": "Links and Starters / Counter-Hit"
+      "section": "Links and Starters / Counter-Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "An immediate DRC into 2MP is better than linking off of CH 5LK"
     },
     {
       "combo": "CH 2LP, 2MP...",
-      "section": "Links and Starters / Counter-Hit"
+      "section": "Links and Starters / Counter-Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "2LP into 2MP is a great CH confirm, as it connects at almost any 2LP range except at the very tip."
     },
     {
       "combo": "CH 2MP, 2MP...",
-      "section": "Links and Starters / Counter-Hit"
+      "section": "Links and Starters / Counter-Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "For metered follow-ups, the second 2MP is best used to cancel into 214PP in the corner, or 214PP~P for good damage and a hard knockdown anywhere. Alternatively, a DRC can be used for damage and corner carry, but the CH advantage is best used to hitconfirm a DRC into 4HK."
     },
     {
       "combo": "CH 2MP, 5LP~MP~HP...",
-      "section": "Links and Starters / Counter-Hit"
+      "section": "Links and Starters / Counter-Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "CH confirm if you're outside of 2HP range. If 2MP lands near its max range, the opponent will be able to recover and block the 5LP, or it will whiff."
     },
     {
       "combo": "CH 2MP, 2HP...",
-      "section": "Links and Starters / Counter-Hit"
+      "section": "Links and Starters / Counter-Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "2HP will whiff if not basically point-blank."
     },
     {
       "combo": "CH 6MP, 2LP...",
-      "section": "Links and Starters / Counter-Hit"
+      "section": "Links and Starters / Counter-Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Luke's overhead gives him a link to 2LP on CH."
     },
     {
       "combo": "CH 4HP, 2LP...",
-      "section": "Links and Starters / Counter-Hit"
+      "section": "Links and Starters / Counter-Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "While this usually lands as a Punish Counter, it is useful to know that 4HP can link into 2LP on CH as well."
     },
     {
       "combo": "CH 4HK, 2MP...",
-      "section": "Links and Starters / Counter-Hit"
+      "section": "Links and Starters / Counter-Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Another move that is usually a Punish Counter, but good to know nonetheless."
     },
     {
       "combo": "CH 236HP, 2LP...",
-      "section": "Links and Starters / Counter-Hit"
+      "section": "Links and Starters / Counter-Hit",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Heavy Sand Blast usually catches people mashing after a blocked 5HP."
     },
     {
       "combo": "PC 5LK/2LP, 5LP~MP~HP/2HP...",
-      "section": "Links and Starters / Punish Counter"
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Niche Light punish follow-ups, which will whiff when punishing extended hurtboxes with these normals, so an immediate DRC is generally preferred."
     },
     {
       "combo": "PC 2MP, 5MP...",
-      "section": "Links and Starters / Punish Counter"
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Useful hitconfirm if you're in burnout and outside 2HP range; it is almost guaranteed unless 2MP hits at the very tip, and has good damage potential because of the super cancel from 5MP~MP, but 5LP TC is preferred for routing into SA3."
     },
     {
       "combo": "PC 5MP, 2MP...",
-      "section": "Links and Starters / Punish Counter"
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Useful link that allows 5MP to convert into more damage or start a full combo by spending resources. If 5MP lands at the very tip or on an extended hurtbox, 2MP will whiff, in which case it's better to complete the target combo for the guaranteed damage."
     },
     {
       "combo": "PC 4HP, 2HP...",
-      "section": "Links and Starters / Punish Counter"
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Great shimmy punish."
     },
     {
       "combo": "PC 6HP, 2HP...",
-      "section": "Links and Starters / Punish Counter"
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "6HP can be used for big punishes from longer ranges. Deals less drive gauge damage than 4HP"
+    },
+    {
+      "combo": "PC 6HP~HP > 214[MP]/pf.214MP...",
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "If 6HP connects at the tip on a punish, 2HP will whiff, but the target combo follow-up will put the opponent into a tailspin, allowing a cancel into charge 214MP"
     },
     {
       "combo": "PC 5HP > 214[MP]/pf.214MP...",
-      "section": "Links and Starters / Punish Counter"
+      "section": "Links and Starters / Punish Counter",
+      "position": "Midscreen",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "PC 5HP upgrades the follow-up to full midscreen combos with 214[MP]."
     },
     {
       "combo": "PC 4HK, 6HP~6HP...",
-      "section": "Links and Starters / Punish Counter"
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Meterless follow-up on PC 4HK. Not recommended, as it's always better to use 4HP or 214MP for more meterless damage on a punish."
     },
     {
       "combo": "PC 4HK, PDR 2MP, 2HP...",
-      "section": "Links and Starters / Punish Counter"
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Amazing Drive Rush extension for only a 1 bar."
     },
     {
       "combo": "PC 214MP, 2HP...",
-      "section": "Links and Starters / Punish Counter"
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "Highest damaging meterless Punish Counter combo starter. Most optimal DP punish if you can't land DR 4HK and don't want to meter dump. Does slightly less Drive Gauge damage on hit than a punish with a Heavy normal (80% of a bar versus a full bar), so 4HP may be preferable when setting up checkmate situations."
     },
     {
       "combo": "PC 236HP, 2HP...",
-      "section": "Links and Starters / Punish Counter"
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Medium",
+      "notes": "If 236HP is used to call out a reversal Level 1, you can get a full combo."
     },
     {
       "combo": "PC PDR 4HK, 5HP...",
-      "section": "Links and Starters / Punish Counter"
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "Medium",
+      "notes": "Easy PC starter for meter dump combos."
     },
     {
       "combo": "PC PDR 4HK, 5HK, 2MP > DRC 2MP, 2HP > DRC 4HK, 2HP...",
-      "section": "Links and Starters / Punish Counter"
+      "section": "Links and Starters / Punish Counter",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "1",
+      "difficulty": "Hard",
+      "notes": "Optimal sequence for meter dump combos. 5HK may whiff depending on 4HK's spacing, in which case it's better to go into 5HP"
     },
     {
       "combo": "PC HPHK, 5HP/2HP...",
       "section": "Links and Starters / Drive Impact",
-      "driveMeter": "PC HPHK, 5HP/2HP..."
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "Punish Counter Drive Impact links into HP buttons to start your BNB."
     },
     {
       "combo": "HPHK CRUSH, 5HP > pf.214LP/214[LP]...",
       "section": "Links and Starters / Drive Impact",
-      "driveMeter": "HPHK CRUSH, 5HP > pf.214LP/214[LP]..."
+      "position": "Corner",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "2HP drops due to them already being launched, so use 5HP instead."
     },
     {
       "combo": "HPHK STUN, j9 > j.HK > 2HP/5HP > pf.214LP/214[LP]...",
       "section": "Links and Starters / Drive Impact",
-      "driveMeter": "HPHK STUN, j9 > j.HK > 2HP/5HP > pf.214LP/214[LP]..."
+      "position": "Corner",
+      "superMeter": "0",
+      "driveMeter": "0",
+      "difficulty": "Easy",
+      "notes": "If your jump-in hits late enough 5HP can be used for slightly more damage. An alternative route for mental damage is to Taunt > 2HP instead."
     },
     {
-      "combo": "...5LP/2LP/5LK > DRC > 2LP, 2HP... ...CH 5LK/2MP/2MK/ > DRC > 2MP, 2HP... ...CH 2MP/PC 2MK/5HP/2HP/4HP > DRC > 4HK, 2HP...",
+      "combo": "...5LP/2LP/5LK > DRC > 2LP, 2HP...",
       "section": "Links and Starters / Drive Rush Extensions",
-      "driveMeter": "...5LP/2LP/5LK > DRC > 2LP, 2HP... ...CH 5LK/2MP/2MK/ > DRC > 2MP, 2HP... ...CH 2MP/PC 2MK/5HP/2HP/4HP > DRC > 4HK, 2HP..."
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "Hard",
+      "notes": "Any of Luke's cancelable normals can be canceled into Drive Rush into a normal and then linked into 2HP."
+    },
+    {
+      "combo": "...CH 5LK/2MP/2MK/ > DRC > 2MP, 2HP...",
+      "section": "Links and Starters / Drive Rush Extensions",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "Hard",
+      "notes": "Any of Luke's cancelable normals can be canceled into Drive Rush into a normal and then linked into 2HP."
+    },
+    {
+      "combo": "...CH 2MP/PC 2MK/5HP/2HP/4HP > DRC > 4HK, 2HP...",
+      "section": "Links and Starters / Drive Rush Extensions",
+      "position": "Anywhere",
+      "superMeter": "0",
+      "driveMeter": "3",
+      "difficulty": "Hard",
+      "notes": "Any of Luke's cancelable normals can be canceled into Drive Rush into a normal and then linked into 2HP."
     }
   ],
-  "comboTheory": "### Perfect Knuckle Breakdown",
-  "lastUpdated": "2026-03-16"
+  "lastUpdated": "2026-08-09"
 }

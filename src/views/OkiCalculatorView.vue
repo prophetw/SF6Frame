@@ -413,7 +413,7 @@ function parseKnockdownAdvantage(move: Move): number {
 
     // Priority 1: Parse exact advantage from 'onHit' string
     if (move.onHit && typeof move.onHit === 'string') {
-        const match = move.onHit.match(/(?:KD|HKD|Crumple)[^0-9]*(\d+)/i);
+        const match = move.onHit.match(/(?:KD|HKD|Crumple)\s*([+-]?\d+)/i);
         if (match) {
             return parseInt(match[1] || '0', 10);
         }
