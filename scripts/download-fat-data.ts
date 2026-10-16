@@ -46,6 +46,7 @@ const CHARACTER_ID_MAP: Record<string, string> = {
     'Mai': 'mai',
     'Elena': 'elena',
     'Ingrid': 'ingrid',
+    'Arjun': 'arjun',
 };
 
 // Japanese name mapping
@@ -77,6 +78,7 @@ const NAME_JP_MAP: Record<string, string> = {
     'mai': '不知火舞',
     'elena': 'エレナ',
     'ingrid': 'イングリッド',
+    'arjun': 'アルジュン',
 };
 
 // Cancel type display names

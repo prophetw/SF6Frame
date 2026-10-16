@@ -38,4 +38,6 @@ export const CHARACTERS: CharacterConfig[] = [
     { id: 'sagat', name: 'Sagat', nameJp: 'サガト', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/Sagat' },
     { id: 'alex', name: 'Alex', nameJp: 'アレックス', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/Alex' },
     { id: 'ingrid', name: 'Ingrid', nameJp: 'イングリッド', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/Ingrid' },
+    { id: 'arjun', name: 'Arjun', nameJp: 'アルジュン', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/Arjun' },
 ];
+
