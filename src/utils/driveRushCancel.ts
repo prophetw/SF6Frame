@@ -1,5 +1,5 @@
 import type { Move } from '../types';
-import { DRIVE_RUSH_FRAME_ADVANTAGE_BONUS, isDriveRushFollowUpMove } from './driveRush';
+import { DRIVE_RUSH_FRAME_ADVANTAGE_BONUS, getDriveRushMoveStartup, isDriveRushFollowUpMove } from './driveRush';
 import { parseActiveWindowFrames } from './frameTotals';
 import { calculateGap, calculateMoveStats, isCancelValid, isDriveRushCancelMove, type CalculationResult, type CalculationType, type HitState } from './gapCalculator';
 
@@ -19,6 +19,40 @@ export interface DriveRushCancelResult extends CalculationResult {
   followUpAdvantage?: number;
   followUpAdvantageFormula?: string;
   hitstun?: number;
+}
+
+export type DriveRushComparisonSort = 'reliability' | 'advantage' | 'startup';
+
+export interface DriveRushComparisonRow {
+  move: Move;
+  index: number;
+  result: DriveRushCancelResult | null;
+}
+
+function comparisonPriority(result: DriveRushCancelResult | null, type: CalculationType): number {
+  if (!result?.valid) return 4;
+  if (type === 'hit') return result.gap >= 0 ? 0 : 1;
+  if (result.gap < 0) return 0;
+  if (result.gap < 3) return 1;
+  return result.gap === 3 ? 2 : 3;
+}
+
+export function sortDriveRushComparisons(
+  rows: readonly DriveRushComparisonRow[],
+  type: CalculationType,
+  sort: DriveRushComparisonSort = 'reliability',
+): DriveRushComparisonRow[] {
+  return [...rows].sort((a, b) => {
+    const priority = comparisonPriority(a.result, type) - comparisonPriority(b.result, type);
+    if (priority) return priority;
+    if (!a.result?.valid || !b.result?.valid) return a.index - b.index;
+
+    const windowOrder = type === 'hit' ? b.result.gap - a.result.gap : a.result.gap - b.result.gap;
+    const advantageOrder = (b.result.followUpAdvantage ?? 0) - (a.result.followUpAdvantage ?? 0);
+    const startupOrder = (getDriveRushMoveStartup(a.move) ?? Infinity) - (getDriveRushMoveStartup(b.move) ?? Infinity);
+    const chosenOrder = sort === 'advantage' ? advantageOrder : sort === 'startup' ? startupOrder : windowOrder;
+    return chosenOrder || windowOrder || advantageOrder || startupOrder || a.index - b.index;
+  });
 }
 
 function numericFrame(value: unknown): number | null {

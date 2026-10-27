@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue';
 import type { FrameData, Move } from '../types';
 import { getMoveDisplayName } from '../i18n';
 import { isCancelValid, isDriveRushCancelMove, type CalculationType, type HitState } from '../utils/gapCalculator';
-import { calculateDriveRushCancelPressure, getDriveRushCancelFrame, isDriveRushCancelNormal } from '../utils/driveRushCancel';
+import { calculateDriveRushCancelPressure, getDriveRushCancelFrame, isDriveRushCancelNormal, sortDriveRushComparisons, type DriveRushCancelResult, type DriveRushComparisonSort } from '../utils/driveRushCancel';
 
 const props = defineProps<{ frameData: FrameData; type: CalculationType }>();
 const sourceIndex = ref(-1);
@@ -11,6 +11,7 @@ const followUpIndex = ref(-1);
 const extraDelay = ref(0);
 const isOpponentBurnout = ref(false);
 const hitState = ref<HitState>('normal');
+const comparisonSort = ref<DriveRushComparisonSort>('reliability');
 const outcomeLabel = computed(() => props.type === 'hit' ? '命中' : '被防');
 const driveRush = computed(() => props.frameData.moves.find(isDriveRushCancelMove));
 const sourceMoves = computed(() => props.frameData.moves
@@ -45,7 +46,19 @@ function calculate(followUp: Move) {
 }
 
 const result = computed(() => move2.value ? calculate(move2.value) : null);
-const comparisonRows = computed(() => followUpMoves.value.map(entry => ({ ...entry, result: calculate(entry.move) })));
+const comparisonRows = computed(() => sortDriveRushComparisons(
+  followUpMoves.value.map(entry => ({ ...entry, result: calculate(entry.move) })),
+  props.type,
+  comparisonSort.value,
+));
+const sortHint = computed(() => {
+  const groups = props.type === 'hit' ? '成功 → 失败 → 无法计算' : '连防 → 帧陷阱 → 可相杀 → 可抢动 → 无法计算';
+  if (comparisonSort.value === 'advantage') return `${groups}；同组按${outcomeLabel.value}优势从高到低。`;
+  if (comparisonSort.value === 'startup') return `${groups}；同组按发生帧从快到慢。`;
+  return props.type === 'hit'
+    ? '成功项按窗口从大到小；失败项按缺失帧数从少到多；同窗口优先优势更高，无法计算放最后。'
+    : `${groups}；同组空隙越小越靠前，同空隙优先优势更高。`;
+});
 const ryuPresets = computed(() => {
   if (props.frameData.character.id !== 'ryu' || !sourceMoves.value.some(({ move }) => move.input === '2MK')) return [];
   return followUpMoves.value.filter(({ move }) => ['5LP', '5HP'].includes(move.input));
@@ -63,6 +76,21 @@ function selectPreset(index: number) {
 
 function formatFrames(value: number | undefined) {
   return value === undefined ? '—' : `${value > 0 ? '+' : ''}${value}F`;
+}
+
+function resultClass(value: DriveRushCancelResult | null): string {
+  return value?.valid ? value.statusClass : 'status-unknown';
+}
+
+function resultIcon(value: DriveRushCancelResult | null): string {
+  const status = resultClass(value);
+  if (status === 'status-safe') return '✓';
+  if (status === 'status-danger') return '✕';
+  return status === 'status-unknown' ? '—' : '!';
+}
+
+function advantageClass(value: number | undefined): string {
+  return value === undefined || value === 0 ? 'neutral' : value > 0 ? 'plus' : 'minus';
 }
 </script>
 
@@ -135,12 +163,12 @@ function formatFrames(value: number | undefined) {
         <div class="result-metrics">
           <div>
             <span>{{ type === 'hit' ? result.displayLabel : '中间空隙（Gap）' }}</span>
-            <strong data-testid="drc-gap">{{ result.displayValue }}</strong>
-            <p :class="result.statusClass">{{ result.status }}</p>
+            <strong data-testid="drc-gap" :class="result.statusClass">{{ result.displayValue }}</strong>
+            <p><span class="status-badge" :class="result.statusClass"><span aria-hidden="true">{{ resultIcon(result) }}</span>{{ result.status }}</span></p>
           </div>
           <div>
             <span>后续招式{{ outcomeLabel }}后优势</span>
-            <strong data-testid="drc-advantage" :class="(result.followUpAdvantage ?? 0) >= 0 ? 'plus' : 'minus'">{{ formatFrames(result.followUpAdvantage) }}</strong>
+            <strong data-testid="drc-advantage" :class="advantageClass(result.followUpAdvantage)">{{ formatFrames(result.followUpAdvantage) }}</strong>
             <p>{{ move2?.input }} {{ outcomeLabel }}后，{{ result.followUpAdvantage === 0 ? '双方同时可动' : (result.followUpAdvantage ?? 0) > 0 ? '我方先动' : '对方先动' }}</p>
           </div>
         </div>
@@ -155,18 +183,31 @@ function formatFrames(value: number | undefined) {
       <p v-else-if="result" class="error-text" role="alert">{{ result.error }}</p>
 
       <div v-if="result?.valid" class="comparison">
-        <h3>同一首招的后续招式对比</h3>
+        <div class="comparison-toolbar">
+          <h3>同一首招的后续招式对比</h3>
+          <label for="drc-sort">排序
+            <select id="drc-sort" v-model="comparisonSort">
+              <option value="reliability">{{ type === 'hit' ? '推荐：窗口更稳' : '推荐：压制更安全' }}</option>
+              <option value="advantage">{{ outcomeLabel }}优势优先</option>
+              <option value="startup">发生更快优先</option>
+            </select>
+          </label>
+        </div>
         <p class="hint">沿用当前{{ outcomeLabel }}状态与额外延迟，点击招式查看详情。{{ type === 'hit' ? '连招窗口正值为剩余帧数，负值为缺失帧数。' : '' }}</p>
+        <p class="hint sort-hint">{{ sortHint }}</p>
         <div class="table-scroll">
           <table>
             <thead><tr><th>后续招式</th><th>发生</th><th>{{ type === 'hit' ? '连招窗口' : '空隙' }}</th><th>{{ type === 'hit' ? '连招判定' : '压制判定' }}</th><th>{{ outcomeLabel }}优势</th></tr></thead>
             <tbody>
-              <tr v-for="row in comparisonRows" :key="row.index" :class="{ selected: row.index === followUpIndex }">
+              <tr v-for="row in comparisonRows" :key="row.index" :class="{ selected: row.index === followUpIndex }" :data-result-status="resultClass(row.result)">
                 <td><button type="button" @click="followUpIndex = row.index">{{ row.move.input }} · {{ getMoveDisplayName(row.move) }}</button></td>
                 <td>{{ row.move.startup }}F</td>
-                <td>{{ row.result?.valid ? (type === 'hit' ? formatFrames(row.result.gap) : row.result.displayValue) : '—' }}</td>
-                <td :class="row.result?.statusClass">{{ row.result?.valid ? row.result.status : row.result?.error }}</td>
-                <td>{{ row.result?.valid ? formatFrames(row.result.followUpAdvantage) : '—' }}</td>
+                <td class="frame-value" :class="resultClass(row.result)">{{ row.result?.valid ? (type === 'hit' ? formatFrames(row.result.gap) : row.result.displayValue) : '—' }}</td>
+                <td>
+                  <span class="status-badge" :class="resultClass(row.result)"><span aria-hidden="true">{{ resultIcon(row.result) }}</span>{{ row.result?.valid ? row.result.status : '无法计算' }}</span>
+                  <small v-if="!row.result?.valid" class="calculation-error">{{ row.result?.error }}</small>
+                </td>
+                <td class="frame-value" :class="advantageClass(row.result?.followUpAdvantage)">{{ row.result?.valid ? formatFrames(row.result.followUpAdvantage) : '—' }}</td>
               </tr>
             </tbody>
           </table>
@@ -198,14 +239,27 @@ input[type="number"] { width: 5rem; margin-left: var(--space-xs); }
 .sequence { text-align: center; color: var(--color-text-secondary); }
 .result-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-lg); text-align: center; margin: var(--space-lg) 0; }
 .result-metrics strong { display: block; font-size: 2.5rem; margin: var(--space-sm) 0; }
-.plus, .status-safe { color: var(--color-success); }
-.minus, .status-danger, .error-text { color: var(--color-danger); }
+.plus, .status-safe { color: var(--color-positive); }
+.minus, .status-danger, .error-text { color: var(--color-negative); }
+.neutral, .status-unknown { color: var(--color-text-secondary); }
 .status-trap { color: var(--color-accent); }
 .status-warning { color: var(--color-warning); }
+.status-badge { display: inline-flex; align-items: center; gap: 6px; border: 1px solid currentColor; border-radius: var(--radius-md); padding: 4px 8px; font-weight: 700; line-height: 1.4; }
+.status-badge.status-safe { background: rgba(63, 185, 80, 0.14); }
+.status-badge.status-danger { background: rgba(248, 81, 73, 0.14); }
+.status-badge.status-trap { background: var(--color-accent-light); }
+.status-badge.status-warning { background: rgba(210, 153, 34, 0.14); }
+.status-badge.status-unknown { background: rgba(139, 148, 158, 0.1); }
+.calculation-error { display: block; color: var(--color-text-muted); margin-top: var(--space-xs); max-width: 26rem; }
+.frame-value { font-weight: 700; font-variant-numeric: tabular-nums; }
 details { margin-top: var(--space-md); overflow-wrap: anywhere; }
 summary { cursor: pointer; color: var(--color-accent); }
 details p { margin-top: var(--space-xs); }
 .comparison { margin-top: var(--space-xl); }
+.comparison-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-sm); }
+.comparison-toolbar h3 { margin-bottom: 0; }
+.comparison-toolbar label { display: flex; align-items: center; gap: var(--space-sm); }
+.comparison-toolbar select { width: auto; max-width: 100%; }
 .table-scroll { overflow-x: auto; margin-top: var(--space-sm); }
 table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
 th, td { text-align: left; padding: var(--space-sm); border-bottom: 1px solid var(--color-border); }

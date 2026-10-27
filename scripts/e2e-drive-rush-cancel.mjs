@@ -33,6 +33,12 @@ async function clickText(selector, text) {
   const elements = await page.$$(selector);
   for (const element of elements) {
     if ((await element.evaluate(node => node.textContent.trim())) === text) {
+      const clickable = await element.evaluate(node => {
+        node.scrollIntoView({ block: 'center', inline: 'nearest', behavior: 'instant' });
+        const bounds = node.getBoundingClientRect();
+        return node.contains(document.elementFromPoint(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2));
+      });
+      assert.ok(clickable, `${selector}: ${text} is covered by another element`);
       await element.click();
       return;
     }
@@ -68,15 +74,23 @@ async function preset(input) {
   await clickText('.presets button', `2MK → 绿冲取消 → ${input}`);
 }
 
-async function screenshot(name) {
+async function screenshot(name, selector = '.drive-rush-calculator') {
   // Capture the document region without scrolling the card under the sticky navigation.
   await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
-  const element = await page.$('.drive-rush-calculator');
+  const element = await page.$(selector);
   assert.ok(element);
   const bounds = await element.boundingBox();
   assert.ok(bounds);
   await page.screenshot({ path: path.join(artifactDir, name), clip: bounds, captureBeyondViewport: true });
   report.screenshots.push(name);
+}
+
+async function comparisonRows() {
+  return page.$$eval('.comparison tbody tr', rows => rows.map(row => ({
+    input: row.querySelector('button').textContent.trim().split(' · ')[0],
+    status: row.dataset.resultStatus,
+    gap: parseInt(row.cells[2].textContent, 10),
+  })));
 }
 
 async function legacyMove(placeholder, input) {
@@ -143,7 +157,6 @@ try {
     assert.ok(targets.includes('5LP') && targets.includes('5HP'));
     assert.ok(targets.every(input => !/[~>]/.test(input)));
     assert.equal(await page.$$eval('.comparison td button', buttons => buttons.some(node => /[~>]/.test(node.textContent.split(' · ')[0]))), false);
-    await screenshot('ryu-5lp-desktop.png');
   });
   await check('Ryu 2MK → DRC → 5HP and formula details', async () => {
     await preset('5HP');
@@ -152,6 +165,13 @@ try {
     const formula = await page.$eval('.pressure-result details', node => node.innerText);
     assert.match(formula, /3（首招取消）\+ 9（绿冲取消）/);
     assert.match(formula, /-2 \+ 4（绿冲） = \+2F/);
+  });
+  await check('block comparison defaults to safer pressure and smaller gaps first', async () => {
+    const rows = await comparisonRows();
+    assert.deepEqual(rows.slice(0, 2).map(row => row.input), ['5LP', '2LP']);
+    const gaps = rows.filter(row => row.status !== 'status-unknown').map(row => row.gap);
+    assert.ok(gaps.every((gap, index) => index === 0 || gaps[index - 1] <= gap));
+    assert.deepEqual(rows.slice(-1).map(row => row.input), ['4HK']);
   });
   await check('comparison row changes selected follow-up', async () => {
     const row = await page.$('.comparison tbody tr:first-child button');
@@ -239,7 +259,50 @@ try {
     await metrics('+5F', '+8F', '连招成立');
     assert.equal(await page.$eval('#drc-hit-ch', node => node.checked), false);
     assert.equal(await page.$eval('#drc-hit-pc', node => node.checked), true);
-    await screenshot('ryu-5hp-punish-counter-desktop.png');
+  });
+  await check('hit comparison groups successful routes, near misses and unknowns', async () => {
+    const rows = await comparisonRows();
+    assert.deepEqual(rows.slice(0, 2).map(row => row.input), ['5LP', '2LP']);
+    assert.deepEqual(rows.filter(row => row.status === 'status-danger').map(row => row.input), ['6HK', '6HP', '6MP']);
+    assert.deepEqual(rows.slice(-2).map(row => row.input), ['2HK', '4HK']);
+    const successful = rows.filter(row => row.status === 'status-safe');
+    assert.ok(successful.every((row, index) => index === 0 || successful[index - 1].gap >= row.gap));
+    assert.ok(rows.findIndex(row => row.status === 'status-danger') >= successful.length);
+  });
+  await check('success, failure and unknown badges use visible green, red and gray colors', async () => {
+    const colors = await page.evaluate(() => ['status-safe', 'status-danger', 'status-unknown'].map(status => {
+      const row = document.querySelector(`.comparison tr[data-result-status="${status}"]`);
+      const badge = row.querySelector('.status-badge');
+      return { status, color: getComputedStyle(badge).color, gapColor: getComputedStyle(row.cells[2]).color,
+        background: getComputedStyle(badge).backgroundColor, text: badge.textContent };
+    }));
+    assert.deepEqual(colors.map(item => item.color), ['rgb(63, 185, 80)', 'rgb(248, 81, 73)', 'rgb(139, 148, 158)']);
+    assert.ok(colors.every(item => item.gapColor === item.color && item.background !== 'rgba(0, 0, 0, 0)'));
+    assert.match(colors[0].text, /✓.*连招成立/);
+    assert.match(colors[1].text, /✕.*连招失败/);
+    assert.match(colors[2].text, /无法计算/);
+    await selectMove('#drc-follow-up', '6HK');
+    await metrics('1F', '+6F', '连招失败');
+    assert.equal(await page.$eval('[data-testid="drc-gap"]', node => getComputedStyle(node).color), 'rgb(248, 81, 73)');
+    await selectMove('#drc-follow-up', '5HP');
+    await metrics('+5F', '+8F', '连招成立');
+    assert.equal(await page.$eval('[data-testid="drc-gap"]', node => getComputedStyle(node).color), 'rgb(63, 185, 80)');
+    await screenshot('comparison-hit-sorted-desktop.png', '.comparison');
+  });
+  await check('alternate sorts keep the selected move and react to counter-state changes', async () => {
+    await page.select('#drc-sort', 'advantage');
+    await page.waitForFunction(() => document.querySelector('.comparison tbody button')?.textContent.trim().startsWith('5HK ·'));
+    await metrics('+5F', '+8F', '连招成立');
+    await page.click('#drc-hit-normal');
+    await metrics('+1F', '+8F', '连招成立');
+    await page.waitForFunction(() => document.querySelector('.comparison tbody button')?.textContent.trim().startsWith('5MP ·'));
+    await page.click('#drc-hit-pc');
+    await metrics('+5F', '+8F', '连招成立');
+    await page.waitForFunction(() => document.querySelector('.comparison tbody button')?.textContent.trim().startsWith('5HK ·'));
+    await page.select('#drc-sort', 'startup');
+    await page.waitForFunction(() => document.querySelector('.comparison tbody button')?.textContent.trim().startsWith('5LP ·'));
+    await page.select('#drc-sort', 'reliability');
+    await metrics('+5F', '+8F', '连招成立');
   });
   await check('hit delay reaches the exact combo boundary and then shows missing frames', async () => {
     await delay(5);
@@ -289,12 +352,15 @@ try {
     assert.ok(layout.cardRight <= layout.viewport, `Calculator overflows viewport: ${JSON.stringify(layout)}`);
     await page.click('.conditions input[type="checkbox"]');
     await metrics('1F', '+6F', '帧陷阱');
-    await screenshot('ryu-5hp-burnout-mobile.png');
     await clickText('.type-selector .type-btn', '👊 打中 (Hit/Combo)');
     await page.click('#drc-hit-ch');
     await metrics('+3F', '+8F', '连招成立');
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-    await screenshot('ryu-5hp-counter-hit-mobile.png');
+    assert.ok(await page.$eval('#drc-sort', node => {
+      const bounds = node.getBoundingClientRect();
+      return bounds.width > 0 && bounds.right <= innerWidth;
+    }));
+    await screenshot('comparison-hit-sorted-mobile.png', '.comparison');
   });
   await check('no unexpected UI errors, console errors or failed HTTP requests', async () => {
     const uiErrors = await page.$$eval('[role="alert"], .error-section, .toast-error', nodes => nodes

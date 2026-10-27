@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import type { Move } from '../types';
 import ryu from '../data/characters/ryu.json';
-import { calculateDriveRushCancelPressure, getDriveRushCancelFrame } from './driveRushCancel';
+import { calculateDriveRushCancelPressure, getDriveRushCancelFrame, sortDriveRushComparisons, type DriveRushComparisonRow } from './driveRushCancel';
+import type { CalculationType } from './gapCalculator';
 
 function ryuMove(input: string): Move {
   const move = ryu.moves.find(move => move.input === input);
@@ -13,6 +14,60 @@ const crMK = ryuMove('2MK');
 const stLP = ryuMove('5LP');
 const stHP = ryuMove('5HP');
 const driveRush = ryuMove('MPMK or 66');
+
+function comparisonRows(inputs: string[], type: CalculationType): DriveRushComparisonRow[] {
+  return inputs.map((input, index) => {
+    const move = ryuMove(input);
+    return { move, index, result: calculateDriveRushCancelPressure({ move1: crMK, move2: move, driveRush, type, hitState: 'pc' }) };
+  });
+}
+
+describe('Drive Rush Cancel comparison sorting', () => {
+  it('puts successful hit routes first, larger windows next, near misses after them, and unknowns last', () => {
+    const rows = comparisonRows(['6HP', '5HP', '4HK', '5HK', '5LP', '2HK', '6HK', '5MP', '2LP'], 'hit');
+    const sorted = sortDriveRushComparisons(rows, 'hit');
+    expect(sorted.map(row => row.move.input)).toEqual(['5LP', '2LP', '5MP', '5HP', '5HK', '6HK', '6HP', '4HK', '2HK']);
+  });
+
+  it('can prioritize hit advantage while keeping failures behind successful routes', () => {
+    const rows = comparisonRows(['6HP', '5HP', '4HK', '5HK', '5LP', '6HK', '5MP'], 'hit');
+    expect(sortDriveRushComparisons(rows, 'hit', 'advantage').map(row => row.move.input))
+      .toEqual(['5HK', '5MP', '5LP', '5HP', '6HP', '6HK', '4HK']);
+  });
+
+  it('orders block pressure by safety and then smaller gaps', () => {
+    const rows = comparisonRows(['5HP', '5HK', '5LP', '5LK', '2MK', '5MP', '4HK'], 'block');
+    expect(sortDriveRushComparisons(rows, 'block').map(row => row.move.input))
+      .toEqual(['5LP', '5LK', '5MP', '2MK', '5HP', '5HK', '4HK']);
+  });
+
+  it('keeps safer block categories ahead when prioritizing advantage', () => {
+    const rows = comparisonRows(['5HP', '5HK', '5LP', '5LK', '2MK', '5MP', '4HK'], 'block');
+    expect(sortDriveRushComparisons(rows, 'block', 'advantage').map(row => row.move.input))
+      .toEqual(['5LP', '5MP', '5LK', '2MK', '5HK', '5HP', '4HK']);
+  });
+
+  it('supports faster-startup ordering without promoting unknown results', () => {
+    const rows = comparisonRows(['4HK', '5HP', '6HP', '5MP', '5LP'], 'hit');
+    expect(sortDriveRushComparisons(rows, 'hit', 'startup').map(row => row.move.input))
+      .toEqual(['5LP', '5MP', '5HP', '6HP', '4HK']);
+  });
+
+  it('breaks equal-window ties by advantage and preserves original order for equal results', () => {
+    const rows = comparisonRows(['5LK', '2LK', '2LP', '5LP'], 'hit');
+    expect(sortDriveRushComparisons(rows, 'hit').map(row => row.move.input)).toEqual(['2LP', '5LP', '2LK', '5LK']);
+  });
+
+  it('sorts a copy and keeps missing results at the bottom', () => {
+    const rows = comparisonRows(['5HP', '5LP'], 'hit');
+    rows.unshift({ move: stLP, index: 99, result: null });
+    const before = JSON.stringify(rows);
+    const sorted = sortDriveRushComparisons(rows, 'hit');
+    expect(sorted.map(row => row.index)).toEqual([1, 0, 99]);
+    expect(JSON.stringify(rows)).toBe(before);
+    expect(sorted).not.toBe(rows);
+  });
+});
 
 describe('Drive Rush Cancel pressure', () => {
   it('keeps Ryu 2MK → DRC → 5LP a true blockstring and ends at +3 on block', () => {
