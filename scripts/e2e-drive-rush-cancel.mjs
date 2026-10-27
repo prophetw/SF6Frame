@@ -69,9 +69,13 @@ async function preset(input) {
 }
 
 async function screenshot(name) {
+  // Capture the document region without scrolling the card under the sticky navigation.
+  await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: 'instant' }));
   const element = await page.$('.drive-rush-calculator');
   assert.ok(element);
-  await element.screenshot({ path: path.join(artifactDir, name) });
+  const bounds = await element.boundingBox();
+  assert.ok(bounds);
+  await page.screenshot({ path: path.join(artifactDir, name), clip: bounds, captureBeyondViewport: true });
   report.screenshots.push(name);
 }
 
@@ -217,24 +221,80 @@ try {
     await clickText('.mode-selector .radio-label', '必杀/连招取消 (Cancel)');
     await page.waitForFunction(() => document.querySelector('.result-section .gap-value')?.textContent.trim() === '0F');
   });
-  await check('hit-mode switching hides DRC and returning restores the entry', async () => {
-    await clickText('.type-selector .type-btn', '👊 连招确认 (Link/Combo)');
-    assert.equal((await page.$$('.mode-selector .radio-label')).length, 2);
+  await check('hit mode retains the DRC entry and supports both Ryu examples', async () => {
+    await clickText('.type-selector .type-btn', '👊 打中 (Hit/Combo)');
+    assert.equal((await page.$$('.mode-selector .radio-label')).length, 3);
     await page.waitForFunction(() => document.querySelector('.result-section')?.textContent.includes('连招成立'));
-    await clickText('.type-selector .type-btn', '🛡️ 压制空隙 (Gap/Block)');
     await clickText('.mode-selector .radio-label', '绿冲取消 (DRC)');
-    await metrics('-1F', '+3F');
+    await metrics('+7F', '+8F', '连招成立');
+    await preset('5HP');
+    await metrics('+1F', '+8F', '连招成立');
+    assert.equal((await page.$$('.conditions input[type="checkbox"]')).length, 0);
     assert.equal((await page.$$('.error-section')).length, 0);
+  });
+  await check('counter hit and punish counter are mutually exclusive and affect the starter only', async () => {
+    await page.click('#drc-hit-ch');
+    await metrics('+3F', '+8F', '连招成立');
+    await page.click('#drc-hit-pc');
+    await metrics('+5F', '+8F', '连招成立');
+    assert.equal(await page.$eval('#drc-hit-ch', node => node.checked), false);
+    assert.equal(await page.$eval('#drc-hit-pc', node => node.checked), true);
+    await screenshot('ryu-5hp-punish-counter-desktop.png');
+  });
+  await check('hit delay reaches the exact combo boundary and then shows missing frames', async () => {
+    await delay(5);
+    await metrics('+0F', '+8F', '连招成立');
+    await delay(6);
+    await metrics('1F', '+8F', '连招失败');
+    assert.match(await page.$eval('.result-metrics', node => node.innerText), /缺失/);
+    await delay(0);
+    await metrics('+5F', '+8F', '连招成立');
+  });
+  await check('switching hit/block keeps moves and applies only the relevant modifiers', async () => {
+    await clickText('.type-selector .type-btn', '🛡️ 被防御 (Gap/Block)');
+    await metrics('5F', '+2F', '可被 4F 抢动打断');
+    assert.equal((await page.$$('#drc-hit-pc')).length, 0);
+    await page.click('.conditions input[type="checkbox"]');
+    await metrics('1F', '+6F', '帧陷阱');
+    await clickText('.type-selector .type-btn', '👊 打中 (Hit/Combo)');
+    await metrics('+5F', '+8F', '连招成立');
+    assert.equal(await page.$eval('#drc-hit-pc', node => node.checked), true);
+    await clickText('.type-selector .type-btn', '🛡️ 被防御 (Gap/Block)');
+    await metrics('1F', '+6F', '帧陷阱');
+    assert.equal(await page.$eval('.conditions input[type="checkbox"]', node => node.checked), true);
+    await clickText('.type-selector .type-btn', '👊 打中 (Hit/Combo)');
+  });
+  await check('character and preset changes reset counter state', async () => {
+    await preset('5LP');
+    await metrics('+7F', '+8F', '连招成立');
+    assert.equal(await page.$eval('#drc-hit-normal', node => node.checked), true);
+    await page.click('#drc-hit-ch');
+    await metrics('+9F', '+8F');
+    await page.select('.selection-section select', 'ken');
+    await page.waitForFunction(() => !document.querySelector('.presets')
+      && document.querySelector('#drc-hit-normal')?.checked);
+    await page.select('.selection-section select', 'ryu');
+    await page.waitForSelector('.presets button');
+    await metrics('+7F', '+8F');
+    assert.equal(await page.$eval('#drc-hit-normal', node => node.checked), true);
   });
   await check('mobile layout and Ryu 5HP results', async () => {
     await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
+    await clickText('.type-selector .type-btn', '🛡️ 被防御 (Gap/Block)');
     await preset('5HP');
     await metrics('5F', '+2F', '可被 4F 抢动打断');
     const layout = await page.evaluate(() => ({ viewport: innerWidth, width: document.documentElement.scrollWidth,
       cardRight: document.querySelector('.drive-rush-calculator').getBoundingClientRect().right }));
     assert.ok(layout.width <= layout.viewport, `Page overflows horizontally: ${JSON.stringify(layout)}`);
     assert.ok(layout.cardRight <= layout.viewport, `Calculator overflows viewport: ${JSON.stringify(layout)}`);
-    await screenshot('ryu-5hp-mobile.png');
+    await page.click('.conditions input[type="checkbox"]');
+    await metrics('1F', '+6F', '帧陷阱');
+    await screenshot('ryu-5hp-burnout-mobile.png');
+    await clickText('.type-selector .type-btn', '👊 打中 (Hit/Combo)');
+    await page.click('#drc-hit-ch');
+    await metrics('+3F', '+8F', '连招成立');
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    await screenshot('ryu-5hp-counter-hit-mobile.png');
   });
   await check('no unexpected UI errors, console errors or failed HTTP requests', async () => {
     const uiErrors = await page.$$eval('[role="alert"], .error-section, .toast-error', nodes => nodes

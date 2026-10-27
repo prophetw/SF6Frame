@@ -45,8 +45,6 @@ const isOpponentBurnout = ref(false);
 const isDriveRush = ref(false);
 const isDriveRushCancelMode = ref(false);
 
-watch(calculationType, () => { isDriveRushCancelMode.value = false; });
-
 const cancelFrame = ref(1); // 1-based index (1 = 1st active frame)
 
 // Search
@@ -653,14 +651,14 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
           :class="{ active: calculationType === 'block' }"
           @click="calculationType = 'block'"
         >
-          🛡️ 压制空隙 (Gap/Block)
+          🛡️ 被防御 (Gap/Block)
         </button>
         <button 
           class="type-btn" 
           :class="{ active: calculationType === 'hit' }"
           @click="calculationType = 'hit'"
         >
-          👊 连招确认 (Link/Combo)
+          👊 打中 (Hit/Combo)
         </button>
     </div>
 
@@ -675,7 +673,7 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
           <input type="radio" name="gap-mode" :checked="!isDriveRushCancelMode && calculationMode === 'cancel'" @change="calculationMode = 'cancel'; isDriveRushCancelMode = false">
           <span class="mode-title">必杀/连招取消 (Cancel)</span>
         </label>
-        <label v-if="calculationType === 'block'" class="radio-label" :class="{ active: isDriveRushCancelMode }">
+        <label class="radio-label" :class="{ active: isDriveRushCancelMode }">
           <input type="radio" name="gap-mode" :checked="isDriveRushCancelMode" @change="isDriveRushCancelMode = true">
           <span class="mode-title">绿冲取消 (DRC)</span>
         </label>
@@ -683,7 +681,7 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
     </div>
     
     <div v-if="loading" class="loading">加载数据中...</div>
-    <DriveRushCancelCalculator v-else-if="isDriveRushCancelMode && frameData" :frame-data="frameData" />
+    <DriveRushCancelCalculator v-else-if="isDriveRushCancelMode && frameData" :frame-data="frameData" :type="calculationType" />
 
     <div v-else class="calculator-grid">
       <!-- Move 1 Input -->
@@ -761,21 +759,21 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
                  :class="{ active: hitState === 'normal' }"
                  @click="hitState = 'normal'"
                >
-                 Normal
+                 普通命中
                </button>
                <button 
                  class="mod-chip counter" 
                  :class="{ active: hitState === 'ch' }"
                  @click="hitState = 'ch'"
                >
-                 Counter (+2)
+                 打康（+2）
                </button>
                <button 
                  class="mod-chip punish" 
                  :class="{ active: hitState === 'pc' }"
                  @click="hitState = 'pc'"
                >
-                 Punish (+4)
+                 确反康（+4）
                </button>
              </div>
           </div>
@@ -790,7 +788,7 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
                  :class="{ active: isOpponentBurnout }"
                  @click="isOpponentBurnout = !isOpponentBurnout"
                >
-                 对方白了（仅防御 +4）
+                 打白（被防 +4）
                </button>
                <button 
                  class="mod-chip burnout" 

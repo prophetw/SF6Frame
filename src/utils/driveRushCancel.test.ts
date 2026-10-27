@@ -23,7 +23,7 @@ describe('Drive Rush Cancel pressure', () => {
     expect(result.blockstun).toBe(16);
     expect(result.gap).toBe(-1);
     expect(result.status).toContain('连防');
-    expect(result.onBlockAdvantage).toBe(3);
+    expect(result.followUpAdvantage).toBe(3);
   });
 
   it('shows the interruptible gap before Ryu 5HP, while ending at +2 if blocked', () => {
@@ -31,7 +31,7 @@ describe('Drive Rush Cancel pressure', () => {
     expect(result.valid).toBe(true);
     expect(result.gap).toBe(5);
     expect(result.status).toBe('可被 4F 抢动打断');
-    expect(result.onBlockAdvantage).toBe(2);
+    expect(result.followUpAdvantage).toBe(2);
   });
 
   it('adds +4 to each blocked attack for burnout, without double-counting DRC', () => {
@@ -40,7 +40,7 @@ describe('Drive Rush Cancel pressure', () => {
     });
     expect(result.blockstun).toBe(20);
     expect(result.gap).toBe(1);
-    expect(result.onBlockAdvantage).toBe(6);
+    expect(result.followUpAdvantage).toBe(6);
   });
 
   it('increases the gap for delayed pressure without increasing the final block advantage', () => {
@@ -49,7 +49,7 @@ describe('Drive Rush Cancel pressure', () => {
     });
     expect(result.gap).toBe(1);
     expect(result.status).toContain('帧陷阱');
-    expect(result.onBlockAdvantage).toBe(3);
+    expect(result.followUpAdvantage).toBe(3);
   });
 
   it.each([
@@ -128,6 +128,102 @@ describe('Drive Rush Cancel pressure', () => {
     expect(calculateDriveRushCancelPressure({
       move1: { ...crMK, active: '2(3)2' }, move2: stLP, driveRush,
     }).valid).toBe(false);
+  });
+});
+
+describe('Drive Rush Cancel hit mode', () => {
+  it.each([
+    { input: '5LP', hitState: 'normal', window: 7, hitstun: 23 },
+    { input: '5LP', hitState: 'ch', window: 9, hitstun: 25 },
+    { input: '5LP', hitState: 'pc', window: 11, hitstun: 27 },
+    { input: '5HP', hitState: 'normal', window: 1, hitstun: 23 },
+    { input: '5HP', hitState: 'ch', window: 3, hitstun: 25 },
+    { input: '5HP', hitState: 'pc', window: 5, hitstun: 27 },
+  ] as const)('calculates Ryu 2MK ($hitState) → DRC → $input', ({ input, hitState, window, hitstun }) => {
+    const result = calculateDriveRushCancelPressure({
+      move1: crMK, move2: ryuMove(input), driveRush, type: 'hit', hitState,
+    });
+    expect(result.valid).toBe(true);
+    expect(result.hitstun).toBe(hitstun);
+    expect(result.blockstun).toBeUndefined();
+    expect(result.gap).toBe(window);
+    expect(result.displayValue).toBe(`+${window}F`);
+    expect(result.status).toContain('连招成立');
+    // Counter bonuses belong to the starter; the follow-up gets only its own DR bonus.
+    expect(result.followUpAdvantage).toBe(8);
+    expect(result.followUpAdvantageFormula).toBe('4 + 4（绿冲）');
+  });
+
+  it('keeps the exact zero-surplus boundary as a successful combo', () => {
+    const result = calculateDriveRushCancelPressure({
+      move1: crMK, move2: stHP, driveRush, type: 'hit', extraDelay: 1,
+    });
+    expect(result.gap).toBe(0);
+    expect(result.displayValue).toBe('+0F');
+    expect(result.status).toContain('连招成立');
+  });
+
+  it('shows the deficit when delay breaks the combo', () => {
+    const result = calculateDriveRushCancelPressure({
+      move1: crMK, move2: stHP, driveRush, type: 'hit', extraDelay: 2,
+    });
+    expect(result.gap).toBe(-1);
+    expect(result.displayValue).toBe('1F');
+    expect(result.displayLabel).toContain('缺失');
+    expect(result.status).toContain('连招失败');
+  });
+
+  it('does not apply burnout to hitstun or hit advantage, even with punish counter', () => {
+    const result = calculateDriveRushCancelPressure({
+      move1: crMK, move2: stHP, driveRush, type: 'hit', hitState: 'pc', isOpponentBurnout: true,
+    });
+    expect(result.hitstun).toBe(27);
+    expect(result.gap).toBe(5);
+    expect(result.followUpAdvantage).toBe(8);
+    expect(result.formulaDesc).not.toContain('打白');
+  });
+
+  it.each(['ch', 'pc'] as const)('does not apply %s to block calculations', hitState => {
+    const result = calculateDriveRushCancelPressure({
+      move1: crMK, move2: stHP, driveRush, type: 'block', hitState, isOpponentBurnout: true,
+    });
+    expect(result.blockstun).toBe(20);
+    expect(result.gap).toBe(1);
+    expect(result.followUpAdvantage).toBe(6);
+    expect(result.hitstun).toBeUndefined();
+  });
+
+  it('uses hit data without requiring block data', () => {
+    const result = calculateDriveRushCancelPressure({
+      move1: { ...crMK, onBlock: '-', raw: { hitstun: '23' } },
+      move2: { ...stHP, onBlock: '-' }, driveRush, type: 'hit', hitState: 'ch',
+    });
+    expect(result.valid).toBe(true);
+    expect(result.hitstun).toBe(25);
+    expect(result.gap).toBe(3);
+    expect(result.followUpAdvantage).toBe(8);
+  });
+
+  it('derives hitstun when raw data is absent', () => {
+    const result = calculateDriveRushCancelPressure({
+      move1: { ...crMK, raw: undefined }, move2: stHP, driveRush, type: 'hit',
+    });
+    expect(result.valid).toBe(true);
+    expect(result.hitstun).toBe(23);
+    expect(result.gap).toBe(1);
+  });
+
+  it('rejects missing or knockdown-only hit advantage instead of treating it as zero', () => {
+    const missingSource = calculateDriveRushCancelPressure({
+      move1: { ...crMK, onHit: '-', raw: undefined }, move2: stHP, driveRush, type: 'hit',
+    });
+    expect(missingSource.valid).toBe(false);
+    expect(missingSource.error).toContain('命中硬直');
+    for (const onHit of ['-', 'KD +36']) {
+      const result = calculateDriveRushCancelPressure({ move1: crMK, move2: { ...stHP, onHit }, driveRush, type: 'hit' });
+      expect(result.valid).toBe(false);
+      expect(result.error).toContain('命中帧数');
+    }
   });
 });
 
