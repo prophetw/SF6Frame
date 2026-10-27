@@ -2,6 +2,7 @@
 import { ref, computed, watch, onMounted } from 'vue';
 import { SF6_CHARACTERS, type Move, type FrameData } from '../types';
 import { getMoveDisplayName } from '../i18n';
+import DriveRushCancelCalculator from '../components/DriveRushCancelCalculator.vue';
 import { 
   calculateGap, 
   calculateMoveStats, 
@@ -42,6 +43,9 @@ const calculationType = ref<'block' | 'hit'>('block'); // New: Block (Gap) vs Hi
 const hitState = ref<'normal' | 'ch' | 'pc'>('normal'); // New: Hit State
 const isOpponentBurnout = ref(false);
 const isDriveRush = ref(false);
+const isDriveRushCancelMode = ref(false);
+
+watch(calculationType, () => { isDriveRushCancelMode.value = false; });
 
 const cancelFrame = ref(1); // 1-based index (1 = 1st active frame)
 
@@ -220,6 +224,7 @@ const move1Stats = computed(() => {
 
 // Calculation Logic
 const calculationResult = computed<CalculationResult | null>(() => {
+  if (isDriveRushCancelMode.value) return null;
   if (!move1.value || !move2.value) return null;
 
   return calculateGap({
@@ -614,7 +619,7 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
   <div class="gap-calculator-view container">
     <header class="page-header">
       <h1>连招间隙计算器 (Gap Calculator)</h1>
-      <p class="subtitle">计算两个攻击动作之间的帧数空隙，判断是否为伪连或连防。</p>
+      <p class="subtitle">计算招式衔接或绿冲取消后的帧数空隙，判断压制是否连防。</p>
       <div class="explanation-content explanation-inline">
         <h4>Gap 机制科普：为何有空隙就能插动？</h4>
         <p>SF6 允许你把无敌反击（OD 升龙/无敌超必）在 blockstun 结束前最多提前 <strong>4F</strong> 缓冲，一旦进入第一帧可动就会立刻启动。（起身场景缓冲更大，可达 7F）。</p>
@@ -662,19 +667,24 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
     <!-- Mode Selection -->
     <div class="card mode-selector">
       <div class="radio-group">
-        <label class="radio-label" :class="{ active: calculationMode === 'link' }">
-          <input type="radio" v-model="calculationMode" value="link">
+        <label class="radio-label" :class="{ active: !isDriveRushCancelMode && calculationMode === 'link' }">
+          <input type="radio" name="gap-mode" :checked="!isDriveRushCancelMode && calculationMode === 'link'" @change="calculationMode = 'link'; isDriveRushCancelMode = false">
           <span class="mode-title">普通链接 (Link)</span>
         </label>
-        <label class="radio-label" :class="{ active: calculationMode === 'cancel' }">
-          <input type="radio" v-model="calculationMode" value="cancel">
+        <label class="radio-label" :class="{ active: !isDriveRushCancelMode && calculationMode === 'cancel' }">
+          <input type="radio" name="gap-mode" :checked="!isDriveRushCancelMode && calculationMode === 'cancel'" @change="calculationMode = 'cancel'; isDriveRushCancelMode = false">
           <span class="mode-title">必杀/连招取消 (Cancel)</span>
+        </label>
+        <label v-if="calculationType === 'block'" class="radio-label" :class="{ active: isDriveRushCancelMode }">
+          <input type="radio" name="gap-mode" :checked="isDriveRushCancelMode" @change="isDriveRushCancelMode = true">
+          <span class="mode-title">绿冲取消 (DRC)</span>
         </label>
       </div>
     </div>
     
     <div v-if="loading" class="loading">加载数据中...</div>
-    
+    <DriveRushCancelCalculator v-else-if="isDriveRushCancelMode && frameData" :frame-data="frameData" />
+
     <div v-else class="calculator-grid">
       <!-- Move 1 Input -->
       <div class="card input-card">
@@ -933,7 +943,7 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
 
     </section>
     
-    <section v-else-if="move1 && move2" class="error-section">
+    <section v-else-if="!isDriveRushCancelMode && move1 && move2" class="error-section">
       <p class="error-text">{{ calculationResult?.error || '无法计算' }}</p>
     </section>
 
@@ -1504,7 +1514,7 @@ function getSequenceCandidateEvaluation(move: Move): { text: string; className: 
 
 .mode-selector {
   margin: 0 auto var(--space-md);
-  max-width: 400px;
+  max-width: 640px;
   padding: var(--space-xs);
   background: var(--color-bg-secondary);
   border-radius: var(--radius-full);
