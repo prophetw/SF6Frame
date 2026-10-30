@@ -4,7 +4,14 @@ import { SF6_CHARACTERS, type Move, type FrameData, type CharacterStats } from '
 import { calculateTradeAdvantage, parseHitstun, getEffectiveHitstun } from '../utils/trade';
 import { calculateMoveStats, parseFrameValue } from '../utils/gapCalculator';
 import { buildOkiResultKeyBase, getUniqueOkiResultKey } from '../utils/okiResultKey';
-import { calculateMoveTotalFrames as calculateUnifiedMoveTotalFrames } from '../utils/frameTotals';
+import { getSafePressureWakeupRange, type OkiFrameRange, type OkiMemoryKnockdown } from '../utils/okiPressure';
+import OkiRouteMemory from '../components/OkiRouteMemory.vue';
+import {
+  calculateMoveTotalFrames as calculateUnifiedMoveTotalFrames,
+  parseActiveWindowFrames as parseKnownActiveWindowFrames,
+  parseRecoveryTotalFrames as parseKnownRecoveryFrames,
+} from '../utils/frameTotals';
+import { calculateWakeupDriveImpactGuard, DRIVE_IMPACT, type WakeupDriveImpactGuard } from '../utils/wakeupDriveImpact';
 import { isAirborneMove } from '../utils/moveFilters';
 import {
   calculateDriveRushAttackTiming,
@@ -396,8 +403,8 @@ function stepDefenderBaitCustomWhiffRecovery(val: number) {
   defenderBaitCustomWhiffRecovery.value = Math.max(1, (defenderBaitCustomWhiffRecovery.value || 1) + val);
 }
 
-const BURST_STARTUP_FRAMES = 26;
-const BURST_ACTIVE_FRAMES = 2;
+const BURST_STARTUP_FRAMES = DRIVE_IMPACT.startup;
+const BURST_ACTIVE_FRAMES = DRIVE_IMPACT.active;
 
 // Selected result for detail view
 const selectedResultKey = ref<string | null>(null);
@@ -575,6 +582,19 @@ const knockdownMoves = computed<Move[]>(() => {
   }
   return expanded;
 });
+
+const memoryKnockdowns = computed<OkiMemoryKnockdown[]>(() => [
+  ...knockdownMoves.value.map(move => ({
+    name: getMoveDisplayName(move),
+    input: move.input,
+    advantage: parseKnockdownAdvantage(move),
+  })),
+  ...filteredCustomMoves.value.map(move => ({
+    name: move.name,
+    input: move.input,
+    advantage: move.frames,
+  })),
+]);
 
 const filteredKnockdownMoves = computed<Move[]>(() => {
   const queryRaw = knockdownSearchQuery.value.trim();
@@ -896,6 +916,8 @@ interface ExtendedOkiResult {
   prefixFrames: number;
   ourActiveStart: number;
   ourActiveEnd: number;
+  safePressureRange: OkiFrameRange | null;
+  driveImpactGuard: WakeupDriveImpactGuard;
   activeDisplayStartOffset?: number;
   activeDisplayLength?: number;
   activeHasGap?: boolean;
@@ -946,6 +968,28 @@ function parseFrameAdvantage(adv: string | number | undefined): number | null {
   if (!adv) return null;
   const match = adv.match(/^[+-]?\d+/);
   return match ? parseInt(match[0]) : null;
+}
+
+function getOkiRouteLabel(result: ExtendedOkiResult): string {
+  return [result.prefix, result.move.input || getMoveDisplayName(result.move)].filter(Boolean).join(' → ');
+}
+
+function getMoveDriveImpactGuard(move: Move, recoverFrame: number, hasProjectileBodyTiming = false): WakeupDriveImpactGuard {
+  const timingKnown = hasProjectileBodyTiming
+    || (parseKnownActiveWindowFrames(move.active) !== null && parseKnownRecoveryFrames(move.recovery) !== null);
+  return calculateWakeupDriveImpactGuard({
+    opponentWakeupFrame: opponentWakeupFrame.value,
+    recoverFrame: timingKnown ? recoverFrame : null,
+  });
+}
+
+function getDriveImpactGuardLabel(guard: WakeupDriveImpactGuard): string {
+  return guard.canBlock === null ? '未确认' : guard.canBlock ? '可防' : '不可直防';
+}
+
+function getDriveImpactGuardDescription(guard: WakeupDriveImpactGuard): string {
+  if (guard.safetyMargin === null) return '招式持续或收招帧不足，无法确认能否直接格挡起身 DI';
+  return `恢复 ${guard.recoverFrame}F；起身 DI 生效 ${guard.impactFrame}F；${guard.canBlock ? '余量' : '收招晚了'} ${Math.abs(guard.safetyMargin)}F`;
 }
 
 function parseStartup(startupStr: string | number | undefined): number {
@@ -1211,6 +1255,15 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
       if (isRyuHadoken && !projectileOki) continue;
       const ourStart = projectileOki ? oppWindowStart : normalOurStart;
       const ourEnd = projectileOki ? oppWindowStart : normalOurEnd;
+      const safePressureRange = getSafePressureWakeupRange({
+        activeStart: ourStart,
+        activeEnd: ourEnd,
+        opponentStartup: normalizedOpponentReversalStartup.value,
+        projectileContactRange: projectileOki?.contactWindow ? {
+          start: prefix.frames + Math.max(projectileOki.startup, projectileOki.contactWindow.minBlockFrameFromInput),
+          end: prefix.frames + projectileOki.contactWindow.maxBlockFrameFromInput,
+        } : undefined,
+      });
 
       // Success: our active window overlaps opponent's vulnerable startup window
       const overlapsPreActive =
@@ -1311,6 +1364,8 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           prefixFrames: prefix.frames,
           ourActiveStart: ourStart,
           ourActiveEnd: ourEnd,
+          safePressureRange,
+          driveImpactGuard: getMoveDriveImpactGuard(move, recoveryTiming.recoverFrame, !!projectileOki),
           activeDisplayStartOffset,
           activeDisplayLength,
           activeHasGap,
@@ -1373,6 +1428,11 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
       });
       const ourStart = timing.firstActiveFrame;
       const ourEnd = timing.lastActiveFrame;
+      const safePressureRange = getSafePressureWakeupRange({
+        activeStart: ourStart,
+        activeEnd: ourEnd,
+        opponentStartup: normalizedOpponentReversalStartup.value,
+      });
 
       const overlapsPreActive =
         hasPreActiveWindow && ourEnd >= oppWindowStart && ourStart <= oppWindowEnd;
@@ -1460,6 +1520,8 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           prefixFrames: effectivePrefixFrames,
           ourActiveStart: ourStart,
           ourActiveEnd: ourEnd,
+          safePressureRange,
+          driveImpactGuard: getMoveDriveImpactGuard(move, recoveryTiming.recoverFrame),
           activeDisplayStartOffset,
           activeDisplayLength,
           activeHasGap,
@@ -3440,15 +3502,18 @@ function formatFrameDelta(val: number): string {
       </div>
       <div class="auto-match-notes">
         <span class="note-item">排序规则：优先显示被防有利 (On Block) 的压制，其次为发生更快（发生F 更小）。</span>
+        <span class="note-item">起身帧 = 击倒优势 + 1，是对手首个可动帧。</span>
+        <span class="note-item">可安全压制：同一路线能抢先打断 {{ normalizedOpponentReversalStartup }}F 普通抢招的起身帧范围；不含同帧相杀，不代表能压无敌技。波动拳沿用已验证的版边接触范围。</span>
         <span class="note-item">容错：当前招式“最晚可以延迟几帧”仍能压制（0 表示必须精准卡帧）。</span>
         <span class="note-item">防斗反：我方恢复帧不晚于起身斗反第 {{ WAKEUP_DRIVE_REVERSAL.startup }}F 生效帧。</span>
+        <span class="note-item">防 DI（斗气迸放）：按帧数判断收招后能否直接格挡起身 {{ DRIVE_IMPACT.startup }}F DI。“不可直防”仍可能通过取消、反 DI 或破甲应对；护甲停顿与这些对策未模拟，版边格挡仍有风险。</span>
         <span class="note-item">仅显示前 50 条最优解。</span>
       </div>
       <!-- Removed separate text info as it's now in the button state -->
 
       <div v-if="okiResults.length > 0">
         <!-- Desktop Results Table -->
-        <div class="desktop-results-table results-table">
+        <div class="desktop-results-table results-table oki-results-table">
           <div class="result-header">
             <span>组合</span>
             <span class="sortable-header" @click="toggleSort('startup')">
@@ -3456,11 +3521,14 @@ function formatFrameDelta(val: number): string {
               <span v-if="sortKey === 'startup'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
             </span>
             <span>打击帧</span>
+            <span>起身帧</span>
+            <span :title="`对手首个可动帧落在此区间时，可抢先打断 ${normalizedOpponentReversalStartup}F 普通抢招；不含相杀`">可安全压制</span>
             <span class="sortable-header" @click="toggleSort('tolerance')">
               容错
               <span v-if="sortKey === 'tolerance'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
             </span>
-            <span>安全</span>
+            <span>防斗反</span>
+            <span title="按收招帧判断能否直接格挡起身 DI；取消反 DI 与破甲另计">防 DI</span>
             <span class="sortable-header" @click="toggleSort('block')">
               被防
               <span v-if="sortKey === 'block'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
@@ -3494,11 +3562,20 @@ function formatFrameDelta(val: number): string {
             </div>
             <span>{{ result.prefixFrames + parseStartup(result.move.startup) }}F</span>
             <span>{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+            <span>{{ opponentWakeupFrame }}F</span>
+            <span class="safe-pressure-range" :class="{ 'frame-positive': result.coversOpponent }">
+              {{ result.safePressureRange ? `${result.safePressureRange.start}~${result.safePressureRange.end}F` : '-' }}
+            </span>
             <span>{{ formatTolerance(result.toleranceFrames) }}</span>
             <span>
               <span v-if="result.safeAgainstWakeupDriveReversal" class="safe-dr-badge">防斗反</span>
               <span v-else>-</span>
             </span>
+            <span
+              class="di-guard-badge"
+              :class="{ 'frame-positive': result.driveImpactGuard.canBlock === true, 'frame-negative': result.driveImpactGuard.canBlock === false }"
+              :title="getDriveImpactGuardDescription(result.driveImpactGuard)"
+            >{{ getDriveImpactGuardLabel(result.driveImpactGuard) }}</span>
             <span
               :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
                 formatFrame(result.calculatedOnBlock) }}</span>
@@ -3585,6 +3662,21 @@ function formatFrameDelta(val: number): string {
                 </span>
               </div>
               <div class="detail-row">
+                <span class="detail-label">对手起身帧:</span>
+                <span>{{ effectiveKnockdownAdv }} + 1 = {{ opponentWakeupFrame }}F</span>
+              </div>
+              <div class="detail-row calc">
+                <span class="detail-label">可安全压制的起身帧:</span>
+                <span v-if="result.safePressureRange">
+                  {{ result.safePressureRange.start }}~{{ result.safePressureRange.end }}F
+                  <template v-if="!result.projectileOki">
+                    （下限 {{ result.ourActiveStart }} − {{ normalizedOpponentReversalStartup }} + 2，上限为打击末帧）
+                  </template>
+                  <template v-else>（已验证的版边波动拳接触范围）</template>
+                </span>
+                <span v-else>无；当前抢招设置下只有相杀或无法压制</span>
+              </div>
+              <div class="detail-row">
                 <span class="detail-label">对手反击判定第一帧:</span>
                 <span class="frame-negative">{{ opponentFirstActiveFrame }}F</span>
               </div>
@@ -3614,6 +3706,12 @@ function formatFrameDelta(val: number): string {
                   >
                     {{ result.safeAgainstWakeupDriveReversal ? `可防，余量 ${formatFrameDelta(result.driveReversalSafetyMargin)}` : `不可防，差 ${formatFrameDelta(result.driveReversalSafetyMargin)}` }}
                   </span>
+                </span>
+              </div>
+              <div class="detail-row calc">
+                <span class="detail-label">防起身 DI:</span>
+                <span :class="{ 'frame-positive': result.driveImpactGuard.canBlock === true, 'frame-negative': result.driveImpactGuard.canBlock === false }">
+                  {{ getDriveImpactGuardLabel(result.driveImpactGuard) }}：{{ getDriveImpactGuardDescription(result.driveImpactGuard) }}
                 </span>
               </div>
               <div v-if="!result.isWhiffAdvantage" class="detail-row calc">
@@ -3675,6 +3773,14 @@ function formatFrameDelta(val: number): string {
                   ⚠ 相杀: 与对手判定第一帧重合 ({{ opponentFirstActiveFrame }}F)
                 </span>
               </div>
+
+              <OkiRouteMemory
+                :route="getOkiRouteLabel(result)"
+                :range="result.safePressureRange"
+                :knockdowns="memoryKnockdowns"
+                :current-wakeup-frame="opponentWakeupFrame"
+                :opponent-startup="normalizedOpponentReversalStartup"
+              />
 
               <button type="button" class="detail-toggle-btn" @click.stop="showResultTimeline = !showResultTimeline">
                 {{ showResultTimeline ? '隐藏时序图' : '查看时序图' }}
@@ -3775,8 +3881,17 @@ function formatFrameDelta(val: number): string {
               <span v-if="result.isTrade" class="badge-mini trade">相杀</span>
               <span v-if="result.isWhiffAdvantage" class="badge-mini frame font-mono green">空挥: {{ formatFrame(result.whiffAdvantage) }}</span>
               <span v-if="result.safeAgainstWakeupDriveReversal" class="badge-mini safe-dr">防斗反</span>
+              <span
+                class="badge-mini frame font-mono di-guard-status"
+                :class="{ green: result.driveImpactGuard.canBlock === true, red: result.driveImpactGuard.canBlock === false }"
+                :title="getDriveImpactGuardDescription(result.driveImpactGuard)"
+              >防 DI: {{ getDriveImpactGuardLabel(result.driveImpactGuard) }}</span>
               <span class="badge-mini frame font-mono">发生: {{ result.prefixFrames + parseStartup(result.move.startup) }}F</span>
               <span class="badge-mini frame font-mono">打击: {{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+              <span class="badge-mini frame font-mono">起身: {{ opponentWakeupFrame }}F</span>
+              <span class="badge-mini frame font-mono" :class="{ green: result.coversOpponent }">
+                可安全压制: {{ result.safePressureRange ? `${result.safePressureRange.start}~${result.safePressureRange.end}F` : '-' }}
+              </span>
               <span class="badge-mini frame font-mono">容错: {{ formatTolerance(result.toleranceFrames) }}</span>
               <span :class="['badge-mini', 'frame', 'font-mono', isPositive(result.calculatedOnBlock) ? 'green' : (isNegative(result.calculatedOnBlock) ? 'red' : '')]">
                 被防: {{ formatFrame(result.calculatedOnBlock) }}
@@ -3809,6 +3924,16 @@ function formatFrameDelta(val: number): string {
                 <div class="detail-step-item">
                   <span class="step-lbl">对手判定第一帧:</span>
                   <span class="step-val font-mono frame-negative">{{ opponentFirstActiveFrame }}F</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">对手起身帧:</span>
+                  <span class="step-val font-mono">{{ effectiveKnockdownAdv }} + 1 = {{ opponentWakeupFrame }}F</span>
+                </div>
+                <div class="detail-step-item">
+                  <span class="step-lbl">可安全压制的起身帧:</span>
+                  <span class="step-val font-mono">
+                    {{ result.safePressureRange ? `${result.safePressureRange.start}~${result.safePressureRange.end}F` : '无' }}
+                  </span>
                 </div>
                 <div class="detail-step-item">
                   <span class="step-lbl">防守方起手脆弱:</span>
@@ -3850,6 +3975,21 @@ function formatFrameDelta(val: number): string {
                   <span class="step-val font-mono frame-positive">{{ result.tradeDetail }}</span>
                 </div>
               </div>
+
+              <div class="detail-step-item">
+                <span class="step-lbl">防起身 DI:</span>
+                <span class="step-val" :class="{ 'frame-positive': result.driveImpactGuard.canBlock === true, 'frame-negative': result.driveImpactGuard.canBlock === false }">
+                  {{ getDriveImpactGuardDescription(result.driveImpactGuard) }}
+                </span>
+              </div>
+
+              <OkiRouteMemory
+                :route="getOkiRouteLabel(result)"
+                :range="result.safePressureRange"
+                :knockdowns="memoryKnockdowns"
+                :current-wakeup-frame="opponentWakeupFrame"
+                :opponent-startup="normalizedOpponentReversalStartup"
+              />
 
               <button type="button" class="detail-toggle-btn" @click.stop="showResultTimeline = !showResultTimeline">
                 {{ showResultTimeline ? '隐藏时序图' : '查看时序图' }}
@@ -6118,6 +6258,21 @@ function formatFrameDelta(val: number): string {
   padding: var(--space-xs) var(--space-md);
   align-items: center;
   font-size: var(--font-size-sm);
+}
+
+.oki-results-table > .result-header,
+.oki-results-table > .result-row-auto {
+  grid-template-columns: minmax(260px, 2.5fr) 60px 90px 70px 120px 60px 90px 90px 70px 100px 70px;
+  min-width: 1200px;
+}
+
+.safe-pressure-range {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.di-guard-badge {
+  white-space: nowrap;
 }
 
 .result-header {
