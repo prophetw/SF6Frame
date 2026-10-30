@@ -40,11 +40,10 @@ async function overheadMetrics(wakeup, range, guard, trade = false) {
   await page.waitForFunction(({ wakeup, range, guard, trade }) => {
     const row = document.querySelector('.oki-results-table .result-row-auto');
     if (!row) return false;
-    const cells = Array.from(row.children).filter(node => node.tagName === 'SPAN');
     return row.querySelector('.combo-prefix')?.textContent.trim() === '绿冲'
       && row.querySelector('.move-input')?.textContent.trim() === '6MP'
-      && cells[1]?.textContent.trim() === '31~34F'
-      && cells[2]?.textContent.trim() === wakeup
+      && row.querySelector('.oki-hit-window')?.textContent.trim() === '31~34F'
+      && row.querySelector('.oki-wakeup-frame')?.textContent.trim() === wakeup
       && row.querySelector('.safe-pressure-range')?.textContent.trim() === range
       && row.querySelector('.di-guard-badge')?.textContent.trim() === guard
       && row.classList.contains('trade') === trade;
@@ -117,12 +116,22 @@ try {
         viewport: innerWidth,
       };
     });
-    assert.deepEqual(layout.labels, ['组合', '发生', '打击帧', '起身帧', '可安全压制', '容错', '防斗反', '防 DI', '被防', '被击打康加2', '相杀']);
+    assert.deepEqual(layout.labels, ['组合', '打击时序', '起身帧', '适用起身范围', '容错', '空挥先动', '防斗反', '防 DI', '被防', '被击打康加2', '相杀']);
     assert.equal(layout.positionsMatch, true);
-    assert.equal(layout.driveReversal, '-');
+    assert.equal(layout.driveReversal, '不可防');
     assert.equal(layout.driveImpact, '可防');
     assert.match(layout.tooltip, /恢复 54F.*DI 生效 54F.*余量 0F/);
     assert.ok(layout.pageWidth <= layout.viewport);
+  });
+
+  await check('calculation rules collapse while current wakeup and startup remain visible', async () => {
+    assert.equal(await page.$eval('.oki-calculation-notes', node => node.open), false);
+    assert.match(await page.$eval('.oki-context-summary', node => node.textContent), /起身 29F.*对 4F 抢招/);
+    await page.click('.oki-calculation-notes summary');
+    await page.waitForFunction(() => document.querySelector('.oki-calculation-notes').open);
+    assert.match(await page.$eval('.oki-calculation-notes', node => node.innerText), /空挥先动/);
+    await page.click('.oki-calculation-notes summary');
+    assert.equal(await page.$eval('.oki-calculation-notes', node => node.open), false);
   });
 
   await check('route memory groups existing custom and character knockdowns', async () => {
@@ -170,7 +179,7 @@ try {
     await fill('.auto-match-search-input', '');
     await page.click('.oki-results-table .result-header > span:nth-child(2)');
     await page.waitForFunction(() => document.querySelector('.oki-results-table .result-header > span:nth-child(2) .sort-indicator')?.textContent.trim() === '↑');
-    const startups = await page.$$eval('.oki-results-table .result-row-auto', rows => rows.map(row => parseInt(row.children[1].textContent, 10)));
+    const startups = await page.$$eval('.oki-results-table .oki-hit-window', nodes => nodes.map(node => parseInt(node.textContent, 10)));
     assert.ok(startups.length > 1);
     assert.ok(startups.every((value, index) => index === 0 || value >= startups[index - 1]));
     await fill('.auto-match-search-input', '6MP');
@@ -191,7 +200,7 @@ try {
     assert.match(mobile.text, /防 DI: 可防/);
     assert.match(mobile.text, /打击: 31~34F/);
     assert.match(mobile.text, /起身: 29F/);
-    assert.match(mobile.text, /可安全压制: 29~34F/);
+    assert.match(mobile.text, /适用起身范围: 29~34F/);
     assert.match(mobile.memory, /\+28~\+33F/);
     assert.ok(mobile.pageWidth <= mobile.viewport);
     assert.ok(mobile.bounds.left >= 0 && mobile.bounds.right <= mobile.viewport);
@@ -224,6 +233,38 @@ try {
     await overheadMetrics('29F', '29~34F', '可防');
     assert.equal((await page.$$('.custom-kd-input')).length, 0);
     assert.match(await page.$eval('.mobile-result-card .route-memory .current', node => node.textContent), /\+28F/);
+  });
+
+  await check('whiff recovery lead occupies its own desktop column and mobile metric', async () => {
+    await page.click('.custom-kd-btn');
+    await fill('.custom-kd-input input', 23);
+    await fill('.auto-match-search-input', '5LK');
+    await page.waitForFunction(() => Array.from(document.querySelectorAll('.oki-results-table .result-row-auto')).some(row =>
+      !row.querySelector('.combo-prefix') && row.querySelector('.move-input')?.textContent.trim() === '5LK'
+      && row.querySelector('.oki-whiff-lead')?.textContent.trim() === '+5F'));
+    await page.setViewport({ width: 1440, height: 1000, deviceScaleFactor: 1 });
+    const whiff = await page.$$eval('.oki-results-table .result-row-auto', rows => {
+      const row = rows.find(node => !node.querySelector('.combo-prefix') && node.querySelector('.move-input')?.textContent.trim() === '5LK');
+      return { tag: row.querySelector('.tag-badge').textContent.trim(), lead: row.querySelector('.oki-whiff-lead').textContent.trim(),
+        primary: row.querySelector('.oki-combo-primary').textContent, block: row.children[8].textContent.trim(), hit: row.children[9].textContent.trim() };
+    });
+    assert.deepEqual({ tag: whiff.tag, lead: whiff.lead, block: whiff.block, hit: whiff.hit }, { tag: '空挥', lead: '+5F', block: '-', hit: '-' });
+    assert.doesNotMatch(whiff.primary, /\+5/);
+    await screenshot('desktop-whiff-list.png', '.oki-results-table');
+    await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
+    const cards = await page.$$('.mobile-result-card');
+    let whiffCard;
+    for (const card of cards) {
+      if (await card.evaluate(node => !node.querySelector('.mob-prefix') && node.querySelector('.mob-move-input')?.textContent.trim() === '(5LK)')) {
+        whiffCard = card;
+        break;
+      }
+    }
+    assert.ok(whiffCard);
+    assert.match(await whiffCard.$eval('.oki-whiff-lead', node => node.textContent), /空挥先动: \+5F/);
+    assert.equal(await page.$eval('.oki-calculation-notes', node => node.open), false);
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    await screenshot('mobile-whiff-card.png', '.mobile-result-card');
   });
 
   await check('no visible UI errors, console errors or failed HTTP requests', async () => {

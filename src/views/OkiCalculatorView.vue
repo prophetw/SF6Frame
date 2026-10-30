@@ -3500,14 +3500,24 @@ function formatFrameDelta(val: number): string {
           </div>
         </div>
       </div>
-      <div class="auto-match-notes">
+      <div class="oki-results-context">
+        <div class="oki-context-summary">
+          <span>起身 <strong>{{ opponentWakeupFrame }}F</strong></span>
+          <span>对 <strong>{{ normalizedOpponentReversalStartup }}F</strong> 抢招</span>
+        </div>
+        <details class="oki-calculation-notes">
+          <summary>计算说明</summary>
+          <div class="auto-match-notes">
         <span class="note-item">排序规则：优先显示被防有利 (On Block) 的压制，其次为发生更快（发生F 更小）。</span>
         <span class="note-item">起身帧 = 击倒优势 + 1，是对手首个可动帧。</span>
-        <span class="note-item">可安全压制：同一路线能抢先打断 {{ normalizedOpponentReversalStartup }}F 普通抢招的起身帧范围；不含同帧相杀，不代表能压无敌技。波动拳沿用已验证的版边接触范围。</span>
+        <span class="note-item">适用起身范围：同一路线能抢先打断 {{ normalizedOpponentReversalStartup }}F 普通抢招的起身帧范围；不含同帧相杀，不代表能压无敌技。波动拳沿用已验证的版边接触范围。</span>
         <span class="note-item">容错：当前招式“最晚可以延迟几帧”仍能压制（0 表示必须精准卡帧）。</span>
+        <span class="note-item">空挥先动：空挥收招后，比对手起身早恢复几帧；与命中或被防优势不同。</span>
         <span class="note-item">防斗反：我方恢复帧不晚于起身斗反第 {{ WAKEUP_DRIVE_REVERSAL.startup }}F 生效帧。</span>
         <span class="note-item">防 DI（斗气迸放）：按帧数判断收招后能否直接格挡起身 {{ DRIVE_IMPACT.startup }}F DI。“不可直防”仍可能通过取消、反 DI 或破甲应对；护甲停顿与这些对策未模拟，版边格挡仍有风险。</span>
         <span class="note-item">仅显示前 50 条最优解。</span>
+          </div>
+        </details>
       </div>
       <!-- Removed separate text info as it's now in the button state -->
 
@@ -3516,17 +3526,17 @@ function formatFrameDelta(val: number): string {
         <div class="desktop-results-table results-table oki-results-table">
           <div class="result-header">
             <span>组合</span>
-            <span class="sortable-header" @click="toggleSort('startup')">
-              发生
+            <span class="sortable-header" title="按打击首帧排序" @click="toggleSort('startup')">
+              打击时序
               <span v-if="sortKey === 'startup'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
             </span>
-            <span>打击帧</span>
             <span>起身帧</span>
-            <span :title="`对手首个可动帧落在此区间时，可抢先打断 ${normalizedOpponentReversalStartup}F 普通抢招；不含相杀`">可安全压制</span>
+            <span :title="`对手首个可动帧落在此区间时，可抢先打断 ${normalizedOpponentReversalStartup}F 普通抢招；不含相杀`">适用起身范围</span>
             <span class="sortable-header" @click="toggleSort('tolerance')">
               容错
               <span v-if="sortKey === 'tolerance'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
             </span>
+            <span title="我方空挥收招到对手起身之间的先动帧数">空挥先动</span>
             <span>防斗反</span>
             <span title="按收招帧判断能否直接格挡起身 DI；取消反 DI 与破甲另计">防 DI</span>
             <span class="sortable-header" @click="toggleSort('block')">
@@ -3548,28 +3558,37 @@ function formatFrameDelta(val: number): string {
             trade: result.isTrade,
             'preferred-row': result.isPreferred
           }]" @click="toggleResultDetail(result.key)">
-            <div class="result-combo">
-            <span v-if="result.isPreferred" class="preferred-badge">★ 喜好</span>
+            <div class="result-combo oki-combo-label">
+              <div class="oki-combo-primary">
+            <span v-if="result.isPreferred" class="oki-favorite-star" title="喜好路线" aria-label="喜好路线">★</span>
             <span v-if="result.coversOpponent" class="success-badge">压制</span>
             <span v-if="result.isTrade" class="trade-badge">相杀</span>
-            <span v-if="result.isWhiffAdvantage" class="tag-badge">空挥 {{ formatFrame(result.whiffAdvantage) }}</span>
-            <span v-if="result.isChainCancel" class="chain-cancel-badge">连锁取消 Chain Cancel</span>
-              <span v-if="result.tags && result.tags.length > 0" class="tag-badge">{{ result.tags.join(', ') }}</span>
+            <span v-if="result.isWhiffAdvantage" class="tag-badge">空挥</span>
               <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
               <span v-if="result.prefix">+</span>
               <span>{{ getMoveDisplayName(result.move) }}</span>
               <span class="move-input">{{ result.move.input }}</span>
+              </div>
+              <div v-if="result.isChainCancel || result.tags?.length" class="oki-combo-secondary">
+                <span v-if="result.isChainCancel">连锁取消</span>
+                <span v-for="tag in result.tags" :key="tag">{{ tag }}</span>
+              </div>
             </div>
-            <span>{{ result.prefixFrames + parseStartup(result.move.startup) }}F</span>
-            <span>{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
-            <span>{{ opponentWakeupFrame }}F</span>
+            <span class="oki-hit-timing">
+              <span class="oki-hit-window">{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+              <small>发生 {{ result.prefixFrames + parseStartup(result.move.startup) }}F</small>
+            </span>
+            <span class="oki-wakeup-frame">{{ opponentWakeupFrame }}F</span>
             <span class="safe-pressure-range" :class="{ 'frame-positive': result.coversOpponent }">
               {{ result.safePressureRange ? `${result.safePressureRange.start}~${result.safePressureRange.end}F` : '-' }}
             </span>
             <span>{{ formatTolerance(result.toleranceFrames) }}</span>
+            <span class="oki-whiff-lead" :class="{ 'frame-positive': result.isWhiffAdvantage }">
+              {{ result.isWhiffAdvantage ? `${formatFrame(result.whiffAdvantage)}F` : '-' }}
+            </span>
             <span>
               <span v-if="result.safeAgainstWakeupDriveReversal" class="safe-dr-badge">防斗反</span>
-              <span v-else>-</span>
+              <span v-else class="frame-negative">不可防</span>
             </span>
             <span
               class="di-guard-badge"
@@ -3865,34 +3884,45 @@ function formatFrameDelta(val: number): string {
             @click="toggleResultDetail(result.key)"
           >
             <div class="card-header">
-              <div class="card-combo-title">
-                <span v-if="result.isPreferred" class="preferred-badge" style="vertical-align: middle;">★ 喜好</span>
+              <div class="card-combo-title oki-combo-label">
+                <div class="oki-combo-primary">
+                <span v-if="result.isPreferred" class="oki-favorite-star" title="喜好路线" aria-label="喜好路线">★</span>
+                <span v-if="result.coversOpponent" class="badge-mini success">压制</span>
+                <span v-if="result.isTrade" class="badge-mini trade">相杀</span>
+                <span v-if="result.isWhiffAdvantage" class="badge-mini">空挥</span>
                 <span v-if="result.prefix" class="mob-prefix">{{ result.prefix }}</span>
                 <span v-if="result.prefix" class="mob-plus">+</span>
                 <span class="mob-move-name">{{ getMoveDisplayName(result.move) }}</span>
                 <span class="mob-move-input">({{ result.move.input }})</span>
+                </div>
+                <div v-if="result.isChainCancel || result.tags?.length" class="oki-combo-secondary">
+                  <span v-if="result.isChainCancel">连锁取消</span>
+                  <span v-for="tag in result.tags" :key="tag">{{ tag }}</span>
+                </div>
               </div>
               <span class="mob-expand-chevron" :class="{ rotated: selectedResultKey === result.key }">▼</span>
             </div>
 
             <div class="card-tags-row">
-              <span v-if="result.isPreferred" class="badge-mini" style="background: rgba(251, 191, 36, 0.2); color: #fbbf24; border-color: rgba(251, 191, 36, 0.3)">★ 喜好</span>
-              <span v-if="result.coversOpponent" class="badge-mini success">压制成功</span>
-              <span v-if="result.isTrade" class="badge-mini trade">相杀</span>
-              <span v-if="result.isWhiffAdvantage" class="badge-mini frame font-mono green">空挥: {{ formatFrame(result.whiffAdvantage) }}</span>
               <span v-if="result.safeAgainstWakeupDriveReversal" class="badge-mini safe-dr">防斗反</span>
+              <span v-else class="badge-mini frame font-mono red">斗反: 不可防</span>
               <span
                 class="badge-mini frame font-mono di-guard-status"
                 :class="{ green: result.driveImpactGuard.canBlock === true, red: result.driveImpactGuard.canBlock === false }"
                 :title="getDriveImpactGuardDescription(result.driveImpactGuard)"
               >防 DI: {{ getDriveImpactGuardLabel(result.driveImpactGuard) }}</span>
-              <span class="badge-mini frame font-mono">发生: {{ result.prefixFrames + parseStartup(result.move.startup) }}F</span>
-              <span class="badge-mini frame font-mono">打击: {{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+              <span class="badge-mini frame font-mono oki-hit-timing">
+                <span>打击: {{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
+                <small>发生 {{ result.prefixFrames + parseStartup(result.move.startup) }}F</small>
+              </span>
               <span class="badge-mini frame font-mono">起身: {{ opponentWakeupFrame }}F</span>
               <span class="badge-mini frame font-mono" :class="{ green: result.coversOpponent }">
-                可安全压制: {{ result.safePressureRange ? `${result.safePressureRange.start}~${result.safePressureRange.end}F` : '-' }}
+                适用起身范围: {{ result.safePressureRange ? `${result.safePressureRange.start}~${result.safePressureRange.end}F` : '-' }}
               </span>
               <span class="badge-mini frame font-mono">容错: {{ formatTolerance(result.toleranceFrames) }}</span>
+              <span v-if="result.isWhiffAdvantage" class="badge-mini frame font-mono green oki-whiff-lead">
+                空挥先动: {{ formatFrame(result.whiffAdvantage) }}F
+              </span>
               <span :class="['badge-mini', 'frame', 'font-mono', isPositive(result.calculatedOnBlock) ? 'green' : (isNegative(result.calculatedOnBlock) ? 'red' : '')]">
                 被防: {{ formatFrame(result.calculatedOnBlock) }}
               </span>
@@ -6199,6 +6229,21 @@ function formatFrameDelta(val: number): string {
   border-color: var(--color-accent);
 }
 
+.oki-results-context {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.oki-context-summary { display: flex; flex-wrap: wrap; gap: var(--space-md); color: var(--color-text-secondary); font-size: var(--font-size-sm); }
+.oki-context-summary strong { color: var(--color-text-primary); font-variant-numeric: tabular-nums; }
+.oki-calculation-notes { flex: 1; min-width: 120px; }
+.oki-calculation-notes summary { cursor: pointer; width: fit-content; color: var(--color-text-secondary); font-size: var(--font-size-sm); }
+.oki-calculation-notes[open] { flex-basis: 100%; }
+.oki-calculation-notes[open] summary { margin-bottom: var(--space-sm); }
+
 .auto-match-notes {
   display: flex;
   flex-wrap: wrap;
@@ -6262,9 +6307,18 @@ function formatFrameDelta(val: number): string {
 
 .oki-results-table > .result-header,
 .oki-results-table > .result-row-auto {
-  grid-template-columns: minmax(260px, 2.5fr) 60px 90px 70px 120px 60px 90px 90px 70px 100px 70px;
+  grid-template-columns: minmax(260px, 2.5fr) 100px 65px 115px 55px 80px 80px 85px 65px 100px 70px;
   min-width: 1200px;
 }
+
+.oki-hit-timing { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 2px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.oki-hit-timing small { color: var(--color-text-muted); font-size: var(--font-size-xs); font-weight: normal; }
+.oki-whiff-lead { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.result-combo.oki-combo-label,
+.card-combo-title.oki-combo-label { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; min-width: 0; }
+.oki-combo-primary { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs); min-width: 0; }
+.oki-combo-secondary { display: flex; flex-wrap: wrap; gap: var(--space-sm); color: var(--color-text-muted); font-size: var(--font-size-xs); }
+.oki-favorite-star { color: #fbbf24; flex-shrink: 0; }
 
 .safe-pressure-range {
   white-space: nowrap;
