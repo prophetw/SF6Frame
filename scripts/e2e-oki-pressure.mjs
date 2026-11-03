@@ -116,11 +116,11 @@ try {
         viewport: innerWidth,
       };
     });
-    assert.deepEqual(layout.labels, ['组合', '打击时序', '起身帧', '适用起身范围', '容错', '空挥先动', '防斗反', '防 DI', '被防', '被击打康加2', '相杀']);
+    assert.deepEqual(layout.labels, ['组合', '打击时序', '起身帧', '适用起身范围', '容错', '空挥先动', '防斗反', '防 DI', '防 5F 无敌', '被防', '被击打康加2', '相杀']);
     assert.equal(layout.positionsMatch, true);
     assert.equal(layout.driveReversal, '不可防');
     assert.equal(layout.driveImpact, '可防');
-    assert.match(layout.tooltip, /恢复 54F.*DI 生效 54F.*余量 0F/);
+    assert.match(layout.tooltip, /恢复 54F.*DI 生效 55F.*余量 1F/);
     assert.ok(layout.pageWidth <= layout.viewport);
   });
 
@@ -153,15 +153,20 @@ try {
   await check('changing ordinary startup widens pressure without changing DI startup', async () => {
     await fill('.opponent-info input[type="number"]', 6);
     await overheadMetrics('29F', '27~34F', '可防');
-    assert.match(await page.$eval('.di-guard-badge', node => node.title), /DI 生效 54F/);
+    assert.match(await page.$eval('.di-guard-badge', node => node.title), /DI 生效 55F/);
     await fill('.opponent-info input[type="number"]', 4);
     await overheadMetrics('29F', '29~34F', '可防');
   });
 
-  await check('one frame earlier becomes a trade and cannot directly block DI', async () => {
+  await check('DI boundary is independent from an ordinary startup trade', async () => {
     await fill('.custom-kd-input input', 27);
-    await overheadMetrics('28F', '29~34F', '不可直防', true);
+    await overheadMetrics('28F', '29~34F', '可防', true);
+    assert.match(await page.$eval('.di-guard-badge', node => node.title), /恢复 54F.*DI 生效 54F.*余量 0F/);
+    await fill('.opponent-info input[type="number"]', 5);
+    await fill('.custom-kd-input input', 26);
+    await overheadMetrics('27F', '28~34F', '不可直防', true);
     assert.match(await page.$eval('.di-guard-badge', node => node.title), /恢复 54F.*DI 生效 53F.*晚了 1F/);
+    await fill('.opponent-info input[type="number"]', 4);
   });
 
   await check('1F startup has no safe pressure range and no memory recommendations', async () => {
@@ -216,8 +221,9 @@ try {
   });
 
   await check('mobile DI failure is visible and selecting a saved knockdown restores the safe setup', async () => {
-    await fill('.custom-kd-input input', 27);
-    await overheadMetrics('28F', '29~34F', '不可直防', true);
+    await fill('.opponent-info input[type="number"]', 5);
+    await fill('.custom-kd-input input', 26);
+    await overheadMetrics('27F', '28~34F', '不可直防', true);
     assert.match(await page.$eval('.mobile-result-card .di-guard-status', node => node.textContent), /不可直防/);
     await screenshot('mobile-di-boundary.png', '.mobile-result-card');
     const saved = await page.$$('.saved-moves-grid .knockdown-card');
@@ -230,6 +236,7 @@ try {
       }
     }
     assert.equal(selected, true);
+    await fill('.opponent-info input[type="number"]', 4);
     await overheadMetrics('29F', '29~34F', '可防');
     assert.equal((await page.$$('.custom-kd-input')).length, 0);
     assert.match(await page.$eval('.mobile-result-card .route-memory .current', node => node.textContent), /\+28F/);
@@ -246,7 +253,7 @@ try {
     const whiff = await page.$$eval('.oki-results-table .result-row-auto', rows => {
       const row = rows.find(node => !node.querySelector('.combo-prefix') && node.querySelector('.move-input')?.textContent.trim() === '5LK');
       return { tag: row.querySelector('.tag-badge').textContent.trim(), lead: row.querySelector('.oki-whiff-lead').textContent.trim(),
-        primary: row.querySelector('.oki-combo-primary').textContent, block: row.children[8].textContent.trim(), hit: row.children[9].textContent.trim() };
+        primary: row.querySelector('.oki-combo-primary').textContent, block: row.children[9].textContent.trim(), hit: row.children[10].textContent.trim() };
     });
     assert.deepEqual({ tag: whiff.tag, lead: whiff.lead, block: whiff.block, hit: whiff.hit }, { tag: '空挥', lead: '+5F', block: '-', hit: '-' });
     assert.doesNotMatch(whiff.primary, /\+5/);
@@ -265,6 +272,101 @@ try {
     assert.equal(await page.$eval('.oki-calculation-notes', node => node.open), false);
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     await screenshot('mobile-whiff-card.png', '.mobile-result-card');
+  });
+
+  await check('invincible timing is independent and original pressure rows show unsafe status', async () => {
+    await page.setViewport({ width: 1440, height: 1000, deviceScaleFactor: 1 });
+    await page.click('.oki-results-table .result-header > span:nth-child(10)');
+    await fill('.custom-kd-input input', 28);
+    await fill('.auto-match-search-input', '6MP');
+    const badge = '.oki-results-table .result-row-auto .invincible-guard';
+    await page.waitForFunction(() => document.querySelector('.oki-results-table .invincible-guard')?.textContent.trim() === '不安全');
+    assert.match(await page.$eval(badge, node => node.title), /动作结束 53F.*无敌生效 34F.*最晚安全收招 33F/);
+    await fill('.opponent-info input[type="number"]', 6);
+    assert.match(await page.$eval(badge, node => node.title), /无敌生效 34F/);
+    await fill('.opponent-info input[type="number"]', 4);
+    await fill('.invincible-startup-input', 6);
+    await overheadMetrics('29F', '29~34F', '可防');
+    assert.match(await page.$eval(badge, node => node.title), /无敌生效 35F/);
+    await fill('.invincible-startup-input', 5);
+  });
+
+  await check('green-rush jab obeys the strict boundary and bait-only rows have no contact rewards', async () => {
+    await fill('.custom-kd-input input', 19);
+    await fill('.auto-match-search-input', '5LP');
+    await page.waitForFunction(() => Array.from(document.querySelectorAll('.oki-results-table .bait-only')).some(row =>
+      row.querySelector('.combo-prefix')?.textContent.trim() === '绿冲'
+      && row.querySelector('.move-input')?.textContent.trim() === '5LP'));
+    const jab = await page.$$eval('.oki-results-table .bait-only', rows => {
+      const row = rows.find(row => row.querySelector('.combo-prefix')?.textContent.trim() === '绿冲'
+        && row.querySelector('.move-input')?.textContent.trim() === '5LP');
+      return { label: row.querySelector('.invincible-guard').textContent.trim(),
+        tooltip: row.querySelector('.invincible-guard').title, tag: row.querySelector('.bait-tag').textContent.trim(),
+        block: row.children[9].textContent.trim(), hit: row.children[10].textContent.trim(), success: row.classList.contains('success') };
+    });
+    assert.deepEqual({ label: jab.label, tag: jab.tag, block: jab.block, hit: jab.hit, success: jab.success },
+      { label: '极限 · 余 0F', tag: '骗招', block: '-', hit: '-', success: false });
+    assert.match(jab.tooltip, /动作结束 24F.*无敌生效 25F/);
+    await fill('.custom-kd-input input', 18);
+    assert.equal(await page.evaluate(() => Array.from(document.querySelectorAll('.oki-results-table .result-row-auto')).some(row =>
+      row.querySelector('.combo-prefix')?.textContent.trim() === '绿冲'
+      && row.querySelector('.move-input')?.textContent.trim() === '5LP')), false);
+    await fill('.invincible-startup-input', 6);
+    await page.waitForFunction(() => Array.from(document.querySelectorAll('.oki-results-table .bait-only')).some(row =>
+      row.querySelector('.combo-prefix')?.textContent.trim() === '绿冲'
+      && row.querySelector('.invincible-guard')?.textContent.trim() === '极限 · 余 0F'));
+    await fill('.invincible-startup-input', 5);
+    await fill('.custom-kd-input input', 19);
+    await screenshot('desktop-invincible-boundary.png', '.oki-results-context');
+  });
+
+  await check('large knockdowns restrict new bait routes and default to five, with working expand/collapse', async () => {
+    await fill('.custom-kd-input input', 60);
+    await fill('.auto-match-search-input', '');
+    await page.waitForSelector('.bait-expand-btn');
+    assert.equal((await page.$$('.oki-results-table .bait-only')).length, 5);
+    await page.click('.bait-expand-btn');
+    const candidates = await page.$$eval('.oki-results-table .bait-only', rows => rows.map(row => ({
+      tooltip: row.querySelector('.invincible-guard').title,
+      label: row.querySelector('.invincible-guard').textContent.trim(),
+      text: row.querySelector('.oki-combo-primary').textContent,
+    })));
+    assert.ok(candidates.length > 5);
+    const margins = candidates.map(row => Number(row.label.match(/余 (\d+)F/)[1]));
+    assert.ok(margins.every((value, index) => index === 0 || value <= margins[index - 1]));
+    for (const candidate of candidates) {
+      const total = Number(candidate.tooltip.match(/动作结束 (\d+)F/)[1]);
+      assert.ok(total >= 58 && total <= 65, candidate.tooltip);
+      assert.match(candidate.text, /绿冲/);
+    }
+    await page.click('.bait-expand-btn');
+    assert.equal((await page.$$('.oki-results-table .bait-only')).length, 5);
+  });
+
+  await check('safe-only filtering combines with search and excludes unsafe or unknown rows', async () => {
+    await fill('.custom-kd-input input', 28);
+    await page.click('.safe-bait-filter input');
+    const labels = await page.$$eval('.oki-results-table .result-row-auto .invincible-guard', nodes => nodes.map(node => node.textContent.trim()));
+    assert.ok(labels.length > 0);
+    assert.ok(labels.every(label => /^(安全|极限)/.test(label)));
+    await fill('.auto-match-search-input', '6MP');
+    assert.equal((await page.$$('.oki-results-table .result-row-auto')).length, 0);
+    assert.match(await page.$eval('.empty-state', node => node.textContent), /没有符合当前筛选的安全骗招路线/);
+    await fill('.auto-match-search-input', '5LK');
+    assert.ok((await page.$$('.oki-results-table .bait-only')).length > 0);
+  });
+
+  await check('mobile exposes safe bait status, details and no contact rewards without overflow', async () => {
+    await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
+    await page.waitForSelector('.mobile-result-card.bait-only', { visible: true });
+    const card = await page.$('.mobile-result-card.bait-only');
+    assert.match(await card.$eval('.invincible-guard', node => node.textContent), /防 5F 无敌: 安全 · 余 4F/);
+    assert.doesNotMatch(await card.$eval('.oki-combo-primary', node => node.textContent), /压制|相杀/);
+    await card.click();
+    assert.match(await card.$eval('.invincible-guard-detail', node => node.textContent), /动作结束 29F.*无敌生效 34F/);
+    assert.equal(await card.$('.advantage-blocks'), null);
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    await screenshot('mobile-safe-bait.png', '.mobile-result-card.bait-only');
   });
 
   await check('no visible UI errors, console errors or failed HTTP requests', async () => {

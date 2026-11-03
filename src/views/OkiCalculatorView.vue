@@ -12,6 +12,13 @@ import {
   parseRecoveryTotalFrames as parseKnownRecoveryFrames,
 } from '../utils/frameTotals';
 import { calculateWakeupDriveImpactGuard, DRIVE_IMPACT, type WakeupDriveImpactGuard } from '../utils/wakeupDriveImpact';
+import {
+  calculateWakeupInvincibleGuard,
+  DEFAULT_INVINCIBLE_STARTUP,
+  BAIT_EARLY_RECOVERY_FRAMES,
+  BAIT_PREVIEW_COUNT,
+  type WakeupInvincibleGuard,
+} from '../utils/wakeupInvincible';
 import { isAirborneMove } from '../utils/moveFilters';
 import {
   calculateDriveRushAttackTiming,
@@ -97,6 +104,10 @@ const preferredMoves = ref<PreferredMove[]>([]);
 const newPreferredMoveInput = ref('');
 const newPreferredMoveNote = ref('');
 const onlyShowPreferred = ref(false);
+const onlyShowSafeBait = ref(false);
+const invincibleStartup = ref<number>(DEFAULT_INVINCIBLE_STARTUP);
+const normalizedInvincibleStartup = computed(() => Math.max(1, Math.trunc(invincibleStartup.value || DEFAULT_INVINCIBLE_STARTUP)));
+const showAllBaitResults = ref(false);
 
 // A whiffed action is useful as an oki route only when it leaves a small,
 // actionable lead before the defender becomes vulnerable on wakeup.
@@ -918,6 +929,8 @@ interface ExtendedOkiResult {
   ourActiveEnd: number;
   safePressureRange: OkiFrameRange | null;
   driveImpactGuard: WakeupDriveImpactGuard;
+  invincibleGuard: WakeupInvincibleGuard;
+  isBaitOnly?: boolean;
   activeDisplayStartOffset?: number;
   activeDisplayLength?: number;
   activeHasGap?: boolean;
@@ -990,6 +1003,26 @@ function getDriveImpactGuardLabel(guard: WakeupDriveImpactGuard): string {
 function getDriveImpactGuardDescription(guard: WakeupDriveImpactGuard): string {
   if (guard.safetyMargin === null) return '招式持续或收招帧不足，无法确认能否直接格挡起身 DI';
   return `恢复 ${guard.recoverFrame}F；起身 DI 生效 ${guard.impactFrame}F；${guard.canBlock ? '余量' : '收招晚了'} ${Math.abs(guard.safetyMargin)}F`;
+}
+
+function getMoveInvincibleGuard(move: Move, actionStartFrame: number, bodyTotalFrames?: number): WakeupInvincibleGuard {
+  const moveTotal = bodyTotalFrames ?? calculateUnifiedMoveTotalFrames(move);
+  return calculateWakeupInvincibleGuard({
+    opponentWakeupFrame: opponentWakeupFrame.value,
+    invincibleStartup: normalizedInvincibleStartup.value,
+    totalFrames: moveTotal !== null && moveTotal > 0 ? actionStartFrame + moveTotal : null,
+  });
+}
+
+function getInvincibleGuardLabel(guard: WakeupInvincibleGuard): string {
+  if (guard.canBlock === null) return '未确认';
+  if (!guard.canBlock) return '不安全';
+  return guard.safetyMargin === 0 ? '极限 · 余 0F' : `安全 · 余 ${guard.safetyMargin}F`;
+}
+
+function getInvincibleGuardDescription(guard: WakeupInvincibleGuard): string {
+  if (guard.canBlock === null) return '总帧数不足，无法确认能否收招后格挡起身无敌技';
+  return `动作结束 ${guard.totalFrames}F；起身无敌生效 ${guard.impactFrame}F（${opponentWakeupFrame.value} + ${normalizedInvincibleStartup.value}）；最晚安全收招 ${guard.latestSafeTotalFrames}F。${guard.canBlock ? '收招后立即拉防' : `超过安全收招上限 ${Math.abs(guard.safetyMargin!)}F`}`;
 }
 
 function parseStartup(startupStr: string | number | undefined): number {
@@ -1366,6 +1399,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           ourActiveEnd: ourEnd,
           safePressureRange,
           driveImpactGuard: getMoveDriveImpactGuard(move, recoveryTiming.recoverFrame, !!projectileOki),
+          invincibleGuard: getMoveInvincibleGuard(move, prefix.frames, projectileOki?.totalFrames),
           activeDisplayStartOffset,
           activeDisplayLength,
           activeHasGap,
@@ -1450,12 +1484,17 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
         && whiffAdvantage >= WHIFF_ADVANTAGE_MIN
         && whiffAdvantage <= WHIFF_ADVANTAGE_MAX;
 
-      if (isSuccessMatch || isTradeMatch || isWhiffAdvantageMatch) {
+      const invincibleGuard = getMoveInvincibleGuard(move, effectivePrefixFrames);
+      const isBaitOnly = !isSuccessMatch && !isTradeMatch && !isWhiffAdvantageMatch
+        && invincibleGuard.isRecommendedBait;
+
+      if (isSuccessMatch || isTradeMatch || isWhiffAdvantageMatch || isBaitOnly) {
         const isWhiffAdvantage = isWhiffAdvantageMatch;
+        const isNonContact = isWhiffAdvantage || isBaitOnly;
         const meatyStartFrame = timing.fastestHitFrame + meatyStartOffset;
         const effectiveHitFrame = Math.max(meatyStartFrame, oppWindowStart);
         const canApplyMeaty = !move.noMeaty;
-        const meatyBonus = isWhiffAdvantage ? 0 : canApplyMeaty ? (effectiveHitFrame - meatyStartFrame) : 0;
+        const meatyBonus = isNonContact ? 0 : canApplyMeaty ? (effectiveHitFrame - meatyStartFrame) : 0;
         const driveRushAdvantageBonus = getDriveRushAdvantageBonus(move);
 
         let calcBlock: number | string | undefined;
@@ -1464,7 +1503,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
         let tradeDet: string | undefined;
         let tradeExpl = '';
 
-        if (!isWhiffAdvantage) {
+        if (!isNonContact) {
           const baseBlock = parseFrameAdvantage(move.onBlock);
           if (baseBlock !== null) {
             calcBlock = baseBlock + driveRushAdvantageBonus + meatyBonus;
@@ -1522,6 +1561,8 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           ourActiveEnd: ourEnd,
           safePressureRange,
           driveImpactGuard: getMoveDriveImpactGuard(move, recoveryTiming.recoverFrame),
+          invincibleGuard,
+          isBaitOnly,
           activeDisplayStartOffset,
           activeDisplayLength,
           activeHasGap,
@@ -1543,7 +1584,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           isWhiffAdvantage: isWhiffAdvantage || undefined,
           whiffAdvantage: isWhiffAdvantage ? whiffAdvantage : undefined,
           meatyBonus,
-          effectiveHitFrame: isWhiffAdvantage ? undefined : effectiveHitFrame,
+          effectiveHitFrame: isNonContact ? undefined : effectiveHitFrame,
           tradeAdvantage: tradeAdv,
           tradeDetail: tradeDet,
           tradeExplanation: tradeExpl,
@@ -1565,6 +1606,10 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
 
 const okiResults = computed<ExtendedOkiResult[]>(() => {
   let filtered = allOkiResults.value;
+
+  if (onlyShowSafeBait.value) {
+    filtered = filtered.filter(result => result.invincibleGuard.canBlock === true);
+  }
 
   if (comboChain.value.length > 0) {
     filtered = filtered.filter(result => {
@@ -1675,6 +1720,15 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
       }
     }
 
+    // In the default block ordering, append bait-only routes by safety margin.
+    // Explicitly sorting another column still sorts the entire displayed list.
+    if (sortKey.value === 'block') {
+      if (!!a.isBaitOnly !== !!b.isBaitOnly) return a.isBaitOnly ? 1 : -1;
+      if (a.isBaitOnly && b.isBaitOnly) {
+        return b.invincibleGuard.safetyMargin! - a.invincibleGuard.safetyMargin!
+          || a.prefixFrames - b.prefixFrames || a.ourActiveStart - b.ourActiveStart;
+      }
+    }
     // 2. Secondary sort based on sortKey
     let valA = 0;
     let valB = 0;
@@ -1711,16 +1765,23 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
     return a.ourActiveStart - b.ourActiveStart;
   });
 
-  return sorted.slice(0, 50);
+  let originalCount = 0;
+  return sorted.filter(result => result.isBaitOnly || ++originalCount <= 50);
+});
+
+const baitResultCount = computed(() => okiResults.value.filter(result => result.isBaitOnly).length);
+const displayedOkiResults = computed(() => {
+  let baitCount = 0;
+  return okiResults.value.filter(result => !result.isBaitOnly || showAllBaitResults.value || ++baitCount <= BAIT_PREVIEW_COUNT);
 });
 
 const visibleOkiResults = computed<ExtendedOkiResult[]>(() => {
-  if (showAllAutoResults.value) return okiResults.value;
-  return okiResults.value.slice(0, MOBILE_RESULT_PREVIEW_COUNT);
+  if (showAllAutoResults.value) return displayedOkiResults.value;
+  return displayedOkiResults.value.slice(0, MOBILE_RESULT_PREVIEW_COUNT);
 });
 
 const hiddenOkiResultCount = computed(() => {
-  return Math.max(0, okiResults.value.length - visibleOkiResults.value.length);
+  return Math.max(0, displayedOkiResults.value.length - visibleOkiResults.value.length);
 });
 
 // Throw filler moves (exclude throws, keep reasonable total frames)
@@ -3481,7 +3542,7 @@ function formatFrameDelta(val: number): string {
       <!-- Auto Results -->
       <div class="results-header-row">
         <h3 class="results-title">
-          自动匹配 (共 {{ allOkiResults.length }} 个结果，显示前 {{ okiResults.length }} 条)
+          自动匹配 (共 {{ allOkiResults.length }} 个结果，筛选后 {{ okiResults.length }} 条)
           <div class="header-tip-icon">?</div>
         </h3>
         
@@ -3504,6 +3565,20 @@ function formatFrameDelta(val: number): string {
         <div class="oki-context-summary">
           <span>起身 <strong>{{ opponentWakeupFrame }}F</strong></span>
           <span>对 <strong>{{ normalizedOpponentReversalStartup }}F</strong> 抢招</span>
+          <label class="invincible-startup-setting">
+            无敌启动
+            <input v-model.number="invincibleStartup" class="invincible-startup-input" type="number" min="1" step="1" aria-label="无敌启动帧" />F
+          </label>
+          <label class="safe-bait-filter">
+            <input v-model="onlyShowSafeBait" type="checkbox" />只看安全骗招
+          </label>
+        </div>
+        <div class="bait-recommendation-summary">
+          <span>额外骗招：仅推荐 {{ Math.max(1, opponentWakeupFrame - BAIT_EARLY_RECOVERY_FRAMES) }}～{{ opponentWakeupFrame + normalizedInvincibleStartup - 1 }}F 收招的绿冲路线，默认展示 {{ BAIT_PREVIEW_COUNT }} 条（匹配 {{ baitResultCount }} 条）。</span>
+          <button v-if="baitResultCount > BAIT_PREVIEW_COUNT" type="button" class="bait-expand-btn"
+            @click="showAllBaitResults = !showAllBaitResults; showAllAutoResults = true">
+            {{ showAllBaitResults ? '收起额外骗招' : `展开其余 ${baitResultCount - BAIT_PREVIEW_COUNT} 条骗招` }}
+          </button>
         </div>
         <details class="oki-calculation-notes">
           <summary>计算说明</summary>
@@ -3515,7 +3590,8 @@ function formatFrameDelta(val: number): string {
         <span class="note-item">空挥先动：空挥收招后，比对手起身早恢复几帧；与命中或被防优势不同。</span>
         <span class="note-item">防斗反：我方恢复帧不晚于起身斗反第 {{ WAKEUP_DRIVE_REVERSAL.startup }}F 生效帧。</span>
         <span class="note-item">防 DI（斗气迸放）：按帧数判断收招后能否直接格挡起身 {{ DRIVE_IMPACT.startup }}F DI。“不可直防”仍可能通过取消、反 DI 或破甲应对；护甲停顿与这些对策未模拟，版边格挡仍有风险。</span>
-        <span class="note-item">仅显示前 50 条最优解。</span>
+        <span class="note-item">防 {{ normalizedInvincibleStartup }}F 无敌：动作总耗时 T = 前置动作 + 绿冲偏移（如有）+ 招式空挥总帧，必须 T &lt; 起身帧 + {{ normalizedInvincibleStartup }}。余量 = 最晚安全收招帧 − T，余 0F 为极限；收招后立即拉防，仅估算帧数，不模拟距离与无敌投。</span>
+        <span class="note-item">额外骗招只补充原本未匹配的绿冲路线，不代表压制成功，也不计命中、被防收益；按安全余量从多到少排列。原有匹配保留前 50 条，额外骗招默认展示 5 条，其余可展开。</span>
           </div>
         </details>
       </div>
@@ -3539,6 +3615,7 @@ function formatFrameDelta(val: number): string {
             <span title="我方空挥收招到对手起身之间的先动帧数">空挥先动</span>
             <span>防斗反</span>
             <span title="按收招帧判断能否直接格挡起身 DI；取消反 DI 与破甲另计">防 DI</span>
+            <span :title="`动作总耗时必须小于 ${opponentWakeupFrame + normalizedInvincibleStartup}F；余 0F 为极限安全`">防 {{ normalizedInvincibleStartup }}F 无敌</span>
             <span class="sortable-header" @click="toggleSort('block')">
               被防
               <span v-if="sortKey === 'block'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
@@ -3552,10 +3629,11 @@ function formatFrameDelta(val: number): string {
               <span v-if="sortKey === 'trade'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
             </span>
           </div>
-          <div v-for="result in okiResults" :key="result.key" :class="['result-row-auto', {
+          <div v-for="result in displayedOkiResults" :key="result.key" :class="['result-row-auto', {
             expanded: selectedResultKey === result.key,
             success: result.coversOpponent,
             trade: result.isTrade,
+            'bait-only': result.isBaitOnly,
             'preferred-row': result.isPreferred
           }]" @click="toggleResultDetail(result.key)">
             <div class="result-combo oki-combo-label">
@@ -3564,6 +3642,7 @@ function formatFrameDelta(val: number): string {
             <span v-if="result.coversOpponent" class="success-badge">压制</span>
             <span v-if="result.isTrade" class="trade-badge">相杀</span>
             <span v-if="result.isWhiffAdvantage" class="tag-badge">空挥</span>
+            <span v-if="result.isBaitOnly" class="tag-badge bait-tag">骗招</span>
               <span v-if="result.prefix" class="combo-prefix">{{ result.prefix }}</span>
               <span v-if="result.prefix">+</span>
               <span>{{ getMoveDisplayName(result.move) }}</span>
@@ -3595,6 +3674,10 @@ function formatFrameDelta(val: number): string {
               :class="{ 'frame-positive': result.driveImpactGuard.canBlock === true, 'frame-negative': result.driveImpactGuard.canBlock === false }"
               :title="getDriveImpactGuardDescription(result.driveImpactGuard)"
             >{{ getDriveImpactGuardLabel(result.driveImpactGuard) }}</span>
+            <span class="invincible-guard"
+              :class="{ 'frame-positive': result.invincibleGuard.canBlock === true, 'frame-negative': result.invincibleGuard.canBlock === false, 'invincible-limit': result.invincibleGuard.safetyMargin === 0 }"
+              :title="getInvincibleGuardDescription(result.invincibleGuard)"
+            >{{ getInvincibleGuardLabel(result.invincibleGuard) }}</span>
             <span
               :class="{ 'frame-positive': isPositive(result.calculatedOnBlock), 'frame-negative': isNegative(result.calculatedOnBlock) }">{{
                 formatFrame(result.calculatedOnBlock) }}</span>
@@ -3733,7 +3816,11 @@ function formatFrameDelta(val: number): string {
                   {{ getDriveImpactGuardLabel(result.driveImpactGuard) }}：{{ getDriveImpactGuardDescription(result.driveImpactGuard) }}
                 </span>
               </div>
-              <div v-if="!result.isWhiffAdvantage" class="detail-row calc">
+              <div class="detail-row calc invincible-guard-detail">
+                <span class="detail-label">防 {{ normalizedInvincibleStartup }}F 无敌:</span>
+                <span>{{ getInvincibleGuardDescription(result.invincibleGuard) }}</span>
+              </div>
+              <div v-if="!result.isWhiffAdvantage && !result.isBaitOnly" class="detail-row calc">
                 <span class="detail-label">被防计算:</span>
                 <span v-if="result.projectileOki">
                   {{ result.projectileOki.blockFrameFromInput }} (输入到被防)
@@ -3756,7 +3843,7 @@ function formatFrameDelta(val: number): string {
                       formatFrame(result.calculatedOnBlock) }}</span>
                 </span>
               </div>
-              <div v-if="!result.isWhiffAdvantage" class="detail-row calc">
+              <div v-if="!result.isWhiffAdvantage && !result.isBaitOnly" class="detail-row calc">
                 <span class="detail-label">被击计算:</span>
                 <span>
                   {{ result.move.onHit }} (原始)
@@ -3791,6 +3878,7 @@ function formatFrameDelta(val: number): string {
                 <span v-else-if="result.isTrade" class="trade">
                   ⚠ 相杀: 与对手判定第一帧重合 ({{ opponentFirstActiveFrame }}F)
                 </span>
+                <span v-else-if="result.isBaitOnly">骗招：收招后可格挡起身无敌技，不代表能压制普通抢招。</span>
               </div>
 
               <OkiRouteMemory
@@ -3879,6 +3967,7 @@ function formatFrameDelta(val: number): string {
               expanded: selectedResultKey === result.key,
               success: result.coversOpponent,
               trade: result.isTrade,
+              'bait-only': result.isBaitOnly,
               'preferred-card': result.isPreferred
             }]"
             @click="toggleResultDetail(result.key)"
@@ -3890,6 +3979,7 @@ function formatFrameDelta(val: number): string {
                 <span v-if="result.coversOpponent" class="badge-mini success">压制</span>
                 <span v-if="result.isTrade" class="badge-mini trade">相杀</span>
                 <span v-if="result.isWhiffAdvantage" class="badge-mini">空挥</span>
+                <span v-if="result.isBaitOnly" class="badge-mini bait-tag">骗招</span>
                 <span v-if="result.prefix" class="mob-prefix">{{ result.prefix }}</span>
                 <span v-if="result.prefix" class="mob-plus">+</span>
                 <span class="mob-move-name">{{ getMoveDisplayName(result.move) }}</span>
@@ -3911,6 +4001,10 @@ function formatFrameDelta(val: number): string {
                 :class="{ green: result.driveImpactGuard.canBlock === true, red: result.driveImpactGuard.canBlock === false }"
                 :title="getDriveImpactGuardDescription(result.driveImpactGuard)"
               >防 DI: {{ getDriveImpactGuardLabel(result.driveImpactGuard) }}</span>
+              <span class="badge-mini frame font-mono invincible-guard"
+                :class="{ green: result.invincibleGuard.canBlock === true, red: result.invincibleGuard.canBlock === false, 'invincible-limit': result.invincibleGuard.safetyMargin === 0 }"
+                :title="getInvincibleGuardDescription(result.invincibleGuard)"
+              >防 {{ normalizedInvincibleStartup }}F 无敌: {{ getInvincibleGuardLabel(result.invincibleGuard) }}</span>
               <span class="badge-mini frame font-mono oki-hit-timing">
                 <span>打击: {{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
                 <small>发生 {{ result.prefixFrames + parseStartup(result.move.startup) }}F</small>
@@ -3971,7 +4065,7 @@ function formatFrameDelta(val: number): string {
                 </div>
               </div>
 
-              <div class="mobile-detail-section">
+              <div v-if="!result.isBaitOnly && !result.isWhiffAdvantage" class="mobile-detail-section">
                 <div class="section-divider">防御/命中有利帧 (Advantage)</div>
                 <div class="advantage-blocks">
                   <div class="adv-card block-adv">
@@ -4012,6 +4106,11 @@ function formatFrameDelta(val: number): string {
                   {{ getDriveImpactGuardDescription(result.driveImpactGuard) }}
                 </span>
               </div>
+              <div class="detail-step-item invincible-guard-detail">
+                <span class="step-lbl">防 {{ normalizedInvincibleStartup }}F 无敌:</span>
+                <span class="step-val">{{ getInvincibleGuardDescription(result.invincibleGuard) }}</span>
+              </div>
+              <p v-if="result.isBaitOnly">骗招路线：收招后立即拉防，不代表压制成功。</p>
 
               <OkiRouteMemory
                 :route="getOkiRouteLabel(result)"
@@ -4064,7 +4163,7 @@ function formatFrameDelta(val: number): string {
             显示其余 {{ hiddenOkiResultCount }} 条
           </button>
           <button
-            v-else-if="showAllAutoResults && okiResults.length > MOBILE_RESULT_PREVIEW_COUNT"
+            v-else-if="showAllAutoResults && displayedOkiResults.length > MOBILE_RESULT_PREVIEW_COUNT"
             type="button"
             class="show-more-btn mobile-only"
             @click="showAllAutoResults = false"
@@ -4075,7 +4174,7 @@ function formatFrameDelta(val: number): string {
       </div>
 
       <div v-else class="empty-state">
-        <p>没有自动匹配的压制组合</p>
+        <p>{{ onlyShowSafeBait ? '没有符合当前筛选的安全骗招路线' : '没有自动匹配的压制或骗招组合' }}</p>
       </div>
     </section>
 
@@ -6239,6 +6338,14 @@ function formatFrameDelta(val: number): string {
 
 .oki-context-summary { display: flex; flex-wrap: wrap; gap: var(--space-md); color: var(--color-text-secondary); font-size: var(--font-size-sm); }
 .oki-context-summary strong { color: var(--color-text-primary); font-variant-numeric: tabular-nums; }
+.invincible-startup-setting,
+.safe-bait-filter { display: inline-flex; align-items: center; gap: 6px; }
+.invincible-startup-input { width: 52px; padding: 3px 5px; color: var(--color-text-primary); background: var(--color-bg-tertiary); border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+.bait-recommendation-summary { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); color: var(--color-text-muted); font-size: var(--font-size-xs); }
+.bait-expand-btn { color: var(--color-accent); background: transparent; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 4px 8px; cursor: pointer; }
+.invincible-guard { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.invincible-guard.invincible-limit { color: var(--color-warning); }
+.bait-tag { color: var(--color-accent); }
 .oki-calculation-notes { flex: 1; min-width: 120px; }
 .oki-calculation-notes summary { cursor: pointer; width: fit-content; color: var(--color-text-secondary); font-size: var(--font-size-sm); }
 .oki-calculation-notes[open] { flex-basis: 100%; }
@@ -6307,8 +6414,8 @@ function formatFrameDelta(val: number): string {
 
 .oki-results-table > .result-header,
 .oki-results-table > .result-row-auto {
-  grid-template-columns: minmax(260px, 2.5fr) 100px 65px 115px 55px 80px 80px 85px 65px 100px 70px;
-  min-width: 1200px;
+  grid-template-columns: minmax(260px, 2.5fr) 100px 65px 115px 55px 80px 80px 85px 105px 65px 100px 70px;
+  min-width: 1310px;
 }
 
 .oki-hit-timing { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 2px; white-space: nowrap; font-variant-numeric: tabular-nums; }
