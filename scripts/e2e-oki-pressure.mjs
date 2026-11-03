@@ -361,12 +361,73 @@ try {
     await page.waitForSelector('.mobile-result-card.bait-only', { visible: true });
     const card = await page.$('.mobile-result-card.bait-only');
     assert.match(await card.$eval('.invincible-guard', node => node.textContent), /防 5F 无敌: 安全 · 余 4F/);
+    assert.match(await card.$eval('.oki-combo-primary', node => node.textContent), /空挥/);
+    assert.equal(await card.$eval('.oki-whiff-lead', node => node.textContent.trim()), '空挥先动: -1F');
+    assert.equal(await card.$eval('.oki-whiff-lead', node => node.classList.contains('red')), true);
     assert.doesNotMatch(await card.$eval('.oki-combo-primary', node => node.textContent), /压制|相杀/);
     await card.click();
     assert.match(await card.$eval('.invincible-guard-detail', node => node.textContent), /动作结束 29F.*无敌生效 34F/);
+    assert.match(await card.$eval('.oki-whiff-detail', node => node.textContent), /起身 29F − 恢复 30F = -1F/);
     assert.equal(await card.$('.advantage-blocks'), null);
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     await screenshot('mobile-safe-bait.png', '.mobile-result-card.bait-only');
+  });
+
+  await check('bait whiffs show positive, zero and negative lead in desktop and mobile', async () => {
+    for (const { knockdown, lead, negative } of [
+      { knockdown: 30, lead: '+1F', negative: false },
+      { knockdown: 29, lead: '0F', negative: false },
+      { knockdown: 28, lead: '-1F', negative: true },
+    ]) {
+      await fill('.custom-kd-input input', knockdown);
+      await page.waitForFunction(lead => document.querySelector('.oki-results-table .bait-only .oki-whiff-lead')?.textContent.trim() === lead, {}, lead);
+      for (const selector of ['.oki-results-table .bait-only', '.mobile-result-card.bait-only']) {
+        const state = await page.$eval(selector, node => ({
+          text: node.querySelector('.oki-whiff-lead').textContent.trim(),
+          negative: node.querySelector('.oki-whiff-lead').matches('.frame-negative, .red'),
+          whiff: node.querySelector('.oki-combo-primary').textContent.includes('空挥'),
+          guard: node.querySelector('.invincible-guard').textContent,
+          block: node.matches('.result-row-auto') ? node.children[9].textContent.trim() : null,
+        }));
+        assert.ok(state.text.endsWith(lead));
+        assert.equal(state.negative, negative);
+        assert.equal(state.whiff, true);
+        assert.match(state.guard, /安全/);
+        if (state.block !== null) assert.equal(state.block, '-');
+      }
+    }
+    await page.setViewport({ width: 1440, height: 1000, deviceScaleFactor: 1 });
+    await screenshot('desktop-bait-whiff-lead.png', '.oki-results-table');
+  });
+
+  await check('33F wakeup screenshot routes all count as whiffs with signed frame advantage', async () => {
+    await fill('.custom-kd-input input', 32);
+    await fill('.auto-match-search-input', '');
+    for (const expected of [
+      { prefix: '绿冲', input: '5MP', lead: '-1F', margin: '余 4F' },
+      { prefix: '绿冲', input: '2MP', lead: '-3F', margin: '余 2F' },
+      { prefix: 'Stand LP + 绿冲', input: '5LP', lead: '-5F', margin: '余 0F' },
+    ]) {
+      for (const mobile of [false, true]) {
+        const result = await page.$$eval(mobile ? '.mobile-result-card.bait-only' : '.oki-results-table .bait-only', (rows, { expected, mobile }) => {
+          const row = rows.find(node => node.querySelector(mobile ? '.mob-prefix' : '.combo-prefix')?.textContent.trim() === expected.prefix
+            && node.querySelector(mobile ? '.mob-move-input' : '.move-input')?.textContent.trim() === (mobile ? `(${expected.input})` : expected.input));
+          return row ? {
+            combo: row.querySelector('.oki-combo-primary').textContent,
+            lead: row.querySelector('.oki-whiff-lead').textContent.trim(),
+            negative: row.querySelector('.oki-whiff-lead').matches('.red, .frame-negative'),
+            guard: row.querySelector('.invincible-guard').textContent.trim(),
+          } : null;
+        }, { expected, mobile });
+        assert.ok(result, `${mobile ? 'mobile' : 'desktop'} ${expected.prefix} + ${expected.input}`);
+        assert.match(result.combo, /空挥/);
+        assert.match(result.combo, /骗招/);
+        assert.ok(result.lead.endsWith(expected.lead), result.lead);
+        assert.equal(result.negative, true);
+        assert.ok(result.guard.includes(expected.margin), result.guard);
+      }
+    }
+    await screenshot('desktop-33f-bait-whiffs.png', '.oki-results-table');
   });
 
   await check('no visible UI errors, console errors or failed HTTP requests', async () => {

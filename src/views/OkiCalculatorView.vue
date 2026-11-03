@@ -1489,12 +1489,11 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
         && invincibleGuard.isRecommendedBait;
 
       if (isSuccessMatch || isTradeMatch || isWhiffAdvantageMatch || isBaitOnly) {
-        const isWhiffAdvantage = isWhiffAdvantageMatch;
-        const isNonContact = isWhiffAdvantage || isBaitOnly;
+        const isWhiffAdvantage = isWhiffAdvantageMatch || isBaitOnly;
         const meatyStartFrame = timing.fastestHitFrame + meatyStartOffset;
         const effectiveHitFrame = Math.max(meatyStartFrame, oppWindowStart);
         const canApplyMeaty = !move.noMeaty;
-        const meatyBonus = isNonContact ? 0 : canApplyMeaty ? (effectiveHitFrame - meatyStartFrame) : 0;
+        const meatyBonus = isWhiffAdvantage ? 0 : canApplyMeaty ? (effectiveHitFrame - meatyStartFrame) : 0;
         const driveRushAdvantageBonus = getDriveRushAdvantageBonus(move);
 
         let calcBlock: number | string | undefined;
@@ -1503,7 +1502,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
         let tradeDet: string | undefined;
         let tradeExpl = '';
 
-        if (!isNonContact) {
+        if (!isWhiffAdvantage) {
           const baseBlock = parseFrameAdvantage(move.onBlock);
           if (baseBlock !== null) {
             calcBlock = baseBlock + driveRushAdvantageBonus + meatyBonus;
@@ -1582,9 +1581,9 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           calculatedOnBlock: calcBlock,
           calculatedOnHit: calcHit,
           isWhiffAdvantage: isWhiffAdvantage || undefined,
-          whiffAdvantage: isWhiffAdvantage ? whiffAdvantage : undefined,
+          whiffAdvantage: isWhiffAdvantage ? oppWindowStart - recoveryTiming.recoverFrame : undefined,
           meatyBonus,
-          effectiveHitFrame: isNonContact ? undefined : effectiveHitFrame,
+          effectiveHitFrame: isWhiffAdvantage ? undefined : effectiveHitFrame,
           tradeAdvantage: tradeAdv,
           tradeDetail: tradeDet,
           tradeExplanation: tradeExpl,
@@ -3587,7 +3586,7 @@ function formatFrameDelta(val: number): string {
         <span class="note-item">起身帧 = 击倒优势 + 1，是对手首个可动帧。</span>
         <span class="note-item">适用起身范围：同一路线能抢先打断 {{ normalizedOpponentReversalStartup }}F 普通抢招的起身帧范围；不含同帧相杀，不代表能压无敌技。波动拳沿用已验证的版边接触范围。</span>
         <span class="note-item">容错：当前招式“最晚可以延迟几帧”仍能压制（0 表示必须精准卡帧）。</span>
-        <span class="note-item">空挥先动：空挥收招后，比对手起身早恢复几帧；与命中或被防优势不同。</span>
+        <span class="note-item">空挥先动：对手起身帧 − 我方恢复帧；正数为我方先动，0 为同时恢复，负数为对手先动。骗招也属于空挥，即使负帧仍可能来得及防无敌；与命中或被防优势不同。</span>
         <span class="note-item">防斗反：我方恢复帧不晚于起身斗反第 {{ WAKEUP_DRIVE_REVERSAL.startup }}F 生效帧。</span>
         <span class="note-item">防 DI（斗气迸放）：按帧数判断收招后能否直接格挡起身 {{ DRIVE_IMPACT.startup }}F DI。“不可直防”仍可能通过取消、反 DI 或破甲应对；护甲停顿与这些对策未模拟，版边格挡仍有风险。</span>
         <span class="note-item">防 {{ normalizedInvincibleStartup }}F 无敌：动作总耗时 T = 前置动作 + 绿冲偏移（如有）+ 招式空挥总帧，必须 T &lt; 起身帧 + {{ normalizedInvincibleStartup }}。余量 = 最晚安全收招帧 − T，余 0F 为极限；收招后立即拉防，仅估算帧数，不模拟距离与无敌投。</span>
@@ -3612,7 +3611,7 @@ function formatFrameDelta(val: number): string {
               容错
               <span v-if="sortKey === 'tolerance'" class="sort-indicator">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
             </span>
-            <span title="我方空挥收招到对手起身之间的先动帧数">空挥先动</span>
+            <span title="对手起身帧 − 我方恢复帧；正数我方先动，负数对手先动">空挥先动</span>
             <span>防斗反</span>
             <span title="按收招帧判断能否直接格挡起身 DI；取消反 DI 与破甲另计">防 DI</span>
             <span :title="`动作总耗时必须小于 ${opponentWakeupFrame + normalizedInvincibleStartup}F；余 0F 为极限安全`">防 {{ normalizedInvincibleStartup }}F 无敌</span>
@@ -3662,7 +3661,7 @@ function formatFrameDelta(val: number): string {
               {{ result.safePressureRange ? `${result.safePressureRange.start}~${result.safePressureRange.end}F` : '-' }}
             </span>
             <span>{{ formatTolerance(result.toleranceFrames) }}</span>
-            <span class="oki-whiff-lead" :class="{ 'frame-positive': result.isWhiffAdvantage }">
+            <span class="oki-whiff-lead" :class="{ 'frame-positive': isPositive(result.whiffAdvantage), 'frame-negative': isNegative(result.whiffAdvantage) }">
               {{ result.isWhiffAdvantage ? `${formatFrame(result.whiffAdvantage)}F` : '-' }}
             </span>
             <span>
@@ -3757,10 +3756,10 @@ function formatFrameDelta(val: number): string {
                 </span>
                 <span class="frame-positive">{{ result.ourActiveStart }}~{{ result.ourActiveEnd }}F</span>
               </div>
-              <div v-if="result.isWhiffAdvantage" class="detail-row calc">
-                <span class="detail-label">空挥优势:</span>
-                <span class="frame-positive">
-                  对手起身 {{ opponentWakeupFrame }}F - 我方恢复 {{ result.recoverFrame }}F = {{ formatFrame(result.whiffAdvantage) }}
+              <div v-if="result.isWhiffAdvantage" class="detail-row calc oki-whiff-detail">
+                <span class="detail-label">空挥先动:</span>
+                <span :class="{ 'frame-positive': isPositive(result.whiffAdvantage), 'frame-negative': isNegative(result.whiffAdvantage) }">
+                  对手起身 {{ opponentWakeupFrame }}F - 我方恢复 {{ result.recoverFrame }}F = {{ formatFrame(result.whiffAdvantage) }}F
                 </span>
               </div>
               <div class="detail-row">
@@ -4014,7 +4013,8 @@ function formatFrameDelta(val: number): string {
                 适用起身范围: {{ result.safePressureRange ? `${result.safePressureRange.start}~${result.safePressureRange.end}F` : '-' }}
               </span>
               <span class="badge-mini frame font-mono">容错: {{ formatTolerance(result.toleranceFrames) }}</span>
-              <span v-if="result.isWhiffAdvantage" class="badge-mini frame font-mono green oki-whiff-lead">
+              <span v-if="result.isWhiffAdvantage" class="badge-mini frame font-mono oki-whiff-lead"
+                :class="{ green: isPositive(result.whiffAdvantage), red: isNegative(result.whiffAdvantage) }">
                 空挥先动: {{ formatFrame(result.whiffAdvantage) }}F
               </span>
               <span :class="['badge-mini', 'frame', 'font-mono', isPositive(result.calculatedOnBlock) ? 'green' : (isNegative(result.calculatedOnBlock) ? 'red' : '')]">
@@ -4052,6 +4052,12 @@ function formatFrameDelta(val: number): string {
                 <div class="detail-step-item">
                   <span class="step-lbl">对手起身帧:</span>
                   <span class="step-val font-mono">{{ effectiveKnockdownAdv }} + 1 = {{ opponentWakeupFrame }}F</span>
+                </div>
+                <div v-if="result.isWhiffAdvantage" class="detail-step-item oki-whiff-detail">
+                  <span class="step-lbl">空挥先动:</span>
+                  <span class="step-val font-mono" :class="{ 'frame-positive': isPositive(result.whiffAdvantage), 'frame-negative': isNegative(result.whiffAdvantage) }">
+                    起身 {{ opponentWakeupFrame }}F − 恢复 {{ result.recoverFrame }}F = {{ formatFrame(result.whiffAdvantage) }}F
+                  </span>
                 </div>
                 <div class="detail-step-item">
                   <span class="step-lbl">可安全压制的起身帧:</span>
