@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/ed/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Ed/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身轻拳抢到先手时，站轻拳确认后用中精神闪击打倒，方便前移压起身。",
+      "input": "2LP → 5LP → 214MP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站中拳碰到对手时，用重拳派生确认命中，接重精神闪击。",
+      "input": "5MP~HP → 214HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "跳重拳打中地面目标时，先接站重脚，再进熟悉的中重拳派生。",
+      "input": "j.HP → 5HK → 5MP~HP → 214HP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "挡住升龙等大破绽时，站重脚确反后接重拳，直接用重精神闪击收尾。",
+      "input": "5HK → 5HP → 214HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "贴身只有 4 帧破绽时，站轻拳确反能接进中重拳派生。",
+      "input": "5LP → 5MP~HP → 214HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "近身站中拳打出确反时，接蹲中脚再回到中重拳派生，保留斗气。",
+      "input": "5MP → 2MK → 5MP~HP → 214HP"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中拳牵制摸到人时用绿冲延伸，站重拳命中后转蹲中脚，最后用重精神闪击击倒。",
+      "input": "2MP → DRC → 5HP → 2MK → 2MP → 214HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站中脚差返打出确反时，绿冲中拳接站重拳，直接用重精神闪击收尾。",
+      "input": "5MK → DRC → 5MP → 5HP → 214HP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "站重拳命中、对手已到斩杀血量时，花一次绿冲转重脚，再用重精神闪击取消 SA3。",
+      "input": "5HP → DRC → 5HK → 5HP → 214HP → SA3"
+    }
+  ]
+}

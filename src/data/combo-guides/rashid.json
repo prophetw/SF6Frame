@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/rashid/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Rashid/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身站中拳打中时，顺按重脚完成目标连段，适合先熟悉起手。",
+      "input": "5MP~HK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站中脚在近处踢中时，接站中拳再按重脚，把同一套派生多延长一下。",
+      "input": "5MK → 5MP~HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "确认中重派生已经打中时，接重鹰击，把对手一路往版边送。",
+      "input": "5MP~HK → 214HK"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "用蹲中脚抓到对手地面招式的收招时，确反可直接接中鹰击。",
+      "input": "2MK → 214MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "挡住小破绽、站轻拳够得到时，轻拳打出确反再接站中脚和中重派生。",
+      "input": "5LP → 5MK → 5MP~HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住升龙等大破绽时，重脚确反后用前中拳贴近，再接轻鹰击搬运。",
+      "input": "5HK → 6MP → 214LK"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚摸到走动的对手时取消绿冲，站中脚打中后接重拳和中鹰击。",
+      "input": "2MK → DRC → 5MK → 5HP → 214MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "主动绿冲站中拳打中时，再接一次站中拳进派生，记住两次中拳的节奏。",
+      "input": "裸 DR → 5MP → 5MP~HK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "立回站重拳够到地面目标、有斗气时，绿冲蹲重拳转站重拳再搬运。",
+      "input": "5HP → DRC → 2HP → 5HP → 214MK"
+    }
+  ]
+}

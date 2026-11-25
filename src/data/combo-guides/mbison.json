@@ -1,0 +1,59 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/vega_mbison/combo"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身用蹲轻脚抓后退，接站轻脚确认，然后用轻背拳给对手挂雷。",
+      "input": "2LK → 5LK → 214LP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "已经蹲防蓄好后方向时，小脚起手的三下轻攻击打中就接轻精神碾压。",
+      "input": "2LK → 2LP → 5LP → [4]6LP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站中拳近身压中时，接蹲中拳确认，再用中背拳挂雷。",
+      "input": "5MP → 2MP → 214MP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "挡住贴身 -4F 的招时，用蹲轻拳抢确反，轻脚接背拳把小破绽换成挂雷。",
+      "input": "2LP → 5LK → 214LP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手在近处出招落空时，站重拳确反后用轻拳追上，已有后蓄力就出轻碾压。",
+      "input": "5HP → 5LP → [4]6LP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "防住大升龙时用站重脚打崩地，前冲后出蹲重拳，有两格斗气就接 OD 剪刀脚延伸。",
+      "input": "5HK → 前冲 → 2HP → 236KK → 6HP → [4]6LP"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚抓后退后取消绿冲，站中拳打中就转蹲重拳，用重背拳挂雷。",
+      "input": "2MK → DRC → 5MP → 2HP → 214HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "主动绿冲站中拳打中时，用后重脚接重背拳，花一格斗气也能挂雷。",
+      "input": "裸 DR → 5MP → 4HK → 214HP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "对手看到绿冲便站着后退时，改用蹲轻脚打下段，再接双中拳挂雷。",
+      "input": "裸 DR → 2LK → 5MP → 2MP → 214MP"
+    }
+  ]
+}

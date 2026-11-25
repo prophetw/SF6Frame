@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/gouki_akuma/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Akuma/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身小拳打中时，趁连续轻拳确认后接重豪升龙。",
+      "input": "2LP → 2LP → 2LP → 623HP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站重拳抓到对方地面动作时，重金刚灼火接前拳派生收尾。",
+      "input": "5HP → 214HP~6P"
+    },
+    {
+      "difficulty": "中等",
+      "when": "近身蹲中拳打中时，再接一下蹲中拳确认，然后走中金刚灼火派生。",
+      "input": "2MP → 2MP → 214MP~6P"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "防住 -5F 且对手被推到轻拳外时，改用够远的站轻脚起手。",
+      "input": "5LK → 214MP~6P"
+    },
+    {
+      "difficulty": "中等",
+      "when": "贴身挡住 -4F 后用蹲轻拳抢确反，转站重拳把小破绽打成重拳路线。",
+      "input": "2LP → 5HP → 214HP~6P"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手空挥后手脚还没收回时，用蹲中脚确反，接重金刚灼火。",
+      "input": "2MK → 214HP~6P"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚截到对手走动时，绿冲重拳打中后转轻龙卷，用扫腿收尾。",
+      "input": "2MK → DRC → 5HP → 5MK → 214LK → 2HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手习惯蹲防时，主动绿冲前中拳打中段，接站中脚和重龙卷搬运。",
+      "input": "裸 DR → 6MP → 5MK → 214HK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "站轻脚在近处截到对方时，绿冲轻拳转蹲重拳让对手站起，龙卷后再补升龙。",
+      "input": "5LK → DRC → 2LP → 2HP → 214LK → 623HP"
+    }
+  ]
+}

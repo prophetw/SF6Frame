@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/zangief/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Zangief/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身蹲轻脚抓后退时，蹲轻拳命中就同时按两拳，用双截旋风掌击倒。",
+      "input": "2LK → 2LP → PP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "对方进入斜下中拳的距离时，用这拳接双截旋风掌，适合省斗气。",
+      "input": "3MP → PP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "跳跃中的下重拳打中地面目标时，落地头槌接斜下中拳，再转旋风掌。",
+      "input": "j.2HP → 6HP → 3MP → PP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "防住升龙、能从容起手时，用前重脚打出确反，再接斜下中拳和旋风掌。",
+      "input": "6HK → 3MP → PP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站重脚抓到对手收招并把人打浮空时，有一格超必杀就用斜下中拳接空投超杀。",
+      "input": "5HK → 3MP → SA1"
+    },
+    {
+      "difficulty": "高级",
+      "when": "挡住大破绽且有两格斗气、三格超必杀时，用 OD 旋风掌转 SA3 争取收掉回合。",
+      "input": "6HK → 3MP → PPP → SA3"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "斜下中拳在地面截到人时取消绿冲，蹲中拳接斜下中拳，最后用普通旋风掌。",
+      "input": "3MP → DRC → 2MP → 3MP → PP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "轻脚轻拳已经确认命中时，花斗气延长，从绿冲蹲轻拳转入旋风掌。",
+      "input": "2LK → 5LP → DRC → 2LP → 3MP → PP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "主动冲到站中拳范围时，绿冲中拳命中可按完三拳派生，省下取消绿冲的消耗。",
+      "input": "裸 DR → 5MP~MP~MP"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/juri/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Juri/Combos"
+    },
+    {
+      "label": "朱莉中段演示",
+      "url": "https://www.youtube.com/watch?v=DYLMrokWpM4"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身用蹲轻脚抓后退，轻拳确认后用中风破刃击倒并攒一枚风破。",
+      "input": "2LK → 2LP → 2LP → 214MK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站中拳压中时再接蹲中拳，两下都打到就收中风破刃。",
+      "input": "5MP → 2MP → 214MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "跳重脚打中地面目标后，落地重拳接重风破刃挑空，再补重天穿轮。",
+      "input": "j.HK → 5HP → 214HK → 623HP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "贴身挡住 -6F 的招时，蹲中拳打出确反，可以直接用重风破刃挑空。",
+      "input": "2MP → 214HK → 623HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "只留下 4 帧空隙时，用站轻拳抢确反，再接蹲重拳走挑空路线。",
+      "input": "5LP → 2HP → 214HK → 623HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住无敌技落地时，用前重拳起手，再接蹲重拳增加伤害。",
+      "input": "6HP → 2HP → 214HK → 623HP"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚截住对方后退时取消绿冲，站中拳命中就接蹲中拳，收尾顺便攒风破。",
+      "input": "2MK → DRC → 5MP → 2MP → 214MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对方习惯蹲防时，用绿冲前中脚打中段，接站中拳确认，打中就用中风破刃攒风破。",
+      "input": "裸 DR → 6MK → 5MP → 2MP → 214MK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "蹲中脚取消绿冲、确认打中且想多取伤害时，改用蹲重拳接站中拳，收尾仍能攒风破。",
+      "input": "2MK → DRC → 2HP → 5MP → 2MP → 214MK"
+    }
+  ]
+}

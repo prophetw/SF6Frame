@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/sagat/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Sagat/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身蹲轻拳打断抢招时，连第二拳确认，再用轻虎膝收尾。",
+      "input": "2LP → 2LP → 236LK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "对方在身前往后走时，从蹲轻脚起手，两下站轻拳确认后接中虎升。",
+      "input": "2LK → 5LP → 5LP → 623MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "蹲中拳命中时，走中脚架势的前中脚派生，等对方浮起补轻虎升。",
+      "input": "2MP → 214MK~6MK → 623LP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "贴身防住 -4F 的招时，蹲轻拳确反给了转蹲中拳、重虎升的时间。",
+      "input": "2LP → 2MP → 623HP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "挡住推开稍远的招、留有站轻脚的发生时间时，轻脚直接接重虎升。",
+      "input": "5LK → 623HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住无敌技落地时，蹲重拳确反后走重脚派生，再用重虎升取伤害。",
+      "input": "2HP → 214HK~6HK → 623HP"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "中距离蹲中拳取消绿冲打中时，站中拳接后重拳，让重虎膝近身干净命中后补轻虎升。",
+      "input": "2MP → DRC → 5MP → 4HP → 236HK → 623LP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手蹲防时，绿冲前中拳打中段；有额外两格斗气就用 OD 虎膝接轻虎升。",
+      "input": "裸 DR → 6MP → 2MP → 236KK → 623LP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "轻拳摸到人且想增加伤害时，绿冲后仍用轻拳起手，再转后重拳接近身重虎膝。",
+      "input": "2LP → DRC → 2LP → 4HP → 236HK → 623LP"
+    }
+  ]
+}

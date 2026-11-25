@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/jamie/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Jamie/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "站中拳近身打中时，接站轻脚，再用流酔拳的脚派生喝一口酒。",
+      "input": "5MP → 5LK → 236LP~LK~LK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "蹲轻拳打断对手抢招时，用站轻脚派生接重张弓腿，拿到击倒。",
+      "input": "2LP → 5LK~LK → 623HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "近身蹲重拳打到地面目标且想升级酒量时，从重流酔拳走脚派生。",
+      "input": "2HP → 236HP~HK~HK"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "中等",
+      "when": "贴身防住 -4F 的招后，蹲轻拳确反可以直接接到蹲重拳。",
+      "input": "2LP → 2HP → 623HK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "挡住贴身 -6F 的招时用蹲中拳反击，重复中拳确认后用喝酒收尾。",
+      "input": "2MP → 2MP → 236HP~HK~HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住大升龙时用站重脚打崩对手，普通前冲追上就能打完。",
+      "input": "5HK → 前冲 → 2HP → 623HK"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚截住对方后退时绿冲贴近，用中拳接重拳，收尾还能增加酒量。",
+      "input": "2MK → DRC → 2MP → 2HP → 236HP~HK~HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "从中距离主动冲进去，站重拳多段打中后接轻脚派生和张弓腿。",
+      "input": "裸 DR → 5HP → 5LK~LK → 623HK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "蹲中脚绿冲打中、想把人往版边送时，用天星踢跳取消，落地只取站重拳前两段就接张弓腿。",
+      "input": "2MK → DRC → 2KK → 跳取消 → j.HK → 5HP（两段） → 623HK"
+    }
+  ]
+}

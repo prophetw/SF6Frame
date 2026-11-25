@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/deejay/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Dee_Jay/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身轻拳抢到先手、还没蓄好下方向时，用中快速翻滚踢收尾。",
+      "input": "5LP → 2LP → 2LP → 236MK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站中拳打到人时，顺着目标连段按重拳和重脚，移动中也能打完。",
+      "input": "5MP~HP~HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "跳重拳打中地面目标后，落地一路按住下，两下蹲拳后出重折叠刀。",
+      "input": "j.HP → 2HP → 2MP → [2]8HK"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "看到升龙落空时，站重脚确反后直接扫倒，适合保留斗气。",
+      "input": "5HK → 2HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "大破绽在自己面前时，用蹲重拳确反，站重拳近身命中后取消中机枪拳。",
+      "input": "2HP → 5HP → 214MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站重脚在远处抓到收招时，花一格绿冲追上，再边出蹲拳边蓄力。",
+      "input": "5HK → 裸 DR → 5MP → 2HP → 2MP → [2]8HK"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "近身站中拳确认后想花斗气延伸时，从站轻脚取消绿冲，冲进来用蹲拳蓄力。",
+      "input": "5MP → 5LK → DRC → 2LP → 2HP → 2MP → [2]8HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对方蹲守时，用绿冲前中脚打中段，接蹲轻拳和中滚踢收尾。",
+      "input": "裸 DR → 6MK → 2LP → 236MK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "轻拳起手已经打中、三格超必杀能收掉回合时，用绿冲延长到滚踢接 SA3。",
+      "input": "5LP → 2LP → DRC → 2LP → 2HP → 2MP → 236MK → SA3"
+    }
+  ]
+}

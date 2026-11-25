@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/jp/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/JP/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "对手贴近时，蹲轻脚和轻拳打中就用轻杖击推开，重新拉开距离。",
+      "input": "2LK → 2LP → 2LP → 236LP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站重脚踢中地面目标时，按重拳派生再接中杖击，直接把人往外推。",
+      "input": "5HK~HP → 236MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "版边前重脚打中时，重杖击弹墙后用站重拳追击，再出近地刺。",
+      "input": "6HK → 236HP → 5HP → 22LP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "挡住贴身小破绽时，用蹲轻拳抢确反，两次轻拳后出轻杖击。",
+      "input": "2LP → 2LP → 236LP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站重拳抓到对手收招时，用重杖击推远，再让中段幻影和远地刺追上。",
+      "input": "5HP → 236HP → 236MK → 22HP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "对手在版边升龙落空时，从站重脚确反开始。留两格斗气和一格超必杀，前冲追上后用 OD 幻影延伸。",
+      "input": "5HK → 6HK → 236HP → 前冲 → 5HP → 236KK → 22LP → 236236P"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "想抓对方站起来后退时，主动绿冲蹲中脚，命中就接蹲中拳和中杖击。",
+      "input": "裸 DR → 2MK → 2MP → 236MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手习惯蹲守时，绿冲改用前中脚打中段，后半与绿冲下段共用。",
+      "input": "裸 DR → 6MK → 2MP → 236MP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "站重拳在地面牵制中摸到人时，取消绿冲接蹲重拳，重杖击后用幻影和地刺推远。",
+      "input": "5HP → DRC → 2HP → 236HP → 236MK → 22HP"
+    }
+  ]
+}

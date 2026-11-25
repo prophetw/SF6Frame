@@ -1,0 +1,59 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/arjun/combo"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身轻拳截到对手时，站轻拳接蹲轻拳确认，用轻巨腕击倒。",
+      "input": "5LP → 2LP → 236LP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站中拳在中距离打中时，直接取消轻巨腕，适合够不到第二下轻拳的距离。",
+      "input": "5MP → 236LP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "跳重拳打中地面上的对手，落地接蹲重拳，用中肩撞击倒。",
+      "input": "j.HP → 2HP → 623MP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "防住大破绽、又想留住所有资源时，从站重拳起手，顺按重拳重脚完成目标连段。",
+      "input": "5HP~HP~HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "中场挡住升龙等大破绽时，站重脚确反后前冲，用蹲重脚接中巨腕和派生。",
+      "input": "5HK → 前冲 → 2HK → 236MP~6P"
+    },
+    {
+      "difficulty": "入门",
+      "when": "中场用斗气迸发反击对手的 DI 时，等对手跪倒，用蹲重拳接中巨腕和前拳追击。",
+      "input": "DI → 2HP → 236MP~6P"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "中距离站中拳牵制打中时，取消绿冲贴过去，用蹲重拳接重巨腕和前拳派生。",
+      "input": "5MP → DRC → 2HP → 236HP~6P"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对方在站中脚距离来回走时，用脚做起手，绿冲后沿用蹲重拳接巨腕的路线。",
+      "input": "5MK → DRC → 2HP → 236HP~6P"
+    },
+    {
+      "difficulty": "高级",
+      "when": "站中拳绿冲已经命中、三格超必杀能收掉回合时，在重巨腕追击后取消 SA3。",
+      "input": "5MP → DRC → 2HP → 236HP~6P → SA3"
+    }
+  ]
+}

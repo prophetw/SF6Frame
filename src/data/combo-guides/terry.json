@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/terry/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Terry/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身蹲轻脚抓到后退时，用蹲轻拳确认，再以中燃烧指节收尾。",
+      "input": "2LK → 2LP → 214MP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站中拳打中、手上还没准备必杀指令时，连按两次重脚完成灌篮派生。",
+      "input": "5MP~HK~HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚从地面摸到人时，接蹲重脚目标连段，再用重燃烧指节击倒。",
+      "input": "2MK~2HK → 214HP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "站重脚踢中对手收招时，用中拳起手的灌篮派生追击，省斗气。",
+      "input": "5HK → 5MP~HK~HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "挡住大破绽、有一格超必杀可收回合时，用站重脚确反接中能量冲撞和饿狼咆哮。",
+      "input": "5HK → 5MP → 236MK → SA1"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手升龙落在眼前时，用蹲重拳确反，重能量冲撞后稍等再踢重裂空斩，打中再补升龙。",
+      "input": "2HP → 236HK → 214HK → 623HP"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚摸到对方走动时取消绿冲，中拳打中再用重拳启动搬运段。",
+      "input": "2MK → DRC → 2MP → 5HP → 236HK → 214HK → 623HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站中拳牵制打中时，绿冲蹲重拳接重能量冲撞，等对手落低再踢重裂空斩，再接快速燃烧收尾。",
+      "input": "5MP → DRC → 2HP → 236HK → 214HK → 214LP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "蹲中脚绿冲已经确认，且三格超必杀足以收回合时，在熟悉的升龙收尾后接 SA3。",
+      "input": "2MK → DRC → 2MP → 5HP → 236HK → 214HK → 623HP → SA3"
+    }
+  ]
+}

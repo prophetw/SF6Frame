@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/aki/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/A.K.I./Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身蹲轻脚抓后退，连两下轻拳看清命中，再用重蛇头鞭上毒。",
+      "input": "2LK → 2LP → 2LP → 236HP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站中脚截到走动的对手、距离够近时，用站中拳接重鞭。",
+      "input": "5MK → 5MP → 236HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站中拳打到人时，用轻毒泡的前拳派生往前压；派生要在打中后再出。",
+      "input": "5MP → 214LP~6P"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "中距离用蹲中脚打到对方收招时，接蹲中拳再出重鞭，适合差返。",
+      "input": "2MK → 2MP → 236HP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站中脚在近处打出确反时，接蹲重拳即可击倒，斗气紧张也能用。",
+      "input": "5MK → 2HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "挡住升龙这类大破绽时，站重脚接伏地脚派生，再用连续轻拳上毒。",
+      "input": "5HK → 2PP~K → 2LP → 2LP → 236HP"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "对方站着后退时主动绿冲蹲中脚，冲到站中拳摸得到的位置再接重鞭。",
+      "input": "裸 DR → 2MK → 5MP → 236HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手蹲守时，绿冲换成斜下中拳的中段，打中后仍接站中拳。",
+      "input": "裸 DR → 3MP → 5MP → 236HP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "蹲中拳在地面打中且有斗气时，用取消绿冲把距离拉近，再走重脚伏地路线。",
+      "input": "2MP → DRC → 5MK → 5HK → 2PP~K → 2LP → 2LP → 236HP"
+    }
+  ]
+}

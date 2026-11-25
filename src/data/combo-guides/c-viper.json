@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/cviper/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/C.Viper/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "近身轻拳打中时，站轻脚确认后用重雷霆冲刺，命中再按前加双拳追击。",
+      "input": "2LP → 2LP → 5LK → 214HP~6PP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站中拳压中时，接蹲中拳确认，再用轻雷霆冲刺和双拳派生收尾。",
+      "input": "5MP → 2MP → 214LP~6PP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚截住对手前后走动时，距离够近就接站轻脚转重雷霆冲刺。",
+      "input": "2MK → 5LK → 214HP~6PP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "挡住 -5F 且站轻脚够得到时，用轻脚确反后接轻雷霆冲刺。",
+      "input": "5LK → 214LP~6PP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "贴身挡住 -4F 的招时用蹲轻拳，确反后接蹲重拳和轻地震，先练到浮空。",
+      "input": "2LP → 2HP → 623LP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住 -6F 的招却被推开一点时，用蹲中拳接中地震，适合近身重拳接不到的距离。",
+      "input": "2MP → 623MP"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "对手在绿冲前重脚的距离活动时，踢中就转站中拳，沿用双中拳路线。",
+      "input": "裸 DR → 6HK → 5MP → 2MP → 214LP~6PP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "想抓对方站防或后退时，绿冲改用蹲中脚打下段，接蹲重拳和轻地震。",
+      "input": "裸 DR → 2MK → 2HP → 623LP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "对方一直蹲防时，绿冲前中拳打中段，打中后有两格斗气就用 OD 地震追空中燃烧踢。",
+      "input": "裸 DR → 6MP → 2MP → 623PP → 大跳取消 → j.236HK"
+    }
+  ]
+}

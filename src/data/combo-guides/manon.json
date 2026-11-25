@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/manon/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Manon/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身蹲轻脚抓到后退时，用站轻拳确认，再走轻脚收尾追起身。",
+      "input": "2LK → 5LP → 214LK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站重拳打中、想把对手拉回投技距离时，按第二下重拳完成派生。",
+      "input": "5HP~HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "跳重脚打中地面目标时，落地用后重拳接中打击投，拿一枚奖牌。",
+      "input": "j.HK → 4HP → 236MP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "贴身防住 -4F 的招就用蹲轻拳还击，再打一拳确认后用重旋踢击倒。",
+      "input": "2LP → 2LP → 236HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "挡住升龙且对手落在眼前时，用后重拳接中打击投，把破绽换成奖牌。",
+      "input": "4HP → 236MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "中央用斗气迸发反制对方 DI、看到对手崩地时，前冲用后重拳接 OD 旋踢，再追打击投拿牌。",
+      "input": "DI → 前冲 → 4HP → 236KK → 236MP"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "站中拳牵制碰到人时取消绿冲，确认蹲中拳命中后用后重拳拿牌。",
+      "input": "5MP → DRC → 2MP → 4HP → 236MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手在投技距离外走动时主动绿冲，蹲中拳打中就转打击投拿牌。",
+      "input": "裸 DR → 2MP → 4HP → 236MP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "蹲轻脚打中了、愿意花三格把小招换成奖牌时，从轻拳取消绿冲延伸。",
+      "input": "2LK → 5LP → DRC → 5LP → 4HP → 236MP"
+    }
+  ]
+}

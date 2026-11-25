@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/lily/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Lily/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身用蹲轻脚抓后退，连续轻拳打中后接中战斧；这条不要求有风。",
+      "input": "2LK → 2LP → 5LP → 623MP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "蹲重拳牵制打中时，轻风缠袭拉近击倒距离，适合继续靠近对手。",
+      "input": "2HP → 236LK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "后重拳打中地面目标、下一次接近想留一层风时，接重聚风技收尾。",
+      "input": "4HP → 214HP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "防住大破绽时，用站重拳打崩对手，直接接重风缠袭往前送。",
+      "input": "5HP → 236HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "贴身挡住 -4F 时，站轻脚确反后接站中脚，再用重战斧取伤害。",
+      "input": "5LK → 5MK → 623HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "近身站重拳打到对手收招、出现崩地时，转一圈接重指令投。",
+      "input": "5HP → 360HP"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲重拳打到走动的对手时取消绿冲，用后重拳接站中脚，再以轻风缠袭收尾。",
+      "input": "2HP → DRC → 4HP → 5MK → 236LK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "主动绿冲轻拳冲到贴身时，蹲重拳第一段够得到，就转中聚风技攒风。",
+      "input": "裸 DR → 5LP → 2HP → 214MP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "已经攒好风，后重拳牵制碰到人时，绿冲延伸后用有风的重风缠袭搬运。",
+      "input": "4HP → DRC → 4HP → 5MK → 236HK"
+    }
+  ]
+}

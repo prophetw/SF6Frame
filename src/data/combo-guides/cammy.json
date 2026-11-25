@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/cammy/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Cammy/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身连续点两下站轻拳，看见打中再接中螺旋箭，把这次近身机会变成击倒。",
+      "input": "5LP~LP → 236MK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "跳重脚踢中地面上的对手，落地接站重拳，再用重螺旋箭往前推。",
+      "input": "j.HK → 5HP → 236HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "贴身压起身时蹲重拳打中了，接蹲中拳确认，再用重箭收尾。",
+      "input": "2HP → 2MP → 236HK"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "贴身防住对手 -4F 的招时，用蹲轻拳抢到确反，再接重拳重脚派生。",
+      "input": "2LP → 5HP~HK → 236MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "挡住留下 8 帧以上破绽、又把你推开一点的招时，用够得着的站重拳接重旋转拳。",
+      "input": "5HP → 214HP → 2LP → 236MK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "自己背版又防住大破绽时，按住重脚蓄满螺旋箭，再用重升龙换边。",
+      "input": "5HP → 236[HK] → 623HK"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "用蹲中脚摸对方后退，取消绿冲后看站中拳是否打中，再接重拳和螺旋箭。",
+      "input": "2MK → DRC → 5MP → 5HP → 236MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站轻脚截住对手前走时，用绿冲轻拳贴回去，再转重拳搬运。",
+      "input": "5LK → DRC → 5LP → 5HP → 236HK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "立回站重拳打中且想把人推向版边时，用后重脚挑空，等对手浮起再出重箭。",
+      "input": "5HP → DRC → 4HK → 236HK → 623HK"
+    }
+  ]
+}

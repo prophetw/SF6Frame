@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/ryu/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Ryu/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身用蹲轻脚抓对方后退，后两下轻拳确认命中再出重升龙。",
+      "input": "2LK → 2LP → 5LP → 623HP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "近身站中拳压中时接蹲中拳，确定命中后用中龙卷带着对手向前走。",
+      "input": "5MP → 2MP → 214MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "跳重拳打中地面上的对手，落地接后重拳，再用重升龙取伤害。",
+      "input": "j.HP → 4HP → 623HP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "挡住对手留下 6 帧以上破绽的近身招式时，站中拳确反后能接站重拳。",
+      "input": "5MP → 5HP → 623HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住升龙落地或骗到对方空投时，用站重脚打出崩地，前冲追上再补伤害。",
+      "input": "5HK → 前冲 → 2HP → 623HP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "站重拳打到对方收招时，可以接平常接不上的重波掌击，再用中龙卷搬运。",
+      "input": "5HP → 214HP → 214MK"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚抓到对方走动时，取消绿冲贴近，用站重拳接后重拳把牵制转成击倒。",
+      "input": "2MK → DRC → 5HP → 4HP → 623HP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "对手站着往后退时，主动绿冲用下段截住，站轻脚接轻足刀收尾。",
+      "input": "裸 DR → 2MK → 5LK → 236LK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手习惯蹲防时，绿冲前中拳打中段；打中再接站中拳和升龙。",
+      "input": "裸 DR → 6MP → 5MP → 623HP"
+    }
+  ]
+}

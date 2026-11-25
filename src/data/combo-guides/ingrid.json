@@ -1,0 +1,59 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/ingrid/combo"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "近身站中拳命中时，顺按中脚派生接中日升踢，无需太阳徽记。",
+      "input": "5MP~MK → 236MK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "对手往后走时，贴身蹲轻脚接站轻拳，确认后用站轻脚取消中日升踢。",
+      "input": "2LK → 5LP → 5LK → 236MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "跳重拳打到地面目标时，落地重脚接蹲轻拳，再用中日升踢收尾。",
+      "input": "j.HP → 5HK → 2LP → 236MK"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "中等",
+      "when": "挡住升龙落地时，用蹲重拳确反转重日升踢，再用空中日焰追击。",
+      "input": "2HP → 236HK → j.214MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "挡住 -5F 的招时，用站轻脚抢确反，花三格斗气接重日升踢，空中轻日焰收尾。",
+      "input": "5LK → DRC → 5MK → 236HK → j.214LP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站重脚踢到对方收招时，确反足够接站中拳，再用熟悉的中脚派生击倒。",
+      "input": "5HK → 5MP~MK → 236MK"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚截住后退时取消绿冲，先用站重脚打中，再转熟悉的中拳目标连段。",
+      "input": "2MK → DRC → 5HK → 5MP~MK → 236MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "蹲中拳命中时取消绿冲，接蹲重拳和重日升踢，空中轻日焰收尾后便于前冲继续压。",
+      "input": "2MP → DRC → 2HP → 236HK → j.214LP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "站轻脚差返打出确反、有斗气时，取消绿冲接站中脚，再追空中中日焰取伤害。",
+      "input": "5LK → DRC → 5MK → 236HK → j.214MP"
+    }
+  ]
+}

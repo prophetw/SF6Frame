@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/mai/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Mai/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身蹲轻脚抓后退，两下轻拳确认后用轻必杀忍蜂把人往前推。",
+      "input": "2LK → 2LP → 5LP → 236LK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站轻脚够到对手时，连按脚派生，角色跳起后用空中必杀收尾。",
+      "input": "5LK~LK~LK → j.214P"
+    },
+    {
+      "difficulty": "中等",
+      "when": "身上没有焰时，近身轻拳打中接中龙炎舞，击倒后可以准备扇子。",
+      "input": "2LP → 5LP → 214MP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "对手被推开、仍在蹲轻拳够得到的位置时，用小拳确反后直接接中龙炎舞。",
+      "input": "2LP → 214MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手站着收招时，站中脚确反转重拳；无焰时用重龙炎舞挑起再接轻忍蜂。",
+      "input": "5MK → 5HP → 214HP → 236LK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站重脚打崩对手、有两格超必杀就能结束回合时，直接交 SA2。",
+      "input": "5HK → SA2"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚摸到人时取消绿冲，后重脚让对手站起，无焰也能接重龙炎舞和轻忍蜂。",
+      "input": "2MK → DRC → 4HK → 2MP → 214HP → 236LK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对方一直蹲守时，绿冲前中拳打中段，命中就接蹲中拳和重忍蜂。",
+      "input": "裸 DR → 6MP → 2MP → 236HK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "站重拳确认后想贴身压起身时，绿冲后重脚转轻脚三段派生，空中收尾。",
+      "input": "5HP → DRC → 4HK → 5LK~LK~LK → j.214P"
+    }
+  ]
+}

@@ -107,7 +107,7 @@ function getMetaChips(combo: Combo): string[] {
     <div class="section-head" @click="isExpanded = !isExpanded" style="cursor: pointer; user-select: none;">
       <div>
         <p class="section-kicker">Combos</p>
-        <h2 class="section-title">常用连段</h2>
+        <h2 class="section-title">完整连段库</h2>
       </div>
       <div style="display: flex; align-items: center; gap: 1rem;">
         <div class="summary-chip">

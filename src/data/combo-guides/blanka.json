@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/blanka/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Blanka/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "近身蹲轻脚抓住后退，蹲轻拳命中再放电，不用事先蓄力。",
+      "input": "2LK → 2LP → 214P"
+    },
+    {
+      "difficulty": "入门",
+      "when": "已经蹲防蓄好后方向时，从蹲轻脚、轻拳转中滚球，把对手向前推。",
+      "input": "1LK → 1LP → [4]6MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "跳中脚成功打到地面目标时，落地重拳接伏地挑空，再用中垂直滚球。",
+      "input": "j.MK → 5HP → 2PP~P → [2]8MK"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "挡住 -4F 的招时用站轻脚抢确反，站中脚够得到就接放电。",
+      "input": "5LK → 5MK → 214P"
+    },
+    {
+      "difficulty": "中等",
+      "when": "挡住 -7F 或更大破绽时，站重脚确反转站重拳，挑空后用中垂直滚球。",
+      "input": "5HK → 5HP → 2PP~P → [2]8MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "重滚球打到对方收招并把人弹开时，绿冲追上，用下前重拳滑铲补到。",
+      "input": "[4]6HP → 裸 DR → 3HP"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中拳牵制够到人时取消绿冲，站重脚命中就转重拳挑空。",
+      "input": "2MP → DRC → 5HK → 5HP → 2PP~P → [2]8MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对方蹲防时，绿冲用前中拳打中段，两下轻拳确认后放电。",
+      "input": "裸 DR → 6MP → 2LP → 2LP → 214P"
+    },
+    {
+      "difficulty": "高级",
+      "when": "下段小招确认后想搬运时，绿冲轻脚接后中脚，保持后蓄力让中滚球收尾。",
+      "input": "2LK → 2LP → DRC → 5LK → 4MK → 1MK → [4]6MP"
+    }
+  ]
+}

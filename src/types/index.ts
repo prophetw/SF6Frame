@@ -134,3 +134,18 @@ export const SF6_CHARACTERS: Character[] = [
     { id: 'arjun', name: 'Arjun', nameJp: 'アルジュン', wikiUrl: 'https://wiki.supercombo.gg/w/Street_Fighter_6/Arjun' },
 ];
 
+
+export interface PracticeCombo {
+    difficulty: '入门' | '中等' | '高级';
+    input: string;
+    when: string;
+}
+
+type PracticeRoutes = [PracticeCombo, ...PracticeCombo[]];
+
+export interface ComboGuide {
+    sources: { label: string; url: string }[];
+    normal: PracticeRoutes;
+    punish: PracticeRoutes;
+    rush: PracticeRoutes;
+}

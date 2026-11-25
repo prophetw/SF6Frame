@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/guile/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Guile/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "已经按住下防时，近身两下蹲轻拳打中，直接用蓄好的重脚刀击倒。",
+      "input": "2LP → 2LP → [2]8HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站中拳压中后马上按住下，利用蹲中拳的时间蓄出重脚刀。",
+      "input": "5MP → 2MP → [2]8HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "近身蹲轻拳打中、有一格超必杀和两格斗气时，用 SA1 浮空再补 OD 脚刀。出 SA1 前记得蓄后。",
+      "input": "2LP → 2LP → SA1 → [2]8KK"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "蹲着蓄力时，发现对方招式收回得太慢，用蹲中脚确反再接脚刀。",
+      "input": "2MK → [2]8HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "近距离防住大破绽时，用站重拳确反，中拳接后重拳派生，再出脚刀。",
+      "input": "5HP → 5MP~4HP → [2]8HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对方无敌技打空且有时间迈前时，用前重拳确反，后半沿用中拳脚刀。",
+      "input": "6HP → 5MP → 2MP → [2]8HK"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "想主动跟着绿冲压过去时，站中拳打中就转蹲重拳，及时蓄下接脚刀。",
+      "input": "裸 DR → 5MP → 2HP → [2]8HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手蹲防时用绿冲前中拳打中段，命中后蹲中拳接脚刀。",
+      "input": "裸 DR → 6MP → 2MP → [2]8HK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "连续轻拳已经确认、想把小招延伸时，从站轻脚取消绿冲，再转中拳蓄脚刀。",
+      "input": "2LP → 2LP → 5LK → DRC → 5LP → 5MP → 2MP → [2]8HK"
+    }
+  ]
+}

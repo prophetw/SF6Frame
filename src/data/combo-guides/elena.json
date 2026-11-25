@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/elena/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Elena/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "近身两下蹲轻拳打中时，站轻拳接轻旋踢，把抢到的先手变成击倒。",
+      "input": "2LP → 2LP → 5LP → 214LK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站中拳在近处打中时，顺按第二下中拳，再用中犀角收尾。",
+      "input": "5MP~MP → 236MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚抓住后退、蹲轻拳够得到时，接轻旋踢保留斗气。",
+      "input": "2MK → 2LP → 214LK"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "贴身蹲轻拳打出确反时，接蹲中拳，再用中回旋镰刀击倒。",
+      "input": "2LP → 2MP → 214MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站中脚踢到对方收招时，接蹲重拳挑空，再用中犀角往前搬。",
+      "input": "5MK → 2HP → 214HK → 236MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住大升龙时，站重脚确反制造浮空，有两格斗气就用 OD 犀角接重升踢。",
+      "input": "5HK → 236KK → 623HK"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "对手站着后退时，绿冲下段摸中后接蹲中拳，再用轻拳必杀派生击倒。",
+      "input": "裸 DR → 2MK → 2MP → 214LP~6P"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站轻脚截到人时，取消绿冲轻拳贴过去，打中再接蹲重拳挑空。",
+      "input": "5LK → DRC → 2LP → 2HP → 214HK → 236MK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "蹲中拳摸到人、斗气有余且想把人送远时，取消绿冲挑空，再花一格追击。",
+      "input": "2MP → DRC → 5MK → 2HP → 214HK → 裸 DR → 2MP → 236HK"
+    }
+  ]
+}

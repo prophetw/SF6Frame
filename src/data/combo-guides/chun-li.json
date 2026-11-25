@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/chunli/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Chun-Li/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身站中拳打中，按完马上开始蓄下，接蹲中拳后用中回旋鹤脚收尾。",
+      "input": "5MP → 2MP → [2]8MK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "跳重脚打中时，落地用站中拳接蹲中拳，利用两拳的时间蓄好下方向。",
+      "input": "j.HK → 5MP → 2MP → [2]8MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "紧贴对手时站轻拳命中，可以接到站中拳，再用熟悉的蓄力收尾。",
+      "input": "5LP → 5MP → 2MP → [2]8MK"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "站轻拳刚够得到的距离，挡住 -4F 的招后用轻拳确反，再用扫腿击倒。",
+      "input": "5LP → 2HK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "看见对方出招收不回去、蹲中脚够得到时，确反可直接接重百裂脚。",
+      "input": "2MK → 236HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住无敌技的大破绽时，站重拳进架构，架构中脚之后直接出重回旋鹤脚。",
+      "input": "5HP → 214P~MK → 28HK"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚在地面战摸中后，用取消绿冲靠近，后重拳进架构再用中回旋鹤脚击倒。",
+      "input": "2MK → DRC → 5MP → 4HP → 214P~LK → 28MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手一直蹲防时，裸绿冲用水莲拳打中段，命中就蹲中拳接蓄力腿。",
+      "input": "裸 DR → 3HP → 2MP → [2]8MK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "蹲中脚绿冲打中，想练空中收尾时，用架构重脚挑空，再接踩踏和空中双重拳。",
+      "input": "2MK → DRC → 4HP → 214P~HK → j.2MK → j.HP~HP"
+    }
+  ]
+}

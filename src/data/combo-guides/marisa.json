@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/marisa/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Marisa/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "近身站中拳打中时，按完双中拳确认，再接中双剑击和前拳派生击倒。",
+      "input": "5MP~MP → 214MP~6P"
+    },
+    {
+      "difficulty": "入门",
+      "when": "贴身用蹲轻脚抓后退，蹲轻拳确认后，用轻双剑击收尾。",
+      "input": "2LK → 2LP → 214LP~6P"
+    },
+    {
+      "difficulty": "中等",
+      "when": "近身后重拳压中时，用重双剑击把人挑起，补重直拳多拿伤害。",
+      "input": "4HP → 214HP~6P → 236HP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "贴身只来得及用 4 帧招反击时，从蹲轻拳开始，轻双剑击把人击倒。",
+      "input": "2LP → 2LP → 214LP~6P"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住中等破绽且有两格斗气时，用双中拳进 OD 双剑击，前拳派生后踢中脚。",
+      "input": "5MP~MP → 214PP~6P → 236MK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "站重脚从远处踢到对方收招时，花一格绿冲追上，前重脚派生后扫倒。",
+      "input": "5HK → 裸 DR → 6HK~HK → 214MP~6P → 2HK"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "中距离蹲中拳拦到人时，绿冲站中脚把人留在面前，接后重拳高伤路线。",
+      "input": "2MP → DRC → 5MK → 4HP → 214HP~6P → 236HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手习惯蹲防时，用绿冲斜下重拳打中段，两下蹲轻拳确认命中再收尾。",
+      "input": "裸 DR → 3HP → 2LP → 2LP → 214LP~6P"
+    },
+    {
+      "difficulty": "高级",
+      "when": "对手一直蹲防、血量已低时，绿冲中段打中就从蹲轻拳取消 SA3，把这次开防换成斩杀。",
+      "input": "裸 DR → 3HP → 2LP → SA3"
+    }
+  ]
+}

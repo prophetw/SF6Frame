@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/dhalsim/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Dhalsim/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "对方已经靠近时，用后中脚截住再接中瑜伽烈焰，击倒后重新安排距离。",
+      "input": "4MK → 63214MP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "被贴身时小拳打中，若愿意花两格斗气，用 OD 瑜伽火球把人打倒。",
+      "input": "5LP → 2LP → 236PP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对方从中距离往前走、已进入重火球能打到的范围时，蹲中拳命中就取消火球。",
+      "input": "2MP → 236HP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "贴身防住 -4F 后用站轻拳抢确反，接后中脚再喷火。",
+      "input": "5LP → 4MK → 63214MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "看到无敌技打空时，站重脚确反后用后下重拳接 OD 烈焰，最后扫倒。",
+      "input": "5HK → 1HP → 63214PP → 2HK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "已把对手逼在版边、需要花一格超必杀收回合时，用重脚追击 OD 烈焰的浮空。",
+      "input": "5HK → 1HP → 63214PP → 5HK → 236236HP"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "中距离蹲中拳够到对手时，用绿冲缩短距离，后中脚接重烈焰击倒。",
+      "input": "2MP → DRC → 4MK → 63214HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "主动绿冲进入近身范围时，用后中脚确认，命中就接重烈焰。",
+      "input": "裸 DR → 4MK → 63214HP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "小拳抢到先手、想打倒后贴身继续进攻时，用绿冲接瑜伽上勾，再以中瑜伽爆炎收尾。",
+      "input": "2LP → DRC → 5LP → 4MP → 63214MK"
+    }
+  ]
+}

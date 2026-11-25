@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/alex/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Alex/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身蹲轻脚抓到后退时，接一下蹲轻拳确认，再用轻闪光斧收尾。",
+      "input": "2LK → 2LP → 236LP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "近身站轻拳打断抢招时，第二下也打到就接重膝击，把人击倒。",
+      "input": "5LP → 5LP → 623HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "蹲重拳已经打中时，切入架势接轻重拳派生，退架后轻脚接重膝击。",
+      "input": "2HP → 2PP~LP~HP → 5LK → 623HK"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "只留下小破绽时，用站轻拳抢到确反，第二拳确认后用轻斧收尾。",
+      "input": "5LP → 5LP → 236LP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住升龙落地时，用站重拳确反，接蹲中拳和中斧击倒。",
+      "input": "5HP → 2MP → 236MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "大破绽足够慢、对方就在眼前时，用重闪光斩打出确反，再接架势路线。",
+      "input": "236HP → 2HP → 2PP~LP~HP → 5LK → 623HK"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "站中拳牵制打中时，取消绿冲接蹲重拳，重闪光斩让对手转身后接背面投。",
+      "input": "5MP → DRC → 2HP → 236HP~63214P"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对方蹲防时，裸绿冲前中拳打中段，命中就接站中拳和中斧。",
+      "input": "裸 DR → 6MP → 5MP → 236MP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "蹲中拳摸到人后想走架势延伸时，绿冲先接后中脚，给蹲重拳留出时间。",
+      "input": "2MP → DRC → 4MK → 2HP → 2PP~LP~HP → 5LK → 623HK"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/ehonda/combo"
+    },
+    {
+      "label": "本田绿冲演示",
+      "url": "https://www.youtube.com/watch?v=c-3oHHbPgqY"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身蹲轻脚抓后退，轻拳确认后接轻百裂张手，没蓄头槌也能打完。",
+      "input": "2LK → 2LP → 214LP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "站中拳在地面牵制中打中时，从相扑步按拳出铁炮，直接往前推。",
+      "input": "5MP → 236K~P"
+    },
+    {
+      "difficulty": "中等",
+      "when": "一直按住斜后蓄力时，近身两下蹲轻拳打中、头槌能碰到对手就接中头槌。",
+      "input": "2LP → 2LP → [4]6MP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "防住升龙落地时，用重拳确反接相扑步下拳，把人挑起再用重百贯追击。",
+      "input": "5HP → 236K~2P → [2]8HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "前重脚打到地面上的对手收招时，会把人踢滑倒，趁这段时间蓄中头槌追击。",
+      "input": "6HK → [4]6MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住大破绽且对手血量很低时，蹲重拳可以直接取消 SA3，跳过长连段。",
+      "input": "2HP → SA3"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "站中拳牵制碰到人时取消绿冲，打中后转重拳挑空，再用百贯击倒。",
+      "input": "5MP → DRC → 5MP → 5HP → 236K~2P → [2]8HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手站着往后退时，用绿冲蹲中脚抓下段，开始蓄后再用中拳接重头槌。",
+      "input": "裸 DR → 2MK → 5MP → [4]6HP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "站中拳绿冲已经打中，想带着对手换位置时，挑空后花一格追上，接四股踏派生。",
+      "input": "5MP → DRC → 5MP → 5HP → 236K~2P → 裸 DR → 5MP~3HK~2HK"
+    }
+  ]
+}

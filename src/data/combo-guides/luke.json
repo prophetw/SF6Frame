@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/luke/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Luke/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "近身站轻拳打中了，顺按中拳、重拳，再接不蓄力的重闪光拳。",
+      "input": "5LP~MP~HP → 214HP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "贴身蹲轻脚抓后退时，接蹲轻拳确认，用轻闪光拳击倒继续靠近。",
+      "input": "2LK → 2LP → 214LP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站重拳抓住对手的地面动作时，把轻闪光拳蓄满，再接中闪光拳。",
+      "input": "5HP → 214[LP] → 214MP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "贴身防住 -4F 的招时用蹲轻拳，确反给了接整套站轻拳派生的时间。",
+      "input": "2LP → 5LP~MP~HP → 214HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住升龙等大破绽时用后重拳起手，蹲重拳转满蓄轻闪光拳。",
+      "input": "4HP → 2HP → 214[LP] → 214MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站中拳够近能打到对手收招时，接蹲中拳和轻闪光拳，保留斗气。",
+      "input": "5MP → 2MP → 214LP"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚取消绿冲后看到中拳打中，用蹲重拳转蓄满的轻闪光拳。",
+      "input": "2MK → DRC → 2MP → 2HP → 214[LP] → 214MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "用站轻脚拦住对手又愿意花斗气时，绿冲后从轻拳起手再转重拳。",
+      "input": "5LK → DRC → 2LP → 2HP → 214[LP] → 214MP"
+    },
+    {
+      "difficulty": "高级",
+      "when": "站重拳牵制打中，对方血量已低时，用绿冲后重脚延伸，留三格超必杀收尾。",
+      "input": "5HP → DRC → 4HK → 2HP → 214HP → SA3"
+    }
+  ]
+}

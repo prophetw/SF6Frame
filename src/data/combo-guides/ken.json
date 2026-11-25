@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/ken/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Ken/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴近时用蹲轻脚抓后退，看见轻拳也打中，再用重升龙收尾。",
+      "input": "2LK → 2LP → 5LP → 623HP"
+    },
+    {
+      "difficulty": "入门",
+      "when": "看见对手出招落空，站重拳够得到时，用最短的重拳升龙拿伤害。",
+      "input": "5HP → 623HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "跳重拳打中后，落地蹲重拳接轻龙卷，等对手浮空再补中升龙。",
+      "input": "j.HP → 2HP → 214LK → 623MP"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "防住大破绽且离对手够近时，站重拳确反后用蹲中脚接重升龙。",
+      "input": "5HP → 2MK → 623HP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "贴身防住 -4F 的招时，用蹲轻拳确反，接中拳重拳派生后跑动升龙。",
+      "input": "2LP → 5MP~HP → KK → 623P"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住近身留下 6 帧以上破绽的招时，用蹲中拳抢确反，再从蹲中脚跑动升龙。",
+      "input": "2MP → 2MK → KK → 623P"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "蹲中脚摸到对手后取消绿冲，用站轻拳确认，打中就跑动龙卷往版边送。",
+      "input": "2MK → DRC → 5LP → 5MP~HP → KK → 214K"
+    },
+    {
+      "difficulty": "中等",
+      "when": "主动绿冲接近时，站中拳已打中就走熟悉的中重拳派生和跑动龙卷。",
+      "input": "裸 DR → 5MP~HP → KK → 214K"
+    },
+    {
+      "difficulty": "高级",
+      "when": "已经靠近版边，蹲中脚绿冲想多取伤害时，练急停接蹲中拳这条。",
+      "input": "2MK → DRC → 2HP → KK~LK → 2MP → 214LK → 623MP"
+    }
+  ]
+}

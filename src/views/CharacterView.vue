@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import ComboPractice from '../components/ComboPractice.vue';
 import ComboList from '../components/ComboList.vue';
 import KeyMovePanel from '../components/KeyMovePanel.vue';
 import MoveTable from '../components/MoveTable.vue';
@@ -11,6 +12,7 @@ import { calculateMoveStats } from '../utils/gapCalculator';
 import {
   SF6_CHARACTERS,
   type ComboData,
+  type ComboGuide,
   type FrameData,
   type KeyMoveData,
   type MoveCategory,
@@ -22,10 +24,12 @@ const router = useRouter();
 type JsonModuleMap = Record<string, () => Promise<unknown>>;
 
 const frameModules = import.meta.glob('../data/characters/*.json');
+const guideModules = import.meta.glob('../data/combo-guides/*.json');
 const comboModules = import.meta.glob('../data/combos/*.json');
 const keyMoveModules = import.meta.glob('../data/key-moves/*.json');
 
 const frameData = ref<FrameData | null>(null);
+const comboGuide = ref<ComboGuide | null>(null);
 const comboData = ref<ComboData | null>(null);
 const manualKeyMoveData = ref<KeyMoveData | null>(null);
 const loading = ref(true);
@@ -60,8 +64,10 @@ const overviewStats = computed(() => {
       value: String(resolvedKeyMoveData.value?.keyMoves.length ?? 0),
     },
     {
-      label: '常用连段',
-      value: String(comboData.value?.combos.length ?? 0),
+      label: '精选连段',
+      value: String(comboGuide.value
+        ? comboGuide.value.normal.length + comboGuide.value.punish.length + comboGuide.value.rush.length
+        : 0),
     },
   ];
 });
@@ -165,29 +171,41 @@ async function loadJson<T>(modules: JsonModuleMap, path: string): Promise<T | nu
   return module.default;
 }
 
+let loadVersion = 0;
+
 async function loadCharacterData() {
+  const version = ++loadVersion;
   const id = route.params.id as string;
   loading.value = true;
   error.value = null;
 
   try {
-    const nextFrameData = await loadJson<FrameData>(frameModules, `../data/characters/${id}.json`);
+    const [nextFrameData, nextCombos, nextGuide, nextKeyMoves] = await Promise.all([
+      loadJson<FrameData>(frameModules, `../data/characters/${id}.json`),
+      loadJson<ComboData>(comboModules, `../data/combos/${id}.json`),
+      loadJson<ComboGuide>(guideModules, `../data/combo-guides/${id}.json`),
+      loadJson<KeyMoveData>(keyMoveModules, `../data/key-moves/${id}.json`),
+    ]);
+    if (version !== loadVersion) return;
     if (!nextFrameData) {
       throw new Error(`暂无 ${character.value?.name || id} 的帧数据，请先运行抓取脚本`);
     }
 
     frameData.value = nextFrameData;
-    comboData.value = await loadJson<ComboData>(comboModules, `../data/combos/${id}.json`);
-    manualKeyMoveData.value = await loadJson<KeyMoveData>(keyMoveModules, `../data/key-moves/${id}.json`);
+    comboData.value = nextCombos;
+    comboGuide.value = nextGuide;
+    manualKeyMoveData.value = nextKeyMoves;
   } catch (err) {
+    if (version !== loadVersion) return;
     error.value = err instanceof Error
       ? err.message
       : `暂无 ${character.value?.name || id} 的帧数据，请先运行抓取脚本`;
     frameData.value = null;
     comboData.value = null;
+    comboGuide.value = null;
     manualKeyMoveData.value = null;
   } finally {
-    loading.value = false;
+    if (version === loadVersion) loading.value = false;
   }
 }
 
@@ -263,6 +281,8 @@ watch(
           </article>
         </div>
       </section>
+
+      <ComboPractice v-if="comboGuide" :key="character?.id" :guide="comboGuide" />
 
       <KeyMovePanel
         v-if="resolvedKeyMoveData"

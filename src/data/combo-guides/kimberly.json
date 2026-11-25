@@ -1,0 +1,63 @@
+{
+  "sources": [
+    {
+      "label": "いおり角色攻略",
+      "url": "https://sf6-lab.net/fighters/kimberly/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Kimberly/Combos"
+    }
+  ],
+  "normal": [
+    {
+      "difficulty": "入门",
+      "when": "贴身抢到蹲轻拳后，看到命中就转站轻拳四段派生，按键顺序一路从轻到重。",
+      "input": "2LP → 2LP → 5LP~MP~HP~HK"
+    },
+    {
+      "difficulty": "入门",
+      "when": "想抓后退时从蹲轻脚起手，站轻拳、轻脚确认后用轻流浪之刃收尾。",
+      "input": "2LK → 5LP → 5LK → 236LP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站重脚打中、身体靠得够近时，接中重拳派生，再用疾跑滑铲往前带。",
+      "input": "5HK → 5MP~HP → 236K~MK"
+    }
+  ],
+  "punish": [
+    {
+      "difficulty": "入门",
+      "when": "挡住 -5F 且站轻脚够得到时，确反后可直接接中流浪之刃。",
+      "input": "5LK → 236MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "站轻拳打到对方近身收招时，用重拳接重流浪之刃挑空，再跳起追击。",
+      "input": "5LP → 5HP → 236HP → j.MP → j.214K"
+    },
+    {
+      "difficulty": "中等",
+      "when": "防住升龙后有两格斗气时，从重拳起手挑空，花斗气打空中旋风脚。",
+      "input": "5HP → 236HP → j.MP → j.214KK"
+    }
+  ],
+  "rush": [
+    {
+      "difficulty": "中等",
+      "when": "用长站中脚摸到人后取消绿冲，蹲重拳贴身接疾跑近身踢派生。",
+      "input": "5MK → DRC → 2HP → 236K（近身）~K"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对方蹲防时，主动绿冲后重脚打中段，打中就接中重拳和疾跑滑铲。",
+      "input": "裸 DR → 4HK → 5MP~HP → 236K~MK"
+    },
+    {
+      "difficulty": "高级",
+      "when": "站中脚取消绿冲后想要更长的搬运时，用疾跑急停接蹲中拳，再以滑铲结束。",
+      "input": "5MK → DRC → 2HP → 236K~P → 2MP → 5MP~HP → 236K~MK"
+    }
+  ]
+}
