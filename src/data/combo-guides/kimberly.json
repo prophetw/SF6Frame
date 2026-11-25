@@ -59,5 +59,15 @@
       "when": "站中脚取消绿冲后想要更长的搬运时，用疾跑急停接蹲中拳，再以滑铲结束。",
       "input": "5MK → DRC → 2HP → 236K~P → 2MP → 5MP~HP → 236K~MK"
     }
+  ],
+  "pressure": [
+    {
+      "input": "2MK → 2LP",
+      "when": "贴身用蹲中脚截后退，若被防住还有 +1F。对手想抢在你疾驱之前按键，立刻用 4F 蹲轻拳截住他，尖端距离先确认轻拳够得着。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/kimberly/frame"
+      }
+    }
   ]
 }

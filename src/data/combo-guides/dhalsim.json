@@ -59,5 +59,15 @@
       "when": "小拳抢到先手、想打倒后贴身继续进攻时，用绿冲接瑜伽上勾，再以中瑜伽爆炎收尾。",
       "input": "2LP → DRC → 5LP → 4MP → 63214MK"
     }
+  ],
+  "pressure": [
+    {
+      "input": "前跳 j.2HK → 5LP",
+      "when": "用重钻孔踢压到脚边，对手挡完钻踢想抢时，落地用 4F 站轻拳截住。钻踢越靠近落地才接触越有利，打点偏高就先防。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/dhalsim/combo#source-guide-7"
+      }
+    }
   ]
 }

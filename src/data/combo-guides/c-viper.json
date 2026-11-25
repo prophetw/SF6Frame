@@ -17,6 +17,15 @@
     },
     {
       "difficulty": "入门",
+      "when": "站中脚牵制打中，且还在站轻脚距离时，接轻脚取消中雷霆冲刺。Year 4 中脚命中有 +5F，全程不用大跳取消。",
+      "input": "5MK → 5LK → 214MP",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/cviper/combo#source-guide-2"
+      }
+    },
+    {
+      "difficulty": "入门",
       "when": "近身轻拳打中时，站轻脚确认后用重雷霆冲刺，命中再按前加双拳追击。",
       "input": "2LP → 2LP → 5LK → 214HP~6PP"
     },
@@ -63,6 +72,16 @@
       "difficulty": "高级",
       "when": "对方一直蹲防时，绿冲前中拳打中段，打中后有两格斗气就用 OD 地震追空中燃烧踢。",
       "input": "裸 DR → 6MP → 2MP → 623PP → 大跳取消 → j.236HK"
+    }
+  ],
+  "pressure": [
+    {
+      "input": "5MP → 2LP",
+      "when": "近身站中拳被挡有 +1F。对手习惯在两次雷霆冲刺之间抢招时，先用站中拳停下，接 4F 蹲轻拳抓他按键。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/cviper/combo#source-guide-23"
+      }
     }
   ]
 }

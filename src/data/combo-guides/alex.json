@@ -59,5 +59,15 @@
       "when": "蹲中拳摸到人后想走架势延伸时，绿冲先接后中脚，给蹲重拳留出时间。",
       "input": "2MP → DRC → 4MK → 2HP → 2PP~LP~HP → 5LK → 623HK"
     }
+  ],
+  "pressure": [
+    {
+      "input": "2PP~HP → 5LP",
+      "when": "近身从架势出重拳套索臂，被防住有 +3F。对手想在套索臂后按键，就直接点站轻拳；对手若在你进架势时就抢，这是另一拍。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/alex/frame"
+      }
+    }
   ]
 }

@@ -23,11 +23,27 @@ describe.each(SF6_CHARACTERS)('$name 的常用连段', ({ id }) => {
         expect(route.when.trim()).toBeTruthy();
         expect(route.input).toMatch(/\S\s*(→|~)\s*\S/);
         expect(route.input).not.toMatch(/\.\.\.|…/);
+        if (route.source) {
+          expect(route.source.label.trim()).toBeTruthy();
+          expect(new URL(route.source.url).protocol).toBe('https:');
+        }
       }
     }
 
     for (const route of guide.rush) {
       expect(route.input).toMatch(/(?:^| → )(?:DRC|裸 DR) → /);
+    }
+  });
+
+  it('有带使用条件和具体出处的打乱动压制', () => {
+    const { pressure } = guides[`./combo-guides/${id}.json`];
+    expect(pressure.length).toBeGreaterThan(0);
+    expect(new Set(pressure.map(route => route.input)).size).toBe(pressure.length);
+    for (const route of pressure) {
+      expect(route.input).toContain(' → ');
+      expect(route.when.trim()).toBeTruthy();
+      expect(route.source.label.trim()).toBeTruthy();
+      expect(new URL(route.source.url).protocol).toBe('https:');
     }
   });
 });

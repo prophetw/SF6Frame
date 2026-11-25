@@ -59,5 +59,15 @@
       "when": "蹲中脚绿冲打中、想把人往版边送时，用天星踢跳取消，落地只取站重拳前两段就接张弓腿。",
       "input": "2MK → DRC → 2KK → 跳取消 → j.HK → 5HP（两段） → 623HK"
     }
+  ],
+  "pressure": [
+    {
+      "input": "5MP → 5LK",
+      "when": "近身站中拳被挡有 +2F。对手想按轻拳抢回合时，用 5F 站轻脚先摸到他，看到打中再接流酔拳。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/jamie/frame"
+      }
+    }
   ]
 }

@@ -59,5 +59,15 @@
       "when": "蹲中拳摸到人、斗气有余且想把人送远时，取消绿冲挑空，再花一格追击。",
       "input": "2MP → DRC → 5MK → 2HP → 214HK → 裸 DR → 2MP → 236HK"
     }
+  ],
+  "pressure": [
+    {
+      "input": "5MK → 2LP",
+      "when": "近身站中脚被防是 +1F，接 4F 蹲轻拳能压住对手抢轻拳。若站中脚已经命中，则有 +5F，可以沿用蹲轻拳确认。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/elena/frame"
+      }
+    }
   ]
 }

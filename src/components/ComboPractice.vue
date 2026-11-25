@@ -1,13 +1,18 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import type { ComboGuide } from '../types';
 
-defineProps<{ guide: ComboGuide }>();
+const props = defineProps<{ guide: ComboGuide }>();
 
 const groups = [
   { key: 'normal', label: '常规命中' },
   { key: 'punish', label: '常规确反' },
   { key: 'rush', label: '立回绿冲' },
 ] as const;
+const scenarios = computed(() => groups.map(({ key, label }) => {
+  const [first, ...more] = props.guide[key];
+  return { key, label, first, more };
+}));
 </script>
 
 <template>
@@ -17,23 +22,36 @@ const groups = [
       <span>经典操作</span>
     </header>
     <div class="practice-grid">
-      <section v-for="group in groups" :key="group.key" class="scenario">
+      <section v-for="group in scenarios" :key="group.key" class="scenario">
         <h3>{{ group.label }}</h3>
         <article class="route">
-          <span class="level">{{ guide[group.key][0].difficulty }}</span>
-          <p>{{ guide[group.key][0].when }}</p>
-          <code>{{ guide[group.key][0].input }}</code>
+          <span class="level">{{ group.first.difficulty }}</span>
+          <p>{{ group.first.when }}</p>
+          <code>{{ group.first.input }}</code>
+          <a v-if="group.first.source" :href="group.first.source.url" target="_blank" rel="noopener noreferrer">{{ group.first.source.label }} ↗</a>
         </article>
-        <details v-if="guide[group.key].length > 1">
-          <summary>更多{{ group.label }}（{{ guide[group.key].length - 1 }}）</summary>
-          <article v-for="route in guide[group.key].slice(1)" :key="route.input" class="route">
+        <details v-if="group.more.length">
+          <summary>更多{{ group.label }}（{{ group.more.length }}）</summary>
+          <article v-for="route in group.more" :key="route.input" class="route">
             <span class="level">{{ route.difficulty }}</span>
             <p>{{ route.when }}</p>
             <code>{{ route.input }}</code>
+            <a v-if="route.source" :href="route.source.url" target="_blank" rel="noopener noreferrer">{{ route.source.label }} ↗</a>
           </article>
         </details>
       </section>
     </div>
+    <section class="pressure-panel" aria-labelledby="practice-pressure-title">
+      <h3 id="practice-pressure-title">常用压制 · 打乱动</h3>
+      <p class="pressure-hint">看对手防住哪一招后喜欢按键。这里的 4F 指最快的普通打击，无敌反击要单独防。</p>
+      <div class="pressure-grid">
+        <article v-for="route in guide.pressure" :key="route.input" class="pressure-card">
+          <code>{{ route.input }}</code>
+          <p>{{ route.when }}</p>
+          <a :href="route.source.url" target="_blank" rel="noopener noreferrer">{{ route.source.label }} ↗</a>
+        </article>
+      </div>
+    </section>
     <footer>
       <details class="notation">
         <summary>怎么看按键？</summary>
@@ -87,8 +105,8 @@ header span, footer { color: var(--color-text-secondary); }
 .route { margin: var(--space-sm) 0 var(--space-md); }
 .level { color: var(--color-text-secondary); }
 .route p { margin: var(--space-xs) 0 var(--space-sm); }
-.route code, pre { font-family: var(--font-mono); }
-.route code {
+.practice code, pre { font-family: var(--font-mono); }
+.practice code {
   display: block;
   padding: var(--space-sm);
   border-radius: var(--radius-sm);
@@ -96,6 +114,12 @@ header span, footer { color: var(--color-text-secondary); }
   color: var(--color-text-primary);
   overflow-wrap: anywhere;
 }
+.pressure-panel { margin-bottom: var(--space-lg); }
+.pressure-hint, .practice article a { font-size: var(--font-size-sm); }
+.pressure-hint { color: var(--color-text-secondary); margin: var(--space-xs) 0 var(--space-sm); }
+.pressure-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: var(--space-md); }
+.pressure-card { padding: var(--space-md); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+.pressure-card p { margin: var(--space-sm) 0; }
 summary { cursor: pointer; }
 .sources a { display: block; margin-top: var(--space-xs); }
 .scenario details { border-top: 1px solid var(--color-border); padding-top: var(--space-sm); }

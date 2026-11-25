@@ -64,5 +64,15 @@
       "when": "轻拳起手已经打中、三格超必杀能收掉回合时，用绿冲延长到滚踢接 SA3。",
       "input": "5LP → 2LP → DRC → 2LP → 2HP → 2MP → 236MK → SA3"
     }
+  ],
+  "pressure": [
+    {
+      "input": "5MP → 2LP",
+      "when": "近身站中拳被防是 +2F，立即接 5F 蹲轻拳能打赢 4F 抢招。按蹲轻拳时可以继续蓄下，打中再决定怎么收尾。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/deejay/frame"
+      }
+    }
   ]
 }

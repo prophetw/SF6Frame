@@ -64,5 +64,15 @@
       "when": "站重拳命中、对手已到斩杀血量时，花一次绿冲转重脚，再用重精神闪击取消 SA3。",
       "input": "5HP → DRC → 5HK → 5HP → 214HP → SA3"
     }
+  ],
+  "pressure": [
+    {
+      "input": "5HK → 5MP",
+      "when": "对手站着挡住重脚后你有 +4F，接 7F 站中拳能截住最快的普通轻拳，命中再按重拳派生。站重脚会从蹲着的对手头顶挥过。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/ed/combo#source-guide-13"
+      }
+    }
   ]
 }

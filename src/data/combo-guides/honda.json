@@ -22,7 +22,11 @@
     {
       "difficulty": "入门",
       "when": "站中拳在地面牵制中打中时，从相扑步按拳出铁炮，直接往前推。",
-      "input": "5MP → 236K~P"
+      "input": "5MP → 236K~P",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/ehonda/combo#source-guide-2"
+      }
     },
     {
       "difficulty": "中等",
@@ -72,6 +76,16 @@
       "difficulty": "高级",
       "when": "站中拳绿冲已经打中，想带着对手换位置时，挑空后花一格追上，接四股踏派生。",
       "input": "5MP → DRC → 5MP → 5HP → 236K~2P → 裸 DR → 5MP~3HK~2HK"
+    }
+  ],
+  "pressure": [
+    {
+      "input": "5MP → 2LP",
+      "when": "近身站中拳被防有 +1F。对手以为你会出相扑步而按键时，立刻点 4F 蹲轻拳，命中后能接轻百裂张手。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/ehonda/combo#source-guide-8"
+      }
     }
   ]
 }

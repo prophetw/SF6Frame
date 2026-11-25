@@ -47,7 +47,11 @@
     {
       "difficulty": "中等",
       "when": "用蹲中脚摸对方后退，取消绿冲后看站中拳是否打中，再接重拳和螺旋箭。",
-      "input": "2MK → DRC → 5MP → 5HP → 236MK"
+      "input": "2MK → DRC → 5MP → 5HP → 236MK",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/cammy/combo#source-guide-0"
+      }
     },
     {
       "difficulty": "中等",
@@ -58,6 +62,24 @@
       "difficulty": "高级",
       "when": "立回站重拳打中且想把人推向版边时，用后重脚挑空，等对手浮起再出重箭。",
       "input": "5HP → DRC → 4HK → 236HK → 623HK"
+    }
+  ],
+  "pressure": [
+    {
+      "input": "前跳 j.214K → 5LP",
+      "when": "对手挡住俯冲踢就按轻拳时，瞄准脚踝低打点落地接站轻拳。只有落地有利且轻拳够得到才抢得赢；踢到胸口就先防。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/cammy/combo#source-guide-4"
+      }
+    },
+    {
+      "input": "4MP → 2LP",
+      "when": "贴身后中拳被挡住是 +1F，立刻点 4F 蹲轻拳，能截住对手也按 4F 轻拳的时机。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/cammy/frame"
+      }
     }
   ]
 }

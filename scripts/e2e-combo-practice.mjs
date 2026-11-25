@@ -92,9 +92,17 @@ try {
   await page.waitForNetworkIdle();
   assert.match(await page.$eval('.practice', node => node.innerText), /跑动龙卷/);
   assert.equal(await visibleCount(), 3);
+  await page.evaluate(() => { location.hash = '/character/ryu'; });
+  await page.waitForFunction(() => document.querySelector('.pressure-card code')?.textContent === '2LK → 2LP → 5LP → 214LP');
+  assert.match(await page.$eval('.pressure-panel', node => node.innerText), /4F 普通技相打/);
+  assert.ok(await page.$eval('.pressure-card a', link => link.href.includes('z4sUshxK9WE') && link.checkVisibility()));
+  assert.ok(await page.$$eval('.pressure-card', cards => cards.every(card => card.getBoundingClientRect().right <= innerWidth)));
+  await page.click('.scenario:last-child summary');
+  assert.match(await page.$eval('.scenario:last-child', node => node.innerText), /裸 DR → 6MP → 2MP → 623HP/);
+  await (await page.$('.pressure-panel')).screenshot({ path: path.join(artifacts, 'ryu-pressure.png') });
   assert.deepEqual(errors, []);
-  console.log('PASS 角色入口、三个场景、读法与来源、连段库筛选及无原始连段库角色的移动布局。');
-  console.log(path.join(artifacts, 'cammy.png'));
+  console.log('PASS 角色切换、精选连段、隆的绿冲中段、移动端压制卡和来源。');
+  console.log(path.join(artifacts, 'ryu-pressure.png'));
 } finally {
   await browser?.close();
   await server.close();

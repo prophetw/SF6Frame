@@ -59,5 +59,15 @@
       "when": "对手一直蹲防、血量已低时，绿冲中段打中就从蹲轻拳取消 SA3，把这次开防换成斩杀。",
       "input": "裸 DR → 3HP → 2LP → SA3"
     }
+  ],
+  "pressure": [
+    {
+      "input": "5[HP] → 2MP",
+      "when": "蓄满站重拳贴身被防住是 +5F。对手想在重拳后抢招时，8F 蹲中拳能先打中；蓄力期间也能被打断，要先让重拳压到防御。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/marisa/frame"
+      }
+    }
   ]
 }

@@ -59,5 +59,15 @@
       "when": "站重拳确认后想贴身压起身时，绿冲后重脚转轻脚三段派生，空中收尾。",
       "input": "5HP → DRC → 4HK → 5LK~LK~LK → j.214P"
     }
+  ],
+  "pressure": [
+    {
+      "input": "裸 DR → 2MP → 5LK",
+      "when": "扇子掩护下绿冲进身时，用蹲中拳压近。绿冲版被防后 +1F，4F 站轻脚能抢在对方轻拳前；普通蹲中拳被防是 -3F。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/mai/frame"
+      }
+    }
   ]
 }

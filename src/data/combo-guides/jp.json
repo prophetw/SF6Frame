@@ -59,5 +59,15 @@
       "when": "站重拳在地面牵制中摸到人时，取消绿冲接蹲重拳，重杖击后用幻影和地刺推远。",
       "input": "5HP → DRC → 2HP → 236HP → 236MK → 22HP"
     }
+  ],
+  "pressure": [
+    {
+      "input": "5HK → 2LP",
+      "when": "近身站重脚被防有 +2F，对手等你按重拳派生才抢时，改用 4F 蹲轻拳打断他。打中接轻杖击，重脚尖端被挡就别硬追轻拳。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/jp/combo#source-guide-10"
+      }
+    }
   ]
 }

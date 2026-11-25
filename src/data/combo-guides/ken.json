@@ -12,6 +12,15 @@
   "normal": [
     {
       "difficulty": "入门",
+      "when": "近身蹲中拳打中时，接站轻脚确认再出重升龙。Year 4 的蹲中拳普通命中有 +5F，稍远到站中拳够不着时，这条尤其好用。",
+      "input": "2MP → 5LK → 623HP",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/ken/combo#source-guide-8"
+      }
+    },
+    {
+      "difficulty": "入门",
       "when": "贴近时用蹲轻脚抓后退，看见轻拳也打中，再用重升龙收尾。",
       "input": "2LK → 2LP → 5LP → 623HP"
     },
@@ -34,6 +43,15 @@
     },
     {
       "difficulty": "中等",
+      "when": "把对手压在版边，贴近挡住起身斗气反击时，用蹲中拳确反接重迅雷脚。前重脚派生挑起后用轻升龙收尾。",
+      "input": "2MP → 236HK~6HK → 623LP",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/ken/combo#source-guide-0"
+      }
+    },
+    {
+      "difficulty": "中等",
       "when": "贴身防住 -4F 的招时，用蹲轻拳确反，接中拳重拳派生后跑动升龙。",
       "input": "2LP → 5MP~HP → KK → 623P"
     },
@@ -47,7 +65,11 @@
     {
       "difficulty": "中等",
       "when": "蹲中脚摸到对手后取消绿冲，用站轻拳确认，打中就跑动龙卷往版边送。",
-      "input": "2MK → DRC → 5LP → 5MP~HP → KK → 214K"
+      "input": "2MK → DRC → 5LP → 5MP~HP → KK → 214K",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/ken/combo#source-guide-0"
+      }
     },
     {
       "difficulty": "中等",
@@ -58,6 +80,16 @@
       "difficulty": "高级",
       "when": "已经靠近版边，蹲中脚绿冲想多取伤害时，练急停接蹲中拳这条。",
       "input": "2MK → DRC → 2HP → KK~LK → 2MP → 214LK → 623MP"
+    }
+  ],
+  "pressure": [
+    {
+      "input": "裸 DR → 5MP → 2LK",
+      "when": "绿冲站中拳压到身前被防住是 +2F。对手怕投而按轻拳或往后走时，立即用 5F 蹲轻脚截住，打中再接蹲轻拳确认。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/ken/combo#source-guide-5"
+      }
     }
   ]
 }

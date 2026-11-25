@@ -59,5 +59,15 @@
       "when": "下段小招确认后想搬运时，绿冲轻脚接后中脚，保持后蓄力让中滚球收尾。",
       "input": "2LK → 2LP → DRC → 5LK → 4MK → 1MK → [4]6MP"
     }
+  ],
+  "pressure": [
+    {
+      "input": "4MK → 5LK",
+      "when": "贴近用后中脚压住，对手防完想按键时立刻接 4F 站轻脚。后中脚被防 +2F，碰到人再续；对手后退让后中脚落空时别照按。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/blanka/combo#source-guide-24"
+      }
+    }
   ]
 }

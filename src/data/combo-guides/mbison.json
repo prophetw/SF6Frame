@@ -17,6 +17,15 @@
     },
     {
       "difficulty": "入门",
+      "when": "站重拳近身普通命中后有 +5F，站轻拳够得到就接轻背拳挂雷。这条用法不要求打出确反，也不需要蓄后。",
+      "input": "5HP → 5LP → 214LP",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/vega_mbison/combo#source-guide-2"
+      }
+    },
+    {
+      "difficulty": "入门",
       "when": "已经蹲防蓄好后方向时，小脚起手的三下轻攻击打中就接轻精神碾压。",
       "input": "2LK → 2LP → 5LP → [4]6LP"
     },
@@ -63,6 +72,16 @@
       "difficulty": "高级",
       "when": "对手看到绿冲便站着后退时，改用蹲轻脚打下段，再接双中拳挂雷。",
       "input": "裸 DR → 2LK → 5MP → 2MP → 214MP"
+    }
+  ],
+  "pressure": [
+    {
+      "input": "5HP → 2LP",
+      "when": "近身站重拳被挡住是 +1F，接 4F 蹲轻拳抓抢招。看到站重拳直接命中则有 +5F，可以改接站轻拳挂雷。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/vega_mbison/combo#source-guide-13"
+      }
     }
   ]
 }

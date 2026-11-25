@@ -13,7 +13,11 @@
     {
       "difficulty": "入门",
       "when": "贴身蹲轻脚抓到后退时，用蹲轻拳确认，再以中燃烧指节收尾。",
-      "input": "2LK → 2LP → 214MP"
+      "input": "2LK → 2LP → 214MP",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/terry/combo#source-guide-2"
+      }
     },
     {
       "difficulty": "入门",
@@ -63,6 +67,16 @@
       "difficulty": "高级",
       "when": "蹲中脚绿冲已经确认，且三格超必杀足以收回合时，在熟悉的升龙收尾后接 SA3。",
       "input": "2MK → DRC → 2MP → 5HP → 236HK → 214HK → 623HP → SA3"
+    }
+  ],
+  "pressure": [
+    {
+      "input": "5HP → 2LP",
+      "when": "站重拳压到近身防御后有 +1F。对手喜欢在这里抢回合时，接 4F 蹲轻拳；特瑞蹲轻拳短，被推远就收手。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/terry/combo#source-guide-13"
+      }
     }
   ]
 }

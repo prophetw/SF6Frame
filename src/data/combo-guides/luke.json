@@ -64,5 +64,15 @@
       "when": "站重拳牵制打中，对方血量已低时，用绿冲后重脚延伸，留三格超必杀收尾。",
       "input": "5HP → DRC → 4HK → 2HP → 214HP → SA3"
     }
+  ],
+  "pressure": [
+    {
+      "input": "2MP → 2LP",
+      "when": "近身蹲中拳压到防御有 +1F，立刻接 4F 蹲轻拳抓抢招。若蹲中拳直接命中，同样能接轻拳确认，再取消轻闪光拳。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/luke/frame"
+      }
+    }
   ]
 }

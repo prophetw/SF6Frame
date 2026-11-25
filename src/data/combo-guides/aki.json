@@ -64,5 +64,15 @@
       "when": "蹲中拳在地面打中且有斗气时，用取消绿冲把距离拉近，再走重脚伏地路线。",
       "input": "2MP → DRC → 5MK → 5HK → 2PP~K → 2LP → 2LP → 236HP"
     }
+  ],
+  "pressure": [
+    {
+      "input": "6HK → 2LP",
+      "when": "近身让对手防住前重脚「囚牛」后有 +2F。对手习惯在踢完时按键，就立刻点蹲轻拳；前重脚尖端被防时先看轻拳是否够得到。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/aki/frame"
+      }
+    }
   ]
 }

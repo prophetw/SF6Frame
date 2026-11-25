@@ -59,5 +59,15 @@
       "when": "轻拳摸到人且想增加伤害时，绿冲后仍用轻拳起手，再转后重拳接近身重虎膝。",
       "input": "2LP → DRC → 2LP → 4HP → 236HK → 623LP"
     }
+  ],
+  "pressure": [
+    {
+      "input": "6HK → 5MP",
+      "when": "前重脚被挡后有 +4F。贴得够近时立刻接 6F 站中拳，能截住对手等重脚踢完才按的轻拳。重脚尖端被挡时注意中拳距离。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/sagat/frame"
+      }
+    }
   ]
 }

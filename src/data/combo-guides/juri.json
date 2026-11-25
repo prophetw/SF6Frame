@@ -51,7 +51,11 @@
     {
       "difficulty": "中等",
       "when": "蹲中脚截住对方后退时取消绿冲，站中拳命中就接蹲中拳，收尾顺便攒风破。",
-      "input": "2MK → DRC → 5MP → 2MP → 214MK"
+      "input": "2MK → DRC → 5MP → 2MP → 214MK",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/juri/combo#source-guide-0"
+      }
     },
     {
       "difficulty": "中等",
@@ -62,6 +66,16 @@
       "difficulty": "高级",
       "when": "蹲中脚取消绿冲、确认打中且想多取伤害时，改用蹲重拳接站中拳，收尾仍能攒风破。",
       "input": "2MK → DRC → 2HP → 5MP → 2MP → 214MK"
+    }
+  ],
+  "pressure": [
+    {
+      "input": "5MP → 2LP",
+      "when": "近身站中拳被挡有 +2F，接 4F 蹲轻拳能压住最快抢招。想用第二下中拳时要注意，它发生 6F，对方的 4F 普通技够得到就可能相打。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/juri/frame"
+      }
     }
   ]
 }

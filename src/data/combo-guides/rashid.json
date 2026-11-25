@@ -59,5 +59,15 @@
       "when": "立回站重拳够到地面目标、有斗气时，绿冲蹲重拳转站重拳再搬运。",
       "input": "5HP → DRC → 2HP → 5HP → 214MK"
     }
+  ],
+  "pressure": [
+    {
+      "input": "气流强化 236LP → 5LK",
+      "when": "对手挡住气流强化的轻旋转搅拌机后，你有 +2F。贴身接 4F 站轻脚截抢招；普通轻搅拌机被防是 -3F，要先看有没有吃到气流。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/rashid/combo#source-guide-11"
+      }
+    }
   ]
 }

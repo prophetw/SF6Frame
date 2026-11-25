@@ -59,5 +59,15 @@
       "when": "蹲轻脚打中了、愿意花三格把小招换成奖牌时，从轻拳取消绿冲延伸。",
       "input": "2LK → 5LP → DRC → 5LP → 4HP → 236MP"
     }
+  ],
+  "pressure": [
+    {
+      "input": "4HP → 2LP",
+      "when": "近身后重拳被防是 +1F，对手怕指令投而抢轻拳时，立刻接 4F 蹲轻拳。后重拳在尖端被挡时，先看距离再决定要不要点。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/manon/frame"
+      }
+    }
   ]
 }

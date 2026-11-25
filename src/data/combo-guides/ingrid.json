@@ -69,5 +69,15 @@
       "when": "站轻脚差返打出确反、有斗气时，取消绿冲接站中脚，再追空中中日焰取伤害。",
       "input": "5LK → DRC → 5MK → 236HK → j.214MP"
     }
+  ],
+  "pressure": [
+    {
+      "input": "裸 DR → 2HP → 5MP",
+      "when": "绿冲蹲重拳压近被挡后有 +3F，立刻接 6F 站中拳能截住 4F 抢招，看到命中再按中脚派生。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/ingrid/combo#source-guide-16"
+      }
+    }
   ]
 }

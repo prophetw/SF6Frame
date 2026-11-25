@@ -13,7 +13,11 @@
     {
       "difficulty": "入门",
       "when": "贴身站中拳打中，按完马上开始蓄下，接蹲中拳后用中回旋鹤脚收尾。",
-      "input": "5MP → 2MP → [2]8MK"
+      "input": "5MP → 2MP → [2]8MK",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/chunli/combo#source-guide-0"
+      }
     },
     {
       "difficulty": "入门",
@@ -58,6 +62,24 @@
       "difficulty": "高级",
       "when": "蹲中脚绿冲打中，想练空中收尾时，用架构重脚挑空，再接踩踏和空中双重拳。",
       "input": "2MK → DRC → 4HP → 214P~HK → j.2MK → j.HP~HP"
+    }
+  ],
+  "pressure": [
+    {
+      "input": "5MP → 5LP",
+      "when": "贴身站中拳被防住有 +1F，立刻点站轻拳抓 4F 抢招。看到轻拳打康再接蹲中脚，没看到打康就停。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/chunli/combo#source-guide-4"
+      }
+    },
+    {
+      "input": "裸 DR → 5MP → 4HP",
+      "when": "绿冲站中拳被挡后有 +5F，贴近接发劲（后重拳）能截住抢轻拳的人。对方一直防守时，同一起手也能改投。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/chunli/combo#source-guide-4"
+      }
     }
   ]
 }

@@ -64,5 +64,15 @@
       "when": "连续轻拳已经确认、想把小招延伸时，从站轻脚取消绿冲，再转中拳蓄脚刀。",
       "input": "2LP → 2LP → 5LK → DRC → 5LP → 5MP → 2MP → [2]8HK"
     }
+  ],
+  "pressure": [
+    {
+      "input": "4HP → DRC → 5MP → 5MP",
+      "when": "后重拳取消绿冲，把第一下站中拳压到近身。它被防后有 +4F，直接出第二下站中拳能截住 4F 抢招；对手肯等就有投的机会。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/guile/combo#source-guide-15"
+      }
+    }
   ]
 }

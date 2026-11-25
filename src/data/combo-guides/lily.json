@@ -17,6 +17,15 @@
     },
     {
       "difficulty": "入门",
+      "when": "蹲中脚在地面截到对手时，轻拳点按出攻击版兀鹰风。想用这一击收尾就松开轻拳，这个版本不会攒风。",
+      "input": "2MK → 214LP",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/lily/combo#source-guide-1"
+      }
+    },
+    {
+      "difficulty": "入门",
       "when": "蹲重拳牵制打中时，轻风缠袭拉近击倒距离，适合继续靠近对手。",
       "input": "2HP → 236LK"
     },
@@ -58,6 +67,16 @@
       "difficulty": "高级",
       "when": "已经攒好风，后重拳牵制碰到人时，绿冲延伸后用有风的重风缠袭搬运。",
       "input": "4HP → DRC → 4HP → 5MK → 236HK"
+    }
+  ],
+  "pressure": [
+    {
+      "input": "带风 236LK → 5LK",
+      "when": "有风时用轻兀鹰螺旋贴近，被防住是 +1F。对手怕指令投而按轻拳时，直接出 4F 站轻脚。练习时先确认螺旋确实消耗了风。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/lily/frame"
+      }
     }
   ]
 }

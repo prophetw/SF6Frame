@@ -64,5 +64,15 @@
       "when": "主动冲到站中拳范围时，绿冲中拳命中可按完三拳派生，省下取消绿冲的消耗。",
       "input": "裸 DR → 5MP~MP~MP"
     }
+  ],
+  "pressure": [
+    {
+      "input": "6HP → 3MP",
+      "when": "贴身头槌被挡后有 +4F。对手怕螺旋打桩而按键，用 7F 斜下中拳先打中他，确认后再转双截旋风掌。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/zangief/combo#source-guide-11"
+      }
+    }
   ]
 }

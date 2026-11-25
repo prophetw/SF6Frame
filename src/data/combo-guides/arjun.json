@@ -55,5 +55,15 @@
       "when": "站中拳绿冲已经命中、三格超必杀能收掉回合时，在重巨腕追击后取消 SA3。",
       "input": "5MP → DRC → 2HP → 236HP~6P → SA3"
     }
+  ],
+  "pressure": [
+    {
+      "input": "236HP → 5LP",
+      "when": "近身重巨腕被挡住后有 +2F。先省下巨腕派生，用 4F 站轻拳抓对手以为巨腕已经收招而按键的一拍；远端先确认拳够得着。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/arjun/frame"
+      }
+    }
   ]
 }

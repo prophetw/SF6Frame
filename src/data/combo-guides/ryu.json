@@ -5,7 +5,7 @@
       "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Ryu/Combos"
     },
     {
-      "label": "いおり角色攻略（跳重拳起手）",
+      "label": "いおり Year 4 角色攻略",
       "url": "https://sf6-lab.net/fighters/ryu/combo"
     }
   ],
@@ -23,7 +23,11 @@
     {
       "difficulty": "中等",
       "when": "跳重拳打中地面上的对手，落地接后重拳，再用重升龙取伤害。",
-      "input": "j.HP → 4HP → 623HP"
+      "input": "j.HP → 4HP → 623HP",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/ryu/combo#source-guide-0"
+      }
     }
   ],
   "punish": [
@@ -57,7 +61,11 @@
     {
       "difficulty": "中等",
       "when": "蹲中脚抓到对方走动时，取消绿冲贴近，用站重拳接后重拳把牵制转成击倒。",
-      "input": "2MK → DRC → 5HP → 4HP → 623HP"
+      "input": "2MK → DRC → 5HP → 4HP → 623HP",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/ryu/combo#source-guide-0"
+      }
     },
     {
       "difficulty": "入门",
@@ -66,8 +74,38 @@
     },
     {
       "difficulty": "中等",
-      "when": "对手习惯蹲防时，裸绿冲用前中拳打中段。打中接站中拳和重升龙，被挡住也能继续近身施压。",
-      "input": "裸 DR → 6MP → 5MP → 623HP"
+      "when": "对手习惯蹲防时，用绿冲前中拳打中段。中段打得稍远，改接伸得更远的蹲中拳，确认打中再出重升龙；中段被挡就收住升龙。",
+      "input": "裸 DR → 6MP → 2MP → 623HP",
+      "source": {
+        "label": "绿冲中段衔接",
+        "url": "https://sf6-genten.com/article/ryu-combo-19-selection-punilabo"
+      }
+    }
+  ],
+  "pressure": [
+    {
+      "input": "2LK → 2LP → 5LP → 214LP",
+      "when": "贴身小脚起手，对手习惯挡完第三下轻拳就抢时，从站轻拳立刻取消轻波掌击。双方都够得到时会和最快 4F 普通技相打，能截住更慢的抢招。轻波掌击也被防住是 -3F，到这里收手。",
+      "source": {
+        "label": "站轻拳与蹲轻拳实测",
+        "url": "https://www.youtube.com/watch?v=z4sUshxK9WE&t=74s"
+      }
+    },
+    {
+      "input": "2LK → 2LP → 214LP",
+      "when": "对手总用 4F 轻拳抢波掌击时，少点一下，从蹲轻拳最速取消。蹲轻拳给对手的防御硬直多一帧，轻波掌击够得到就能先打中。",
+      "source": {
+        "label": "站轻拳与蹲轻拳实测",
+        "url": "https://www.youtube.com/watch?v=z4sUshxK9WE&t=74s"
+      }
+    },
+    {
+      "input": "6HP → 2MP",
+      "when": "近身鸠尾碎被完整防住是 +3F。对手想抢回合就立刻按 6F 蹲中拳；看到打康再续连。鸠尾碎本身起手慢，要先让对手防住这一招。",
+      "source": {
+        "label": "卡普空帧数表",
+        "url": "https://www.streetfighter.com/6/en-us/character/ryu/frame"
+      }
     }
   ]
 }

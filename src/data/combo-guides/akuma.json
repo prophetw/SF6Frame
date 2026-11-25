@@ -16,6 +16,15 @@
       "input": "2LP → 2LP → 2LP → 623HP"
     },
     {
+      "difficulty": "中等",
+      "when": "贴身轻拳确认命中，看到对手还蹲着、手上有两格斗气时，用 OD 龙卷挑起再补中升龙。Year 4 的 OD 龙卷能打到蹲姿。",
+      "input": "2LP → 2LP → 5LK → 214KK → 623MP",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/gouki_akuma/combo#source-guide-2"
+      }
+    },
+    {
       "difficulty": "入门",
       "when": "站重拳抓到对方地面动作时，重金刚灼火接前拳派生收尾。",
       "input": "5HP → 214HP~6P"
@@ -58,6 +67,16 @@
       "difficulty": "高级",
       "when": "站轻脚在近处截到对方时，绿冲轻拳转蹲重拳让对手站起，龙卷后再补升龙。",
       "input": "5LK → DRC → 2LP → 2HP → 214LK → 623HP"
+    }
+  ],
+  "pressure": [
+    {
+      "input": "5HK → 2MP",
+      "when": "对手站防吃全站重脚两段后，你有 +3F，6F 蹲中拳能截住 4F 抢招。对手蹲下会让第二段挥空，练习时把两种姿态都试一下。",
+      "source": {
+        "label": "Year 4 攻略",
+        "url": "https://sf6-lab.net/fighters/gouki_akuma/combo#source-guide-13"
+      }
     }
   ]
 }

@@ -135,17 +135,24 @@ export const SF6_CHARACTERS: Character[] = [
 ];
 
 
+interface GuideSource {
+    label: string;
+    url: string;
+}
+
 export interface PracticeCombo {
     difficulty: '入门' | '中等' | '高级';
     input: string;
     when: string;
+    source?: GuideSource;
 }
 
 type PracticeRoutes = [PracticeCombo, ...PracticeCombo[]];
 
 export interface ComboGuide {
-    sources: { label: string; url: string }[];
+    sources: GuideSource[];
     normal: PracticeRoutes;
     punish: PracticeRoutes;
     rush: PracticeRoutes;
+    pressure: { input: string; when: string; source: GuideSource }[];
 }
