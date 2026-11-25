@@ -3,6 +3,10 @@
     {
       "label": "いおり角色攻略",
       "url": "https://sf6-lab.net/fighters/ingrid/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Ingrid/Combos"
     }
   ],
   "normal": [
@@ -24,6 +28,11 @@
   ],
   "punish": [
     {
+      "difficulty": "入门",
+      "when": "贴身挡住 -4F 的招时，用站轻拳起手，接站轻脚和中日升踢。没有太阳徽记也能用。",
+      "input": "5LP → 5LK → 236MK"
+    },
+    {
       "difficulty": "中等",
       "when": "挡住升龙落地时，用蹲重拳确反转重日升踢，再用空中日焰追击。",
       "input": "2HP → 236HK → j.214MP"
@@ -44,6 +53,11 @@
       "difficulty": "中等",
       "when": "蹲中脚截住后退时取消绿冲，先用站重脚打中，再转熟悉的中拳目标连段。",
       "input": "2MK → DRC → 5HK → 5MP~MK → 236MK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手习惯蹲防时，先用一格斗气裸绿冲打前中拳中段。命中后接中拳派生，再花三格取消绿冲追击。",
+      "input": "裸 DR → 6MP → 5MP~MK → DRC → 2HP → 236HK → j.214MP"
     },
     {
       "difficulty": "中等",

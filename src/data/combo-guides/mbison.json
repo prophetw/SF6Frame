@@ -3,6 +3,10 @@
     {
       "label": "いおり角色攻略",
       "url": "https://sf6-lab.net/fighters/vega_mbison/combo"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/M.Bison/Combos"
     }
   ],
   "normal": [
@@ -20,6 +24,11 @@
       "difficulty": "中等",
       "when": "站中拳近身压中时，接蹲中拳确认，再用中背拳挂雷。",
       "input": "5MP → 2MP → 214MP"
+    },
+    {
+      "difficulty": "中等",
+      "when": "对手身上已经有雷时，近身按站中拳后立刻蓄后。蹲中拳打中就花两格斗气用 OD 碾压引爆，接重背拳再挂一颗雷。",
+      "input": "5MP → 2MP → [4]6PP → 214HP"
     }
   ],
   "punish": [

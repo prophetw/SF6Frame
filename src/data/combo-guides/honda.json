@@ -7,6 +7,10 @@
     {
       "label": "本田绿冲演示",
       "url": "https://www.youtube.com/watch?v=c-3oHHbPgqY"
+    },
+    {
+      "label": "SuperCombo 连段",
+      "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/E.Honda/Combos"
     }
   ],
   "normal": [
@@ -29,8 +33,18 @@
   "punish": [
     {
       "difficulty": "入门",
+      "when": "贴身挡住 -4F 的招、还没蓄好头槌时，用两下蹲轻拳接轻百裂张手。对手蹲着也能打完。",
+      "input": "2LP → 2LP → 214LP"
+    },
+    {
+      "difficulty": "入门",
       "when": "防住升龙落地时，用重拳确反接相扑步下拳，把人挑起再用重百贯追击。",
       "input": "5HP → 236K~2P → [2]8HK"
+    },
+    {
+      "difficulty": "中等",
+      "when": "贴身蹲防挡住 -4F 的招，且对手站着收招时，可用蓄好的重百贯击倒，落地正好贴身压起身。",
+      "input": "2LP → 2LP → [2]8HK"
     },
     {
       "difficulty": "中等",
