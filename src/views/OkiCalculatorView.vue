@@ -115,6 +115,7 @@ const newPreferredMoveInput = ref('');
 const newPreferredMoveNote = ref('');
 const onlyShowPreferred = ref(false);
 const onlyShowSafeBait = ref(false);
+const excludeCornerResults = ref(false);
 const invincibleStartup = ref<number>(DEFAULT_INVINCIBLE_STARTUP);
 const normalizedInvincibleStartup = computed(() => Math.max(1, Math.trunc(invincibleStartup.value || DEFAULT_INVINCIBLE_STARTUP)));
 const showAllBaitResults = ref(false);
@@ -123,6 +124,9 @@ const showAllBaitResults = ref(false);
 // actionable lead before the defender becomes vulnerable on wakeup.
 const WHIFF_ADVANTAGE_MIN = 2;
 const WHIFF_ADVANTAGE_MAX = 5;
+
+// Routes that only work with the opponent in the corner are tagged in the result list.
+const CORNER_ROUTE_TAG = '版边(Corner)';
 
 // Load custom moves from localStorage and merge with defaults
 function loadCustomMoves() {
@@ -1379,7 +1383,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           tradeDetail: tradeDet,
           tradeExplanation: tradeExpl,
           tags: [
-            ...(prefix.isCorner || projectileOki ? ['版边(Corner)'] : []),
+            ...(prefix.isCorner || projectileOki ? [CORNER_ROUTE_TAG] : []),
             ...(projectileOki ? ['波动拳公式'] : []),
           ],
           isChainCancel: !!(prefix as any)._isChainCancel,
@@ -1539,7 +1543,7 @@ const allOkiResults = computed<ExtendedOkiResult[]>(() => {
           tradeAdvantage: tradeAdv,
           tradeDetail: tradeDet,
           tradeExplanation: tradeExpl,
-          tags: prefix.isCorner ? ['版边(Corner)'] : [],
+          tags: prefix.isCorner ? [CORNER_ROUTE_TAG] : [],
           isDriveRush: true,
           driveRushStartFrame: prefix.frames,
           driveRushAttackStartFrame: timing.attackStartFrame,
@@ -1560,6 +1564,10 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
 
   if (onlyShowSafeBait.value) {
     filtered = filtered.filter(result => result.invincibleGuard.canBlock === true);
+  }
+
+  if (excludeCornerResults.value) {
+    filtered = filtered.filter(result => !result.tags?.includes(CORNER_ROUTE_TAG));
   }
 
   if (comboChain.value.length > 0) {
@@ -1721,6 +1729,11 @@ const okiResults = computed<ExtendedOkiResult[]>(() => {
 });
 
 const baitResultCount = computed(() => okiResults.value.filter(result => result.isBaitOnly).length);
+const autoResultEmptyMessage = computed(() => {
+  if (onlyShowSafeBait.value) return '没有符合当前筛选的安全骗招路线';
+  if (excludeCornerResults.value) return '没有排除版边后仍成立的压制或骗招路线';
+  return '没有自动匹配的压制或骗招组合';
+});
 const displayedOkiResults = computed(() => {
   let baitCount = 0;
   return okiResults.value.filter(result => !result.isBaitOnly || showAllBaitResults.value || ++baitCount <= BAIT_PREVIEW_COUNT);
@@ -3562,6 +3575,9 @@ function formatFrameDelta(val: number): string {
           <label class="safe-bait-filter">
             <input v-model="onlyShowSafeBait" type="checkbox" />只看安全骗招
           </label>
+          <label class="corner-filter" title="隐藏所有标记为「版边(Corner)」的路线">
+            <input v-model="excludeCornerResults" type="checkbox" />排除版边路线
+          </label>
         </div>
         <div class="bait-recommendation-summary">
           <span>额外骗招：仅推荐 {{ Math.max(1, opponentWakeupFrame - BAIT_EARLY_RECOVERY_FRAMES) }}～{{ opponentWakeupFrame + normalizedInvincibleStartup - 1 }}F 收招的绿冲路线，默认展示 {{ BAIT_PREVIEW_COUNT }} 条（匹配 {{ baitResultCount }} 条）。</span>
@@ -4171,7 +4187,7 @@ function formatFrameDelta(val: number): string {
       </div>
 
       <div v-else class="empty-state">
-        <p>{{ onlyShowSafeBait ? '没有符合当前筛选的安全骗招路线' : '没有自动匹配的压制或骗招组合' }}</p>
+        <p>{{ autoResultEmptyMessage }}</p>
       </div>
     </section>
 
@@ -6351,7 +6367,8 @@ function formatFrameDelta(val: number): string {
 .oki-context-summary { display: flex; flex-wrap: wrap; gap: var(--space-md); color: var(--color-text-secondary); font-size: var(--font-size-sm); }
 .oki-context-summary strong { color: var(--color-text-primary); font-variant-numeric: tabular-nums; }
 .invincible-startup-setting,
-.safe-bait-filter { display: inline-flex; align-items: center; gap: 6px; }
+.safe-bait-filter,
+.corner-filter { display: inline-flex; align-items: center; gap: 6px; }
 .invincible-startup-input { width: 52px; padding: 3px 5px; color: var(--color-text-primary); background: var(--color-bg-tertiary); border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
 .bait-recommendation-summary { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); color: var(--color-text-muted); font-size: var(--font-size-xs); }
 .bait-expand-btn { color: var(--color-accent); background: transparent; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 4px 8px; cursor: pointer; }

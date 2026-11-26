@@ -356,6 +356,31 @@ try {
     assert.ok((await page.$$('.oki-results-table .bait-only')).length > 0);
   });
 
+  await check('corner filter hides every corner-tagged route and restores them when unchecked', async () => {
+    await page.click('.safe-bait-filter input');
+    await fill('.custom-kd-input input', 28);
+    await fill('.auto-match-search-input', 'Stand MP');
+    const before = await page.$$eval('.oki-results-table .result-row-auto', rows => ({
+      total: rows.length,
+      corner: rows.filter(row => row.textContent.includes('版边(Corner)')).length,
+    }));
+    assert.ok(before.corner > 0, 'search must keep at least one corner-tagged route');
+    await page.click('.corner-filter input');
+    await page.waitForFunction(() => !Array.from(document.querySelectorAll('.oki-results-table .result-row-auto'))
+      .some(row => row.textContent.includes('版边(Corner)')));
+    const afterTotal = (await page.$$('.oki-results-table .result-row-auto')).length;
+    assert.ok(afterTotal < before.total);
+    if (afterTotal === 0) {
+      assert.match(await page.$eval('.empty-state', node => node.textContent), /没有排除版边后仍成立的压制或骗招路线/);
+    }
+    await page.click('.corner-filter input');
+    await page.waitForFunction(total => document.querySelectorAll('.oki-results-table .result-row-auto').length === total, {}, before.total);
+    await screenshot('desktop-corner-filter.png', '.oki-results-context');
+    // Restore the filter state expected by the following checks.
+    await fill('.auto-match-search-input', '5LK');
+    await page.click('.safe-bait-filter input');
+  });
+
   await check('mobile exposes safe bait status, details and no contact rewards without overflow', async () => {
     await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
     await page.waitForSelector('.mobile-result-card.bait-only', { visible: true });
