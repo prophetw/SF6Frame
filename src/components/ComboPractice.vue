@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { ComboGuide } from '../types';
+import PracticeComboCard from './PracticeComboCard.vue';
 
 const props = defineProps<{ guide: ComboGuide }>();
 
@@ -11,7 +12,7 @@ const groups = [
 ] as const;
 const scenarios = computed(() => groups.map(({ key, label }) => {
   const [first, ...more] = props.guide[key];
-  return { key, label, first, more };
+  return { key, label, first, more, hasMoreOki: more.some(route => route.oki) };
 }));
 </script>
 
@@ -24,20 +25,13 @@ const scenarios = computed(() => groups.map(({ key, label }) => {
     <div class="practice-grid">
       <section v-for="group in scenarios" :key="group.key" class="scenario">
         <h3>{{ group.label }}</h3>
-        <article class="route">
-          <span class="level">{{ group.first.difficulty }}</span>
-          <p>{{ group.first.when }}</p>
-          <code>{{ group.first.input }}</code>
-          <a v-if="group.first.source" :href="group.first.source.url" target="_blank" rel="noopener noreferrer">{{ group.first.source.label }} ↗</a>
-        </article>
-        <details v-if="group.more.length">
-          <summary>更多{{ group.label }}（{{ group.more.length }}）</summary>
-          <article v-for="route in group.more" :key="route.input" class="route">
-            <span class="level">{{ route.difficulty }}</span>
-            <p>{{ route.when }}</p>
-            <code>{{ route.input }}</code>
-            <a v-if="route.source" :href="route.source.url" target="_blank" rel="noopener noreferrer">{{ route.source.label }} ↗</a>
-          </article>
+        <PracticeComboCard :route="group.first" />
+        <details v-if="group.more.length" class="more-routes">
+          <summary>
+            更多{{ group.label }}（{{ group.more.length }}）
+            <span v-if="group.hasMoreOki" class="has-oki">含击倒后续</span>
+          </summary>
+          <PracticeComboCard v-for="route in group.more" :key="route.input" :route="route" />
         </details>
       </section>
     </div>
@@ -86,7 +80,7 @@ header, footer {
   flex-wrap: wrap;
   gap: var(--space-sm);
 }
-header span, footer, summary, .level { font-size: var(--font-size-sm); }
+header span, footer, summary { font-size: var(--font-size-sm); }
 header span, footer { color: var(--color-text-secondary); }
 .practice-grid {
   display: grid;
@@ -102,9 +96,6 @@ header span, footer { color: var(--color-text-secondary); }
   background: var(--color-bg-secondary);
 }
 .scenario h3 { color: var(--color-accent-hover); }
-.route { margin: var(--space-sm) 0 var(--space-md); }
-.level { color: var(--color-text-secondary); }
-.route p { margin: var(--space-xs) 0 var(--space-sm); }
 .practice code, pre { font-family: var(--font-mono); }
 .practice code {
   display: block;
@@ -115,15 +106,16 @@ header span, footer { color: var(--color-text-secondary); }
   overflow-wrap: anywhere;
 }
 .pressure-panel { margin-bottom: var(--space-lg); }
-.pressure-hint, .practice article a { font-size: var(--font-size-sm); }
+.pressure-hint, .pressure-card a { font-size: var(--font-size-sm); }
 .pressure-hint { color: var(--color-text-secondary); margin: var(--space-xs) 0 var(--space-sm); }
 .pressure-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: var(--space-md); }
 .pressure-card { padding: var(--space-md); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
 .pressure-card p { margin: var(--space-sm) 0; }
 summary { cursor: pointer; }
 .sources a { display: block; margin-top: var(--space-xs); }
-.scenario details { border-top: 1px solid var(--color-border); padding-top: var(--space-sm); }
-details .route:last-child { margin-bottom: 0; }
+.more-routes { border-top: 1px solid var(--color-border); padding-top: var(--space-sm); }
+.more-routes > .route:last-child { margin-bottom: 0; }
+.has-oki { color: var(--color-accent-hover); }
 .notation { flex: 1 1 16rem; }
 .notation p, pre { margin-top: var(--space-sm); }
 @media (max-width: 800px) {

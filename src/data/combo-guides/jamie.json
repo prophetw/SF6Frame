@@ -18,7 +18,25 @@
     {
       "difficulty": "入门",
       "when": "蹲轻拳打断对手抢招时，用站轻脚派生接重张弓腿，拿到击倒。",
-      "input": "2LP → 5LK~LK → 623HK"
+      "input": "2LP → 5LK~LK → 623HK",
+      "source": {
+        "label": "SuperCombo 连段",
+        "url": "https://wiki.supercombo.gg/w/Street_Fighter_6/Jamie/Combos"
+      },
+      "oki": {
+        "setup": "重张弓腿击倒 +39F。中场想升酒量时，击倒后立刻按 22P 喝一口。",
+        "alternateEnder": {
+          "input": "2LP → 5LK~LK → 623LK",
+          "setup": "轻张弓腿击倒 +42F，连续两次普通前冲后剩 +4F。立刻出 5F 站轻脚（5LK），按帧数推算首个有效帧对齐对手起身首帧。能否打到原地受身或后受身尚未经训练场验证。"
+        },
+        "corner": "对手在版边时，可用轻张弓腿击倒接安全跳。",
+        "onBlock": "对手斗气未耗尽，挡住起身第一帧的站轻脚（5LK）后，杰米是 -1F。可以收手防对手抢招。",
+        "calculator": {
+          "characterId": "jamie",
+          "moveInput": "623LK",
+          "advantage": 42
+        }
+      }
     },
     {
       "difficulty": "中等",

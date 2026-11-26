@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import { SF6_CHARACTERS, type Move, type FrameData, type CharacterStats } from '../types';
 import { calculateTradeAdvantage, parseHitstun, getEffectiveHitstun } from '../utils/trade';
 import { calculateMoveStats, parseFrameValue } from '../utils/gapCalculator';
@@ -51,6 +52,7 @@ import {
 } from '../utils/projectileOki';
 import { getMoveDisplayName } from '../i18n';
 
+const route = useRoute();
 const attackerCharId = ref<string>('');
 const defenderCharId = ref<string>('ryu'); // Default defender
 const selectedKnockdownMove = ref<OkiKnockdownPreset | null>(null);
@@ -58,7 +60,7 @@ const selectedPresetAdvantage = ref(0);
 const selectedDefenderMove = ref<Move | null>(null); // New: Defender's move
 const attackerFrameData = ref<FrameData | null>(null);
 const defenderFrameData = ref<FrameData | null>(null);
-const loading = ref(false);
+const pendingCharacterLoads = ref(0);
 
 // Custom knockdown advantage
 // Custom knockdown advantage
@@ -2583,7 +2585,8 @@ async function loadCharacterData(role: 'attacker' | 'defender', charId: string) 
     return;
   }
 
-  loading.value = true;
+  const selectedCharacterId = role === 'attacker' ? attackerCharId : defenderCharId;
+  pendingCharacterLoads.value++;
   try {
     const path = `../data/characters/${charId}.json`;
     const loader = characterModules[path];
@@ -2596,12 +2599,9 @@ async function loadCharacterData(role: 'attacker' | 'defender', charId: string) 
     }
 
     const module = await loader() as { default: FrameData };
+    if (selectedCharacterId.value !== charId) return;
     if (role === 'attacker') {
       attackerFrameData.value = module.default;
-      // Reset selection if character changes
-      selectedKnockdownMove.value = null;
-      useCustomKnockdown.value = false;
-      comboChain.value = [];
       
       // Set default bait initiator to 5HP or first normal
       const normals = module.default.moves.filter((m: Move) => m.category === 'normal');
@@ -2618,15 +2618,47 @@ async function loadCharacterData(role: 'attacker' | 'defender', charId: string) 
     }
   } catch (e) {
     console.error(`Failed to load character data for ${charId}:`, e);
+    if (selectedCharacterId.value !== charId) return;
     if (role === 'attacker') attackerFrameData.value = null;
     else defenderFrameData.value = null;
   } finally {
-    loading.value = false;
+    pendingCharacterLoads.value--;
   }
 }
 
 watch(attackerCharId, (newVal) => {
+  attackerFrameData.value = null;
+  selectedKnockdownMove.value = null;
+  useCustomKnockdown.value = false;
+  comboChain.value = [];
+  knockdownSearchQuery.value = '';
   loadCharacterData('attacker', newVal);
+});
+
+watch(() => route.query, ({ character }, previousQuery) => {
+  if (route.name !== 'oki') return;
+  if (typeof character === 'string' && SF6_CHARACTERS.some(char => char.id === character)) {
+    attackerCharId.value = character;
+  } else if (previousQuery?.character) {
+    attackerCharId.value = '';
+  }
+}, { immediate: true });
+
+// Resolve a linked finisher only after its character's frame data is available.
+watch([() => route.query, attackerFrameData], ([query, data]) => {
+  if (!data || data.character.id !== query.character || attackerCharId.value !== query.character) return;
+  const { move, advantage } = query;
+  selectedKnockdownMove.value = null;
+  useCustomKnockdown.value = false;
+  knockdownSearchQuery.value = '';
+  if (typeof move !== 'string' || typeof advantage !== 'string') return;
+  const [preset, ambiguous] = knockdownMoves.value.filter(candidate =>
+    candidate.input === move && candidate.advantages.some(frames => String(frames) === advantage)
+  );
+  if (!preset || ambiguous) return;
+  selectKnockdownMove(preset);
+  selectedPresetAdvantage.value = Number(advantage);
+  knockdownSearchQuery.value = move;
 });
 
 watch(defenderCharId, (newVal) => {
@@ -3119,7 +3151,7 @@ function formatFrameDelta(val: number): string {
       </div>
     </section>
 
-    <div v-if="loading" class="loading-state">
+    <div v-if="pendingCharacterLoads > 0" class="loading-state">
       <p>加载中...</p>
     </div>
 

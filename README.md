@@ -5,6 +5,7 @@ A Street Fighter 6 frame data and Oki calculator tool built with Vue 3 + TypeScr
 ## Features
 - **Frame Data**: View detailed frame data for SF6 characters.
 - **角色练习**　角色页按常规命中、确反和绿冲推荐常用连段。「常用压制 · 打乱动」单独列出对手防住后的按键选择、距离条件和依据。带「Year 4 攻略」的路线可直接跳到对应章节。
+- **击倒后续**　杰米的「更多常规命中」里，轻拳确认连段给出喝酒和换轻张弓腿继续压起身的选择。展开「更多后续」可查看双前冲节奏、版边打法及受身距离的验证情况，也可带入对应的击倒预设打开计算器。
 - **Oki Calculator**: Calculate safe jump and pressure setups (Meaty).
 - **Loop Throw Calculator**: Calculate precise meaty throw timings, including support for opponent abare (attack startup).
 

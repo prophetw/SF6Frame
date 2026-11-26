@@ -27,6 +27,7 @@ try {
   await page.waitForSelector('.practice');
   const visibleCount = () => page.$$eval('.practice .route', rows => rows.filter(row => row.checkVisibility()).length);
   assert.equal(await visibleCount(), 3);
+  assert.equal(await page.$('.practice .route-oki, .practice .has-oki'), null);
   assert.match(await page.$eval('.practice', node => node.innerText), /贴身连续点两下站轻拳/);
   assert.match(await page.$eval('.overview-grid', node => node.innerText), /精选连段\s*9/);
 
@@ -53,12 +54,52 @@ try {
   assert.ok(await page.$eval('.combo-sections', node => node.querySelectorAll('.combo-card').length > 0));
   assert.equal(await visibleCount(), 3);
 
-  // Change character in the same SPA, including one without a scraped combo library.
   await page.setViewport({ width: 390, height: 844, isMobile: true });
+  await page.click('.back-btn');
+  await page.click('a[href="#/character/jamie"]');
+  const normalRoutes = '.scenario:first-child .more-routes';
+  await page.waitForSelector(`${normalRoutes} .has-oki`, { visible: true });
+  assert.match(await page.$eval(`${normalRoutes} > summary`, node => node.innerText), /更多常规命中.*含击倒后续/s);
+  await page.click(`${normalRoutes} > summary`);
+  const jamieRoute = await page.$(`${normalRoutes} > .route:has(.route-oki)`);
+  assert.ok(jamieRoute);
+  assert.equal(await jamieRoute.$eval(':scope > code', node => node.textContent.trim()), '2LP → 5LK~LK → 623HK');
+  assert.ok(await jamieRoute.$eval('.route-oki', node => node.checkVisibility()));
+  assert.match(await jamieRoute.$eval('.route-oki > p', node => node.innerText), /重张弓腿击倒 \+39F/);
+  assert.equal(await jamieRoute.$eval('.route-oki-details', node => node.open), false);
+  await (await jamieRoute.$('.route-oki-details > summary')).click();
+  const followup = await jamieRoute.$eval('.route-oki-details', node => node.innerText);
+  assert.match(followup, /2LP → 5LK~LK → 623LK/);
+  assert.match(followup, /轻张弓腿击倒 \+42F.*两次普通前冲.*\+4F.*5LK/);
+  assert.match(followup, /原地受身或后受身.*未.*验证/);
+  assert.ok(await jamieRoute.$eval('.route-oki-details', node => {
+    const bounds = node.getBoundingClientRect();
+    return innerWidth === 390 && bounds.left >= 0 && bounds.right <= innerWidth;
+  }));
+
+  const calculatorLink = await jamieRoute.$('.calculator-link');
+  const calculatorHash = '#/oki?character=jamie&move=623LK&advantage=42';
+  assert.equal(await calculatorLink.evaluate(node => node.hash), calculatorHash);
+  const screenshot = path.join(artifacts, 'jamie-oki-mobile.png');
+  await jamieRoute.screenshot({ path: screenshot });
+  await calculatorLink.click();
+  const selectedPreset = '.knockdown-grid .knockdown-card[aria-pressed="true"]';
+  await page.waitForSelector(selectedPreset, { visible: true });
+  await page.waitForSelector('.oki-context-summary', { visible: true });
+  assert.equal(new URL(page.url()).hash, calculatorHash);
+  assert.equal(await page.$eval('.oki-view select.character-select', node => node.value), 'jamie');
+  assert.equal(await page.$eval(`${selectedPreset} .move-input`, node => node.textContent.trim()), '623LK');
+  assert.equal(await page.$eval(`${selectedPreset} .move-advantage`, node => node.textContent.trim()), '+42F');
+  assert.match(await page.$eval('.oki-context-summary', node => node.innerText), /起身\s*43F/);
+
+  // Return through browser history and switch to a character without a scraped combo library.
+  await page.goBack();
+  await page.waitForSelector('.back-btn', { visible: true });
   await page.click('.back-btn');
   await page.click('a[href="#/character/arjun"]');
   await page.waitForFunction(() => document.querySelector('.practice')?.innerText.includes('轻巨腕击倒'));
   assert.equal(await visibleCount(), 3);
+  assert.equal(await page.$('.practice .route-oki, .practice .has-oki'), null);
   const mobile = await page.$eval('.practice', node => ({
     fits: node.getBoundingClientRect().right <= window.innerWidth,
     stacked: node.querySelectorAll('.scenario')[1].getBoundingClientRect().top >= node.querySelector('.scenario').getBoundingClientRect().bottom,
@@ -101,8 +142,8 @@ try {
   assert.match(await page.$eval('.scenario:last-child', node => node.innerText), /裸 DR → 6MP → 2MP → 623HP/);
   await (await page.$('.pressure-panel')).screenshot({ path: path.join(artifacts, 'ryu-pressure.png') });
   assert.deepEqual(errors, []);
-  console.log('PASS 角色切换、精选连段、隆的绿冲中段、移动端压制卡和来源。');
-  console.log(path.join(artifacts, 'ryu-pressure.png'));
+  console.log('PASS 角色切换、精选连段、杰米移动端击倒后续与压起身计算器、隆的绿冲中段、移动端压制卡和来源。');
+  console.log(screenshot);
 } finally {
   await browser?.close();
   await server.close();

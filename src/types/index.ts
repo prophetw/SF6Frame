@@ -143,11 +143,21 @@ interface GuideSource {
     url: string;
 }
 
+interface PracticeComboOki {
+    setup: string;
+    alternateEnder?: { input: string; setup: string };
+    corner?: string;
+    onHit?: string;
+    onBlock?: string;
+    calculator?: { characterId: string; moveInput: string; advantage: number };
+}
+
 export interface PracticeCombo {
     difficulty: '入门' | '中等' | '高级';
     input: string;
     when: string;
     source?: GuideSource;
+    oki?: PracticeComboOki;
 }
 
 type PracticeRoutes = [PracticeCombo, ...PracticeCombo[]];
