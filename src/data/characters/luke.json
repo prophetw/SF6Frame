@@ -28,7 +28,7 @@
         "Target Combo",
         "Drive Rush"
       ],
-      "notes": "Long range for a cancelable light normal, good whiff punish tool; 3f extra recovery on whiff; greatly extends hurtbox for 3f before active, making it susceptible to counterpokes; special/DR cancel is delayed until after active frames",
+      "notes": "Long range for a cancelable light normal, good whiff punish tool; 3f extra recovery on whiff; greatly extends hurtbox for 3f before active, making it susceptible to counterpokes; special/DR/DI cancel is delayed until after active frames",
       "raw": {
         "source": "supercombo",
         "moveName": "Stand LP",
@@ -202,6 +202,7 @@
       "recovery": "16",
       "onBlock": "-5(+1)",
       "onHit": "+2(+8)",
+      "onPunishCounter": "KD +49(+55)",
       "category": "normal",
       "notes": "8-15f Low Crush (feet are strike invincible); puts airborne opponents into limited juggle state; Punish Counter launches opponent high into a limited juggle state; can be spaced for significantly better advantage; extends a hurtbox 1f before active that is vulnerable to projectiles; first 2 active frames have shorter range (makes it easier to space properly); causes camera shake effect on block when connecting with final active frame (easier to tell when Luke has advantage)",
       "raw": {
@@ -389,7 +390,7 @@
         "Target Combo",
         "Drive Rush"
       ],
-      "notes": "Moves Luke forward, greatly increasing its range despite the stubby-looking animation; Range: 1.482 (1st active frame: 1.44); DR cancel is delayed until after active frames; has an extended hurtbox on whiff until the end of recovery",
+      "notes": "Moves Luke forward, greatly increasing its range despite the stubby-looking animation; shorter range on 1st active frame; DR cancel is delayed until after active frames; has an extended hurtbox on whiff until the end of recovery",
       "raw": {
         "source": "supercombo",
         "moveName": "Crouch MK",
@@ -420,6 +421,7 @@
       "recovery": "24(26)",
       "onBlock": "-9",
       "onHit": "KD +40",
+      "onPunishCounter": "HKD +47",
       "category": "normal",
       "knockdown": {
         "type": "soft",
@@ -833,7 +835,7 @@
         "type": "soft",
         "advantage": 27
       },
-      "notes": "() refers to scaled damage when starting combo with 5LP; puts opponent into limited juggle state; special/DR cancel is delayed until after 2nd active frame",
+      "notes": "() refers to scaled damage when starting combo with 5LP; puts opponent into limited juggle state; special/DR/DI cancel is delayed until after 2nd active frame",
       "raw": {
         "source": "supercombo",
         "moveName": "Triple Impact 2",
@@ -935,6 +937,7 @@
       "recovery": "24(27)",
       "onBlock": "-12",
       "onHit": "KD +34",
+      "onPunishCounter": "KD +42",
       "category": "normal",
       "knockdown": {
         "type": "soft",
@@ -1011,6 +1014,7 @@
       "onBlock": "-8",
       "onHit": "+2",
       "category": "normal",
+      "notes": "Easier hitconfirm ender compared to a special cancel from 2MK; leaves Luke close for a strike/throw mixup on hit; true blockstring even at max delay",
       "raw": {
         "source": "supercombo",
         "moveName": "Nose Breaker",
@@ -1041,6 +1045,7 @@
       "recovery": "23",
       "onBlock": "-",
       "onHit": "KD +19",
+      "onPunishCounter": "HKD +19",
       "category": "throw",
       "knockdown": {
         "type": "soft",
@@ -1075,6 +1080,7 @@
       "recovery": "23",
       "onBlock": "-",
       "onHit": "KD +14",
+      "onPunishCounter": "HKD +14",
       "category": "throw",
       "knockdown": {
         "type": "soft",
@@ -1148,7 +1154,7 @@
         "type": "soft",
         "advantage": 23
       },
-      "notes": "Performed by holding 6HPHK on wakeup; 5f extra recovery on hit; does not have any screen freeze except for a 12f freeze when interacting with the opponent's throw hitbox (this also refunds 1 Drive bar after punishing the throw); see Drive Reversal.",
+      "notes": "Performed by inputting 6HPHK during blockstun; 5f extra recovery on hit; freezes the screen for 4f during startup; see Drive Reversal.",
       "raw": {
         "source": "supercombo",
         "moveName": "Battering Ram (Block)",
@@ -1168,6 +1174,41 @@
         "cancelText": "-"
       },
       "nameZh": "斗气反攻"
+    },
+    {
+      "name": "Battering Ram (Recovery)",
+      "input": "6HPHK",
+      "damage": "500 recoverable",
+      "startup": "18",
+      "active": "3",
+      "recovery": "26(31)",
+      "onBlock": "-6",
+      "onHit": "KD +23",
+      "category": "throw",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 23
+      },
+      "notes": "Performed by holding 6HPHK on wakeup; 5f extra recovery on hit; does not have any screen freeze except for a 12f freeze when interacting with the opponent's throw hitbox (this also refunds 1 Drive bar after punishing the throw); see Drive Reversal.",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Battering Ram (Recovery)",
+        "plnCmd": "6HPHK",
+        "startup": 18,
+        "active": 3,
+        "recovery": 31,
+        "onBlock": -6,
+        "onHit": null,
+        "dmg": null,
+        "total": 51,
+        "moveType": "drive",
+        "section": "Drive and Throw",
+        "blockstun": 23,
+        "sourceName": "Battering Ram (Recovery)",
+        "sourceInput": "6HPHK",
+        "cancelText": "-"
+      },
+      "nameZh": "斗气反攻 (起身)"
     },
     {
       "name": "Drive Parry",
@@ -1263,9 +1304,12 @@
       "damage": "600",
       "startup": "14",
       "active": "-",
+      "projectileActive": 6,
       "recovery": "33",
       "onBlock": "-8",
       "onHit": "-3",
+      "onCounterHit": "KD +32~37",
+      "onPunishCounter": "KD +32~37",
       "category": "special",
       "cancels": [
         "SA3"
@@ -1281,8 +1325,10 @@
         "onBlock": -8,
         "onHit": -3,
         "dmg": 600,
+        "total": 47,
         "moveType": "special",
         "section": "Specials",
+        "blockstun": 26,
         "sourceName": "Sand Blast",
         "sourceInput": "236LP",
         "cancelText": "SA3"
@@ -1295,9 +1341,12 @@
       "damage": "600",
       "startup": "17",
       "active": "-",
+      "projectileActive": 7,
       "recovery": "30",
       "onBlock": "-5",
       "onHit": "0",
+      "onCounterHit": "KD +35~41",
+      "onPunishCounter": "KD +35~41",
       "category": "special",
       "cancels": [
         "SA3"
@@ -1313,8 +1362,10 @@
         "onBlock": -5,
         "onHit": 0,
         "dmg": 600,
+        "total": 47,
         "moveType": "special",
         "section": "Specials",
+        "blockstun": 26,
         "sourceName": "Sand Blast",
         "sourceInput": "236MP",
         "cancelText": "SA3"
@@ -1327,9 +1378,12 @@
       "damage": "600",
       "startup": "20",
       "active": "-",
+      "projectileActive": 10,
       "recovery": "27",
       "onBlock": "-2",
       "onHit": "+3",
+      "onCounterHit": "KD +38~47",
+      "onPunishCounter": "KD +38~47",
       "category": "special",
       "cancels": [
         "SA3"
@@ -1345,8 +1399,10 @@
         "onBlock": -2,
         "onHit": 3,
         "dmg": 600,
+        "total": 47,
         "moveType": "special",
         "section": "Specials",
+        "blockstun": 26,
         "sourceName": "Sand Blast",
         "sourceInput": "236HP",
         "cancelText": "SA3"
@@ -1646,7 +1702,7 @@
     },
     {
       "name": "LP Flash Knuckle (hold)",
-      "input": "214",
+      "input": "214[LP]",
       "damage": "600,200",
       "startup": "26",
       "active": "2,2",
@@ -1665,7 +1721,7 @@
       "raw": {
         "source": "supercombo",
         "moveName": "LP Flash Knuckle (hold)",
-        "plnCmd": "214",
+        "plnCmd": "214[LP]",
         "startup": 26,
         "active": 4,
         "recovery": 26,
@@ -1677,14 +1733,14 @@
         "section": "Specials",
         "blockstun": 21,
         "sourceName": "LP Flash Knuckle (hold)",
-        "sourceInput": "214",
+        "sourceInput": "214[LP]",
         "cancelText": "SA3"
       },
       "nameZh": "轻闪光指节 (蓄力)"
     },
     {
       "name": "LP Flash Knuckle (perfect)",
-      "input": "pf.214",
+      "input": "pf.214[LP]",
       "damage": "700,200",
       "startup": "26",
       "active": "2,2",
@@ -1703,7 +1759,7 @@
       "raw": {
         "source": "supercombo",
         "moveName": "LP Flash Knuckle (perfect)",
-        "plnCmd": "pf.214",
+        "plnCmd": "pf.214[LP]",
         "startup": 26,
         "active": 4,
         "recovery": 23,
@@ -1715,7 +1771,7 @@
         "section": "Specials",
         "blockstun": 18,
         "sourceName": "LP Flash Knuckle (perfect)",
-        "sourceInput": "pf.214",
+        "sourceInput": "pf.214[LP]",
         "cancelText": "SA3"
       },
       "nameZh": "轻闪光指节 (完美)"
@@ -1756,6 +1812,82 @@
       "nameZh": "中闪光指节"
     },
     {
+      "name": "MP Flash Knuckle (hold)",
+      "input": "214[MP]",
+      "damage": "800,200",
+      "startup": "29",
+      "active": "2,2",
+      "recovery": "26",
+      "onBlock": "-3",
+      "onHit": "KD +54(+67)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 54
+      },
+      "notes": "Wall Bounce on hit for a limited juggle state; active frames 3-4 can nullify normal 1-hit projectiles; higher KD Adv when farther from wall (opponent may bounce over Luke's head if too close to the wall); SA3 cancel only juggles properly in corner; 1f more recovery on hit/block; cannot combo naturally when canceled from 2HP",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "MP Flash Knuckle (hold)",
+        "plnCmd": "214[MP]",
+        "startup": 29,
+        "active": 4,
+        "recovery": 26,
+        "onBlock": -3,
+        "onHit": null,
+        "dmg": 800,
+        "total": 58,
+        "moveType": "special",
+        "section": "Specials",
+        "blockstun": 27,
+        "sourceName": "MP Flash Knuckle (hold)",
+        "sourceInput": "214[MP]",
+        "cancelText": "SA3"
+      },
+      "nameZh": "中闪光指节 (蓄力)"
+    },
+    {
+      "name": "MP Flash Knuckle (perfect)",
+      "input": "pf.214[MP]",
+      "damage": "850,250",
+      "startup": "29",
+      "active": "2,2",
+      "recovery": "26(27)",
+      "onBlock": "-3",
+      "onHit": "KD +53(+66)",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 53
+      },
+      "notes": "Hold MP 18-20f for perfect version; Wall Bounce on hit for a limited juggle state; active frames 3-4 can nullify normal 1-hit projectiles; higher KD Adv. when farther from wall (opponent may bounce over Luke's head if too close to the wall); SA3 cancel only juggles properly in corner; 1f more recovery on hit/block; perfect timing allows natural combo from 2HP cancel",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "MP Flash Knuckle (perfect)",
+        "plnCmd": "pf.214[MP]",
+        "startup": 29,
+        "active": 4,
+        "recovery": 27,
+        "onBlock": -3,
+        "onHit": null,
+        "dmg": 850,
+        "total": 59,
+        "moveType": "special",
+        "section": "Specials",
+        "blockstun": 27,
+        "sourceName": "MP Flash Knuckle (perfect)",
+        "sourceInput": "pf.214[MP]",
+        "cancelText": "SA3"
+      },
+      "nameZh": "中闪光指节 (完美)"
+    },
+    {
       "name": "HP Flash Knuckle",
       "input": "214HP",
       "damage": "1000",
@@ -1764,6 +1896,7 @@
       "recovery": "21",
       "onBlock": "-4",
       "onHit": "KD +42(+31)",
+      "onPunishCounter": "KD +42",
       "category": "special",
       "cancels": [
         "SA3"
@@ -1792,6 +1925,82 @@
         "cancelText": "SA3"
       },
       "nameZh": "重闪光指节"
+    },
+    {
+      "name": "HP Flash Knuckle (hold)",
+      "input": "214[HP]",
+      "damage": "1000,300",
+      "startup": "33",
+      "active": "2,2",
+      "recovery": "24(25)",
+      "onBlock": "+4",
+      "onHit": "KD +64",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 64
+      },
+      "notes": "1f extra recovery on hit/block; active frames 3-4 can nullify normal 1-hit projectiles; cancelable into SA3 on reaction if opponent attempts a Drive Impact; pulls back hurtbox on frames 5-25; leaves opponent close on block for a 2LK~2LP hitconfirm or a 1f microwalk into throw (slightly longer if opponent walks back)",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "HP Flash Knuckle (hold)",
+        "plnCmd": "214[HP]",
+        "startup": 33,
+        "active": 4,
+        "recovery": 25,
+        "onBlock": 4,
+        "onHit": null,
+        "dmg": 1000,
+        "total": 61,
+        "moveType": "special",
+        "section": "Specials",
+        "blockstun": 32,
+        "sourceName": "HP Flash Knuckle (hold)",
+        "sourceInput": "214[HP]",
+        "cancelText": "SA3"
+      },
+      "nameZh": "重闪光指节 (蓄力)"
+    },
+    {
+      "name": "HP Flash Knuckle (perfect)",
+      "input": "pf.214[HP]",
+      "damage": "1200,400",
+      "startup": "33",
+      "active": "2,2",
+      "recovery": "24(25)",
+      "onBlock": "+4",
+      "onHit": "KD +64",
+      "category": "special",
+      "cancels": [
+        "SA3"
+      ],
+      "knockdown": {
+        "type": "soft",
+        "advantage": 64
+      },
+      "notes": "Hold HP 18-20f for perfect version; active frames 3-4 can nullify normal 1-hit projectiles; 1f more recovery on hit/block; cancelable into SA3 on reaction if opponent attempts a Drive Impact; pulls back hurtbox on frames 5-25; leaves opponent close on block for a 2LK~2LP hitconfirm or a 1f microwalk into throw (slightly longer if opponent walks back)",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "HP Flash Knuckle (perfect)",
+        "plnCmd": "pf.214[HP]",
+        "startup": 33,
+        "active": 4,
+        "recovery": 25,
+        "onBlock": 4,
+        "onHit": null,
+        "dmg": 1200,
+        "total": 61,
+        "moveType": "special",
+        "section": "Specials",
+        "blockstun": 32,
+        "sourceName": "HP Flash Knuckle (perfect)",
+        "sourceInput": "pf.214[HP]",
+        "cancelText": "SA3"
+      },
+      "nameZh": "重闪光指节 (完美)"
     },
     {
       "name": "OD Flash Knuckle",
@@ -1902,7 +2111,7 @@
     },
     {
       "name": "Aerial Flash Knuckle (hold)",
-      "input": "j.214",
+      "input": "j.214[P]",
       "damage": "1000",
       "startup": "23",
       "active": "6",
@@ -1918,7 +2127,7 @@
       "raw": {
         "source": "supercombo",
         "moveName": "Aerial Flash Knuckle (hold)",
-        "plnCmd": "j.214",
+        "plnCmd": "j.214[P]",
         "startup": 23,
         "active": 6,
         "recovery": 15,
@@ -1930,7 +2139,7 @@
         "section": "Specials",
         "blockstun": -9,
         "sourceName": "Aerial Flash Knuckle (hold)",
-        "sourceInput": "j.214",
+        "sourceInput": "j.214[P]",
         "cancelText": "-"
       },
       "nameZh": "空中闪光指节 (蓄力)"
@@ -1980,7 +2189,7 @@
       "onBlock": "-",
       "onHit": "-",
       "category": "special",
-      "notes": "Follow-up P or K can be input on frames 12-32; Luke is in a counter-hit state for entire duration",
+      "notes": "Follow-up P or K can be input on frames 12-32; Luke is in a counter-hit state for entire duration; Total Distance: 2.23 (0.82 before the earliest follow-up timing)",
       "raw": {
         "source": "supercombo",
         "moveName": "Avenger",
@@ -1995,6 +2204,35 @@
         "section": "Specials",
         "sourceName": "Avenger",
         "sourceInput": "236K",
+        "cancelText": "-"
+      },
+      "nameZh": "复仇者"
+    },
+    {
+      "name": "Avenger",
+      "input": "236KK",
+      "damage": "-",
+      "startup": "11",
+      "active": "-",
+      "recovery": "10",
+      "onBlock": "-",
+      "onHit": "-",
+      "category": "special",
+      "notes": "Armor does not apply to follow-up attacks; follow-up P or K can be input up to frame 32; follow-up can start immediately after armor hit freeze without waiting for any additional Avenger startup frames to occur; Luke is in a Punish Counter state for entire duration; Total Distance: 2.47 (0.75 before the earliest follow-up timing)",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Avenger",
+        "plnCmd": "236KK",
+        "startup": 11,
+        "active": null,
+        "recovery": 10,
+        "onBlock": null,
+        "onHit": null,
+        "dmg": null,
+        "moveType": "special",
+        "section": "Specials",
+        "sourceName": "Avenger",
+        "sourceInput": "236KK",
         "cancelText": "-"
       },
       "nameZh": "复仇者"
@@ -2038,70 +2276,6 @@
       "nameZh": "直饮"
     },
     {
-      "name": "Impaler",
-      "input": "236K~K",
-      "damage": "1200",
-      "startup": "12+13",
-      "active": "8",
-      "recovery": "22(27)",
-      "onBlock": "-8(-3)",
-      "onHit": "KD +30(+35)",
-      "category": "special",
-      "knockdown": {
-        "type": "soft",
-        "advantage": 30
-      },
-      "notes": "First 2 active frames can only hit airborne opponents; 3rd active frame hits grounded and gives the best KD Advantage (cannot hit meaty to allow a follow-up juggle); Luke is in a crouching state for entire recovery duration; puts opponents into limited juggle state; 5f extra recovery on whiff",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Impaler",
-        "plnCmd": "236K~K",
-        "startup": 12,
-        "active": 8,
-        "recovery": 27,
-        "onBlock": -8,
-        "onHit": null,
-        "dmg": 1200,
-        "total": 46,
-        "moveType": "special",
-        "section": "Specials",
-        "blockstun": 22,
-        "sourceName": "Impaler",
-        "sourceInput": "236K~K",
-        "cancelText": "-"
-      },
-      "nameZh": "穿刺者"
-    },
-    {
-      "name": "Avenger",
-      "input": "236KK",
-      "damage": "-",
-      "startup": "11",
-      "active": "-",
-      "recovery": "10",
-      "onBlock": "-",
-      "onHit": "-",
-      "category": "special",
-      "notes": "Armor does not apply to follow-up attacks; follow-up P or K can be input up to frame 32; follow-up can start immediately after armor hit freeze without waiting for any additional Avenger startup frames to occur; Luke is in a Punish Counter state for entire duration",
-      "raw": {
-        "source": "supercombo",
-        "moveName": "Avenger",
-        "plnCmd": "236KK",
-        "startup": 11,
-        "active": null,
-        "recovery": 10,
-        "onBlock": null,
-        "onHit": null,
-        "dmg": null,
-        "moveType": "special",
-        "section": "Specials",
-        "sourceName": "Avenger",
-        "sourceInput": "236KK",
-        "cancelText": "-"
-      },
-      "nameZh": "复仇者"
-    },
-    {
       "name": "No Chaser",
       "input": "236KK~P",
       "damage": "1300",
@@ -2139,6 +2313,41 @@
         "cancelText": "SA2 SA3"
       },
       "nameZh": "直饮"
+    },
+    {
+      "name": "Impaler",
+      "input": "236K~K",
+      "damage": "1200",
+      "startup": "12+13",
+      "active": "8",
+      "recovery": "22(27)",
+      "onBlock": "-8(-3)",
+      "onHit": "KD +30(+35)",
+      "category": "special",
+      "knockdown": {
+        "type": "soft",
+        "advantage": 30
+      },
+      "notes": "First 2 active frames can only hit airborne opponents; 3rd active frame hits grounded and gives the best KD Advantage (cannot hit meaty to allow a follow-up juggle); Luke is in a crouching state for entire recovery duration; puts opponents into limited juggle state; 5f extra recovery on whiff",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Impaler",
+        "plnCmd": "236K~K",
+        "startup": 12,
+        "active": 8,
+        "recovery": 27,
+        "onBlock": -8,
+        "onHit": null,
+        "dmg": 1200,
+        "total": 46,
+        "moveType": "special",
+        "section": "Specials",
+        "blockstun": 22,
+        "sourceName": "Impaler",
+        "sourceInput": "236K~K",
+        "cancelText": "-"
+      },
+      "nameZh": "穿刺者"
     },
     {
       "name": "Impaler",
@@ -2259,7 +2468,7 @@
         "type": "hard",
         "advantage": 18
       },
-      "notes": "Luke runs forward; active frames occur upon reaching the opponent or on frame 27 (whichever occurs first) but invincibility is not extended when far from opponent; has juggle potential; on block, bounces away with a fixed recovery period (whiff recovery is 26f slower); cinematic time regenerates ~2.3 Drive bars for Luke; available at 25% HP or below; does not take opponent to Memphis",
+      "notes": "Luke runs forward; active frames occur upon reaching the opponent or on frame 27 (whichever occurs first) but invincibility is not extended when far from opponent; has juggle potential; on block, bounces away with a fixed recovery period (whiff recovery is 26f slower); cinematic time regenerates ~2 Drive bars for Luke; takes opponent to Memphis",
       "raw": {
         "source": "supercombo",
         "moveName": "Pale Rider",
@@ -2279,7 +2488,42 @@
         "cancelText": "-"
       },
       "nameZh": "苍白骑士"
+    },
+    {
+      "name": "Pale Rider (CA)",
+      "input": "236236K",
+      "damage": "4500",
+      "startup": "10(27)",
+      "active": "4",
+      "recovery": "66(92)",
+      "onBlock": "-42",
+      "onHit": "HKD +18",
+      "category": "super",
+      "knockdown": {
+        "type": "hard",
+        "advantage": 18
+      },
+      "notes": "Luke runs forward; active frames occur upon reaching the opponent or on frame 27 (whichever occurs first) but invincibility is not extended when far from opponent; has juggle potential; on block, bounces away with a fixed recovery period (whiff recovery is 26f slower); cinematic time regenerates ~2.3 Drive bars for Luke; available at 25% HP or below; does not take opponent to Memphis",
+      "raw": {
+        "source": "supercombo",
+        "moveName": "Pale Rider (CA)",
+        "plnCmd": "236236K",
+        "startup": 10,
+        "active": 4,
+        "recovery": 92,
+        "onBlock": -42,
+        "onHit": null,
+        "dmg": 4500,
+        "total": 105,
+        "moveType": "super",
+        "section": "Supers",
+        "blockstun": 28,
+        "sourceName": "Pale Rider (CA)",
+        "sourceInput": "236236K",
+        "cancelText": "-"
+      },
+      "nameZh": "苍白骑士 (CA)"
     }
   ],
-  "lastUpdated": "2026-08-09"
+  "lastUpdated": "2026-11-26"
 }

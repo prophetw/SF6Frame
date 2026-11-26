@@ -21,56 +21,13 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { CHARACTERS, type CharacterConfig } from './characters';
+import type { CharacterStats, FrameData, KnockdownData, Move, MoveCategory } from '../src/types';
 
 // Add stealth plugin
 puppeteer.use(StealthPlugin());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-type MoveCategory = 'normal' | 'unique' | 'special' | 'super' | 'throw';
-
-interface KnockdownData {
-    type: 'soft' | 'hard' | 'none';
-    advantage: number;
-}
-
-interface Move {
-    name: string;
-    nameZh?: string;
-    input: string;
-    damage: string;
-    startup: string;
-    active: string;
-    recovery: string;
-    onBlock: string;
-    onHit: string;
-    category: MoveCategory;
-    cancels?: string[];
-    knockdown?: KnockdownData;
-    noMeaty?: boolean;
-    notes?: string;
-    raw?: any;
-}
-
-interface CharacterStats {
-    health: number;
-    forwardDash: number;
-    backDash: number;
-    forwardWalk?: number;
-    backWalk?: number;
-}
-
-interface FrameData {
-    character: {
-        id: string;
-        name: string;
-        nameJp: string;
-    };
-    stats: CharacterStats;
-    moves: Move[];
-    lastUpdated: string;
-}
 
 interface ScrapedMove {
     name: string;
@@ -81,6 +38,9 @@ interface ScrapedMove {
     recovery: string;
     onBlock: string;
     onHit: string;
+    punishAdv?: string;
+    blockstun?: string;
+    total?: string;
     cancelText?: string;
     section?: string;
     variant?: string;
@@ -137,10 +97,10 @@ function stripFootnotes(value: string): string {
     return value.replace(/\[[^\]]+\]/g, '').trim();
 }
 
-function normalizeFrameText(value: string | undefined | null): string {
+function normalizeFrameText(value: string | undefined | null, removeFootnotes = true): string {
     if (value === undefined || value === null) return '-';
     let text = normalizeWhitespace(String(value));
-    text = stripFootnotes(text);
+    if (removeFootnotes) text = stripFootnotes(text);
     text = text.replace(/[−–—]/g, '-').replace(/[＋]/g, '+').replace(/[×✕✖]/g, 'x');
     if (!text || text.toLowerCase() === 'n/a' || text === '—' || text === '--') return '-';
     return text;
@@ -228,7 +188,7 @@ function normalizeOnHitValue(value: string): string {
 }
 
 function normalizeInput(value: string): string {
-    return normalizeFrameText(value);
+    return normalizeFrameText(value, false);
 }
 
 function normalizeMoveName(value: string): string {
@@ -242,7 +202,7 @@ function normalizeVariantLabel(value?: string): string {
 
 function applyVariantToInput(baseInput: string, variant: string): string {
     if (!variant) return baseInput;
-    const base = normalizeFrameText(baseInput);
+    const base = normalizeInput(baseInput);
     const label = normalizeFrameText(variant);
     if (!label || label === '-') return base;
 
@@ -464,8 +424,8 @@ function loadExistingMoveExtras(filePath: string): Map<string, { nameZh?: string
     return extras;
 }
 
-function loadExistingMoveNameByInput(filePath: string): Map<string, string> {
-    const names = new Map<string, string>();
+function loadExistingMoveNamesByInput(filePath: string): Map<string, string[]> {
+    const names = new Map<string, string[]>();
     if (!fs.existsSync(filePath)) return names;
     try {
         const content = fs.readFileSync(filePath, 'utf-8');
@@ -476,9 +436,9 @@ function loadExistingMoveNameByInput(filePath: string): Map<string, string> {
             const input = normalizeInput(String(move.input));
             const name = normalizeMoveName(String(move.name));
             if (!input || input === '-' || !name || name === '-') continue;
-            if (!names.has(input)) {
-                names.set(input, name);
-            }
+            const variants = names.get(input) ?? [];
+            variants.push(name);
+            names.set(input, variants);
         }
     } catch {
         return names;
@@ -497,9 +457,21 @@ function normalizeScrapedMove(scraped: ScrapedMove): Move {
     const damage = normalizeFrameText(scraped.damage);
     const startup = normalizeFrameText(scraped.startup);
     const active = normalizeFrameText(scraped.active);
+    const notes = scraped.notes ? normalizeFrameText(scraped.notes) : undefined;
+    const projectileActive = /projectile active time/i.test(notes ?? '')
+        ? Number(scraped.active.match(/^\[(\d+)\]$/)?.[1]) || undefined
+        : undefined;
     const recovery = normalizeFrameText(scraped.recovery);
     const onBlock = normalizeFrameText(scraped.onBlock);
     const onHit = normalizeOnHitValue(scraped.onHit);
+    const punishAdv = normalizeFrameText(scraped.punishAdv);
+    const punishKnockdown = /^(?:HKD|KD) \+\d+(?:~\d+|\(\+\d+\))?$/.test(punishAdv) && punishAdv !== onHit;
+    const onPunishCounter = punishKnockdown
+        ? (projectileActive ? punishAdv.replace(/\(\+(\d+)\)$/, '~$1') : punishAdv)
+        : undefined;
+    const onCounterHit = /limited juggle state on counter-hit\s*\/\s*punish counter/i.test(notes ?? '')
+        ? onPunishCounter
+        : undefined;
 
     const category = categorizeMove(name, input, scraped.section);
     const cancels = normalizeCancelTags(scraped.cancelText);
@@ -517,16 +489,24 @@ function normalizeScrapedMove(scraped: ScrapedMove): Move {
         damage,
         startup,
         active,
+        projectileActive,
         recovery,
         onBlock,
         onHit,
+        onCounterHit,
+        onPunishCounter,
         category,
         cancels,
         knockdown,
-        notes: scraped.notes ? normalizeFrameText(scraped.notes) : undefined
+        notes
     };
 
     const raw = buildRawMove(move, scraped.section);
+    if (projectileActive) {
+        // Projectile lifetime overlaps recovery, so use the listed body total and blockstun.
+        if (scraped.total && /^\d+$/.test(scraped.total)) raw.total = Number(scraped.total);
+        if (scraped.blockstun && /^\d+$/.test(scraped.blockstun)) raw.blockstun = Number(scraped.blockstun);
+    }
     raw.sourceName = rawName;
     raw.sourceInput = input;
     raw.cancelText = scraped.cancelText;
@@ -915,14 +895,33 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
     const cargoTables = Array.from(document.querySelectorAll('table.cargoDynamicTable'));
     if (cargoTables.length === 0) return;
 
-    const notesByInput = {};
+    const supplementalByMove = new Map();
+    const supplementalFields = {
+      notes: 'notes',
+      punishAdv: 'punish adv',
+      blockstun: 'blockstun'
+    };
 
-    // Collect notes from companion note tables.
+    function moveKey(section, input, occurrences) {
+      const occurrence = occurrences.get(input) || 0;
+      occurrences.set(input, occurrence + 1);
+      return JSON.stringify([section, input, occurrence]);
+    }
+
+    // Companion tables list same-input variants in the same order as the core table.
     for (const table of cargoTables) {
       const headers = collectHeaders(table);
       const idxInput = headers.findIndex(h => h === 'input' || h.includes('input'));
-      const idxNotes = headers.findIndex(h => h === 'notes' || h.includes('notes'));
-      if (idxInput === -1 || idxNotes === -1) continue;
+      const columns = Object.entries(supplementalFields)
+        .map(([field, header]) => [
+          field,
+          headers.findIndex(h => field === 'notes' ? h.includes(header) : h === header)
+        ])
+        .filter(([, index]) => index !== -1);
+      if (idxInput === -1 || columns.length === 0) continue;
+
+      const section = findSectionTitle(table);
+      const occurrences = new Map();
 
       for (const row of collectRows(table)) {
         const cells = Array.from(row.querySelectorAll('td, th'));
@@ -930,9 +929,15 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
         if (rowLooksLikeHeader(cells, headers)) continue;
 
         const input = cleanText(cells[idxInput]?.textContent || '');
-        const notes = cleanText(cells[idxNotes]?.textContent || '');
-        if (!input || input === '-' || !notes || notes === '-') continue;
-        notesByInput[input] = notes;
+        if (!input || input === '-') continue;
+
+        const key = moveKey(section, input, occurrences);
+        const fields = supplementalByMove.get(key) || {};
+        for (const [field, index] of columns) {
+          const value = cleanText(cells[index]?.textContent || '');
+          if (value && value !== '-') fields[field] = value;
+        }
+        supplementalByMove.set(key, fields);
       }
     }
 
@@ -944,6 +949,7 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
       const idxStartup = headers.findIndex(h => h.includes('startup'));
       const idxActive = headers.findIndex(h => h.includes('active'));
       const idxRecovery = headers.findIndex(h => h.includes('recovery'));
+      const idxTotal = headers.indexOf('total');
       const idxOnBlock = headers.findIndex(h => h.includes('on block') || h.includes('block adv') || (h.includes('block') && !h.includes('guard')));
       const idxOnHit = headers.findIndex(h => h.includes('on hit') || h.includes('hit adv') || (h.includes('hit') && !h.includes('hitstop')));
       const idxCancel = headers.findIndex(h => h.includes('cancel'));
@@ -952,6 +958,7 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
       if (!isCore) continue;
 
       const section = findSectionTitle(table);
+      const occurrences = new Map();
 
       for (const row of collectRows(table)) {
         const cells = Array.from(row.querySelectorAll('td, th'));
@@ -973,11 +980,12 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
           startup: getCell(idxStartup),
           active: getCell(idxActive),
           recovery: getCell(idxRecovery),
+          total: getCell(idxTotal),
           onBlock: getCell(idxOnBlock),
           onHit: getCell(idxOnHit),
           cancelText: getCell(idxCancel),
           section,
-          notes: notesByInput[input] || ''
+          ...supplementalByMove.get(moveKey(section, input, occurrences))
         });
       }
     }
@@ -1077,7 +1085,7 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
         const filePath = path.join(OUTPUT_DIR, `${config.id}.json`);
         const existingStats = loadExistingStats(filePath);
         const existingMoveExtras = loadExistingMoveExtras(filePath);
-        const existingMoveNameByInput = loadExistingMoveNameByInput(filePath);
+        const existingMoveNamesByInput = loadExistingMoveNamesByInput(filePath);
         const stats = normalizeStats(scrapeResult.stats || null, existingStats);
         if (!scrapeResult.stats) {
             if (existingStats) {
@@ -1089,11 +1097,15 @@ async function scrapeCharacter(browser: any, config: CharacterConfig): Promise<F
 
         const normalizedMoves: Move[] = [];
         const seen = new Set<string>();
+        const occurrencesByInput = new Map<string, number>();
 
         for (const rawMove of scrapeResult.moves) {
             const scrapedMove = { ...(rawMove as ScrapedMove) };
             const normalizedInput = normalizeInput(scrapedMove.input);
-            const existingName = existingMoveNameByInput.get(normalizedInput);
+            const occurrence = occurrencesByInput.get(normalizedInput) ?? 0;
+            occurrencesByInput.set(normalizedInput, occurrence + 1);
+            const existingNames = existingMoveNamesByInput.get(normalizedInput);
+            const existingName = existingNames?.[occurrence] ?? existingNames?.[0];
             if (existingName) {
                 scrapedMove.name = existingName;
             }

@@ -36,9 +36,12 @@ export interface Move {
     damage: string;
     startup: string;
     active: string;
+    projectileActive?: number; // projectile lifetime in frames
     recovery: string;
     onBlock: string;
     onHit: string;
+    onCounterHit?: string;
+    onPunishCounter?: string;
     category: MoveCategory;
     cancels?: string[];  // What the move can cancel into (Special, Super, Chain, etc.)
     knockdown?: KnockdownData;

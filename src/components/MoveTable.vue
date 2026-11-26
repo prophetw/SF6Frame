@@ -114,7 +114,11 @@ function getTotalFrames(move: Move): string {
             </td>
             <!-- Frame group 1: core frames -->
             <td class="col-startup" data-label="发生">{{ move.startup }}</td>
-            <td class="col-active" data-label="持续">{{ move.active }}</td>
+            <td
+              class="col-active"
+              :data-label="move.projectileActive ? '弹体持续' : '持续'"
+              :title="move.projectileActive ? '弹体持续' : undefined"
+            >{{ move.projectileActive ? `[${move.projectileActive}]` : move.active }}</td>
             <td class="col-recovery" data-label="硬直">{{ move.recovery }}</td>
             <td class="col-total" data-label="总帧数">{{ getTotalFrames(move) }}</td>
             <!-- Frame group 2: advantage -->
@@ -123,6 +127,15 @@ function getTotalFrames(move: Move): string {
             </td>
             <td class="col-onhit" data-label="命中" :class="getFrameClass(move.onHit)">
               {{ formatFrameValue(move.onHit) }}
+              <span v-if="move.onCounterHit || move.onPunishCounter" class="counter-advantage" :title="move.notes">
+                <template v-if="move.onCounterHit && move.onCounterHit === move.onPunishCounter">
+                  CH/PC {{ move.onCounterHit }}
+                </template>
+                <template v-else>
+                  <span v-if="move.onCounterHit">CH {{ move.onCounterHit }}</span>
+                  <span v-if="move.onPunishCounter">PC {{ move.onPunishCounter }}</span>
+                </template>
+              </span>
             </td>
             <!-- Frame group 3: damage & stun -->
             <td class="col-damage" data-label="伤害">{{ move.damage }}</td>
@@ -286,6 +299,17 @@ function getTotalFrames(move: Move): string {
 .col-onhit {
   text-align: center;
   font-weight: 600;
+}
+
+.counter-advantage {
+  display: block;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: 400;
+}
+
+.counter-advantage span {
+  display: block;
 }
 
 /* Cancel Tags */

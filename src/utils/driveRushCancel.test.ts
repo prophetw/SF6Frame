@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Move } from '../types';
+import luke from '../data/characters/luke.json';
 import ryu from '../data/characters/ryu.json';
 import { calculateDriveRushCancelPressure, getDriveRushCancelFrame, sortDriveRushComparisons, type DriveRushComparisonRow } from './driveRushCancel';
 import type { CalculationType } from './gapCalculator';
@@ -289,6 +290,12 @@ describe('earliest Drive Rush Cancel timing from source notes', () => {
 
   it('waits until the final active frame for Ryu 2MK', () => {
     expect(getDriveRushCancelFrame(crMK)).toBe(3);
+  });
+
+  it('waits until Luke 5LP finishes its active frames when DR and DI share a cancel rule', () => {
+    const move = luke.moves.find(move => move.input === '5LP');
+    if (!move) throw new Error('Missing Luke 5LP');
+    expect(getDriveRushCancelFrame(move as Move)).toBe(2);
   });
 
   it('honors a specified active frame', () => {

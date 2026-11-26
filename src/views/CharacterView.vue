@@ -119,6 +119,9 @@ const filteredMoves = computed(() => {
       } else if (sortKey.value === 'total') {
         valueA = calculateMoveTotalFrames(a) ?? -999;
         valueB = calculateMoveTotalFrames(b) ?? -999;
+      } else if (sortKey.value === 'active') {
+        valueA = a.projectileActive ?? parseFrameValue(a.active);
+        valueB = b.projectileActive ?? parseFrameValue(b.active);
       } else {
         valueA = parseFrameValue((a as Record<string, unknown>)[sortKey.value] as string | number | undefined);
         valueB = parseFrameValue((b as Record<string, unknown>)[sortKey.value] as string | number | undefined);

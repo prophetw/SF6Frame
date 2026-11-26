@@ -71,7 +71,7 @@ export function isDriveRushCancelNormal(move: Move): boolean {
 
 /** Earliest cancel position in the gap calculator's contact-frame convention (first active = 1). */
 export function getDriveRushCancelFrame(move: Move): number | null {
-  const note = move.notes?.match(/DR cancel is delayed[^;.\n]*/i)?.[0];
+  const note = move.notes?.match(/\bDR(?:\/DI)? cancel is delayed[^;.\n]*/i)?.[0];
   if (!note) return 1;
 
   // A multi-hit cancel requires knowing which hit was blocked; this mode uses a single contact.
