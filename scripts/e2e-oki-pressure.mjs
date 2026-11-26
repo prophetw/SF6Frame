@@ -430,6 +430,71 @@ try {
     await screenshot('desktop-33f-bait-whiffs.png', '.oki-results-table');
   });
 
+  await check('Luke counter knockdown presets select the actual wakeup frame', async () => {
+    await page.select('select.character-select', 'luke');
+    await page.waitForFunction(() => Array.from(document.querySelectorAll('.knockdown-grid .move-name'))
+      .some(node => node.textContent.trim() === '战壕破坏者'));
+    await fill('.preset-search-input', '236');
+    const cardSelector = '.knockdown-grid .knockdown-card';
+    const readCards = () => page.$$eval(cardSelector, cards => cards.map(card => ({
+      input: card.querySelector('.move-input').textContent.trim(),
+      text: card.innerText,
+    })));
+    const wakeup = () => page.$eval('.oki-context-summary strong', node => node.textContent.trim());
+    const presets = await readCards();
+    for (const [input, bounds] of [['236LP', /32.*37/], ['236MP', /35.*41/], ['236HP', /38.*47/]]) {
+      const card = presets.find(preset => preset.input === input);
+      assert.ok(card, `${input} must appear in Luke's knockdown presets`);
+      assert.match(card.text, /CH\/PC/);
+      assert.match(card.text, bounds);
+    }
+
+    async function chooseCard(input, label) {
+      const cards = await page.$$(cardSelector);
+      const card = (await readCards()).findIndex(item => item.input === input && item.text.includes(label));
+      assert.ok(card >= 0, `Missing ${input} ${label}`);
+      await cards[card].click();
+    }
+
+    await chooseCard('236MP', 'CH/PC');
+    assert.equal(await wakeup(), '36F');
+    assert.deepEqual(await page.$$eval('.preset-frame-select option', options => options.map(option => Number(option.value))),
+      [35, 36, 37, 38, 39, 40, 41]);
+    await page.select('.preset-frame-select', '39');
+    assert.equal(await wakeup(), '40F');
+    await page.select('.preset-frame-select', '41');
+    assert.equal(await wakeup(), '42F');
+    assert.equal(await page.$eval('.oki-results-table .oki-wakeup-frame', node => node.textContent.trim()), '42F');
+    await screenshot('luke-counter-knockdown.png', '.oki-section:has(.knockdown-grid)');
+
+    await chooseCard('236PP', '+41F');
+    assert.equal(await wakeup(), '42F');
+    assert.equal(await page.$('.preset-frame-select'), null);
+
+    await fill('.preset-search-input', '2HK');
+    await chooseCard('2HK', 'PC');
+    assert.equal(await wakeup(), '48F');
+    await chooseCard('2HK', '+40F');
+    assert.equal(await wakeup(), '41F');
+
+    await fill('.preset-search-input', '5HK');
+    await chooseCard('5HK', 'PC');
+    assert.deepEqual(await page.$$eval('.preset-frame-select option', options => options.map(option => Number(option.value))),
+      [49, 55]);
+    await page.select('.preset-frame-select', '55');
+    assert.equal(await wakeup(), '56F');
+
+    await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
+    await fill('.preset-search-input', '236HP');
+    await chooseCard('236HP', 'CH/PC');
+    await page.select('.preset-frame-select', '47');
+    assert.equal(await wakeup(), '48F');
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    await page.select('select.character-select', 'ryu');
+    await page.waitForFunction(() => !document.querySelector('.results-section')
+      && !document.querySelector('.preset-frame-select'));
+  });
+
   await check('no visible UI errors, console errors or failed HTTP requests', async () => {
     const uiErrors = await page.$$eval('[role="alert"], .error-section, .toast-error', nodes => nodes
       .filter(node => node.getClientRects().length).map(node => node.textContent.trim()));

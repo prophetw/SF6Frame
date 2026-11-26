@@ -4,7 +4,14 @@ import { SF6_CHARACTERS, type Move, type FrameData, type CharacterStats } from '
 import { calculateTradeAdvantage, parseHitstun, getEffectiveHitstun } from '../utils/trade';
 import { calculateMoveStats, parseFrameValue } from '../utils/gapCalculator';
 import { buildOkiResultKeyBase, getUniqueOkiResultKey } from '../utils/okiResultKey';
-import { getSafePressureWakeupRange, type OkiFrameRange, type OkiMemoryKnockdown } from '../utils/okiPressure';
+import {
+  formatOkiKnockdownAdvantages,
+  getOkiKnockdownPresets,
+  getSafePressureWakeupRange,
+  type OkiFrameRange,
+  type OkiKnockdownPreset,
+  type OkiMemoryKnockdown,
+} from '../utils/okiPressure';
 import OkiRouteMemory from '../components/OkiRouteMemory.vue';
 import {
   calculateMoveTotalFrames as calculateUnifiedMoveTotalFrames,
@@ -46,7 +53,8 @@ import { getMoveDisplayName } from '../i18n';
 
 const attackerCharId = ref<string>('');
 const defenderCharId = ref<string>('ryu'); // Default defender
-const selectedKnockdownMove = ref<Move | null>(null);
+const selectedKnockdownMove = ref<OkiKnockdownPreset | null>(null);
+const selectedPresetAdvantage = ref(0);
 const selectedDefenderMove = ref<Move | null>(null); // New: Defender's move
 const attackerFrameData = ref<FrameData | null>(null);
 const defenderFrameData = ref<FrameData | null>(null);
@@ -150,25 +158,8 @@ const filteredCustomMoves = computed(() => {
     return customMoves.value.filter(m => m.characterId === attackerCharId.value);
 });
 
-// Convert CustomMove to compatible Move object for selection
 function selectCustomMove(custom: CustomMove) {
-    selectedKnockdownMove.value = {
-        name: custom.name,
-        input: custom.input,
-        startup: '0', 
-        active: '0',
-        recovery: '0',
-        onBlock: 0,
-        onHit: 0,
-        damage: '0',
-        category: 'normal',
-        type: 'normal', // Dummy
-        knockdown: {
-            type: 'hard',
-            advantage: custom.frames
-        }
-    } as unknown as Move;
-    useCustomKnockdown.value = false;
+    selectKnockdownMove({ name: custom.name, input: custom.input, advantages: [custom.frames] });
 }
 
 function saveCustomMove() {
@@ -426,32 +417,12 @@ const selectedDriveRushResultKey = ref<string | null>(null);
 const selectedSafeBaitResultKey = ref<string | null>(null);
 
 // Effective knockdown advantage
-// Effective knockdown advantage
-// Helper to parse knockdown advantage from move
-function parseKnockdownAdvantage(move: Move): number {
-    if (!move) return 0;
-    
-    // Priority 0: Exact advantage defined on knockdown object
-    if (move.knockdown?.advantage) return move.knockdown.advantage;
-
-    // Priority 1: Parse exact advantage from 'onHit' string
-    if (move.onHit && typeof move.onHit === 'string') {
-        const match = move.onHit.match(/(?:KD|HKD|Crumple)\s*([+-]?\d+)/i);
-        if (match) {
-            return parseInt(match[1] || '0', 10);
-        }
-    }
-    
-    return 0;
-}
-
-// Effective knockdown advantage
 const effectiveKnockdownAdv = computed(() => {
   if (useCustomKnockdown.value && customKnockdownAdv.value > 0) {
     return customKnockdownAdv.value;
   }
-  
-  return parseKnockdownAdvantage(selectedKnockdownMove.value as Move);
+
+  return selectedKnockdownMove.value ? selectedPresetAdvantage.value : 0;
 });
 
 // Character stats (Attacker)
@@ -570,36 +541,14 @@ const throwFirstActiveMax = computed(() => {
 });
 
 // Knockdown moves
-const knockdownMoves = computed<Move[]>(() => {
-  if (!attackerFrameData.value) return [];
-  const moves = attackerFrameData.value.moves.filter((m: Move) => m.knockdown && m.knockdown.type !== 'none');
-  
-  const expanded: Move[] = [];
-  for (const m of moves) {
-    expanded.push(m);
-    if (m.knockdown?.alternativeAdvantages && m.knockdown.alternativeAdvantages.length > 0) {
-      for (const alt of m.knockdown.alternativeAdvantages) {
-        const altMove: Move = { ...m };
-        altMove.name = `${m.name} (${alt.condition})`;
-        if (altMove.nameZh) {
-          altMove.nameZh = `${altMove.nameZh} (${alt.condition})`;
-        }
-        altMove.knockdown = { ...m.knockdown, advantage: alt.advantage };
-        // Remove alternativeAdvantages from the clone so we don't recurse if we ever did
-        delete altMove.knockdown.alternativeAdvantages;
-        expanded.push(altMove);
-      }
-    }
-  }
-  return expanded;
-});
+const knockdownMoves = computed(() => attackerFrameData.value?.moves.flatMap(getOkiKnockdownPresets) ?? []);
 
 const memoryKnockdowns = computed<OkiMemoryKnockdown[]>(() => [
-  ...knockdownMoves.value.map(move => ({
+  ...knockdownMoves.value.flatMap(move => move.advantages.map(advantage => ({
     name: getMoveDisplayName(move),
     input: move.input,
-    advantage: parseKnockdownAdvantage(move),
-  })),
+    advantage,
+  }))),
   ...filteredCustomMoves.value.map(move => ({
     name: move.name,
     input: move.input,
@@ -607,7 +556,7 @@ const memoryKnockdowns = computed<OkiMemoryKnockdown[]>(() => [
   })),
 ]);
 
-const filteredKnockdownMoves = computed<Move[]>(() => {
+const filteredKnockdownMoves = computed(() => {
   const queryRaw = knockdownSearchQuery.value.trim();
   if (!queryRaw) return knockdownMoves.value;
 
@@ -618,14 +567,15 @@ const filteredKnockdownMoves = computed<Move[]>(() => {
       move.nameZh,
       move.input,
       getMoveDisplayName(move),
-      `${parseKnockdownAdvantage(move)}F`,
+      formatOkiKnockdownAdvantages(move.advantages),
+      ...move.advantages.map(advantage => `${advantage}F`),
     ].filter((val): val is string => typeof val === 'string' && val.length > 0);
 
     return fields.some((field) => field.toLowerCase().includes(queryLower));
   });
 });
 
-const visibleKnockdownMoves = computed<Move[]>(() => {
+const visibleKnockdownMoves = computed(() => {
   if (showAllKnockdownPresets.value || knockdownSearchQuery.value.trim()) {
     return filteredKnockdownMoves.value;
   }
@@ -2701,8 +2651,9 @@ function addDriveRush() {
   });
 }
 
-function selectKnockdownMove(move: Move) {
+function selectKnockdownMove(move: OkiKnockdownPreset) {
   selectedKnockdownMove.value = move;
+  selectedPresetAdvantage.value = move.advantages[0];
   useCustomKnockdown.value = false;
 }
 
@@ -3243,14 +3194,22 @@ function formatFrameDelta(val: number): string {
       </div>
 
       <div class="knockdown-grid">
-        <button v-for="move in visibleKnockdownMoves" :key="`${move.name}-${move.input}`"
+        <button v-for="move in visibleKnockdownMoves" :key="`${move.name}-${move.input}`" type="button"
           :class="['knockdown-card', { active: isSelectedKnockdown(move) }]"
+          :aria-pressed="isSelectedKnockdown(move)"
+          :title="move.notes"
           @click="selectKnockdownMove(move)">
           <span class="move-name">{{ getMoveDisplayName(move) }}</span>
           <span class="move-input">{{ move.input }}</span>
-          <span class="move-advantage" v-if="move.knockdown">+{{ parseKnockdownAdvantage(move) }}F</span>
+          <span class="move-advantage">{{ formatOkiKnockdownAdvantages(move.advantages) }}</span>
         </button>
       </div>
+      <label v-if="selectedKnockdownMove && selectedKnockdownMove.advantages.length > 1" class="preset-frame-picker">
+        <span>{{ getMoveDisplayName(selectedKnockdownMove) }} {{ selectedKnockdownMove.input }} 的击倒优势</span>
+        <select v-model="selectedPresetAdvantage" class="preset-frame-select">
+          <option v-for="advantage in selectedKnockdownMove.advantages" :key="advantage" :value="advantage">+{{ advantage }}F</option>
+        </select>
+      </label>
       <div v-if="filteredKnockdownMoves.length === 0" class="empty-inline">
         没有匹配的击倒预设
       </div>
@@ -5856,6 +5815,21 @@ function formatFrameDelta(val: number): string {
   gap: var(--space-sm);
   /* max-height: 160px; REMOVED to show all moves */
   /* overflow-y: auto; REMOVED */
+}
+
+.preset-frame-picker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.preset-frame-select {
+  width: auto;
+  font-family: var(--font-mono);
 }
 
 .preset-toolbar {
